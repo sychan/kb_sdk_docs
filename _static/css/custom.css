@@ -1,0 +1,34 @@
+
+/* Blue left-side navigation block */
+.wy-side-nav-search {
+    background-color: #EEE;
+}
+/* Version text in sidebar */
+.wy-side-nav-search>div.version {
+    color: black;
+}
+/* Side menu colors */
+.wy-nav-side {
+    background-color: #d3d3d3;
+}
+.wy-side-nav-search>a, .wy-side-nav-search .wy-dropdown>a {
+    color: black;
+}
+/* Side menu nav items -- make more readable */
+.wy-menu-vertical a {
+    font-size: 100%;
+    color: black;
+}
+.wy-side-nav-search>a.icon img.logo, .wy-side-nav-search .wy-dropdown>a.icon img.logo {
+    width: 120%;
+    margin-left: -10%;
+    max-width: none;
+}
+.wy-nav-content-wrap {
+    background-color: white;
+}
+/* Side nav menu link hover state */
+.wy-menu-vertical a:hover {
+    color: white;
+    background-color: #b2b2b2;
+}

@@ -12,7 +12,7 @@ BUILDDIR      = build
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-.PHONY: help Makefile deploy
+.PHONY: help Makefile deploy live
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
@@ -22,3 +22,6 @@ help:
 # Deploy to gh-pages
 deploy:
 	git subtree push --prefix build/html origin gh-pages
+
+live:
+	pipenv run sphinx-autobuild source $(ALLSPHINXOPTS) $(BUILDDIR)/html

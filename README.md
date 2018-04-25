@@ -11,3 +11,7 @@ This repo holds the source code for [Sphinx](http://www.sphinx-doc.org/en/master
 * Using pipenv with `Pipfile` and `Pipfile.lock` tracking dependencies
 * Install dependencies with `pipenv install`
 * Build the documentation with `pipenv run make html`
+
+### Deploy changes
+
+HTML is built into `build/html`, but that directory is gitignored.

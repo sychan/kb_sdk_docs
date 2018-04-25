@@ -14,4 +14,4 @@ This repo holds the source code for [Sphinx](http://www.sphinx-doc.org/en/master
 
 ### Deploy changes
 
-HTML is built into `build/html`, but that directory is gitignored.
+HTML is built into `build/html`. You can deploy it to the `gh-pages` branch with `make deploy`

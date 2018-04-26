@@ -1,4 +1,19 @@
 
+/* Enlarge fonts globally for better accessibility */
+
+p {
+    font-size: 18px;
+}
+/* Code blocks */
+.rst-content pre.literal-block, .rst-content div[class^='highlight'] pre, .rst-content .linenodiv pre {
+    font-size: 16px;
+}
+
+/* Increase the width of the content area */
+.wy-nav-content {
+    max-width: 920px;
+}
+
 /* Blue left-side navigation block */
 .wy-side-nav-search {
     background-color: #EEE;

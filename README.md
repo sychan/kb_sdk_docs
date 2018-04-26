@@ -8,6 +8,8 @@ This repo holds the source code for [Sphinx](http://www.sphinx-doc.org/en/master
 
 All the documentation files use the "reStructuredText" format. Read the primer here: http://www.sphinx-doc.org/en/1.5/rest.html
 
+A good reference on reStructuredText directives is here: http://docutils.sourceforge.net/docs/ref/rst/directives.html
+
 ## Development
 
 * Python version: 3.6.5

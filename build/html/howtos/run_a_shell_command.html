@@ -1,0 +1,306 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Run shell commands in your app &mdash; KBase SDK 0.1.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Work with reference data" href="work_with_reference_data.html" />
+    <link rel="prev" title="Manually build the SDK" href="manual_build.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> KBase SDK
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Intro</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Concepts and Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../video_tutorial.html">Video Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/initialize.html">3. Initialize the App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/setup.html">4. Setup &amp; Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/implement.html">5. Implement Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">6. Publish and Test</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="create_a_report.html">Create a report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="add_ui_elements.html">Add UI elements to your app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit_your_dockerfile.html">Edit your app’s Dockerfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fill_out_app_information.html">Complete your app’s publish data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual_build.html">Manually build the SDK</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Run shell commands in your app</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#download-and-compile-using-your-dockerfile">Download and compile using your Dockerfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#invoking-the-command-in-python">Invoking the command in Python</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="work_with_reference_data.html">Work with reference data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">References &amp; Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of an App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">KBase SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Run shell commands in your app</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com////howtos/run_a_shell_command.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="run-shell-commands-in-your-app">
+<h1>Run shell commands in your app<a class="headerlink" href="#run-shell-commands-in-your-app" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="download-and-compile-using-your-dockerfile">
+<h2>Download and compile using your Dockerfile<a class="headerlink" href="#download-and-compile-using-your-dockerfile" title="Permalink to this headline">¶</a></h2>
+<p>Many KBase apps wrap third-party tools with commandline interfaces. You
+can compile these programs for your app by entering the build commands
+in your Dockerfile. For example,
+<a class="reference external" href="https://github.com/kbaseapps/FastANI">FastANI</a> compiles and installs
+with this series of commands:</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span># Fetch and compile FastANI
+RUN git clone https://github.com/ParBLiSS/FastANI.git /opt/FastANI \
+    &amp;&amp; cd /opt/FastANI \
+    &amp;&amp; git checkout tags/v1.0 -b v1.0 \
+    &amp;&amp; ./bootstrap.sh \
+    &amp;&amp; ./configure \
+    &amp;&amp; make \
+    # Place fastANI in the PATH for this user
+    &amp;&amp; ln -s $(readlink -f ./fastANI) /usr/local/bin/fastANI
+</pre></div>
+</div>
+<p>Some things to note:</p>
+<ul class="simple">
+<li>Be sure to check out a specific version tag or commit so that your
+app doesn’t receive unexpected, possibly broken updates</li>
+<li>Put this code high up in your Dockerfile, above where your app gets
+initialized, so that it gets cached and doesn’t have to re-run every
+time you change your app</li>
+<li>You can place commands in the directory <code class="docutils literal notranslate"><span class="pre">/kb/deployment/bin/</span></code>, and
+it will automatically get added to your container’s <code class="docutils literal notranslate"><span class="pre">$PATH</span></code></li>
+</ul>
+<p><strong>Also see:</strong> <a class="reference external" href="/doc/howto/edit_dockerfile.md">How to edit your app’s
+Dockerfile</a></p>
+</div>
+<div class="section" id="invoking-the-command-in-python">
+<h2>Invoking the command in Python<a class="headerlink" href="#invoking-the-command-in-python" title="Permalink to this headline">¶</a></h2>
+<p>You can use the
+<code class="docutils literal notranslate"><span class="pre">`subprocess</span></code> &lt;<a class="reference external" href="https://docs.python.org/2/library/subprocess.html">https://docs.python.org/2/library/subprocess.html</a>&gt;`__
+package to invoke commands from within python.</p>
+<p>The following example from the
+<a class="reference external" href="https://github.com/kbaseapps/kb_quast">kb_quast</a> repository
+demonstrates how to do (and document) this well with Python.</p>
+<p><code class="docutils literal notranslate"><span class="pre">python</span>&#160;&#160;&#160;&#160; <span class="pre">def</span> <span class="pre">run_quast_exec(self,</span> <span class="pre">outdir,</span> <span class="pre">filepaths,</span> <span class="pre">labels):</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">threads</span> <span class="pre">=</span> <span class="pre">psutil.cpu_count()</span> <span class="pre">*</span> <span class="pre">self.THREADS_PER_CORE</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">DO</span> <span class="pre">NOT</span> <span class="pre">use</span> <span class="pre">genemark</span> <span class="pre">instead</span> <span class="pre">of</span> <span class="pre">glimmer,</span> <span class="pre">not</span> <span class="pre">open</span> <span class="pre">source</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">DO</span> <span class="pre">NOT</span> <span class="pre">use</span> <span class="pre">metaQUAST,</span> <span class="pre">uses</span> <span class="pre">SILVA</span> <span class="pre">DB</span> <span class="pre">which</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">open</span> <span class="pre">source</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">cmd</span> <span class="pre">=</span> <span class="pre">['quast.py',</span> <span class="pre">'--threads',</span> <span class="pre">str(threads),</span> <span class="pre">'-o',</span> <span class="pre">outdir,</span> <span class="pre">'--labels',</span> <span class="pre">','.join(labels),</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">'--glimmer',</span> <span class="pre">'--contig-thresholds',</span> <span class="pre">'0,1000,10000,100000,1000000']</span> <span class="pre">+</span> <span class="pre">filepaths</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">self.log('running</span> <span class="pre">QUAST</span> <span class="pre">with</span> <span class="pre">command</span> <span class="pre">line</span> <span class="pre">'</span> <span class="pre">+</span> <span class="pre">str(cmd))</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">retcode</span> <span class="pre">=</span> <span class="pre">subprocess.call(cmd)</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">self.log('QUAST</span> <span class="pre">return</span> <span class="pre">code:</span> <span class="pre">'</span> <span class="pre">+</span> <span class="pre">str(retcode))</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">if</span> <span class="pre">retcode:</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">can't</span> <span class="pre">actually</span> <span class="pre">figure</span> <span class="pre">out</span> <span class="pre">how</span> <span class="pre">to</span> <span class="pre">test</span> <span class="pre">this.</span> <span class="pre">Give</span> <span class="pre">quast</span> <span class="pre">garbage</span> <span class="pre">it</span> <span class="pre">skips</span> <span class="pre">the</span> <span class="pre">file.</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">Give</span> <span class="pre">quast</span> <span class="pre">a</span> <span class="pre">file</span> <span class="pre">with</span> <span class="pre">a</span> <span class="pre">missing</span> <span class="pre">sequence</span> <span class="pre">it</span> <span class="pre">acts</span> <span class="pre">completely</span> <span class="pre">normally.</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">raise</span> <span class="pre">ValueError('QUAST</span> <span class="pre">reported</span> <span class="pre">an</span> <span class="pre">error,</span> <span class="pre">return</span> <span class="pre">code</span> <span class="pre">was</span> <span class="pre">'</span> <span class="pre">+</span> <span class="pre">str(retcode))</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">quast</span> <span class="pre">will</span> <span class="pre">ignore</span> <span class="pre">bad</span> <span class="pre">files</span> <span class="pre">and</span> <span class="pre">keep</span> <span class="pre">going,</span> <span class="pre">which</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">disaster</span> <span class="pre">for</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">reproducibility</span> <span class="pre">and</span> <span class="pre">accuracy</span> <span class="pre">if</span> <span class="pre">you're</span> <span class="pre">not</span> <span class="pre">watching</span> <span class="pre">the</span> <span class="pre">logs</span> <span class="pre">like</span> <span class="pre">a</span> <span class="pre">hawk.</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">for</span> <span class="pre">now</span> <span class="pre">use</span> <span class="pre">this</span> <span class="pre">hack</span> <span class="pre">to</span> <span class="pre">check</span> <span class="pre">that</span> <span class="pre">all</span> <span class="pre">files</span> <span class="pre">were</span> <span class="pre">processed.</span> <span class="pre">Maybe</span> <span class="pre">there's</span> <span class="pre">a</span> <span class="pre">better</span> <span class="pre">way.</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">files_proc</span> <span class="pre">=</span> <span class="pre">len(os.listdir(os.path.join(outdir,</span> <span class="pre">'predicted_genes')))</span> <span class="pre">/</span> <span class="pre">2</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">files_exp</span> <span class="pre">=</span> <span class="pre">len(filepaths)</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">if</span> <span class="pre">files_proc</span> <span class="pre">!=</span> <span class="pre">files_exp:</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">err</span> <span class="pre">=</span> <span class="pre">('QUAST</span> <span class="pre">skipped</span> <span class="pre">some</span> <span class="pre">files</span> <span class="pre">-</span> <span class="pre">{}</span> <span class="pre">expected,</span> <span class="pre">{}</span> <span class="pre">processed.'</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">.format(files_exp,</span> <span class="pre">files_proc))</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">self.log(err)</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">raise</span> <span class="pre">ValueError(err)</span></code></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="work_with_reference_data.html" class="btn btn-neutral float-right" title="Work with reference data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="manual_build.html" class="btn btn-neutral" title="Manually build the SDK" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, KBase.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1.18',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

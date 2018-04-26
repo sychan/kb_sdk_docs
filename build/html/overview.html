@@ -1,0 +1,313 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Concepts and Overview &mdash; KBase SDK 0.1.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Video Tutorial" href="video_tutorial.html" />
+    <link rel="prev" title="KBase SDK Documentation" href="index.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> KBase SDK
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Intro</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Concepts and Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-basics">The Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#composing-apps">Composing apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#defining-parameters">Defining parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-files-and-data">Working with files and data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#scratch">Scratch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-workspace">The Workspace</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="video_tutorial.html">Video Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/initialize.html">3. Initialize the App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/setup.html">4. Setup &amp; Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/implement.html">5. Implement Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/publish.html">6. Publish and Test</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="howtos/create_a_report.html">Create a report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtos/add_ui_elements.html">Add UI elements to your app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtos/edit_your_dockerfile.html">Edit your app’s Dockerfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtos/fill_out_app_information.html">Complete your app’s publish data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtos/manual_build.html">Manually build the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtos/run_a_shell_command.html">Run shell commands in your app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtos/work_with_reference_data.html">Work with reference data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">References &amp; Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="references/module_anatomy.html">Anatomy of an App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references/troubleshooting.html">Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references/dev_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references/KIDL_spec.html">KIDL Specification</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">KBase SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Concepts and Overview</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com////overview.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="concepts-and-overview">
+<h1>Concepts and Overview<a class="headerlink" href="#concepts-and-overview" title="Permalink to this headline">¶</a></h1>
+<p>Let’s start with a high-level overview of how the SDK works and the general concepts involved in making SDK apps.</p>
+<p>When a python SDK app runs in a narrative, it typically follows this work flow and data path:</p>
+<a class="reference internal image-reference" href="_images/concept-map.png"><img alt="_images/concept-map.png" src="_images/concept-map.png" style="width: 661.5px; height: 165.5px;" /></a>
+<div class="section" id="the-basics">
+<h2>The Basics<a class="headerlink" href="#the-basics" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/micro1.png" class="align-right" src="_images/micro1.png" />
+<p>Apps on KBase, such as genome assemblers and annotators that run on narrative pages, are created using the KBase SDK.</p>
+<p>When you run an app in a narrative, it runs in a docker container on KBase’s servers. Learn more about docker containers [here](<a class="reference external" href="https://www.docker.com/what-container">https://www.docker.com/what-container</a>). Docker containers allow you to run compiled programs, such as [MEGAHIT](<a class="reference external" href="https://github.com/voutcn/megahit">https://github.com/voutcn/megahit</a>), on any machine.</p>
+<p>The starting source code for your app defines the type of input parameters the user can enter, the packages and programs the app will run in its container, and the output it will display in the final report. The source code for your app gets generated using the <cite>kb-sdk</cite> command line utility (see the rest of the tutorial for details).</p>
+</div>
+<div class="section" id="composing-apps">
+<h2>Composing apps<a class="headerlink" href="#composing-apps" title="Permalink to this headline">¶</a></h2>
+<p>Your app can install and use other KBase apps as dependencies, such as [KBParallel](<a class="reference external" href="https://github.com/kbaseapps/KBParallel">https://github.com/kbaseapps/KBParallel</a>). Find these apps in github at [<a class="reference external" href="https://github.com/kbaseapps](https://github.com/kbaseapps">https://github.com/kbaseapps](https://github.com/kbaseapps</a>) or in the [KBase app catalog](<a class="reference external" href="https://narrative.kbase.us/#catalog/apps">https://narrative.kbase.us/#catalog/apps</a>) (we will go into further detail in later parts of the tutorial).</p>
+<p>When you install and run another app within yours, the other app runs in its own, separate docker container. SDK apps are also installed and tracked separately from any python dependencies that you install via <cite>pip</cite> or other package managers.</p>
+</div>
+<div class="section" id="defining-parameters">
+<h2>Defining parameters<a class="headerlink" href="#defining-parameters" title="Permalink to this headline">¶</a></h2>
+<p>A few configuration files in your app are used to define what parameters your app will accept from the narrative, and what result data your app will return.</p>
+<p>The three main configuration files are:</p>
+<ul class="simple">
+<li>The KBase Interface Definition Language (KIDL) type specification defines what data types your app can accept as parameters and return as results</li>
+<li>A JSON config file defines the UI elements that your app uses for accepting input from the user</li>
+<li>A YAML config file defines the text labelling and content for your app’s UI</li>
+</ul>
+<p>The details and locations of these files will be described later in the tutorial.</p>
+</div>
+<div class="section" id="working-with-files-and-data">
+<h2>Working with files and data<a class="headerlink" href="#working-with-files-and-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="scratch">
+<h3>Scratch<a class="headerlink" href="#scratch" title="Permalink to this headline">¶</a></h3>
+<p>Since SDK apps often run inside multiple docker containers, you have to store files in a special location that all containers have access to: <strong>scratch</strong>. Scratch is set to a directory running inside your app’s docker container and is accessed from a special configuration variable in your app source code. This scratch directory is accessible to your app as long as it’s running.</p>
+<p><strong>Scratch is ephemeral</strong> – any files in the scratch directory are gone when your app stops running. To save files persistently (for example, to use in your report), you need to use <strong>Workspaces</strong></p>
+</div>
+<div class="section" id="the-workspace">
+<h3>The Workspace<a class="headerlink" href="#the-workspace" title="Permalink to this headline">¶</a></h3>
+<p>The “Workspace” is the term used for the file storage servers used by KBase. For Python SDK apps, you can use apps such as [DataFileUtil](<a class="reference external" href="https://github.com/kbaseapps/DataFileUtil">https://github.com/kbaseapps/DataFileUtil</a>), [AssemblyUtil](<a class="reference external" href="https://github.com/kbaseapps/AssemblyUtil">https://github.com/kbaseapps/AssemblyUtil</a>), and [GenomeFileUtil](<a class="reference external" href="https://github.com/kbaseapps/GenomeFileUtil">https://github.com/kbaseapps/GenomeFileUtil</a>) to download and upload files to the workspace.</p>
+<p>The [KBaseReport](<a class="reference external" href="https://github.com/kbaseapps/KBaseReport">https://github.com/kbaseapps/KBaseReport</a>) app is used to generate a final report when your app finishes running, and it also uploads its files onto the workspace servers so you can see all the report data indefinitely after the app stops running.</p>
+<p>## Publishing and testing in the browser</p>
+<p>For an app to show up in a real narrative, you need to register it on <a class="reference external" href="https://appdev.kbase.us">https://appdev.kbase.us</a>. You can then view and test it in the “Dev” catalog while browsing apps on KBase. Details around this whole process are described further along in this tutorial.</p>
+<p>At this point, you cannot run your app inside a narrative on your own machine; you have to commit changes, publish to github, and re-register your app on <a class="reference external" href="https://appdev.kbase.us">https://appdev.kbase.us</a> to test updates on the KBase servers.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="video_tutorial.html" class="btn btn-neutral float-right" title="Video Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="KBase SDK Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, KBase.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1.18',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

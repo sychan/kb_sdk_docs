@@ -98,9 +98,9 @@ html_theme_options = {
     'style_external_links': False,
     'vcs_pageview_mode': '',
     # Table of contents options:
-    'collapse_navigation': True,
+    'collapse_navigation': False,
     'sticky_navigation': True,
-    'navigation_depth': 4,
+    'navigation_depth': 1,
     'includehidden': True,
     'titles_only': False
 }

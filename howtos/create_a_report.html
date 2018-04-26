@@ -1,0 +1,412 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Create a report &mdash; KBase SDK 0.1.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Add UI elements to your app" href="add_ui_elements.html" />
+    <link rel="prev" title="6. Publish and Test" href="../tutorial/publish.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> KBase SDK
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Intro</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Concepts and Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../video_tutorial.html">Video Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/initialize.html">3. Initialize the App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/setup.html">4. Setup &amp; Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/implement.html">5. Implement Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">6. Publish and Test</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Create a report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="add_ui_elements.html">Add UI elements to your app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit_your_dockerfile.html">Edit your app’s Dockerfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fill_out_app_information.html">Complete your app’s publish data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual_build.html">Manually build the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run_a_shell_command.html">Run shell commands in your app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="work_with_reference_data.html">Work with reference data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">References &amp; Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of an App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">KBase SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Create a report</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com////howtos/create_a_report.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="create-a-report">
+<h1>Create a report<a class="headerlink" href="#create-a-report" title="Permalink to this headline">¶</a></h1>
+<p>The
+<a class="reference external" href="https://appdev.kbase.us/#catalog/modules/KBaseReport">KBaseReport</a>
+module allows the creation of KBase reports which can present text,
+HTML, and downloadable files to the user as output to your app. The
+KBaseReports module is the preferred way to communicate results to
+users.</p>
+<p><em>Why do I need to make a report?</em></p>
+<p>Reports in KBase allow a developer to present visualizations, generate
+human-readable text strings, show warnings, provide links to output
+files that do not correspond to typed objects, and in general display
+information that is useful to a user without having to utilize kbase-ui
+widgets.</p>
+<p><em>What kinds of reports can I make?</em></p>
+<p>Developers can use the KBaseReports module to display and contain a wide
+variety of content. It’s up to each developer to determine how to
+creatively and effectively integrate this module with their Apps.
+Reports can be configured in a variety of ways, depending on how the
+parameters to parse and display the outputs of an App are configured. We
+will cover an example and some sample code, but exploring the variety of
+existing Apps and their output reports within the KBase Narratives will
+best demonstrate the capabilities of this module. Many developers have
+used the ability to contain and display HTML files within the reports
+for visualization of and interaction with data.</p>
+<p><em>What do reports look like in KBase?</em></p>
+<p>Reports are contained in the output cells generated by KBase Apps. A
+typical and feature-rich example can be found in KBase’s implementation
+of
+<a class="reference external" href="https://github.com/kbaseapps/kb_deseq/blob/add70f879a93f060c2b37de914dab7d0c02731c1/lib/kb_deseq/Utils/DESeqUtil.py#L241-L285">DESeq2</a>.</p>
+<div class="figure" id="id1">
+<img alt="DESeq2 Report" src="http://kbase.us/wp-content/uploads/2017/11/DeSEQ-Capture.png" />
+<p class="caption"><span class="caption-text">DESeq2 Report</span></p>
+</div>
+<p>The first step in setting up KBase reports for an App is determining
+what the outputs of the program are in order to figure out how to best
+display results or give access to files to users. By understanding what
+kinds of files, HTML reports, warnings, and other outputs are generated
+by the program outside of KBase, you can develop a strategy for
+adequately representing all these within the output cell for your App.
+The following annotated example code contains all of the parameters that
+can be set to configure the output:</p>
+<p>Here’s the same example image from above annotated with the parameters
+used in the creation of the DESeq2 report.</p>
+<div class="figure" id="id2">
+<img alt="DESeq2 Report" src="http://kbase.us/wp-content/uploads/2017/11/DESeq2-Annotate.png" />
+<p class="caption"><span class="caption-text">DESeq2 Report</span></p>
+</div>
+<p>```python def _generate_report (self, params, other_stuff):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># A working example of an app that generates a report for DESeq2</span>
+<span class="c1"># https://github.com/kbaseapps/kb_deseq/blob/586714d/lib/kb_deseq/Utils/DESeqUtil.py#L241-L285</span>
+
+<span class="n">report_params</span> <span class="o">=</span> <span class="p">{</span>
+     <span class="c1">#message is an optional field. It is string that appears in the summary section of the result page</span>
+     <span class="c1">#eg. message = “This is a message string”</span>
+
+     <span class="s1">&#39;message&#39;</span><span class="p">:</span> <span class="n">message_in_app</span><span class="p">,</span>
+
+     <span class="c1">#objects_created: List of typed objects created during</span>
+     <span class="c1">#the execution of the App. This can only be used to refer</span>
+     <span class="c1">#to typed objects in the workspace and is separate</span>
+     <span class="c1">#from any files generated by the app.</span>
+
+     <span class="c1">#eg.</span>
+     <span class="c1">#objects_created_in_app = list()</span>
+     <span class="c1">#objects_created_in_app.append(obj1)</span>
+     <span class="c1">#objects_created_in_app.append(obj2)</span>
+     <span class="c1"># See a working example here</span>
+     <span class="c1"># https://github.com/kbaseapps/kb_deseq/blob/586714d/lib/kb_deseq/Utils/DESeqUtil.py#L262-L264</span>
+
+     <span class="s1">&#39;objects_created&#39;</span><span class="p">:</span> <span class="n">objects_created_in_app</span><span class="p">,</span>
+
+     <span class="c1">#warnings: list of strings that can be used to alert the user</span>
+     <span class="c1">#eg.</span>
+     <span class="c1"># warnings_in_app = list()</span>
+     <span class="c1"># warnings_in_app.append (‘This is warning 1’)</span>
+     <span class="c1"># warnings_in_app.append (‘This is warning 2’)</span>
+
+     <span class="s1">&#39;warnings&#39;</span><span class="p">:</span> <span class="n">warnings_in_app</span><span class="p">,</span>
+
+
+     <span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="n">ws_name</span><span class="p">,</span>
+
+     <span class="c1">#file_links: list of paths or SHOCK node IDs pointing to</span>
+     <span class="c1">#a single flat file. They appear in Files section</span>
+     <span class="c1">#as list of downloadable files.</span>
+
+     <span class="c1">#eg.</span>
+     <span class="c1">#  output_files_in_app = list()</span>
+     <span class="c1">#  output_files_in_app.append({</span>
+     <span class="c1">#      ‘path’: ‘path to file1 or shock id’,</span>
+     <span class="c1">#      ‘name’: ‘name of file’,</span>
+     <span class="c1">#      ‘label’: ‘label of file’,</span>
+     <span class="c1">#      ‘description’ : ‘Description of file’</span>
+     <span class="c1">#  }</span>
+
+     <span class="c1"># To see a working example</span>
+     <span class="c1"># https://github.com/kbaseapps/kb_deseq/blob/586714d/lib/kb_deseq/Utils/DESeqUtil.py#L205-L239</span>
+
+
+     <span class="s1">&#39;file_links&#39;</span><span class="p">:</span> <span class="n">output_files_in_app</span><span class="p">,</span>
+
+
+     <span class="c1">#html_links: HTML files that appear in “Links” section.</span>
+     <span class="c1">#List of paths or shock node IDs pointing to a single</span>
+     <span class="c1">#flat html file or to the top level directory of a website.</span>
+     <span class="c1">#The report widget can render one html view directly.</span>
+     <span class="c1">#Set one of the following fields to decide which view to render:</span>
+     <span class="c1">#direct_html - A string with simple html text that will</span>
+     <span class="c1">#be rendered within the report widget:</span>
+     <span class="c1">#direct_html_link_index - Integer to specify the index of</span>
+     <span class="c1">#the page in html_links to view directly in the report widget</span>
+
+
+     <span class="c1"># html_files_in_app = list()</span>
+     <span class="c1"># html_files_in_app.append({</span>
+     <span class="c1">#    ‘path’: ‘path to file1 or shock id’,</span>
+     <span class="c1">#    ‘name’: ‘name of html file1’,</span>
+     <span class="c1">#    ‘label’: ‘label of html file1’,</span>
+     <span class="c1">#    ‘description’ : ‘Description of html file1’</span>
+     <span class="c1"># }</span>
+
+     <span class="c1"># To see a working example</span>
+     <span class="c1"># https://github.com/kbaseapps/kb_deseq/blob/586714d/lib/kb_deseq/Utils/DESeqUtil.py#L86-L194</span>
+
+
+     <span class="s1">&#39;html_links&#39;</span><span class="p">:</span> <span class="n">html_files_in_app</span><span class="p">,</span>
+     <span class="s1">&#39;direct_html_link_index&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+
+     <span class="c1">#html_window_height : Window height - This sets the height</span>
+     <span class="c1">#of the HTML window displayed under the “Reports” section.</span>
+     <span class="c1">#The width is fixed.</span>
+
+     <span class="s1">&#39;html_window_height&#39;</span><span class="p">:</span> <span class="mi">333</span><span class="p">,</span>
+
+
+     <span class="s1">&#39;report_object_name&#39;</span><span class="p">:</span> <span class="s1">&#39;kb_app_name_report_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())}</span>
+
+      <span class="c1"># Make the client, generate the report</span>
+
+      <span class="n">kbase_report_client</span> <span class="o">=</span> <span class="n">KBaseReport</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">callback_url</span><span class="p">)</span>
+      <span class="n">output</span> <span class="o">=</span> <span class="n">kbase_report_client</span><span class="o">.</span><span class="n">create_extended_report</span><span class="p">(</span><span class="n">report_params</span><span class="p">)</span>
+
+      <span class="c1"># Return references which will allow inline display of</span>
+      <span class="c1">#the report in the Narrative</span>
+
+      <span class="n">report_output</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;report_name&#39;</span><span class="p">:</span> <span class="n">output</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span>
+                        <span class="s1">&#39;report_ref&#39;</span><span class="p">:</span> <span class="n">output</span><span class="p">[</span><span class="s1">&#39;ref&#39;</span><span class="p">]}</span>
+
+      <span class="k">return</span> <span class="n">report_output</span>
+</pre></div>
+</div>
+<p>} ```</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="add_ui_elements.html" class="btn btn-neutral float-right" title="Add UI elements to your app" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../tutorial/publish.html" class="btn btn-neutral" title="6. Publish and Test" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, KBase.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1.18',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

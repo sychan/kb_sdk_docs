@@ -1,0 +1,628 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Anatomy of an App &mdash; KBase SDK 0.1.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Frequently Asked Questions" href="FAQ.html" />
+    <link rel="prev" title="Work with reference data" href="../howtos/work_with_reference_data.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> KBase SDK
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Intro</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Concepts and Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../video_tutorial.html">Video Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/initialize.html">3. Initialize the App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/setup.html">4. Setup &amp; Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/implement.html">5. Implement Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">6. Publish and Test</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/create_a_report.html">Create a report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/add_ui_elements.html">Add UI elements to your app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/edit_your_dockerfile.html">Edit your app’s Dockerfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/fill_out_app_information.html">Complete your app’s publish data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/manual_build.html">Manually build the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/run_a_shell_command.html">Run shell commands in your app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/work_with_reference_data.html">Work with reference data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">References &amp; Resources</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Anatomy of an App</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-basics">The Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#files-for-building-and-testing-the-module">Files for building and testing the Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dockerfile">Dockerfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kbase-interface-description-language-kidl-specification-file">KBase Interface Description Language (KIDL) Specification File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#app-method-implementation">App (Method) Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#narrative-method-specifications">Narrative Method Specifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-framework">Test Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scripts-directory-for-utility-docker-scripts">Scripts Directory for Utility/Docker Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#technical-documentation">Technical Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#narrative-and-ui-widgets">Narrative and UI Widgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data">Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="KIDL_spec.html">KIDL Specification</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">KBase SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Anatomy of an App</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com////references/module_anatomy.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="anatomy-of-an-app">
+<h1>Anatomy of an App<a class="headerlink" href="#anatomy-of-an-app" title="Permalink to this headline">¶</a></h1>
+<p>KBase modules consist of a set of code, configurations, and
+specifications that describe how a set of related apps are shown in the
+Narrative interface and define the implementation of a function that is
+run when the Narrative app is executed. Modules can also include
+components that define visualization widgets, data types, and data
+uploaders/downloaders/converters. This guide provides a brief overview
+of these key components and how they are related.</p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>To explore the contents of a module yourself, you can use the kb-sdk
+tool to create an example module. (Please see <a class="reference external" href="https://github.com/kbase/kb_sdk/blob/master/doc/installation.md">these
+instructions</a>
+on how to install kb-sdk.)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kb</span><span class="o">-</span><span class="n">sdk</span> <span class="n">init</span> <span class="o">--</span><span class="n">example</span> <span class="o">-</span><span class="n">l</span> <span class="n">python</span> <span class="o">--</span><span class="n">user</span> <span class="n">YOURUSERNAME</span> <span class="n">MyModule</span>
+<span class="n">cd</span> <span class="n">MyModule</span>
+<span class="n">make</span>
+</pre></div>
+</div>
+<p>This command will initialize a new Module named MyModule with a prebuilt
+implementation of an example app. You should use your own GitHub
+username instead of YOURUSERNAME. The generated directory structure will
+look something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MyModule
+├── README.md
+├── LICENSE
+├── kbase.yml
+├── Dockerfile
+├── Makefile
+├── deploy.cfg
+├── MyModule.spec
+├── .travis.yml
+├── data
+│   └── README.md
+├── docs
+│   └── README.md
+├── lib
+│   ├── MyModule
+│   │   ├── MyModuleImpl.py
+│   │   └── __init__.py
+│   └── README.md
+├── scripts
+│   ├── entrypoint.sh
+│   ├── prepare_deploy_cfg.py
+│   ├── run_async.sh
+│   └── start_server.sh
+├── test
+│   ├── MyModule6_server_test.py
+│   ├── README.md
+│   └── run_tests.sh
+├── test_local
+│   ├── build_run_tests.sh
+│   ├── readme.txt
+│   ├── run_bash.sh
+│   └── test.cfg
+└── ui
+    ├── README.md
+    ├── narrative
+    │   └── methods
+    │       └── count_contigs_in_set
+    │           ├── display.yaml
+    │           ├── img
+    │           └── spec.json
+    └── widgets
+</pre></div>
+</div>
+<p>Let’s break this down and examine each component.</p>
+</div>
+<div class="section" id="the-basics">
+<h2>The Basics<a class="headerlink" href="#the-basics" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MyModule
+├── README.md
+├── LICENSE
+├── kbase.yml
+</pre></div>
+</div>
+<p>All KBase modules are required to have a kbase.yml file, which is a
+simple <a class="reference external" href="http://yaml.org">YAML</a> file that includes basic information
+and documentation about your Module. This is where you define your
+Module Name, the set of users that have permission to register/edit this
+Module, and descriptions of what your Module does. This information is
+important for giving you credit for building this module, and is used
+throughout KBase for describing to users why they should use your
+Module.</p>
+<p>README.md and LICENSE files are also required. README.md should contain
+basic information about your module, primarily targeted towards other
+developers or users who want to browse your code. A LICENSE file is also
+required. Your code will not be approved for release on KBase without a
+license that is compatible with KBase’s <a class="reference external" href="https://github.com/kbase/project_guides/blob/master/LICENSE">open source
+license</a>.</p>
+</div>
+<div class="section" id="files-for-building-and-testing-the-module">
+<h2>Files for building and testing the Module<a class="headerlink" href="#files-for-building-and-testing-the-module" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MyModule
+├── Makefile
+├── deploy.cfg
+├── .travis.yml
+</pre></div>
+</div>
+<p>KBase modules are currently all built using <code class="docutils literal notranslate"><span class="pre">make</span></code>, with targets that
+can rebuild components of your module and start tests. You can explore
+the Makefile directly and add additional targets as needed, but you
+should not have to edit significantly the basic Makefile targets
+generated by kb-sdk.</p>
+<p>When your apps run in KBase, you may need certain configuration
+variables set. These are declared in an
+<a class="reference external" href="https://en.wikipedia.org/wiki/INI_file">INI</a> configuration file
+called <code class="docutils literal notranslate"><span class="pre">deploy.cfg</span></code> and may include, for instance, the URL to the
+KBase data stores and the location of a scratch directory. Options that
+you want to be configurable for your module implementation should be
+placed here (including all URLs), but for the most part you shouldn’t
+have to touch this file very often.</p>
+<p>Many modules in KBase can be tested automatically whenever they are
+pushed into a GitHub repository using
+<a class="reference external" href="https://travis-ci.org">Travis-CI</a>, and the .travis.yml file is the
+configuration file for setting up Travis automated tests. Running full
+tests in Travis-CI will still be challenging for KBase modules due to
+data and other KBase dependencies, but we expect to simplify these
+dependencies and provide .travis.yml templates in the future that are
+easier to use.</p>
+</div>
+<div class="section" id="dockerfile">
+<h2>Dockerfile<a class="headerlink" href="#dockerfile" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MyModule
+├── Dockerfile
+</pre></div>
+</div>
+<p>One of the central components of a KBase module is the
+<a class="reference external" href="http://docs.docker.com/engine/reference/builder">Dockerfile</a>. Nearly
+all KBase apps are executed within <a class="reference external" href="http://docker.com">Docker</a>
+containers so that you can precisely manage your system dependencies and
+ensure that code that you are testing locally will be run exactly the
+same way in the KBase system. Docker images also act like snapshots that
+allow KBase to maintain and run old versions of your module. To
+effectively develop modules in KBase that execute code, you should
+install Docker locally and familiarize yourself with Docker tools.</p>
+<p>Therefore, there are no dependencies required except for a Dockerfile
+that can be used to create a Docker image. Instead, in your Dockerfile,
+you will define a set of commands that installs any system or package
+dependencies beyond what is provided in the KBase base image.</p>
+</div>
+<div class="section" id="kbase-interface-description-language-kidl-specification-file">
+<h2>KBase Interface Description Language (KIDL) Specification File<a class="headerlink" href="#kbase-interface-description-language-kidl-specification-file" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MyModule
+├── MyModule.spec
+</pre></div>
+</div>
+<p>Your KIDL specification file, often just refered to as your KBase spec
+file, defines the interface to your code. This spec file therefore is a
+critical piece of your module, and is one that you will likely edit
+frequently. The interface will be a set of functions with definitions of
+what they accept as input and what they produce as output. Using this
+interface, the KBase platform will know how to call any function in your
+module in a generic way and search the KBase Catalog for your apps.</p>
+<p>There should only be a single KIDL spec file in your module. Current
+convention is to name the file with the same name as your module name
+(e.g., MyModule.spec).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">kb-sdk</span></code> tool can compile your spec file into a set of
+implementation stubs in either Python, Perl, or Java that you will use
+to execute your code. Technical documentation should also be added to
+spec files, and can be used with the kb-sdk to generate nice looking
+html documentation for you.</p>
+<p>Note: Previously the KIDL spec file was used only to define KBase web
+services for modules. In most cases this is no longer required.
+Implementation code generated by KIDL specs can be run directly on the
+command line, and is executed that way for most apps. In some advanced
+cases, however, you will need to have a persistent web service so that
+large data can be cached or some preprocessing can be completed once.
+The files generated by the KBase SDK can produce clients (Python, Perl,
+Java, JavaScript) and server stubs when required, but the KBase platform
+does not yet have the infrastructure to automate service deployment. If
+you think you need this functionality, please <a class="reference external" href="http://kbase.us/contact-us">contact
+us</a>.</p>
+<p>In this simple example of a spec file, there is a single function
+defined for counting the number of contigs in a contig set. (Note that a
+“workspace” is like a directory that contains particular data objects.)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">MyModule</span> <span class="p">{</span>
+    <span class="o">/*</span>
+    <span class="n">A</span> <span class="n">string</span> <span class="n">representing</span> <span class="n">a</span> <span class="n">ContigSet</span> <span class="nb">id</span><span class="o">.</span>
+    <span class="o">*/</span>
+    <span class="n">typedef</span> <span class="n">string</span> <span class="n">contigset_id</span><span class="p">;</span>
+
+    <span class="o">/*</span>
+    <span class="n">A</span> <span class="n">string</span> <span class="n">representing</span> <span class="n">a</span> <span class="n">workspace</span> <span class="n">name</span><span class="o">.</span>
+    <span class="o">*/</span>
+    <span class="n">typedef</span> <span class="n">string</span> <span class="n">workspace_name</span><span class="p">;</span>
+
+    <span class="n">typedef</span> <span class="n">structure</span> <span class="p">{</span>
+        <span class="nb">int</span> <span class="n">contig_count</span><span class="p">;</span>
+    <span class="p">}</span> <span class="n">CountContigsResults</span><span class="p">;</span>
+
+    <span class="o">/*</span>
+    <span class="n">Count</span> <span class="n">contigs</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">ContigSet</span>
+    <span class="n">contigset_id</span> <span class="o">-</span> <span class="n">the</span> <span class="n">ContigSet</span> <span class="n">to</span> <span class="n">count</span><span class="o">.</span>
+    <span class="o">*/</span>
+    <span class="n">funcdef</span> <span class="n">count_contigs</span><span class="p">(</span><span class="n">workspace_name</span><span class="p">,</span><span class="n">contigset_id</span><span class="p">)</span> <span class="n">returns</span> <span class="p">(</span><span class="n">CountContigsResults</span><span class="p">)</span>
+                <span class="n">authentication</span> <span class="n">required</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="app-method-implementation">
+<h2>App (Method) Implementation<a class="headerlink" href="#app-method-implementation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MyModule
+├── lib
+│   ├── MyModule
+│   │   ├── MyModuleImpl.py
+│   │   └── __init__.py
+│   └── README.md
+</pre></div>
+</div>
+<p>The lib directory is where the actual implmenation code of your app is
+defined. In this example, your code consists of a single Python module
+with a kb-sdk generated Implementation file, which includes stubs that
+you can can fill in. In this example there is a single count_contigs
+method. When you run <code class="docutils literal notranslate"><span class="pre">make</span></code>, this file is updated and recompiled using
+<code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">compile</span></code> based on any changes in your spec file. For each
+function you define in the KIDL spec file, you will see a cooresponding
+stub that you can fill in. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">count_contigs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">workspace_name</span><span class="p">,</span> <span class="n">contigset_id</span><span class="p">):</span>
+    <span class="c1"># ctx is the context object</span>
+    <span class="c1"># return variables are: returnVal</span>
+    <span class="c1">#BEGIN count_contigs</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">ctx</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">]</span>
+    <span class="n">wsClient</span> <span class="o">=</span> <span class="n">workspaceService</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspaceURL</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="n">token</span><span class="p">)</span>
+    <span class="n">contigSet</span> <span class="o">=</span> <span class="n">wsClient</span><span class="o">.</span><span class="n">get_objects</span><span class="p">([{</span><span class="s1">&#39;ref&#39;</span><span class="p">:</span> <span class="n">workspace_name</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">contigset_id</span><span class="p">}])[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+    <span class="n">returnVal</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;contig_count&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">contigSet</span><span class="p">[</span><span class="s1">&#39;contigs&#39;</span><span class="p">])}</span>
+    <span class="c1">#END count_contigs</span>
+
+    <span class="c1"># At some point might do deeper type checking...</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">returnVal</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Method count_contigs return value &#39;</span> <span class="o">+</span>
+                         <span class="s1">&#39;returnVal is not type object as required.&#39;</span><span class="p">)</span>
+    <span class="c1"># return the results</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">returnVal</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Note that your implementation code will be defined between
+<code class="docutils literal notranslate"><span class="pre">#BEGIN</span> <span class="pre">contig_counts</span></code> and <code class="docutils literal notranslate"><span class="pre">#END</span> <span class="pre">contig_counts</span></code>. Any code written
+outside of these <code class="docutils literal notranslate"><span class="pre">#BEGIN</span></code> and <code class="docutils literal notranslate"><span class="pre">#END</span></code> directives will be overwritten
+when the implementation file is rebuilt. The exact code generated by
+<code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">compile</span></code> and structure of the lib directory will of course
+depend on the programming language you indicated when running
+<code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">init</span></code>.</p>
+<p>It is good practice to limit the amount of code you place directly in
+the implementation files. Instead, create your own modules and packages
+that perform most of the logic, and only include calls to those
+libraries from within the generated Implementation file.</p>
+</div>
+<div class="section" id="narrative-method-specifications">
+<h2>Narrative Method Specifications<a class="headerlink" href="#narrative-method-specifications" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MyModule
+└── ui
+    ├── README.md
+    ├── narrative
+    │   └── methods
+    │       └── count_contigs_in_set
+    │           ├── display.yaml
+    │           ├── img
+    │           └── spec.json
+</pre></div>
+</div>
+<p>Apps in the Narrative interface are defined by method specifications
+that consist of a JSON specification file and a YAML file for
+documentation and display labels. In this example, this module has only
+a single Narrative method defined in a folder named
+count_contigs_in_set. This folder name also serves as the method ID.
+Method IDs must therefore be unique within a module. You can add more
+apps by simply adding another directory in the methods folder.</p>
+<p>These method specifications indicate which parameters are exposed to the
+user, how those parameters are selected (e.g., dropdown, text field,
+checkbox) and how those parameters map to your implementation. An
+optional <code class="docutils literal notranslate"><span class="pre">img</span></code> directory allows you to attach screenshots or other
+images that will automatically be included in the app detail page for
+your Narrative method.</p>
+<p>Right now you have to write the method specifications by hand, but in
+the future templates for each method defined in the KIDL specification
+will be generated.</p>
+</div>
+<div class="section" id="test-framework">
+<h2>Test Framework<a class="headerlink" href="#test-framework" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MyModule
+├── test
+│   ├── MyModule6_server_test.py
+│   ├── README.md
+│   └── run_tests.sh
+├── test_local
+│   ├── build_run_tests.sh
+│   ├── readme.txt
+│   ├── run_bash.sh
+│   └── test.cfg
+</pre></div>
+</div>
+<p>The test directory contains a basic template for performing unit tests
+of the code in your module implmentation. This is useful for both
+debugging and ensuring your module is robust and operates well on a
+range of input data. The test_local directory is created by <code class="docutils literal notranslate"><span class="pre">make</span></code> to
+create a scratch space for running tests locally. It is important that
+you do not include any passwords in configuration files that you are
+committing to public git repositories.</p>
+</div>
+<div class="section" id="scripts-directory-for-utility-docker-scripts">
+<h2>Scripts Directory for Utility/Docker Scripts<a class="headerlink" href="#scripts-directory-for-utility-docker-scripts" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MyModule
+├── scripts
+│   ├── entrypoint.sh
+│   ├── prepare_deploy_cfg.py
+│   ├── run_async.sh
+│   └── start_server.sh
+</pre></div>
+</div>
+<p>Your module will include by default a few autogenerated scripts to aid
+in deployment and to define how your Docker container is run. For the
+most part, you can ignore these files. If you need additional utility
+scripts, for instance to aid in system dependency installations, fetch a
+reference data file that needs to be stored in the Docker image, or
+other methods for testing or validation, you should place them in the
+scripts directory.</p>
+</div>
+<div class="section" id="technical-documentation">
+<h2>Technical Documentation<a class="headerlink" href="#technical-documentation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MyModule
+├── docs
+│   └── README.md
+</pre></div>
+</div>
+<p>Any technical documentation or generated API documentation should be
+placed in the docs directory.</p>
+</div>
+<div class="section" id="narrative-and-ui-widgets">
+<h2>Narrative and UI Widgets<a class="headerlink" href="#narrative-and-ui-widgets" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MyModule
+└── ui
+    └── widgets
+</pre></div>
+</div>
+<p>Narrative widgets and other UI components cannot yet be defined as part
+of your module. This restriction will be lifted eventually. Until then,
+this directory is a placeholder.</p>
+</div>
+<div class="section" id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MyModule
+├── data
+│   └── README.md
+</pre></div>
+</div>
+<p>New data types, uploaders, and downloaders cannot be defined within
+modules. Large amounts of reference data and persistent reference
+databases are also not supported out of the box for modules. This
+restriction will be lifted eventually. Until then, this directory is a
+placeholder. If you require large amounts of reference data for your
+module, please <a class="reference external" href="contact-us">contact us</a> for support.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="FAQ.html" class="btn btn-neutral float-right" title="Frequently Asked Questions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../howtos/work_with_reference_data.html" class="btn btn-neutral" title="Work with reference data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, KBase.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1.18',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

@@ -18,9 +18,30 @@ A good reference on reStructuredText directives is here: http://docutils.sourcef
 * Install existing dependencies with `pipenv install`
 * Run the live development server with `make live`
 * Build the documentation with `pipenv run make html`
-* Deploy changes with `make deploy`
 * To install a dependency, use `pipenv install package`
 
 ### Deploying changes
 
-HTML is built into `build/html`. You can deploy it to the `gh-pages` branch with `make deploy`
+The `gh-pages` branch corresponds to the `/build/html` subdirectory. That directory is gitignored from master.
+
+To deploy, you need write permissions for the `github.com/kbase/kb_sdk_docs` repository.
+
+#### Setup
+
+```sh
+# If it's not already there:
+$ mkdir build
+$ git clone -b gh-pages --single-branch https://github.com/kbase/kb_sdk_docs build/html
+```
+
+#### Deploy
+
+From the repo's root directory.
+
+```sh
+$ pipenv run make html
+$ cd build/html
+$ git add --all
+$ git commit -m 'Build'
+$ git push -u origin gh-pages
+```

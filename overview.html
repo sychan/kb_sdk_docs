@@ -99,14 +99,14 @@
 <li class="toctree-l1"><a class="reference internal" href="tutorial/initialize.html">3. Initialize the App</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial/setup.html">4. Setup &amp; Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial/implement.html">5. Implement Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial/publish.html">6. Publish and Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/publish.html">6. Publish and Update</a></li>
 </ul>
 <p class="caption"><span class="caption-text">How-to Guides</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="howtos/create_a_report.html">Create a report</a></li>
-<li class="toctree-l1"><a class="reference internal" href="howtos/add_ui_elements.html">Add UI elements to your app</a></li>
-<li class="toctree-l1"><a class="reference internal" href="howtos/edit_your_dockerfile.html">Edit your app’s Dockerfile</a></li>
-<li class="toctree-l1"><a class="reference internal" href="howtos/fill_out_app_information.html">Complete your app’s publish data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtos/create_a_report.html">How to create a report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtos/add_ui_elements.html">How to add UI elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtos/edit_your_dockerfile.html">How to edit your app’s Dockerfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtos/fill_out_app_information.html">How to document your app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="howtos/manual_build.html">Manually build the SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="howtos/run_a_shell_command.html">Run shell commands in your app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="howtos/work_with_reference_data.html">Work with reference data</a></li>
@@ -186,31 +186,57 @@
             
   <div class="section" id="concepts-and-overview">
 <h1>Concepts and Overview<a class="headerlink" href="#concepts-and-overview" title="Permalink to this headline">¶</a></h1>
-<p>Let’s start with a high-level overview of how the SDK works and the general concepts involved in making SDK apps.</p>
-<p>When a python SDK app runs in a narrative, it typically follows this work flow and data path:</p>
-<a class="reference internal image-reference" href="_images/concept-map.png"><img alt="_images/concept-map.png" src="_images/concept-map.png" style="width: 661.5px; height: 165.5px;" /></a>
+<p>This page gives a a high-level overview of how the SDK works and general concepts in making and running apps.</p>
 <div class="section" id="the-basics">
 <h2>The Basics<a class="headerlink" href="#the-basics" title="Permalink to this headline">¶</a></h2>
 <img alt="_images/micro1.png" class="align-right" src="_images/micro1.png" />
 <p>Apps on KBase, such as genome assemblers and annotators that run on narrative pages, are created using the KBase SDK.</p>
-<p>When you run an app in a narrative, it runs in a docker container on KBase’s servers. Learn more about docker containers [here](<a class="reference external" href="https://www.docker.com/what-container">https://www.docker.com/what-container</a>). Docker containers allow you to run compiled programs, such as [MEGAHIT](<a class="reference external" href="https://github.com/voutcn/megahit">https://github.com/voutcn/megahit</a>), on any machine.</p>
+<p>When you run an app in a narrative, it runs in a docker container on KBase’s servers. Learn more about docker containers here: <a class="reference external" href="https://www.docker.com/what-container">https://www.docker.com/what-container</a>. Docker containers allow you to run compiled programs, such as <a class="reference external" href="https://github.com/voutcn/megahit">MEGAHIT</a>, on any machine.</p>
 <p>The starting source code for your app defines the type of input parameters the user can enter, the packages and programs the app will run in its container, and the output it will display in the final report. The source code for your app gets generated using the <cite>kb-sdk</cite> command line utility (see the rest of the tutorial for details).</p>
+</div>
+<div class="section" id="the-workflow">
+<h2>The Workflow<a class="headerlink" href="#the-workflow" title="Permalink to this headline">¶</a></h2>
+<p>When a python SDK app runs in a narrative, it typically follows this workflow, which we’ll describe in more detail below.</p>
+<a class="reference internal image-reference" href="_images/concept-map.svg"><img alt="_images/concept-map.svg" src="_images/concept-map.svg" /></a>
+<div class="section" id="user-input">
+<h3>User Input<a class="headerlink" href="#user-input" title="Permalink to this headline">¶</a></h3>
+<p>In the first tab of a narrative app, users have a set of form elements that can be customized by your app to accept many kinds of data. An example might be a genome assembly algorithm that takes a dataset of DNA reads and a minimum kmer size.</p>
+<p>As an app developer, you can configure the elements of the form using a wide range of options. For larger data sets, such as genomes, these will be passed into your app as <em>references</em>, which you can think of as simple URLs used to download the actual files.</p>
+</div>
+<div class="section" id="app-code-and-data-management">
+<h3>App Code and Data Management<a class="headerlink" href="#app-code-and-data-management" title="Permalink to this headline">¶</a></h3>
+<p>Input from the app’s form is converted into python data and passed into a main method in your app. Typically, apps will perform a set of validation checks on the input to make sure everything is well-formed before running any algorithms.</p>
+<p>From here, you can call out to utilities, run binary programs, and work with the file-system.</p>
+</div>
+<div class="section" id="output-and-reporting">
+<h3>Output and Reporting<a class="headerlink" href="#output-and-reporting" title="Permalink to this headline">¶</a></h3>
+<p>When an app finishes producing data, it will typically form a <a class="reference external" href="https://github.com/kbaseapps/KBaseReport">KBaseReport</a> object that can contain a number of different things:</p>
+<ul class="simple">
+<li>A formatted HTML page showing results</li>
+<li>Links to files, such as PDFs, CSVs, etc. that your app produced</li>
+<li>Links to saved, typed output objects, such as annotated or assembled genomes</li>
+<li>Simple text messages and warnings about the results</li>
+</ul>
+</div>
+</div>
+<div class="section" id="command-line-interface">
+<h2>Command-line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h2>
+<p>A command-line interface, called <code class="docutils literal notranslate"><span class="pre">kb-sdk</span></code>, is provided to make it easy to initialize, validate, compile, and test your app.</p>
+</div>
+<div class="section" id="docker">
+<h2>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h2>
+<p>The KBase SDK makes extensive use of Docker containers. The apps themselves run inside custom Docker images. The CLI, <code class="docutils literal notranslate"><span class="pre">kb-sdk</span></code>, also runs within a Docker container.</p>
+<p>Using docker as the basic modular unit allows apps to run in different environments using custom dependencies. Also, apps written in different languages can use each other as dependencies.</p>
 </div>
 <div class="section" id="composing-apps">
 <h2>Composing apps<a class="headerlink" href="#composing-apps" title="Permalink to this headline">¶</a></h2>
-<p>Your app can install and use other KBase apps as dependencies, such as [KBParallel](<a class="reference external" href="https://github.com/kbaseapps/KBParallel">https://github.com/kbaseapps/KBParallel</a>). Find these apps in github at [<a class="reference external" href="https://github.com/kbaseapps](https://github.com/kbaseapps">https://github.com/kbaseapps](https://github.com/kbaseapps</a>) or in the [KBase app catalog](<a class="reference external" href="https://narrative.kbase.us/#catalog/apps">https://narrative.kbase.us/#catalog/apps</a>) (we will go into further detail in later parts of the tutorial).</p>
+<p>Your app can install and use other KBase apps as dependencies, such as <a class="reference external" href="https://github.com/kbaseapps/KBParallel">KBParallel</a>. Find these apps in github at <a class="reference external" href="https://github.com/kbaseapps">https://github.com/kbaseapps</a> or in the <a class="reference external" href="https://narrative.kbase.us/#catalog/apps">KBase app catalog</a>.</p>
 <p>When you install and run another app within yours, the other app runs in its own, separate docker container. SDK apps are also installed and tracked separately from any python dependencies that you install via <cite>pip</cite> or other package managers.</p>
 </div>
-<div class="section" id="defining-parameters">
-<h2>Defining parameters<a class="headerlink" href="#defining-parameters" title="Permalink to this headline">¶</a></h2>
-<p>A few configuration files in your app are used to define what parameters your app will accept from the narrative, and what result data your app will return.</p>
-<p>The three main configuration files are:</p>
-<ul class="simple">
-<li>The KBase Interface Definition Language (KIDL) type specification defines what data types your app can accept as parameters and return as results</li>
-<li>A JSON config file defines the UI elements that your app uses for accepting input from the user</li>
-<li>A YAML config file defines the text labelling and content for your app’s UI</li>
-</ul>
-<p>The details and locations of these files will be described later in the tutorial.</p>
+<div class="section" id="kbase-types-and-parameters">
+<h2>KBase Types and Parameters<a class="headerlink" href="#kbase-types-and-parameters" title="Permalink to this headline">¶</a></h2>
+<p>All of the data on KBase is strongly typed using an interface definition language called <a class="reference external" href="/references/KIDL_spec.html">KIDL</a>. This allows KBase to better cross-reference data, make inferences, and check app-to-data compatibility.</p>
+<p>Configuration files in your app are used to define what parameters your app can accept and what kind of output it can return.</p>
 </div>
 <div class="section" id="working-with-files-and-data">
 <h2>Working with files and data<a class="headerlink" href="#working-with-files-and-data" title="Permalink to this headline">¶</a></h2>
@@ -221,12 +247,31 @@
 </div>
 <div class="section" id="the-workspace">
 <h3>The Workspace<a class="headerlink" href="#the-workspace" title="Permalink to this headline">¶</a></h3>
-<p>The “Workspace” is the term used for the file storage servers used by KBase. For Python SDK apps, you can use apps such as [DataFileUtil](<a class="reference external" href="https://github.com/kbaseapps/DataFileUtil">https://github.com/kbaseapps/DataFileUtil</a>), [AssemblyUtil](<a class="reference external" href="https://github.com/kbaseapps/AssemblyUtil">https://github.com/kbaseapps/AssemblyUtil</a>), and [GenomeFileUtil](<a class="reference external" href="https://github.com/kbaseapps/GenomeFileUtil">https://github.com/kbaseapps/GenomeFileUtil</a>) to download and upload files to the workspace.</p>
-<p>The [KBaseReport](<a class="reference external" href="https://github.com/kbaseapps/KBaseReport">https://github.com/kbaseapps/KBaseReport</a>) app is used to generate a final report when your app finishes running, and it also uploads its files onto the workspace servers so you can see all the report data indefinitely after the app stops running.</p>
-<p>## Publishing and testing in the browser</p>
-<p>For an app to show up in a real narrative, you need to register it on <a class="reference external" href="https://appdev.kbase.us">https://appdev.kbase.us</a>. You can then view and test it in the “Dev” catalog while browsing apps on KBase. Details around this whole process are described further along in this tutorial.</p>
-<p>At this point, you cannot run your app inside a narrative on your own machine; you have to commit changes, publish to github, and re-register your app on <a class="reference external" href="https://appdev.kbase.us">https://appdev.kbase.us</a> to test updates on the KBase servers.</p>
+<p>The “Workspace” is the term used for the file storage servers used by KBase. For Python SDK apps, you can use apps such as <a class="reference external" href="https://github.com/kbaseapps/DataFileUtil">DataFileUtil</a>, <a class="reference external" href="https://github.com/kbaseapps/AssemblyUtil">AssemblyUtil</a>, and <a class="reference external" href="https://github.com/kbaseapps/GenomeFileUtil">GenomeFileUtil</a> to download and upload files to the workspace.</p>
+<p>In general, you always want to use the workspace for any datasets you work with if you want them to be available to your users in the narrative.</p>
+<p>A dataset stored in the workspace is referred to as an <em>object</em>. Objects in the workspace have some special properties:</p>
+<ul class="simple">
+<li>Every object conforms to a <a class="reference external" href="/references/KIDL_spec.html">type specification</a>.</li>
+<li>Objects are versioned</li>
+<li>The “reference” for an object has the format <code class="docutils literal notranslate"><span class="pre">workspace_id/object_id/version</span></code>.</li>
+<li>Workspaces are authenticated</li>
+</ul>
 </div>
+</div>
+<div class="section" id="the-catalog">
+<h2>The Catalog<a class="headerlink" href="#the-catalog" title="Permalink to this headline">¶</a></h2>
+<p>KBase’s catalogs are registries of KBase apps. In order to find and use an app from within a narrative, it has to be registered in one of these catalogs. You can manage an app’s registration from its module page on the KBase website.</p>
+<p>There are three separate catalogs for testing purposes: <cite>dev</cite>, <cite>beta</cite>, and <cite>release</cite>.</p>
+<ul class="simple">
+<li><cite>dev</cite>: Prototype and tweak your app within the narrative</li>
+<li><cite>beta</cite>: The app is ready for release but requires testing</li>
+<li><cite>release</cite>: The app is visible to normal KBase users</li>
+</ul>
+</div>
+<div class="section" id="publishing">
+<h2>Publishing<a class="headerlink" href="#publishing" title="Permalink to this headline">¶</a></h2>
+<p>You can register a new app from this page: <a class="reference external" href="https://appdev.kbase.us/#appcatalog/register">https://appdev.kbase.us/#appcatalog/register</a></p>
+<p>Once you do so, it will be available in the <code class="docutils literal notranslate"><span class="pre">dev</span></code> catalog. This catalog is meant as experimentation grounds for new apps. When you’re searching for apps, you need to be sure to filter by development apps to view your <code class="docutils literal notranslate"><span class="pre">dev</span></code> app.</p>
 </div>
 </div>
 

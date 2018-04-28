@@ -98,14 +98,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/initialize.html">3. Initialize the App</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/setup.html">4. Setup &amp; Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/implement.html">5. Implement Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">6. Publish and Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">6. Publish and Update</a></li>
 </ul>
 <p class="caption"><span class="caption-text">How-to Guides</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../howtos/create_a_report.html">Create a report</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../howtos/add_ui_elements.html">Add UI elements to your app</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../howtos/edit_your_dockerfile.html">Edit your app’s Dockerfile</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../howtos/fill_out_app_information.html">Complete your app’s publish data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/create_a_report.html">How to create a report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/add_ui_elements.html">How to add UI elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/edit_your_dockerfile.html">How to edit your app’s Dockerfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/fill_out_app_information.html">How to document your app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/manual_build.html">Manually build the SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/run_a_shell_command.html">Run shell commands in your app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/work_with_reference_data.html">Work with reference data</a></li>
@@ -187,8 +187,7 @@
 <h1>KIDL Specification<a class="headerlink" href="#kidl-specification" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="type-description-language">
 <h2>Type Description Language<a class="headerlink" href="#type-description-language" title="Permalink to this headline">¶</a></h2>
-<p>We define a small language that we will use to specify the types of data
-objects passed through the KBase API.</p>
+<p>KBase defines a small language that is used to specify the types of data objects passed through the KBase API.</p>
 <p>The type language is built from a small number of basic types. These
 include three scalar types:</p>
 <ul class="simple">
@@ -244,7 +243,11 @@ as a type and an optional parameter name.</p>
 identifiers and returns the current functions assigned to these features
 as a hash mapping from the feature identifier to the function may be
 defined as follows:</p>
-<p><code class="docutils literal notranslate"><span class="pre">typedef</span> <span class="pre">FeatureId</span> <span class="pre">string;</span> <span class="pre">funcdef</span> <span class="pre">get_feature_functions(list&lt;FeatureId&gt;</span> <span class="pre">feature_ids)</span>&#160;&#160;&#160;&#160; <span class="pre">returns</span> <span class="pre">(mapping&lt;FeatureId,</span> <span class="pre">string&gt;)</span></code>============================</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">FeatureId</span> <span class="n">string</span><span class="p">;</span>
+<span class="n">funcdef</span> <span class="n">get_feature_functions</span><span class="p">(</span><span class="nb">list</span><span class="o">&lt;</span><span class="n">FeatureId</span><span class="o">&gt;</span> <span class="n">feature_ids</span><span class="p">)</span>
+    <span class="n">returns</span> <span class="p">(</span><span class="n">mapping</span><span class="o">&lt;</span><span class="n">FeatureId</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 

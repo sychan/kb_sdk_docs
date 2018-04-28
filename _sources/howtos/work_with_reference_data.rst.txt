@@ -4,25 +4,24 @@ Work with reference data
 Adding Reference Data to a KBase App
 ------------------------------------
 
-Motivation :sub:`:sub:`:sub:`:sub:`:sub:`~`````\ ~~
+.. topic:: Motivation
 
-Some tools and applications make use of large reference data
-collections. For example, a QC app may have a reference data with common
-contaminants. Adding data such as this to the Git repo for the module
-can make it very large. In addition, the generated Docker image would
-also be very large. KBase App reference data is designed to address this
-scenario.
+    Some tools and applications make use of large reference data
+    collections. For example, a QC app may have a reference data with common
+    contaminants. Adding data such as this to the Git repo for the module
+    can make it very large. In addition, the generated Docker image would
+    also be very large. KBase App reference data is designed to address this
+    scenario.
 
-How Reference Data works
-------------------------
+.. topic:: How Reference Data Works
 
-To minimize the image size, this feature works by saving reference data
-in a special volume space and then making that volume available through
-a read-only mount in /data at app execution time. An init mode for the
-module is run at registration time to initialize the reference data
-volume. In addition, the reference data is separately versioned, so
-code-only updates to a module can be made without having to
-re-initialize the reference data.
+    To minimize the image size, this feature works by saving reference data
+    in a special volume space and then making that volume available through
+    a read-only mount in /data at app execution time. An init mode for the
+    module is run at registration time to initialize the reference data
+    volume. In addition, the reference data is separately versioned, so
+    code-only updates to a module can be made without having to
+    re-initialize the reference data.
 
 Usage
 -----
@@ -43,8 +42,7 @@ things.
    present, the registration will fail and the reference data area will
    be removed.
 
-You can see an example in the RAST application:
-https://github.com/kbaseapps/RAST\_SDK/blob/a975436d9c0af4f772bd7235b467180860f64060/scripts/entrypoint.sh#L18-L28
+You can see an example in the `RAST application <https://github.com/kbaseapps/RAST\_SDK/blob/a975436d9c0af4f772bd7235b467180860f64060/scripts/entrypoint.sh#L18-L28>`__
 
 Updating Reference Data
 -----------------------

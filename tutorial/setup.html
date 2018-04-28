@@ -99,14 +99,14 @@
 <li class="toctree-l1"><a class="reference internal" href="initialize.html">3. Initialize the App</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">4. Setup &amp; Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="implement.html">5. Implement Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="publish.html">6. Publish and Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publish.html">6. Publish and Update</a></li>
 </ul>
 <p class="caption"><span class="caption-text">How-to Guides</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../howtos/create_a_report.html">Create a report</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../howtos/add_ui_elements.html">Add UI elements to your app</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../howtos/edit_your_dockerfile.html">Edit your app’s Dockerfile</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../howtos/fill_out_app_information.html">Complete your app’s publish data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/create_a_report.html">How to create a report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/add_ui_elements.html">How to add UI elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/edit_your_dockerfile.html">How to edit your app’s Dockerfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/fill_out_app_information.html">How to document your app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/manual_build.html">Manually build the SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/run_a_shell_command.html">Run shell commands in your app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/work_with_reference_data.html">Work with reference data</a></li>
@@ -202,18 +202,20 @@
 <div class="section" id="create-input-parameters">
 <h2>4.2. Create Input Parameters<a class="headerlink" href="#create-input-parameters" title="Permalink to this headline">¶</a></h2>
 <p>In SDK apps, we can have input parameters in the form of maps (dicts/hashes/objects), lists (arrays), floats, integers, strings, or booleans.</p>
-<p>Sometimes, input strings will actually be <strong>reference addresses</strong> to files on KBase’s workspace servers.</p>
+<p>Sometimes, input strings will actually be <strong>reference addresses</strong> to files on KBase’s workspace servers. We will write some code to download the files that these references point to.</p>
 <p>SDK apps can output the following data:</p>
 <ul class="simple">
-<li><strong>KBase Typed Data</strong> - You can output typed data objects, like assemblies or genomes</li>
-<li><strong>HTML Pages</strong> - Your method can use KBaseReports to generate an HTML report displaying results.</li>
+<li><strong>KBase Typed Data</strong> - Assemblies, genomes, annotations, etc.</li>
+<li><strong>HTML Pages</strong> - A formatted page representing the output of your app</li>
 <li><strong>Misc. files for download</strong> - You method can use KBaseReports to save results to a file server for the user to download</li>
 </ul>
 <p>Let’s start by defining our input parameters. We need a <code class="docutils literal notranslate"><span class="pre">min_length</span></code> parameter (an integer), and an <code class="docutils literal notranslate"><span class="pre">assembly_ref</span></code> parameter (a string reference to an assembly file in the workspace).</p>
 <p>To add an input parameter to your app, you need to update three configuration files:</p>
-<p>1. <code class="docutils literal notranslate"><span class="pre">module_name.spec</span></code> – a type specification file
-1. <code class="docutils literal notranslate"><span class="pre">ui/narrative/example_method/spec.json</span></code> – a UI configuration file
-1. <code class="docutils literal notranslate"><span class="pre">ui/narrative/example_method/display.yaml</span></code> – a text content file</p>
+<ol class="arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">module_name.spec</span></code> – a type specification file</li>
+<li><code class="docutils literal notranslate"><span class="pre">ui/narrative/example_method/spec.json</span></code> – a UI configuration file</li>
+<li><code class="docutils literal notranslate"><span class="pre">ui/narrative/example_method/display.yaml</span></code> – a text content file</li>
+</ol>
 <p>We’ll start with the <code class="docutils literal notranslate"><span class="pre">module_name.spec</span></code> file.</p>
 </div>
 <div class="section" id="add-kidl-type-definitions">
@@ -231,7 +233,7 @@
 </pre></div>
 </div>
 <p>The above syntax comes from a custom type language called KIDL that is similar to languages like C++, but is specific to KBase. KIDL is used as a common interface definition language, allowing different apps to communicate with one another, regardless of programming languages.</p>
-<p><a class="reference external" href="/references/KIDL_spec">View the KIDL tutorial and reference</a></p>
+<p><a class="reference external" href="/references/KIDL_spec.html">View the KIDL tutorial and reference</a></p>
 <p>Our input and output types need to be in <code class="docutils literal notranslate"><span class="pre">structure</span></code> types. Add these type structures inside your module section:</p>
 <div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">Input</span> <span class="n">parameter</span> <span class="n">types</span> <span class="o">*/</span>
 <span class="n">typedef</span> <span class="n">structure</span> <span class="p">{</span>
@@ -247,13 +249,17 @@
 </div>
 <p>Above, we’ve added a few input parameters: a workspace name (always needed to work with data), an <code class="docutils literal notranslate"><span class="pre">int</span></code> for the minimum contig length that the user wants, and a <code class="docutils literal notranslate"><span class="pre">string</span></code> that will reference an assembly data file on KBase’s servers.</p>
 <p>We also added a placeholder type structure for our output results, which we will return to later. For now, it can be blank.</p>
-<p>Now insert a function type for our app’s main method, which we can call <code class="docutils literal notranslate"><span class="pre">filter_contigs</span></code>. Refer to the [KIDL specification](/doc/KIDL_specification.md) for details about function types.</p>
+<p>Now insert a function type for our app’s main method, which we can call <code class="docutils literal notranslate"><span class="pre">filter_contigs</span></code>. Refer to the <a class="reference external" href="/references/KIDL_spec.html">KIDL specification</a> for details about function types.</p>
 <div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">funcdef</span> <span class="n">filter_contigs</span><span class="p">(</span><span class="n">ContigFilterParams</span> <span class="n">params</span><span class="p">)</span>
     <span class="n">returns</span> <span class="p">(</span><span class="n">ContigFilterResults</span><span class="p">)</span> <span class="n">authentication</span> <span class="n">required</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>In SDK apps, we want to set the function as <code class="docutils literal notranslate"><span class="pre">authentication</span> <span class="pre">required</span></code> because all SDK apps that run in the Narrative will require authentication since they need to interact with a user’s workspace.</p>
-<p>Now return to your app’s root directory and run <code class="docutils literal notranslate"><span class="pre">make</span></code>. <strong>You must rerun *make* after each change to the KIDL specification to regenerate client and server code used in the codebase</strong></p>
+<p>Now return to your app’s root directory and run <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">You must rerun <em>make</em> after each change to the KIDL specification to regenerate client and server code used in the codebase</p>
+</div>
 </div>
 <div class="section" id="validate-your-app">
 <h2>4.4. Validate your app<a class="headerlink" href="#validate-your-app" title="Permalink to this headline">¶</a></h2>
@@ -312,7 +318,7 @@ $ mv ui/narrative/methods/example_method ui/narrative/methods/filter_contigs
 <p>Each parameter object has a number of options.</p>
 <ul class="simple">
 <li>We want both parameters to be required (<code class="docutils literal notranslate"><span class="pre">&quot;optional&quot;:</span> <span class="pre">false</span></code>)</li>
-<li>We want the <code class="docutils literal notranslate"><span class="pre">&quot;assembly_ref&quot;</span></code> to be a reference to either an Assembly or ContigSet object (view the [type catalog](<a class="reference external" href="https://narrative.kbase.us/#catalog/datatypes">https://narrative.kbase.us/#catalog/datatypes</a>) to see all KBase types)</li>
+<li>We want the <code class="docutils literal notranslate"><span class="pre">&quot;assembly_ref&quot;</span></code> to be a reference to either an Assembly or ContigSet object (view the <a class="reference external" href="https://narrative.kbase.us/#catalog/datatypes">type catalog</a>) to see all KBase types)</li>
 <li>We want the <code class="docutils literal notranslate"><span class="pre">&quot;min_length&quot;</span></code> parameter to be validated as an integer, and we don’t want to allow negative numbers.</li>
 </ul>
 <p>Below that section, you will see some default <code class="docutils literal notranslate"><span class="pre">&quot;input_mapping&quot;</span></code> options. Change that section so that it contains entries for each of your input parameters. For now we can leave the output section empty:</p>
@@ -336,7 +342,7 @@ $ mv ui/narrative/methods/example_method ui/narrative/methods/filter_contigs
 <span class="o">...</span>
 </pre></div>
 </div>
-<p>Notice that we added a <code class="docutils literal notranslate"><span class="pre">&quot;target_type_transform&quot;</span></code> option with the value <code class="docutils literal notranslate"><span class="pre">&quot;resolved-ref&quot;</span></code> for the <code class="docutils literal notranslate"><span class="pre">&quot;assembly_ref&quot;</span></code>. This indicates to the narrative that this parameter needs to be a valid reference to a file in the workspace.</p>
+<p>Notice that we added a <code class="docutils literal notranslate"><span class="pre">&quot;target_type_transform&quot;</span></code> option with the value <code class="docutils literal notranslate"><span class="pre">&quot;resolved-ref&quot;</span></code> for the <code class="docutils literal notranslate"><span class="pre">&quot;assembly_ref&quot;</span></code> input. This indicates to the narrative that this parameter needs to be a valid reference to an object in the workspace.</p>
 <p>When you run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">validate</span></code> again, you will get an error about your <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code>, which we can update next.</p>
 </div>
 <div class="section" id="update-display-yaml">

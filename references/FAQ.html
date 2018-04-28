@@ -99,14 +99,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/initialize.html">3. Initialize the App</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/setup.html">4. Setup &amp; Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/implement.html">5. Implement Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">6. Publish and Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">6. Publish and Update</a></li>
 </ul>
 <p class="caption"><span class="caption-text">How-to Guides</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../howtos/create_a_report.html">Create a report</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../howtos/add_ui_elements.html">Add UI elements to your app</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../howtos/edit_your_dockerfile.html">Edit your app’s Dockerfile</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../howtos/fill_out_app_information.html">Complete your app’s publish data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/create_a_report.html">How to create a report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/add_ui_elements.html">How to add UI elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/edit_your_dockerfile.html">How to edit your app’s Dockerfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/fill_out_app_information.html">How to document your app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/manual_build.html">Manually build the SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/run_a_shell_command.html">Run shell commands in your app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/work_with_reference_data.html">Work with reference data</a></li>
@@ -190,7 +190,7 @@
 <h2>Q: How can I tell if someone’s already wrapped a tool I’m interested in?<a class="headerlink" href="#q-how-can-i-tell-if-someone-s-already-wrapped-a-tool-i-m-interested-in" title="Permalink to this headline">¶</a></h2>
 <p><strong>A:</strong> Go to the development <a class="reference external" href="https://narrative.kbase.us/#appcatalog">App
 Catalog</a> and start by using
-<em>Search</em> see if there’s a released method. If you don’t find a method
+<em>Search</em> to see if there’s a released method. If you don’t find a method
 that way, it may also help to by selecting “Organize by”… “Category”
 and selecting what seems to be a likely category for the tool. There are
 also methods that have not yet been officially released, so you should
@@ -201,51 +201,49 @@ way that doesn’t serve your needs exactly. Feel free to rewrap the tool
 using your approach, or ask the previous tool wrapper to tweak their
 implementation to expose the parameters or other functionality you are
 looking for.</p>
-<p><a class="reference external" href="#top">back to top</a></p>
 </div>
 <div class="section" id="q-what-s-already-installed-in-the-base-kbase-docker-image-and-how-do-i-call-it">
 <h2>Q: What’s already installed in the base KBase Docker image and how do I call it?<a class="headerlink" href="#q-what-s-already-installed-in-the-base-kbase-docker-image-and-how-do-i-call-it" title="Permalink to this headline">¶</a></h2>
 <p><strong>A:</strong> The base KBase Docker image contains an Ubuntu Linux image with
 kbase tools for connecting to KBase services and data installed. Please
 see the SDK Module implementation
-<a class="reference external" href="https://github.com/kbase/kb_sdk/README.md#examples">examples</a> for
+<a class="reference external" href="https://github.com/kbase/kb_sdk#examples">examples</a> for
 how to access these services and data.</p>
-<p><a class="reference external" href="#top">back to top</a></p>
 </div>
 <div class="section" id="q-how-do-i-find-and-access-data">
 <h2>Q: How do I find and access data?<a class="headerlink" href="#q-how-do-i-find-and-access-data" title="Permalink to this headline">¶</a></h2>
 <p><strong>A:</strong> There are both public reference data sets and individual user
 data sets (both public and private). Public reference data can be found
-with <a class="reference external" href="https://narrative.kbase.us/search/#/search/?q=*">KBase Data
+with <a class="reference external" href="https://narrative.kbase.us/#search">KBase Data
 Search</a>, and should
 be copied into your Narrative to be used. Accessing Data Objects from
 your SDK Methods is explained in <a class="reference external" href="https://narrative.kbase.us/#catalog/datatypes">Working with KBase Data
 Types</a> and illustrated
 in the SDK Module implementation
-<a class="reference external" href="https://github.com/kbase/kb_sdk/README.md#examples">examples</a>.</p>
-<p><a class="reference external" href="#top">back to top</a></p>
+<a class="reference external" href="https://github.com/kbase/kb_sdk#examples">examples</a>.</p>
 </div>
-<div class="section" id="q-what-are-system-requirements-for-development-workstation">
-<h2>Q: What are system requirements for development workstation?<a class="headerlink" href="#q-what-are-system-requirements-for-development-workstation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="q-what-are-system-requirements-for-development">
+<h2>Q: What are system requirements for development?<a class="headerlink" href="#q-what-are-system-requirements-for-development" title="Permalink to this headline">¶</a></h2>
 <p><strong>A:</strong> You will need to be able to run Docker, which if you’re on a Mac
 means you must be running Mac OS X 10.8 or later. Other operating
 systems, such as the various flavors of Linux, are fine too. Really
 anywhere you can run Docker, Java, and your preferred development
 language (among Python, Perl, or Java). You will need about 1-2 GB free
 to install the
-<a class="reference external" href="https://github.com/kbase/kb_sdk/docs/kb_sdk_dependencies.md">dependencies</a>
-and the <a class="reference external" href="https://https://github.com/kbase/kb_sdk/doc/kb_sdk_install_and_build.md">KBase
-SDK</a>.</p>
-<p><a class="reference external" href="#top">back to top</a></p>
+<a class="reference external" href="/tutorial/dependencies.html">dependencies</a>
+and the <a class="reference external" href="/tutorial/install.html">KBase SDK</a></p>
 </div>
 <div class="section" id="q-what-are-system-requirements-for-execution-environment">
 <h2>Q: What are system requirements for execution environment?<a class="headerlink" href="#q-what-are-system-requirements-for-execution-environment" title="Permalink to this headline">¶</a></h2>
-<p><strong>A:</strong> - Runs completely on a standard KBase worker node (at least 2
-cores and 22GB memory) - Operates only on supported KBase data types -
-Requires either no or fairly limited amounts of reference data - Uses
-existing data visualization widgets - Does not require new
-uploaders/downloaders - Wrapper written in Python, Java, or Perl</p>
-<p><a class="reference external" href="#top">back to top</a></p>
+<p><strong>A:</strong></p>
+<ul class="simple">
+<li>Runs completely on a standard KBase worker node (at least 2 cores and 22GB memory)</li>
+<li>Operates only on supported KBase data types</li>
+<li>Requires either no or fairly limited amounts of reference data</li>
+<li>Uses existing data visualization widgets</li>
+<li>Does not require new uploaders/downloaders</li>
+<li>Wrapper written in Python, Java, or Perl</li>
+</ul>
 </div>
 <div class="section" id="q-what-size-data-will-be-too-big-for-the-system">
 <h2>Q: What size data will be too big for the system?<a class="headerlink" href="#q-what-size-data-will-be-too-big-for-the-system" title="Permalink to this headline">¶</a></h2>
@@ -259,7 +257,6 @@ of the worker nodes, so your code plus any data you load into memory
 must fit within that. As in any situation, we recommend the use of
 graceful exception handling and efficient implementations in your coding
 style.</p>
-<p><a class="reference external" href="#top">back to top</a></p>
 </div>
 <div class="section" id="q-where-should-my-code-be">
 <h2>Q: Where should my code be?<a class="headerlink" href="#q-where-should-my-code-be" title="Permalink to this headline">¶</a></h2>
@@ -268,23 +265,20 @@ can develop on your personal workstation as long as you check in all
 changes to a public revision control system such as github.com. For the
 time being, we ask that you put your code into your own directory rather
 than in the kbase github account.</p>
-<p><a class="reference external" href="#top">back to top</a></p>
 </div>
 <div class="section" id="q-do-you-need-to-use-github-what-about-bitbucket-sourceforge">
 <h2>Q: Do you need to use GitHub? What about BitBucket? SourceForge?<a class="headerlink" href="#q-do-you-need-to-use-github-what-about-bitbucket-sourceforge" title="Permalink to this headline">¶</a></h2>
 <p><strong>A:</strong> You can use any public open-source revision control system. We
 use GitHub. The path to your repo is what you provide to the SDK
 Registration method to register your SDK Module.</p>
-<p><a class="reference external" href="#top">back to top</a></p>
 </div>
 <div class="section" id="q-do-i-need-to-copy-the-tool-i-m-using-into-my-github-repo">
 <h2>Q: Do I need to copy the tool I’m using into my github repo?<a class="headerlink" href="#q-do-i-need-to-copy-the-tool-i-m-using-into-my-github-repo" title="Permalink to this headline">¶</a></h2>
 <p><strong>A:</strong> You do not if there is a public way to retrieve the code such as
 by using a <em>git clone</em>, <em>curl</em>, or other way of pulling the data down
-into the Docker image. This is accomplished by <a class="reference external" href="https://github.com/kbase/kb_sdk/blob/master/doc/kb_sdk_local_test_module.md#dockerfile">modifying the
+into the Docker image. This is accomplished by <a class="reference external" href="/howtos/edit_your_dockerfile.html">modifying the
 Dockerfile</a>
 to configure the Docker image build.</p>
-<p><a class="reference external" href="#top">back to top</a></p>
 </div>
 <div class="section" id="q-can-i-develop-on-windows">
 <h2>Q: Can I develop on Windows?<a class="headerlink" href="#q-can-i-develop-on-windows" title="Permalink to this headline">¶</a></h2>
@@ -292,28 +286,22 @@ to configure the Docker image build.</p>
 <a class="reference external" href="https://www.virtualbox.org">VirtualBox</a> with <a class="reference external" href="https://www.ubuntu.com/desktop">Ubuntu
 Linux</a> and work in the Linux VM. Many
 developers use this approach in KBase, and we know it works well.</p>
-<p><a class="reference external" href="#top">back to top</a></p>
 </div>
 <div class="section" id="q-can-i-do-all-the-development-on-a-remote-linux-box">
 <h2>Q: Can I do all the development on a remote Linux box?<a class="headerlink" href="#q-can-i-do-all-the-development-on-a-remote-linux-box" title="Permalink to this headline">¶</a></h2>
-<p><strong>A:</strong> Yes. All <a class="reference external" href="https://github.com/kbase/kb_sdk/blob/master/doc/kb_sdk_test_in_kbase.md">graphical-user-interface requiring
-steps</a>
-in the process are accomplished by using a web browser.</p>
-<p><a class="reference external" href="#top">back to top</a></p>
+<p><strong>A:</strong> Yes. All graphical-user-interface requiring
+steps in the process are accomplished by using a web browser.</p>
 </div>
 <div class="section" id="q-how-do-i-add-custom-data-and-or-configuration-data-to-the-system">
 <h2>Q: How do I add custom data and/or configuration data to the system?<a class="headerlink" href="#q-how-do-i-add-custom-data-and-or-configuration-data-to-the-system" title="Permalink to this headline">¶</a></h2>
 <p><strong>A:</strong> If it’s less than 10 GB, you can add it to the Docker image by
-[editing the
-Dockerfile]((<a class="reference external" href="https://github.com/kbase/kb_sdk/blob/master/doc/kb_sdk_local_test_module.md#dockerfile">https://github.com/kbase/kb_sdk/blob/master/doc/kb_sdk_local_test_module.md#dockerfile</a>).
+<a class="reference external" href="/howtos/edit_your_dockerfile.html">editing the Dockerfile</a>.
 Please contact us at <a class="reference external" href="https://kbase.us/contact-us">https://kbase.us/contact-us</a> if you need to use
 something larger.</p>
-<p><a class="reference external" href="#top">back to top</a></p>
 </div>
 <div class="section" id="q-i-need-high-performance-computing-for-my-application-is-that-available">
 <h2>Q: I need high-performance computing for my application. Is that available?<a class="headerlink" href="#q-i-need-high-performance-computing-for-my-application-is-that-available" title="Permalink to this headline">¶</a></h2>
 <p><strong>A:</strong> Not yet. We’re working on it!</p>
-<p><a class="reference external" href="#top">back to top</a></p>
 </div>
 <div class="section" id="q-how-do-i-set-my-favorite-apps">
 <h2>Q: How do I set my favorite Apps?<a class="headerlink" href="#q-how-do-i-set-my-favorite-apps" title="Permalink to this headline">¶</a></h2>
@@ -321,13 +309,11 @@ something larger.</p>
 Catalog</a>, and then click on
 the stars for your favorite Apps. You must be logged in for it to
 associate it with your account.</p>
-<p><a class="reference external" href="#top">back to top</a></p>
 </div>
 <div class="section" id="q-is-there-a-cheatsheet">
 <h2>Q: Is there a cheatsheet?<a class="headerlink" href="#q-is-there-a-cheatsheet" title="Permalink to this headline">¶</a></h2>
 <p><strong>A:</strong> Yes, there is a document that provides a lot of hints about the
-SDK <a class="reference external" href="SDK_AdvancedFeaturesCheatSheet.pdf">SDK Cheatsheet</a>.</p>
-<p><a class="reference external" href="#top">back to top</a></p>
+SDK <a class="reference external" href="https://github.com/kbase/kb_sdk/blob/master/doc/SDK_AdvancedFeaturesCheatSheet.pdf">SDK Cheatsheet</a>.</p>
 </div>
 </div>
 

@@ -14,12 +14,12 @@ When you try to run ``make sdkbase`` if you see a message like:
     make: *** [sdkbase] Error 1
 
 
-You likely have not started your Docker daemon. On a Mac, that means running in the Docker CLI shell after starting Docker Kitematic and clicking on "Docker CLI" in the lower left corner (See `Install SDK Dependencies - Docker <kb_sdk_dependencies.md#docker>`__ for guidance). `back to top <#top>`__
+You likely have not started your Docker daemon. On a Mac, that means running in the Docker CLI shell after starting Docker Kitematic and clicking on "Docker CLI" in the lower left corner (See `Install SDK Dependencies - Docker </tutorial/install.html>`__ for guidance).
 
- #### Trying to run *kb-sdk test* and seeing errors that include
-*TLS-enabled daemon* and/or *docker daemon*
+Trying to run *kb-sdk test* and seeing errors that include *TLS-enabled daemon* and/or *docker daemon*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When you try to run \*kb-sdk test, if you see a message like:
+When you try to run ``kb-sdk test``, if you see a message like:
 
 ::
 
@@ -31,40 +31,26 @@ When you try to run \*kb-sdk test, if you see a message like:
 You likely have not started your Docker daemon. On a Mac, that means
 running in the Docker CLI shell after starting Docker Kitematic and
 clicking on "Docker CLI" in the lower left corner (See `Install SDK
-Dependencies - Docker <kb_sdk_dependencies.md#docker>`__ for guidance).
-`back to top <#top>`__
+Dependencies - Docker </tutorial/install.html>`__ for guidance).
 
- #### Having trouble getting Docker working on Mac
+Having trouble getting Docker working on Mac
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It may be that your Docker installation may be incorrect, out of date,
-or the daemon may not have been started. Please see
+or the daemon may not have been started. Please see https://docs.docker.com/mac/
 
-::
-
-    https://docs.docker.com/mac/
-
-`back to top <#top>`__
 
 Having trouble getting Docker working on Linux
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It may be that your Docker installation may be incorrect, out of date,
-or the daemon may not have been started. Please see
+or the daemon may not have been started. Please see https://docs.docker.com/linux/
 
-::
-
-    https://docs.docker.com/linux/
-
-`back to top <#top>`__
 
 Getting Java-related errors trying to run kb-sdk
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-JAVA may not be installed or the path may not be set properly. Please
-follow the directions for installation of java at
-https://github.com/kbase/kb\_sdk/blob/master/doc/kb\_sdk\_dependencies.md
-
-and then set your *JAVA\_HOME* with
+Java may not be installed or the path may not be set properly. Please follow the directions for installation of Java at https://github.com/kbase/kb\_sdk/blob/master/doc/kb\_sdk\_dependencies.md and then set your *JAVA\_HOME* with
 
 ::
 
@@ -73,7 +59,6 @@ and then set your *JAVA\_HOME* with
     # for tcsh/csh
     setenv JAVA_HOME `/usr/libexec/java_home`  
 
-`back to top <#top>`__
 
 .. |alt text| image:: https://avatars2.githubusercontent.com/u/1263946?v=3&s=84
 

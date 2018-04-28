@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6. Publish and Test &mdash; KBase SDK 0.1.18 documentation</title>
+  <title>6. Publish and Update &mdash; KBase SDK 0.1.18 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Create a report" href="../howtos/create_a_report.html" />
+    <link rel="next" title="How to create a report" href="../howtos/create_a_report.html" />
     <link rel="prev" title="5. Implement Code" href="implement.html" /> 
 
   
@@ -99,14 +99,14 @@
 <li class="toctree-l1"><a class="reference internal" href="initialize.html">3. Initialize the App</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup.html">4. Setup &amp; Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="implement.html">5. Implement Code</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Publish and Test</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Publish and Update</a></li>
 </ul>
 <p class="caption"><span class="caption-text">How-to Guides</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../howtos/create_a_report.html">Create a report</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../howtos/add_ui_elements.html">Add UI elements to your app</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../howtos/edit_your_dockerfile.html">Edit your app’s Dockerfile</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../howtos/fill_out_app_information.html">Complete your app’s publish data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/create_a_report.html">How to create a report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/add_ui_elements.html">How to add UI elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/edit_your_dockerfile.html">How to edit your app’s Dockerfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/fill_out_app_information.html">How to document your app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/manual_build.html">Manually build the SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/run_a_shell_command.html">Run shell commands in your app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/work_with_reference_data.html">Work with reference data</a></li>
@@ -163,7 +163,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>6. Publish and Test</li>
+      <li>6. Publish and Update</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -184,8 +184,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="publish-and-test">
-<h1>6. Publish and Test<a class="headerlink" href="#publish-and-test" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="publish-and-update">
+<h1>6. Publish and Update<a class="headerlink" href="#publish-and-update" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://appdev.kbase.us">Appdev</a> is a separate KBase narrative server that is useful for app developers like yourself to publish in-progress versions of their apps and test and share them using real data.</p>
 <div class="section" id="publish-all-git-commits">
 <h2>6.1. Publish all git commits<a class="headerlink" href="#publish-all-git-commits" title="Permalink to this headline">¶</a></h2>
@@ -205,17 +205,16 @@
 <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">narrative</span><span class="o">.</span><span class="n">kbase</span><span class="o">.</span><span class="n">us</span><span class="o">/</span><span class="c1">#appcatalog/browse/dev</span>
 </pre></div>
 </div>
-<p>From your module page:</p>
-<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">narrative</span><span class="o">.</span><span class="n">kbase</span><span class="o">.</span><span class="n">us</span><span class="o">/</span><span class="c1">#appcatalog/module/[MODULE_NAME]</span>
-</pre></div>
 </div>
-<p>you’ll be able to register any update and manage release of your module to the production KBase environment for anyone to use.</p>
-<p>To do this, open <cite>Module Admin Tools</cite> and then click on the <strong>REGISTER</strong> button (you will not need to add the URL for your repo after the first time).</p>
-<p>As you make changes to your Module, <strong>you will need to re-commit those changes to the git repo, and then re-register</strong>. The KBase SDK Catalog service will automatically pull the most recent version. If for some reason you wish to revert to an older version, you can add the checksum of that old version, which you can find by typing</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>$ git log
-</pre></div>
+<div class="section" id="updating">
+<h2>6.3. Updating<a class="headerlink" href="#updating" title="Permalink to this headline">¶</a></h2>
+<p>From your module page (<a class="reference external" href="https://narrative.kbase.us/#appcatalog/module/MODULE_NAME">https://narrative.kbase.us/#appcatalog/module/MODULE_NAME</a>) you’ll be able to register any update and manage release of your module to the production KBase environment for anyone to use.</p>
+<p>To do this, open <cite>Module Admin Tools</cite> and then click on the <strong>REGISTER</strong> button. Enter the latest commit hash from you master branch to register an update.</p>
+<p>As you make changes to your Module, <strong>you will need to re-commit those changes to the git repo, and then re-register</strong>. The KBase SDK Catalog service will automatically pull the most recent version. If for some reason you wish to revert to an older version, you can add the hash key of that older commit, which you can find by viewing the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code>.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Please bear in mind that for public release, your module must meet all the requirements laid out in the <a class="reference external" href="/references/dev_guidelines.html">KBase SDK Policies</a>. We reserve the right to delay public release of SDK Modules until all requirements are met. Please take the time to familiarize yourself with these policies to avoid delay in releasing your Module.</p>
 </div>
-<p>Please bear in mind that for public release, your Module <strong>MUST</strong> meet all the requirements laid out in the [KBase SDK Policies](<a class="reference external" href="https://github.com/kbase/project_guides/blob/master/SDK_Guidelines.md">https://github.com/kbase/project_guides/blob/master/SDK_Guidelines.md</a>). We reserve the right to delay public release of SDK Modules until all requirements are met. Please take the time to familiarize yourself with these policies to avoid delay in releasing your Module.</p>
 </div>
 </div>
 
@@ -227,7 +226,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../howtos/create_a_report.html" class="btn btn-neutral float-right" title="Create a report" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../howtos/create_a_report.html" class="btn btn-neutral float-right" title="How to create a report" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="implement.html" class="btn btn-neutral" title="5. Implement Code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

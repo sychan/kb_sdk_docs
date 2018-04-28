@@ -1,14 +1,13 @@
 Manually build the SDK
 ======================
 
-**Note: The recommended installation option is to run the `SDK as a
-Docker container. </doc/tutorial/dependencies.md>`__**
+.. warning::
+
+    The recommended installation option is to run the `SDK as a
+    Docker container. </tutorial/install.html>`_
 
 2. Install and Build SDK
 ~~~~~~~~~~~~~~~~~~~~~~~~
-
-Install additional dependencies
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Java JDK 7+
 '''''''''''
@@ -31,7 +30,7 @@ so:
     setenv JAVA_HOME `/usr/libexec/java_home`  
 
 You should probably add this command to the end of your
-``~/.bash_profile`` or ~/.bashrc file so it is always set when you start
+``~/.bash_profile`` or ``~/.bashrc`` file so it is always set when you start
 a terminal.
 
 Apache Ant
@@ -100,7 +99,7 @@ that does most of the work for you:
 
 You will get a failure if the Docker daemon is not running when you
 invoke the above command. See `Install SDK Dependencies -
-Docker <kb_sdk_dependencies.md#docker>`__ for guidance.
+Docker </tutorial/dependencies.html>`_ for guidance.
 
 The image is fairly large, so it will take some time to run and build
 the image.

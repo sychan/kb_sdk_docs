@@ -107,7 +107,7 @@ html_theme_options = {
 
 html_context = {
     'display_github': True,
-    'github_user': 'jayrbolton',
+    'github_user': 'kbase',
     'github_repo': 'kb_sdk_docs',
     'github_version': 'blob/master/source/'
 }

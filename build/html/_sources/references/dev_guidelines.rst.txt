@@ -6,18 +6,18 @@ tools as KBase apps and enable the broader community to more easily
 contribute to KBase. Tools submitted for addition to KBase will go
 through a standard release process (Development, Beta and Release).
 
-Tool states:
-------------
+App Environments
+-----------------
 
-1. Development: Apps in the “Development” state will be limited in
+1. **Development:** Apps in the “Development” state will be limited in
    visibility. They will be visible in a publicly accessible environment
    but won’t run against the production data stores and can’t be used in
    production Narratives (i.e., the app will not be visible at
    narrative.kbase.us).
-2. Beta: Apps in “Beta” will be visible to all users in the production
+2. **Beta:** Apps in “Beta” will be visible to all users in the production
    Narrative Interface (narrative.kbase.us), if they choose to view Beta
    apps (by changing the R (for Release) in the Apps panel to B).
-3. Release: Methods in the Release state will be visible to all.
+3. **Release:** Methods in the Release state will be visible to all.
 
 In order to transition an app from Development to Beta and, finally,
 Release, the app must undergo a review by KBase staff. This review is
@@ -34,7 +34,7 @@ Criteria:
    commercial users must pay to use it)”.
 2. Documentation for app is clear and includes any appropriate
    references (e.g., published papers on a tool or method) - See `Method
-   Man pages document <Method_man_page.md>`__.
+   Man pages document <https://github.com/kbase/project_guides/blob/master/Method_man_page.md>`__.
 3. The app includes a public example Narrative demonstrating the app in
    action on real data.
 4. The repository contains minimal tests (e.g., at least one unit test

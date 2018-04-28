@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Add UI elements to your app &mdash; KBase SDK 0.1.18 documentation</title>
+  <title>How to add UI elements &mdash; KBase SDK 0.1.18 documentation</title>
   
 
   
@@ -30,8 +30,8 @@
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Edit your app’s Dockerfile" href="edit_your_dockerfile.html" />
-    <link rel="prev" title="Create a report" href="create_a_report.html" /> 
+    <link rel="next" title="How to edit your app’s Dockerfile" href="edit_your_dockerfile.html" />
+    <link rel="prev" title="How to create a report" href="create_a_report.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -99,14 +99,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/initialize.html">3. Initialize the App</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/setup.html">4. Setup &amp; Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/implement.html">5. Implement Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">6. Publish and Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">6. Publish and Update</a></li>
 </ul>
 <p class="caption"><span class="caption-text">How-to Guides</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="create_a_report.html">Create a report</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Add UI elements to your app</a></li>
-<li class="toctree-l1"><a class="reference internal" href="edit_your_dockerfile.html">Edit your app’s Dockerfile</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fill_out_app_information.html">Complete your app’s publish data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create_a_report.html">How to create a report</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to add UI elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit_your_dockerfile.html">How to edit your app’s Dockerfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fill_out_app_information.html">How to document your app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual_build.html">Manually build the SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run_a_shell_command.html">Run shell commands in your app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="work_with_reference_data.html">Work with reference data</a></li>
@@ -163,7 +163,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Add UI elements to your app</li>
+      <li>How to add UI elements</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -184,12 +184,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="add-ui-elements-to-your-app">
-<h1>Add UI elements to your app<a class="headerlink" href="#add-ui-elements-to-your-app" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="how-to-add-ui-elements">
+<h1>How to add UI elements<a class="headerlink" href="#how-to-add-ui-elements" title="Permalink to this headline">¶</a></h1>
 <p>Control of Narrative interaction is accomplished in files in the
 <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/&lt;MyMethod&gt;</span></code> directory.</p>
 <div class="section" id="configure-the-input-interface">
-<h2>Configure the input interface.<a class="headerlink" href="#configure-the-input-interface" title="Permalink to this headline">¶</a></h2>
+<h2>Configure the input interface<a class="headerlink" href="#configure-the-input-interface" title="Permalink to this headline">¶</a></h2>
 <p>The input options are specified in the “parameters” section of the
 spec.json file. In the following example, the user will supply two
 required parameters: an input name and an output name. If you specify
@@ -199,7 +199,7 @@ dropdown of objects that match the specified types. If
 will overwrite an existing object or if the name contains invalid
 characters, and a widget displaying that object will appear beneath the
 app cell.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
+<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span>
         <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;read_library_name&quot;</span><span class="p">,</span>
         <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
@@ -231,36 +231,36 @@ For each option, the “value” is what will be passed to the app while the
 “ui_name” is what the user will see. In this example, the parameter is
 hidden by default because “advanced” is true (meaning the parameter will
 be hidden in the “Advanced options” section of the input widget).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;prune&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-            <span class="s2">&quot;advanced&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
-            <span class="s2">&quot;allow_multiple&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-            <span class="s2">&quot;default_values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;biochemistry&quot;</span> <span class="p">],</span>
-            <span class="s2">&quot;field_type&quot;</span><span class="p">:</span> <span class="s2">&quot;dropdown&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;dropdown_options&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span>
-                    <span class="p">{</span>
-                        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;biochemistry&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Known biochemistry&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;biochemistry&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;ui_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Known biochemistry&quot;</span>
-                    <span class="p">},</span>
-                    <span class="p">{</span>
-                        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;model&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Input model&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;model&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;ui_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Input model&quot;</span>
-                    <span class="p">},</span>
-                    <span class="p">{</span>
-                        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Do not prune&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;ui_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Do not prune&quot;</span>
-                    <span class="p">}</span>
-                <span class="p">]</span>
+<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;prune&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;advanced&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;allow_multiple&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;default_values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;biochemistry&quot;</span> <span class="p">],</span>
+    <span class="s2">&quot;field_type&quot;</span><span class="p">:</span> <span class="s2">&quot;dropdown&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dropdown_options&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;biochemistry&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Known biochemistry&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;biochemistry&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;ui_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Known biochemistry&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;model&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Input model&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;model&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;ui_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Input model&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Do not prune&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;ui_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Do not prune&quot;</span>
             <span class="p">}</span>
-        <span class="p">},</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">},</span>
 </pre></div>
 </div>
 <p>There are many additional interface options available. One of the best
@@ -268,10 +268,9 @@ ways to discover them is to explore <a class="reference external" href="https://
 gallery</a> which
 contains a variety of KBase apps along with the spec file that generated
 the user interface.</p>
-<p><a class="reference external" href="#top">[Back to top]</a></p>
 </div>
 <div class="section" id="configure-passing-variables-from-narrative-input-to-sdk-method">
-<h2>Configure passing variables from Narrative Input to SDK method.<a class="headerlink" href="#configure-passing-variables-from-narrative-input-to-sdk-method" title="Permalink to this headline">¶</a></h2>
+<h2>Configure passing variables from Narrative Input to SDK method<a class="headerlink" href="#configure-passing-variables-from-narrative-input-to-sdk-method" title="Permalink to this headline">¶</a></h2>
 <p>In the ‘behavior’ section of the spec.json, the output of the user
 interface is mapped to input to your function. If you have maintained a
 consistent naming though these mappings can be pretty pro forma.
@@ -377,16 +376,16 @@ the App UI:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><a class="reference external" href="#top">[Back to top]</a></p>
 </div>
 <div class="section" id="naming-fields-in-the-input-widget-cell">
 <h2>Naming fields in the input widget cell<a class="headerlink" href="#naming-fields-in-the-input-widget-cell" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code> file primarily contains text to describe the app
-(in the Narrative and in the App Catalog). Options in this file will be
-further explored in step 10 (<a class="reference external" href="kb_sdk_complete_module_info.md">Complete Module
-Info</a>) but minimally this file should
-define: * A module name * A module tooltip * A ui-name for each
-parameter * A short hint for each parameter</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code> file primarily contains text to describe the app (shown in the narrative and in the app catalog). Minimally this file should define:</p>
+<ul class="simple">
+<li>A module name</li>
+<li>A module tooltip</li>
+<li>A ui-name for each parameter</li>
+<li>A short hint for each parameter</li>
+</ul>
 </div>
 <div class="section" id="details-on-narrative-ui-specification">
 <h2>Details on Narrative UI specification<a class="headerlink" href="#details-on-narrative-ui-specification" title="Permalink to this headline">¶</a></h2>
@@ -404,10 +403,10 @@ available
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="edit_your_dockerfile.html" class="btn btn-neutral float-right" title="Edit your app’s Dockerfile" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="edit_your_dockerfile.html" class="btn btn-neutral float-right" title="How to edit your app’s Dockerfile" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="create_a_report.html" class="btn btn-neutral" title="Create a report" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="create_a_report.html" class="btn btn-neutral" title="How to create a report" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

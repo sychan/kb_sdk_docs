@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Run shell commands in your app" href="run_a_shell_command.html" />
-    <link rel="prev" title="Complete your app’s publish data" href="fill_out_app_information.html" /> 
+    <link rel="prev" title="How to document your app" href="fill_out_app_information.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -99,14 +99,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/initialize.html">3. Initialize the App</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/setup.html">4. Setup &amp; Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/implement.html">5. Implement Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">6. Publish and Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">6. Publish and Update</a></li>
 </ul>
 <p class="caption"><span class="caption-text">How-to Guides</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="create_a_report.html">Create a report</a></li>
-<li class="toctree-l1"><a class="reference internal" href="add_ui_elements.html">Add UI elements to your app</a></li>
-<li class="toctree-l1"><a class="reference internal" href="edit_your_dockerfile.html">Edit your app’s Dockerfile</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fill_out_app_information.html">Complete your app’s publish data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create_a_report.html">How to create a report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="add_ui_elements.html">How to add UI elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit_your_dockerfile.html">How to edit your app’s Dockerfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fill_out_app_information.html">How to document your app</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Manually build the SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run_a_shell_command.html">Run shell commands in your app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="work_with_reference_data.html">Work with reference data</a></li>
@@ -186,14 +186,15 @@
             
   <div class="section" id="manually-build-the-sdk">
 <h1>Manually build the SDK<a class="headerlink" href="#manually-build-the-sdk" title="Permalink to this headline">¶</a></h1>
-<p><strong>Note: The recommended installation option is to run the `SDK as a
-Docker container. &lt;/doc/tutorial/dependencies.md&gt;`__</strong></p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The recommended installation option is to run the <a class="reference external" href="/tutorial/install.html">SDK as a
+Docker container.</a></p>
+</div>
 <div class="section" id="install-and-build-sdk">
 <h2>2. Install and Build SDK<a class="headerlink" href="#install-and-build-sdk" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="install-additional-dependencies">
-<h3>Install additional dependencies<a class="headerlink" href="#install-additional-dependencies" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="java-jdk-7">
-<h4>Java JDK 7+<a class="headerlink" href="#java-jdk-7" title="Permalink to this headline">¶</a></h4>
+<h3>Java JDK 7+<a class="headerlink" href="#java-jdk-7" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></p>
 <p>After downloading and installing the JDK, set your <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code>
 environment variable to point to your JDK installation. If you’re not
@@ -209,11 +210,11 @@ setenv JAVA_HOME `/usr/libexec/java_home`
 </pre></div>
 </div>
 <p>You should probably add this command to the end of your
-<code class="docutils literal notranslate"><span class="pre">~/.bash_profile</span></code> or ~/.bashrc file so it is always set when you start
+<code class="docutils literal notranslate"><span class="pre">~/.bash_profile</span></code> or <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> file so it is always set when you start
 a terminal.</p>
 </div>
 <div class="section" id="apache-ant">
-<h4>Apache Ant<a class="headerlink" href="#apache-ant" title="Permalink to this headline">¶</a></h4>
+<h3>Apache Ant<a class="headerlink" href="#apache-ant" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://ant.apache.org">http://ant.apache.org</a></p>
 <p><a class="reference external" href="http://ant.apache.org/manual/install.html">http://ant.apache.org/manual/install.html</a></p>
 <p>The easist way to install Ant on a Mac is probably to use a package
@@ -221,10 +222,8 @@ manager like <a class="reference external" href="http://brew.sh/">HomeBrew</a>, 
 simply by <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">ant</span></code>. Make sure the Ant install location is
 added to your PATH environment variable, which is generally handled for
 you if you use a package manager like HomeBrew.</p>
-</div>
-</div>
 <div class="section" id="fetch-the-code-from-github">
-<h3>Fetch the code from GitHub:<a class="headerlink" href="#fetch-the-code-from-github" title="Permalink to this headline">¶</a></h3>
+<h4>Fetch the code from GitHub:<a class="headerlink" href="#fetch-the-code-from-github" title="Permalink to this headline">¶</a></h4>
 <p>Create a directory in which you want to work. All your work should go
 here. All commands that follow are assuming you are using a UNIX shell.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">&lt;</span><span class="n">working_dir</span><span class="o">&gt;</span>
@@ -249,11 +248,11 @@ to your <code class="docutils literal notranslate"><span class="pre">~/.bash_pro
 available in the terminal with command completion.</p>
 </div>
 <div class="section" id="test-installation">
-<h3>Test installation<a class="headerlink" href="#test-installation" title="Permalink to this headline">¶</a></h3>
+<h4>Test installation<a class="headerlink" href="#test-installation" title="Permalink to this headline">¶</a></h4>
 <p>To make sure you installed the SDK successfully, type kb-sdk help</p>
 </div>
 <div class="section" id="download-the-kbase-sdk-base-docker-image">
-<h3>Download the KBase SDK base Docker image<a class="headerlink" href="#download-the-kbase-sdk-base-docker-image" title="Permalink to this headline">¶</a></h3>
+<h4>Download the KBase SDK base Docker image<a class="headerlink" href="#download-the-kbase-sdk-base-docker-image" title="Permalink to this headline">¶</a></h4>
 <p>KBase modules run in Docker containers. Docker containers are built on
 top of existing base images. KBase has a public base image that includes
 a number of installed runtimes, some basic bioinformatics tools, and
@@ -264,10 +263,11 @@ that does most of the work for you:</p>
 </pre></div>
 </div>
 <p>You will get a failure if the Docker daemon is not running when you
-invoke the above command. See <a class="reference external" href="kb_sdk_dependencies.md#docker">Install SDK Dependencies -
+invoke the above command. See <a class="reference external" href="/tutorial/dependencies.html">Install SDK Dependencies -
 Docker</a> for guidance.</p>
 <p>The image is fairly large, so it will take some time to run and build
 the image.</p>
+</div>
 </div>
 </div>
 </div>
@@ -283,7 +283,7 @@ the image.</p>
         <a href="run_a_shell_command.html" class="btn btn-neutral float-right" title="Run shell commands in your app" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="fill_out_app_information.html" class="btn btn-neutral" title="Complete your app’s publish data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="fill_out_app_information.html" class="btn btn-neutral" title="How to document your app" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

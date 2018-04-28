@@ -32,18 +32,44 @@ Some things to note:
 -  You can place commands in the directory ``/kb/deployment/bin/``, and
    it will automatically get added to your container's ``$PATH``
 
-**Also see:** `How to edit your app's
-Dockerfile </doc/howto/edit_dockerfile.md>`__
+.. note::
+    Also see: `How to edit your app's Dockerfile </howtos/edit_your_dockerfile.html>`__
 
 Invoking the command in Python
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can use the
-```subprocess`` <https://docs.python.org/2/library/subprocess.html>`__
-package to invoke commands from within python.
+You can use the `subprocess <https://docs.python.org/2/library/subprocess.html>`_ package to invoke commands from within python.
 
 The following example from the
 `kb\_quast <https://github.com/kbaseapps/kb_quast>`__ repository
 demonstrates how to do (and document) this well with Python.
 
-``python     def run_quast_exec(self, outdir, filepaths, labels):         threads = psutil.cpu_count() * self.THREADS_PER_CORE         # DO NOT use genemark instead of glimmer, not open source         # DO NOT use metaQUAST, uses SILVA DB which is not open source         cmd = ['quast.py', '--threads', str(threads), '-o', outdir, '--labels', ','.join(labels),                '--glimmer', '--contig-thresholds', '0,1000,10000,100000,1000000'] + filepaths         self.log('running QUAST with command line ' + str(cmd))         retcode = subprocess.call(cmd)         self.log('QUAST return code: ' + str(retcode))         if retcode:             # can't actually figure out how to test this. Give quast garbage it skips the file.             # Give quast a file with a missing sequence it acts completely normally.             raise ValueError('QUAST reported an error, return code was ' + str(retcode))         # quast will ignore bad files and keep going, which is a disaster for         # reproducibility and accuracy if you're not watching the logs like a hawk.         # for now use this hack to check that all files were processed. Maybe there's a better way.         files_proc = len(os.listdir(os.path.join(outdir, 'predicted_genes'))) / 2         files_exp = len(filepaths)         if files_proc != files_exp:             err = ('QUAST skipped some files - {} expected, {} processed.'                    .format(files_exp, files_proc))             self.log(err)             raise ValueError(err)``
+.. code:: python
+
+    def run_quast_exec(self, outdir, filepaths, labels, skip_glimmer=False):
+        threads = psutil.cpu_count() * self.THREADS_PER_CORE
+        # DO NOT use genemark instead of glimmer, not open source
+        # DO NOT use metaQUAST, uses SILVA DB which is not open source
+        cmd = ['quast.py', '--threads', str(threads), '-o', outdir, '--labels', ','.join(labels),
+               '--glimmer', '--contig-thresholds', '0,1000,10000,100000,1000000'] + filepaths
+
+        if skip_glimmer:
+            self.log('skipping glimmer due to large input file(s)')
+            cmd.remove('--glimmer')
+
+        self.log('running QUAST with command line ' + str(cmd))
+        retcode = _subprocess.call(cmd)
+        self.log('QUAST return code: ' + str(retcode))
+        if retcode:
+            # can't actually figure out how to test this. Give quast garbage it skips the file.
+            # Give quast a file with a missing sequence it acts completely normally.
+            raise ValueError('QUAST reported an error, return code was ' + str(retcode))
+        # quast will ignore bad files and keep going, which is a disaster for
+        # reproducibility and accuracy if you're not watching the logs like a hawk.
+        # for now use this hack to check that all files were processed. Maybe there's a better way.
+        files_proc = len(open(_os.path.join(outdir, 'report.tsv'), 'r').readline().split('\t')) - 1
+        files_exp = len(filepaths)
+        if files_proc != files_exp:
+            err = ('QUAST skipped some files - {} expected, {} processed.'
+                   .format(files_exp, files_proc))
+            self.log(err)

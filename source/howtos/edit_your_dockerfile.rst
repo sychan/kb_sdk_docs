@@ -1,12 +1,12 @@
-Edit your app's Dockerfile
-==========================
+How to edit your app's Dockerfile
+==================================
 
 To set up custom programs for your app, such as third-party tools, you
 can edit your Dockerfile, which contains the setup code needed to build
 up your container.
 
 A helpful resource is the `Dockerfile Best
-Practices <https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices>`__
+Practices <https://docs.docker.com/develop/develop-images/dockerfile_best-practices>`__
 guide.
 
 The base KBase Docker image contains a KBase Ubuntu image with the

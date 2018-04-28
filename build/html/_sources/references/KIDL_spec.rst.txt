@@ -4,8 +4,7 @@ KIDL Specification
 Type Description Language
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We define a small language that we will use to specify the types of data
-objects passed through the KBase API.
+KBase defines a small language that is used to specify the types of data objects passed through the KBase API.
 
 The type language is built from a small number of basic types. These
 include three scalar types:
@@ -74,4 +73,8 @@ identifiers and returns the current functions assigned to these features
 as a hash mapping from the feature identifier to the function may be
 defined as follows:
 
-``typedef FeatureId string; funcdef get_feature_functions(list<FeatureId> feature_ids)     returns (mapping<FeatureId, string>)``\ ============================
+::
+
+    typedef FeatureId string;
+    funcdef get_feature_functions(list<FeatureId> feature_ids)
+        returns (mapping<FeatureId, string>)

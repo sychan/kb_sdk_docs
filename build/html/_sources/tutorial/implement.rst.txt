@@ -5,14 +5,16 @@ The actual code for your app will live in the python package under ``lib/MyConti
 
 This "Implementation" file defines the methods available in the module. Since we defined a method named ``filter_contigs`` in our KIDL .spec file and our ``spec.json`` file, then we will have a ``filter_contigs`` method in the class inside ``MyContigFilterImpl.py``.
 
-In order to keep your codebase organized, you can also create sub-modules inside the above folder, such as in a directory like ``lib/MyContigFilter/utils``.
+.. note ::
+
+    In a real-world app, you may want to split up your code into several python modules and packages. You can place extra modules and folders inside ``lib/MyModule`` and import them in ``lib/MyModule/MyContigFilterImpl.py``
 
 Set up your developer credentials
 ------------------------------------
 
 To use KBase's file storage services, we need to generate a dev token for authentication.
 
-Go to https://narrative.kbase.us/#auth2/account, click Developer Tokens, and generate a new token.
+Go to https://narrative.kbase.us/#auth2/account, click **Developer Tokens**, and generate a new token.
 
 Copy and paste that token into ``test_local/test.cfg`` in the value for ``test_token``
 
@@ -73,7 +75,7 @@ Set the callback URL and scratch path
 -----------------------------------------
 
 
-The callback URL points to a server that is used to spin up other SDK apps that we will need to use in our own app. In our case, we want to use [AssemblyUtil](https://github.com/kbaseapps/AssemblyUtil) to validate and download genome data. When we use that app, our app makes a request to the callback server, which spins up a separate docker container that runs AssemblyUtil.
+The callback URL points to a server that is used to spin up other SDK apps that we will need to use in our own app. In our case, we want to use `AssemblyUtil <https://github.com/kbaseapps/AssemblyUtil>`_ to validate and download genome data. When we use that app, our app makes a request to the callback server, which spins up a separate docker container that runs AssemblyUtil.
 
 The other parameter commonly defined in the module constructor is the path to the scratch directory. This directory is a common space accessible by not only the
 current app but also every app called by this app. Therefore files from other apps (eg. AssemblyUtil) will be written to the scratch folder and files to be used by other modules (such as KBaseReport) are read from the scratch folder.

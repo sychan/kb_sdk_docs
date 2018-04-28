@@ -6,7 +6,7 @@ Q: How can I tell if someone's already wrapped a tool I'm interested in?
 
 **A:** Go to the development `App
 Catalog <https://narrative.kbase.us/#appcatalog>`__ and start by using
-*Search* see if there's a released method. If you don't find a method
+*Search* to see if there's a released method. If you don't find a method
 that way, it may also help to by selecting "Organize by"... "Category"
 and selecting what seems to be a likely category for the tool. There are
 also methods that have not yet been officially released, so you should
@@ -19,18 +19,14 @@ using your approach, or ask the previous tool wrapper to tweak their
 implementation to expose the parameters or other functionality you are
 looking for.
 
-`back to top <#top>`__
-
 Q: What's already installed in the base KBase Docker image and how do I call it?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **A:** The base KBase Docker image contains an Ubuntu Linux image with
 kbase tools for connecting to KBase services and data installed. Please
 see the SDK Module implementation
-`examples <https://github.com/kbase/kb_sdk/README.md#examples>`__ for
+`examples <https://github.com/kbase/kb_sdk#examples>`__ for
 how to access these services and data.
-
-`back to top <#top>`__
 
 Q: How do I find and access data?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -38,16 +34,14 @@ Q: How do I find and access data?
 **A:** There are both public reference data sets and individual user
 data sets (both public and private). Public reference data can be found
 with `KBase Data
-Search <https://narrative.kbase.us/search/#/search/?q=*>`__, and should
+Search <https://narrative.kbase.us/#search>`__, and should
 be copied into your Narrative to be used. Accessing Data Objects from
 your SDK Methods is explained in `Working with KBase Data
 Types <https://narrative.kbase.us/#catalog/datatypes>`__ and illustrated
 in the SDK Module implementation
-`examples <https://github.com/kbase/kb_sdk/README.md#examples>`__.
+`examples <https://github.com/kbase/kb_sdk#examples>`__.
 
-`back to top <#top>`__
-
-Q: What are system requirements for development workstation?
+Q: What are system requirements for development?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **A:** You will need to be able to run Docker, which if you're on a Mac
@@ -56,22 +50,20 @@ systems, such as the various flavors of Linux, are fine too. Really
 anywhere you can run Docker, Java, and your preferred development
 language (among Python, Perl, or Java). You will need about 1-2 GB free
 to install the
-`dependencies <https://github.com/kbase/kb_sdk/docs/kb_sdk_dependencies.md>`__
-and the `KBase
-SDK <https://https://github.com/kbase/kb_sdk/doc/kb_sdk_install_and_build.md>`__.
-
-`back to top <#top>`__
+`dependencies </tutorial/dependencies.html>`__
+and the `KBase SDK </tutorial/install.html>`__
 
 Q: What are system requirements for execution environment?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**A:** - Runs completely on a standard KBase worker node (at least 2
-cores and 22GB memory) - Operates only on supported KBase data types -
-Requires either no or fairly limited amounts of reference data - Uses
-existing data visualization widgets - Does not require new
-uploaders/downloaders - Wrapper written in Python, Java, or Perl
+**A:** 
 
-`back to top <#top>`__
+- Runs completely on a standard KBase worker node (at least 2 cores and 22GB memory) 
+- Operates only on supported KBase data types
+- Requires either no or fairly limited amounts of reference data 
+- Uses existing data visualization widgets 
+- Does not require new uploaders/downloaders 
+- Wrapper written in Python, Java, or Perl
 
 Q: What size data will be too big for the system?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -88,8 +80,6 @@ must fit within that. As in any situation, we recommend the use of
 graceful exception handling and efficient implementations in your coding
 style.
 
-`back to top <#top>`__
-
 Q: Where should my code be?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -99,8 +89,6 @@ changes to a public revision control system such as github.com. For the
 time being, we ask that you put your code into your own directory rather
 than in the kbase github account.
 
-`back to top <#top>`__
-
 Q: Do you need to use GitHub? What about BitBucket? SourceForge?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -108,18 +96,14 @@ Q: Do you need to use GitHub? What about BitBucket? SourceForge?
 use GitHub. The path to your repo is what you provide to the SDK
 Registration method to register your SDK Module.
 
-`back to top <#top>`__
-
 Q: Do I need to copy the tool I'm using into my github repo?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **A:** You do not if there is a public way to retrieve the code such as
 by using a *git clone*, *curl*, or other way of pulling the data down
 into the Docker image. This is accomplished by `modifying the
-Dockerfile <https://github.com/kbase/kb_sdk/blob/master/doc/kb_sdk_local_test_module.md#dockerfile>`__
+Dockerfile </howtos/edit_your_dockerfile.html>`__
 to configure the Docker image build.
-
-`back to top <#top>`__
 
 Q: Can I develop on Windows?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -129,34 +113,24 @@ Q: Can I develop on Windows?
 Linux <https://www.ubuntu.com/desktop>`__ and work in the Linux VM. Many
 developers use this approach in KBase, and we know it works well.
 
-`back to top <#top>`__
-
 Q: Can I do all the development on a remote Linux box?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**A:** Yes. All `graphical-user-interface requiring
-steps <https://github.com/kbase/kb_sdk/blob/master/doc/kb_sdk_test_in_kbase.md>`__
-in the process are accomplished by using a web browser.
-
-`back to top <#top>`__
+**A:** Yes. All graphical-user-interface requiring
+steps in the process are accomplished by using a web browser.
 
 Q: How do I add custom data and/or configuration data to the system?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **A:** If it's less than 10 GB, you can add it to the Docker image by
-[editing the
-Dockerfile]((https://github.com/kbase/kb\_sdk/blob/master/doc/kb\_sdk\_local\_test\_module.md#dockerfile).
+`editing the Dockerfile </howtos/edit_your_dockerfile.html>`__.
 Please contact us at https://kbase.us/contact-us if you need to use
 something larger.
-
-`back to top <#top>`__
 
 Q: I need high-performance computing for my application. Is that available?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **A:** Not yet. We're working on it!
-
-`back to top <#top>`__
 
 Q: How do I set my favorite Apps?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -166,15 +140,11 @@ Catalog <https://narrative.kbase.us/#appcatalog>`__, and then click on
 the stars for your favorite Apps. You must be logged in for it to
 associate it with your account.
 
-`back to top <#top>`__
-
 Q: Is there a cheatsheet?
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **A:** Yes, there is a document that provides a lot of hints about the
-SDK `SDK Cheatsheet <SDK_AdvancedFeaturesCheatSheet.pdf>`__.
-
-`back to top <#top>`__
+SDK `SDK Cheatsheet <https://github.com/kbase/kb_sdk/blob/master/doc/SDK_AdvancedFeaturesCheatSheet.pdf>`__.
 
 .. |alt text| image:: https://avatars2.githubusercontent.com/u/1263946?v=3&s=84
 

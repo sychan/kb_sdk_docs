@@ -2,7 +2,7 @@
 
 This repo holds the source code for [Sphinx](http://www.sphinx-doc.org/en/master/) documentation describing the KBase Software Development Kit.
 
-[**You can visit the documentation website here**](http://spacejam.com)
+[**You can visit the documentation website here**](http://kbase.github.io/kb_sdk_docs)
 
 ## Editing .rst files
 

@@ -14,7 +14,7 @@ Overview
 
 To explore the contents of a module yourself, you can use the kb-sdk
 tool to create an example module. (Please see `these
-instructions <https://github.com/kbase/kb_sdk/blob/master/doc/installation.md>`__
+instructions </tutorial/install.html>`_
 on how to install kb-sdk.)
 
 ::
@@ -394,4 +394,4 @@ modules. Large amounts of reference data and persistent reference
 databases are also not supported out of the box for modules. This
 restriction will be lifted eventually. Until then, this directory is a
 placeholder. If you require large amounts of reference data for your
-module, please `contact us <contact-us>`__ for support.
+module, please `contact us <http://kbase.us/contact-us/>`__ for support.

@@ -17,21 +17,13 @@ Xcode or the Xcode Command Line Tools will install some standard terminal comman
 
 The git homepage can be found at https://git-scm.com. On Ubuntu, install it with ``sudo apt-get install git``.
 
-Docker
---------
-
-Homepage: https://www.docker.com
-
-This is *highly* recommended for KBase module development and is required if you will use the Docker-based installation of the SDK tools. KBase module code is run in KBase using Docker, which allows you to easily install all system tools and dependencies your module requires. Installing Docker locally allows you to test your build and run tests on your own computer before registering your module with KBase, significantly accelerating development.
-
 Docker Installation
-----------------------
+---------------------
+
+KBase module code is run using Docker, which allows you to easily install all system tools and dependencies your module requires. Installing Docker locally allows you to test your build and run tests on your own computer before registering your module with KBase.
 
 Instructions for installing on Mac: https://www.docker.com/mac
 
 Instructions for installing on Linux: https://www.docker.com/linux
 
-On Linux, be sure to follow these `**Post installation steps** <https://docs.docker.com/install/linux/linux-postinstall/>`_ so you can run docker and `kb-sdk` as a non-root user.
-
-Docker provides an installation for Mac that runs in a lightweight virtual machine but is integrated to provide a seamless experience.  After installation, the
-Docker CLI tools should be available from a terminal window.
+On Linux, be sure to follow these `post installation steps <https://docs.docker.com/install/linux/linux-postinstall/>`_ so you can run docker and `kb-sdk` as a non-root user.

@@ -1,7 +1,9 @@
 
 /* Enlarge fonts globally for better accessibility */
-
 p {
+    font-size: 18px;
+}
+.rst-content .section, .rst-content .toctree-wrapper, article {
     font-size: 18px;
 }
 /* Code blocks */

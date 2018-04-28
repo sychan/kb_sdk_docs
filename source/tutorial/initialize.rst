@@ -24,7 +24,7 @@ You must always include the ``-u`` option with your username to set yourself as 
 
 You can set your programming langauge to any of Python, Perl, or Java; for this tutorial, we're using Python.
 
-The **kb-sdk init** options are:
+The ``kb-sdk init`` options are:
 
 .. code::
 

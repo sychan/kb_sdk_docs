@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Complete your app’s publish data &mdash; KBase SDK 0.1.18 documentation</title>
+  <title>How to document your app &mdash; KBase SDK 0.1.18 documentation</title>
   
 
   
@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Manually build the SDK" href="manual_build.html" />
-    <link rel="prev" title="Edit your app’s Dockerfile" href="edit_your_dockerfile.html" /> 
+    <link rel="prev" title="How to edit your app’s Dockerfile" href="edit_your_dockerfile.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -99,14 +99,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/initialize.html">3. Initialize the App</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/setup.html">4. Setup &amp; Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/implement.html">5. Implement Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">6. Publish and Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">6. Publish and Update</a></li>
 </ul>
 <p class="caption"><span class="caption-text">How-to Guides</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="create_a_report.html">Create a report</a></li>
-<li class="toctree-l1"><a class="reference internal" href="add_ui_elements.html">Add UI elements to your app</a></li>
-<li class="toctree-l1"><a class="reference internal" href="edit_your_dockerfile.html">Edit your app’s Dockerfile</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Complete your app’s publish data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create_a_report.html">How to create a report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="add_ui_elements.html">How to add UI elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit_your_dockerfile.html">How to edit your app’s Dockerfile</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to document your app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual_build.html">Manually build the SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run_a_shell_command.html">Run shell commands in your app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="work_with_reference_data.html">Work with reference data</a></li>
@@ -163,7 +163,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Complete your app’s publish data</li>
+      <li>How to document your app</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -184,8 +184,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="complete-your-app-s-publish-data">
-<h1>Complete your app’s publish data<a class="headerlink" href="#complete-your-app-s-publish-data" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="how-to-document-your-app">
+<h1>How to document your app<a class="headerlink" href="#how-to-document-your-app" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="complete-module-info">
 <h2>Complete Module Info<a class="headerlink" href="#complete-module-info" title="Permalink to this headline">¶</a></h2>
 <p>Icons, Publications, Original tool authors, Institutional Affiliations,
@@ -194,7 +194,7 @@ added to your module before it can be deployed. This information will
 show up in the App Catalog: <a class="reference external" href="https://appdev.kbase.us/#appcatalog/">https://appdev.kbase.us/#appcatalog/</a></p>
 <p>Please be aware that your module implementation and information must
 conform to our
-<a class="reference external" href="https://github.com/kbase/project_guides/blob/master/SDK_Guidelines.md">Policies</a>
+<a class="reference external" href="/references/dev_guidelines.html">Policies</a>
 before it will be accepted for public deployment. Fortunately, most of
 these are common sense (for example, sufficient content on the App Info
 page for a user to run your app and understand what it’s doing, proper
@@ -207,14 +207,14 @@ before requesting public deployment.</p>
 existing one that corresponds to the tool that you have wrapped. Feel
 free to repurpose the icons from existing KBase apps, or make your own.
 Your icon can be PNG, GIF, or JPEG (the KBase ones are PNG) and should
-fit in a square 200x200 pixels. We think rounded-corner squares look
-best; ours use a 40 pixel rounding on the corner on the 200x200 image
-(you can do this in Adobe Illustrator). If you want to match our font,
-it’s Futura Condensed Medium, 72 point height and line spacing, white
-face with a 1pt white border. If you use Adobe Illustrator, export your
-icon as PDF and convert to a 72dpi PNG with Adobe Photoshop. PDF vector
-and PNG bitmap versions that we used for our icons are available at
-<a class="reference external" href="https://github.com/kbase/kb_sdk/img/">https://github.com/kbase/kb_sdk/img/</a> in case you would like to use them
+fit in a square 200x200 pixels. To match our existing icons, use these guidelines:</p>
+<ul class="simple">
+<li>200x200px image with 40px rounded edges</li>
+<li>Font: Futura Condensed Medium, 72pt, white</li>
+<li>72dpi PNG</li>
+</ul>
+<p>PDF vector and PNG bitmap versions that we used for our icons are available at
+<a class="reference external" href="https://github.com/kbase/kb_sdk/tree/master/img">https://github.com/kbase/kb_sdk/tree/master/img</a> in case you would like to use them
 as a starting point.</p>
 <p>Your icons should be added to your KBase SDK module GitHub repo in the
 <strong>img</strong> image folder for each app at:</p>
@@ -241,7 +241,7 @@ configured in the <strong>display.yaml</strong> file at:</p>
 <p>and add a <strong>name:</strong> configuration. If you are wrapping an existing tool
 with a known name, please include that name to make it easier for people
 to find it, such as</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">Trimmomatic</span> <span class="o">-</span> <span class="n">Read</span> <span class="n">Trimming</span>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">Trimmomatic</span> <span class="o">-</span> <span class="n">Read</span> <span class="n">Trimming</span>
 </pre></div>
 </div>
 <p>You should tag your app with one (or multiple) “categories”. (If you
@@ -251,8 +251,6 @@ less likely to find it.)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/&lt;</span><span class="n">MyUserName</span><span class="o">&gt;/&lt;</span><span class="n">MyModule</span><span class="o">&gt;/</span><span class="n">ui</span><span class="o">/</span><span class="n">narrative</span><span class="o">/</span><span class="n">methods</span><span class="o">/&lt;</span><span class="n">MyMethod</span><span class="o">&gt;/</span><span class="n">spec</span><span class="o">.</span><span class="n">json</span>
 </pre></div>
 </div>
-<p>The recognized categories can be found in
-<a class="reference external" href="https://github.com/kbase/kbase-ui/blob/master/src/client/modules/plugins/catalog/modules/data/categories.yml">https://github.com/kbase/kbase-ui/blob/master/src/client/modules/plugins/catalog/modules/data/categories.yml</a>.</p>
 <p>Currently, the following categories are recognized. The tag before the :
 on each line is the internal label for the category, used in the
 spec.json. The phrase after the : is the display name for the category
@@ -354,12 +352,15 @@ public deployment, please see examples in the Trimmomatic app:</p>
 <li><a class="reference external" href="https://appdev.kbase.us/#appcatalog/app/kb_trimmomatic/run_trimmomatic/dev">https://appdev.kbase.us/#appcatalog/app/kb_trimmomatic/run_trimmomatic/dev</a></li>
 <li><a class="reference external" href="https://github.com/psdehal/kb_trimmomatic/blob/master/ui/narrative/methods/run_trimmomatic/display.yaml">https://github.com/psdehal/kb_trimmomatic/blob/master/ui/narrative/methods/run_trimmomatic/display.yaml</a></li>
 </ul>
-<p>Please bear in mind that for public release, your Module <strong>MUST</strong> meet
-all the requirements laid out in the <a class="reference external" href="https://github.com/kbase/project_guides/blob/master/SDK_Guidelines.md">KBase SDK
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Please bear in mind that for public release, your Module <strong>MUST</strong> meet
+all the requirements laid out in the <a class="reference external" href="/references/dev_guidelines.html">KBase SDK
 Policies</a>.
 We reserve the right to delay public release of SDK Modules until all
 requirements are met. Please take the time to familiarize yourself with
 these policies to avoid delay in releasing your Module.</p>
+</div>
 </div>
 </div>
 </div>
@@ -376,7 +377,7 @@ these policies to avoid delay in releasing your Module.</p>
         <a href="manual_build.html" class="btn btn-neutral float-right" title="Manually build the SDK" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="edit_your_dockerfile.html" class="btn btn-neutral" title="Edit your app’s Dockerfile" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="edit_your_dockerfile.html" class="btn btn-neutral" title="How to edit your app’s Dockerfile" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

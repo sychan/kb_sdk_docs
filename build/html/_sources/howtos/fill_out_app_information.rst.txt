@@ -1,4 +1,4 @@
-Complete your app's publish data
+How to document your app
 ================================
 
 Complete Module Info
@@ -11,7 +11,7 @@ show up in the App Catalog: https://appdev.kbase.us/#appcatalog/
 
 Please be aware that your module implementation and information must
 conform to our
-`Policies <https://github.com/kbase/project_guides/blob/master/SDK_Guidelines.md>`__
+`Policies </references/dev_guidelines.html>`__
 before it will be accepted for public deployment. Fortunately, most of
 these are common sense (for example, sufficient content on the App Info
 page for a user to run your app and understand what it's doing, proper
@@ -26,14 +26,14 @@ You can make a custom icon for each app in your module, or use an
 existing one that corresponds to the tool that you have wrapped. Feel
 free to repurpose the icons from existing KBase apps, or make your own.
 Your icon can be PNG, GIF, or JPEG (the KBase ones are PNG) and should
-fit in a square 200x200 pixels. We think rounded-corner squares look
-best; ours use a 40 pixel rounding on the corner on the 200x200 image
-(you can do this in Adobe Illustrator). If you want to match our font,
-it's Futura Condensed Medium, 72 point height and line spacing, white
-face with a 1pt white border. If you use Adobe Illustrator, export your
-icon as PDF and convert to a 72dpi PNG with Adobe Photoshop. PDF vector
-and PNG bitmap versions that we used for our icons are available at
-https://github.com/kbase/kb\_sdk/img/ in case you would like to use them
+fit in a square 200x200 pixels. To match our existing icons, use these guidelines:
+
+* 200x200px image with 40px rounded edges
+* Font: Futura Condensed Medium, 72pt, white
+* 72dpi PNG
+
+PDF vector and PNG bitmap versions that we used for our icons are available at
+https://github.com/kbase/kb_sdk/tree/master/img in case you would like to use them
 as a starting point.
 
 Your icons should be added to your KBase SDK module GitHub repo in the
@@ -43,11 +43,13 @@ Your icons should be added to your KBase SDK module GitHub repo in the
 
     https://github.com/<MyUserName>/<MyModule>/ui/narrative/methods/<MyMethod>/img/
 
+
 Then edit the **display.yaml** file found at:
 
 ::
 
     https://github.com/<MyUserName>/<MyModule>/ui/narrative/methods/<MyMethod>/display.yaml
+
 
 and add an **icon:** configuration (NOTE: just add the name of the image
 file and do not include the path, so *not* "img/foo.png"). For example,
@@ -70,7 +72,7 @@ and add a **name:** configuration. If you are wrapping an existing tool
 with a known name, please include that name to make it easier for people
 to find it, such as
 
-::
+.. code:: yaml
 
     name: Trimmomatic - Read Trimming
 
@@ -83,9 +85,6 @@ The categories are set in the **spec.json** file at:
 ::
 
     https://github.com/<MyUserName>/<MyModule>/ui/narrative/methods/<MyMethod>/spec.json
-
-The recognized categories can be found in
-https://github.com/kbase/kbase-ui/blob/master/src/client/modules/plugins/catalog/modules/data/categories.yml.
 
 Currently, the following categories are recognized. The tag before the :
 on each line is the internal label for the category, used in the
@@ -103,6 +102,7 @@ that is used in the App Catalog.
     reads: Read Processing
     sequence: Sequence Analysis
     util: Utilities
+
 
 (Please contact us via http://kbase.us/contact-us if you have
 suggestions for more... we expect to add more categories and possibly
@@ -206,9 +206,11 @@ public deployment, please see examples in the Trimmomatic app:
 -  https://appdev.kbase.us/#appcatalog/app/kb\_trimmomatic/run\_trimmomatic/dev
 -  https://github.com/psdehal/kb\_trimmomatic/blob/master/ui/narrative/methods/run\_trimmomatic/display.yaml
 
-Please bear in mind that for public release, your Module **MUST** meet
-all the requirements laid out in the `KBase SDK
-Policies <https://github.com/kbase/project_guides/blob/master/SDK_Guidelines.md>`__.
-We reserve the right to delay public release of SDK Modules until all
-requirements are met. Please take the time to familiarize yourself with
-these policies to avoid delay in releasing your Module.
+.. important:: 
+
+    Please bear in mind that for public release, your Module **MUST** meet
+    all the requirements laid out in the `KBase SDK
+    Policies </references/dev_guidelines.html>`__.
+    We reserve the right to delay public release of SDK Modules until all
+    requirements are met. Please take the time to familiarize yourself with
+    these policies to avoid delay in releasing your Module.

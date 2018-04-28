@@ -1,4 +1,4 @@
-Publish and Test
+Publish and Update
 ====================
 
 `Appdev <https://appdev.kbase.us>`_ is a separate KBase narrative server that is useful for app developers like yourself to publish in-progress versions of their apps and test and share them using real data.
@@ -30,21 +30,16 @@ Your app will now also be visible in the App Catalog when displaying Apps in dev
     https://appdev.kbase.us/#appcatalog/browse/dev
     https://narrative.kbase.us/#appcatalog/browse/dev
 
+
+Updating
+-----------
     
-From your module page:
+From your module page (https://narrative.kbase.us/#appcatalog/module/MODULE_NAME) you'll be able to register any update and manage release of your module to the production KBase environment for anyone to use.
 
-.. code::
+To do this, open `Module Admin Tools` and then click on the **REGISTER** button. Enter the latest commit hash from you master branch to register an update.
 
-    https://narrative.kbase.us/#appcatalog/module/[MODULE_NAME]
-    
-you'll be able to register any update and manage release of your module to the production KBase environment for anyone to use.
+As you make changes to your Module, **you will need to re-commit those changes to the git repo, and then re-register**. The KBase SDK Catalog service will automatically pull the most recent version. If for some reason you wish to revert to an older version, you can add the hash key of that older commit, which you can find by viewing the ``git log``.
 
-To do this, open `Module Admin Tools` and then click on the **REGISTER** button (you will not need to add the URL for your repo after the first time).
+.. important::
 
-As you make changes to your Module, **you will need to re-commit those changes to the git repo, and then re-register**. The KBase SDK Catalog service will automatically pull the most recent version. If for some reason you wish to revert to an older version, you can add the checksum of that old version, which you can find by typing
-
-.. code:: bash
-
-    $ git log
-
-Please bear in mind that for public release, your Module **MUST** meet all the requirements laid out in the [KBase SDK Policies](https://github.com/kbase/project_guides/blob/master/SDK_Guidelines.md). We reserve the right to delay public release of SDK Modules until all requirements are met. Please take the time to familiarize yourself with these policies to avoid delay in releasing your Module.
+    Please bear in mind that for public release, your module must meet all the requirements laid out in the `KBase SDK Policies </references/dev_guidelines.html>`_. We reserve the right to delay public release of SDK Modules until all requirements are met. Please take the time to familiarize yourself with these policies to avoid delay in releasing your Module.

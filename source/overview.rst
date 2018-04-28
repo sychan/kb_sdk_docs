@@ -1,12 +1,7 @@
 Concepts and Overview
 =======================
 
-Let's start with a high-level overview of how the SDK works and the general concepts involved in making SDK apps.
-
-When a python SDK app runs in a narrative, it typically follows this work flow and data path:
-
-.. image:: images/concept-map.png
-    :scale: 50%
+This page gives a a high-level overview of how the SDK works and general concepts in making and running apps.
 
 The Basics
 --------------
@@ -16,29 +11,67 @@ The Basics
 
 Apps on KBase, such as genome assemblers and annotators that run on narrative pages, are created using the KBase SDK.
 
-When you run an app in a narrative, it runs in a docker container on KBase's servers. Learn more about docker containers [here](https://www.docker.com/what-container). Docker containers allow you to run compiled programs, such as [MEGAHIT](https://github.com/voutcn/megahit), on any machine.
+When you run an app in a narrative, it runs in a docker container on KBase's servers. Learn more about docker containers here: https://www.docker.com/what-container. Docker containers allow you to run compiled programs, such as `MEGAHIT <https://github.com/voutcn/megahit>`_, on any machine.
 
 The starting source code for your app defines the type of input parameters the user can enter, the packages and programs the app will run in its container, and the output it will display in the final report. The source code for your app gets generated using the `kb-sdk` command line utility (see the rest of the tutorial for details).
+
+The Workflow
+----------------
+
+When a python SDK app runs in a narrative, it typically follows this workflow, which we'll describe in more detail below.
+
+.. image:: images/concept-map.svg
+    :scale: 50%
+
+User Input
+~~~~~~~~~~~~~~~
+
+In the first tab of a narrative app, users have a set of form elements that can be customized by your app to accept many kinds of data. An example might be a genome assembly algorithm that takes a dataset of DNA reads and a minimum kmer size.
+
+As an app developer, you can configure the elements of the form using a wide range of options. For larger data sets, such as genomes, these will be passed into your app as *references*, which you can think of as simple URLs used to download the actual files.
+
+App Code and Data Management
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Input from the app's form is converted into python data and passed into a main method in your app. Typically, apps will perform a set of validation checks on the input to make sure everything is well-formed before running any algorithms.
+
+From here, you can call out to utilities, run binary programs, and work with the file-system.
+
+Output and Reporting
+~~~~~~~~~~~~~~~~~~~~~~~
+
+When an app finishes producing data, it will typically form a `KBaseReport <https://github.com/kbaseapps/KBaseReport>`_ object that can contain a number of different things:
+
+* A formatted HTML page showing results
+* Links to files, such as PDFs, CSVs, etc. that your app produced
+* Links to saved, typed output objects, such as annotated or assembled genomes
+* Simple text messages and warnings about the results
+
+Command-line Interface
+---------------------------
+
+A command-line interface, called ``kb-sdk``, is provided to make it easy to initialize, validate, compile, and test your app. 
+
+Docker
+----------
+
+The KBase SDK makes extensive use of Docker containers. The apps themselves run inside custom Docker images. The CLI, ``kb-sdk``, also runs within a Docker container. 
+
+Using docker as the basic modular unit allows apps to run in different environments using custom dependencies. Also, apps written in different languages can use each other as dependencies.
 
 Composing apps
 ---------------
 
-Your app can install and use other KBase apps as dependencies, such as [KBParallel](https://github.com/kbaseapps/KBParallel). Find these apps in github at [https://github.com/kbaseapps](https://github.com/kbaseapps) or in the [KBase app catalog](https://narrative.kbase.us/#catalog/apps) (we will go into further detail in later parts of the tutorial).
+Your app can install and use other KBase apps as dependencies, such as `KBParallel <https://github.com/kbaseapps/KBParallel>`_. Find these apps in github at https://github.com/kbaseapps or in the `KBase app catalog <https://narrative.kbase.us/#catalog/apps>`_.
 
 When you install and run another app within yours, the other app runs in its own, separate docker container. SDK apps are also installed and tracked separately from any python dependencies that you install via `pip` or other package managers.
 
-Defining parameters
+KBase Types and Parameters
 --------------------------------
 
-A few configuration files in your app are used to define what parameters your app will accept from the narrative, and what result data your app will return.
+All of the data on KBase is strongly typed using an interface definition language called `KIDL </references/KIDL_spec.html>`_. This allows KBase to better cross-reference data, make inferences, and check app-to-data compatibility.
 
-The three main configuration files are:
-
-* The KBase Interface Definition Language (KIDL) type specification defines what data types your app can accept as parameters and return as results
-* A JSON config file defines the UI elements that your app uses for accepting input from the user
-* A YAML config file defines the text labelling and content for your app's UI
-
-The details and locations of these files will be described later in the tutorial.
+Configuration files in your app are used to define what parameters your app can accept and what kind of output it can return.
 
 Working with files and data
 -------------------------------
@@ -53,12 +86,31 @@ Since SDK apps often run inside multiple docker containers, you have to store fi
 The Workspace
 ~~~~~~~~~~~~~~~~~
 
-The "Workspace" is the term used for the file storage servers used by KBase. For Python SDK apps, you can use apps such as [DataFileUtil](https://github.com/kbaseapps/DataFileUtil), [AssemblyUtil](https://github.com/kbaseapps/AssemblyUtil), and [GenomeFileUtil](https://github.com/kbaseapps/GenomeFileUtil) to download and upload files to the workspace.
+The "Workspace" is the term used for the file storage servers used by KBase. For Python SDK apps, you can use apps such as `DataFileUtil <https://github.com/kbaseapps/DataFileUtil>`_, `AssemblyUtil <https://github.com/kbaseapps/AssemblyUtil>`_, and `GenomeFileUtil <https://github.com/kbaseapps/GenomeFileUtil>`_ to download and upload files to the workspace.
 
-The [KBaseReport](https://github.com/kbaseapps/KBaseReport) app is used to generate a final report when your app finishes running, and it also uploads its files onto the workspace servers so you can see all the report data indefinitely after the app stops running.
+In general, you always want to use the workspace for any datasets you work with if you want them to be available to your users in the narrative.
 
-## Publishing and testing in the browser
+A dataset stored in the workspace is referred to as an *object*. Objects in the workspace have some special properties:
 
-For an app to show up in a real narrative, you need to register it on https://appdev.kbase.us. You can then view and test it in the "Dev" catalog while browsing apps on KBase. Details around this whole process are described further along in this tutorial.
+* Every object conforms to a `type specification </references/KIDL_spec.html>`_.
+* Objects are versioned
+* The "reference" for an object has the format ``workspace_id/object_id/version``.
+* Workspaces are authenticated
 
-At this point, you cannot run your app inside a narrative on your own machine; you have to commit changes, publish to github, and re-register your app on https://appdev.kbase.us to test updates on the KBase servers.
+The Catalog
+-------------
+
+KBase's catalogs are registries of KBase apps. In order to find and use an app from within a narrative, it has to be registered in one of these catalogs. You can manage an app's registration from its module page on the KBase website.
+
+There are three separate catalogs for testing purposes: `dev`, `beta`, and `release`. 
+
+* `dev`: Prototype and tweak your app within the narrative
+* `beta`: The app is ready for release but requires testing
+* `release`: The app is visible to normal KBase users
+
+Publishing
+-----------------------
+
+You can register a new app from this page: https://appdev.kbase.us/#appcatalog/register
+
+Once you do so, it will be available in the ``dev`` catalog. This catalog is meant as experimentation grounds for new apps. When you're searching for apps, you need to be sure to filter by development apps to view your ``dev`` app.

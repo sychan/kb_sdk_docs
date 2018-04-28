@@ -20,12 +20,12 @@ Create Input Parameters
 
 In SDK apps, we can have input parameters in the form of maps (dicts/hashes/objects), lists (arrays), floats, integers, strings, or booleans.
 
-Sometimes, input strings will actually be **reference addresses** to files on KBase's workspace servers.
+Sometimes, input strings will actually be **reference addresses** to files on KBase's workspace servers. We will write some code to download the files that these references point to.
 
 SDK apps can output the following data:
 
-* **KBase Typed Data** - You can output typed data objects, like assemblies or genomes
-* **HTML Pages** - Your method can use KBaseReports to generate an HTML report displaying results.
+* **KBase Typed Data** - Assemblies, genomes, annotations, etc.
+* **HTML Pages** - A formatted page representing the output of your app
 * **Misc. files for download** - You method can use KBaseReports to save results to a file server for the user to download
 
 Let's start by defining our input parameters. We need a ``min_length`` parameter (an integer), and an ``assembly_ref`` parameter (a string reference to an assembly file in the workspace).
@@ -33,8 +33,8 @@ Let's start by defining our input parameters. We need a ``min_length`` parameter
 To add an input parameter to your app, you need to update three configuration files:
 
 1. ``module_name.spec`` -- a type specification file
-1. ``ui/narrative/example_method/spec.json`` -- a UI configuration file
-1. ``ui/narrative/example_method/display.yaml`` -- a text content file
+2. ``ui/narrative/example_method/spec.json`` -- a UI configuration file
+3. ``ui/narrative/example_method/display.yaml`` -- a text content file
 
 We'll start with the ``module_name.spec`` file.
 
@@ -59,7 +59,7 @@ Open your KIDL spec file, and you will see something like this:
 
 The above syntax comes from a custom type language called KIDL that is similar to languages like C++, but is specific to KBase. KIDL is used as a common interface definition language, allowing different apps to communicate with one another, regardless of programming languages.
 
-`View the KIDL tutorial and reference </references/KIDL_spec>`_
+`View the KIDL tutorial and reference </references/KIDL_spec.html>`_
 
 Our input and output types need to be in ``structure`` types. Add these type structures inside your module section:
 
@@ -81,7 +81,7 @@ Above, we've added a few input parameters: a workspace name (always needed to wo
 
 We also added a placeholder type structure for our output results, which we will return to later. For now, it can be blank.
 
-Now insert a function type for our app's main method, which we can call ``filter_contigs``. Refer to the [KIDL specification](/doc/KIDL_specification.md) for details about function types.
+Now insert a function type for our app's main method, which we can call ``filter_contigs``. Refer to the `KIDL specification </references/KIDL_spec.html>`_ for details about function types.
 
 .. code::
 
@@ -91,7 +91,12 @@ Now insert a function type for our app's main method, which we can call ``filter
 
 In SDK apps, we want to set the function as ``authentication required`` because all SDK apps that run in the Narrative will require authentication since they need to interact with a user's workspace.
 
-Now return to your app's root directory and run ``make``. **You must rerun *make* after each change to the KIDL specification to regenerate client and server code used in the codebase**
+Now return to your app's root directory and run ``make``. 
+
+.. important::
+
+    You must rerun *make* after each change to the KIDL specification to regenerate client and server code used in the codebase
+
 
 Validate your app
 ---------------------
@@ -169,7 +174,7 @@ These options will generate UI form elements in the narrative that allow the use
 Each parameter object has a number of options.
 
 * We want both parameters to be required (``"optional": false``)
-* We want the ``"assembly_ref"`` to be a reference to either an Assembly or ContigSet object (view the [type catalog](https://narrative.kbase.us/#catalog/datatypes) to see all KBase types)
+* We want the ``"assembly_ref"`` to be a reference to either an Assembly or ContigSet object (view the `type catalog <https://narrative.kbase.us/#catalog/datatypes>`_) to see all KBase types)
 * We want the ``"min_length"`` parameter to be validated as an integer, and we don't want to allow negative numbers.
 
 Below that section, you will see some default ``"input_mapping"`` options. Change that section so that it contains entries for each of your input parameters. For now we can leave the output section empty:
@@ -196,7 +201,7 @@ Below that section, you will see some default ``"input_mapping"`` options. Chang
     ...
 
 
-Notice that we added a ``"target_type_transform"`` option with the value ``"resolved-ref"`` for the ``"assembly_ref"``. This indicates to the narrative that this parameter needs to be a valid reference to a file in the workspace.
+Notice that we added a ``"target_type_transform"`` option with the value ``"resolved-ref"`` for the ``"assembly_ref"`` input. This indicates to the narrative that this parameter needs to be a valid reference to an object in the workspace.
 
 When you run ``kb-sdk validate`` again, you will get an error about your ``display.yaml``, which we can update next.
 

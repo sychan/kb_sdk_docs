@@ -1,10 +1,10 @@
-Add UI elements to your app
+How to add UI elements
 ===========================
 
 Control of Narrative interaction is accomplished in files in the
 ``ui/narrative/methods/<MyMethod>`` directory.
 
-Configure the input interface.
+Configure the input interface
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The input options are specified in the "parameters" section of the
@@ -17,7 +17,7 @@ will overwrite an existing object or if the name contains invalid
 characters, and a widget displaying that object will appear beneath the
 app cell.
 
-::
+.. code:: json
 
         "parameters": [ 
             {
@@ -51,38 +51,39 @@ For each option, the "value" is what will be passed to the app while the
 hidden by default because "advanced" is true (meaning the parameter will
 be hidden in the "Advanced options" section of the input widget).
 
-::
+.. code:: json
 
     {
-                "id": "prune",
-                "optional": false,
-                "advanced": true,
-                "allow_multiple": false,
-                "default_values": [ "biochemistry" ],
-                "field_type": "dropdown",
-                "dropdown_options": {
-                    "options": [
-                        {
-                            "value": "biochemistry",
-                            "display": "Known biochemistry",
-                            "id": "biochemistry",
-                            "ui_name": "Known biochemistry"
-                        },
-                        {
-                            "value": "model",
-                            "display": "Input model",
-                            "id": "model",
-                            "ui_name": "Input model"
-                        },
-                        {
-                            "value": "none",
-                            "display": "Do not prune",
-                            "id": "none",
-                            "ui_name": "Do not prune"
-                        }
-                    ]
+        "id": "prune",
+        "optional": false,
+        "advanced": true,
+        "allow_multiple": false,
+        "default_values": [ "biochemistry" ],
+        "field_type": "dropdown",
+        "dropdown_options": {
+            "options": [
+                {
+                    "value": "biochemistry",
+                    "display": "Known biochemistry",
+                    "id": "biochemistry",
+                    "ui_name": "Known biochemistry"
+                },
+                {
+                    "value": "model",
+                    "display": "Input model",
+                    "id": "model",
+                    "ui_name": "Input model"
+                },
+                {
+                    "value": "none",
+                    "display": "Do not prune",
+                    "id": "none",
+                    "ui_name": "Do not prune"
                 }
-            },
+            ]
+        }
+    },
+
 
 There are many additional interface options available. One of the best
 ways to discover them is to explore `this
@@ -90,9 +91,7 @@ gallery <https://narrative.kbase.us/narrative/ws.23109.obj.1>`__ which
 contains a variety of KBase apps along with the spec file that generated
 the user interface.
 
-`[Back to top] <#top>`__
-
-Configure passing variables from Narrative Input to SDK method.
+Configure passing variables from Narrative Input to SDK method
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In the 'behavior' section of the spec.json, the output of the user
@@ -211,17 +210,15 @@ And presents an object like this one to the report visualization:
         "Workspace_name": "<username>:narrative_<long_number>"   
     }
 
-`[Back to top] <#top>`__
-
 Naming fields in the input widget cell
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ``display.yaml`` file primarily contains text to describe the app
-(in the Narrative and in the App Catalog). Options in this file will be
-further explored in step 10 (`Complete Module
-Info <kb_sdk_complete_module_info.md>`__) but minimally this file should
-define: \* A module name \* A module tooltip \* A ui-name for each
-parameter \* A short hint for each parameter
+The ``display.yaml`` file primarily contains text to describe the app (shown in the narrative and in the app catalog). Minimally this file should define: 
+
+* A module name 
+* A module tooltip 
+* A ui-name for each parameter 
+* A short hint for each parameter
 
 Details on Narrative UI specification
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

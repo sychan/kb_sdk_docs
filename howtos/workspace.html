@@ -1,0 +1,314 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using workspace metadata &mdash; KBase SDK 0.1.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Manually building the SDK" href="manual_build.html" />
+    <link rel="prev" title="Working with the file utils" href="file_utils.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> KBase SDK
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Intro</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Concepts and Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../video_tutorial.html">Video Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/initialize.html">3. Initialize the App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/setup.html">4. Setup &amp; Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/implement.html">5. Implement Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">6. Publish and Update</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../references/questions_and_answers.html">Common Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create_a_report.html">Creating reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="add_ui_elements.html">Adding UI Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit_your_dockerfile.html">Editing your app’s Dockerfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fill_out_app_information.html">Fully documenting your app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run_a_shell_command.html">Running shell commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_utils.html">Working with the file utils</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Guides</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using workspace metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual_build.html">Manually building the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="work_with_reference_data.html">Working with reference data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="job_manager.html">How to list and view jobs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">References &amp; Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of an App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">KBase SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Using workspace metadata</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/kbase/kb_sdk_docs//blob/master/source/howtos/workspace.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="using-workspace-metadata">
+<h1>Using workspace metadata<a class="headerlink" href="#using-workspace-metadata" title="Permalink to this headline">¶</a></h1>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">While you can get objects using the workspace client, it is not the recommended way to do it. We suggest using the <a class="reference external" href="/howtos/file_utils.html">file utilities</a> instead.</p>
+</div>
+<div class="section" id="retrieving-workspace-object-metadata">
+<h2>Retrieving workspace object metadata<a class="headerlink" href="#retrieving-workspace-object-metadata" title="Permalink to this headline">¶</a></h2>
+<p>If you don’t want to retrieve the entire object, and just want information about it, the most efficient way is to use the <code class="docutils literal notranslate"><span class="pre">ws.get_object_info</span></code> function. To read more about the available functions, see the <a class="reference external" href="https://kbase.us/services/ws/docs/Workspace.html">workspace spec file</a>.</p>
+<p><em>Initialize the workspace client and get an object’s information by reference</em></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># The config object is passed into the __init__ function for your *Impl.py module</span>
+<span class="kn">from</span> <span class="nn">Workspace.WorkspaceClient</span> <span class="k">import</span> <span class="n">Workspace</span> <span class="k">as</span> <span class="n">Workspace</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">ws_url</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;workspace-url&quot;</span><span class="p">]</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;KB_AUTH_TOKEN&quot;</span><span class="p">]</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">ws</span> <span class="o">=</span> <span class="n">Workspace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ws_url</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">)</span>
+<span class="n">obj_ref</span> <span class="o">=</span> <span class="s2">&quot;your/object/reference&quot;</span>
+<span class="n">object_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">get_object_info</span><span class="p">([{</span><span class="s2">&quot;ref&quot;</span><span class="p">:</span> <span class="n">obj_ref</span><span class="p">}])[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">object_type</span> <span class="o">=</span> <span class="n">object_info</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="c1">#this could be KBaseGenomes.Genome-8.3</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-to-use-the-workspace-client-in-the-narrative">
+<h2>How to use the Workspace Client in the narrative<a class="headerlink" href="#how-to-use-the-workspace-client-in-the-narrative" title="Permalink to this headline">¶</a></h2>
+<p>You can access the workspace client from within narrative code cells. See this <a class="reference external" href="https://narrative.kbase.us/narrative/ws.30170.obj.1">example narrative</a>.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ws</span> <span class="o">=</span> <span class="n">biokbase</span><span class="o">.</span><span class="n">narrative</span><span class="o">.</span><span class="n">clients</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;workspace&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">get_objects2</span><span class="p">({</span><span class="s1">&#39;objects&#39;</span> <span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;ref&#39;</span> <span class="p">:</span> <span class="s1">&#39;30170/2/1&#39;</span><span class="p">}]})</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-to-add-types-to-the-workspace">
+<h2>How to add types to the workspace<a class="headerlink" href="#how-to-add-types-to-the-workspace" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>See the guide at <a class="reference external" href="https://ci.kbase.us/services/ws/docs/administrationinterface.html#managing-module-ownership-requests">https://ci.kbase.us/services/ws/docs/administrationinterface.html#managing-module-ownership-requests</a></li>
+<li>Use the administration interface in any of the clients above to register, approve registration of, and to upload typespecs</li>
+</ul>
+</div>
+<div class="section" id="how-to-get-a-given-typespec-spec-file">
+<h2>How to get a given typespec / .spec file?<a class="headerlink" href="#how-to-get-a-given-typespec-spec-file" title="Permalink to this headline">¶</a></h2>
+<p>If you can’t find a typespec in a repo, you can find it doing the following:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Example spec file snippet</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">biokbase.workspace.client</span> <span class="kn">import</span> <span class="n">Workspace</span>
+<span class="n">ws</span> <span class="o">=</span> <span class="n">Workspace</span><span class="p">(</span><span class="s1">&#39;https://ci.kbase.us/services/ws&#39;</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">ws</span><span class="o">.</span><span class="n">get_module_info</span><span class="p">({</span><span class="s1">&#39;mod&#39;</span><span class="p">:</span> <span class="s1">&#39;YourModuleName&#39;</span><span class="p">})[</span><span class="s1">&#39;spec&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="manual_build.html" class="btn btn-neutral float-right" title="Manually building the SDK" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file_utils.html" class="btn btn-neutral" title="Working with the file utils" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, KBase.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1.18',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

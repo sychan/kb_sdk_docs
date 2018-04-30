@@ -1,0 +1,403 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Common Questions &mdash; KBase SDK 0.1.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Creating reports" href="../howtos/create_a_report.html" />
+    <link rel="prev" title="6. Publish and Update" href="../tutorial/publish.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> KBase SDK
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Intro</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Concepts and Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../video_tutorial.html">Video Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/initialize.html">3. Initialize the App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/setup.html">4. Setup &amp; Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/implement.html">5. Implement Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">6. Publish and Update</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guides</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Common Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/create_a_report.html">Creating reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/add_ui_elements.html">Adding UI Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/edit_your_dockerfile.html">Editing your app’s Dockerfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/fill_out_app_information.html">Fully documenting your app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/run_a_shell_command.html">Running shell commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/file_utils.html">Working with the file utils</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/workspace.html">Using workspace metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/manual_build.html">Manually building the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/work_with_reference_data.html">Working with reference data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/job_manager.html">How to list and view jobs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">References &amp; Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="module_anatomy.html">Anatomy of an App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="KIDL_spec.html">KIDL Specification</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">KBase SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Common Questions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/kbase/kb_sdk_docs//blob/master/source/references/questions_and_answers.md" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="common-questions">
+<span id="common-questions"></span><h1>Common Questions<a class="headerlink" href="#common-questions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="how-do-i-start-my-app-what-do-i-do-now">
+<span id="how-do-i-start-my-app-what-do-i-do-now"></span><h2>How do I start my app? What do I do now?<a class="headerlink" href="#how-do-i-start-my-app-what-do-i-do-now" title="Permalink to this headline">¶</a></h2>
+<p>The easiest way to get an intuition for app development is to <a class="reference external" href="/tutorial/dependencies.html">follow the tutorial</a>.</p>
+<p>See if there is an existing app <a class="reference external" href="https://narrative.kbase.us/#catalog/apps">in the catalog</a> that is similar to yours, or one that has a UI that you would like to emulate. Every app you see in the narrative will have a link to its code repository.</p>
+<p>Typically developers follow this path:</p>
+<ol class="simple">
+<li>Work on the <code class="docutils literal notranslate"><span class="pre">MyModule.spec</span></code> file. This will autogenerate methods in your <code class="docutils literal notranslate"><span class="pre">MyModuleImpl.py</span></code> file, which is where the core of your method functionality will reside.</li>
+<li>Work on the functionality of the app in the autogenerated <code class="docutils literal notranslate"><span class="pre">MyModuleImpl.py</span></code> file.</li>
+<li>Continue developing the app by working on unit tests</li>
+<li>Make the UI</li>
+<li>Publish and test in the narrative</li>
+</ol>
+<p>For these example apps, check out the <code class="docutils literal notranslate"><span class="pre">.spec</span></code> files, <code class="docutils literal notranslate"><span class="pre">&lt;module&gt;Impl.py</span></code> files, and <code class="docutils literal notranslate"><span class="pre">spec.json</span></code> files.</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/kbaseapps/kb_quast/blob/master/kb_quast.spec">QUAST</a></li>
+<li><a class="reference external" href="https://github.com/kbaseapps/kb_megahit/blob/master/MEGAHIT.spec">MEGAHIT</a></li>
+<li><a class="reference external" href="https://github.com/kbaseapps/kb_trimmomatic/blob/master/kb_trimmomatic.spec">Trimmomatic</a></li>
+</ul>
+</div>
+<div class="section" id="how-do-i-work-with-test-and-reference-data">
+<span id="how-do-i-work-with-test-and-reference-data"></span><h2>How do I work with test and reference data?<a class="headerlink" href="#how-do-i-work-with-test-and-reference-data" title="Permalink to this headline">¶</a></h2>
+<p>Put data into the data directory. If the data is too large to host on github, check out the following guide for <a class="reference external" href="/howtos/work_with_reference_data.html">how to add reference data</a>.</p>
+<p>Test files can go within the <code class="docutils literal notranslate"><span class="pre">test/</span></code> directory in your app, such as <code class="docutils literal notranslate"><span class="pre">test/data/</span></code>.</p>
+<blockquote>
+<div>Note: Upload local genome files for of your tests. If you use an existing workspace reference in your tests that works in AppDev, it won’t work in CI or production.</div></blockquote>
+</div>
+<div class="section" id="how-do-i-organize-my-app-s-code">
+<span id="how-do-i-organize-my-app-s-code"></span><h2>How do I organize my app’s code?<a class="headerlink" href="#how-do-i-organize-my-app-s-code" title="Permalink to this headline">¶</a></h2>
+<p>There are a couple common patterns:</p>
+<ol class="simple">
+<li>Create multiple functions and do everything inside the implementation file. An example of this pattern can be found in the <a class="reference external" href="https://github.com/kbaseapps/kb_quast/blob/master/lib/kb_quast/kb_quastImpl.py">QUAST app</a>.</li>
+<li>Create a utils directory, create a runner or utility class, pass in the configuration file and parameter files to it, and do everything in there. An example of this pattern can be found in the <a class="reference external" href="https://github.com/kbaseapps/FastANI/blob/master/lib/FastANI/FastANIImpl.py">FastANI app</a>.</li>
+</ol>
+<p>For more complex apps, the second option is preferred, as you can split up functionality into different modules and packages.</p>
+</div>
+<div class="section" id="help-my-python-code-in-the-implementation-file-keeps-disappearing-what-happened-to-it">
+<span id="help-my-python-code-in-the-implementation-file-keeps-disappearing-what-happened-to-it"></span><h2>Help! My python code in the implementation file keeps disappearing? What happened to it?<a class="headerlink" href="#help-my-python-code-in-the-implementation-file-keeps-disappearing-what-happened-to-it" title="Permalink to this headline">¶</a></h2>
+<p>Magic comments are comments that are used internally by the kbase_sdk in order to generate the implementation file when you make changes to the spec file.</p>
+<p>Examples of magic comments include</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#BEGIN_HEADER</span>
+<span class="p">(</span><span class="n">This</span> <span class="ow">is</span> <span class="n">where</span> <span class="n">your</span> <span class="kn">import</span> <span class="nn">statements</span> <span class="n">go</span><span class="p">)</span>
+<span class="c1">#END_HEADER</span>
+
+<span class="c1">#BEGIN_CLASS_HEADER</span>
+<span class="p">(</span><span class="n">This</span> <span class="ow">is</span> <span class="n">where</span> <span class="n">your</span> <span class="k">class</span> <span class="nc">variables</span> <span class="ow">and</span> <span class="n">functions</span> <span class="n">go</span> <span class="n">that</span> <span class="n">you</span> <span class="n">want</span> <span class="n">imported</span><span class="p">)</span>
+<span class="c1">#END_CLASS_HEADER</span>
+
+<span class="c1">#BEGIN_CONSTRUCTOR</span>
+<span class="p">(</span><span class="n">This</span> <span class="ow">is</span> <span class="ow">in</span> <span class="n">your</span> <span class="n">init</span> <span class="n">statement</span> <span class="k">for</span> <span class="n">your</span> <span class="k">class</span> <span class="nc">goes</span><span class="p">)</span>
+<span class="c1">#END_CONSTRUCTOR</span>
+
+<span class="c1">#BEGIN YourFunctionName1</span>
+<span class="p">(</span><span class="n">This</span> <span class="ow">is</span> <span class="n">were</span> <span class="n">the</span> <span class="n">implementation</span> <span class="n">details</span> <span class="n">of</span> <span class="n">your</span> <span class="n">functions</span> <span class="n">go</span><span class="p">)</span>
+<span class="c1">#END YourFunctionName1</span>
+</pre></div>
+</div>
+<p>Any code created outside of the Magic Comments will not be included inside the final .impl implementation file.</p>
+</div>
+<div class="section" id="validation">
+<span id="validation"></span><h2>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="q-how-does-validation-work-for-apps">
+<span id="q-how-does-validation-work-for-apps"></span><h3>Q: How does validation work for apps?<a class="headerlink" href="#q-how-does-validation-work-for-apps" title="Permalink to this headline">¶</a></h3>
+<p>Currently validation is done in the UI based on values provided in the ui/narrative/methods/spec.json.
+When invalid input is entered in the UI for the app, an error will display to the user,
+and the user will not be able to submit the form for the app.</p>
+<p>Validation is not provided for the app to be called programmatically (such as with unit tests)
+so you will have to validate your input again.
+It may be possible to generate validation programmatically using the spec.json file,
+but this is not currently an out of the box feature.</p>
+</div>
+<div class="section" id="q-how-do-i-learn-more-about-the-spec-json-file">
+<span id="q-how-do-i-learn-more-about-the-spec-json-file"></span><h3>Q: How do I learn more about the spec.json file?<a class="headerlink" href="#q-how-do-i-learn-more-about-the-spec-json-file" title="Permalink to this headline">¶</a></h3>
+<p>While there isn’t a document with all of the valid UI Parameters,
+you can check out this notebook with a variety of different options at
+<a class="reference external" href="https://narrative.kbase.us/narrative/ws.23109.obj.1">User Inferface Parameter Gallery</a>. Also see <a class="reference external" href="https://github.com/kbase/kb_sdk/blob/master/doc/NarrativeUIAppSpecification.pdf">Narrative UI Specification</a></p>
+</div>
+<div class="section" id="q-what-are-all-the-auto-generated-source-files-in-my-app">
+<span id="q-what-are-all-the-auto-generated-source-files-in-my-app"></span><h3>Q: What are all the auto-generated source files in my app?<a class="headerlink" href="#q-what-are-all-the-auto-generated-source-files-in-my-app" title="Permalink to this headline">¶</a></h3>
+<p>These files are created by the KBase type compiler, which takes your KIDL type file (<code class="docutils literal notranslate"><span class="pre">MyModule.spec</span></code>) and generates different modules that are inserted into your codebase. These files are used by docker and service handlers to run your app and its dependencies.</p>
+<p>In python apps, the <code class="docutils literal notranslate"><span class="pre">authclient.py</span></code> and <code class="docutils literal notranslate"><span class="pre">baseclient.py</span></code> files get placed into the package directory for your own app, as well as all other the package directories. These files are generally the same across all the packages in your app. <code class="docutils literal notranslate"><span class="pre">authclient.py</span></code> handles authenticating the user so they can access the workspace, while <code class="docutils literal notranslate"><span class="pre">baseclient.py</span></code> has functionality for running SDK apps and calling their methods.</p>
+<p>Other auto-generated files in python apps include the <code class="docutils literal notranslate"><span class="pre">*Client.py</span></code> and <code class="docutils literal notranslate"><span class="pre">*Server.py</span></code> files in each package. Each app has an <code class="docutils literal notranslate"><span class="pre">AppNameClient.py</span></code> module in its package. These modules contain classes that can receive parameters for the app and pass that data to the app’s server</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">MyModuleServer.py</span></code> file gets auto-generated and saved only for your own app’s package directory. It handles requests from the python clients.</p>
+</div>
+<div class="section" id="q-what-makes-the-tests-slow-to-run">
+<span id="q-what-makes-the-tests-slow-to-run"></span><h3>Q: What makes the tests slow to run?<a class="headerlink" href="#q-what-makes-the-tests-slow-to-run" title="Permalink to this headline">¶</a></h3>
+<p>Every time we run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> it rebuilds the docker container and re-downloads data objects from your workspace.</p>
+<p>Ways you can speed up your tests:</p>
+<ul class="simple">
+<li>Make sure all your custom docker setup, such as compiling binaries, is at the top of your Dockerfile so it always gets cached</li>
+<li>Reduce the amount of files you download and upload</li>
+<li>Reuse existing example files on the workspace so you don’t have to upload files</li>
+<li>Separate out your modules into functions that just take local data and files, and test those separately</li>
+<li>Create a separate unit tests that you can run directly, bypassing <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code></li>
+</ul>
+</div>
+<div class="section" id="q-when-you-install-and-run-sdk-apps-from-within-your-own-app-how-are-these-running">
+<span id="q-when-you-install-and-run-sdk-apps-from-within-your-own-app-how-are-these-running"></span><h3>Q: When you install and run SDK Apps from within your own app, how are these running?<a class="headerlink" href="#q-when-you-install-and-run-sdk-apps-from-within-your-own-app-how-are-these-running" title="Permalink to this headline">¶</a></h3>
+<p>SDK app dependencies that you use in your own app, such as <code class="docutils literal notranslate"><span class="pre">DataFileUtil</span></code>, run in their own docker containers using their own separate servers.</p>
+<p>TODO Needs more details</p>
+</div>
+</div>
+<div class="section" id="docker">
+<span id="docker"></span><h2>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="q-should-i-always-specify-a-specific-version-of-a-library-or-executable">
+<span id="q-should-i-always-specify-a-specific-version-of-a-library-or-executable"></span><h3>Q: Should I always specify a specific version of a library or executable ?<a class="headerlink" href="#q-should-i-always-specify-a-specific-version-of-a-library-or-executable" title="Permalink to this headline">¶</a></h3>
+<p>There is not currently a requirement to use a specific version, but the tradeoff is as follows:
+When using a specific version of a library or executable, you don’t have to worry as much about backwards comptability with future releases.
+However, if a newer version of the software is available, your app won’t automatically use it.</p>
+</div>
+<div class="section" id="q-where-do-i-install-binaries-in-docker">
+<span id="q-where-do-i-install-binaries-in-docker"></span><h3>Q: Where do I install binaries in docker?<a class="headerlink" href="#q-where-do-i-install-binaries-in-docker" title="Permalink to this headline">¶</a></h3>
+<p>You can install binaries that will automatically be added to $PATH at /kb/deployment/bin, like so</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Install Diamond Binary v0.9.17</span>
+<span class="n">WORKDIR</span> <span class="o">/</span><span class="n">kb</span><span class="o">/</span><span class="n">deployment</span><span class="o">/</span><span class="nb">bin</span>
+<span class="n">RUN</span> <span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">bbuchfink</span><span class="o">/</span><span class="n">diamond</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">v0</span><span class="o">.</span><span class="mf">9.17</span><span class="o">/</span><span class="n">diamond</span><span class="o">-</span><span class="n">linux64</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span> \
+    <span class="o">&amp;&amp;</span> <span class="n">tar</span> <span class="o">-</span><span class="n">xvf</span> <span class="n">diamond</span><span class="o">-</span><span class="n">linux64</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span> <span class="n">diamond</span> \
+    <span class="o">&amp;&amp;</span> <span class="n">rm</span> <span class="n">diamond</span><span class="o">-</span><span class="n">linux64</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+<p>Please follow the <a class="reference external" href="/howtos/edit_your_dockerfile.html">Editing Docker</a> guide.</p>
+</div>
+<div class="section" id="q-how-do-i-get-inside-the-docker-image-how-do-i-get-root-access">
+<span id="q-how-do-i-get-inside-the-docker-image-how-do-i-get-root-access"></span><h3>Q: How do I get inside the docker image? How do I get root access?<a class="headerlink" href="#q-how-do-i-get-inside-the-docker-image-how-do-i-get-root-access" title="Permalink to this headline">¶</a></h3>
+<p>You can open a shell inside the docker container with the <code class="docutils literal notranslate"><span class="pre">test_local/run_bash.sh</span></code> script.</p>
+<p>If that’s not working, try changing the <code class="docutils literal notranslate"><span class="pre">--user</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">--user</span> <span class="pre">0</span></code></p>
+</div>
+<div class="section" id="q-what-are-the-sh-scripts-in-the-test-local-directory">
+<span id="q-what-are-the-sh-scripts-in-the-test-local-directory"></span><h3>Q: What are the <code class="docutils literal notranslate"><span class="pre">.sh</span></code> scripts in the <code class="docutils literal notranslate"><span class="pre">test_local/</span></code> directory?<a class="headerlink" href="#q-what-are-the-sh-scripts-in-the-test-local-directory" title="Permalink to this headline">¶</a></h3>
+<p>You don’t really need anything besides the <code class="docutils literal notranslate"><span class="pre">run_bash.sh</span></code> script. If you want to run tests, use <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code>.</p>
+</div>
+<div class="section" id="q-how-do-i-have-multiple-docker-images-for-different-versions-of-my-app-or-dynamic-service">
+<span id="q-how-do-i-have-multiple-docker-images-for-different-versions-of-my-app-or-dynamic-service"></span><h3>Q: How do I have multiple docker images for different versions of my app or dynamic service?<a class="headerlink" href="#q-how-do-i-have-multiple-docker-images-for-different-versions-of-my-app-or-dynamic-service" title="Permalink to this headline">¶</a></h3>
+<p>You will need to <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">build</span></code> them and tag them with different names if this is not automatically done by your app.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../howtos/create_a_report.html" class="btn btn-neutral float-right" title="Creating reports" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../tutorial/publish.html" class="btn btn-neutral" title="6. Publish and Update" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, KBase.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1.18',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

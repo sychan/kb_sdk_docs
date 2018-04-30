@@ -28,7 +28,6 @@ If you want to develop apps using the SDK, please obtain a free KBase user accou
     overview
     video_tutorial
 
-
 .. toctree::
    :maxdepth: 1
    :numbered:
@@ -52,12 +51,14 @@ If you want to develop apps using the SDK, please obtain a free KBase user accou
     :caption: Developer Guides
     :name: howtos
 
+    references/questions_and_answers
     howtos/create_a_report
     howtos/add_ui_elements
     howtos/edit_your_dockerfile
     howtos/fill_out_app_information
     howtos/run_a_shell_command
     howtos/file_utils
+
 
 .. toctree::
     :maxdepth: 1

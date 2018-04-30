@@ -49,16 +49,25 @@ If you want to develop apps using the SDK, please obtain a free KBase user accou
 
 .. toctree::
     :maxdepth: 1
-    :caption: How-to Guides
+    :caption: Developer Guides
     :name: howtos
 
     howtos/create_a_report
     howtos/add_ui_elements
     howtos/edit_your_dockerfile
     howtos/fill_out_app_information
-    howtos/manual_build
     howtos/run_a_shell_command
+    howtos/file_utils
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Advanced Guides
+    :name: howtos
+
+    howtos/workspace
+    howtos/manual_build
     howtos/work_with_reference_data
+    howtos/job_manager
 
 
 .. toctree::

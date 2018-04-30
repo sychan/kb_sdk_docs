@@ -1,4 +1,4 @@
-How to edit your app's Dockerfile
+Editing your app's Dockerfile
 ==================================
 
 To set up custom programs for your app, such as third-party tools, you

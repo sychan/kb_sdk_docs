@@ -1,4 +1,4 @@
-Manually build the SDK
+Manually building the SDK
 ======================
 
 .. warning::

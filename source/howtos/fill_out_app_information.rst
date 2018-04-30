@@ -1,4 +1,4 @@
-How to document your app
+Fully documenting your app
 ================================
 
 Complete Module Info

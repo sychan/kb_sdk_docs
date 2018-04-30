@@ -1,4 +1,4 @@
-Run shell commands in your app
+Running shell commands
 ==============================
 
 Download and compile using your Dockerfile
@@ -11,6 +11,7 @@ in your Dockerfile. For example,
 with this series of commands:
 
 .. code:: sh
+    howtos/manual_build
 
     # Fetch and compile FastANI
     RUN git clone https://github.com/ParBLiSS/FastANI.git /opt/FastANI \

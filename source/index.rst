@@ -49,7 +49,7 @@ If you want to develop apps using the SDK, please obtain a free KBase user accou
 .. toctree::
     :maxdepth: 1
     :caption: Developer Guides
-    :name: howtos
+    :name: basic_guides
 
     references/questions_and_answers
     howtos/create_a_report
@@ -63,7 +63,7 @@ If you want to develop apps using the SDK, please obtain a free KBase user accou
 .. toctree::
     :maxdepth: 1
     :caption: Advanced Guides
-    :name: howtos
+    :name: advanced_guides
 
     howtos/workspace
     howtos/manual_build

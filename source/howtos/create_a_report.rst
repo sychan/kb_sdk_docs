@@ -1,3 +1,5 @@
+.. _creating-reports:
+
 Creating reports
 =======================
 

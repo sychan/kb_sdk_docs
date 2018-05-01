@@ -33,7 +33,7 @@ Some things to note:
    it will automatically get added to your container's ``$PATH``
 
 .. note::
-    Also see: `How to edit your app's Dockerfile </howtos/edit_your_dockerfile.html>`__
+    Also see: `How to edit your app's Dockerfile <../howtos/edit_your_dockerfile.html>`__
 
 Invoking the command in Python
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

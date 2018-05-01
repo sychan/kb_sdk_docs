@@ -59,7 +59,7 @@ Open your KIDL spec file, and you will see something like this:
 
 The above syntax comes from a custom type language called KIDL that is similar to languages like C++, but is specific to KBase. KIDL is used as a common interface definition language, allowing different apps to communicate with one another, regardless of programming languages.
 
-`View the KIDL tutorial and reference </references/KIDL_spec.html>`_
+`View the KIDL tutorial and reference <../references/KIDL_spec.html>`_
 
 Our input and output types need to be in ``structure`` types. Add these type structures inside your module section:
 
@@ -81,7 +81,7 @@ Above, we've added a few input parameters: a workspace name (always needed to wo
 
 We also added a placeholder type structure for our output results, which we will return to later. For now, it can be blank.
 
-Now insert a function type for our app's main method, which we can call ``filter_contigs``. Refer to the `KIDL specification </references/KIDL_spec.html>`_ for details about function types.
+Now insert a function type for our app's main method, which we can call ``filter_contigs``. Refer to the `KIDL specification <../references/KIDL_spec.html>`_ for details about function types.
 
 .. code::
 

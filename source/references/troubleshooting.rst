@@ -14,7 +14,7 @@ When you try to run ``make sdkbase`` if you see a message like:
     make: *** [sdkbase] Error 1
 
 
-You likely have not started your Docker daemon. On a Mac, that means running in the Docker CLI shell after starting Docker Kitematic and clicking on "Docker CLI" in the lower left corner (See `Install SDK Dependencies - Docker </tutorial/install.html>`__ for guidance).
+You likely have not started your Docker daemon. On a Mac, that means running in the Docker CLI shell after starting Docker Kitematic and clicking on "Docker CLI" in the lower left corner (See `Install SDK Dependencies - Docker <../tutorial/install.html>`__ for guidance).
 
 Trying to run *kb-sdk test* and seeing errors that include *TLS-enabled daemon* and/or *docker daemon*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -31,7 +31,7 @@ When you try to run ``kb-sdk test``, if you see a message like:
 You likely have not started your Docker daemon. On a Mac, that means
 running in the Docker CLI shell after starting Docker Kitematic and
 clicking on "Docker CLI" in the lower left corner (See `Install SDK
-Dependencies - Docker </tutorial/install.html>`__ for guidance).
+Dependencies - Docker <../tutorial/install.html>`__ for guidance).
 
 Having trouble getting Docker working on Mac
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -66,7 +66,7 @@ Java may not be installed or the path may not be set properly. Please follow the
 My report isn't generating output correctly
 ----------------------------------------------------
 
-See the guide on `Creating a report </howtos/create_a_report.html>`_.
+See the guide on `Creating a report <../howtos/create_a_report.html>`_.
 
 
 ServerError: JSONRPCError

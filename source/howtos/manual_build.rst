@@ -4,7 +4,7 @@ Manually building the SDK
 .. warning::
 
     The recommended installation option is to run the `SDK as a
-    Docker container. </tutorial/install.html>`_
+    Docker container. <../tutorial/install.html>`_
 
 2. Install and Build SDK
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -99,7 +99,7 @@ that does most of the work for you:
 
 You will get a failure if the Docker daemon is not running when you
 invoke the above command. See `Install SDK Dependencies -
-Docker </tutorial/dependencies.html>`_ for guidance.
+Docker <../tutorial/dependencies.html>`_ for guidance.
 
 The image is fairly large, so it will take some time to run and build
 the image.

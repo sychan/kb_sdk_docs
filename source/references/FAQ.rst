@@ -50,8 +50,8 @@ systems, such as the various flavors of Linux, are fine too. Really
 anywhere you can run Docker, Java, and your preferred development
 language (among Python, Perl, or Java). You will need about 1-2 GB free
 to install the
-`dependencies </tutorial/dependencies.html>`__
-and the `KBase SDK </tutorial/install.html>`__
+`dependencies <../tutorial/dependencies.html>`__
+and the `KBase SDK <../tutorial/install.html>`__
 
 Q: What are system requirements for execution environment?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -102,7 +102,7 @@ Q: Do I need to copy the tool I'm using into my github repo?
 **A:** You do not if there is a public way to retrieve the code such as
 by using a *git clone*, *curl*, or other way of pulling the data down
 into the Docker image. This is accomplished by `modifying the
-Dockerfile </howtos/edit_your_dockerfile.html>`__
+Dockerfile <../howtos/edit_your_dockerfile.html>`__
 to configure the Docker image build.
 
 Q: Can I develop on Windows?
@@ -123,7 +123,7 @@ Q: How do I add custom data and/or configuration data to the system?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **A:** If it's less than 10 GB, you can add it to the Docker image by
-`editing the Dockerfile </howtos/edit_your_dockerfile.html>`__.
+`editing the Dockerfile <../howtos/edit_your_dockerfile.html>`__.
 Please contact us at https://kbase.us/contact-us if you need to use
 something larger.
 

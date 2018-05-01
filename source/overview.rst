@@ -69,7 +69,7 @@ When you install and run another app within yours, the other app runs in its own
 KBase Types and Parameters
 --------------------------------
 
-All of the data on KBase is strongly typed using an interface definition language called `KIDL </references/KIDL_spec.html>`_. This allows KBase to better cross-reference data, make inferences, and check app-to-data compatibility.
+All of the data on KBase is strongly typed using an interface definition language called `KIDL <references/KIDL_spec.html>`_. This allows KBase to better cross-reference data, make inferences, and check app-to-data compatibility.
 
 Configuration files in your app are used to define what parameters your app can accept and what kind of output it can return.
 
@@ -92,7 +92,7 @@ In general, you always want to use the workspace for any datasets you work with 
 
 A dataset stored in the workspace is referred to as an *object*. Objects in the workspace have some special properties:
 
-* Every object conforms to a `type specification </references/KIDL_spec.html>`_.
+* Every object conforms to a `type specification <references/KIDL_spec.html>`_.
 * Objects are versioned
 * The "reference" for an object has the format ``workspace_id/object_id/version``.
 * Workspaces are authenticated

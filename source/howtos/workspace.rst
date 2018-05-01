@@ -3,7 +3,7 @@ Using workspace metadata
 
 .. important::
 
-    While you can get objects using the workspace client, it is not the recommended way to do it. We suggest using the `file utilities </howtos/file_utils.html>`_ instead.
+    While you can get objects using the workspace client, it is not the recommended way to do it. We suggest using the `file utilities <../howtos/file_utils.html>`_ instead.
 
 Retrieving workspace object metadata
 ---------------------------------------

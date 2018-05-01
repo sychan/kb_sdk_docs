@@ -2,7 +2,7 @@
 
 ## How do I start my app? What do I do now?
 
-The easiest way to get an intuition for app development is to [follow the tutorial](/tutorial/dependencies.html).
+The easiest way to get an intuition for app development is to [follow the tutorial](../tutorial/dependencies.html).
 
 See if there is an existing app [in the catalog](https://narrative.kbase.us/#catalog/apps) that is similar to yours, or one that has a UI that you would like to emulate. Every app you see in the narrative will have a link to its code repository.
 
@@ -21,7 +21,7 @@ For these example apps, check out the `.spec` files, `<module>Impl.py` files, an
 
 ## How do I work with test and reference data?
 
-Put data into the data directory. If the data is too large to host on github, check out the following guide for [how to add reference data](/howtos/work_with_reference_data.html).
+Put data into the data directory. If the data is too large to host on github, check out the following guide for [how to add reference data](../howtos/work_with_reference_data.html).
 
 Test files can go within the `test/` directory in your app, such as `test/data/`.
 
@@ -124,7 +124,7 @@ You can install binaries that will automatically be added to $PATH at /kb/deploy
         && tar -xvf diamond-linux64.tar.gz diamond \
         && rm diamond-linux64.tar.gz
 
-Please follow the [Editing Docker](/howtos/edit_your_dockerfile.html) guide.
+Please follow the [Editing Docker](../howtos/edit_your_dockerfile.html) guide.
 
 ### Q: How do I get inside the docker image? How do I get root access?
 

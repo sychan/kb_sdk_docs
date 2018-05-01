@@ -76,20 +76,7 @@ ServerError: JSONRPCError
 
 This case happens because the python process exits without writing an output file, and then the callback server throws the above error. Make sure your process finishes and writes an output file to avoid this error.
 
-
-Error while testing module - 401 Unauthorized
-------------------------------------------------
-
-*Full error*: ``Error while testing module: Login failed! Server responded with code 401 Unauthorized``
-
-Your auth token has expired. Get another one by opening your notebook and running the following in a code cell:
-
-.. code:: python
-
-    import os
-    os.environ
-
-Unable to find valid certifcation
+Unable to find valid certification
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you get an error on OSX as follows:

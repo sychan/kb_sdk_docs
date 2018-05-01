@@ -62,3 +62,29 @@ Java may not be installed or the path may not be set properly. Please follow the
 
 .. |alt text| image:: https://avatars2.githubusercontent.com/u/1263946?v=3&s=84
 
+
+My report isn't generating output correctly
+----------------------------------------------------
+
+See the guide on `Creating a report </howtos/create_a_report.html>`_.
+
+
+ServerError: JSONRPCError
+-----------------------------
+
+*Full error*: ``ServerError: JSONRPCError: -32601. Unknown server error (output data wasn't produced)``
+
+This case happens because the python process exits without writing an output file, and then the callback server throws the above error. Make sure your process finishes and writes an output file to avoid this error.
+
+
+Error while testing module - 401 Unauthorized
+------------------------------------------------
+
+*Full error*: ``Error while testing module: Login failed! Server responded with code 401 Unauthorized``
+
+Your auth token has expired. Get another one by opening your notebook and running the following in a code cell:
+
+.. code:: python
+
+    import os
+    os.environ

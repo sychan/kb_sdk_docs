@@ -1,4 +1,4 @@
-Run shell commands in your app
+Running shell commands
 ==============================
 
 Download and compile using your Dockerfile

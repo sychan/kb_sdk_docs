@@ -1,4 +1,4 @@
-How to create a report
+Creating reports
 =======================
 
 The

@@ -1,4 +1,4 @@
-How to add UI elements
+Adding UI Elements
 ===========================
 
 Control of Narrative interaction is accomplished in files in the

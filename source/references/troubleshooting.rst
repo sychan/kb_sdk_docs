@@ -57,7 +57,7 @@ Java may not be installed or the path may not be set properly. Please follow the
     # for bash
     export JAVA_HOME=`/usr/libexec/java_home`
     # for tcsh/csh
-    setenv JAVA_HOME `/usr/libexec/java_home`  
+    setenv JAVA_HOME `/usr/libexec/java_home`
 
 
 .. |alt text| image:: https://avatars2.githubusercontent.com/u/1263946?v=3&s=84
@@ -88,3 +88,27 @@ Your auth token has expired. Get another one by opening your notebook and runnin
 
     import os
     os.environ
+
+Unable to find valid certifcation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you get an error on OSX as follows:
+
+.. code-block:: bash
+
+    $ kb-sdk test
+    Validating module in (/Users/user/Module/ExpressionUtils)
+    Congrats- this module is valid.
+    Error while testing module: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+    For more help and usage information, run:
+        kb-sdk help
+        (ExpressionUtils)
+
+
+Generate new security cerficates:
+
+
+.. code-block:: bash
+
+    $ openssl x509 -in <(openssl s_client -connect ci.kbase.us:443 -prexit 2>/dev/null) -out ~/example.crt
+    $ sudo keytool -importcert -file ~/example.crt -alias example -keystore $(/usr/libexec/java_home)/jre/lib/security/cacerts -storepass changeit

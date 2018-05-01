@@ -8,6 +8,7 @@ KBase SDK Documentation
 
 .. image:: images/micro3.png
     :align: right
+    :scale: 80 %
 
 The KBase SDK is a set of tools for developing KBase Apps that can be dynamically registered and run on the `KBase platform <http://kbase.us/>`_. Apps are grouped into modules that include all code, dependencies, specification files, and documentation needed to register and run in the KBase Narrative interface. By using Docker combined with the KBase App Catalog, you can build and run a new "Hello World!" App in KBase in minutes.
 
@@ -44,6 +45,7 @@ If you want to develop apps using the SDK, please obtain a free KBase user accou
 
 .. image:: images/micro4.png
     :align: right
+    :scale: 80 %
 
 
 .. toctree::

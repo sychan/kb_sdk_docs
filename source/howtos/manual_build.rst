@@ -1,5 +1,5 @@
 Manually building the SDK
-======================
+==========================
 
 .. warning::
 

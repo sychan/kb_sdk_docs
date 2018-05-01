@@ -1,5 +1,5 @@
 Working with reference data
-========================
+============================
 
 Adding Reference Data to a KBase App
 ------------------------------------

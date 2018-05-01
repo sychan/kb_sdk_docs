@@ -14,7 +14,7 @@ Overview
 
 To explore the contents of a module yourself, you can use the kb-sdk
 tool to create an example module. (Please see `these
-instructions </tutorial/install.html>`_
+instructions <../tutorial/install.html>`_
 on how to install kb-sdk.)
 
 ::

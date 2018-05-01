@@ -11,7 +11,7 @@ show up in the App Catalog: https://appdev.kbase.us/#appcatalog/
 
 Please be aware that your module implementation and information must
 conform to our
-`Policies </references/dev_guidelines.html>`__
+`Policies <../references/dev_guidelines.html>`__
 before it will be accepted for public deployment. Fortunately, most of
 these are common sense (for example, sufficient content on the App Info
 page for a user to run your app and understand what it's doing, proper
@@ -210,7 +210,7 @@ public deployment, please see examples in the Trimmomatic app:
 
     Please bear in mind that for public release, your Module **MUST** meet
     all the requirements laid out in the `KBase SDK
-    Policies </references/dev_guidelines.html>`__.
+    Policies <../references/dev_guidelines.html>`__.
     We reserve the right to delay public release of SDK Modules until all
     requirements are met. Please take the time to familiarize yourself with
     these policies to avoid delay in releasing your Module.

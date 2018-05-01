@@ -42,4 +42,4 @@ As you make changes to your Module, **you will need to re-commit those changes t
 
 .. important::
 
-    Please bear in mind that for public release, your module must meet all the requirements laid out in the `KBase SDK Policies </references/dev_guidelines.html>`_. We reserve the right to delay public release of SDK Modules until all requirements are met. Please take the time to familiarize yourself with these policies to avoid delay in releasing your Module.
+    Please bear in mind that for public release, your module must meet all the requirements laid out in the `KBase SDK Policies <../references/dev_guidelines.html>`_. We reserve the right to delay public release of SDK Modules until all requirements are met. Please take the time to familiarize yourself with these policies to avoid delay in releasing your Module.

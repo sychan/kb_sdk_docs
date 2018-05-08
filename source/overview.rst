@@ -1,7 +1,7 @@
 Concepts and Overview
 =======================
 
-This page gives a a high-level overview of how the SDK works and general concepts in making and running apps.
+This page gives a high-level overview of how the SDK works and the general concepts involved in making and running apps.
 
 The Basics
 --------------
@@ -11,9 +11,9 @@ The Basics
 
 Apps on KBase, such as genome assemblers and annotators that run on narrative pages, are created using the KBase SDK.
 
-When you run an app in a narrative, it runs in a docker container on KBase's servers. Learn more about docker containers here: https://www.docker.com/what-container. Docker containers allow you to run compiled programs, such as `MEGAHIT <https://github.com/voutcn/megahit>`_, on any machine.
+When you run an app in a narrative, it runs in a docker container on KBase's servers. Learn more about docker containers here: https://www.docker.com/what-container. Docker containers allow you to package and compile programs and dependencies, such as `MEGAHIT <https://github.com/voutcn/megahit>`_, and run them anywhere.
 
-The starting source code for your app defines the type of input parameters the user can enter, the packages and programs the app will run in its container, and the output it will display in the final report. The source code for your app gets generated using the `kb-sdk` command line utility (see the rest of the tutorial for details).
+As an SDK developer, you define your input parameter types, the packages and programs to run, and the output types, text, and HTML to show the user when the app finishes. To help facilitate development, a ``kb-sdk`` command-line utility is provided.
 
 The Workflow
 ----------------
@@ -26,14 +26,14 @@ When a python SDK app runs in a narrative, it typically follows this workflow, w
 User Input
 ~~~~~~~~~~~~~~~
 
-In the first tab of a narrative app, users have a set of form elements that can be customized by your app to accept many kinds of data. An example might be a genome assembly algorithm that takes a dataset of DNA reads and a minimum kmer size.
+In the first page of a narrative app, users have a set of form elements that can be customized to accept many kinds of data. An example might be a genome assembly algorithm that takes a dataset of DNA reads and a minimum kmer size.
 
-As an app developer, you can configure the elements of the form using a wide range of options. For larger data sets, such as genomes, these will be passed into your app as *references*, which you can think of as simple URLs used to download the actual files.
+As an app developer, you can configure the elements of the form using a wide range of options. For parameters that refer to larger data sets, such as genomes, these will be passed into your app as *references*, which you can think of as simple URLs used to download the actual files.
 
 App Code and Data Management
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Input from the app's form is converted into python data and passed into a main method in your app. Typically, apps will perform a set of validation checks on the input to make sure everything is well-formed before running any algorithms.
+Input from the app's form is converted into a python dictionary and passed into a main method in your app. Typically, apps will perform a set of validation checks on the input to make sure everything is well-formed before running any algorithms.
 
 From here, you can call out to utilities, run binary programs, and work with the file-system.
 
@@ -113,4 +113,4 @@ Publishing
 
 You can register a new app from this page: https://appdev.kbase.us/#appcatalog/register
 
-Once you do so, it will be available in the ``dev`` catalog. This catalog is meant as experimentation grounds for new apps. When you're searching for apps, you need to be sure to filter by development apps to view your ``dev`` app.
+Once you do so, it will be available in the ``dev`` catalog. This catalog is meant as experimentation grounds for new apps. When you're searching for apps, you need to be sure to filter by the development catalog to view your ``dev`` app.

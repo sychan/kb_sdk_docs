@@ -21,14 +21,14 @@ Copy and paste that token into ``test_local/test.cfg`` in the value for ``test_t
 Receive some parameters
 ---------------------------
 
-Our first goal is to receive and print the method's parameters. Open ``MyContigFilterImpl.pyn`` and find the ``filter_contigs`` method, which should have some auto-generated boilerplate code and docstrings.
+Our first goal is to receive and print the method's parameters. Open ``MyContigFilterImpl.py`` and find the ``filter_contigs`` method, which should have some auto-generated boilerplate code and docstrings.
 
 You want to edit code between the comments ``#BEGIN filter_contigs`` and ``#END filter_contigs``. These are special SDK-generated annotations that we have to keep in the code to get everything to compile correctly. If you run ``make`` again in the future, it will edit code outside these comments, but will not change the code you put between the comments.
 
-Between the above comments, let's add a simple print statement; something like: ``print(params['assembly_ref'], params['min_length'])`` so we can see what is getting passed into our method.
+Between the above comments, let's add a simple print statement, such as: ``print(params['assembly_ref'], params['min_length'])``. This lets us see what is getting passed into our method.
 
 
-.. code:: python
+.. code-block:: python
 
     def filter_contigs(self, ctx, params):
         """
@@ -55,10 +55,10 @@ Initialize a test
 Your ``MyModuleImpl.py`` file is tested using ``test/MyModuleImpl_server_test.py``. This file also has a variety of auto-generated boilerplate code; you will want to add your own test by replacing the ``test_your_method(self)`` method at the bottom of the test class.
 
 
-.. code:: python
+.. code-block:: python
 
     def test_filter_contigs(self):
-        ref = "14672/2/1"
+        ref = "79/16/1"
         result = self.getImpl().filter_contigs(self.getContext(), {
             'workspace_name': self.getWsName(),
             'assembly_ref': ref,
@@ -67,24 +67,29 @@ Your ``MyModuleImpl.py`` file is tested using ``test/MyModuleImpl_server_test.py
         print result
         # TODO -- assert some things (later)
 
-We need to provide three parameters to our function: a workspace name, an assembly reference string, and a min length integer. For the reference string, we can use this sample reference to a Shewanella Oneidensis assembly on AppDev: ``"14672/2/1"``. You can always get a workspace name from the test class by using ``self.getWsName()``.
+We need to provide three parameters to our function: a workspace name, an assembly reference string, and a min length integer. For the reference string, we can use this sample reference to a Shewanella Oneidensis assembly on AppDev: ``"79/16/1"``. You can always get a workspace name from the test class by using ``self.getWsName()``.
 
 Run ``kb-sdk test`` and, if everything works, you'll see the docker container boot up, the ``filter_contigs`` method will get called, and you will see some printed output.
 
 Set the callback URL and scratch path
 -----------------------------------------
 
-
 The callback URL points to a server that is used to spin up other SDK apps that we will need to use in our own app. In our case, we want to use `AssemblyUtil <https://github.com/kbaseapps/AssemblyUtil>`_ to validate and download genome data. When we use that app, our app makes a request to the callback server, which spins up a separate docker container that runs AssemblyUtil.
 
-The other parameter commonly defined in the module constructor is the path to the scratch directory. This directory is a common space accessible by not only the
-current app but also every app called by this app. Therefore files from other apps (eg. AssemblyUtil) will be written to the scratch folder and files to be used by other modules (such as KBaseReport) are read from the scratch folder.
+The other parameter we need is the path to the **scratch** directory. Scratch is a special directory that we can use to store files used to run the app. It is a shared directory that is also accessible by other apps, such as AssemblyUtil. You cannot use directories like ``/tmp`` when working with AssemblyUtil, because other apps won't have access to it.
 
-Scratch is a temp directory that only stores ephemeral data for your app. Keep in mind that this data disappears when your app stops running.
+.. note::
 
-Add this into your ``__init__`` method in your ``MyModuleImpl.py``, between the ``#BEGIN_CONSTRUCTOR`` and ``#END_CONSTRUCTOR`` comments:
+    Always use the scratch directory to store files in your app.
 
-.. code:: python
+
+.. important::
+    
+    Scratch is a temporary directory and only lasts as long as your app runs. When your app stops running, scratch files are gone. To generate persistent data, we can use Reports, which are described in more detail later on.
+
+Add this code into your ``__init__`` method in your ``MyModuleImpl.py``, between the ``#BEGIN_CONSTRUCTOR`` and ``#END_CONSTRUCTOR`` comments:
+
+.. code-block:: python
 
    ...
    # Inside your __init__ function:
@@ -95,23 +100,18 @@ Add this into your ``__init__`` method in your ``MyModuleImpl.py``, between the 
    ...
 
 
-In order to use ``os`` package, add this import line at the top of your ``MyModuleImpl.py``, between the ``#BEGIN_HEADER`` and ``#END_HEADER`` comments:
-
-.. code:: python
-
-    import os
-
+Make sure to also add ``import os`` in the header of your ``MyModuleImpl.py`` file, between the ``#BEGIN_HEADER`` and ``#END_HEADER`` comments.
 
 Run the ``kb-sdk test`` command again to make sure you have no errors.
 
 Download the FASTA file
 ----------------------------
 
-We need to convert the reference to a bacterial genome -- ``14672/2/1`` -- into an actual FASTA file of genome data that our app can access. For that, we can use the AssemblyUtil app: https://github.com/kbaseapps/AssemblyUtil.
+We need to convert the reference to bacterial genome data, passed as an input parameter, into an actual FASTA file that our app can access. For that, we can use the AssemblyUtil app: https://github.com/kbaseapps/AssemblyUtil.
 
-Install the app with:
+Install the app from your repository's root directory with:
 
-.. code:: python
+.. code-block:: bash
 
     $ kb-sdk install AssemblyUtil
 
@@ -120,14 +120,14 @@ That will add an entry for ``AssemblyUtil`` in your ``dependencies.json`` file. 
 
 Import the module at the top of your ``MyModuleImpl.py`` file
 
-.. code:: python
+.. code-block:: python
 
     from AssemblyUtil.AssemblyUtilClient import AssemblyUtil
 
 
-Inside your ``filter_contigs`` method, initialize the utility and use it to download ``assembly_ref``:
+Inside your ``filter_contigs`` method, initialize the utility and use it to download the ``assembly_ref``:
 
-.. code:: python
+.. code-block:: python
 
     ...
     # Inside filter_contigs()
@@ -137,7 +137,7 @@ Inside your ``filter_contigs`` method, initialize the utility and use it to down
     ...
 
 
-* We have to initialize AssemblyUtil and pass in ``self.callback_url``
+* We have to initialize AssemblyUtil by passing ``self.callback_url``
 * The ``get_assembly_as_fasta`` method downloads a file from a workspace ref
 
 Run ``kb-sdk test`` again and you should see the file download along with its path in the container.
@@ -149,7 +149,7 @@ It's good practice to make some run-time checks of the parameters passed into yo
 
 Make sure your user passes in a workspace, an assembly reference, and a minimum length greater than zero:
 
-.. code:: python
+.. code-block:: python
 
   ...
   # Inside filter_contigs(), after #BEGIN fast_ani, before any other code
@@ -169,7 +169,7 @@ Re-run ``kb-sdk test`` to make sure everything still works.
 
 We can add some additional tests to make sure we raise ValueErrors for invalid parameters:
 
-.. code:: python
+.. code-block:: python
 
     ...
     # Inside test/MyModuleImpl_server_test.py
@@ -205,7 +205,7 @@ The biopython package (http://biopython.org/), included in the SDK build, has a 
 
 Import this module in your ``MyModuleImpl.py`` between the header comments like so:
 
-.. code:: python
+.. code-block:: python
 
     ... # other imports
     from Bio import SeqIO
@@ -214,7 +214,7 @@ Import this module in your ``MyModuleImpl.py`` between the header comments like 
 
 Now, inside ``filter_contigs``, enter code to filter out contigs less than the given min_length:
 
-.. code:: python
+.. code-block:: python
 
     ...
     # Inside MyModuleImpl#filter_contigs, after you have fetched the fasta file:
@@ -250,12 +250,12 @@ Set ``min_length`` to a value that filters out some contigs but not others. In o
 
 We would expect to keep 1 contig and filter out the other.
 
-.. code:: python
+.. code-block:: python
 
     ...
     # Inside MyModuleImpl_server_test:
     def test_filter_contigs(self):
-        ref = "14672/2/1"
+        ref = "79/16/1"
         params = {
             'assembly_ref': ref,
             'min_length': 200000
@@ -275,7 +275,7 @@ Next, we want to save and upload a new version of our genome assembly data with 
 
 Beneath the code that we wrote to filter the assembly, add this file saving and uploading code.
 
-.. code:: python
+.. code-block:: python
 
     ...
     # Underneath your loop that filters contigs:
@@ -299,7 +299,7 @@ Beneath the code that we wrote to filter the assembly, add this file saving and 
 
 Add a simple assertion into your ``test_fast_ani`` method to check for the ``filtered_assembly_ref``. Something like:
 
-.. code:: python
+.. code-block:: python
 
     self.assertTrue(len(result[0]['filtered_assembly_ref']))
 
@@ -313,21 +313,21 @@ In order to output data into the UI inside a narrative, your app needs to build 
 
 Install the KBaseReport app with:
 
-.. code:: python
+.. code-block:: bash
 
     $ kb-sdk install KBaseReport
 
 
 Import the report module between the ``#BEGIN_HEADER`` and ``#END_HEADER`` section of your ``MyModuleImpl.py`` file:
 
-.. code:: python
+.. code-block:: python
 
     from KBaseReport.KBaseReportClient import KBaseReport
 
 
 The KBaseReport takes a series of dictionary objects that can have text messages, object references, and more. Add the report initialization code inside your ``filter_contigs`` method:
 
-.. code:: python
+.. code-block:: python
 
     # Inside the filter_contigs method, below where we uploaded the new file:
     # Create an output summary message for the report
@@ -363,7 +363,7 @@ The KBaseReport takes a series of dictionary objects that can have text messages
 
 Add a couple assertions in our ``test_filter_contigs`` method inside ``test/MyModuleImpl_server_test.py`` to check for the report name and ref:
 
-.. code:: python
+.. code-block:: python
 
     ...
     self.assertTrue(len(result[0]['report_name']))
@@ -380,7 +380,7 @@ We nearly have a complete app. The last step is to take all the result data we d
 
 Add a type entry for our result data in our KIDL file:
 
-.. code::
+.. code-block:: cpp
 
     /* Output results */
     typedef structure {
@@ -396,7 +396,7 @@ Run ``make`` and ``kb-sdk test`` again to make sure everything works.
 
 In your ``ui/narrative/methods/filter_contigs/spec.json`` file, add entries for this output data:
 
-.. code::json
+.. code::
 
     ...
     "output_mapping": [

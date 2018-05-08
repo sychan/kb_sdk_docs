@@ -6,7 +6,7 @@ Publish and Update
 Publish all git commits
 -------------------------
 
-Make sure you have run `git add` and `git commit` on all the changes in your app's codebase, then push to your public github URL
+Make sure you have run ``git add`` and ``git commit`` on all the changes in your app's codebase, then push to your public github URL
 
 Register with KBase
 -----------------------
@@ -25,10 +25,8 @@ Once your app has been registered, it will be available in the AppDev environmen
 
 Your app will now also be visible in the App Catalog when displaying Apps in development:
 
-.. code::
-
-    https://appdev.kbase.us/#appcatalog/browse/dev
-    https://narrative.kbase.us/#appcatalog/browse/dev
+* Appdev: https://appdev.kbase.us/#appcatalog/browse/dev
+* Production: https://narrative.kbase.us/#appcatalog/browse/dev
 
 
 Updating
@@ -36,7 +34,7 @@ Updating
     
 From your module page (https://narrative.kbase.us/#appcatalog/module/MODULE_NAME) you'll be able to register any update and manage release of your module to the production KBase environment for anyone to use.
 
-To do this, open `Module Admin Tools` and then click on the **REGISTER** button. Enter the latest commit hash from you master branch to register an update.
+To update an app, open `Module Admin Tools` and then click the **REGISTER** button. Enter the latest commit hash from you master branch to register an update.
 
 As you make changes to your Module, **you will need to re-commit those changes to the git repo, and then re-register**. The KBase SDK Catalog service will automatically pull the most recent version. If for some reason you wish to revert to an older version, you can add the hash key of that older commit, which you can find by viewing the ``git log``.
 

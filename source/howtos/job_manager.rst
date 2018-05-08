@@ -1,4 +1,4 @@
-How to list and view jobs
+Listing and viewing jobs
 -----------------------------
 
 .. code-block:: python

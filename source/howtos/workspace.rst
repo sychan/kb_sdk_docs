@@ -1,4 +1,4 @@
-Using workspace metadata
+Using Workspace Metadata
 ==================================
 
 .. important::
@@ -12,7 +12,7 @@ If you don't want to retrieve the entire object, and just want information about
 
 *Initialize the workspace client and get an object's information by reference*
 
-.. code:: python
+.. code-block:: python
 
     # The config object is passed into the __init__ function for your *Impl.py module
     from Workspace.WorkspaceClient import Workspace as Workspace
@@ -29,7 +29,7 @@ How to use the Workspace Client in the narrative
 
 You can access the workspace client from within narrative code cells. See this `example narrative <https://narrative.kbase.us/narrative/ws.30170.obj.1>`_.
 
-.. code:: python
+.. code-block:: python
 
     ws = biokbase.narrative.clients.get('workspace')
     obj = ws.get_objects2({'objects' : [{'ref' : '30170/2/1'}]})

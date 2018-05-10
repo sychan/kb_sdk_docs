@@ -5,7 +5,7 @@ The KBase SDK provides a way to quickly bootstrap a new module by generating mos
 
 The basic options of the command are:
 
-.. code:: bash
+.. code-block:: bash
 
     $ kb-sdk init [-ev] [-l language] [-u username] ModuleName
 
@@ -13,7 +13,7 @@ The basic options of the command are:
 where ``ModuleName`` must be unique across all SDK modules registered in KBase. For example:
 
 
-.. code:: bash
+.. code-block:: bash
 
     $ kb-sdk init -l python -u <your_kbase_user_name> <user_name>ContigFilter
 
@@ -42,7 +42,7 @@ The example we're building will have the same functionality as the app you get w
 
 Run the init script:
 
-.. code:: bash
+.. code-block:: bash
 
     $ kb-sdk init --verbose --language python --user <your_username> <username>ContigFilter
 
@@ -50,7 +50,7 @@ Run the init script:
 Build the App
 ---------------------
 
-.. code:: bash
+.. code-block:: bash
 
     $ cd <user_name>ContigFilter
     $ make

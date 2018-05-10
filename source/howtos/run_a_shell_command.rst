@@ -10,7 +10,7 @@ in your Dockerfile. For example,
 `FastANI <https://github.com/kbaseapps/FastANI>`__ compiles and installs
 with this series of commands:
 
-.. code:: sh
+.. code-block:: bash
 
     # Fetch and compile FastANI
     RUN git clone https://github.com/ParBLiSS/FastANI.git /opt/FastANI \

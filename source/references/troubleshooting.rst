@@ -5,7 +5,7 @@ Trying to run ``make sdkbase`` and seeing errors that include ``TLS-enabled daem
 
 When you try to run ``make sdkbase`` if you see a message like:
 
-.. code:: bash
+.. code-block:: bash
 
     docker build -t kbase/kbase:sdkbase2.latest sdkbase
     Post http:///var/run/docker.sock/v1.20/build?cgroupparent=&cpuperiod=0&cpuquota=0&cpusetcpus=&cpusetmems=&cpushares=0&dockerfile=Dockerfile&memory=0&memswap=0&rm=1&t=kbase%2Fkbase%3Asdkbase.latest&ulimits=null: dial unix /var/run/docker.sock: no such file or directory.
@@ -16,8 +16,8 @@ When you try to run ``make sdkbase`` if you see a message like:
 
 You likely have not started your Docker daemon. On a Mac, that means running in the Docker CLI shell after starting Docker Kitematic and clicking on "Docker CLI" in the lower left corner (See `Install SDK Dependencies - Docker <../tutorial/install.html>`__ for guidance).
 
-Trying to run *kb-sdk test* and seeing errors that include *TLS-enabled daemon* and/or *docker daemon*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Trying to run ``kb-sdk test`` and seeing errors that include "TLS-enabled daemon" and/or "docker daemon"
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When you try to run ``kb-sdk test``, if you see a message like:
 
@@ -64,13 +64,13 @@ Java may not be installed or the path may not be set properly. Please follow the
 
 
 My report isn't generating output correctly
-----------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 See the guide on `Creating a report <../howtos/create_a_report.html>`_.
 
 
-ServerError: JSONRPCError
------------------------------
+Getting "ServerError: JSONRPCError"
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *Full error*: ``ServerError: JSONRPCError: -32601. Unknown server error (output data wasn't produced)``
 

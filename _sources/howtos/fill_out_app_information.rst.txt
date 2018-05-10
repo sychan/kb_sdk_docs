@@ -208,9 +208,9 @@ public deployment, please see examples in the Trimmomatic app:
 
 .. important:: 
 
-    Please bear in mind that for public release, your Module **MUST** meet
+    Please bear in mind that for public release, your module **MUST** meet
     all the requirements laid out in the `KBase SDK
     Policies <../references/dev_guidelines.html>`__.
-    We reserve the right to delay public release of SDK Modules until all
+    We reserve the right to delay public release of SDK modules until all
     requirements are met. Please take the time to familiarize yourself with
-    these policies to avoid delay in releasing your Module.
+    these policies to avoid delay in releasing your module.

@@ -113,10 +113,10 @@
 </ul>
 <p class="caption"><span class="caption-text">Advanced Guides</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../howtos/workspace.html">Using workspace metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/workspace.html">Using Workspace Metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/manual_build.html">Manually building the SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/work_with_reference_data.html">Working with reference data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../howtos/job_manager.html">How to list and view jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/job_manager.html">Listing and viewing jobs</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul class="current">
@@ -195,16 +195,16 @@
 <h1>Troubleshooting Guide<a class="headerlink" href="#troubleshooting-guide" title="Permalink to this headline">¶</a></h1>
 <p>Trying to run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">sdkbase</span></code> and seeing errors that include <code class="docutils literal notranslate"><span class="pre">TLS-enabled</span> <span class="pre">daemon</span></code> and/or <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">daemon</span></code></p>
 <p>When you try to run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">sdkbase</span></code> if you see a message like:</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>docker build -t kbase/kbase:sdkbase2.latest sdkbase
-Post http:///var/run/docker.sock/v1.20/build?cgroupparent=&amp;cpuperiod=0&amp;cpuquota=0&amp;cpusetcpus=&amp;cpusetmems=&amp;cpushares=0&amp;dockerfile=Dockerfile&amp;memory=0&amp;memswap=0&amp;rm=1&amp;t=kbase%2Fkbase%3Asdkbase.latest&amp;ulimits=null: dial unix /var/run/docker.sock: no such file or directory.
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker build -t kbase/kbase:sdkbase2.latest sdkbase
+Post http:///var/run/docker.sock/v1.20/build?cgroupparent<span class="o">=</span><span class="p">&amp;</span><span class="nv">cpuperiod</span><span class="o">=</span><span class="m">0</span><span class="p">&amp;</span><span class="nv">cpuquota</span><span class="o">=</span><span class="m">0</span><span class="p">&amp;</span><span class="nv">cpusetcpus</span><span class="o">=</span><span class="p">&amp;</span><span class="nv">cpusetmems</span><span class="o">=</span><span class="p">&amp;</span><span class="nv">cpushares</span><span class="o">=</span><span class="m">0</span><span class="p">&amp;</span><span class="nv">dockerfile</span><span class="o">=</span>Dockerfile<span class="p">&amp;</span><span class="nv">memory</span><span class="o">=</span><span class="m">0</span><span class="p">&amp;</span><span class="nv">memswap</span><span class="o">=</span><span class="m">0</span><span class="p">&amp;</span><span class="nv">rm</span><span class="o">=</span><span class="m">1</span><span class="p">&amp;</span><span class="nv">t</span><span class="o">=</span>kbase%2Fkbase%3Asdkbase.latest<span class="p">&amp;</span><span class="nv">ulimits</span><span class="o">=</span>null: dial unix /var/run/docker.sock: no such file or directory.
 * Are you trying to connect to a TLS-enabled daemon without TLS?
 * Is your docker daemon up and running?
-make: *** [sdkbase] Error 1
+make: *** <span class="o">[</span>sdkbase<span class="o">]</span> Error <span class="m">1</span>
 </pre></div>
 </div>
 <p>You likely have not started your Docker daemon. On a Mac, that means running in the Docker CLI shell after starting Docker Kitematic and clicking on “Docker CLI” in the lower left corner (See <a class="reference external" href="../tutorial/install.html">Install SDK Dependencies - Docker</a> for guidance).</p>
 <div class="section" id="trying-to-run-kb-sdk-test-and-seeing-errors-that-include-tls-enabled-daemon-and-or-docker-daemon">
-<h2>Trying to run <em>kb-sdk test</em> and seeing errors that include <em>TLS-enabled daemon</em> and/or <em>docker daemon</em><a class="headerlink" href="#trying-to-run-kb-sdk-test-and-seeing-errors-that-include-tls-enabled-daemon-and-or-docker-daemon" title="Permalink to this headline">¶</a></h2>
+<h2>Trying to run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> and seeing errors that include “TLS-enabled daemon” and/or “docker daemon”<a class="headerlink" href="#trying-to-run-kb-sdk-test-and-seeing-errors-that-include-tls-enabled-daemon-and-or-docker-daemon" title="Permalink to this headline">¶</a></h2>
 <p>When you try to run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code>, if you see a message like:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Build Docker image
 Post http:///var/run/docker.sock/v1.20/build?cgroupparent=&amp;cpuperiod=0&amp;cpuquota=0&amp;cpusetcpus=&amp;cpusetmems=&amp;cpushares=0&amp;dockerfile=Dockerfile&amp;memory=0&amp;memswap=0&amp;rm=1&amp;t=test%2Fkb_vsearch%3Alatest&amp;ulimits=null: dial unix /var/run/docker.sock: no such file or directory.
@@ -236,15 +236,15 @@ export JAVA_HOME=`/usr/libexec/java_home`
 setenv JAVA_HOME `/usr/libexec/java_home`
 </pre></div>
 </div>
+</div>
 <div class="section" id="my-report-isn-t-generating-output-correctly">
-<h3>My report isn’t generating output correctly<a class="headerlink" href="#my-report-isn-t-generating-output-correctly" title="Permalink to this headline">¶</a></h3>
+<h2>My report isn’t generating output correctly<a class="headerlink" href="#my-report-isn-t-generating-output-correctly" title="Permalink to this headline">¶</a></h2>
 <p>See the guide on <a class="reference external" href="../howtos/create_a_report.html">Creating a report</a>.</p>
 </div>
-<div class="section" id="servererror-jsonrpcerror">
-<h3>ServerError: JSONRPCError<a class="headerlink" href="#servererror-jsonrpcerror" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="getting-servererror-jsonrpcerror">
+<h2>Getting “ServerError: JSONRPCError”<a class="headerlink" href="#getting-servererror-jsonrpcerror" title="Permalink to this headline">¶</a></h2>
 <p><em>Full error</em>: <code class="docutils literal notranslate"><span class="pre">ServerError:</span> <span class="pre">JSONRPCError:</span> <span class="pre">-32601.</span> <span class="pre">Unknown</span> <span class="pre">server</span> <span class="pre">error</span> <span class="pre">(output</span> <span class="pre">data</span> <span class="pre">wasn't</span> <span class="pre">produced)</span></code></p>
 <p>This case happens because the python process exits without writing an output file, and then the callback server throws the above error. Make sure your process finishes and writes an output file to avoid this error.</p>
-</div>
 </div>
 <div class="section" id="unable-to-find-valid-certification">
 <h2>Unable to find valid certification<a class="headerlink" href="#unable-to-find-valid-certification" title="Permalink to this headline">¶</a></h2>

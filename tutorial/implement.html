@@ -113,10 +113,10 @@
 </ul>
 <p class="caption"><span class="caption-text">Advanced Guides</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../howtos/workspace.html">Using workspace metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/workspace.html">Using Workspace Metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/manual_build.html">Manually building the SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/work_with_reference_data.html">Working with reference data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../howtos/job_manager.html">How to list and view jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/job_manager.html">Listing and viewing jobs</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
@@ -207,10 +207,10 @@
 </div>
 <div class="section" id="receive-some-parameters">
 <h2>5.2. Receive some parameters<a class="headerlink" href="#receive-some-parameters" title="Permalink to this headline">¶</a></h2>
-<p>Our first goal is to receive and print the method’s parameters. Open <code class="docutils literal notranslate"><span class="pre">MyContigFilterImpl.pyn</span></code> and find the <code class="docutils literal notranslate"><span class="pre">filter_contigs</span></code> method, which should have some auto-generated boilerplate code and docstrings.</p>
+<p>Our first goal is to receive and print the method’s parameters. Open <code class="docutils literal notranslate"><span class="pre">MyContigFilterImpl.py</span></code> and find the <code class="docutils literal notranslate"><span class="pre">filter_contigs</span></code> method, which should have some auto-generated boilerplate code and docstrings.</p>
 <p>You want to edit code between the comments <code class="docutils literal notranslate"><span class="pre">#BEGIN</span> <span class="pre">filter_contigs</span></code> and <code class="docutils literal notranslate"><span class="pre">#END</span> <span class="pre">filter_contigs</span></code>. These are special SDK-generated annotations that we have to keep in the code to get everything to compile correctly. If you run <code class="docutils literal notranslate"><span class="pre">make</span></code> again in the future, it will edit code outside these comments, but will not change the code you put between the comments.</p>
-<p>Between the above comments, let’s add a simple print statement; something like: <code class="docutils literal notranslate"><span class="pre">print(params['assembly_ref'],</span> <span class="pre">params['min_length'])</span></code> so we can see what is getting passed into our method.</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">filter_contigs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<p>Between the above comments, let’s add a simple print statement, such as: <code class="docutils literal notranslate"><span class="pre">print(params['assembly_ref'],</span> <span class="pre">params['min_length'])</span></code>. This lets us see what is getting passed into our method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">filter_contigs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    :param workspace_name: instance of String</span>
 <span class="sd">    :param params: instance of type &quot;ContigFilterParams&quot; (Input</span>
@@ -222,7 +222,7 @@
     <span class="c1"># ctx is the context object</span>
     <span class="c1"># return variables are: returnVal</span>
     <span class="c1">#BEGIN filter_contigs</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;min_length&#39;</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;assembly_ref&#39;</span><span class="p">])</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;min_length&#39;</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;assembly_ref&#39;</span><span class="p">])</span>
     <span class="n">returnVal</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="c1">#END filter_contigs</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">returnVal</span><span class="p">]</span>
@@ -233,28 +233,34 @@
 <div class="section" id="initialize-a-test">
 <h2>5.3. Initialize a test<a class="headerlink" href="#initialize-a-test" title="Permalink to this headline">¶</a></h2>
 <p>Your <code class="docutils literal notranslate"><span class="pre">MyModuleImpl.py</span></code> file is tested using <code class="docutils literal notranslate"><span class="pre">test/MyModuleImpl_server_test.py</span></code>. This file also has a variety of auto-generated boilerplate code; you will want to add your own test by replacing the <code class="docutils literal notranslate"><span class="pre">test_your_method(self)</span></code> method at the bottom of the test class.</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_filter_contigs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="n">ref</span> <span class="o">=</span> <span class="s2">&quot;14672/2/1&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_filter_contigs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">ref</span> <span class="o">=</span> <span class="s2">&quot;79/16/1&quot;</span>
     <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getImpl</span><span class="p">()</span><span class="o">.</span><span class="n">filter_contigs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">getContext</span><span class="p">(),</span> <span class="p">{</span>
         <span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">getWsName</span><span class="p">(),</span>
         <span class="s1">&#39;assembly_ref&#39;</span><span class="p">:</span> <span class="n">ref</span><span class="p">,</span>
         <span class="s1">&#39;min_length&#39;</span><span class="p">:</span> <span class="mi">100</span>
     <span class="p">})</span>
-    <span class="nb">print</span> <span class="n">result</span>
+    <span class="k">print</span> <span class="n">result</span>
     <span class="c1"># TODO -- assert some things (later)</span>
 </pre></div>
 </div>
-<p>We need to provide three parameters to our function: a workspace name, an assembly reference string, and a min length integer. For the reference string, we can use this sample reference to a Shewanella Oneidensis assembly on AppDev: <code class="docutils literal notranslate"><span class="pre">&quot;14672/2/1&quot;</span></code>. You can always get a workspace name from the test class by using <code class="docutils literal notranslate"><span class="pre">self.getWsName()</span></code>.</p>
+<p>We need to provide three parameters to our function: a workspace name, an assembly reference string, and a min length integer. For the reference string, we can use this sample reference to a Shewanella Oneidensis assembly on AppDev: <code class="docutils literal notranslate"><span class="pre">&quot;79/16/1&quot;</span></code>. You can always get a workspace name from the test class by using <code class="docutils literal notranslate"><span class="pre">self.getWsName()</span></code>.</p>
 <p>Run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> and, if everything works, you’ll see the docker container boot up, the <code class="docutils literal notranslate"><span class="pre">filter_contigs</span></code> method will get called, and you will see some printed output.</p>
 </div>
 <div class="section" id="set-the-callback-url-and-scratch-path">
 <h2>5.4. Set the callback URL and scratch path<a class="headerlink" href="#set-the-callback-url-and-scratch-path" title="Permalink to this headline">¶</a></h2>
 <p>The callback URL points to a server that is used to spin up other SDK apps that we will need to use in our own app. In our case, we want to use <a class="reference external" href="https://github.com/kbaseapps/AssemblyUtil">AssemblyUtil</a> to validate and download genome data. When we use that app, our app makes a request to the callback server, which spins up a separate docker container that runs AssemblyUtil.</p>
-<p>The other parameter commonly defined in the module constructor is the path to the scratch directory. This directory is a common space accessible by not only the
-current app but also every app called by this app. Therefore files from other apps (eg. AssemblyUtil) will be written to the scratch folder and files to be used by other modules (such as KBaseReport) are read from the scratch folder.</p>
-<p>Scratch is a temp directory that only stores ephemeral data for your app. Keep in mind that this data disappears when your app stops running.</p>
-<p>Add this into your <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method in your <code class="docutils literal notranslate"><span class="pre">MyModuleImpl.py</span></code>, between the <code class="docutils literal notranslate"><span class="pre">#BEGIN_CONSTRUCTOR</span></code> and <code class="docutils literal notranslate"><span class="pre">#END_CONSTRUCTOR</span></code> comments:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<p>The other parameter we need is the path to the <strong>scratch</strong> directory. Scratch is a special directory that we can use to store files used to run the app. It is a shared directory that is also accessible by other apps, such as AssemblyUtil. You cannot use directories like <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> when working with AssemblyUtil, because other apps won’t have access to it.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Always use the scratch directory to store files in your app.</p>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Scratch is a temporary directory and only lasts as long as your app runs. When your app stops running, scratch files are gone. To generate persistent data, we can use Reports, which are described in more detail later on.</p>
+</div>
+<p>Add this code into your <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method in your <code class="docutils literal notranslate"><span class="pre">MyModuleImpl.py</span></code>, between the <code class="docutils literal notranslate"><span class="pre">#BEGIN_CONSTRUCTOR</span></code> and <code class="docutils literal notranslate"><span class="pre">#END_CONSTRUCTOR</span></code> comments:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
 <span class="c1"># Inside your __init__ function:</span>
 <span class="c1">#BEGIN_CONSTRUCTOR</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">callback_url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;SDK_CALLBACK_URL&#39;</span><span class="p">]</span>
@@ -263,35 +269,32 @@ current app but also every app called by this app. Therefore files from other ap
 <span class="o">...</span>
 </pre></div>
 </div>
-<p>In order to use <code class="docutils literal notranslate"><span class="pre">os</span></code> package, add this import line at the top of your <code class="docutils literal notranslate"><span class="pre">MyModuleImpl.py</span></code>, between the <code class="docutils literal notranslate"><span class="pre">#BEGIN_HEADER</span></code> and <code class="docutils literal notranslate"><span class="pre">#END_HEADER</span></code> comments:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-</pre></div>
-</div>
+<p>Make sure to also add <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">os</span></code> in the header of your <code class="docutils literal notranslate"><span class="pre">MyModuleImpl.py</span></code> file, between the <code class="docutils literal notranslate"><span class="pre">#BEGIN_HEADER</span></code> and <code class="docutils literal notranslate"><span class="pre">#END_HEADER</span></code> comments.</p>
 <p>Run the <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> command again to make sure you have no errors.</p>
 </div>
 <div class="section" id="download-the-fasta-file">
 <h2>5.5. Download the FASTA file<a class="headerlink" href="#download-the-fasta-file" title="Permalink to this headline">¶</a></h2>
-<p>We need to convert the reference to a bacterial genome – <code class="docutils literal notranslate"><span class="pre">14672/2/1</span></code> – into an actual FASTA file of genome data that our app can access. For that, we can use the AssemblyUtil app: <a class="reference external" href="https://github.com/kbaseapps/AssemblyUtil">https://github.com/kbaseapps/AssemblyUtil</a>.</p>
-<p>Install the app with:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span>$ kb-sdk install AssemblyUtil
+<p>We need to convert the reference to bacterial genome data, passed as an input parameter, into an actual FASTA file that our app can access. For that, we can use the AssemblyUtil app: <a class="reference external" href="https://github.com/kbaseapps/AssemblyUtil">https://github.com/kbaseapps/AssemblyUtil</a>.</p>
+<p>Install the app from your repository’s root directory with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kb-sdk install AssemblyUtil
 </pre></div>
 </div>
 <p>That will add an entry for <code class="docutils literal notranslate"><span class="pre">AssemblyUtil</span></code> in your <code class="docutils literal notranslate"><span class="pre">dependencies.json</span></code> file. It also adds a python package under <code class="docutils literal notranslate"><span class="pre">lib/AssemblyUtil</span></code>.</p>
 <p>Import the module at the top of your <code class="docutils literal notranslate"><span class="pre">MyModuleImpl.py</span></code> file</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">AssemblyUtil.AssemblyUtilClient</span> <span class="k">import</span> <span class="n">AssemblyUtil</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">AssemblyUtil.AssemblyUtilClient</span> <span class="kn">import</span> <span class="n">AssemblyUtil</span>
 </pre></div>
 </div>
-<p>Inside your <code class="docutils literal notranslate"><span class="pre">filter_contigs</span></code> method, initialize the utility and use it to download <code class="docutils literal notranslate"><span class="pre">assembly_ref</span></code>:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<p>Inside your <code class="docutils literal notranslate"><span class="pre">filter_contigs</span></code> method, initialize the utility and use it to download the <code class="docutils literal notranslate"><span class="pre">assembly_ref</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
 <span class="c1"># Inside filter_contigs()</span>
 <span class="n">assembly_util</span> <span class="o">=</span> <span class="n">AssemblyUtil</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">callback_url</span><span class="p">)</span>
-<span class="n">file</span> <span class="o">=</span> <span class="n">assembly_util</span><span class="o">.</span><span class="n">get_assembly_as_fasta</span><span class="p">({</span><span class="s1">&#39;ref&#39;</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;assembly_ref&#39;</span><span class="p">]})</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<span class="nb">file</span> <span class="o">=</span> <span class="n">assembly_util</span><span class="o">.</span><span class="n">get_assembly_as_fasta</span><span class="p">({</span><span class="s1">&#39;ref&#39;</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;assembly_ref&#39;</span><span class="p">]})</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
 <span class="o">...</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li>We have to initialize AssemblyUtil and pass in <code class="docutils literal notranslate"><span class="pre">self.callback_url</span></code></li>
+<li>We have to initialize AssemblyUtil by passing <code class="docutils literal notranslate"><span class="pre">self.callback_url</span></code></li>
 <li>The <code class="docutils literal notranslate"><span class="pre">get_assembly_as_fasta</span></code> method downloads a file from a workspace ref</li>
 </ul>
 <p>Run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> again and you should see the file download along with its path in the container.</p>
@@ -300,7 +303,7 @@ current app but also every app called by this app. Therefore files from other ap
 <h2>5.6. Add some basic validations<a class="headerlink" href="#add-some-basic-validations" title="Permalink to this headline">¶</a></h2>
 <p>It’s good practice to make some run-time checks of the parameters passed into your <code class="docutils literal notranslate"><span class="pre">MyModuleImpl#filter_contigs</span></code> method. While params will get checked in the Narrative UI, if your app ever gets called from another codebase, it will bypass any UI typechecks.</p>
 <p>Make sure your user passes in a workspace, an assembly reference, and a minimum length greater than zero:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
 <span class="c1"># Inside filter_contigs(), after #BEGIN fast_ani, before any other code</span>
 <span class="c1"># Check that the parameters are valid</span>
 <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;min_length&#39;</span><span class="p">,</span> <span class="s1">&#39;assembly_ref&#39;</span><span class="p">,</span> <span class="s1">&#39;workspace_name&#39;</span><span class="p">]:</span>
@@ -308,14 +311,14 @@ current app but also every app called by this app. Therefore files from other ap
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Parameter &quot;&#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;&quot; is required but missing&#39;</span><span class="p">)</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;min_length&#39;</span><span class="p">],</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;min_length&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Min length must be a non-negative integer&#39;</span><span class="p">)</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;assembly_ref&#39;</span><span class="p">],</span> <span class="n">basestring</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;assembly_ref&#39;</span><span class="p">]):</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;assembly_ref&#39;</span><span class="p">],</span> <span class="nb">basestring</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;assembly_ref&#39;</span><span class="p">]):</span>
     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Pass in a valid assembly reference string&#39;</span><span class="p">)</span>
 <span class="o">...</span>
 </pre></div>
 </div>
 <p>Re-run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> to make sure everything still works.</p>
 <p>We can add some additional tests to make sure we raise ValueErrors for invalid parameters:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
 <span class="c1"># Inside test/MyModuleImpl_server_test.py</span>
 <span class="c1"># At the end of the test class</span>
 <span class="k">def</span> <span class="nf">test_invalid_params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -346,16 +349,16 @@ current app but also every app called by this app. Therefore files from other ap
 <p>Now we can finally start to implement the real functionality of the app!</p>
 <p>The biopython package (<a class="reference external" href="http://biopython.org/">http://biopython.org/</a>), included in the SDK build, has a module called SeqIO (<a class="reference external" href="http://biopython.org/wiki/SeqIO">http://biopython.org/wiki/SeqIO</a>) that can help us read and filter genome sequence data.</p>
 <p>Import this module in your <code class="docutils literal notranslate"><span class="pre">MyModuleImpl.py</span></code> between the header comments like so:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span> <span class="c1"># other imports</span>
-<span class="kn">from</span> <span class="nn">Bio</span> <span class="k">import</span> <span class="n">SeqIO</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span> <span class="c1"># other imports</span>
+<span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
 <span class="o">...</span>
 </pre></div>
 </div>
 <p>Now, inside <code class="docutils literal notranslate"><span class="pre">filter_contigs</span></code>, enter code to filter out contigs less than the given min_length:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
 <span class="c1"># Inside MyModuleImpl#filter_contigs, after you have fetched the fasta file:</span>
 <span class="c1"># Parse the downloaded file in FASTA format</span>
-<span class="n">parsed_assembly</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">file</span><span class="p">[</span><span class="s1">&#39;path&#39;</span><span class="p">],</span> <span class="s1">&#39;fasta&#39;</span><span class="p">)</span>
+<span class="n">parsed_assembly</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="nb">file</span><span class="p">[</span><span class="s1">&#39;path&#39;</span><span class="p">],</span> <span class="s1">&#39;fasta&#39;</span><span class="p">)</span>
 <span class="n">min_length</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;min_length&#39;</span><span class="p">]</span>
 <span class="c1"># Keep a list of contigs greater than min_length</span>
 <span class="n">good_contigs</span> <span class="o">=</span> <span class="p">[]</span>
@@ -382,10 +385,10 @@ current app but also every app called by this app. Therefore files from other ap
 <p>Return to <code class="docutils literal notranslate"><span class="pre">test/MyModuleImpl_server_test.py</span></code> and add tests for the functionality we just added above.</p>
 <p>Set <code class="docutils literal notranslate"><span class="pre">min_length</span></code> to a value that filters out some contigs but not others. In our case, our FASTA only has 2 sequences of lenths 4969811 and 161613. An in-between minimum could be 200000.</p>
 <p>We would expect to keep 1 contig and filter out the other.</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
 <span class="c1"># Inside MyModuleImpl_server_test:</span>
 <span class="k">def</span> <span class="nf">test_filter_contigs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="n">ref</span> <span class="o">=</span> <span class="s2">&quot;14672/2/1&quot;</span>
+    <span class="n">ref</span> <span class="o">=</span> <span class="s2">&quot;79/16/1&quot;</span>
     <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s1">&#39;assembly_ref&#39;</span><span class="p">:</span> <span class="n">ref</span><span class="p">,</span>
         <span class="s1">&#39;min_length&#39;</span><span class="p">:</span> <span class="mi">200000</span>
@@ -402,7 +405,7 @@ current app but also every app called by this app. Therefore files from other ap
 <h2>5.9. Output the filtered assembly<a class="headerlink" href="#output-the-filtered-assembly" title="Permalink to this headline">¶</a></h2>
 <p>Next, we want to save and upload a new version of our genome assembly data with the contigs filtered out.</p>
 <p>Beneath the code that we wrote to filter the assembly, add this file saving and uploading code.</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
 <span class="c1"># Underneath your loop that filters contigs:</span>
 <span class="c1"># Create a file to hold the filtered data</span>
 <span class="n">filtered_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scratch</span><span class="p">,</span> <span class="s1">&#39;filtered.fasta&#39;</span><span class="p">)</span>
@@ -411,7 +414,7 @@ current app but also every app called by this app. Therefore files from other ap
 <span class="n">new_ref</span> <span class="o">=</span> <span class="n">assembly_util</span><span class="o">.</span><span class="n">save_assembly_from_fasta</span><span class="p">({</span>
     <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="n">filtered_path</span><span class="p">},</span>
     <span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="n">workspace_name</span><span class="p">,</span>
-    <span class="s1">&#39;assembly_name&#39;</span><span class="p">:</span> <span class="n">file</span><span class="p">[</span><span class="s1">&#39;assembly_name&#39;</span><span class="p">]</span>
+    <span class="s1">&#39;assembly_name&#39;</span><span class="p">:</span> <span class="nb">file</span><span class="p">[</span><span class="s1">&#39;assembly_name&#39;</span><span class="p">]</span>
 <span class="p">})</span>
 <span class="n">returnVal</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;n_total&#39;</span><span class="p">:</span> <span class="n">n_total</span><span class="p">,</span>
@@ -423,7 +426,7 @@ current app but also every app called by this app. Therefore files from other ap
 </pre></div>
 </div>
 <p>Add a simple assertion into your <code class="docutils literal notranslate"><span class="pre">test_fast_ani</span></code> method to check for the <code class="docutils literal notranslate"><span class="pre">filtered_assembly_ref</span></code>. Something like:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;filtered_assembly_ref&#39;</span><span class="p">]))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;filtered_assembly_ref&#39;</span><span class="p">]))</span>
 </pre></div>
 </div>
 <p>Run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> again to make sure you have no errors</p>
@@ -432,15 +435,15 @@ current app but also every app called by this app. Therefore files from other ap
 <h2>5.10. Build a report object<a class="headerlink" href="#build-a-report-object" title="Permalink to this headline">¶</a></h2>
 <p>In order to output data into the UI inside a narrative, your app needs to build and return a KBaseReport (<a class="reference external" href="https://github.com/kbaseapps/KBaseReport">https://github.com/kbaseapps/KBaseReport</a>).</p>
 <p>Install the KBaseReport app with:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span>$ kb-sdk install KBaseReport
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kb-sdk install KBaseReport
 </pre></div>
 </div>
 <p>Import the report module between the <code class="docutils literal notranslate"><span class="pre">#BEGIN_HEADER</span></code> and <code class="docutils literal notranslate"><span class="pre">#END_HEADER</span></code> section of your <code class="docutils literal notranslate"><span class="pre">MyModuleImpl.py</span></code> file:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">KBaseReport.KBaseReportClient</span> <span class="k">import</span> <span class="n">KBaseReport</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">KBaseReport.KBaseReportClient</span> <span class="kn">import</span> <span class="n">KBaseReport</span>
 </pre></div>
 </div>
 <p>The KBaseReport takes a series of dictionary objects that can have text messages, object references, and more. Add the report initialization code inside your <code class="docutils literal notranslate"><span class="pre">filter_contigs</span></code> method:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inside the filter_contigs method, below where we uploaded the new file:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inside the filter_contigs method, below where we uploaded the new file:</span>
 <span class="c1"># Create an output summary message for the report</span>
 <span class="n">text_message</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
     <span class="s1">&#39;Filtered assembly to &#39;</span><span class="p">,</span>
@@ -473,7 +476,7 @@ current app but also every app called by this app. Therefore files from other ap
 </pre></div>
 </div>
 <p>Add a couple assertions in our <code class="docutils literal notranslate"><span class="pre">test_filter_contigs</span></code> method inside <code class="docutils literal notranslate"><span class="pre">test/MyModuleImpl_server_test.py</span></code> to check for the report name and ref:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;report_name&#39;</span><span class="p">]))</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;report_ref&#39;</span><span class="p">]))</span>
 <span class="o">...</span>
@@ -485,18 +488,36 @@ current app but also every app called by this app. Therefore files from other ap
 <h2>5.11. Configure your app’s output data<a class="headerlink" href="#configure-your-app-s-output-data" title="Permalink to this headline">¶</a></h2>
 <p>We nearly have a complete app. The last step is to take all the result data we defined in <code class="docutils literal notranslate"><span class="pre">MyModuleImpl#filter_contigs</span></code> and add entries for them in our <code class="docutils literal notranslate"><span class="pre">MyModule.spec</span></code> KIDL type file as well as our <code class="docutils literal notranslate"><span class="pre">spec.json</span></code> UI config file.</p>
 <p>Add a type entry for our result data in our KIDL file:</p>
-<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">Output</span> <span class="n">results</span> <span class="o">*/</span>
-<span class="n">typedef</span> <span class="n">structure</span> <span class="p">{</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Output results */</span>
+<span class="k">typedef</span> <span class="n">structure</span> <span class="p">{</span>
     <span class="n">string</span> <span class="n">report_name</span><span class="p">;</span>
     <span class="n">string</span> <span class="n">report_ref</span><span class="p">;</span>
     <span class="n">string</span> <span class="n">filtered_assembly_ref</span><span class="p">;</span>
-    <span class="nb">int</span> <span class="n">n_total</span><span class="p">;</span>
-    <span class="nb">int</span> <span class="n">n_remaining</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">n_total</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">n_remaining</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">ContigFilterResults</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Run <code class="docutils literal notranslate"><span class="pre">make</span></code> and <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> again to make sure everything works.</p>
 <p>In your <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/filter_contigs/spec.json</span></code> file, add entries for this output data:</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<span class="s2">&quot;output_mapping&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;service_method_output_path&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;report_name&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;target_property&quot;</span><span class="p">:</span> <span class="s2">&quot;report_name&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;service_method_output_path&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;report_ref&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;target_property&quot;</span><span class="p">:</span> <span class="s2">&quot;report_ref&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;narrative_system_variable&quot;</span><span class="p">:</span> <span class="s2">&quot;workspace&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;target_property&quot;</span><span class="p">:</span> <span class="s2">&quot;workspace_name&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+<span class="o">...</span>
+</pre></div>
+</div>
 <p>Now we have some output entries that point to our report and workspace, which will show up when the job finishes in the narrative.</p>
 <p>Finally, under <code class="docutils literal notranslate"><span class="pre">widgets/output</span></code> in the JSON (around line 10), set <code class="docutils literal notranslate"><span class="pre">&quot;output&quot;</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;no-display&quot;</span></code>. This prevents our app from creating a separate output cell.</p>
 <p>We’ve added an entry for everything we put in the <code class="docutils literal notranslate"><span class="pre">returnVal</span></code> dictionary that gets returned from <code class="docutils literal notranslate"><span class="pre">MyModuleImpl#filter_contigs</span></code>.</p>

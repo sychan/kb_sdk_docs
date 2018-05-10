@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Using workspace metadata" href="workspace.html" />
+    <link rel="next" title="Using Workspace Metadata" href="workspace.html" />
     <link rel="prev" title="Running shell commands" href="run_a_shell_command.html" /> 
 
   
@@ -113,10 +113,10 @@
 </ul>
 <p class="caption"><span class="caption-text">Advanced Guides</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="workspace.html">Using workspace metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workspace.html">Using Workspace Metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual_build.html">Manually building the SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="work_with_reference_data.html">Working with reference data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="job_manager.html">How to list and view jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="job_manager.html">Listing and viewing jobs</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
@@ -177,7 +177,7 @@
         
             
             
-              <a href="https://github.com/kbase/kb_sdk_docs//blob/master/source/howtos/file_utils.md" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/kbase/kb_sdk_docs//blob/master/source/howtos/file_utils.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -192,18 +192,26 @@
            <div itemprop="articleBody">
             
   <div class="section" id="working-with-the-file-utils">
-<span id="working-with-the-file-utils"></span><h1>Working with the file utils<a class="headerlink" href="#working-with-the-file-utils" title="Permalink to this headline">¶</a></h1>
-<p>Need to work with a type of file? There’s a built-in utility for that. Remember that utils run in seperate containers that have a link to scratch, so keep your files in scratch and upload them from there.</p>
+<h1>Working with the file utils<a class="headerlink" href="#working-with-the-file-utils" title="Permalink to this headline">¶</a></h1>
+<p>Need to work with a type of file? There’s a built-in utility for that.
+Remember that utils run in separate containers that have a link to
+scratch, so keep your files in scratch and upload them from there.</p>
 <div class="section" id="where-are-the-utils">
-<span id="where-are-the-utils"></span><h2>Where are the utils?<a class="headerlink" href="#where-are-the-utils" title="Permalink to this headline">¶</a></h2>
-<p>Search for “Util” at <a class="reference external" href="https://ci.kbase.us/#catalog/modules">https://ci.kbase.us/#catalog/modules</a></p>
-<p>DataFileUtil, GenomeFileUtil, and AssemblyUtil are very commonly used. Read the examples below for a quick idea on how to use them.</p>
-<blockquote>
-<div>Note: Upload local genome files for all of your tests. If you use an existing workspace reference in your tests, it won’t work in the AppDev/CI environments.</div></blockquote>
+<h2>Where are the utils?<a class="headerlink" href="#where-are-the-utils" title="Permalink to this headline">¶</a></h2>
+<p>Search for “Util” in <a class="reference external" href="https://ci.kbase.us/#catalog/modules">the catalog</a>.</p>
+<p>DataFileUtil, GenomeFileUtil, and AssemblyUtil are very commonly used.
+Read the examples below for a quick idea on how to use them.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Upload local genome files for all of your tests. If you use an
+existing workspace reference in your tests, it won’t work in the
+AppDev/CI environments.</p>
 </div>
 <div class="section" id="datafileutil">
-<span id="datafileutil"></span><h2>DataFileUtil<a class="headerlink" href="#datafileutil" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://github.com/kbaseapps/DataFileUtil">DataFileUtil</a> is the preferred general utility to fetch and save objects. Use GenomeFileUtil or AssemblyUtil if you are specifically working with FASTA or GFF files.</p>
+<h3>DataFileUtil<a class="headerlink" href="#datafileutil" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/kbaseapps/DataFileUtil">DataFileUtil</a> is the
+preferred general utility to fetch and save objects. Use GenomeFileUtil
+or AssemblyUtil if you are specifically working with FASTA or GFF files.</p>
 <p><em>Initialize DataFileUtil client and get an object by reference.</em></p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">callback_url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;SDK_CALLBACK_URL&#39;</span><span class="p">]</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">dfu</span> <span class="o">=</span> <span class="n">DataFileUtil</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">callback_url</span><span class="p">)</span>
@@ -248,7 +256,7 @@
 </div>
 </div>
 <div class="section" id="genomefileutil">
-<span id="genomefileutil"></span><h2>GenomeFileUtil<a class="headerlink" href="#genomefileutil" title="Permalink to this headline">¶</a></h2>
+<h3>GenomeFileUtil<a class="headerlink" href="#genomefileutil" title="Permalink to this headline">¶</a></h3>
 <p><em>Download:</em></p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="nb">file</span> <span class="o">=</span> <span class="n">gfu</span><span class="o">.</span><span class="n">genome_to_gff</span><span class="p">({</span><span class="s1">&#39;genome_ref&#39;</span><span class="p">:</span> <span class="n">genome_ref</span><span class="p">})</span>
 <span class="nb">file</span><span class="p">[</span><span class="s1">&#39;path&#39;</span><span class="p">]</span>  <span class="c1"># -&gt; &#39;/path/to/your/gff_file&#39;</span>
@@ -265,7 +273,7 @@
 </div>
 </div>
 <div class="section" id="assemblyutil">
-<span id="assemblyutil"></span><h2>AssemblyUtil<a class="headerlink" href="#assemblyutil" title="Permalink to this headline">¶</a></h2>
+<h3>AssemblyUtil<a class="headerlink" href="#assemblyutil" title="Permalink to this headline">¶</a></h3>
 <p><em>Download:</em></p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">assembly_util</span> <span class="o">=</span> <span class="n">AssemblyUtil</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">callback_url</span><span class="p">)</span>
 <span class="nb">file</span> <span class="o">=</span> <span class="n">assembly_util</span><span class="o">.</span><span class="n">get_assembly_as_fasta</span><span class="p">({</span>
@@ -280,8 +288,9 @@
     <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="n">scratch_file_path</span><span class="p">},</span>
     <span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="n">workspace_name</span><span class="p">,</span>
     <span class="s1">&#39;assembly_name&#39;</span><span class="p">:</span> <span class="s1">&#39;my_uploaded_assembly&#39;</span>
-<span class="p">})</span>
+<span class="p">}</span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -294,7 +303,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="workspace.html" class="btn btn-neutral float-right" title="Using workspace metadata" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="workspace.html" class="btn btn-neutral float-right" title="Using Workspace Metadata" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="run_a_shell_command.html" class="btn btn-neutral" title="Running shell commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

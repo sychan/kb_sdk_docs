@@ -1,7 +1,7 @@
 Adding UI Elements
 ===========================
 
-Control of Narrative interaction is accomplished in files in the
+Control of narrative interaction is accomplished in files in the
 ``ui/narrative/methods/<MyMethod>`` directory.
 
 Configure the input interface

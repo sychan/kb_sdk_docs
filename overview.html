@@ -113,10 +113,10 @@
 </ul>
 <p class="caption"><span class="caption-text">Advanced Guides</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="howtos/workspace.html">Using workspace metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtos/workspace.html">Using Workspace Metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="howtos/manual_build.html">Manually building the SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="howtos/work_with_reference_data.html">Working with reference data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="howtos/job_manager.html">How to list and view jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtos/job_manager.html">Listing and viewing jobs</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
@@ -193,13 +193,13 @@
             
   <div class="section" id="concepts-and-overview">
 <h1>Concepts and Overview<a class="headerlink" href="#concepts-and-overview" title="Permalink to this headline">¶</a></h1>
-<p>This page gives a a high-level overview of how the SDK works and general concepts in making and running apps.</p>
+<p>This page gives a high-level overview of how the SDK works and the general concepts involved in making and running apps.</p>
 <div class="section" id="the-basics">
 <h2>The Basics<a class="headerlink" href="#the-basics" title="Permalink to this headline">¶</a></h2>
 <img alt="_images/micro1.png" class="align-right" src="_images/micro1.png" />
 <p>Apps on KBase, such as genome assemblers and annotators that run on narrative pages, are created using the KBase SDK.</p>
-<p>When you run an app in a narrative, it runs in a docker container on KBase’s servers. Learn more about docker containers here: <a class="reference external" href="https://www.docker.com/what-container">https://www.docker.com/what-container</a>. Docker containers allow you to run compiled programs, such as <a class="reference external" href="https://github.com/voutcn/megahit">MEGAHIT</a>, on any machine.</p>
-<p>The starting source code for your app defines the type of input parameters the user can enter, the packages and programs the app will run in its container, and the output it will display in the final report. The source code for your app gets generated using the <cite>kb-sdk</cite> command line utility (see the rest of the tutorial for details).</p>
+<p>When you run an app in a narrative, it runs in a docker container on KBase’s servers. Learn more about docker containers here: <a class="reference external" href="https://www.docker.com/what-container">https://www.docker.com/what-container</a>. Docker containers allow you to package and compile programs and dependencies, such as <a class="reference external" href="https://github.com/voutcn/megahit">MEGAHIT</a>, and run them anywhere.</p>
+<p>As an SDK developer, you define your input parameter types, the packages and programs to run, and the output types, text, and HTML to show the user when the app finishes. To help facilitate development, a <code class="docutils literal notranslate"><span class="pre">kb-sdk</span></code> command-line utility is provided.</p>
 </div>
 <div class="section" id="the-workflow">
 <h2>The Workflow<a class="headerlink" href="#the-workflow" title="Permalink to this headline">¶</a></h2>
@@ -207,12 +207,12 @@
 <a class="reference internal image-reference" href="_images/concept-map.svg"><img alt="_images/concept-map.svg" src="_images/concept-map.svg" /></a>
 <div class="section" id="user-input">
 <h3>User Input<a class="headerlink" href="#user-input" title="Permalink to this headline">¶</a></h3>
-<p>In the first tab of a narrative app, users have a set of form elements that can be customized by your app to accept many kinds of data. An example might be a genome assembly algorithm that takes a dataset of DNA reads and a minimum kmer size.</p>
-<p>As an app developer, you can configure the elements of the form using a wide range of options. For larger data sets, such as genomes, these will be passed into your app as <em>references</em>, which you can think of as simple URLs used to download the actual files.</p>
+<p>In the first page of a narrative app, users have a set of form elements that can be customized to accept many kinds of data. An example might be a genome assembly algorithm that takes a dataset of DNA reads and a minimum kmer size.</p>
+<p>As an app developer, you can configure the elements of the form using a wide range of options. For parameters that refer to larger data sets, such as genomes, these will be passed into your app as <em>references</em>, which you can think of as simple URLs used to download the actual files.</p>
 </div>
 <div class="section" id="app-code-and-data-management">
 <h3>App Code and Data Management<a class="headerlink" href="#app-code-and-data-management" title="Permalink to this headline">¶</a></h3>
-<p>Input from the app’s form is converted into python data and passed into a main method in your app. Typically, apps will perform a set of validation checks on the input to make sure everything is well-formed before running any algorithms.</p>
+<p>Input from the app’s form is converted into a python dictionary and passed into a main method in your app. Typically, apps will perform a set of validation checks on the input to make sure everything is well-formed before running any algorithms.</p>
 <p>From here, you can call out to utilities, run binary programs, and work with the file-system.</p>
 </div>
 <div class="section" id="output-and-reporting">
@@ -278,7 +278,7 @@
 <div class="section" id="publishing">
 <h2>Publishing<a class="headerlink" href="#publishing" title="Permalink to this headline">¶</a></h2>
 <p>You can register a new app from this page: <a class="reference external" href="https://appdev.kbase.us/#appcatalog/register">https://appdev.kbase.us/#appcatalog/register</a></p>
-<p>Once you do so, it will be available in the <code class="docutils literal notranslate"><span class="pre">dev</span></code> catalog. This catalog is meant as experimentation grounds for new apps. When you’re searching for apps, you need to be sure to filter by development apps to view your <code class="docutils literal notranslate"><span class="pre">dev</span></code> app.</p>
+<p>Once you do so, it will be available in the <code class="docutils literal notranslate"><span class="pre">dev</span></code> catalog. This catalog is meant as experimentation grounds for new apps. When you’re searching for apps, you need to be sure to filter by the development catalog to view your <code class="docutils literal notranslate"><span class="pre">dev</span></code> app.</p>
 </div>
 </div>
 

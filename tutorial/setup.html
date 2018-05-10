@@ -113,10 +113,10 @@
 </ul>
 <p class="caption"><span class="caption-text">Advanced Guides</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../howtos/workspace.html">Using workspace metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/workspace.html">Using Workspace Metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/manual_build.html">Manually building the SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/work_with_reference_data.html">Working with reference data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../howtos/job_manager.html">How to list and view jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/job_manager.html">Listing and viewing jobs</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
@@ -229,35 +229,35 @@
 <h2>4.3. Add KIDL Type Definitions<a class="headerlink" href="#add-kidl-type-definitions" title="Permalink to this headline">¶</a></h2>
 <p>First, add the input parameter types to your app’s KIDL specification, which lives in <code class="docutils literal notranslate"><span class="pre">&lt;module_name&gt;.spec</span></code> in the root directory of your codebase.</p>
 <p>Open your KIDL spec file, and you will see something like this:</p>
-<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
-<span class="n">A</span> <span class="n">KBase</span> <span class="n">module</span><span class="p">:</span> <span class="n">MyContigFilter</span>
-<span class="o">*/</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm">A KBase module: MyContigFilter</span>
+<span class="cm">*/</span>
 <span class="n">module</span> <span class="n">MyContigFilter</span> <span class="p">{</span>
-    <span class="o">/*</span>
-        <span class="n">Insert</span> <span class="n">your</span> <span class="n">typespec</span> <span class="n">information</span> <span class="n">here</span><span class="o">.</span>
-    <span class="o">*/</span>
+    <span class="cm">/*</span>
+<span class="cm">        Insert your typespec information here.</span>
+<span class="cm">    */</span>
 <span class="p">};</span>
 </pre></div>
 </div>
-<p>The above syntax comes from a custom type language called KIDL that is similar to languages like C++, but is specific to KBase. KIDL is used as a common interface definition language, allowing different apps to communicate with one another, regardless of programming languages.</p>
+<p>The above syntax comes from a custom type language called KIDL, which is used as a common interface definition language, allowing different apps to communicate with one another, regardless of programming languages.</p>
 <p><a class="reference external" href="../references/KIDL_spec.html">View the KIDL tutorial and reference</a></p>
 <p>Our input and output types need to be in <code class="docutils literal notranslate"><span class="pre">structure</span></code> types. Add these type structures inside your module section:</p>
-<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">Input</span> <span class="n">parameter</span> <span class="n">types</span> <span class="o">*/</span>
-<span class="n">typedef</span> <span class="n">structure</span> <span class="p">{</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Input parameter types */</span>
+<span class="k">typedef</span> <span class="n">structure</span> <span class="p">{</span>
     <span class="n">string</span> <span class="n">workspace_name</span><span class="p">;</span>
     <span class="n">string</span> <span class="n">assembly_ref</span><span class="p">;</span>
-    <span class="nb">int</span> <span class="n">min_length</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">min_length</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">ContigFilterParams</span><span class="p">;</span>
 
-<span class="o">/*</span> <span class="n">Output</span> <span class="n">result</span> <span class="n">types</span> <span class="o">*/</span>
-<span class="n">typedef</span> <span class="n">structure</span> <span class="p">{</span>
+<span class="cm">/* Output result types */</span>
+<span class="k">typedef</span> <span class="n">structure</span> <span class="p">{</span>
 <span class="p">}</span> <span class="n">ContigFilterResults</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Above, we’ve added a few input parameters: a workspace name (always needed to work with data), an <code class="docutils literal notranslate"><span class="pre">int</span></code> for the minimum contig length that the user wants, and a <code class="docutils literal notranslate"><span class="pre">string</span></code> that will reference an assembly data file on KBase’s servers.</p>
 <p>We also added a placeholder type structure for our output results, which we will return to later. For now, it can be blank.</p>
 <p>Now insert a function type for our app’s main method, which we can call <code class="docutils literal notranslate"><span class="pre">filter_contigs</span></code>. Refer to the <a class="reference external" href="../references/KIDL_spec.html">KIDL specification</a> for details about function types.</p>
-<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">funcdef</span> <span class="n">filter_contigs</span><span class="p">(</span><span class="n">ContigFilterParams</span> <span class="n">params</span><span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">funcdef</span> <span class="nf">filter_contigs</span><span class="p">(</span><span class="n">ContigFilterParams</span> <span class="n">params</span><span class="p">)</span>
     <span class="n">returns</span> <span class="p">(</span><span class="n">ContigFilterResults</span><span class="p">)</span> <span class="n">authentication</span> <span class="n">required</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -271,7 +271,7 @@
 <div class="section" id="validate-your-app">
 <h2>4.4. Validate your app<a class="headerlink" href="#validate-your-app" title="Permalink to this headline">¶</a></h2>
 <p>When you make changes to your KIDL <code class="docutils literal notranslate"><span class="pre">.spec</span></code> file, validate the syntax of your changes by running:</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>$ kb-sdk validate
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kb-sdk validate
 </pre></div>
 </div>
 <p>For now, you will get an error that looks something like this:</p>
@@ -283,7 +283,7 @@
 <div class="section" id="update-spec-json">
 <h2>4.5. Update spec.json<a class="headerlink" href="#update-spec-json" title="Permalink to this headline">¶</a></h2>
 <p>The directory named <code class="docutils literal notranslate"><span class="pre">/ui/narrative/methods/example_method</span></code> is a placeholder. Rename it to the name of the actual function we defined in our KIDL <code class="docutils literal notranslate"><span class="pre">.spec</span></code> file:</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span># From your app&#39;s root directory:
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># From your app&#39;s root directory:</span>
 $ mv ui/narrative/methods/example_method ui/narrative/methods/filter_contigs
 </pre></div>
 </div>
@@ -359,20 +359,20 @@ $ mv ui/narrative/methods/example_method ui/narrative/methods/filter_contigs
 <p>You can leave the “screenshots” and “icon” fields to their default values. For now, set empty lists as the values in the “suggestions” section.</p>
 <p>Moving down to the “parameters” section, add parameter entries for “assembly_ref” and “min_length” with some helpful descriptions of each.</p>
 <p>Example “parameters” section:</p>
-<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span><span class="p">:</span>
-    <span class="n">assembly_ref</span><span class="p">:</span>
-        <span class="n">ui</span><span class="o">-</span><span class="n">name</span><span class="p">:</span> <span class="n">Assembly</span> <span class="n">to</span> <span class="nb">filter</span>
-        <span class="n">short</span><span class="o">-</span><span class="n">hint</span><span class="p">:</span> <span class="o">|</span>
-            <span class="n">Genome</span> <span class="n">assembly</span> <span class="k">with</span> <span class="n">contiguous</span> <span class="n">fragments</span>
-        <span class="n">long</span><span class="o">-</span><span class="n">hint</span><span class="p">:</span> <span class="o">|</span>
-            <span class="n">Genome</span> <span class="n">assembly</span> <span class="n">where</span> <span class="n">we</span> <span class="n">want</span> <span class="n">to</span> <span class="nb">filter</span> <span class="n">out</span> <span class="n">fragments</span> <span class="n">that</span> <span class="n">are</span> <span class="n">below</span> <span class="n">a</span> <span class="n">minimum</span>
-    <span class="n">min_length</span><span class="p">:</span>
-        <span class="n">ui</span><span class="o">-</span><span class="n">name</span><span class="p">:</span> <span class="o">|</span>
-            <span class="n">Min</span> <span class="n">contig</span> <span class="n">length</span>
-        <span class="n">short</span><span class="o">-</span><span class="n">hint</span><span class="p">:</span> <span class="o">|</span>
-            <span class="n">Minimum</span> <span class="n">required</span> <span class="n">length</span> <span class="n">of</span> <span class="n">every</span> <span class="n">contig</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">assembly</span>
-        <span class="n">long</span><span class="o">-</span><span class="n">hint</span><span class="p">:</span> <span class="o">|</span>
-            <span class="n">All</span> <span class="n">contigs</span> <span class="n">will</span> <span class="n">be</span> <span class="n">filtered</span> <span class="n">out</span> <span class="n">of</span> <span class="n">the</span> <span class="n">assembly</span> <span class="n">that</span> <span class="n">are</span> <span class="n">shorter</span> <span class="n">than</span> <span class="n">the</span> <span class="n">given</span> <span class="n">length</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">assembly_ref</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">ui-name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Assembly to filter</span>
+        <span class="l l-Scalar l-Scalar-Plain">short-hint</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+            <span class="no">Genome assembly with contiguous fragments</span>
+        <span class="l l-Scalar l-Scalar-Plain">long-hint</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+            <span class="no">Genome assembly where we want to filter out fragments that are below a minimum</span>
+    <span class="l l-Scalar l-Scalar-Plain">min_length</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">ui-name</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+            <span class="no">Min contig length</span>
+        <span class="l l-Scalar l-Scalar-Plain">short-hint</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+            <span class="no">Minimum required length of every contig in the assembly</span>
+        <span class="l l-Scalar l-Scalar-Plain">long-hint</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+            <span class="no">All contigs will be filtered out of the assembly that are shorter than the given length</span>
 </pre></div>
 </div>
 <p>This text will show up on the actual narrative page for your app in the help areas for each form element. You only need to set this text for parameters that actually display in the form.</p>

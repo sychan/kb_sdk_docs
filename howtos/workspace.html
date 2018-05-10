@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Using workspace metadata &mdash; KBase SDK 0.1.18 documentation</title>
+  <title>Using Workspace Metadata &mdash; KBase SDK 0.1.18 documentation</title>
   
 
   
@@ -113,10 +113,10 @@
 </ul>
 <p class="caption"><span class="caption-text">Advanced Guides</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Using workspace metadata</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using Workspace Metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual_build.html">Manually building the SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="work_with_reference_data.html">Working with reference data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="job_manager.html">How to list and view jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="job_manager.html">Listing and viewing jobs</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
@@ -170,7 +170,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Using workspace metadata</li>
+      <li>Using Workspace Metadata</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -192,7 +192,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="using-workspace-metadata">
-<h1>Using workspace metadata<a class="headerlink" href="#using-workspace-metadata" title="Permalink to this headline">¶</a></h1>
+<h1>Using Workspace Metadata<a class="headerlink" href="#using-workspace-metadata" title="Permalink to this headline">¶</a></h1>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
 <p class="last">While you can get objects using the workspace client, it is not the recommended way to do it. We suggest using the <a class="reference external" href="../howtos/file_utils.html">file utilities</a> instead.</p>
@@ -201,8 +201,8 @@
 <h2>Retrieving workspace object metadata<a class="headerlink" href="#retrieving-workspace-object-metadata" title="Permalink to this headline">¶</a></h2>
 <p>If you don’t want to retrieve the entire object, and just want information about it, the most efficient way is to use the <code class="docutils literal notranslate"><span class="pre">ws.get_object_info</span></code> function. To read more about the available functions, see the <a class="reference external" href="https://kbase.us/services/ws/docs/Workspace.html">workspace spec file</a>.</p>
 <p><em>Initialize the workspace client and get an object’s information by reference</em></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># The config object is passed into the __init__ function for your *Impl.py module</span>
-<span class="kn">from</span> <span class="nn">Workspace.WorkspaceClient</span> <span class="k">import</span> <span class="n">Workspace</span> <span class="k">as</span> <span class="n">Workspace</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The config object is passed into the __init__ function for your *Impl.py module</span>
+<span class="kn">from</span> <span class="nn">Workspace.WorkspaceClient</span> <span class="kn">import</span> <span class="n">Workspace</span> <span class="k">as</span> <span class="n">Workspace</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">ws_url</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;workspace-url&quot;</span><span class="p">]</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;KB_AUTH_TOKEN&quot;</span><span class="p">]</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">ws</span> <span class="o">=</span> <span class="n">Workspace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ws_url</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">)</span>
@@ -215,7 +215,7 @@
 <div class="section" id="how-to-use-the-workspace-client-in-the-narrative">
 <h2>How to use the Workspace Client in the narrative<a class="headerlink" href="#how-to-use-the-workspace-client-in-the-narrative" title="Permalink to this headline">¶</a></h2>
 <p>You can access the workspace client from within narrative code cells. See this <a class="reference external" href="https://narrative.kbase.us/narrative/ws.30170.obj.1">example narrative</a>.</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ws</span> <span class="o">=</span> <span class="n">biokbase</span><span class="o">.</span><span class="n">narrative</span><span class="o">.</span><span class="n">clients</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;workspace&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ws</span> <span class="o">=</span> <span class="n">biokbase</span><span class="o">.</span><span class="n">narrative</span><span class="o">.</span><span class="n">clients</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;workspace&#39;</span><span class="p">)</span>
 <span class="n">obj</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">get_objects2</span><span class="p">({</span><span class="s1">&#39;objects&#39;</span> <span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;ref&#39;</span> <span class="p">:</span> <span class="s1">&#39;30170/2/1&#39;</span><span class="p">}]})</span>
 </pre></div>
 </div>

@@ -113,10 +113,10 @@
 </ul>
 <p class="caption"><span class="caption-text">Advanced Guides</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="workspace.html">Using workspace metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workspace.html">Using Workspace Metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual_build.html">Manually building the SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="work_with_reference_data.html">Working with reference data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="job_manager.html">How to list and view jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="job_manager.html">Listing and viewing jobs</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
@@ -200,15 +200,15 @@ can compile these programs for your app by entering the build commands
 in your Dockerfile. For example,
 <a class="reference external" href="https://github.com/kbaseapps/FastANI">FastANI</a> compiles and installs
 with this series of commands:</p>
-<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span># Fetch and compile FastANI
-RUN git clone https://github.com/ParBLiSS/FastANI.git /opt/FastANI \
-    &amp;&amp; cd /opt/FastANI \
-    &amp;&amp; git checkout tags/v1.0 -b v1.0 \
-    &amp;&amp; ./bootstrap.sh \
-    &amp;&amp; ./configure \
-    &amp;&amp; make \
-    # Place fastANI in the PATH for this user
-    &amp;&amp; ln -s $(readlink -f ./fastANI) /usr/local/bin/fastANI
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fetch and compile FastANI</span>
+RUN git clone https://github.com/ParBLiSS/FastANI.git /opt/FastANI <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> <span class="nb">cd</span> /opt/FastANI <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> git checkout tags/v1.0 -b v1.0 <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> ./bootstrap.sh <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> ./configure <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> make <span class="se">\</span>
+    <span class="c1"># Place fastANI in the PATH for this user</span>
+    <span class="o">&amp;&amp;</span> ln -s <span class="k">$(</span>readlink -f ./fastANI<span class="k">)</span> /usr/local/bin/fastANI
 </pre></div>
 </div>
 <p>Some things to note:</p>

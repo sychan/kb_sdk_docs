@@ -180,19 +180,19 @@ We can add some additional tests to make sure we raise ValueErrors for invalid p
         ws = self.getWsName()
         # Missing assembly ref
         with self.assertRaises(ValueError):
-            impl.filter_contigs(ctx, ws, {'min_length': 100})
+            impl.filter_contigs(ctx, {'workspace_name': ws, 'min_length': 100})
         # Missing min length
         with self.assertRaises(ValueError):
-            impl.filter_contigs(ctx, ws, {'assembly_ref': 'x'})
+            impl.filter_contigs(ctx, {'workspace_name': ws, 'assembly_ref': 'x'})
         # Min length is negative
         with self.assertRaises(ValueError):
-            impl.filter_contigs(ctx, ws, {'assembly_ref': 'x', 'min_length': -1})
+            impl.filter_contigs(ctx, {'workspace_name': ws, 'assembly_ref': 'x', 'min_length': -1})
         # Min length is wrong type
         with self.assertRaises(ValueError):
-            impl.filter_contigs(ctx, ws, {'assembly_ref': 'x', 'min_length': 'x'})
+            impl.filter_contigs(ctx, {'workspace_name': ws, 'assembly_ref': 'x', 'min_length': 'x'})
         # Assembly ref is wrong type
         with self.assertRaises(ValueError):
-            impl.filter_contigs(ctx, ws, {'assembly_ref': 1, 'min_length': 1})
+            impl.filter_contigs(ctx, {'workspace_name': ws, 'assembly_ref': 1, 'min_length': 1})
     ...
 
 

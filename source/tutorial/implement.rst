@@ -257,6 +257,7 @@ We would expect to keep 1 contig and filter out the other.
     def test_filter_contigs(self):
         ref = "79/16/1"
         params = {
+            'workspace_name': self.getWsName(),
             'assembly_ref': ref,
             'min_length': 200000
         }

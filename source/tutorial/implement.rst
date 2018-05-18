@@ -420,7 +420,7 @@ In your ``ui/narrative/methods/filter_contigs/spec.json`` file, add entries for 
 
 Now we have some output entries that point to our report and workspace, which will show up when the job finishes in the narrative.
 
-Finally, under ``widgets/output`` in the JSON (around line 10), set ``"output"`` to ``"no-display"``. This prevents our app from creating a separate output cell.
+Finally, under ``widgets/output`` in the spec.json (around line 10), set ``"output"`` to ``"no-display"``. This prevents our app from creating a separate output cell.
 
 We've added an entry for everything we put in the ``returnVal`` dictionary that gets returned from ``MyModuleImpl#filter_contigs``.
 

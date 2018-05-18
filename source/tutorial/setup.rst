@@ -130,11 +130,9 @@ The directory named ``/ui/narrative/methods/example_method`` is a placeholder. R
 
 ``filter_contigs`` matches the ``funcdef`` name we used in the KIDL ``MyContigFilter.spec`` file.
 
-Now open up ``ui/narrative/methods/filter_contigs/spec.json``.
+Now open up ``ui/narrative/methods/filter_contigs/spec.json``. This file defines a mapping between our KIDL ``.spec`` file and how our parameters will show up in the app's user interface.
 
-This file defines a mapping between our KIDL ``.spec`` file and how our parameters will show up in the app's user interface.
-
-Find line 29 where it says ``"your_method"`` -- change that to say ``"filter_contigs"`` instead.
+Find line 29 where it says ``"your_method"`` -- change that to say ``"filter_contigs"`` instead. Also, set the the "method" to "filter_contigs" under the "behavior"."service-mapping"."method" setting in the JSON.
 
 In the section under ``"parameters"``, add an entry for two of our input parameters:
 

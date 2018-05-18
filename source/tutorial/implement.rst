@@ -152,7 +152,7 @@ Make sure your user passes in a workspace, an assembly reference, and a minimum 
 .. code-block:: python
 
   ...
-  # Inside filter_contigs(), after #BEGIN fast_ani, before any other code
+  # Inside filter_contigs(), after #BEGIN filter_contigs, before any other code
   # Check that the parameters are valid
   for name in ['min_length', 'assembly_ref', 'workspace_name']:
       if name not in params:
@@ -281,6 +281,7 @@ Beneath the code that we wrote to filter the assembly, add this file saving and 
     ...
     # Underneath your loop that filters contigs:
     # Create a file to hold the filtered data
+    workspace_name = params['workspace_name']
     filtered_path = os.path.join(self.scratch, 'filtered.fasta')
     SeqIO.write(good_contigs, filtered_path, 'fasta')
     # Upload the filtered data to the workspace
@@ -298,7 +299,7 @@ Beneath the code that we wrote to filter the assembly, add this file saving and 
     ...
 
 
-Add a simple assertion into your ``test_fast_ani`` method to check for the ``filtered_assembly_ref``. Something like:
+Add a simple assertion into your ``test_filter_contigs`` method to check for the ``filtered_assembly_ref``. Something like:
 
 .. code-block:: python
 

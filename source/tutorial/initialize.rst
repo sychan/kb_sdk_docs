@@ -7,7 +7,7 @@ The basic options of the command are:
 
 .. code-block:: bash
 
-    $ kb-sdk init [-ev] [-l language] [-u username] ModuleName
+    $ kb-sdk init [--example] [--verbose] [--language language] [--user username] ModuleName
 
 
 where ``ModuleName`` must be unique across all SDK modules registered in KBase. For example:
@@ -15,7 +15,7 @@ where ``ModuleName`` must be unique across all SDK modules registered in KBase. 
 
 .. code-block:: bash
 
-    $ kb-sdk init -l python -u <your_kbase_user_name> <user_name>ContigFilter
+    $ kb-sdk init --language python --user <your_kbase_user_name> <user_name>ContigFilter
 
 
 We're using ``<user_name>`` in the module name in this example to make sure that your module has a unique name. However, you would not usually put your own username in the module name, and instead name it something like ``ContigFilter``.
@@ -40,12 +40,7 @@ The ``kb-sdk init`` options are:
 
 The example we're building will have the same functionality as the app you get when you run ``kbase-init --example ..``. You can reference https://github.com/msneddon/ContigFilter for a working version if you get stuck at any point.
 
-Run the init script:
-
-.. code-block:: bash
-
-    $ kb-sdk init --verbose --language python --user <your_username> <username>ContigFilter
-
+Run the above init script before continuing.
 
 Build the App
 ---------------------

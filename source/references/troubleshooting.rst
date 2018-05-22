@@ -122,11 +122,33 @@ If you get an error on OSX as follows:
         kb-sdk help
         (ExpressionUtils)
 
-
-Generate new security cerficates:
-
+Generate new security certificates:
 
 .. code-block:: bash
 
     $ openssl x509 -in <(openssl s_client -connect ci.kbase.us:443 -prexit 2>/dev/null) -out ~/example.crt
     $ sudo keytool -importcert -file ~/example.crt -alias example -keystore $(/usr/libexec/java_home)/jre/lib/security/cacerts -storepass changeit
+
+My Docker instances have run out of space
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Sometimes an error message might indicate that you’re out of space, you can check:
+
+.. code-block:: bash
+
+    $ cd test_local
+    $ ./run_bash.sh
+    $ df -h
+
+There are a few methods you can use to free up space
+Remove stopped containers:
+``docker ps -a -f status=exited -q | xargs docker rm``
+
+Remove all old docker containers (with caution):
+``docker ps -a | tail -n+2 | cut -f1 -d " " | xargs docker rm -v``
+
+Remove images with 'kbase' or 'test/' or ‘none’
+``docker images | grep -e 'test/' -e '.kbase.us' -e ‘none’ | awk '{print $3}' | xargs docker rmi``
+
+Remove orphan images:
+``docker rmi $(docker images -q --filter "dangling=true")``

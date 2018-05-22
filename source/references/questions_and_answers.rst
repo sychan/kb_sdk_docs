@@ -70,11 +70,6 @@ Q: How do I set my favorite Apps?
 
 After logging into `KBase <https://kbase.us>`__, go to the `App Catalog`_, and then click on the stars for your favorite Apps. You must be logged in for it to associate it with your account.
 
-Q: Is there a cheatsheet?
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Yes, there is a document that provides a lot of hints about the SDK `SDK Cheatsheet <https://github.com/kbase/kb_sdk/blob/master/doc/SDK_AdvancedFeaturesCheatSheet.pdf>`__.
-
 Validation
 --------------
 

@@ -22,7 +22,7 @@ If you want to add a dependency, make sure to use `pipenv install` to have it ad
 
 ## How it works
 
-Sphinx is a documentation website generator. It takes all of the `.md` and `.rst` markup files found in `/source/` and converts it to an HTML tree. Running `make dev` creates a dynamic server that builds all your markup on every file change.
+Sphinx is a documentation website generator. It takes all of the `.md` and `.rst` markup files found in `/source/` and converts it to an HTML tree. Running `make live` creates a dynamic server that builds all your markup on every file change.
 
 The actual website is hosted on Github Pages and serves the `gh-pages` branch, which has all the HTML files. As an editor of the documentation source code, you don't need to worry about this branch.
  

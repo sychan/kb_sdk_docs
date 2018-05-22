@@ -1,11 +1,15 @@
+******************************
 Narrative App UI Specification
-==============================
+******************************
+
+.. contents::
+
 This document describes how the UI components of Narrative Apps are specified via fields in
 spec.json ​ and ​display.yaml​ files. These spec files include input and output parameters
 for the app.
 
 Structure of Folders and Files
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------
 To introduce UI specifications of Apps in an SDK repo you have to keep files and folders in a
 particular structure. Currently all UI method specifications (method-specs) live in
 ``ui/narrative/methods/`` path. Each method has its own subfolder with the name meaning the app

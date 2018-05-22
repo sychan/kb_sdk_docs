@@ -1,7 +1,10 @@
 Troubleshooting Guide
 =====================
 
+.. contents::
+
 Trying to run ``make sdkbase`` and seeing errors that include ``TLS-enabled daemon`` and/or ``docker daemon``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When you try to run ``make sdkbase`` if you see a message like:
 
@@ -32,6 +35,34 @@ You likely have not started your Docker daemon. On a Mac, that means
 running in the Docker CLI shell after starting Docker Kitematic and
 clicking on "Docker CLI" in the lower left corner (See `Install SDK
 Dependencies - Docker <../tutorial/install.html>`__ for guidance).
+
+My code keeps disappearing. What happened to it?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Magic comments are comments that are used internally by the kbase_sdk in order to generate the implementation file when you make changes to the spec file.
+
+Examples of magic comments include:
+
+.. code:: python
+
+    #BEGIN_HEADER
+    (This is where your import statements go)
+    #END_HEADER
+
+    #BEGIN_CLASS_HEADER
+    (This is where your class variables and functions go that you want imported)
+    #END_CLASS_HEADER
+
+    #BEGIN_CONSTRUCTOR
+    (This is in your init statement for your class goes)
+    #END_CONSTRUCTOR
+
+    #BEGIN YourFunctionName1
+    (This is were the implementation details of your functions go)
+    #END YourFunctionName1
+
+
+Any code created outside of the Magic Comments will not be included inside the final .impl implementation file.
 
 Having trouble getting Docker working on Mac
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

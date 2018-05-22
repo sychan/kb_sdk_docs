@@ -3,31 +3,21 @@ Dynamic Services
 
 Dynamic services vs. SDK Methods (e.g. apps)
 --------------------------------------------
-There are two flavors of SDK Module: dynamic services and SDK Methods, known to users of the Narrative interface as Applications or Apps.
-SDK Methods are run asynchronously in a queue and are expected to have longer running times.
-SDK Methods can also call other SDK Methods. SDK Methods are typically used for wrapping
-functionality from 3rd party code, uploaders and downloaders, and other long-running tasks. Almost
-all narrative applications are implemented as SDK Methods. Dynamic services (DS) are SDK Modules
-designed to respond quickly to requests. As such, the module runs as an always-on service. DSs
-cannot call SDK Methods, but can call other services, dynamic as normal.
 
-DSs are typically used as the backend for UI elements (such as Narrative widgets) so those elements
-can be displayed and updated quickly. The function of a DS is often, for a specific workspace type
-(such as a KBaseGenome.Genome), to pull the data for an object and process the data into a form
-that the UI element can understand. The DS will often cache the processed form of the data and
-return parts of the processed form as the UI needs those parts. Thus the UI doesn’t need to keep
-the entire data, processed or otherwise, in memory.
+There are two flavors of SDK Module: dynamic services and apps. Apps run as one-off asynchronous jobs. In contrast to apps, Dynamic Services run as always-on services. Dynamic services cannot call app methods but can call other dynamic services.
 
-Creating a dynamic service
---------------------------
+Dynamic services are typically used as the backend for UI elements (such as Narrative widgets) so those elements can be displayed and updated quickly. The function of a dynamic service is often, for a specific workspace type (such as a KBaseGenome.Genome), to pull the data for an object and process the data into a form that the UI element can understand. The dynamic service will often cache the processed form of the data and return parts of the processed form as the UI needs those parts. This way, the UI doesn’t need to keep the entire dataset in memory.
 
 .. important::
 
     Remember, dynamic services cannot import other utility modules like DataFileUtil. If your
     service needs these libraries, it can't be dynamic.
 
+Creating a dynamic service
+--------------------------
+
 By default, all SDK modules are SDK Methods that run asynchronously. To mark a module as a
-DS, add the following to the kbase.yml file (​example​):
+dynamic service, add the following to the kbase.yml file:
 
 .. code-block:: yaml
 

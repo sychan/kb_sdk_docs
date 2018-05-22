@@ -34,7 +34,7 @@ Updating
     
 From your module page (https://narrative.kbase.us/#appcatalog/module/MODULE_NAME) you'll be able to register any update and manage release of your module to the production KBase environment for anyone to use.
 
-To update an app, open `Module Admin Tools` and then click the **REGISTER** button. Enter the latest commit hash from you master branch to register an update.
+To update an app, open `Module Admin Tools` and then click the **REGISTER** button. You can specify a particular commit hash your repository (useful if you want to test a feature branch prior to merging into master) or leave this field blank to build from the latest commit on the master branch.
 
 As you make changes to your Module, **you will need to re-commit those changes to the git repo, and then re-register**. The KBase SDK Catalog service will automatically pull the most recent version. If for some reason you wish to revert to an older version, you can add the hash key of that older commit, which you can find by viewing the ``git log``.
 

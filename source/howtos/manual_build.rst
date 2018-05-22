@@ -6,8 +6,6 @@ Manually building the SDK
     The recommended installation option is to run the `SDK as a
     Docker container. <../tutorial/install.html>`_
 
-2. Install and Build SDK
-~~~~~~~~~~~~~~~~~~~~~~~~
 
 Java JDK 7+
 '''''''''''

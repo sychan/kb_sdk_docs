@@ -84,7 +84,9 @@ Validation is not provided for the app to be called programmatically (such as wi
 Q: How do I learn more about the spec.json file?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-While there isn't a document with all of the valid UI Parameters, you can check out this notebook with a variety of different options at `User Interface Parameter Gallery`_.
+For a more exhaustive overview of the ``spec.json`` and ``display.yaml`` files, take a look at the
+`UI specification guide <../references/UI_spec.html>`_. You can also experiment with UI generation
+with the `App Spec Editor Narrative <https://narrative.kbase.us/narrative/ws.28370.obj.1>`_
 
 Q: What are all the auto-generated source files in my app?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

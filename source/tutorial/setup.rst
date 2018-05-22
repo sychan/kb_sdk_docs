@@ -240,5 +240,7 @@ Finally, run ``kb-sdk validate`` again and it should pass! Now we can start to a
 
 .. note::
 
-    For a more exhaustive overview of the ``spec.json`` and ``display.yaml`` files, visit their specification PDF: https://github.com/kbase/kb_sdk/blob/master/doc/NarrativeUIAppSpecification.pdf
+    For a more exhaustive overview of the ``spec.json`` and ``display.yaml`` files, take a look at
+    the `UI specification guide <../references/UI_spec.html>`_  You can also experiment with UI generation
+    with the `App Spec Editor Narrative <https://narrative.kbase.us/narrative/ws.28370.obj.1>`_
 

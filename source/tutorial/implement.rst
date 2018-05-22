@@ -118,6 +118,10 @@ Install the app from your repository's root directory with:
 
 That will add an entry for ``AssemblyUtil`` in your ``dependencies.json`` file. It also adds a python package under ``lib/AssemblyUtil``.
 
+.. important::
+
+    Don't forget to ``git add`` these new dependencies to your source control when you run kb-sdk install.
+
 Import the module at the top of your ``MyModuleImpl.py`` file
 
 .. code-block:: python

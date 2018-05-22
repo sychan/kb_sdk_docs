@@ -24,8 +24,15 @@ dynamic service, add the following to the kbase.yml file:
     service-config:
         dynamic-service: true
 
-You can then register your module as usual and start and stop it using the catalog interface
-(see Resources​ above). Otherwise development of a dynamic service module is identical to a Method module.
+You can then register your module as usual and start and stop it in a production environment using the `catalog interface`_.
+Calls to other services should be initialized with the Service Wizard URL rather than the SDK Callback URL.
+
+.. code-block:: python
+
+    self.serviceWizardURL = config['service-wizard']
+    self.gaa = GenomeAnnotationAPI(self.serviceWizardURL)
+
+Otherwise development of a dynamic service module is identical to a Method module.
 
 Start and stop a dynamic service locally
 ----------------------------------------
@@ -88,3 +95,6 @@ When you’re done, shut down the docker container:
 
     $ docker stop c8ea1197f925
     c8ea1197f925
+
+.. External links
+.. _Catalog interface: https://appdev.kbase.us/#catalog/services

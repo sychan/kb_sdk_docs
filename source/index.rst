@@ -71,6 +71,7 @@ To develop apps, start by obtaining a free KBase user account and applying for a
     howtos/manual_build
     howtos/work_with_reference_data
     howtos/job_manager
+    howtos/dynamic_services
 
 
 .. toctree::
@@ -79,7 +80,7 @@ To develop apps, start by obtaining a free KBase user account and applying for a
     :name: references
 
     references/module_anatomy
-    references/FAQ
     references/troubleshooting
     references/dev_guidelines
     references/KIDL_spec
+    references/UI_spec

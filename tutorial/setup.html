@@ -117,14 +117,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../howtos/manual_build.html">Manually building the SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/work_with_reference_data.html">Working with reference data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/job_manager.html">Listing and viewing jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/dynamic_services.html">Dynamic Services</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of an App</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../references/FAQ.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/UI_spec.html">Narrative App UI Specification</a></li>
 </ul>
 
             
@@ -288,9 +289,8 @@ $ mv ui/narrative/methods/example_method ui/narrative/methods/filter_contigs
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">filter_contigs</span></code> matches the <code class="docutils literal notranslate"><span class="pre">funcdef</span></code> name we used in the KIDL <code class="docutils literal notranslate"><span class="pre">MyContigFilter.spec</span></code> file.</p>
-<p>Now open up <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/filter_contigs/spec.json</span></code>.</p>
-<p>This file defines a mapping between our KIDL <code class="docutils literal notranslate"><span class="pre">.spec</span></code> file and how our parameters will show up in the app’s user interface.</p>
-<p>Find line 29 where it says <code class="docutils literal notranslate"><span class="pre">&quot;your_method&quot;</span></code> – change that to say <code class="docutils literal notranslate"><span class="pre">&quot;filter_contigs&quot;</span></code> instead.</p>
+<p>Now open up <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/filter_contigs/spec.json</span></code>. This file defines a mapping between our KIDL <code class="docutils literal notranslate"><span class="pre">.spec</span></code> file and how our parameters will show up in the app’s user interface.</p>
+<p>Find line 29 where it says <code class="docutils literal notranslate"><span class="pre">&quot;your_method&quot;</span></code> – change that to say <code class="docutils literal notranslate"><span class="pre">&quot;filter_contigs&quot;</span></code> instead. Also, set the the “method” to “filter_contigs” under the “behavior”.”service-mapping”.”method” setting in the JSON.</p>
 <p>In the section under <code class="docutils literal notranslate"><span class="pre">&quot;parameters&quot;</span></code>, add an entry for two of our input parameters:</p>
 <div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
 <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -379,7 +379,9 @@ $ mv ui/narrative/methods/example_method ui/narrative/methods/filter_contigs
 <p>Finally, run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">validate</span></code> again and it should pass! Now we can start to actually work on the functionality of the app.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">For a more exhaustive overview of the <code class="docutils literal notranslate"><span class="pre">spec.json</span></code> and <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code> files, visit their specification PDF: <a class="reference external" href="https://github.com/kbase/kb_sdk/blob/master/doc/NarrativeUIAppSpecification.pdf">https://github.com/kbase/kb_sdk/blob/master/doc/NarrativeUIAppSpecification.pdf</a></p>
+<p class="last">For a more exhaustive overview of the <code class="docutils literal notranslate"><span class="pre">spec.json</span></code> and <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code> files, take a look at
+the <a class="reference external" href="../references/UI_spec.html">UI specification guide</a>  You can also experiment with UI generation
+with the <a class="reference external" href="https://narrative.kbase.us/narrative/ws.28370.obj.1">App Spec Editor Narrative</a></p>
 </div>
 </div>
 </div>

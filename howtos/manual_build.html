@@ -117,14 +117,15 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Manually building the SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="work_with_reference_data.html">Working with reference data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="job_manager.html">Listing and viewing jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic_services.html">Dynamic Services</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of an App</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../references/FAQ.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/UI_spec.html">Narrative App UI Specification</a></li>
 </ul>
 
             
@@ -198,10 +199,8 @@
 <p class="last">The recommended installation option is to run the <a class="reference external" href="../tutorial/install.html">SDK as a
 Docker container.</a></p>
 </div>
-<div class="section" id="install-and-build-sdk">
-<h2>2. Install and Build SDK<a class="headerlink" href="#install-and-build-sdk" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="java-jdk-7">
-<h3>Java JDK 7+<a class="headerlink" href="#java-jdk-7" title="Permalink to this headline">¶</a></h3>
+<h2>Java JDK 7+<a class="headerlink" href="#java-jdk-7" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></p>
 <p>After downloading and installing the JDK, set your <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code>
 environment variable to point to your JDK installation. If you’re not
@@ -221,7 +220,7 @@ setenv JAVA_HOME `/usr/libexec/java_home`
 a terminal.</p>
 </div>
 <div class="section" id="apache-ant">
-<h3>Apache Ant<a class="headerlink" href="#apache-ant" title="Permalink to this headline">¶</a></h3>
+<h2>Apache Ant<a class="headerlink" href="#apache-ant" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="http://ant.apache.org">http://ant.apache.org</a></p>
 <p><a class="reference external" href="http://ant.apache.org/manual/install.html">http://ant.apache.org/manual/install.html</a></p>
 <p>The easist way to install Ant on a Mac is probably to use a package
@@ -230,7 +229,7 @@ simply by <code class="docutils literal notranslate"><span class="pre">brew</spa
 added to your PATH environment variable, which is generally handled for
 you if you use a package manager like HomeBrew.</p>
 <div class="section" id="fetch-the-code-from-github">
-<h4>Fetch the code from GitHub:<a class="headerlink" href="#fetch-the-code-from-github" title="Permalink to this headline">¶</a></h4>
+<h3>Fetch the code from GitHub:<a class="headerlink" href="#fetch-the-code-from-github" title="Permalink to this headline">¶</a></h3>
 <p>Create a directory in which you want to work. All your work should go
 here. All commands that follow are assuming you are using a UNIX shell.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">&lt;</span><span class="n">working_dir</span><span class="o">&gt;</span>
@@ -255,11 +254,11 @@ to your <code class="docutils literal notranslate"><span class="pre">~/.bash_pro
 available in the terminal with command completion.</p>
 </div>
 <div class="section" id="test-installation">
-<h4>Test installation<a class="headerlink" href="#test-installation" title="Permalink to this headline">¶</a></h4>
+<h3>Test installation<a class="headerlink" href="#test-installation" title="Permalink to this headline">¶</a></h3>
 <p>To make sure you installed the SDK successfully, type kb-sdk help</p>
 </div>
 <div class="section" id="download-the-kbase-sdk-base-docker-image">
-<h4>Download the KBase SDK base Docker image<a class="headerlink" href="#download-the-kbase-sdk-base-docker-image" title="Permalink to this headline">¶</a></h4>
+<h3>Download the KBase SDK base Docker image<a class="headerlink" href="#download-the-kbase-sdk-base-docker-image" title="Permalink to this headline">¶</a></h3>
 <p>KBase modules run in Docker containers. Docker containers are built on
 top of existing base images. KBase has a public base image that includes
 a number of installed runtimes, some basic bioinformatics tools, and
@@ -274,7 +273,6 @@ invoke the above command. See <a class="reference external" href="../tutorial/de
 Docker</a> for guidance.</p>
 <p>The image is fairly large, so it will take some time to run and build
 the image.</p>
-</div>
 </div>
 </div>
 </div>

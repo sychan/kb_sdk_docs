@@ -117,14 +117,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../howtos/manual_build.html">Manually building the SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/work_with_reference_data.html">Working with reference data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/job_manager.html">Listing and viewing jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/dynamic_services.html">Dynamic Services</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of an App</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../references/FAQ.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/UI_spec.html">Narrative App UI Specification</a></li>
 </ul>
 
             
@@ -195,11 +196,11 @@
 <h1>3. Initialize the App<a class="headerlink" href="#initialize-the-app" title="Permalink to this headline">¶</a></h1>
 <p>The KBase SDK provides a way to quickly bootstrap a new module by generating most of the required components.</p>
 <p>The basic options of the command are:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kb-sdk init <span class="o">[</span>-ev<span class="o">]</span> <span class="o">[</span>-l language<span class="o">]</span> <span class="o">[</span>-u username<span class="o">]</span> ModuleName
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kb-sdk init <span class="o">[</span>--example<span class="o">]</span> <span class="o">[</span>--verbose<span class="o">]</span> <span class="o">[</span>--language language<span class="o">]</span> <span class="o">[</span>--user username<span class="o">]</span> ModuleName
 </pre></div>
 </div>
 <p>where <code class="docutils literal notranslate"><span class="pre">ModuleName</span></code> must be unique across all SDK modules registered in KBase. For example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kb-sdk init -l python -u &lt;your_kbase_user_name&gt; &lt;user_name&gt;ContigFilter
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kb-sdk init --language python --user &lt;your_kbase_user_name&gt; &lt;user_name&gt;ContigFilter
 </pre></div>
 </div>
 <p>We’re using <code class="docutils literal notranslate"><span class="pre">&lt;user_name&gt;</span></code> in the module name in this example to make sure that your module has a unique name. However, you would not usually put your own username in the module name, and instead name it something like <code class="docutils literal notranslate"><span class="pre">ContigFilter</span></code>.</p>
@@ -217,10 +218,7 @@
 </pre></div>
 </div>
 <p>The example we’re building will have the same functionality as the app you get when you run <code class="docutils literal notranslate"><span class="pre">kbase-init</span> <span class="pre">--example</span> <span class="pre">..</span></code>. You can reference <a class="reference external" href="https://github.com/msneddon/ContigFilter">https://github.com/msneddon/ContigFilter</a> for a working version if you get stuck at any point.</p>
-<p>Run the init script:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kb-sdk init --verbose --language python --user &lt;your_username&gt; &lt;username&gt;ContigFilter
-</pre></div>
-</div>
+<p>Run the above init script before continuing.</p>
 <div class="section" id="build-the-app">
 <h2>3.1. Build the App<a class="headerlink" href="#build-the-app" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> &lt;user_name&gt;ContigFilter

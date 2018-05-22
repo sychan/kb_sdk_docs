@@ -1,7 +1,10 @@
 Troubleshooting Guide
 =====================
 
+.. contents::
+
 Trying to run ``make sdkbase`` and seeing errors that include ``TLS-enabled daemon`` and/or ``docker daemon``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When you try to run ``make sdkbase`` if you see a message like:
 
@@ -32,6 +35,34 @@ You likely have not started your Docker daemon. On a Mac, that means
 running in the Docker CLI shell after starting Docker Kitematic and
 clicking on "Docker CLI" in the lower left corner (See `Install SDK
 Dependencies - Docker <../tutorial/install.html>`__ for guidance).
+
+My code keeps disappearing. What happened to it?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Magic comments are comments that are used internally by the kbase_sdk in order to generate the implementation file when you make changes to the spec file.
+
+Examples of magic comments include:
+
+.. code:: python
+
+    #BEGIN_HEADER
+    (This is where your import statements go)
+    #END_HEADER
+
+    #BEGIN_CLASS_HEADER
+    (This is where your class variables and functions go that you want imported)
+    #END_CLASS_HEADER
+
+    #BEGIN_CONSTRUCTOR
+    (This is in your init statement for your class goes)
+    #END_CONSTRUCTOR
+
+    #BEGIN YourFunctionName1
+    (This is were the implementation details of your functions go)
+    #END YourFunctionName1
+
+
+Any code created outside of the Magic Comments will not be included inside the final .impl implementation file.
 
 Having trouble getting Docker working on Mac
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -91,11 +122,33 @@ If you get an error on OSX as follows:
         kb-sdk help
         (ExpressionUtils)
 
-
-Generate new security cerficates:
-
+Generate new security certificates:
 
 .. code-block:: bash
 
     $ openssl x509 -in <(openssl s_client -connect ci.kbase.us:443 -prexit 2>/dev/null) -out ~/example.crt
     $ sudo keytool -importcert -file ~/example.crt -alias example -keystore $(/usr/libexec/java_home)/jre/lib/security/cacerts -storepass changeit
+
+My Docker instances have run out of space
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Sometimes an error message might indicate that you’re out of space, you can check:
+
+.. code-block:: bash
+
+    $ cd test_local
+    $ ./run_bash.sh
+    $ df -h
+
+There are a few methods you can use to free up space
+Remove stopped containers:
+``docker ps -a -f status=exited -q | xargs docker rm``
+
+Remove all old docker containers (with caution):
+``docker ps -a | tail -n+2 | cut -f1 -d " " | xargs docker rm -v``
+
+Remove images with 'kbase' or 'test/' or ‘none’
+``docker images | grep -e 'test/' -e '.kbase.us' -e ‘none’ | awk '{print $3}' | xargs docker rmi``
+
+Remove orphan images:
+``docker rmi $(docker images -q --filter "dangling=true")``

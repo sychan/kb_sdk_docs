@@ -1,8 +1,13 @@
 Common Questions
 =====================
 
-How do I start my app? What do I do now?
---------------------------------------------
+.. contents::
+
+Development
+-----------
+
+Q: How do I start my app? What do I do now?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The easiest way to get an intuition for app development is to follow `the tutorial`_
 
@@ -22,8 +27,15 @@ For these example apps, check out the ``.spec`` files, ``<module>Impl.py`` files
 * Megahit_
 * Trimmomatic_
 
-How do I work with test and reference data?
------------------------------------------------
+Q: How can I tell if someone's already wrapped a tool I'm interested in?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Go to the development `App Catalog`_ and start by using *Search* to see if there's a released method. If you don't find a method that way, it may also help to by selecting "Organize by"... "Category" and selecting what seems to be a likely category for the tool. There are also methods that have not yet been officially released, so you should also check the "Beta" and "Dev" categories to see if there's something in the pipeline by selecting them from the "Version" dropdown.
+
+It may be the case that someone is wrapping a tool, but is doing so in a way that doesn't serve your needs exactly. Feel free to rewrap the tool using your approach, or ask the previous tool wrapper to tweak their implementation to expose the parameters or other functionality you are looking for.
+
+Q: How do I work with test and reference data?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Put simple data into the ``/data`` directory of your app's repository. If the data is too large to host on Github, check out the following guide for `how to add reference data`_.
 
@@ -33,8 +45,8 @@ Test files can go within the ``test/`` directory in your app, such as ``test/dat
 
     Upload local genome files for of your tests. If you use an existing workspace reference in your tests that works in AppDev, it won't work in CI or production.
 
-How do I organize my app's code?
------------------------------------
+Q: How do I organize my app's code?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are a couple common patterns:
 
@@ -43,33 +55,20 @@ There are a couple common patterns:
 
 For more complex apps, the second option is preferred, as you can split up functionality into different modules and packages.
 
-Help! My python code keeps disappearing? What happened to it?
----------------------------------------------------------------
+Q: Do you need to use GitHub? What about BitBucket? SourceForge?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Magic comments are comments that are used internally by the kbase_sdk in order to generate the implementation file when you make changes to the spec file.
+You can use any public open-source revision control system. We use GitHub. The path to your repo is what you provide to the SDK Registration method to register your SDK Module.
 
-Examples of magic comments include:
+Q: Do I need to copy the tool I'm using into my github repo?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code:: python
+You do not if there is a public way to retrieve the code such as by using a *git clone*, *curl*, or other way of pulling the data down into the Docker image. This is accomplished by `modifying the Dockerfile <../howtos/edit_your_dockerfile.html>`__ to configure the Docker image build.
 
-    #BEGIN_HEADER
-    (This is where your import statements go)
-    #END_HEADER
+Q: How do I set my favorite Apps?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    #BEGIN_CLASS_HEADER
-    (This is where your class variables and functions go that you want imported)
-    #END_CLASS_HEADER
-
-    #BEGIN_CONSTRUCTOR
-    (This is in your init statement for your class goes)
-    #END_CONSTRUCTOR
-
-    #BEGIN YourFunctionName1
-    (This is were the implementation details of your functions go)
-    #END YourFunctionName1
-
-
-Any code created outside of the Magic Comments will not be included inside the final .impl implementation file.
+After logging into `KBase <https://kbase.us>`__, go to the `App Catalog`_, and then click on the stars for your favorite Apps. You must be logged in for it to associate it with your account.
 
 Validation
 --------------
@@ -84,7 +83,9 @@ Validation is not provided for the app to be called programmatically (such as wi
 Q: How do I learn more about the spec.json file?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-While there isn't a document with all of the valid UI Parameters, you can check out this notebook with a variety of different options at `User Interface Parameter Gallery`_.
+For a more exhaustive overview of the ``spec.json`` and ``display.yaml`` files, take a look at the
+`UI specification guide <../references/UI_spec.html>`_. You can also experiment with UI generation
+with the `App Spec Editor Narrative <https://narrative.kbase.us/narrative/ws.28370.obj.1>`_
 
 Q: What are all the auto-generated source files in my app?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -159,6 +160,46 @@ Q: How do I have multiple docker images for different versions of my app or dyna
 
 You will need to ``docker build`` them and tag them with different names if this is not automatically done by your app.
 
+Requirements and limitations
+-----------------------------
+
+Q: What are system requirements for development?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You will need to be able to run Docker, which if you're on a Mac means you must be running Mac OS X 10.8 or later. Other operating systems, such as the various flavors of Linux, are fine too. Really anywhere you can run Docker, Java, and your preferred development language (among Python, Perl, or Java). You will need about 1-2 GB free to install the `dependencies <../tutorial/dependencies.html>`__ and the `KBase SDK <../tutorial/install.html>`__
+
+Q: Can I develop on Windows?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Sort of. Your best option right now is to install `VirtualBox <https://www.virtualbox.org>`__ with `Ubuntu Linux <https://www.ubuntu.com/desktop>`__ and work in the Linux VM. Many developers use this approach in KBase, and we know it works well.
+
+Q: Can I do all the development on a remote Linux box?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Yes. All steps that require a graphical user interface are accomplished by using a web browser.
+
+Q: What are system requirements for execution environment?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Runs completely on a standard KBase worker node (at least 2 cores and 22GB memory)
+- Operates only on supported KBase data types
+- Requires either no or fairly limited amounts of reference data
+- Uses existing data visualization widgets
+- Does not require new uploaders/downloaders
+- Wrapper written in Python, Java, or Perl
+
+Q: What size data will be too big for the system?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Currently we support up to about 10 GB of accessory data for a tool (meaning reference DBs, etc). Please `contact us`_ if you need to use something larger.
+
+As for processing, once it's uploaded to the system (which can take awhile for larger data sets), it depends on how you are using it. Currently SDK methods are limited in their memory footprint to the 22 GB of the worker nodes, so your code plus any data you load into memory must fit within that. As in any situation, we recommend the use of graceful exception handling and efficient implementations in your coding style.
+
+Q: I need high-performance computing for my application. Is that available?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Not yet. We're working on it!
+
 
 .. External links
 .. _FastANI: https://github.com/kbaseapps/FastANI/blob/master/lib/FastANI/FastANIImpl.py
@@ -167,6 +208,9 @@ You will need to ``docker build`` them and tag them with different names if this
 .. _Trimmomatic: https://github.com/kbaseapps/kb_trimmomatic/blob/master/kb_trimmomatic.spec
 .. _the catalog: https://narrative.kbase.us/#catalog/apps
 .. _User Interface Parameter Gallery: https://narrative.kbase.us/narrative/ws.23109.obj.1). Also see [Narrative UI Specification](https://github.com/kbase/kb_sdk/blob/master/doc/NarrativeUIAppSpecification.pdf
+.. _App Catalog: https://narrative.kbase.us/#appcatalog
+.. _SDK examples: https://github.com/kbaseapps
+.. _contact us: https://kbase.us/contact-us
 
 .. Internal links
 .. _Editing Docker: ../howtos/edit_your_dockerfile.html

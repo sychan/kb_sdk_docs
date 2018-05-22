@@ -117,14 +117,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../howtos/manual_build.html">Manually building the SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/work_with_reference_data.html">Working with reference data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/job_manager.html">Listing and viewing jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/dynamic_services.html">Dynamic Services</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of an App</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../references/FAQ.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/UI_spec.html">Narrative App UI Specification</a></li>
 </ul>
 
             
@@ -216,7 +217,7 @@
 <div class="section" id="updating">
 <h2>6.3. Updating<a class="headerlink" href="#updating" title="Permalink to this headline">¶</a></h2>
 <p>From your module page (<a class="reference external" href="https://narrative.kbase.us/#appcatalog/module/MODULE_NAME">https://narrative.kbase.us/#appcatalog/module/MODULE_NAME</a>) you’ll be able to register any update and manage release of your module to the production KBase environment for anyone to use.</p>
-<p>To update an app, open <cite>Module Admin Tools</cite> and then click the <strong>REGISTER</strong> button. Enter the latest commit hash from you master branch to register an update.</p>
+<p>To update an app, open <cite>Module Admin Tools</cite> and then click the <strong>REGISTER</strong> button. You can specify a particular commit hash your repository (useful if you want to test a feature branch prior to merging into master) or leave this field blank to build from the latest commit on the master branch.</p>
 <p>As you make changes to your Module, <strong>you will need to re-commit those changes to the git repo, and then re-register</strong>. The KBase SDK Catalog service will automatically pull the most recent version. If for some reason you wish to revert to an older version, you can add the hash key of that older commit, which you can find by viewing the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code>.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>

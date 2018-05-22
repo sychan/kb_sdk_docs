@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Working with reference data &mdash; KBase SDK 0.1.18 documentation</title>
+  <title>Dynamic Services &mdash; KBase SDK 0.1.18 documentation</title>
   
 
   
@@ -30,8 +30,8 @@
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Listing and viewing jobs" href="job_manager.html" />
-    <link rel="prev" title="Manually building the SDK" href="manual_build.html" /> 
+    <link rel="next" title="Anatomy of an App" href="../references/module_anatomy.html" />
+    <link rel="prev" title="Listing and viewing jobs" href="job_manager.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -115,9 +115,9 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="workspace.html">Using Workspace Metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual_build.html">Manually building the SDK</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Working with reference data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="work_with_reference_data.html">Working with reference data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="job_manager.html">Listing and viewing jobs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dynamic_services.html">Dynamic Services</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Dynamic Services</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
@@ -171,14 +171,14 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Working with reference data</li>
+      <li>Dynamic Services</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/kbase/kb_sdk_docs//blob/master/source/howtos/work_with_reference_data.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/kbase/kb_sdk_docs//blob/master/source/howtos/dynamic_services.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -192,76 +192,84 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="working-with-reference-data">
-<h1>Working with reference data<a class="headerlink" href="#working-with-reference-data" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="adding-reference-data-to-a-kbase-app">
-<h2>Adding Reference Data to a KBase App<a class="headerlink" href="#adding-reference-data-to-a-kbase-app" title="Permalink to this headline">¶</a></h2>
-<div class="topic">
-<p class="topic-title first">Motivation</p>
-<p>Some tools and applications make use of large reference data
-collections. For example, a QC app may have a reference data with common
-contaminants. Adding data such as this to the Git repo for the module
-can make it very large. In addition, the generated Docker image would
-also be very large. KBase App reference data is designed to address this
-scenario.</p>
-</div>
-<div class="topic">
-<p class="topic-title first">How Reference Data Works</p>
-<p>To minimize the image size, this feature works by saving reference data
-in a special volume space and then making that volume available through
-a read-only mount in /data at app execution time. An init mode for the
-module is run at registration time to initialize the reference data
-volume. In addition, the reference data is separately versioned, so
-code-only updates to a module can be made without having to
-re-initialize the reference data.</p>
+  <div class="section" id="dynamic-services">
+<h1>Dynamic Services<a class="headerlink" href="#dynamic-services" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="dynamic-services-vs-sdk-methods-e-g-apps">
+<h2>Dynamic services vs. SDK Methods (e.g. apps)<a class="headerlink" href="#dynamic-services-vs-sdk-methods-e-g-apps" title="Permalink to this headline">¶</a></h2>
+<p>There are two flavors of SDK Module: dynamic services and apps. Apps run as one-off asynchronous jobs. In contrast to apps, Dynamic Services run as always-on services. Dynamic services cannot call app methods but can call other dynamic services.</p>
+<p>Dynamic services are typically used as the backend for UI elements (such as Narrative widgets) so those elements can be displayed and updated quickly. The function of a dynamic service is often, for a specific workspace type (such as a KBaseGenome.Genome), to pull the data for an object and process the data into a form that the UI element can understand. The dynamic service will often cache the processed form of the data and return parts of the processed form as the UI needs those parts. This way, the UI doesn’t need to keep the entire dataset in memory.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Remember, dynamic services cannot import other utility modules like DataFileUtil. If your
+service needs these libraries, it can’t be dynamic.</p>
 </div>
 </div>
-<div class="section" id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<p>To make use of this feature, the app developer needs to do a few simple
-things.</p>
+<div class="section" id="creating-a-dynamic-service">
+<h2>Creating a dynamic service<a class="headerlink" href="#creating-a-dynamic-service" title="Permalink to this headline">¶</a></h2>
+<p>By default, all SDK modules are SDK Methods that run asynchronously. To mark a module as a
+dynamic service, add the following to the kbase.yml file:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">service-config</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">dynamic-service</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<p>You can then register your module as usual and start and stop it using the catalog interface
+(see Resources​ above). Otherwise development of a dynamic service module is identical to a Method module.</p>
+</div>
+<div class="section" id="start-and-stop-a-dynamic-service-locally">
+<h2>Start and stop a dynamic service locally<a class="headerlink" href="#start-and-stop-a-dynamic-service-locally" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Add the data-version tag to the kbase.yaml file and give it a
-semantic version tag.</li>
-<li>Add any downloading and data preparation steps to the init section of
-the entrypoint.sh script in the scripts directory. The init script
-should place the data in /data and any apps that use the data should
-be configured to look for the data in this location.</li>
-<li>Create a __READY__ file in /data to indicate that the reference
-data volume was successfully created. Ideally, some sanity tests
-should be performed to confirm things ran correctly by testing for
-the presence of expected files. If the __READY__ file is not
-present, the registration will fail and the reference data area will
-be removed.</li>
+<li>Run kb-sdk test. This will set up a workdir in test_local like this:</li>
 </ol>
-<p>You can see an example in the <a class="reference external" href="https://github.com/kbaseapps/RAST_SDK/blob/a975436d9c0af4f772bd7235b467180860f64060/scripts/entrypoint.sh#L18-L28">RAST application</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ tree test_local/workdir/
+test_local/workdir/
+├── config.properties
+├── tmp
+└── token
+</pre></div>
 </div>
-<div class="section" id="updating-reference-data">
-<h2>Updating Reference Data<a class="headerlink" href="#updating-reference-data" title="Permalink to this headline">¶</a></h2>
-<p>If a new version of reference data is required, the developer can
-increase the version number for the reference data in kbase.yaml, make
-any updates to the init section, and re-register the app. This will
-trigger the registration to initialize the reference data for the new
-data version. Older versions of the app will continue to use the
-previous reference data specified in that versions kbase.yaml file. This
-helps to ensure reproducibility.</p>
-</div>
-<div class="section" id="gotchas">
-<h2>Gotchas<a class="headerlink" href="#gotchas" title="Permalink to this headline">¶</a></h2>
-<p>There a few things to watch out for with reference data:</p>
+<p>2. Create a run_container.sh file in test_local by copying run_tests.sh to run_container.sh and
+making the following edits to the last line:</p>
 <ul class="simple">
-<li>The reference data area (/data) is mounted during initialization
-(module registration) and durinng app execution and replaces /data
-from the Docker image. Any modifications made by the Dockerfile to
-this space will not be visible. Changes must be done in the init
-block in entrypoint.sh.</li>
-<li>The reference data is only writeable at registration time. This is to
-ensure that the data is not accidentally changed during execution
-which could break reproducibility. If the app requires the reference
-data to be writeable when it executes, then you add code to the
-execution that copies the data into the writeable work area prior to
-running the underlying application.</li>
+<li>Delete <cite>test</cite> at the end of the file</li>
+<li>Delete <code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">SDK_CALLBACK_URL=$1</span></code></li>
+<li>Add <code class="docutils literal notranslate"><span class="pre">-d</span> <span class="pre">-p</span> <span class="pre">&lt;external_port&gt;:5000</span> <span class="pre">--dns</span> <span class="pre">8.8.8.8</span></code></li>
 </ul>
+<p>When you’re done it should look similar to this (obviously the module name will be different):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="nv">script_dir</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">cd</span> <span class="s2">&quot;</span><span class="k">$(</span>dirname <span class="s2">&quot;</span><span class="k">$(</span>readlink -f <span class="s2">&quot;</span><span class="nv">$0</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">&quot;</span> <span class="o">&amp;&amp;</span> <span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
+<span class="nb">cd</span> <span class="nv">$script_dir</span>/..
+<span class="nv">$script_dir</span>/run_docker.sh run --user <span class="k">$(</span>id -u<span class="k">)</span> -v
+<span class="nv">$script_dir</span>/workdir:/kb/module/work -d -p <span class="m">10001</span>:5000 --dns <span class="m">8</span>.8.8.8
+test/htmlfilesetserv:latest
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Run the script:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./run_container.sh
+c8ea1197f9251323746d9ae42363387381ee79f6c06cd826e6dbfba0a7fd703b
+</pre></div>
+</div>
+<p>You can now interact with the service at the port you specified (in the example above, 10001).</p>
+<p>To view logs, get the container ID with docker ps and run docker logs:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker ps
+CONTAINER ID
+CREATED
+NAMES
+c8ea1197f925
+<span class="s2">&quot;./scripts/entrypoint&quot;</span> <span class="m">2</span> minutes ago Up <span class="m">2</span> minutes <span class="m">0</span>.0.0.0:10001-&gt;5000/tcp gigantic_swirles
+$ docker logs c8ea1197f925
+<span class="m">2016</span>-10-14 <span class="m">22</span>:55:27.835:INFO::Logging to StdErrLog::DEBUG<span class="o">=</span><span class="nb">false</span> via
+org.eclipse.jetty.util.log.StdErrLog
+<span class="m">2016</span>-10-14 <span class="m">22</span>:55:27.892:INFO::jetty-7.0.0.v20091005
+*snip*
+</pre></div>
+</div>
+<p>When you’re done, shut down the docker container:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker stop c8ea1197f925
+c8ea1197f925
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -273,10 +281,10 @@ running the underlying application.</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="job_manager.html" class="btn btn-neutral float-right" title="Listing and viewing jobs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../references/module_anatomy.html" class="btn btn-neutral float-right" title="Anatomy of an App" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="manual_build.html" class="btn btn-neutral" title="Manually building the SDK" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="job_manager.html" class="btn btn-neutral" title="Listing and viewing jobs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -118,6 +118,10 @@ Install the app from your repository's root directory with:
 
 That will add an entry for ``AssemblyUtil`` in your ``dependencies.json`` file. It also adds a python package under ``lib/AssemblyUtil``.
 
+.. important::
+
+    Don't forget to ``git add`` these new dependencies to your source control when you run kb-sdk install.
+
 Import the module at the top of your ``MyModuleImpl.py`` file
 
 .. code-block:: python
@@ -152,7 +156,7 @@ Make sure your user passes in a workspace, an assembly reference, and a minimum 
 .. code-block:: python
 
   ...
-  # Inside filter_contigs(), after #BEGIN fast_ani, before any other code
+  # Inside filter_contigs(), after #BEGIN filter_contigs, before any other code
   # Check that the parameters are valid
   for name in ['min_length', 'assembly_ref', 'workspace_name']:
       if name not in params:
@@ -180,19 +184,19 @@ We can add some additional tests to make sure we raise ValueErrors for invalid p
         ws = self.getWsName()
         # Missing assembly ref
         with self.assertRaises(ValueError):
-            impl.filter_contigs(ctx, ws, {'min_length': 100})
+            impl.filter_contigs(ctx, {'workspace_name': ws, 'min_length': 100})
         # Missing min length
         with self.assertRaises(ValueError):
-            impl.filter_contigs(ctx, ws, {'assembly_ref': 'x'})
+            impl.filter_contigs(ctx, {'workspace_name': ws, 'assembly_ref': 'x'})
         # Min length is negative
         with self.assertRaises(ValueError):
-            impl.filter_contigs(ctx, ws, {'assembly_ref': 'x', 'min_length': -1})
+            impl.filter_contigs(ctx, {'workspace_name': ws, 'assembly_ref': 'x', 'min_length': -1})
         # Min length is wrong type
         with self.assertRaises(ValueError):
-            impl.filter_contigs(ctx, ws, {'assembly_ref': 'x', 'min_length': 'x'})
+            impl.filter_contigs(ctx, {'workspace_name': ws, 'assembly_ref': 'x', 'min_length': 'x'})
         # Assembly ref is wrong type
         with self.assertRaises(ValueError):
-            impl.filter_contigs(ctx, ws, {'assembly_ref': 1, 'min_length': 1})
+            impl.filter_contigs(ctx, {'workspace_name': ws, 'assembly_ref': 1, 'min_length': 1})
     ...
 
 
@@ -257,6 +261,7 @@ We would expect to keep 1 contig and filter out the other.
     def test_filter_contigs(self):
         ref = "79/16/1"
         params = {
+            'workspace_name': self.getWsName(),
             'assembly_ref': ref,
             'min_length': 200000
         }
@@ -280,6 +285,7 @@ Beneath the code that we wrote to filter the assembly, add this file saving and 
     ...
     # Underneath your loop that filters contigs:
     # Create a file to hold the filtered data
+    workspace_name = params['workspace_name']
     filtered_path = os.path.join(self.scratch, 'filtered.fasta')
     SeqIO.write(good_contigs, filtered_path, 'fasta')
     # Upload the filtered data to the workspace
@@ -297,7 +303,7 @@ Beneath the code that we wrote to filter the assembly, add this file saving and 
     ...
 
 
-Add a simple assertion into your ``test_fast_ani`` method to check for the ``filtered_assembly_ref``. Something like:
+Add a simple assertion into your ``test_filter_contigs`` method to check for the ``filtered_assembly_ref``. Something like:
 
 .. code-block:: python
 
@@ -418,7 +424,7 @@ In your ``ui/narrative/methods/filter_contigs/spec.json`` file, add entries for 
 
 Now we have some output entries that point to our report and workspace, which will show up when the job finishes in the narrative.
 
-Finally, under ``widgets/output`` in the JSON (around line 10), set ``"output"`` to ``"no-display"``. This prevents our app from creating a separate output cell.
+Finally, under ``widgets/output`` in the spec.json (around line 10), set ``"output"`` to ``"no-display"``. This prevents our app from creating a separate output cell.
 
 We've added an entry for everything we put in the ``returnVal`` dictionary that gets returned from ``MyModuleImpl#filter_contigs``.
 

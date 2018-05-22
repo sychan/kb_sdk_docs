@@ -47,7 +47,7 @@ This is a file in JSON format containing these top-level properties:
   be set into ``docker`` value
 
 Parameters in ``spec.json``
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Each structure in array defined in ``parameters`` field defines one parameter shown in UI input
 panel of this method. Here is the list of main properties of parameter structure:
 
@@ -80,14 +80,14 @@ panel of this method. Here is the list of main properties of parameter structure
 - **textsubdata_options** - optional block defining details of ``textsubdata`` type
 
 Options for text parameter type in ``spec.json``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Options in ``text_options`` block allow to specify many different ways of validation and behaviour.
 Field named ``valid_ws_types`` connects a parameter with one or more types of objects stored in
 Workspace KBase storage. In this mode Narrative interface will show available objects of listed
 types as drop-down for this parameter. For instance here is an example of ``text_options``
 allowing to choose one of Genome objects stored in workspace:
 
-.. code-block:: json
+.. code-block:: js
 
     "text_options" : {
         "valid_ws_types" : [ "KBaseGenomes.Genome" ]
@@ -97,17 +97,18 @@ If you would like to mark this parameter as output which means UI interface shou
 chosen object to be present in Workspace storage you can set "is_output_name" sub-option to
 true like:
 
-.. code-block:: json
+.. code-block:: js
 
     "text_options" : {
         "valid_ws_types" : [ "KBaseGenomes.Genome" ],
         "is_output_name" : true
     }
+
 Another sub-option is "validate_as" allowing to validate value entered in UI as "int" or "float". If
 you what some parameter to be an integer with minimum and/or maximum limits you can use
 properties like in this example:
 
-.. code-block:: json
+.. code-block:: js
 
     "text_options" : {
         "valid_ws_types" : [ ],
@@ -118,7 +119,7 @@ properties like in this example:
 
 And similarly for float type:
 
-.. code-block:: json
+.. code-block:: js
 
     "text_options" : {
         "valid_ws_types" : [ ],
@@ -128,14 +129,14 @@ And similarly for float type:
     }
 
 Options for drop-down parameter type in ``spec.json``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 There is only one sub-option available inside "dropdown_options" block currently. It has
 ``options`` name and value is list of objects defining drop-down items. Each item object should
 have two properties: ``value`` defining internal item ID (it’s sent to back-end function when given
 item is selected) and ``display`` defining text shown for this item in UI. Here is an example of the
 whole "dropdown_options" block:
 
-.. code-block:: json
+.. code-block:: js
 
     "dropdown_options":{
         "options": [{
@@ -154,7 +155,7 @@ whole "dropdown_options" block:
     }
 
 Options for checkbox parameter type in ``spec.json``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Here is the list of sub-options available inside ``checkbox_options`` block:
 
 - **checked_value** - defines value to be sent to service function when checkbox is selected
@@ -162,13 +163,13 @@ Here is the list of sub-options available inside ``checkbox_options`` block:
 - **unchecked_value** - defines value to be sent to service function when checkbox is not selected
 
 Options for textarea parameter type in ``spec.json``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 There is only one sub-option available inside ``textarea_options`` block:
 
 - **n_rows** - defines number of lines shown for this textarea in UI.
 
 Options for textsubdata parameter type in ``spec.json``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This parameter type allows to select items that are parts of workspace object (let’s call them
 sub-objects). Here is the list of sub-options available inside ``textsubdata_options`` block:
 
@@ -206,7 +207,7 @@ sub-objects). Here is the list of sub-options available inside ``textsubdata_opt
 Here is an example of ``textsubdata_options`` block for model reactions in KBaseFBA.FBAModel
 object:
 
-.. code-block:: json
+.. code-block:: js
 
     "textsubdata_options" : {
         "subdata_selection": {
@@ -223,7 +224,7 @@ object:
     "allow_custom":false
 
 Behavior in ``spec.json``
------------------------
+-------------------------
 There are three alternative sub-blocks available inside ``behaviour`` block:
 
 - **service-mapping** - defines mapping rules for input and output data for typical SDK
@@ -290,7 +291,7 @@ get as argument with position from ``target_argument_position`` an object with p
 name from ``target_property`` with target value.
 
 Example for mappings in ``spec.json``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Let’s consider some example of mappings defined in ``service-mapping`` sub-block of
 ``behaviour``. Suppose we have function ``func1`` in module ``module1`` where we expect to get as
 input two arguments: a string and an object with internal field ``input_prop`` (in JSON this
@@ -299,7 +300,7 @@ argument looks like ``{"input_prop": "..."}``). And we have two UI parameters of
 one object which has internal field ``output_prop``. Value of this field should be mapped to
 ``option1`` option in UI widget. In this case we will have following mappings:
 
-.. code-block:: json
+.. code-block:: js
 
     "behavior" : {
         "service-mapping" : {
@@ -325,7 +326,7 @@ one object which has internal field ``output_prop``. Value of this field should 
     }
 
 Display Text file (``display.yaml``)
-----------------------------------
+------------------------------------
 This file has Yaml format. Here is the list of top-level block names:
 
 - name - name of method listed in UI
@@ -364,5 +365,3 @@ textual object having following fields:
 - placeholder (optional) - in case of parameter type is textual (one of ``text``, ``textarea``,
   ``textsubdata``) it defines placeholder text shown in gray color explaining the meaning of
   value user is going to set.
-
-

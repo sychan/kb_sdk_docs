@@ -51,9 +51,10 @@ Start and stop a dynamic service locally
 
 2. Create a run_container.sh file in test_local by copying run_tests.sh to run_container.sh and
 making the following edits to the last line:
-    * Delete `test` at the end of the file
-    * Delete ``-e SDK_CALLBACK_URL=$1``
-    * Add ``-d -p <external_port>:5000 --dns 8.8.8.8``
+
+* Delete `test` at the end of the file
+* Delete ``-e SDK_CALLBACK_URL=$1``
+* Add ``-d -p <external_port>:5000 --dns 8.8.8.8``
 
 When you’re done it should look similar to this (obviously the module name will be different):
 

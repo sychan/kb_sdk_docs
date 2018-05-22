@@ -7,7 +7,7 @@ Development
 -----------
 
 Q: How do I start my app? What do I do now?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The easiest way to get an intuition for app development is to follow `the tutorial`_
 
@@ -35,7 +35,7 @@ Go to the development `App Catalog`_ and start by using *Search* to see if there
 It may be the case that someone is wrapping a tool, but is doing so in a way that doesn't serve your needs exactly. Feel free to rewrap the tool using your approach, or ask the previous tool wrapper to tweak their implementation to expose the parameters or other functionality you are looking for.
 
 Q: How do I work with test and reference data?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Put simple data into the ``/data`` directory of your app's repository. If the data is too large to host on Github, check out the following guide for `how to add reference data`_.
 
@@ -46,7 +46,7 @@ Test files can go within the ``test/`` directory in your app, such as ``test/dat
     Upload local genome files for of your tests. If you use an existing workspace reference in your tests that works in AppDev, it won't work in CI or production.
 
 Q: How do I organize my app's code?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are a couple common patterns:
 

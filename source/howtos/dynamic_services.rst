@@ -25,6 +25,7 @@ dynamic service, add the following to the kbase.yml file:
         dynamic-service: true
 
 You can then register your module as usual and start and stop it in a production environment using the `catalog interface`_.
+Other services should be installed with a dynamic service flag like this ``kb-sdk install -d <service>``.
 Calls to other services should be initialized with the Service Wizard URL rather than the SDK Callback URL.
 
 .. code-block:: python

@@ -33,7 +33,7 @@ fit in a square 200x200 pixels. To match our existing icons, use these guideline
 * 72dpi PNG
 
 PDF vector and PNG bitmap versions that we used for our icons are available at
-https://github.com/kbase/kb_sdk/tree/master/img in case you would like to use them
+https://github.com/kbase/kb_sdk_docs/tree/master/source/images/app-icons in case you would like to use them
 as a starting point.
 
 Your icons should be added to your KBase SDK module GitHub repo in the

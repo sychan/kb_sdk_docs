@@ -24,16 +24,20 @@ dynamic service, add the following to the kbase.yml file:
     service-config:
         dynamic-service: true
 
-You can then register your module as usual and start and stop it in a production environment using the `catalog interface`_.
+You can then register your module as usual and start and stop it in a production environment using the `catalog interface`_ as described below in the :ref:`Manage dynamic services in a KBase environment section <in-kbase>`.
 Other services should be installed with a dynamic service flag like this ``kb-sdk install -d <service>``.
-Calls to other services should be initialized with the Service Wizard URL rather than the SDK Callback URL.
+Calls to other services should be initialized with the Service Wizard URL rather than the SDK Callback URL. The Service Wizard tracks the services that are deployed in the catalog and routes the request to the most up-to-date released service by default. Additionally, authentication token will need to be passed to the called service. This also means the called services should be initialized within each function that uses then rather than once as a class property. With  SDK apps where all of the processing takes place in a common location authentication is handled automatically. With a dynamic service however, the code is not initialized for a particular user and permissions need to be managed explicitly
 
 .. code-block:: python
 
+    # In the class init
     self.serviceWizardURL = config['service-wizard']
-    self.gaa = GenomeAnnotationAPI(self.serviceWizardURL)
 
-Otherwise development of a dynamic service module is identical to a Method module.
+    # *snip*
+
+    # In the each method implementation
+    gaa = GenomeAnnotationAPI(self.serviceWizardURL, token=ctx.token)
+
 
 Start and stop a dynamic service locally
 ----------------------------------------
@@ -96,6 +100,18 @@ When you’re done, shut down the docker container:
 
     $ docker stop c8ea1197f925
     c8ea1197f925
+
+.. _in-kbase:
+
+Manage dynamic services in a KBase environment
+-------------------------------------------------------
+The `catalog interface`_ provides tools to launch, inspect and stop dynamic services in each environment. The top of this page is a list of currently running services. There may be multiple instances of a service running that are based on different git hashes. As described above, the Service Wizard will route requests to the most current version of a released service (falling back to Beta or Dev if the service is not yet released). If this latest version is not running when a request is received, the service wizard will launch a new instance. This behavior improves resilience because if a container crashes, it will be restarted by the next service request. However, it also means that there is no rapid way to revert to an earlier version of the service if a problem is discovered with the service.
+
+.. image:: /images/service-catalog.png
+    :alt: Service Catalog
+
+Logs of STDOUT and STDERR for services are also viable to catalog administrators and may prove useful for debugging. Finally, catalog admins may also stop running services. There is not default timeout for dynamic services so developers should periodically cull old versions of their services that are still running as they release new versions. Below the active services are lists of Released, Beta and Dev services that developers may launch but the Service Wizard generally renders this unnecessary.
+
 
 .. External links
 .. _Catalog interface: https://appdev.kbase.us/#catalog/services

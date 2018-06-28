@@ -67,7 +67,7 @@ panel of this method. Here is the list of main properties of parameter structure
 - **default_values** - if set to any non-empty string this value will appear as pre-defined one
 
 - **field_type** - type of parameter, could be one of ``text``, ``dropdown``, ``checkbox``,
-  ``textarea``, ``textsubdata``
+  ``textarea``, ``textsubdata``, ``dynamic_dropdown``
 
 - **text_options** - optional block defining details of ``text`` type
 
@@ -175,34 +175,33 @@ sub-objects). Here is the list of sub-options available inside ``textsubdata_opt
 
 - **multiselection** - flag (boolean) allowing to have more than one selected object
 
-- **show_src_obj** - flag (boolean) shows name of workspace object where we are
-  selecting sub-objects as well
+- **show_src_obj** - flag (boolean) shows name of workspace object where we are selecting sub-objects as well
 
-- **allow_custom** - flag (boolean)
+- **allow_custom** - flag (boolean) allow the user to enter values which are not present in the source object
 
 - **subdata_selection** - main block with following sub-options:
 
-- **path_to_subdata** - JSON-path leading to the level of an array of sub-objects
-  (instead of string type JSON-path here is treated as an array of elements)
+    - **path_to_subdata** - JSON-path leading to the level of an array of sub-objects
+      (instead of string type JSON-path here is treated as an array of elements)
 
-- **subdata_included** - list of string JSON-paths to be loaded (in case JSON-path
-  leads to certain field inside sub-objects then level of array of sub-objects is
-  denoted as [*])
+    - **subdata_included** - list of string JSON-paths to be loaded (in case JSON-path
+      leads to certain field inside sub-objects then level of array of sub-objects is
+      denoted as [*])
 
-- **constant_ref** - static reference to some object in public workspace (alternative
-  to **parameter_id**)
+    - **constant_ref** - static reference to some object in public workspace (alternative
+      to **parameter_id**)
 
-- **parameter_id** - points to ID of another UI parameter used for selection of
-  workspace object where we are selecting sub-objects
+    - **parameter_id** - points to ID of another UI parameter used for selection of
+      workspace object where we are selecting sub-objects
 
-- **selection_id** - name of field of sub-object which will be sent as selected value
+    - **selection_id** - name of field of sub-object which will be sent as selected value
 
-- **selection_description** - list of fields of sub-object to be shown for each
-  selectable item
+    - **selection_description** - list of fields of sub-object to be shown for each
+      selectable item
 
-- **description_template** - optional template defining the way of representation of
-  fields from ``selection_description`` (placeholders of fields are defined as
-  {{field-name}})
+    - **description_template** - optional template defining the way of representation of
+      fields from ``selection_description`` (placeholders of fields are defined as
+      {{field-name}})
 
 Here is an example of ``textsubdata_options`` block for model reactions in KBaseFBA.FBAModel
 object:
@@ -222,6 +221,129 @@ object:
     "multiselection":true,
     "show_src_obj":false,
     "allow_custom":false
+
+Options for dynamic_dropdown in ``spec.json``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This type defines a parameter field that allows autocomplete based on a call to a dynamic service. For instance, selection of files from the stageing_service or from kbase_search. It will appear as a text field with dropdown similar to selection of other WS data objects.
+
+- **data_source** - One of ``ftp_staging`` | ``search`` | ``custom``. Provides sensible defaults to for the following parameters for a common type of dropdown which can be overwritten
+
+- **service_function** - Name of SDK method including prefix with SDK module started up as dynamic service (it's fully qualified method name where module and method are separated by '.').
+
+- **service_version** - Optional version of module used in service_function (default value is 'release').
+
+- **service_params** - The parameters that will be supplied to the dynamic service call as JSON. The special text "{{dynamic_dropdown_input}}" will be replaced by the value of user input at call time.
+
+- **path_to_subdata** - JSON-path leading to the level of an array of sub-objects (instead of string type JSON-path here is treated as an array of elements)
+
+- **result_aliases** - Mapping that connects a short name to a field in the returned data object.
+
+- **selection_id** - Name of key result_aliases which will be sent as selected value
+
+- **description_template** - Defines how the description of items is rendered using Handlebar templates (use the keys in result_aliases as variable names)
+
+- **multiselection** - If true, then multiple selections are allowed in a single input field. This will override the allow_multiple option (which allows user addition) of additional fields.  If true, then this parameter will return a list. Default= false
+
+Here is an example for taxon search:
+
+.. code-block:: js
+
+    {
+        "id" : "search",
+        "optional" : false,
+        "advanced" : false,
+        "allow_multiple" : false,
+        "default_values" : [ "" ],
+        "field_type" : "dynamic_dropdown",
+        "dynamic_dropdown_options" : {
+          "data_source": "custom",
+          "service_function": "KBaseSearchEngine.search_objects",
+          "service_version": "dev",
+          "service_params": [{
+              "object_types": ["taxon"],
+              "match_filter": {
+                  "full_text_in_all": "{{dynamic_dropdown_input}}"
+              },
+              "access_filter": {
+                  "with_private": 0,
+                  "with_public": 1
+              },
+              "sorting_rules": [{
+                  "is_object_property": 0,
+                  "property": "timestamp",
+                  "ascending": 0
+              }]
+          }],
+          "path_to_subdata": "result[0].objects",
+          "result_aliases": {
+            "taxon_name": "object_name",
+            "scientific_name": "key_props.scientific_name",
+            "scientific_lineage": "key_props.scientific_lineage"
+          },
+          "selection_id" : "taxon_name",
+          "description_template" : "<strong>{{scientific_name}}</strong>: {{scientific_lineage}})",
+          "multiselection":false
+    }
+
+Parameter groups in ``spec.json``
+---------------------------------
+
+Parameter groups combine a set of individually specified parameters into logical sets. This can be used for something as simple as visually grouping related input (i.e. distinguishing a set of parameters passed to a wrapped tool from kbase related parameters) but it's most often used to allow users to specify a multiple items described by a more than one parameter. It is also possible to have a an optional parameter group with required parameters, this means that if the parameter group is present all the required parameters must be provided. The default resulting structure is a mapping (or list of mappings if ``allow_multiple = 1``) with the parameter_ids as keys (e.g. ``{id: [{parameter_id_1: value_1, parameter_id_2: value_2 ...}]}``) but this can be modified with the id_mapping option.
+
+- **id** - id of the parameter group, must be unique within the method among all parameters and groups
+
+- **parameter_ids** - IDs of parameters included in this group
+
+- **ui_name** - short name that is displayed to the user
+
+- **short_hint** - short phrase or sentence describing the parameter group
+
+- **description** - longer and more technical description of the parameter group (long-hint)
+
+- **allow_mutiple** - allows entry of a list instead of a single structure, default is 0. If set, the number of starting boxes will be either 1 or the number of elements in the default_values list.
+
+- **optional** - set to 1 to make the group optional, default is 0
+
+- **advanced** - set to 1 to make this an advanced option, default is 0. If an option is advanced, it should also be optional or have a default value
+
+- **id_mapping** - optional mapping which connects parameter IDs (as keys) to a desired name in the output object (as values) (e.g. ``{"parameter_id":"output_key"}``). This provides similar functionality to the ``kb_service_input_mapping`` and ``kb_service_output_mapping`` described in the behavior section below for these nested objects.
+
+- **with_border** - set to 1 to wrap this group with border.
+
+Here is an example of a ``parameter-groups`` block for from the `Edit Media UI`_ in fba_tools
+
+.. code-block:: js
+
+    "parameter-groups": [
+        {
+            "id": "compounds_to_change",
+            "parameters": [
+                "change_id",
+                "change_concentration",
+                "change_minflux",
+                "change_maxflux"
+            ],
+            "optional": true,
+            "advanced": false,
+            "allow_multiple": true,
+            "with_border": true
+        },
+        {
+            "id": "compounds_to_add",
+            "parameters": [
+                "add_id",
+                "add_concentration",
+                "add_minflux",
+                "add_maxflux"
+            ],
+            "optional": true,
+            "allow_multiple": true,
+            "advanced": false,
+            "with_border": true
+        }
+    ],
+
 
 Behavior in ``spec.json``
 -------------------------
@@ -255,7 +377,7 @@ available inside ``service-mapping``:
 Both ``input_mapping`` and ``output_mapping`` sub-blocks are arrays of mapping items. Each
 mapping array is an object with following optional properties:
 
-- **input_parameter** - ID of UI input parameter to be used as a source of mapping
+- **input_parameter** - ID of UI input parameter or parameter group to be used as a source of mapping
 
 - **constant_value** - constant value to be used as a source of mapping
 
@@ -365,3 +487,6 @@ textual object having following fields:
 - placeholder (optional) - in case of parameter type is textual (one of ``text``, ``textarea``,
   ``textsubdata``) it defines placeholder text shown in gray color explaining the meaning of
   value user is going to set.
+
+.. External links
+.. _Edit Media UI: https://github.com/cshenry/fba_tools/blob/4e9001c3547388eb70da6c07229f54c4aac23af2/ui/narrative/methods/edit_media/spec.json

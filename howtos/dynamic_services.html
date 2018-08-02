@@ -212,8 +212,14 @@ dynamic service, add the following to the kbase.yml file:</p>
     <span class="l l-Scalar l-Scalar-Plain">dynamic-service</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 </pre></div>
 </div>
-<p>You can then register your module as usual and start and stop it using the catalog interface
-(see Resources​ above). Otherwise development of a dynamic service module is identical to a Method module.</p>
+<p>You can then register your module as usual and start and stop it in a production environment using the <a class="reference external" href="https://appdev.kbase.us/#catalog/services">catalog interface</a>.
+Other services should be installed with a dynamic service flag like this <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">install</span> <span class="pre">-d</span> <span class="pre">&lt;service&gt;</span></code>.
+Calls to other services should be initialized with the Service Wizard URL rather than the SDK Callback URL.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">serviceWizardURL</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;service-wizard&#39;</span><span class="p">]</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">gaa</span> <span class="o">=</span> <span class="n">GenomeAnnotationAPI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">serviceWizardURL</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Otherwise development of a dynamic service module is identical to a Method module.</p>
 </div>
 <div class="section" id="start-and-stop-a-dynamic-service-locally">
 <h2>Start and stop a dynamic service locally<a class="headerlink" href="#start-and-stop-a-dynamic-service-locally" title="Permalink to this headline">¶</a></h2>

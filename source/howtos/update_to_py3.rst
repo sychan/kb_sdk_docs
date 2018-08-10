@@ -1,11 +1,11 @@
 Updating a module to Python3
 ============================
-Many KBase modules are written in Python 2.7 which will reach the end of it's service support in 2020. That means that beyond this date it will cease to receive critical security updates. Fortunately, it's fairly easy to convert any single module to Python 3 as long as the module has a reasonable comprehensive set of unit tests. In addition to the being secure for the future, these modules will access a host of performance and language features available in the 3.x releases.
+Many KBase modules are written in Python 2.7 which will reach the end of its service support in 2020. Beyond this date, Python 2 will cease to receive critical security updates. Fortunately, it's fairly easy to convert any single module to Python 3 as long as the module has a reasonably comprehensive set of unit tests. In addition to being secure for the future, these modules will access a host of performance and language features available in the 3.x releases.
 
 
 Converting the source code with 2to3
 ------------------------------------
-There are a number of compatibility tools available such as `six`_  or `futurize`_ which allow the execution of the same code by both Python 2 and Python 3 interpreters. Fortunately KBase's module system means that preserving back compatibility with Python 2 is not necessary and we can use the built in `2to3`_ executable. You can update all the python files in the directory in one fell swoop with the command ``2to3 -w <path_to_your_module>`` but you should be aware that you might no always agree with these changes (see more in Caveats). Additionally your Dockerfile will have  to be updated to build ``FROM kbase/sdkbase2:python``. Once the Dockerfile is updated, all future test will be run in Python 3, allowing you to verify that the updated code is running correctly. Check over the code to make sure that none of the caveats in the next section apply.
+There are a number of compatibility tools available such as `six`_  or `futurize`_ which allow the execution of the same code by both Python 2 and Python 3 interpreters. Fortunately, KBase's module system means that preserving back compatibility with Python 2 is not necessary and we can use the built in `2to3`_ executable. You can update all the python files in the directory in one fell swoop with the command ``2to3 -w <path_to_your_module>`` but you should be aware that you might not always agree with these changes (see more in Caveats). Additionally your Dockerfile will have to be updated to build ``FROM kbase/sdkbase2:python``. Once the Dockerfile is updated, all future test will be run in Python 3, allowing you to verify that the updated code is running correctly. Check over the code to make sure that none of the caveats in the next section apply.
 
 Caveats
 -------
@@ -23,7 +23,7 @@ Caveats
         except ImportError:
             from ConfigParser import ConfigParser as _ConfigParser  # py 2
 
-  ``2to3`` will update the #py2 version to match the Python 3 syntax so it's recommended to ether revert this change or remove the try-except block
+``2to3`` will update the #py2 version to match the Python 3 syntax, so it's recommended to either revert this change or remove the try-except block
 
 Resources
 ---------

@@ -41,8 +41,7 @@ This is a file in JSON format containing these top-level properties:
 
 Parameters in ``spec.json``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Each structure in array defined in ``parameters`` field defines one parameter shown in UI input
-panel of this method. Here is the list of main properties of parameter structure:
+Each item in the ``parameters`` array defines one parameter shown in the UI input panel of this method. The properties of each item are:
 
 - **id** - ID of a parameter, allowing you to reference it in ``display.yaml`` and from the mapping settings
   of the ``behavior`` block
@@ -149,7 +148,7 @@ The following is the list of sub-options available inside ``checkbox_options`` b
 
 Options for textarea parameter type in ``spec.json``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-There is only one sub-option available inside ``textarea_options`` block:
+There is only one sub-option available inside the ``textarea_options`` block:
 
 - **n_rows** - defines the number of lines shown for this textarea in the UI.
 
@@ -188,8 +187,7 @@ sub-objects). The following is the list of sub-options available inside the ``te
       fields from ``selection_description`` (placeholders for the fields are defined as
       {{field-name}})
 
-The following is an example of the ``textsubdata_options`` block for the model reactions in KBaseFBA.FBAModel
-object:
+The following is an example of the ``textsubdata_options`` block for the model reactions in the ``KBaseFBA.FBAModel`` object:
 
 .. code-block:: js
 
@@ -225,7 +223,7 @@ The ``dynamic_dropdown`` parameter type defines a field that gives the user an a
 
 - **result_aliases** - Mapping that connects a short name to a field in the returned data object.
 
-- **selection_id** - Name of key result_aliases which will be sent as selected value
+- **selection_id** - Name of a key in ``result_aliases`` that will be sent as the selected value
 
 - **description_template** - Defines how the description of items is rendered using Handlebar templates (use the keys in result_aliases as variable names)
 
@@ -277,7 +275,7 @@ Parameter groups in ``spec.json``
 
 Parameter groups combine a set of individually specified parameters into logical sets. This can be used for something as simple as visually grouping related input (i.e. distinguishing a set of parameters passed to a wrapped tool from kbase related parameters), but it's most often used to allow users to specify a multiple items described by a more than one parameter. 
 
-It is also possible to have an optional parameter group with required parameters. If the parameter group is present, all the required parameters must be provided. The default resulting structure is a mapping (or list of mappings if ``allow_multiple`` is `) with the parameter_ids as keys (e.g. ``{id: [{parameter_id_1: value_1, parameter_id_2: value_2 ...}]}``) but this can be modified with the ``id_mapping`` option.
+It is also possible to have an optional parameter group with required parameters. If the parameter group is present, all the required parameters must be provided. The default resulting structure is a mapping (or list of mappings if ``allow_multiple`` is 1) with the parameter_ids as keys (e.g. ``{id: [{parameter_id_1: value_1, parameter_id_2: value_2 ...}]}``) but this can be modified with the ``id_mapping`` option.
 
 - **id** - id of the parameter group. Must be unique within the method among all parameters and groups
 

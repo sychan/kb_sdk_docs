@@ -1,54 +1,96 @@
 Setup & Configuration
 ========================
 
-Open and edit the ``kbase.yml`` file to include a better description of your app. Be sure to describe what your app actually does.
+The setup for the example module includes:
 
-Plan the Input and Output
+#. Customizing the description of the module
+#. Specify inputs, outputs, and functions of the module
+#. Validate the module and its apps
+#. Customize the Narrative User Interface
+
+Module Description
 -------------------------------------------
 
-To start, we can consider our inputs and outputs. Our tutorial app will do the following:
+Open and edit the ``kbase.yml`` file to include a better description of your module. It is in  is in the root 
+directory of the module. Be sure to describe what your module and its apps
+ actually do. In future revisions you can update the version and the list of authors/owners.
 
-* Take a reference to an assembly file as input
-* Take ``min_length`` as input (the minimum contig length that the user wants)
-* Download their assembly file from the KBase servers using the reference
-* Filter out the contigs in the assembly file that are below ``min_length``
-* Upload the filtered assembly file
-* Return a reference to the new assembly, plus some data about what we filtered
+For this tutorial, we will be looking at the app ``filter_contigs``. The app takes an ``assembly file`` and applies 
+a ``minimum length`` filter to the contigs. **The exercise creates a second app that filter the contigs 
+by a ``maximum_length``**
 
-Create Input Parameters
---------------------------
+The Specification File
+-------------------------------------------
 
-In SDK apps, we can have input parameters in the form of maps (dicts/hashes/objects), lists (arrays), floats, integers, strings, or booleans.
+The specification file is called ``module_name.spec`` and is in the root directory of the module. 
+This file is highly structured and follows a KIDL type definition. The steps below show the sections that need
+to be modified for the example module. 
 
-Sometimes, input strings will actually be **reference addresses** to files on KBase's workspace servers. We will write some code to download the files that these references point to.
+`View the KIDL tutorial and reference <../references/KIDL_spec.html>`_
 
-SDK apps can output the following data:
 
-* **KBase Typed Data** - Assemblies, genomes, annotations, etc.
-* **HTML Pages** - A formatted page representing the output of your app
-* **Misc. files for download** - You method can use KBaseReports to save results to a file server for the user to download
+Plan the Inputs, Outputs, and Functions
+```````````````````````````````````````````
 
-Let's start by defining our input parameters. We need a ``min_length`` parameter (an integer), and an ``assembly_ref`` parameter (a string reference to an assembly file in the workspace).
+For purposes of this exercise we will consider 3 inputs, 6 outputs, and 2 functions. The specification can contain
+additional specifications that don't apply here. For example, not all functions become apps. Functions that have
+a defined user interface will become apps.
 
-To add an input parameter to your app, you need to update three configuration files:
+**Inputs:**
 
-1. ``module_name.spec`` -- a type specification file
-2. ``ui/narrative/example_method/spec.json`` -- a UI configuration file
-3. ``ui/narrative/example_method/display.yaml`` -- a text content file
+The exercise includes the following inputs from the user:
 
-We'll start with the ``module_name.spec`` file.
+* A reference to an assembly
+* A ``min_length``  (the minimum contig length that the user wants)
 
-Add KIDL Type Definitions
-------------------------------
+In addition, the narrative will send the following input to the apps:
 
-First, add the input parameter types to your app's KIDL specification, which lives in ``<module_name>.spec`` in the root directory of your codebase.
+* The name of the workspace (always needed when working with data)
 
-Open your KIDL spec file, and you will see something like this:
+In SDK, input parameters in the form of maps (dicts/hashes/objects), lists (arrays), floats, integers, 
+strings, or booleans.  Sometimes, input strings will actually be **reference addresses** to files on 
+KBase's workspace servers. The scripts include some code to download the files from the workspace.
+
+**Outputs:**
+
+This exercise includes the following outputs:
+
+* Number of starting contigs
+* Number of contigs removed
+* Number of remaining contigs
+* A reference to the new assembly 
+* A report name 
+* A report reference
+
+The ``report name`` and ``report reference`` are used internally by the user interface for directing output
+to the right place on the screen.
+
+In SDK, output can be the following data:
+
+* KBase Typed Data - Assemblies, genomes, annotations, etc.
+* HTML Pages - A formatted page representing the output of your app
+* Misc. files for download - Your method can use KBaseReports to save results to a file server for the user to download
+
+**Functions:**
+
+* ``filter_contigs`` - Existing app which filters contigs using a minimum contig length
+* ``filter_contigs_max`` - New app which filter the contigs using both a minimum and a maximum contig length
+
+Edit the Spec file with KIDL 
+`````````````````````````````
+
+The syntax comes from a custom type language called KIDL, which is used as a common interface definition language, allowing different apps to communicate with one another, regardless of programming languages.
+
+`View the KIDL tutorial and reference <../references/KIDL_spec.html>`_
+
+We'll start with the ``module_name.spec`` file. **Comments** in KIDL start with a line with ``/*`` and end with a 
+line with ``*/``. 
+For example, the following has two comments and an empty specification for the module called MyContigFilter.
 
 .. code-block:: cpp
 
     /*
-    A KBase module: MyContigFilter
+		A KBase module: ContigFilter
     */
     module MyContigFilter {
         /*
@@ -56,49 +98,131 @@ Open your KIDL spec file, and you will see something like this:
         */
     };
 
-
-The above syntax comes from a custom type language called KIDL, which is used as a common interface definition language, allowing different apps to communicate with one another, regardless of programming languages.
-
-`View the KIDL tutorial and reference <../references/KIDL_spec.html>`_
-
-Our input and output types need to be in ``structure`` types. Add these type structures inside your module section:
+The example ``.spec`` file has a lot of comments that may seem distracting at first glance.  For inputs, we need 
+a ``min_length`` parameter (an integer), an ``assembly_input_ref`` parameter (a string reference to an assembly 
+file in the workspace), and a ``workspace_name``.  Here are the needed statements to define the inputs
+(comments removed):
 
 .. code-block:: cpp
 
-    /* Input parameter types */
-    typedef structure {
-        string workspace_name;
-        string assembly_ref;
-        int min_length;
-    } ContigFilterParams;
+     module ContigFilter {
+        typedef string assembly_ref;
 
-    /* Output result types */
+        typedef structure {
+            assembly_ref assembly_input_ref;
+            string workspace_name;
+            int min_length;
+        } FilterContigsParams;
+    };
+
+There are two typedefs which define two parameters, an ``assembly_ref`` which is a string and 
+a set of input parameters that when combined into a ``structure`` are called ``FilterContgsParams``. 
+The format of a ``typedef`` is the template or type followed by the name of the parameter.
+As mentioned above, the three input parameters of ``FilterContgsParams`` are a 
+``min_length`` of type ``int``, a ``workspace_name`` of type string, and an ``assembly_input_ref`` which is 
+a reference to an assembly. Because a reference to an assembly (``assembly_ref``) is not a defined type, 
+one was defined. 
+
+Edit your KIDL ``.spec`` file to add the lines needed for a new app that filters using both a minimum and a
+maximum length. Your new ``.spec`` file might look something like this:
+
+.. code-block:: cpp
+
+     module ContigFilter {
+        typedef string assembly_ref;
+
+        typedef structure {
+            assembly_ref assembly_input_ref;
+            string workspace_name;
+            int min_length;
+        } FilterContigsParams;
+
+        typedef structure {
+            assembly_ref assembly_input_ref;
+            string workspace_name;
+            int min_length;
+            int max_length;
+        } FilterContigsMaxParams;
+    };
+
+Now let's look at the outputs. In the example module, the following ``typedef`` lines define the outputs:
+
+.. code-block:: cpp
+
     typedef structure {
+        string report_name;
+        string report_ref;
+        assembly_ref assembly_output;
+        int n_initial_contigs;
+        int n_contigs_removed;
+        int n_contigs_remaining;
     } ContigFilterResults;
 
+This has added a ``structure`` are called ``ContigFilterResults`` as the parameters for output. 
+The ``report_name`` and ``report_ref`` are placeholders for the output results, which we will return to later. 
+The assembly_output can use the same type as used above and there are three outputs of type ``int``. 
+The new app can use the same output parameters and doesn't need a new ``structure``.
 
-Above, we've added a few input parameters: a workspace name (always needed to work with data), an ``int`` for the minimum contig length that the user wants, and a ``string`` that will reference an assembly data file on KBase's servers.
-
-We also added a placeholder type structure for our output results, which we will return to later. For now, it can be blank.
-
-Now insert a function type for our app's main method, which we can call ``filter_contigs``. Refer to the `KIDL specification <../references/KIDL_spec.html>`_ for details about function types.
+Now let us look at the function type for our app, which we can call ``filter_contigs``. 
+Refer to the `KIDL specification <../references/KIDL_spec.html>`_ for details about function types.
 
 .. code-block:: cpp
 
-    funcdef filter_contigs(ContigFilterParams params)
-        returns (ContigFilterResults) authentication required;
+    funcdef filter_contigs(FilterContigParams params)
+        returns (FilterContigsResults) authentication required;
+
+This function definition (``funcdef``) defines a function called ``filter_contigs`` with input parameters of
+``FilterContgsParams`` and returns output parameters of ``ContigFilterResults``.
+The function is set as ``authentication required`` because all SDK apps that run in the 
+Narrative will require the authentication to interact with a user's workspace.
+
+Edit your KIDL ``.spec`` file to add the lines needed for a new app that filters using both a minimum and a
+maximum length. Your new ``.spec`` file might look something like this:
+
+.. code-block:: cpp
+
+     module ContigFilter {
+        typedef string assembly_ref;
+
+        typedef structure {
+            assembly_ref assembly_input_ref;
+            string workspace_name;
+            int min_length;
+        } FilterContigsParams;
+
+        typedef structure {
+            assembly_ref assembly_input_ref;
+            string workspace_name;
+            int min_length;
+            int max_length;
+        } FilterContigsMaxParams;
+
+    typedef structure {
+        string report_name;
+        string report_ref;
+        assembly_ref assembly_output;
+        int n_initial_contigs;
+        int n_contigs_removed;
+        int n_contigs_remaining;
+    } FilterContigsResults;
+
+    funcdef filter_contigs(FilterContigsParams params)
+        returns (FilterContigsResults output) authentication required;
+
+    funcdef filter_contigs_max(FilterContigsMaxParams params)
+        returns (FilterContigsResults output) authentication required;
+
+    };
 
 
-In SDK apps, we want to set the function as ``authentication required`` because all SDK apps that run in the Narrative will require authentication since they need to interact with a user's workspace.
-
-Now return to your app's root directory and run ``make``. 
+Now return to your module's root directory and run ``make``. 
 
 .. important::
 
-    You must rerun *make* after each change to the KIDL specification to regenerate client and server code used in the codebase
+    You must rerun *make* after each change to the KIDL specification to regenerate client and server code used in the codebase. 
 
 
-Validate your app
+Validate your module
 ---------------------
 
 When you make changes to your KIDL ``.spec`` file, validate the syntax of your changes by running:
@@ -115,132 +239,6 @@ For now, you will get an error that looks something like this:
     **ERROR** - unknown method "your_method" defined within path [behavior/service-mapping/method] in spec.json
 
 
-That's because we need to set up some things in our ``/ui/narrative`` directory in the app.
-
-Update spec.json
---------------------
-
-The directory named ``/ui/narrative/methods/example_method`` is a placeholder. Rename it to the name of the actual function we defined in our KIDL ``.spec`` file:
-
-.. code-block:: bash
-
-    # From your app's root directory:
-    $ mv ui/narrative/methods/example_method ui/narrative/methods/filter_contigs
-
-
-``filter_contigs`` matches the ``funcdef`` name we used in the KIDL ``MyContigFilter.spec`` file.
-
-Now open up ``ui/narrative/methods/filter_contigs/spec.json``. This file defines a mapping between our KIDL ``.spec`` file and how our parameters will show up in the app's user interface.
-
-Find line 29 where it says ``"your_method"`` -- change that to say ``"filter_contigs"`` instead. Also, set the the "method" to "filter_contigs" under the "behavior"."service-mapping"."method" setting in the JSON.
-
-In the section under ``"parameters"``, add an entry for two of our input parameters:
-
-.. code:: json
-
-    ...
-    "parameters": [
-        {
-            "id": "assembly_ref",
-            "optional": false,
-            "advanced": false,
-            "allow_multiple": false,
-            "default_values": [ "" ],
-            "field_type": "text",
-            "text_options": {
-                "valid_ws_types": [ "KBaseGenomeAnnotations.Assembly", "KBaseGenomes.ContigSet" ]
-            }
-        },
-        {
-            "id": "min_length",
-            "optional": false,
-            "advanced": false,
-            "allow_multiple": false,
-            "default_values": [ "" ],
-            "field_type": "text",
-            "text_options": {
-                "validate_as": "int",
-                "min_integer": "0"
-            }
-        }
-    ]
-    ...
-
-
-These options will generate UI form elements in the narrative that allow the user to input data into your app. We leave out the ``workspace_name`` parameter because it will automatically be provided by the system, not the user, so we don't need a form element for it.
-
-Each parameter object has a number of options.
-
-* We want both parameters to be required (``"optional": false``)
-* We want the ``"assembly_ref"`` to be a reference to either an Assembly or ContigSet object (view the `type catalog <https://narrative.kbase.us/#catalog/datatypes>`_) to see all KBase types)
-* We want the ``"min_length"`` parameter to be validated as an integer, and we don't want to allow negative numbers.
-
-Below that section, you will see some default ``"input_mapping"`` options. Change that section so that it contains entries for each of your input parameters. For now we can leave the output section empty:
-
-.. code:: json 
-
-    ...
-    "input_mapping": [
-        {
-            "narrative_system_variable": "workspace",
-            "target_property": "workspace_name"
-        },
-        {
-            "input_parameter": "assembly_ref",
-            "target_property": "assembly_ref",
-            "target_type_transform": "resolved-ref"
-        },
-        {
-            "input_parameter": "min_length",
-            "target_property": "min_length"
-        }
-    ],
-    "output_mapping": [ ]
-    ...
-
-
-Notice that we added a ``"target_type_transform"`` option with the value ``"resolved-ref"`` for the ``"assembly_ref"`` input. This indicates to the narrative that this parameter needs to be a valid reference to an object in the workspace.
-
-When you run ``kb-sdk validate`` again, you will get an error about your ``display.yaml``, which we can update next.
-
-Update display.yaml
------------------------
-
-The YAML file found in ``ui/narrative/methods/filter_contigs/display.yaml`` holds text content for your app.
-
-Open it and update its default fields to match the purpose your app. Change ``name`` and ``tooltip`` to say something related to filtering assembly files based on contig length.
-
-You can leave the "screenshots" and "icon" fields to their default values. For now, set empty lists as the values in the "suggestions" section.
-
-Moving down to the "parameters" section, add parameter entries for "assembly_ref" and "min_length" with some helpful descriptions of each.
-
-Example "parameters" section:
-
-.. code-block:: yaml
-
-    parameters:
-        assembly_ref:
-            ui-name: Assembly to filter
-            short-hint: |
-                Genome assembly with contiguous fragments
-            long-hint: |
-                Genome assembly where we want to filter out fragments that are below a minimum
-        min_length:
-            ui-name: |
-                Min contig length
-            short-hint: |
-                Minimum required length of every contig in the assembly
-            long-hint: |
-                All contigs will be filtered out of the assembly that are shorter than the given length
-
-
-This text will show up on the actual narrative page for your app in the help areas for each form element. You only need to set this text for parameters that actually display in the form.
-
-Finally, run ``kb-sdk validate`` again and it should pass! Now we can start to actually work on the functionality of the app.
-
-.. note::
-
-    For a more exhaustive overview of the ``spec.json`` and ``display.yaml`` files, take a look at
-    the `UI specification guide <../references/UI_spec.html>`_  You can also experiment with UI generation
-    with the `App Spec Editor Narrative <https://narrative.kbase.us/narrative/ws.28370.obj.1>`_
+That's because we need to set up some things for the User Interface in the ``ui/narrative/methods`` directory 
+in the module.
 

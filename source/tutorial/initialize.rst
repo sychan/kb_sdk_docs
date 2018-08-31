@@ -1,5 +1,12 @@
-Initialize the App
+Initialize the Module
 ====================
+
+.. tip::
+
+   A KBase Module contains all of the components for one or more apps. The components are all stored in
+   the same directory and are all uploaded to a single github repository. There are pros and cons to 
+   bundling several apps in one module versus
+   creating one app per module. See `terminology <../references/terminology.html>`_ for more information. 
 
 The KBase SDK provides a way to quickly bootstrap a new module by generating most of the required components.
 
@@ -15,12 +22,16 @@ where ``ModuleName`` must be unique across all SDK modules registered in KBase. 
 
 .. code-block:: bash
 
-    $ kb-sdk init --language python --user <your_kbase_user_name> <user_name>ContigFilter
+    $ kb-sdk init --language python --user <your_kbase_user_name> <user_name>HelloWorld
 
 
-We're using ``<user_name>`` in the module name in this example to make sure that your module has a unique name. However, you would not usually put your own username in the module name, and instead name it something like ``ContigFilter``.
+This creates a directory called ``<user_name>HelloWord`` in your current directory. The directory has all of 
+the components needed to start creating apps and is basically a clean slate.  Because this example is
+used in training and is tried by many users, the ``<user_name>`` is added to make sure that your module has a unique 
+name. However, you would not usually put your own username in the module name, and instead name it something 
+like ``ContigFilter``.
 
-You must always include the ``-u`` option with your username to set yourself as the module owner.
+You must always include the ``-u`` or ``-user`` option with your username to set yourself as the module owner.
 
 You can set your programming langauge to any of Python, Perl, or Java; for this tutorial, we're using Python.
 
@@ -38,22 +49,41 @@ The ``kb-sdk init`` options are:
                      Python
 
 
-The example we're building will have the same functionality as the app you get when you run ``kbase-init --example ..``. You can reference https://github.com/msneddon/ContigFilter for a working version if you get stuck at any point.
+For this tutorial, we will use an example module that has a few more specific details so we can explore how to make
+changes. The example is taken from https://github.com/msneddon/ContigFilter if you get stuck at any point and want to see the original.
 
-Run the above init script before continuing.
+.. code-block:: bash
 
-Build the App
+    $ kb-sdk init --example --language python --user <your_kbase_user_name> <user_name>ContigFilter
+
+Run the above init script before continuing. From here on, the ``<user_name>ContigFilter`` will simply be called
+``module_name``.
+
+Build the Module
 ---------------------
 
 .. code-block:: bash
 
-    $ cd <user_name>ContigFilter
+    $ cd module_name
     $ make
-
 
 The ``make`` command will run some initial code generation.
 
-Create a Git Repo
+Module Highlights
+---------------------
+
+This example module has the following that you will customize in later steps:
+
+#. A directory called ``module_name`` (see `Anatomy of an App <../references/module_anatomy.html>`_ for more on the directory sturcture)
+#. A description of the module, its version, and the authors in ``kbase.yml``
+#. A specification file that defines the inputs, output, and functions for the module ``module_name.spec``
+#. A single app called ``filter_contigs``
+#. A script with code for running all the apps in the module called ``module_nameImpl.py``
+#. Specifications for the user interface in the files ``spec.json`` and ``display.yaml``
+
+Don't worry the location of these files. They will be discussed in more detail in later steps.
+
+Create a GitHub Repo
 ---------------------
 
 You will need to publish your code to a public git repository to make it available for building into a custom Docker Image.  Here we'll show a brief example using GitHub.  First, commit your codebase into a local git repository. Then, ``git add`` all files created by kb-sdk and commit. This creates a git repository locally.
@@ -80,3 +110,26 @@ Sync your local codebase to your repository on github:
 
 
 Remember to continuously push your code changes to your github repo by using ``git push``.
+
+Set up your developer credentials
+------------------------------------
+
+If you want, this step can wait until you want to test your module. 
+However, it is somewhat disruptive to the thought process if you wait until later.
+
+The KBase file storage services require authenticated access. During development a dev ``token`` is generated 
+and used instead of putting user IDs and passwords in clear text in your module. 
+Tokens are good for 90 days and can be used on all modules developed and tested during the 90 days.
+
+Go to https://narrative.kbase.us/#auth2/account, click **Developer Tokens**, and generate a new token. The
+token is only visible on the screen for 5 minutes so make sure you are ready to do the step below.
+
+From the module's root directory, copy and paste that token into ``test_local/test.cfg`` in the value 
+for ``test_token``. For example:
+
+.. code::
+
+    test_user=
+    test_password=
+    test_token=JQGGVCPKCAB2XYHRHZV4H3NF4TN3YEUSA
+

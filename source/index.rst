@@ -39,6 +39,7 @@ To develop apps, start by obtaining a free KBase user account and applying for a
    tutorial/install
    tutorial/initialize
    tutorial/setup
+   tutorial/inputsoutputs
    tutorial/implement
    tutorial/publish
 
@@ -84,3 +85,4 @@ To develop apps, start by obtaining a free KBase user account and applying for a
     references/dev_guidelines
     references/KIDL_spec
     references/UI_spec
+    references/terminology

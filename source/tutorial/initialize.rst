@@ -3,7 +3,7 @@ Initialize the Module
 
 .. tip::
 
-   A KBase Module contains all of the components for one or more apps. The components are all stored in
+   A KBase module contains all of the components for one or more apps. The components are all stored in
    the same directory and are all uploaded to a single github repository. There are pros and cons to 
    bundling several apps in one module versus
    creating one app per module. See `terminology <../references/terminology.html>`_ for more information. 
@@ -22,14 +22,12 @@ where ``ModuleName`` must be unique across all SDK modules registered in KBase. 
 
 .. code-block:: bash
 
-    $ kb-sdk init --language python --user <your_kbase_user_name> <user_name>HelloWorld
+    $ kb-sdk init --language python --user <your_kbase_user_name> HelloWorld
 
 
-This creates a directory called ``<user_name>HelloWord`` in your current directory. The directory has all of 
-the components needed to start creating apps and is basically a clean slate.  Because this example is
-used in training and is tried by many users, the ``<user_name>`` is added to make sure that your module has a unique 
-name. However, you would not usually put your own username in the module name, and instead name it something 
-like ``ContigFilter``.
+This creates a directory called ``HelloWord`` in your current directory. The directory has all of 
+the components needed to start creating apps and is basically a clean slate.  
+
 
 You must always include the ``-u`` or ``-user`` option with your username to set yourself as the module owner.
 
@@ -49,16 +47,6 @@ The ``kb-sdk init`` options are:
                      Python
 
 
-For this tutorial, we will use an example module that has a few more specific details so we can explore how to make
-changes. The example is taken from https://github.com/msneddon/ContigFilter if you get stuck at any point and want to see the original.
-
-.. code-block:: bash
-
-    $ kb-sdk init --example --language python --user <your_kbase_user_name> <user_name>ContigFilter
-
-Run the above init script before continuing. From here on, the ``<user_name>ContigFilter`` will simply be called
-``module_name``.
-
 Build the Module
 ---------------------
 
@@ -72,12 +60,11 @@ The ``make`` command will run some initial code generation.
 Module Highlights
 ---------------------
 
-This example module has the following that you will customize in later steps:
+This module template has the following that you will customize in later steps:
 
 #. A directory called ``module_name`` (see `Anatomy of an App <../references/module_anatomy.html>`_ for more on the directory sturcture)
 #. A description of the module, its version, and the authors in ``kbase.yml``
 #. A specification file that defines the inputs, output, and functions for the module ``module_name.spec``
-#. A single app called ``filter_contigs``
 #. A script with code for running all the apps in the module called ``module_nameImpl.py``
 #. Specifications for the user interface in the files ``spec.json`` and ``display.yaml``
 
@@ -116,6 +103,7 @@ Set up your developer credentials
 
 If you want, this step can wait until you want to test your module. 
 However, it is somewhat disruptive to the thought process if you wait until later.
+This step can be done anytime after the first ``make`` of a module.
 
 The KBase file storage services require authenticated access. During development a dev ``token`` is generated 
 and used instead of putting user IDs and passwords in clear text in your module. 

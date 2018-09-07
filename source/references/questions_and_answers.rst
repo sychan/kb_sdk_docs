@@ -166,7 +166,7 @@ Requirements and limitations
 Q: What are system requirements for development?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You will need to be able to run Docker, which if you're on a Mac means you must be running Mac OS X 10.8 or later. Other operating systems, such as the various flavors of Linux, are fine too. Really anywhere you can run Docker, Java, and your preferred development language (among Python, Perl, or Java). You will need about 1-2 GB free to install the `dependencies <../tutorial/dependencies.html>`__ and the `KBase SDK <../tutorial/install.html>`__
+You need to be able to run Docker. If you're on a Mac, that means you must be running Mac OS X 10.8 or later. Other operating systems, such as the various flavors of Linux, are fine too. Really anywhere you can run Docker, Java, and your preferred development language (among Python, Perl, or Java). You will need about 1-2 GB free to install the `dependencies <../tutorial/dependencies.html>`__ and the `KBase SDK <../tutorial/install.html>`__
 
 Q: Can I develop on Windows?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

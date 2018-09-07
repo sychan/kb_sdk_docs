@@ -1,7 +1,26 @@
-Setup & Configuration
+ContigFilter Example
 ========================
 
-The setup for the example module includes:
+The `Hello World <helloworld.html>`_ example demonstrated where various components of the SDK are located and how to run a basic test.
+This "ContigFilter" example adds more features of the SDK. In practice, apps need to interact with the workspace/narrative, create reports from the app output, and potentially interact with database objects.
+
+For this tutorial, we will use an example module that has a few more specific details so we can explore how to make
+changes. The example is taken from https://github.com/msneddon/ContigFilter if you get stuck at any point and want to see the original.  For this example module use:
+
+.. code-block:: bash
+
+    kb-sdk init i--example --language python --user <your_kbase_user_name> <user_name>ContigFilter
+    cd <user_name>ContigFilter
+    make
+
+Because this example is
+used in training and is tried by many users, the ``<user_name>`` is added to make sure that your module has a unique 
+name. However, you would not usually put your own username in the module name, and instead name it something 
+like ``ContigFilter``.
+
+From here on, the ``<user_name>ContigFilter`` will simply be called ``module_name``.
+
+The setup for the "ContigFilter" module includes:
 
 #. Customizing the description of the module
 #. Specify inputs, outputs, and functions of the module
@@ -11,20 +30,20 @@ The setup for the example module includes:
 Module Description
 -------------------------------------------
 
-Open and edit the ``kbase.yml`` file to include a better description of your module. It is in  is in the root 
+Open and edit the ``kbase.yml`` file to include a better description of your module. It is in the root 
 directory of the module. Be sure to describe what your module and its apps
  actually do. In future revisions you can update the version and the list of authors/owners.
 
-For this tutorial, we will be looking at the app ``filter_contigs``. The app takes an ``assembly file`` and applies 
-a ``minimum length`` filter to the contigs. **The exercise creates a second app that filter the contigs 
-by a ``maximum_length``**
+For this tutorial, we will be looking at the app ``filter_contigs``. The app takes as inputs, an ``assembly file`` and applies 
+a ``minimum length`` filter to the contigs. **The exercise below creates a second app that filter the contigs 
+by a** ``maximum_length``
 
 The Specification File
 -------------------------------------------
 
 The specification file is called ``module_name.spec`` and is in the root directory of the module. 
 This file is highly structured and follows a KIDL type definition. The steps below show the sections that need
-to be modified for the example module. 
+to be modified for the ContigFilter module. 
 
 `View the KIDL tutorial and reference <../references/KIDL_spec.html>`_
 
@@ -47,7 +66,7 @@ In addition, the narrative will send the following input to the apps:
 
 * The name of the workspace (always needed when working with data)
 
-In SDK, input parameters in the form of maps (dicts/hashes/objects), lists (arrays), floats, integers, 
+In SDK, input parameters can be in the form of maps (dicts/hashes/objects), lists (arrays), floats, integers, 
 strings, or booleans.  Sometimes, input strings will actually be **reference addresses** to files on 
 KBase's workspace servers. The scripts include some code to download the files from the workspace.
 
@@ -98,7 +117,7 @@ For example, the following has two comments and an empty specification for the m
         */
     };
 
-The example ``.spec`` file has a lot of comments that may seem distracting at first glance.  For inputs, we need 
+The ContigFilter ``.spec`` file has a lot of comments that may seem distracting at first glance.  For inputs, we need 
 a ``min_length`` parameter (an integer), an ``assembly_input_ref`` parameter (a string reference to an assembly 
 file in the workspace), and a ``workspace_name``.  Here are the needed statements to define the inputs
 (comments removed):
@@ -145,7 +164,7 @@ maximum length. Your new ``.spec`` file might look something like this:
         } FilterContigsMaxParams;
     };
 
-Now let's look at the outputs. In the example module, the following ``typedef`` lines define the outputs:
+Now let's look at the outputs. In the ContigFilter module, the following ``typedef`` lines define the outputs:
 
 .. code-block:: cpp
 

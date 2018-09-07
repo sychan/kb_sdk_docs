@@ -38,6 +38,7 @@ To develop apps, start by obtaining a free KBase user account and applying for a
    tutorial/dependencies
    tutorial/install
    tutorial/initialize
+   tutorial/helloworld
    tutorial/setup
    tutorial/inputsoutputs
    tutorial/implement

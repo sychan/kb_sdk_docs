@@ -31,7 +31,7 @@ Copy the directory named ``ui/narrative/methods/filter_contigs`` and create a di
 Now open up ``ui/narrative/methods/filter_contigs_max/spec.json``. This file defines a mapping between our 
 KIDL ``.spec`` file and how our parameters will show up in the app's user interface.
 
-In the section under ``"parameters"``, there are two input parameters:
+In the section under ``parameters``, there are two input parameters:
 
 .. code:: json
 
@@ -69,15 +69,27 @@ not the user, so we don't need a form element for it.
 
 Each parameter object has a number of options.
 
-* We want both parameters to be required (``"optional": false``)
-* We want the ``"assembly_input_ref"`` to be a reference to either an Assembly or ContigSet object (view the `type catalog <https://narrative.kbase.us/#catalog/datatypes>`_) to see all KBase types)
-* We want the ``"min_length"`` parameter to be validated as an integer, and we don't want to allow negative numbers (minimum valid integer to be 0).
+* We want both parameters to be required ("optional": false)
+* We want the ``assembly_input_ref`` to be a reference to either an Assembly or ContigSet object (view the `type catalog <https://narrative.kbase.us/#catalog/datatypes>`_) to see all KBase types)
+* We want the ``min_length`` parameter to be validated as an integer, and we don't want to allow negative numbers (minimum valid integer to be 0).
 
-Edit the file to add the other input parameter ``max_length`` with similar values. Add the following to the parameters section.
+Edit the file to add the other input parameter ``max_length`` with similar values. The end of the parameters section should have something like this.
 
 .. code:: json
 
     ...
+        {
+            "id": "min_length",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": false,
+            "default_values": [ "" ],
+            "field_type": "text",
+            "text_options": {
+                "validate_as": "int",
+                "min_integer" : 0
+            }
+        },
         {
             "id": "max_length",
             "optional": false,
@@ -92,9 +104,19 @@ Edit the file to add the other input parameter ``max_length`` with similar value
         }  
     ...
 
-Below parameters, in the section under ``behavior``, change ``filter_contigs`` to  ``"filter_contigs_max"``. Note that ``name`` is the name of the module and ``method`` is the name of the app.
+Notice that a comma was added to the end of the ``min_length`` parameter.
 
-Also in the ``behavior`` section, you will see ``"input_mapping"`` options. It contains entries for the input 
+Below parameters, in the section under ``behavior``, change ``filter_contigs`` to  ``filter_contigs_max``. Note that ``name`` is the name of the module and doesn't change and ``method`` is the name of the app.
+
+.. code:: json
+
+        "service-mapping": {
+            "url": "",
+            "name":"ContigFilter",
+            "method": "filter_contigs_max",
+
+
+Also in the ``behavior`` section, you will see ``input_mapping`` options. It contains entries for the input 
 parameters.
 
 .. code:: json 
@@ -118,20 +140,26 @@ parameters.
     ...
 
 
-Notice that we added a ``"target_type_transform"`` option with the value ``"resolved-ref"`` for the 
-``"assembly_ref"`` input. This indicates to the narrative that this parameter needs to be a valid reference 
+Notice that we added a ``target_type_transform`` option with the value ``resolved-ref`` for the 
+``assembly_ref`` input. This indicates to the narrative that this parameter needs to be a valid reference 
 to an object in the workspace.
 
-Add the ``max_length to the ``input_mapping``. The new lines will look something like:
+Add the ``max_length to the ``input_mapping``. The lines will look something like:
 
 .. code:: json 
 
         ...
         {
+            "input_parameter": "min_length",
+            "target_property": "min_length"
+        },
+        {
             "input_parameter": "max_length",
             "target_property": "max_length"
         }
         ...
+
+Make sure you include the commas after the min_length parameters. 
 
 We don't need to change the output section.
 
@@ -161,10 +189,14 @@ for each form element. You only need to set this text for parameters that actual
 
     App Catalog for View Flux Network.
 
-Open it and update its the ``name`` and ``tooltip`` to say something related to filtering assembly files 
+Open the ``display.yaml`` and update its ``name`` and ``tooltip`` to say something related to filtering assembly files 
 based on contig length with both a min and a max filter.
 
 You can leave the "screenshots", "icon" and "suggestions" fields to their default values.
+
+.. tip::
+
+    The icon is completely optional but will come in handy when you get to the "Publish and Update" step. It will help you find your app in a sea of others that have the same name. The `Narrative App UI Specification <../references/UI_spec.html>`_ has more information on icons.
 
 Moving down to the "parameters" section, the parameter entries for "assembly_ref" and "min_length" are filled in. 
 

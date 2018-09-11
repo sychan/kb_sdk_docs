@@ -34,6 +34,15 @@ Go to the development `App Catalog`_ and start by using *Search* to see if there
 
 It may be the case that someone is wrapping a tool, but is doing so in a way that doesn't serve your needs exactly. Feel free to rewrap the tool using your approach, or ask the previous tool wrapper to tweak their implementation to expose the parameters or other functionality you are looking for.
 
+Q: What languages can I use to write my app?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We recommend Python, but you can also use Java or Perl. The language versions are as follows:
+
+* Python: Miniconda 3.6
+* Java: 1.7.0_80
+* Perl: v5.18.2
+
 Q: How do I work with test and reference data?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

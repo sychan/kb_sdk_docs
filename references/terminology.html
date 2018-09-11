@@ -1,0 +1,348 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Terminology &mdash; KBase SDK 0.1.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Narrative App UI Specification" href="UI_spec.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> KBase SDK
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Intro</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Concepts and Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../video_tutorial.html">Video Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/initialize.html">3. Initialize the Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/helloworld.html">4. Hello World Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/setup.html">5. ContigFilter Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/inputsoutputs.html">6. Narrative User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/implement.html">7. Implement Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">8. Publish and Update</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="questions_and_answers.html">Common Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/create_a_report.html">Creating reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/add_ui_elements.html">Adding UI Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/edit_your_dockerfile.html">Editing your app’s Dockerfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/fill_out_app_information.html">Fully documenting your app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/run_a_shell_command.html">Running shell commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/file_utils.html">Working with the file utils</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/workspace.html">Using Workspace Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/manual_build.html">Manually building the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/work_with_reference_data.html">Working with reference data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/job_manager.html">Listing and viewing jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/dynamic_services.html">Dynamic Services</a></li>
+</ul>
+<p class="caption"><span class="caption-text">References &amp; Resources</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="module_anatomy.html">Anatomy of an App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="KIDL_spec.html">KIDL Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UI_spec.html">Narrative App UI Specification</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Terminology</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">KBase SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Terminology</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/kbase/kb_sdk_docs/blob/blob/master/source/references/terminology.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="terminology">
+<h1>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>App</dt>
+<dd>A tool in the KBase narrative interface. In a narrative, users select the app, it opens a new cell, users
+specify inputs, outputs, and optional parameters, and it may or may not create a separate output cell.
+In SDK, apps are part of a module and have a defined function, user interface, and code for implementing the app.</dd>
+<dt>appdev</dt>
+<dd>The development environment where app user interfaces can be tested (<a class="reference external" href="https://appdev.kbase.us">https://appdev.kbase.us</a>).</dd>
+<dt>Catalog</dt>
+<dd><p class="first">For general users, the Catalog is a listing of available apps and modules along with the documentation
+that developers included. Users can select whether the want to see released, beta, or dev apps and
+they can be sort the list.</p>
+<div class="align-center figure" id="id1">
+<img alt="../_images/app_catalog.png" src="../_images/app_catalog.png" />
+<p class="caption"><span class="caption-text">User App Catalog</span></p>
+</div>
+<p>For registered KBase developers, there additional catalog options.</p>
+<div class="align-center figure" id="id2">
+<img alt="../_images/app_catalog_dev.png" src="../_images/app_catalog_dev.png" />
+<p class="caption"><span class="caption-text">Developer App Catalog</span></p>
+</div>
+<p>Developers-Only</p>
+<ul class="last simple">
+<li>A direct link for registering a module</li>
+<li>An index link that has several useful resources</li>
+<li>A catalog status</li>
+</ul>
+</dd>
+<dt>Data Type Catalog</dt>
+<dd>A <a class="reference external" href="https://narrative.kbase.us/#catalog/datatypes">listing</a> of the current data objects with links to
+their specification documentation.</dd>
+<dt>Function Catalog</dt>
+<dd>A <a class="reference external" href="https://narrative.kbase.us/#catalog/functions">listing</a> of the current functions</dd>
+<dt>Github repository</dt>
+<dd>Also called ‘github repo’ or ‘git repo’.
+A repository stored at <a class="reference external" href="https://github.com">https://github.com</a> or in an organization’s github. It can be in your personal
+GitHub account or part of an organization’s or project’s account. For use in KBase, it must be public.</dd>
+<dt>Method</dt>
+<dd><p class="first">When defining the user interface, a method is another name for an app. This is defined in a directory called
+ui/narrative/methods/&lt;app name&gt;.</p>
+<p class="last">Code written in python will have python methods. A subset of the python
+methods correspond to apps. Those that do are named for the apps.</p>
+</dd>
+<dt>Module</dt>
+<dd><p class="first">A module includes all of the components for one or more apps. The apps are mananged as a group. All the
+components are in the same directory on your local machine or in one github repository. The directory and
+the github repository are typically the same name as the module. A catalog of existing
+modules is found at <a class="reference external" href="https://narrative.kbase.us/#catalog/modules">https://narrative.kbase.us/#catalog/modules</a>.</p>
+<p>The pros for grouping multiple apps in one module include:</p>
+<ul class="simple">
+<li>Apps that are part of a logical grouping are all found together</li>
+<li>Common functions that are shared by the apps are defined once</li>
+<li>The specification file is only defined once</li>
+</ul>
+<p>The pros for creating one app per module include:</p>
+<ul class="last simple">
+<li>The apps are revised independently and version numbers are specific to the app, not the group of apps</li>
+<li>The implementation file for some apps can get really long. Combining them into one module can get difficult
+to manage.</li>
+</ul>
+</dd>
+<dt>Workspace Service</dt>
+<dd><p class="first">The Workspace Service (WSS) is primarily a language independent remote storage
+and retrieval system for KBase typed objects (TO) defined with the KBase
+Interface Description Language (KIDL). It has the following primary features:</p>
+<ul class="last simple">
+<li>Immutable storage of TOs with</li>
+<li>user defined metadata</li>
+<li>data provenance</li>
+<li>Versioning of TOs</li>
+<li>Referencing from TO to TO</li>
+<li>Typechecking of all saved objects against a KIDL specification</li>
+<li>Collecting typed objects into a workspace</li>
+<li>Sharing workspaces with specific KBase users or the world</li>
+<li>Freezing and publishing workspaces</li>
+</ul>
+</dd>
+<dt>Wrap an App</dt>
+<dd>The SDK can be used to create a wrapper around a third-party software tool and make it accessible through
+KBase. The guide for <a class="reference external" href="../howtos/edit_your_dockerfile.html">Edititng your app’s Dockerfile</a> has useful
+information for wrapping a tool. Examples of wrapping a tool can be found at <a class="reference external" href="https://github.com/kbaseapps/kb_fasttree">kb_fasttree</a> and <a class="reference external" href="https://github.com/kbaseapps/kb_ballgown">kb_ballgown</a>. The developer has the option of implementing some or all of the functionality of the original tool into a KBase app.</dd>
+</dl>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="UI_spec.html" class="btn btn-neutral" title="Narrative App UI Specification" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, KBase.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1.18',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

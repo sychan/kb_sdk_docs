@@ -27,3 +27,6 @@ Instructions for installing on Mac: https://www.docker.com/mac
 Instructions for installing on Linux: https://www.docker.com/linux
 
 On Linux, be sure to follow these `post installation steps <https://docs.docker.com/install/linux/linux-postinstall/>`_ so you can run docker and `kb-sdk` as a non-root user.
+
+When you run an app in a narrative, it runs in a docker container on KBase's servers. Learn more about docker containers here: https://www.docker.com/what-container. Docker containers allow you to package and compile programs and dependencies, such as `MEGAHIT <https://github.com/voutcn/megahit>`_, and run them anywhere.
+

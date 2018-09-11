@@ -4,88 +4,59 @@ Narrative App UI Specification
 
 .. contents::
 
-This document describes how the UI components of Narrative Apps are specified via fields in
-spec.json ​ and ​display.yaml​ files. These spec files include input and output parameters
-for the app.
+This document describes how the UI components of Narrative Apps are specified via fields in ``spec.json`` and ``display.yaml`` files. These spec files include input and output parameters for the app.
 
-Structure of Folders and Files
-------------------------------
-To introduce UI specifications of Apps in an SDK repo you have to keep files and folders in a
-particular structure. Currently all UI method specifications (method-specs) live in
-``ui/narrative/methods/`` path. Each method has its own subfolder with the name meaning the app
-or method ID. Inside this folder a typical method has a ``spec.json`` file defining structural
-input/output and parameter type components, a ``display.yaml`` file defining display text and
-``img`` subfolder containing icon and screenshot files.
+Structure of the folders and files
+----------------------------------
+
+In an SDK app's repo, all UI method specifications live in the ``ui/narrative/methods/`` directory. Each method has its own subfolder with the name corresponding to the app or method ID. Inside this folder, a typical method has a ``spec.json`` file defining input/output parameters, a ``display.yaml`` file defining display text, and an ``img`` subfolder containing icon and screenshot files. 
 
 Structural file: ``spec.json``
 ------------------------------
 This is a file in JSON format containing these top-level properties:
 
-- **ver** - version of each UI method-spec
-
-- **authors** - list of GlobusOnline accounts of contributers
-
-- **contact** - e-mail of contact person
-
-- **categories** - list of tags (from fixed set of supported tags) categorizing this method into
-  one or more groups shown in navigation interface as set of filters; in case particular
-  method should be made invisible then ``inactive`` category should be added to this list (in
-  place of ``active`` category if it’s present)
-
-- **widgets** - structure defining **input** and **output** widgets (typically **input** widget is set
-  to null meaning that standard one is used); ``output`` widget points to name of JavaScript
-  widget supported by Narrative
-
-- **parameters** - list structures defining each parameter type and other features except
-  name (which is defined in ``display.yaml`` file)
-
-- **behavior** - block of settings for mapping UI parameters to service function input
-  parameters and separately for mapping from output results returned from service
-  function to what should be passed to visualizing widget to show these results
-
-- **job_id_output_field** - field for support of legacy code; for SDK method it should always
-  be set into ``docker`` value
+:ver: version of each UI method-spec
+:authors: list of GlobusOnline accounts of the contributers
+:contact: e-mail of the contact person
+:categories: list of tags (from fixed set of supported tags) categorizing this method into
+  method should be made invisible, then the ``inactive`` category should be added to this list (in
+  place of the ``active`` category, if it’s present)
+:widgets: structure defining **input** and **output** widgets (typically the **input** widget is set
+  widget supported by the narrative.
+:parameters: list of structures (described below) defining each parameter type and other features, except
+:behavior: block of settings for mapping UI parameters to service function input parameters. Also
+           used for mapping output results returned from the service function to the input of the
+           visualizing widget that shows the results.
+:job_id_output_field: field for support of legacy code. For an SDK method, it should always be set
+                      to the ``docker`` value
 
 Parameters in ``spec.json``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Each structure in array defined in ``parameters`` field defines one parameter shown in UI input
-panel of this method. Here is the list of main properties of parameter structure:
+Each item in the ``parameters`` array defines one parameter shown in the UI input panel of this method. The properties of each item are:
 
-- **id** - ID of parameter for referring to it from ``display.yaml`` file and from mapping settings
-  of ``behavior`` block
+:id: ID of a parameter, allowing you to reference it in ``display.yaml`` and from the mapping
+     settings of the ``behavior`` block
+:optional: flag defining whether the UI interface allows an empty value for this parameter or
+           requires the field to be set to something non-empty
+:advanced: flag defining whether the UI interface should place this field in the "Advanced
+           Parameters" group, collapsed by default
+:allow_multiple: flag defining whether the UI interface allows you to define more than one value
+                 for this parameter, treating these values as a list rather than a single
+                 textual/numeric/boolean value
+:default_values: if set to any non-empty string, this field will be preset with the string
+:field_type: type of the parameter; could be one of ``text``, ``dropdown``, ``checkbox``,
+             ``textarea``, ``textsubdata``, or ``dynamic_dropdown``
+:text_options: optional block defining details of the ``text`` type
+:dropdown_options: optional block defining details of the ``dropdown`` type - `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_metabolic_model/spec.json>`__
+:checkbox_options: optional block defining details of the ``checkbox`` type - `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/simulate_growth_on_phenotype_data/spec.json>`__
+:textarea_options: optional block defining details of the ``textarea`` type - `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_multiple_metabolic_models/spec.json>`__
+:textsubdata_options: optional block defining details of the ``textsubdata`` type - `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/compare_flux_with_expression/spec.json>`__
 
-- **optional** - flag defining whether UI interface allows empty value for this parameter or it
-  requires it to be set to something non-empty
+Options for the text parameter type in ``spec.json``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- **advanced** - flag defining whether UI interface moves this parameter into ``Advanced
-  parameters`` group collapsed by default or this parameter is listed in normal order
-
-- **allow_multiple** - flag defining whether UI interface allows to define more than one value
-  for this parameter and then treat these values as an array of values rather than one
-  textual/numeric/boolean value
-
-- **default_values** - if set to any non-empty string this value will appear as pre-defined one
-
-- **field_type** - type of parameter, could be one of ``text``, ``dropdown``, ``checkbox``,
-  ``textarea``, ``textsubdata``
-
-- **text_options** - optional block defining details of ``text`` type
-
-- **dropdown_options** - optional block defining details of ``dropdown`` type
-
-- **checkbox_options** - optional block defining details of ``checkbox`` type
-
-- **textarea_options** - optional block defining details of ``textarea`` type
-
-- **textsubdata_options** - optional block defining details of ``textsubdata`` type
-
-Options for text parameter type in ``spec.json``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Options in ``text_options`` block allow to specify many different ways of validation and behaviour.
-Field named ``valid_ws_types`` connects a parameter with one or more types of objects stored in
-Workspace KBase storage. In this mode Narrative interface will show available objects of listed
-types as drop-down for this parameter. For instance here is an example of ``text_options``
-allowing to choose one of Genome objects stored in workspace:
+Options in the ``text_options`` block allow you to specify many different types of validation and behavior. Fields named ``valid_ws_types`` connect a parameter with one or more types of objects stored in the Workspace. In this mode, the narrative will show the available objects as drop-down options. For instance, the following is an example of ``text_options``,
+allowing you to choose one of the Genome objects stored in the Workspace:
 
 .. code-block:: js
 
@@ -93,9 +64,9 @@ allowing to choose one of Genome objects stored in workspace:
         "valid_ws_types" : [ "KBaseGenomes.Genome" ]
     }
 
-If you would like to mark this parameter as output which means UI interface shouldn’t require
-chosen object to be present in Workspace storage you can set "is_output_name" sub-option to
-true like:
+If you would like to mark this parameter as output, meaning the UI interface shouldn’t require
+the chosen object to be present in Workspace storage, then you can set the ``is_output_name`` sub-option to
+true:
 
 .. code-block:: js
 
@@ -104,9 +75,8 @@ true like:
         "is_output_name" : true
     }
 
-Another sub-option is "validate_as" allowing to validate value entered in UI as "int" or "float". If
-you what some parameter to be an integer with minimum and/or maximum limits you can use
-properties like in this example:
+Another sub-option is ``validate_as``, allowing you to validate a value entered in the UI as an ``int`` or ``float``. If
+you want a parameter to be an integer with minimum and/or maximum limits you can use additional properties, as in this example:
 
 .. code-block:: js
 
@@ -117,7 +87,7 @@ properties like in this example:
         "max_int" : 200
     }
 
-And similarly for float type:
+And similarly for float types:
 
 .. code-block:: js
 
@@ -128,13 +98,10 @@ And similarly for float type:
         "max_float" : 200
     }
 
-Options for drop-down parameter type in ``spec.json``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-There is only one sub-option available inside "dropdown_options" block currently. It has
-``options`` name and value is list of objects defining drop-down items. Each item object should
-have two properties: ``value`` defining internal item ID (it’s sent to back-end function when given
-item is selected) and ``display`` defining text shown for this item in UI. Here is an example of the
-whole "dropdown_options" block:
+Options for the drop-down parameter type in ``spec.json``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+There is only one sub-option available inside the ``dropdown_options`` block: the ``options`` property whose value should be set to a list of objects defining drop-down items. Each object should have two properties: ``value`` defining an internal item ID (sent to the back-end function when the given item is selected); and the ``display`` property, which defines text shown for this item in the UI. The following is an example of the "dropdown_options" block:
 
 .. code-block:: js
 
@@ -154,151 +121,260 @@ whole "dropdown_options" block:
         }]
     }
 
-Options for checkbox parameter type in ``spec.json``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Here is the list of sub-options available inside ``checkbox_options`` block:
+Options for the checkbox parameter type in ``spec.json``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- **checked_value** - defines value to be sent to service function when checkbox is selected
+The following is the list of sub-options available inside ``checkbox_options`` block:
 
-- **unchecked_value** - defines value to be sent to service function when checkbox is not selected
+:checked_value: defines the value to be sent to a service function when the checkbox is selected
+:unchecked_value: defines the value to be sent to a service function when the checkbox is not
+                  selected
 
-Options for textarea parameter type in ``spec.json``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-There is only one sub-option available inside ``textarea_options`` block:
+Options for the textarea parameter type in ``spec.json``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- **n_rows** - defines number of lines shown for this textarea in UI.
+There is only one sub-option available inside the ``textarea_options`` block:
 
-Options for textsubdata parameter type in ``spec.json``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This parameter type allows to select items that are parts of workspace object (let’s call them
-sub-objects). Here is the list of sub-options available inside ``textsubdata_options`` block:
+:n_rows: defines the number of lines shown for this textarea in the UI.
 
-- **multiselection** - flag (boolean) allowing to have more than one selected object
+Options for the textsubdata parameter type in ``spec.json``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- **show_src_obj** - flag (boolean) shows name of workspace object where we are
-  selecting sub-objects as well
+This parameter type allows you to select items that are parts of the workspace object (let’s call them
+sub-objects). The following is the list of sub-options available inside the ``textsubdata_options`` block:
 
-- **allow_custom** - flag (boolean)
+:multiselection: flag (boolean) allowing to have more than one selected object
+:show_src_obj: flag (boolean) shows the name of a workspace object where we are selecting
+               sub-objects
+:allow_custom: flag (boolean) allow the user to enter values which are not present in the source
+               object
+:subdata_selection: main block with selection options (see below)
 
-- **subdata_selection** - main block with following sub-options:
+Options under ``subdata_section``:
 
-- **path_to_subdata** - JSON-path leading to the level of an array of sub-objects
-  (instead of string type JSON-path here is treated as an array of elements)
+:path_to_subdata: JSON-path leading to the level of a of sub-object (this should be an array of
+                  property names)
+:subdata_included: list of string JSON-paths to be loaded (in case the JSON-path leads to a certain
+                   field inside the sub-objects, then the level of array of sub-objects is denoted
+                   as [*])
+:constant_ref: static reference to some object in the public workspace (alternative to the
+               **parameter_id**)
+:parameter_id: points to the ID of another UI parameter used to select a workspace object where we
+               are selecting sub-objects
+:selection_id: name of the field of the sub-object which will be sent as a selected value
+:selection_description: list of fields of the sub-object to be shown for each selectable item
+:description_template: optional template defining the representation of fields from
+                       ``selection_description`` (placeholders for the fields are defined as
+                       {{field-name}})
 
-- **subdata_included** - list of string JSON-paths to be loaded (in case JSON-path
-  leads to certain field inside sub-objects then level of array of sub-objects is
-  denoted as [*])
-
-- **constant_ref** - static reference to some object in public workspace (alternative
-  to **parameter_id**)
-
-- **parameter_id** - points to ID of another UI parameter used for selection of
-  workspace object where we are selecting sub-objects
-
-- **selection_id** - name of field of sub-object which will be sent as selected value
-
-- **selection_description** - list of fields of sub-object to be shown for each
-  selectable item
-
-- **description_template** - optional template defining the way of representation of
-  fields from ``selection_description`` (placeholders of fields are defined as
-  {{field-name}})
-
-Here is an example of ``textsubdata_options`` block for model reactions in KBaseFBA.FBAModel
-object:
+The following is an example of the ``textsubdata_options`` block for the model reactions in the ``KBaseFBA.FBAModel`` object:
 
 .. code-block:: js
 
     "textsubdata_options" : {
-        "subdata_selection": {
-        "parameter_id" : "input_model",
-        "subdata_included" : ["modelcompounds/[*]/id",
-        "modelcompounds/[*]/name","modelcompounds/[*]/formula"],
-        "path_to_subdata": ["modelcompounds"],
-        "selection_id" : "id",
-        "selection_description" : ["name","formula"],
-        "description_template" :"- {{name}} ({{formula}})"
-    },
-    "multiselection":true,
-    "show_src_obj":false,
-    "allow_custom":false
+       "subdata_selection": {
+          "parameter_id" : "input_model",
+          "subdata_included" : ["modelcompounds/[*]/id",
+          "modelcompounds/[*]/name","modelcompounds/[*]/formula"],
+          "path_to_subdata": ["modelcompounds"],
+          "selection_id" : "id",
+          "selection_description" : ["name","formula"],
+          "description_template" :"- {{name}} ({{formula}})"
+      },
+      "multiselection":true,
+      "show_src_obj":false,
+      "allow_custom":false
+    }
+
+Options for the dynamic_dropdown in ``spec.json``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The ``dynamic_dropdown`` parameter type defines a field that gives the user an autocomplete dropdown, where the options in the dropdown can be dynamic (usually based on the results of a service call). For instance, you might have a selection of files where the options are from the staging_service or from kbase_search. The parameter appears as a text field with a dropdown similar to the selection of other WS data objects.
+
+:data_source: One of ``ftp_staging``, ``search``, or ``custom``. Provides sensible defaults for the
+              following parameters for a common type of dropdown that can be overwritten
+
+:service_function: Name of the SDK method, including an SDK module prefix, started up as a dynamic
+                   service (this needs to be the fully qualified method name, such as
+                   ``"ModuleName.method_name"``).
+
+:service_version: Optional version of the module used in the service_function (the default value is
+                  'release').
+
+:service_params: The parameters supplied to the dynamic service call as JSON. The special text
+                 ``"{{dynamic_dropdown_input}}"`` will be replaced by the value from the user input
+                 at call time.
+
+:path_to_subdata: JSON-path leading to the level of an array of sub-objects (instead of a string
+                  type, the JSON-path here is treated as an array of elements)
+
+:result_aliases: Mapping that connects a short name to a field in the returned data object.
+
+:selection_id: Name of a key in ``result_aliases`` that will be sent as the selected value
+
+:description_template: Defines how the description of items is rendered using Handlebar templates
+                       (use the keys in result_aliases as variable names)
+
+:multiselection: If true, then multiple selections are allowed in a single input field. This will
+                 override the ``allow_multiple`` option (which allows user addition) of additional
+                 fields. If true, then this parameter will return a list. Defaults to false
+
+Here is an example for taxon search:
+
+.. code-block:: js
+
+    {
+        "id" : "search",
+        "optional" : false,
+        "advanced" : false,
+        "allow_multiple" : false,
+        "default_values" : [ "" ],
+        "field_type" : "dynamic_dropdown",
+        "dynamic_dropdown_options" : {
+          "data_source": "custom",
+          "service_function": "KBaseSearchEngine.search_objects",
+          "service_version": "dev",
+          "service_params": [{
+              "object_types": ["taxon"],
+              "match_filter": {
+                  "full_text_in_all": "{{dynamic_dropdown_input}}"
+              },
+              "access_filter": {
+                  "with_private": 0,
+                  "with_public": 1
+              },
+              "sorting_rules": [{
+                  "is_object_property": 0,
+                  "property": "timestamp",
+                  "ascending": 0
+              }]
+          }],
+          "path_to_subdata": "result[0].objects",
+          "result_aliases": {
+            "taxon_name": "object_name",
+            "scientific_name": "key_props.scientific_name",
+            "scientific_lineage": "key_props.scientific_lineage"
+          },
+          "selection_id" : "taxon_name",
+          "description_template" : "<strong>{{scientific_name}}</strong>: {{scientific_lineage}})",
+          "multiselection":false
+    }
+
+Parameter groups in ``spec.json``
+---------------------------------
+
+Parameter groups combine a set of individually specified parameters into logical sets. This can be used for something as simple as visually grouping related input (i.e. distinguishing a set of parameters passed to a wrapped tool from kbase related parameters), but it's most often used to allow users to specify a multiple items described by a more than one parameter. 
+
+It is also possible to have an optional parameter group with required parameters. If the parameter group is present, all the required parameters must be provided. The default resulting structure is a mapping (or list of mappings if ``allow_multiple`` is 1) with the parameter_ids as keys (e.g. ``{id: [{parameter_id_1: value_1, parameter_id_2: value_2 ...}]}``) but this can be modified with the ``id_mapping`` option.
+
+:id: id of the parameter group. Must be unique within the method among all parameters and groups
+:parameter_ids: IDs of parameters included in this group
+:ui_name: short name that is displayed to the user
+:short_hint: short phrase or sentence describing the parameter group
+:description: longer and more technical description of the parameter group (long-hint)
+:allow_mutiple: allows entry of a list instead of a single structure, default is 0. If set, the
+                number of starting boxes will be either 1 or the number of elements in the
+                default_values list.
+:optional: set to 1 to make the group optional, default is 0
+:advanced: set to 1 to make this an advanced option, default is 0. If an option is advanced, it
+           should also be optional or have a default value
+:id_mapping: optional mapping which connects parameter IDs (as keys) to a desired name in the
+             output object (as values) (e.g. ``{"parameter_id":"output_key"}``). This provides
+             similar functionality to the ``kb_service_input_mapping`` and
+             ``kb_service_output_mapping`` described in the behavior section below for these nested
+             objects.
+:with_border: set to 1 to wrap this group with border.
+
+Here is an example of a ``parameter-groups`` block for from the `Edit Media UI`_ inside the ``fba_tools`` app.
+
+.. code-block:: js
+
+    "parameter-groups": [
+        {
+            "id": "compounds_to_change",
+            "parameters": [
+                "change_id",
+                "change_concentration",
+                "change_minflux",
+                "change_maxflux"
+            ],
+            "optional": true,
+            "advanced": false,
+            "allow_multiple": true,
+            "with_border": true
+        },
+        {
+            "id": "compounds_to_add",
+            "parameters": [
+                "add_id",
+                "add_concentration",
+                "add_minflux",
+                "add_maxflux"
+            ],
+            "optional": true,
+            "allow_multiple": true,
+            "advanced": false,
+            "with_border": true
+        }
+    ]
 
 Behavior in ``spec.json``
 -------------------------
-There are three alternative sub-blocks available inside ``behaviour`` block:
 
-- **service-mapping** - defines mapping rules for input and output data for typical SDK
-  method (this way will be described below)
+There are three alternative sub-blocks available inside the ``behavior`` block:
 
-- **none** - could be used in case UI method is not supposed to run any service function
-  (for instance when input parameters should be passed into widget directly)
+:service-mapping: defines mapping rules for the input and output data for a typical SDK method
+                  (described below)
+:none: used in case the UI method is not supposed to run any service function (for instance, when
+       input parameters should be passed into the widget directly) - `Example <https://github.com/kbaseapps/kb_cummerbund/blob/master/ui/narrative/methods/view_volcano_plot/spec.json>`__
+:script-mapping: support for legacy software -- not recommended for use in SDK repos
 
-- **script-mapping** - support for legacy software not recommended to use in SDK repos
+In most cases, the ``service-mapping`` sub-block should be used. Here is the list of sub-elements available inside ``service-mapping``:
 
-In most cases ``service-mapping`` sub-block should be used. Here is the list of sub-elements
-available inside ``service-mapping``:
+:url: defines the URL end-point of a deployed service (for SDK repos, this parameter should be
+      empty)
+:name: module name of an SDK repo registered in the catalog (refer to the module name in the KIDL
+       specification)
+:method: name of the service function to be called (see the funcdef in the KIDL specification)
+:input_mapping: defines rules for mapping UI parameters onto service function input arguments
+:output_mapping: defines rules for mapping output results returned from service functions to input
+                 options of widgets that display these results
 
-- **url** - defines URL end-point of deployed service (in case of SDK repos the convention
-  requires to keep this parameter empty)
+Both the ``input_mapping`` and ``output_mapping`` sub-blocks are arrays of items, where each item has the following properties:
 
-- **name** - module name of SDK repo registered in catalog (see module name in KIDL
-  specification)
+:input_parameter: ID of a UI input parameter or parameter group to be used as a source of mapping
+:constant_value: constant value to be used as a source of mapping -
+                 `Example <https://github.com/kbaseapps/taxonomy_service/blob/master/ui/narrative/methods/create_taxonomy/spec.json>`__
+:narrative_system_variable: system variable in the narrative back-end to be used as a source of
+                            mapping (only the ``workspace`` variable is currently supported)
+:target_property: name of the structure field to be set as a target of mapping
+:target_argument_position: (allowed for input mapping items only, default value is 0) position of
+                           the input argument of a service function to be set as a target of
+                           mapping
+:target_type_transform: optional rule allowing you to modify the passed value. See below for the
+                        list of allowed transformations.
+:service_method_output_path: (allowed for output mapping items only) - defines the JSON-path into
+                             the output prepared for the widget as a place for a target value; if
+                             this path is an empty array, it corresponds to the root point, and all
+                             the data returned from the service function will be captured -
+                             `Example <https://github.com/kbaseapps/FeatureSetUtils/blob/master/ui/narrative/methods/upload_featureset_from_diff_expr/spec.json>`__
 
-- **method** - name of service function to be called (see funcdef in KIDL specification)
 
-- **input_mapping** - defines rules for mapping UI parameters onto service function input
-  arguments
+The following is a list of allowed transformations that can be used for the
+``target_type_transform``:
 
-- **output_mapping** - defines rules for mapping output results returned from service
-  function onto input options of visualizing widget showing these results
+:none: (default value in case it is not defined) - no modification
+:ref: changes the object name into a workspace reference by a adding prefix of the workspace name followed by ``/``
+:int: treats a text value as an integer
+:list<inner-transformation>: tries to prepare a list of items (or just iterate over items if it’s a
+                             list already), applying inner-transformation to each element
 
-Both ``input_mapping`` and ``output_mapping`` sub-blocks are arrays of mapping items. Each
-mapping array is an object with following optional properties:
+In a group of source properties (``input_parameter``, ``constant_value``, ``narrative_system_variable``), only one property can be used. For target properties, both ``target_property`` and ``target_argument_position`` can be used at the same time. This means that the service function will receive an argument with the position from ``target_argument_position`` and an object with property having a name from the ``target_property`` with target value.
 
-- **input_parameter** - ID of UI input parameter to be used as a source of mapping
-
-- **constant_value** - constant value to be used as a source of mapping
-
-- **narrative_system_variable** - system variable in narrative back-end to be used as a
-  source of mapping (only ``workspace`` variable is currently officially supported)
-
-- **target_property** - name of structure field to be set as a target of mapping
-
-- **target_argument_position** (allowed for input mapping items only, default value is 0) position of input argument of service function to be set as a target of mapping
-
-- **target_type_transform** - optional rule allowing to modify passing value; here is the list of
-  allowed transformations:
-
-- **none** (default value in case it not defined) - no modification
-
-- **ref** - changes object name into workspace reference by adding prefix with
-  workspace name followed by ``/``
-
-- **int** - treats text value as an integer
-
-- **list<inner-transformation>** - tries to prepare list of items or just iterate over items
-  if it’s a list already applying inner-transformation to each element
-
-- **service_method_output_path** (allowed for output mapping items only) - defines
-  JSON-path into output prepared for widget as a place for target value; if this path is
-  empty array it corresponds to root point and all the data returned from service function
-  will be captured
-
-In group of source properties (``input_parameter``, ``constant_value``,
-``narrative_system_variable``) only one can be used. For target properties both ``target_property``
-and ``target_argument_position`` can be used at the same time meaning that service function will
-get as argument with position from ``target_argument_position`` an object with property having
-name from ``target_property`` with target value.
-
-Example for mappings in ``spec.json``
+Example of mappings in ``spec.json``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Let’s consider some example of mappings defined in ``service-mapping`` sub-block of
-``behaviour``. Suppose we have function ``func1`` in module ``module1`` where we expect to get as
-input two arguments: a string and an object with internal field ``input_prop`` (in JSON this
-argument looks like ``{"input_prop": "..."}``). And we have two UI parameters of type ``text`` with IDs
-``param1`` and ``param2``. Output returned from the function is an array of objects containing only
-one object which has internal field ``output_prop``. Value of this field should be mapped to
-``option1`` option in UI widget. In this case we will have following mappings:
+
+Let’s consider some example mappings defined in the ``service-mapping`` sub-block of the ``behavior`` section. Suppose we have a function named ``func1`` in the module called ``module1``, where we expect to get two arguments: a string and an object with the internal field ``input_prop`` (such as ``{"input_prop": "..."}``). We also have two UI parameters of the type ``text`` with the IDs ``param1`` and ``param2``. Output returned from the function is an array containing only one object which has an internal field called ``output_prop``. The value of this field should be mapped to the ``option1`` option in the UI widget. In this case, we'll have following mappings:
 
 .. code-block:: js
 
@@ -327,41 +403,47 @@ one object which has internal field ``output_prop``. Value of this field should 
 
 Display Text file (``display.yaml``)
 ------------------------------------
-This file has Yaml format. Here is the list of top-level block names:
 
-- name - name of method listed in UI
+The ``display.yaml`` file controls how information is displayed in the narrative and in the app catalog.
 
-- tooltip - more detailed explanation about the method shown on mouse-over event
+.. figure:: ../images/View_flux_network_narr.png
+    :align: center
+    :figclass: align-center
 
-- screenshots - list of names of screenshot files from ``img`` sub-folder
+    View Flux Network App in a narrative.
 
-- icon (optional) - name of icon file from ``img`` sub-folder
+.. figure:: ../images/ViewFluxNetwork_cat.png
+    :align: center
+    :width: 90%
+    :figclass: align-center
 
-- method-suggestions - list of objects defining the set of other methods that could be
-  suggested to the user as related ones; there are two sub-elements ``related`` and ``next``
-  pointing to arrays of method IDs
+    App Catalog for View Flux Network.
 
-- parameters - a map from parameter IDs defined in ``spec.json`` to objects designed to
-  add textual information to these parameters (see details below)
+This file uses the YAML format with the following top-level fields:
 
-- description - very detailed explanation about what and how the method does; it appears
-  on separate web page describing this method
+:name: name of the method listed in the UI
+:tooltip: more detailed explanation of the method shown on a mouse-over event
+:screenshots: list of names of screenshot files from the ``img`` sub-folder
+:icon: (optional) name of an icon file from the ``img`` sub-folder. `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_metabolic_model/display.yaml>`__
+:method-suggestions: list of objects defining a set of other methods that are suggested to the user
+                     as related methods. There are two sub-elements -- ``related`` and ``next`` --
+                     pointing to arrays of method IDs
+:parameters: parameter IDs (defined in ``spec.json``) mapped to objects to objects that define
+             textual information for these parameters (see details below)
+:description: very detailed explanation of what this method does, appearing on a separate page
+:publications: (optional) list of objects describing related publications. Each object includes two
+               fields: ``display-text``, containing a reference to a scientific journal; and
+               ``link``, which has the URL to an online resource. `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_metabolic_model/display.yaml>`__
 
-- publications (optional) - list of objects describing publications; each object includes two
-  fields: ``display-text`` containing reference to scientific journal and ``link`` with URL to online
-  resource
+Each field in the ``parameters`` section can have the following properties:
 
-Each parameter is a pair in parameter map linking ID of this parameter (the only key of ) and
-textual object having following fields:
+:ui-name: name of the parameter used to show the field in the UI
+:short-hint: short description shown in front of each parameter on the right side of the method
+             input panel in the narrative
+:long: a more detailed explanation available by mouse-over
+:placeholder: (optional) if the parameter type is textual (one of ``text``, ``textarea``, ``textsubdata``), then this defines the placeholder text for the field. `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_metabolic_model/display.yaml>`__
 
-- ui-name - name of parameter used to show given parameter in UI
 
-- short-hint - short description shown in front of each parameter on right side of method
-  input panel in Narrative
 
-- long-hint - more detailed explanation available by mouse-over on question-mark sign (in
-  case it’s the same as short-hint question-mark is not shown)
-
-- placeholder (optional) - in case of parameter type is textual (one of ``text``, ``textarea``,
-  ``textsubdata``) it defines placeholder text shown in gray color explaining the meaning of
-  value user is going to set.
+.. External links
+.. _Edit Media UI: https://github.com/cshenry/fba_tools/blob/4e9001c3547388eb70da6c07229f54c4aac23af2/ui/narrative/methods/edit_media/spec.json

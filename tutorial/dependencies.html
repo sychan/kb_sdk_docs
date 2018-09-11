@@ -96,10 +96,12 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">1. Dependencies &amp; Prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">2. Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="initialize.html">3. Initialize the App</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup.html">4. Setup &amp; Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implement.html">5. Implement Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="publish.html">6. Publish and Update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="initialize.html">3. Initialize the Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="helloworld.html">4. Hello World Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">5. ContigFilter Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inputsoutputs.html">6. Narrative User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implement.html">7. Implement Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publish.html">8. Publish and Update</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Guides</span></p>
 <ul>
@@ -126,6 +128,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/UI_spec.html">Narrative App UI Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/terminology.html">Terminology</a></li>
 </ul>
 
             
@@ -178,7 +181,7 @@
         
             
             
-              <a href="https://github.com/kbase/kb_sdk_docs//blob/master/source/tutorial/dependencies.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/kbase/kb_sdk_docs/blob/blob/master/source/tutorial/dependencies.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -212,6 +215,7 @@
 <p>Instructions for installing on Mac: <a class="reference external" href="https://www.docker.com/mac">https://www.docker.com/mac</a></p>
 <p>Instructions for installing on Linux: <a class="reference external" href="https://www.docker.com/linux">https://www.docker.com/linux</a></p>
 <p>On Linux, be sure to follow these <a class="reference external" href="https://docs.docker.com/install/linux/linux-postinstall/">post installation steps</a> so you can run docker and <cite>kb-sdk</cite> as a non-root user.</p>
+<p>When you run an app in a narrative, it runs in a docker container on KBase’s servers. Learn more about docker containers here: <a class="reference external" href="https://www.docker.com/what-container">https://www.docker.com/what-container</a>. Docker containers allow you to package and compile programs and dependencies, such as <a class="reference external" href="https://github.com/voutcn/megahit">MEGAHIT</a>, and run them anywhere.</p>
 </div>
 </div>
 
@@ -278,9 +282,7 @@
 
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script> 
 

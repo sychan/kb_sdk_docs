@@ -6,18 +6,21 @@ Publish and Update
 Publish all git commits
 -------------------------
 
-Make sure you have run ``git add`` and ``git commit`` on all the changes in your app's codebase, then push to your public github URL
+Make sure you have run ``git add`` and ``git commit`` on all the changes in your app's codebase, then ``git push`` to your public github URL
 
 Register with KBase
 -----------------------
 
 Go to https://appdev.kbase.us/#appcatalog/register.  Enter your public git repo URL:
 
-.. code::
+.. figure:: ../images/register.png
+    :align: center
+    :figclass: align-center
 
-    https://github.com/[GITHUB_USER_NAME]/[GITHUB_REPO_NAME]
+    Register your module.
+
     
-and submit. Wait for the registration to complete (it may take awhile on the first registration as it has to build the Docker image that is specific to your moddule from scratch).
+and click on ``Register``. Wait for the registration to complete (it may take awhile on the first registration as it has to build the Docker image that is specific to your moddule from scratch).
 
 Note that you must be an approved developer to register a new module. You can apply for a KBase developer account by going to https://accounts.kbase.us/index.php?tpl=request_identity.tpl. If you are a US citizen, your account can be created within a few days. For foreign nationals, it may take several weeks (and, in a few cases, you may not be able to get a developer account). Non-US citizens will be asked for additional information in order to process their application.Once your account is approved, contact us with your username and ask to be added to the developer list.
 
@@ -37,6 +40,9 @@ From your module page (https://narrative.kbase.us/#appcatalog/module/MODULE_NAME
 To update an app, open `Module Admin Tools` and then click the **REGISTER** button. You can specify a particular commit hash your repository (useful if you want to test a feature branch prior to merging into master) or leave this field blank to build from the latest commit on the master branch.
 
 As you make changes to your Module, **you will need to re-commit those changes to the git repo, and then re-register**. The KBase SDK Catalog service will automatically pull the most recent version. If for some reason you wish to revert to an older version, you can add the hash key of that older commit, which you can find by viewing the ``git log``.
+
+The ver (version) in the ``spec.json`` file becomes important once an app has been released to prod. The version needs to be updated for each subsequent release. The list of authors may need to be updated as well if additional people contribute to revisions.  
+
 
 .. important::
 

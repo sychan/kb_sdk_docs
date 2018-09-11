@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>3. Initialize the App &mdash; KBase SDK 0.1.18 documentation</title>
+  <title>3. Initialize the Module &mdash; KBase SDK 0.1.18 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4. Setup &amp; Configuration" href="setup.html" />
+    <link rel="next" title="4. Hello World Example" href="helloworld.html" />
     <link rel="prev" title="2. Installation" href="install.html" /> 
 
   
@@ -96,10 +96,12 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">2. Installation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Initialize the App</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup.html">4. Setup &amp; Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implement.html">5. Implement Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="publish.html">6. Publish and Update</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Initialize the Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="helloworld.html">4. Hello World Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">5. ContigFilter Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inputsoutputs.html">6. Narrative User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implement.html">7. Implement Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publish.html">8. Publish and Update</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Guides</span></p>
 <ul>
@@ -126,6 +128,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/UI_spec.html">Narrative App UI Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/terminology.html">Terminology</a></li>
 </ul>
 
             
@@ -171,14 +174,14 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>3. Initialize the App</li>
+      <li>3. Initialize the Module</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/kbase/kb_sdk_docs//blob/master/source/tutorial/initialize.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/kbase/kb_sdk_docs/blob/blob/master/source/tutorial/initialize.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -192,19 +195,27 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="initialize-the-app">
-<h1>3. Initialize the App<a class="headerlink" href="#initialize-the-app" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="initialize-the-module">
+<h1>3. Initialize the Module<a class="headerlink" href="#initialize-the-module" title="Permalink to this headline">¶</a></h1>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">A KBase module contains all of the components for one or more apps. The components are all stored in
+the same directory and are all uploaded to a single github repository. There are pros and cons to
+bundling several apps in one module versus
+creating one app per module. See <a class="reference external" href="../references/terminology.html">terminology</a> for more information.</p>
+</div>
 <p>The KBase SDK provides a way to quickly bootstrap a new module by generating most of the required components.</p>
 <p>The basic options of the command are:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kb-sdk init <span class="o">[</span>--example<span class="o">]</span> <span class="o">[</span>--verbose<span class="o">]</span> <span class="o">[</span>--language language<span class="o">]</span> <span class="o">[</span>--user username<span class="o">]</span> ModuleName
 </pre></div>
 </div>
 <p>where <code class="docutils literal notranslate"><span class="pre">ModuleName</span></code> must be unique across all SDK modules registered in KBase. For example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kb-sdk init --language python --user &lt;your_kbase_user_name&gt; &lt;user_name&gt;ContigFilter
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kb-sdk init --language python --user &lt;your_kbase_user_name&gt; HelloWorld
 </pre></div>
 </div>
-<p>We’re using <code class="docutils literal notranslate"><span class="pre">&lt;user_name&gt;</span></code> in the module name in this example to make sure that your module has a unique name. However, you would not usually put your own username in the module name, and instead name it something like <code class="docutils literal notranslate"><span class="pre">ContigFilter</span></code>.</p>
-<p>You must always include the <code class="docutils literal notranslate"><span class="pre">-u</span></code> option with your username to set yourself as the module owner.</p>
+<p>This creates a directory called <code class="docutils literal notranslate"><span class="pre">HelloWord</span></code> in your current directory. The directory has all of
+the components needed to start creating apps and is basically a clean slate.</p>
+<p>You must always include the <code class="docutils literal notranslate"><span class="pre">-u</span></code> or <code class="docutils literal notranslate"><span class="pre">-user</span></code> option with your username to set yourself as the module owner.</p>
 <p>You can set your programming langauge to any of Python, Perl, or Java; for this tutorial, we’re using Python.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">init</span></code> options are:</p>
 <div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="o">--</span><span class="n">verbose</span>    <span class="n">Show</span> <span class="n">verbose</span> <span class="n">output</span> <span class="n">about</span> <span class="n">which</span> <span class="n">files</span> <span class="ow">and</span> <span class="n">directories</span>
@@ -217,18 +228,28 @@
                  <span class="n">Python</span>
 </pre></div>
 </div>
-<p>The example we’re building will have the same functionality as the app you get when you run <code class="docutils literal notranslate"><span class="pre">kbase-init</span> <span class="pre">--example</span> <span class="pre">..</span></code>. You can reference <a class="reference external" href="https://github.com/msneddon/ContigFilter">https://github.com/msneddon/ContigFilter</a> for a working version if you get stuck at any point.</p>
-<p>Run the above init script before continuing.</p>
-<div class="section" id="build-the-app">
-<h2>3.1. Build the App<a class="headerlink" href="#build-the-app" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> &lt;user_name&gt;ContigFilter
+<div class="section" id="build-the-module">
+<h2>3.1. Build the Module<a class="headerlink" href="#build-the-module" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> module_name
 $ make
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">make</span></code> command will run some initial code generation.</p>
 </div>
-<div class="section" id="create-a-git-repo">
-<h2>3.2. Create a Git Repo<a class="headerlink" href="#create-a-git-repo" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-highlights">
+<h2>3.2. Module Highlights<a class="headerlink" href="#module-highlights" title="Permalink to this headline">¶</a></h2>
+<p>This module template has the following that you will customize in later steps:</p>
+<ol class="arabic simple">
+<li>A directory called <code class="docutils literal notranslate"><span class="pre">module_name</span></code> (see <a class="reference external" href="../references/module_anatomy.html">Anatomy of an App</a> for more on the directory sturcture)</li>
+<li>A description of the module, its version, and the authors in <code class="docutils literal notranslate"><span class="pre">kbase.yml</span></code></li>
+<li>A specification file that defines the inputs, output, and functions for the module <code class="docutils literal notranslate"><span class="pre">module_name.spec</span></code></li>
+<li>A script with code for running all the apps in the module called <code class="docutils literal notranslate"><span class="pre">module_nameImpl.py</span></code></li>
+<li>Specifications for the user interface in the files <code class="docutils literal notranslate"><span class="pre">spec.json</span></code> and <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code></li>
+</ol>
+<p>Don’t worry the location of these files. They will be discussed in more detail in later steps.</p>
+</div>
+<div class="section" id="create-a-github-repo">
+<h2>3.3. Create a GitHub Repo<a class="headerlink" href="#create-a-github-repo" title="Permalink to this headline">¶</a></h2>
 <p>You will need to publish your code to a public git repository to make it available for building into a custom Docker Image.  Here we’ll show a brief example using GitHub.  First, commit your codebase into a local git repository. Then, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> all files created by kb-sdk and commit. This creates a git repository locally.</p>
 <div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd MyModule
 $ git init
@@ -248,6 +269,24 @@ $ git push -u origin master
 </div>
 <p>Remember to continuously push your code changes to your github repo by using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code>.</p>
 </div>
+<div class="section" id="set-up-your-developer-credentials">
+<h2>3.4. Set up your developer credentials<a class="headerlink" href="#set-up-your-developer-credentials" title="Permalink to this headline">¶</a></h2>
+<p>If you want, this step can wait until you want to test your module.
+However, it is somewhat disruptive to the thought process if you wait until later.
+This step can be done anytime after the first <code class="docutils literal notranslate"><span class="pre">make</span></code> of a module.</p>
+<p>The KBase file storage services require authenticated access. During development a dev <code class="docutils literal notranslate"><span class="pre">token</span></code> is generated
+and used instead of putting user IDs and passwords in clear text in your module.
+Tokens are good for 90 days and can be used on all modules developed and tested during the 90 days.</p>
+<p>Go to <a class="reference external" href="https://narrative.kbase.us/#auth2/account">https://narrative.kbase.us/#auth2/account</a>, click <strong>Developer Tokens</strong>, and generate a new token. The
+token is only visible on the screen for 5 minutes so make sure you are ready to do the step below.</p>
+<p>From the module’s root directory, copy and paste that token into <code class="docutils literal notranslate"><span class="pre">test_local/test.cfg</span></code> in the value
+for <code class="docutils literal notranslate"><span class="pre">test_token</span></code>. For example:</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test_user</span><span class="o">=</span>
+<span class="n">test_password</span><span class="o">=</span>
+<span class="n">test_token</span><span class="o">=</span><span class="n">JQGGVCPKCAB2XYHRHZV4H3NF4TN3YEUSA</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -258,7 +297,7 @@ $ git push -u origin master
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="setup.html" class="btn btn-neutral float-right" title="4. Setup &amp; Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="helloworld.html" class="btn btn-neutral float-right" title="4. Hello World Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="install.html" class="btn btn-neutral" title="2. Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -313,9 +352,7 @@ $ git push -u origin master
 
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script> 
 

@@ -34,6 +34,17 @@ Go to the development `App Catalog`_ and start by using *Search* to see if there
 
 It may be the case that someone is wrapping a tool, but is doing so in a way that doesn't serve your needs exactly. Feel free to rewrap the tool using your approach, or ask the previous tool wrapper to tweak their implementation to expose the parameters or other functionality you are looking for.
 
+Q: What languages can I use to write my app?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We recommend Python, but you can also use Java or Perl. The language versions are as follows:
+
+* Python: 2.7
+* Java: 1.7.0_80
+* Perl: v5.18.2
+
+.. Note that soon the Python line above can be updated to "Miniconda 3.6"
+
 Q: How do I work with test and reference data?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -166,7 +177,7 @@ Requirements and limitations
 Q: What are system requirements for development?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You will need to be able to run Docker, which if you're on a Mac means you must be running Mac OS X 10.8 or later. Other operating systems, such as the various flavors of Linux, are fine too. Really anywhere you can run Docker, Java, and your preferred development language (among Python, Perl, or Java). You will need about 1-2 GB free to install the `dependencies <../tutorial/dependencies.html>`__ and the `KBase SDK <../tutorial/install.html>`__
+You need to be able to run Docker. If you're on a Mac, that means you must be running Mac OS X 10.8 or later. Other operating systems, such as the various flavors of Linux, are fine too. Really anywhere you can run Docker, Java, and your preferred development language (among Python, Perl, or Java). You will need about 1-2 GB free to install the `dependencies <../tutorial/dependencies.html>`__ and the `KBase SDK <../tutorial/install.html>`__
 
 Q: Can I develop on Windows?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -38,7 +38,9 @@ To develop apps, start by obtaining a free KBase user account and applying for a
    tutorial/dependencies
    tutorial/install
    tutorial/initialize
+   tutorial/helloworld
    tutorial/setup
+   tutorial/inputsoutputs
    tutorial/implement
    tutorial/publish
 
@@ -73,6 +75,8 @@ To develop apps, start by obtaining a free KBase user account and applying for a
     howtos/job_manager
     howtos/dynamic_services
 
+.. Note that we can soon add a link above to: howtos/update_to_py3
+
 
 .. toctree::
     :maxdepth: 1
@@ -84,3 +88,4 @@ To develop apps, start by obtaining a free KBase user account and applying for a
     references/dev_guidelines
     references/KIDL_spec
     references/UI_spec
+    references/terminology

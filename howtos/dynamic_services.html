@@ -96,10 +96,12 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/install.html">2. Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/initialize.html">3. Initialize the App</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/setup.html">4. Setup &amp; Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/implement.html">5. Implement Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">6. Publish and Update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/initialize.html">3. Initialize the Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/helloworld.html">4. Hello World Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/setup.html">5. ContigFilter Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/inputsoutputs.html">6. Narrative User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/implement.html">7. Implement Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">8. Publish and Update</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Guides</span></p>
 <ul>
@@ -126,6 +128,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/UI_spec.html">Narrative App UI Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/terminology.html">Terminology</a></li>
 </ul>
 
             
@@ -178,7 +181,7 @@
         
             
             
-              <a href="https://github.com/kbase/kb_sdk_docs//blob/master/source/howtos/dynamic_services.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/kbase/kb_sdk_docs/blob/blob/master/source/howtos/dynamic_services.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -212,14 +215,18 @@ dynamic service, add the following to the kbase.yml file:</p>
     <span class="l l-Scalar l-Scalar-Plain">dynamic-service</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 </pre></div>
 </div>
-<p>You can then register your module as usual and start and stop it in a production environment using the <a class="reference external" href="https://appdev.kbase.us/#catalog/services">catalog interface</a>.
+<p>You can then register your module as usual and start and stop it in a production environment using the <a class="reference external" href="https://appdev.kbase.us/#catalog/services">catalog interface</a> as described below in the <a class="reference internal" href="#in-kbase"><span class="std std-ref">Manage dynamic services in a KBase environment section</span></a>.
 Other services should be installed with a dynamic service flag like this <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">install</span> <span class="pre">-d</span> <span class="pre">&lt;service&gt;</span></code>.
-Calls to other services should be initialized with the Service Wizard URL rather than the SDK Callback URL.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">serviceWizardURL</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;service-wizard&#39;</span><span class="p">]</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">gaa</span> <span class="o">=</span> <span class="n">GenomeAnnotationAPI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">serviceWizardURL</span><span class="p">)</span>
+Calls to other services should be initialized with the Service Wizard URL rather than the SDK Callback URL. The Service Wizard tracks the services that are deployed in the catalog and routes the request to the most up-to-date released service by default. Additionally, authentication token will need to be passed to the called service. This also means the called services should be initialized within each function that uses then rather than once as a class property. With  SDK apps where all of the processing takes place in a common location authentication is handled automatically. With a dynamic service however, the code is not initialized for a particular user and permissions need to be managed explicitly</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># In the class init</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">serviceWizardURL</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;service-wizard&#39;</span><span class="p">]</span>
+
+<span class="c1"># *snip*</span>
+
+<span class="c1"># In the each method implementation</span>
+<span class="n">gaa</span> <span class="o">=</span> <span class="n">GenomeAnnotationAPI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">serviceWizardURL</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">token</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Otherwise development of a dynamic service module is identical to a Method module.</p>
 </div>
 <div class="section" id="start-and-stop-a-dynamic-service-locally">
 <h2>Start and stop a dynamic service locally<a class="headerlink" href="#start-and-stop-a-dynamic-service-locally" title="Permalink to this headline">¶</a></h2>
@@ -276,6 +283,12 @@ org.eclipse.jetty.util.log.StdErrLog
 c8ea1197f925
 </pre></div>
 </div>
+</div>
+<div class="section" id="manage-dynamic-services-in-a-kbase-environment">
+<span id="in-kbase"></span><h2>Manage dynamic services in a KBase environment<a class="headerlink" href="#manage-dynamic-services-in-a-kbase-environment" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://appdev.kbase.us/#catalog/services">catalog interface</a> provides tools to launch, inspect and stop dynamic services in each environment. The top of this page is a list of currently running services. There may be multiple instances of a service running that are based on different git hashes. As described above, the Service Wizard will route requests to the most current version of a released service (falling back to Beta or Dev if the service is not yet released). If this latest version is not running when a request is received, the service wizard will launch a new instance. This behavior improves resilience because if a container crashes, it will be restarted by the next service request. However, it also means that there is no rapid way to revert to an earlier version of the service if a problem is discovered with the service.</p>
+<img alt="Service Catalog" src="../_images/service-catalog.png" />
+<p>Logs of STDOUT and STDERR for services are also viable to catalog administrators and may prove useful for debugging. Finally, catalog admins may also stop running services. There is not default timeout for dynamic services so developers should periodically cull old versions of their services that are still running as they release new versions. Below the active services are lists of Released, Beta and Dev services that developers may launch but the Service Wizard generally renders this unnecessary.</p>
 </div>
 </div>
 
@@ -342,9 +355,7 @@ c8ea1197f925
 
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script> 
 

@@ -35,11 +35,11 @@ Catalog
    - A catalog status
 
 Data Type Catalog
-   A `listing <https://narrative.kbase.us/#catalog/datatypes>`_ of the current data objects with links to 
+   A `listing <https://narrative.kbase.us/#catalog/datatypes>`__ of the current data objects with links to 
    their specification documentation.
 
 Function Catalog
-   A `listing <https://narrative.kbase.us/#catalog/functions`_ of the current functions
+   A `listing <https://narrative.kbase.us/#catalog/functions>`__ of the current functions
 
 Github repository
    Also called 'github repo' or 'git repo'. 

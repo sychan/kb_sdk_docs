@@ -244,7 +244,7 @@ The ``make`` command preserves everything between the ``#BEGIN`` and ``#END`` co
     Don't put any spaces between the '#' and 'BEGIN' or 'END'. It has bad consequences.
 
 Receive and Return parameter
----------------------------
+----------------------------
 
 Open ``HelloWorldImpl.py`` and find the ``printhelloworld`` method, which should have some auto-generated boilerplate code and docstrings.
 

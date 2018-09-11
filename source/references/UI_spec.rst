@@ -7,7 +7,7 @@ Narrative App UI Specification
 This document describes how the UI components of Narrative Apps are specified via fields in ``spec.json`` and ``display.yaml`` files. These spec files include input and output parameters for the app.
 
 Structure of the folders and files
-------------------------------
+----------------------------------
 
 In an SDK app's repo, all UI method specifications live in the ``ui/narrative/methods/`` directory. Each method has its own subfolder with the name corresponding to the app or method ID. Inside this folder, a typical method has a ``spec.json`` file defining input/output parameters, a ``display.yaml`` file defining display text, and an ``img`` subfolder containing icon and screenshot files. 
 
@@ -47,13 +47,13 @@ Each item in the ``parameters`` array defines one parameter shown in the UI inpu
 :field_type: type of the parameter; could be one of ``text``, ``dropdown``, ``checkbox``,
              ``textarea``, ``textsubdata``, or ``dynamic_dropdown``
 :text_options: optional block defining details of the ``text`` type
-:dropdown_options: optional block defining details of the ``dropdown`` type - `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_metabolic_model/spec.json>`_
-:checkbox_options: optional block defining details of the ``checkbox`` type - `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/simulate_growth_on_phenotype_data/spec.json>`_
-:textarea_options: optional block defining details of the ``textarea`` type - `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_multiple_metabolic_models/spec.json>`_
-:textsubdata_options: optional block defining details of the ``textsubdata`` type - `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/compare_flux_with_expression/spec.json>`_
+:dropdown_options: optional block defining details of the ``dropdown`` type - `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_metabolic_model/spec.json>`__
+:checkbox_options: optional block defining details of the ``checkbox`` type - `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/simulate_growth_on_phenotype_data/spec.json>`__
+:textarea_options: optional block defining details of the ``textarea`` type - `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_multiple_metabolic_models/spec.json>`__
+:textsubdata_options: optional block defining details of the ``textsubdata`` type - `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/compare_flux_with_expression/spec.json>`__
 
 Options for the text parameter type in ``spec.json``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Options in the ``text_options`` block allow you to specify many different types of validation and behavior. Fields named ``valid_ws_types`` connect a parameter with one or more types of objects stored in the Workspace. In this mode, the narrative will show the available objects as drop-down options. For instance, the following is an example of ``text_options``,
 allowing you to choose one of the Genome objects stored in the Workspace:
@@ -99,7 +99,7 @@ And similarly for float types:
     }
 
 Options for the drop-down parameter type in ``spec.json``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There is only one sub-option available inside the ``dropdown_options`` block: the ``options`` property whose value should be set to a list of objects defining drop-down items. Each object should have two properties: ``value`` defining an internal item ID (sent to the back-end function when the given item is selected); and the ``display`` property, which defines text shown for this item in the UI. The following is an example of the "dropdown_options" block:
 
@@ -122,7 +122,7 @@ There is only one sub-option available inside the ``dropdown_options`` block: th
     }
 
 Options for the checkbox parameter type in ``spec.json``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following is the list of sub-options available inside ``checkbox_options`` block:
 
@@ -131,13 +131,14 @@ The following is the list of sub-options available inside ``checkbox_options`` b
                   selected
 
 Options for the textarea parameter type in ``spec.json``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 There is only one sub-option available inside the ``textarea_options`` block:
 
 :n_rows: defines the number of lines shown for this textarea in the UI.
 
 Options for the textsubdata parameter type in ``spec.json``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This parameter type allows you to select items that are parts of the workspace object (let’s call them
 sub-objects). The following is the list of sub-options available inside the ``textsubdata_options`` block:
@@ -325,8 +326,7 @@ There are three alternative sub-blocks available inside the ``behavior`` block:
 :service-mapping: defines mapping rules for the input and output data for a typical SDK method
                   (described below)
 :none: used in case the UI method is not supposed to run any service function (for instance, when
-       input parameters should be passed into the widget directly) - `Example
-       <https://github.com/kbaseapps/kb_cummerbund/blob/master/ui/narrative/methods/view_volcano_plot/spec.json>`_
+       input parameters should be passed into the widget directly) - `Example <https://github.com/kbaseapps/kb_cummerbund/blob/master/ui/narrative/methods/view_volcano_plot/spec.json>`__
 :script-mapping: support for legacy software -- not recommended for use in SDK repos
 
 In most cases, the ``service-mapping`` sub-block should be used. Here is the list of sub-elements available inside ``service-mapping``:
@@ -344,7 +344,7 @@ Both the ``input_mapping`` and ``output_mapping`` sub-blocks are arrays of items
 
 :input_parameter: ID of a UI input parameter or parameter group to be used as a source of mapping
 :constant_value: constant value to be used as a source of mapping -
-                 `Example<https://github.com/kbaseapps/taxonomy_service/blob/master/ui/narrative/methods/create_taxonomy/spec.json>`_
+                 `Example <https://github.com/kbaseapps/taxonomy_service/blob/master/ui/narrative/methods/create_taxonomy/spec.json>`__
 :narrative_system_variable: system variable in the narrative back-end to be used as a source of
                             mapping (only the ``workspace`` variable is currently supported)
 :target_property: name of the structure field to be set as a target of mapping
@@ -357,8 +357,7 @@ Both the ``input_mapping`` and ``output_mapping`` sub-blocks are arrays of items
                              the output prepared for the widget as a place for a target value; if
                              this path is an empty array, it corresponds to the root point, and all
                              the data returned from the service function will be captured -
-                             `Example
-                             <https://github.com/kbaseapps/FeatureSetUtils/blob/master/ui/narrative/methods/upload_featureset_from_diff_expr/spec.json>`_
+                             `Example <https://github.com/kbaseapps/FeatureSetUtils/blob/master/ui/narrative/methods/upload_featureset_from_diff_expr/spec.json>`__
 
 
 The following is a list of allowed transformations that can be used for the
@@ -425,8 +424,7 @@ This file uses the YAML format with the following top-level fields:
 :name: name of the method listed in the UI
 :tooltip: more detailed explanation of the method shown on a mouse-over event
 :screenshots: list of names of screenshot files from the ``img`` sub-folder
-:icon: (optional) name of an icon file from the ``img`` sub-folder. `Example
-       <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_metabolic_model/display.yaml>`_
+:icon: (optional) name of an icon file from the ``img`` sub-folder. `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_metabolic_model/display.yaml>`__
 :method-suggestions: list of objects defining a set of other methods that are suggested to the user
                      as related methods. There are two sub-elements -- ``related`` and ``next`` --
                      pointing to arrays of method IDs
@@ -435,8 +433,7 @@ This file uses the YAML format with the following top-level fields:
 :description: very detailed explanation of what this method does, appearing on a separate page
 :publications: (optional) list of objects describing related publications. Each object includes two
                fields: ``display-text``, containing a reference to a scientific journal; and
-               ``link``, which has the URL to an online resource. `Example
-               <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_metabolic_model/display.yaml>`_
+               ``link``, which has the URL to an online resource. `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_metabolic_model/display.yaml>`__
 
 Each field in the ``parameters`` section can have the following properties:
 
@@ -444,7 +441,7 @@ Each field in the ``parameters`` section can have the following properties:
 :short-hint: short description shown in front of each parameter on the right side of the method
              input panel in the narrative
 :long: a more detailed explanation available by mouse-over
-:placeholder: (optional) if the parameter type is textual (one of ``text``, ``textarea``, ``textsubdata``), then this defines the placeholder text for the field. `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_metabolic_model/display.yaml>`_
+:placeholder: (optional) if the parameter type is textual (one of ``text``, ``textarea``, ``textsubdata``), then this defines the placeholder text for the field. `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_metabolic_model/display.yaml>`__
 
 
 

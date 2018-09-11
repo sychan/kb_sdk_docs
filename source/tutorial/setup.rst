@@ -30,9 +30,7 @@ The setup for the "ContigFilter" module includes:
 Module Description
 -------------------------------------------
 
-Open and edit the ``kbase.yml`` file to include a better description of your module. It is in the root 
-directory of the module. Be sure to describe what your module and its apps
- actually do. In future revisions you can update the version and the list of authors/owners.
+Open and edit the ``kbase.yml`` file to include a better description of your module. It is in the root directory of the module. Be sure to describe what your module and its apps actually do. In future revisions you can update the version and the list of authors/owners.
 
 For this tutorial, we will be looking at the app ``filter_contigs``. The app takes as inputs, an ``assembly file`` and applies 
 a ``minimum length`` filter to the contigs. **The exercise below creates a second app that filter the contigs 
@@ -257,7 +255,5 @@ For now, you will get an error that looks something like this:
 
     **ERROR** - unknown method "your_method" defined within path [behavior/service-mapping/method] in spec.json
 
-
 That's because we need to set up some things for the User Interface in the ``ui/narrative/methods`` directory 
 in the module.
-

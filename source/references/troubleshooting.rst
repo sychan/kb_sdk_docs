@@ -152,3 +152,10 @@ Remove images with 'kbase' or 'test/' or ‘none’
 
 Remove orphan images:
 ``docker rmi $(docker images -q --filter "dangling=true")``
+
+
+Error Messages
+^^^^^^^^^^^^^^
+*Error*: KeyError: 'getpwuid()' uid not found: '
+
+*Solution*: Try changing the user in the run_tests and run_bash.sh scripts in the test_local directory to `--user 0`

@@ -114,6 +114,7 @@ Below parameters, in the section under ``behavior``, change ``filter_contigs`` t
             "url": "",
             "name":"ContigFilter",
             "method": "filter_contigs_max",
+          }
 
 
 Also in the ``behavior`` section, you will see ``input_mapping`` options. It contains entries for the input 

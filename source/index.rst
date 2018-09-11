@@ -74,7 +74,8 @@ To develop apps, start by obtaining a free KBase user account and applying for a
     howtos/work_with_reference_data
     howtos/job_manager
     howtos/dynamic_services
-    howtos/update_to_py3
+
+.. Note that we can soon add a link above to: howtos/update_to_py3
 
 
 .. toctree::

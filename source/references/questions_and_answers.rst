@@ -39,9 +39,11 @@ Q: What languages can I use to write my app?
 
 We recommend Python, but you can also use Java or Perl. The language versions are as follows:
 
-* Python: Miniconda 3.6
+* Python: 2.7
 * Java: 1.7.0_80
 * Perl: v5.18.2
+
+.. Note that soon the Python line above can be updated to "Miniconda 3.6"
 
 Q: How do I work with test and reference data?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

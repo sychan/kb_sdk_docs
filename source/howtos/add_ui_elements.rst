@@ -225,4 +225,4 @@ Details on Narrative UI specification
 
 Further details on specification of Narrative app interfaces are
 available
-`here <https://docs.google.com/document/d/1CZ1GOKsRr1NsScG9E2EesJyk_ViOrM9OazrVFKCkyHs/edit>`__
+`here <../references/UI_spec.html>`__

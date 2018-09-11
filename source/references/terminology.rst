@@ -6,6 +6,9 @@ App
    specify inputs, outputs, and optional parameters, and it may or may not create a separate output cell.
    In SDK, apps are part of a module and have a defined function, user interface, and code for implementing the app.
 
+appdev
+   The development environment where app user interfaces can be tested (https://appdev.kbase.us).
+
 Catalog
    For general users, the Catalog is a listing of available apps and modules along with the documentation
    that developers included. Users can select whether the want to see released, beta, or dev apps and 
@@ -25,7 +28,7 @@ Catalog
 
        Developer App Catalog
 
-   NEW
+   Developers-Only
  
    - A direct link for registering a module
    - An index link that has several useful resources
@@ -85,7 +88,7 @@ Workspace Service
    
 
 Wrap an App
-    The SDK can be used to create a wrapper around a 3rd-part software tool and make it accessible through 
+    The SDK can be used to create a wrapper around a third-party software tool and make it accessible through 
     KBase. The guide for `Edititng your app's Dockerfile <../howtos/edit_your_dockerfile.html>`_ has useful
     information for wrapping a tool. Examples of wrapping a tool can be found at `kb_fasttree <https://github.com/kbaseapps/kb_fasttree>`_ and `kb_ballgown <https://github.com/kbaseapps/kb_ballgown>`_. The developer has the option of implementing some or all of the functionality of the original tool into a KBase app.
 

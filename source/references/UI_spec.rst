@@ -71,17 +71,17 @@ panel of this method. Here is the list of main properties of parameter structure
 
 - **text_options** - optional block defining details of ``text`` type
 
-- **dropdown_options** - optional block defining details of ``dropdown`` type
+- **dropdown_options** - optional block defining details of ``dropdown`` type - `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_metabolic_model/spec.json>`_
 
-- **checkbox_options** - optional block defining details of ``checkbox`` type
+- **checkbox_options** - optional block defining details of ``checkbox`` type - `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/simulate_growth_on_phenotype_data/spec.json>`_
 
-- **textarea_options** - optional block defining details of ``textarea`` type
+- **textarea_options** - optional block defining details of ``textarea`` type - `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_multiple_metabolic_models/spec.json>`_
 
-- **textsubdata_options** - optional block defining details of ``textsubdata`` type
+- **textsubdata_options** - optional block defining details of ``textsubdata`` type - `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/compare_flux_with_expression/spec.json>`_
 
 Options for text parameter type in ``spec.json``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Options in ``text_options`` block allow to specify many different ways of validation and behaviour.
+Options in ``text_options`` block allow to specify many different ways of validation and behavior.
 Field named ``valid_ws_types`` connects a parameter with one or more types of objects stored in
 Workspace KBase storage. In this mode Narrative interface will show available objects of listed
 types as drop-down for this parameter. For instance here is an example of ``text_options``
@@ -94,7 +94,7 @@ allowing to choose one of Genome objects stored in workspace:
     }
 
 If you would like to mark this parameter as output which means UI interface shouldn’t require
-chosen object to be present in Workspace storage you can set "is_output_name" sub-option to
+chosen object to be present in Workspace storage you can set ``is_output_name`` sub-option to
 true like:
 
 .. code-block:: js
@@ -104,7 +104,7 @@ true like:
         "is_output_name" : true
     }
 
-Another sub-option is "validate_as" allowing to validate value entered in UI as "int" or "float". If
+Another sub-option is ``validate_as`` allowing to validate value entered in UI as ``int`` or ``float``. If
 you what some parameter to be an integer with minimum and/or maximum limits you can use
 properties like in this example:
 
@@ -130,11 +130,10 @@ And similarly for float type:
 
 Options for drop-down parameter type in ``spec.json``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-There is only one sub-option available inside "dropdown_options" block currently. It has
+There is only one sub-option available inside ``dropdown_options`` block currently. It has
 ``options`` name and value is list of objects defining drop-down items. Each item object should
 have two properties: ``value`` defining internal item ID (it’s sent to back-end function when given
-item is selected) and ``display`` defining text shown for this item in UI. Here is an example of the
-whole "dropdown_options" block:
+item is selected) and ``display`` defining text shown for this item in UI. Here is an example of the whole ``dropdown_options`` block:
 
 .. code-block:: js
 
@@ -225,13 +224,13 @@ object:
 
 Behavior in ``spec.json``
 -------------------------
-There are three alternative sub-blocks available inside ``behaviour`` block:
+There are three alternative sub-blocks available inside ``behavior`` block:
 
 - **service-mapping** - defines mapping rules for input and output data for typical SDK
   method (this way will be described below)
 
 - **none** - could be used in case UI method is not supposed to run any service function
-  (for instance when input parameters should be passed into widget directly)
+  (for instance when input parameters should be passed into widget directly) - `Example <https://github.com/kbaseapps/kb_cummerbund/blob/master/ui/narrative/methods/view_volcano_plot/spec.json>`_
 
 - **script-mapping** - support for legacy software not recommended to use in SDK repos
 
@@ -257,7 +256,7 @@ mapping array is an object with following optional properties:
 
 - **input_parameter** - ID of UI input parameter to be used as a source of mapping
 
-- **constant_value** - constant value to be used as a source of mapping
+- **constant_value** - constant value to be used as a source of mapping - `Example<https://github.com/kbaseapps/taxonomy_service/blob/master/ui/narrative/methods/create_taxonomy/spec.json>`_
 
 - **narrative_system_variable** - system variable in narrative back-end to be used as a
   source of mapping (only ``workspace`` variable is currently officially supported)
@@ -282,7 +281,7 @@ mapping array is an object with following optional properties:
 - **service_method_output_path** (allowed for output mapping items only) - defines
   JSON-path into output prepared for widget as a place for target value; if this path is
   empty array it corresponds to root point and all the data returned from service function
-  will be captured
+  will be captured - `Example <https://github.com/kbaseapps/FeatureSetUtils/blob/master/ui/narrative/methods/upload_featureset_from_diff_expr/spec.json>`_
 
 In group of source properties (``input_parameter``, ``constant_value``,
 ``narrative_system_variable``) only one can be used. For target properties both ``target_property``
@@ -293,7 +292,7 @@ name from ``target_property`` with target value.
 Example for mappings in ``spec.json``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Let’s consider some example of mappings defined in ``service-mapping`` sub-block of
-``behaviour``. Suppose we have function ``func1`` in module ``module1`` where we expect to get as
+``behavior``. Suppose we have function ``func1`` in module ``module1`` where we expect to get as
 input two arguments: a string and an object with internal field ``input_prop`` (in JSON this
 argument looks like ``{"input_prop": "..."}``). And we have two UI parameters of type ``text`` with IDs
 ``param1`` and ``param2``. Output returned from the function is an array of objects containing only
@@ -327,41 +326,37 @@ one object which has internal field ``output_prop``. Value of this field should 
 
 Display Text file (``display.yaml``)
 ------------------------------------
+
+The ``display.yaml`` file controls how information is displayed in the narrative and in the app catalog.
+
+.. figure:: ../images/View_flux_network_narr.png
+    :align: center
+    :figclass: align-center
+
+    View Flux Network App in a narrative.
+
+.. figure:: ../images/ViewFluxNetwork_cat.png
+    :align: center
+    :width: 90%
+    :figclass: align-center
+
+    App Catalog for View Flux Network.
+
 This file has Yaml format. Here is the list of top-level block names:
 
-- name - name of method listed in UI
+:name: name of method listed in UI
+:tooltip: more detailed explanation about the method shown on mouse-over event
+:screenshots: list of names of screenshot files from ``img`` sub-folder 
+:icon: (optional) - name of icon file from ``img`` sub-folder - `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_metabolic_model/display.yaml>`_
+:method-suggestions: list of objects defining the set of other methods that could be suggested to the user as related ones; there are two sub-elements ``related`` and ``next`` pointing to arrays of method IDs 
+:parameters: a map from parameter IDs defined in ``spec.json`` to objects designed to add textual information to these parameters (see details below)
+:description: very detailed explanation about what and how the method does; it appears on separate web page describing this method
+:publications: (optional) - list of objects describing publications; each object includes two fields: ``display-text`` containing reference to scientific journal and ``link`` with URL to online resource - `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_metabolic_model/display.yaml>`_
 
-- tooltip - more detailed explanation about the method shown on mouse-over event
+Each parameter is a pair in parameter map linking ID of this parameter (the only key of ) and textual object having following fields:
 
-- screenshots - list of names of screenshot files from ``img`` sub-folder
+:ui-name: name of parameter used to show given parameter in UI
+:short-hint: short description shown in front of each parameter on right side of method input panel in Narrative
+:long-hint: more detailed explanation available by mouse-over on question-mark sign (in case it’s the same as short-hint question-mark is not shown)
+:placeholder: (optional) - in case of parameter type is textual (one of ``text``, ``textarea``, ``textsubdata``) it defines placeholder text shown in gray color explaining the meaning of value user is going to set. - `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_metabolic_model/display.yaml>`_
 
-- icon (optional) - name of icon file from ``img`` sub-folder
-
-- method-suggestions - list of objects defining the set of other methods that could be
-  suggested to the user as related ones; there are two sub-elements ``related`` and ``next``
-  pointing to arrays of method IDs
-
-- parameters - a map from parameter IDs defined in ``spec.json`` to objects designed to
-  add textual information to these parameters (see details below)
-
-- description - very detailed explanation about what and how the method does; it appears
-  on separate web page describing this method
-
-- publications (optional) - list of objects describing publications; each object includes two
-  fields: ``display-text`` containing reference to scientific journal and ``link`` with URL to online
-  resource
-
-Each parameter is a pair in parameter map linking ID of this parameter (the only key of ) and
-textual object having following fields:
-
-- ui-name - name of parameter used to show given parameter in UI
-
-- short-hint - short description shown in front of each parameter on right side of method
-  input panel in Narrative
-
-- long-hint - more detailed explanation available by mouse-over on question-mark sign (in
-  case it’s the same as short-hint question-mark is not shown)
-
-- placeholder (optional) - in case of parameter type is textual (one of ``text``, ``textarea``,
-  ``textsubdata``) it defines placeholder text shown in gray color explaining the meaning of
-  value user is going to set.

@@ -76,6 +76,13 @@ or AssemblyUtil if you are specifically working with FASTA or GFF files.
         'unpack': 'unpack'
     })
 
+Examples
+^^^^^^^^
+- https://github.com/kbaseapps/ProkkaAnnotation/blob/master/lib/ProkkaAnnotation/Util/ProkkaUtils.py
+- https://github.com/kbaseapps/kb_stringtie/blob/master/lib/kb_stringtie/Utils/StringTieUtil.py
+- https://github.com/kbaseapps/kb_trimmomatic/blob/master/lib/kb_trimmomatic/kb_trimmomaticImpl.py
+- https://github.com/kbaseapps/kb_MaSuRCA/blob/master/lib/MaSuRCA/core/masurca_assembler.py
+
 GenomeFileUtil
 --------------
 
@@ -96,6 +103,12 @@ GenomeFileUtil
         'workspace_name': workspace_name,
         'genome_name': genome_obj
     })
+
+Example
+^^^^^^^^
+
+- https://github.com/kbaseapps/kb_MaSuRCA/blob/master/lib/MaSuRCA/core/masurca_assembler.py
+- https://github.com/kbaseapps/ProkkaAnnotation/blob/master/lib/ProkkaAnnotation/Util/ProkkaUtils.py
 
 AssemblyUtil
 ------------
@@ -120,7 +133,35 @@ AssemblyUtil
         'workspace_name': workspace_name,
         'assembly_name': 'my_uploaded_assembly'
     }
-    
+
+Example
+^^^^^^^^
+
+- https://github.com/kbaseapps/kb_SPAdes/blob/master/lib/kb_SPAdes/kb_SPAdesImpl.py
+- https://github.com/kbaseapps/ARAST_SDK/blob/master/lib/AssemblyRAST/AssemblyRASTImpl.py
+- https://github.com/kbaseapps/kb_Velvet/blob/master/lib/Velvet/VelvetImpl.py
+
+ReadsUtils
+----------
+
+Example
+^^^^^^^
+
+- https://github.com/kbaseapps/kb_trimmomatic/blob/master/lib/kb_trimmomatic/kb_trimmomaticImpl.py
+- https://github.com/kbaseapps/kb_SPAdes/blob/master/lib/kb_SPAdes/kb_SPAdesImpl.py  
+- https://github.com/kbaseapps/kb_Velvet/blob/master/lib/Velvet/VelvetImpl.py
+- https://github.com/kbaseapps/kb_MaSuRCA/blob/master/lib/MaSuRCA/core/masurca_assembler.py
+
+GenomeSearchUtil
+-----------------
+
+Example
+^^^^^^^
+
+- https://github.com/kbaseapps/DifferentialExpressionUtils/blob/master/lib/DifferentialExpressionUtils/core/diffExprMatrix_utils.py
+
+
+
 
 .. External links
 .. _the catalog: https://ci.kbase.us/#catalog/modules

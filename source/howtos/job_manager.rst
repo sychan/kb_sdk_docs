@@ -2,7 +2,8 @@ Listing and viewing jobs
 -----------------------------
 
 .. code-block:: python
-    :caption: View the latest jobs
+
+    #View the latest jobs
 
     from biokbase.narrative.jobs.jobmanager import JobManager
     jm = JobManager()

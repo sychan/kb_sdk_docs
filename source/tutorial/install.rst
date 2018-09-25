@@ -7,6 +7,10 @@ Now that Docker is installed, pull down the KBase SDK image.
 
    $ docker pull kbase/kb-sdk
 
+.. tip::
+
+    If it has been awhile since you last developed a KBase module, it is a good idea to run the 
+    command above before starting a new module. This will insure that you have the lastest version.
 
 Add the ``kb-sdk`` as a global command by linking it in your ``$PATH``. Place the script in a directory like `~/bin`:
 

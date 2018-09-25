@@ -24,7 +24,7 @@ dynamic service, add the following to the kbase.yml file:
     service-config:
         dynamic-service: true
 
-You can then register your module as usual and start and stop it in a production environment using the `catalog interface`_ as described below in the :ref: `Manage dynamic services in a KBase environment section <in-kbase>`.
+You can then register your module as usual and start and stop it in a production environment using the `catalog interface`_ as described below in the :ref:`Manage dynamic services in a KBase environment section <in-kbase>`.
 Other services should be installed with a dynamic service flag like this ``kb-sdk install -d <service>``.
 Calls to other services should be initialized with the Service Wizard URL rather than the SDK Callback URL. The Service Wizard tracks the services that are deployed in the catalog and routes the request to the most up-to-date released service by default. Additionally, authentication token will need to be passed to the called service. This also means the called services should be initialized within each function that uses then rather than once as a class property. With  SDK apps where all of the processing takes place in a common location authentication is handled automatically. With a dynamic service however, the code is not initialized for a particular user and permissions need to be managed explicitly
 

@@ -59,8 +59,6 @@ Java
 - RBTnSeq - https://github.com/jmchandonia/RBTnSeq
 - DomainAnnotation - https://github.com/kbaseapps/DomainAnnotation
 
-
-
 Q: How do I work with test and reference data?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

@@ -46,7 +46,6 @@ The ``kb-sdk init`` options are:
                      Currently, we support Perl, Python, and Java. Default is
                      Python
 
-
 Build the Module
 ---------------------
 
@@ -121,3 +120,4 @@ for ``test_token``. For example:
     test_password=
     test_token=JQGGVCPKCAB2XYHRHZV4H3NF4TN3YEUSA
 
+Where you substitute your own test_token. This one is unauthorized.

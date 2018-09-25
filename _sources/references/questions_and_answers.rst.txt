@@ -45,6 +45,20 @@ We recommend Python, but you can also use Java or Perl. The language versions ar
 
 .. Note that soon the Python line above can be updated to "Miniconda 3.6"
 
+KBase supports Perl and Java but the examples in the tutorial are both in Python. Here are some example modules for the other two languages:
+
+Perl
+
+- fba_tools - https://github.com/cshenry/fba_tools
+- RAST_SDK - https://github.com/kbaseapps/RAST_SDK
+- GenomeComparison - https://github.com/kbaseapps/GenomeComparison
+
+Java 
+
+- SpeciesTreeBuilder https://github.com/kbaseapps/SpeciesTreeBuilder
+- RBTnSeq - https://github.com/jmchandonia/RBTnSeq
+- DomainAnnotation - https://github.com/kbaseapps/DomainAnnotation
+
 Q: How do I work with test and reference data?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

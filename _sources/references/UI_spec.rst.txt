@@ -21,8 +21,11 @@ This is a file in JSON format containing these top-level properties:
 :categories: list of tags (from fixed set of supported tags) categorizing this method into
   method should be made invisible, then the ``inactive`` category should be added to this list (in
   place of the ``active`` category, if it’s present)
-:widgets: structure defining **input** and **output** widgets (typically the **input** widget is set
-  widget supported by the narrative.
+:widgets: structure defining **input** and **output** widgets. Typically the **input** widget is
+          set to null, meaning that the standard one is used. The **output** widget is frequently
+          the name of JavaScript viewer for the output object. See the `Narrative module widgets
+          <https://github.com/kbase/narrative/tree/develop/kbase-extension/static/kbase/js/widgets>`__
+          and its subdirectories for more widgets.
 :parameters: list of structures (described below) defining each parameter type and other features, except
 :behavior: block of settings for mapping UI parameters to service function input parameters. Also
            used for mapping output results returned from the service function to the input of the

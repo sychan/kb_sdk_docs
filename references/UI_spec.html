@@ -244,8 +244,10 @@
 method should be made invisible, then the <code class="docutils literal notranslate"><span class="pre">inactive</span></code> category should be added to this list (in
 place of the <code class="docutils literal notranslate"><span class="pre">active</span></code> category, if it’s present)</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">widgets:</th><td class="field-body">structure defining <strong>input</strong> and <strong>output</strong> widgets (typically the <strong>input</strong> widget is set
-widget supported by the narrative.</td>
+<tr class="field-odd field"><th class="field-name">widgets:</th><td class="field-body">structure defining <strong>input</strong> and <strong>output</strong> widgets. Typically the <strong>input</strong> widget is
+set to null, meaning that the standard one is used. The <strong>output</strong> widget is frequently
+the name of JavaScript viewer for the output object. See the <a class="reference external" href="https://github.com/kbase/narrative/tree/develop/kbase-extension/static/kbase/js/widgets">Narrative module widgets</a>
+and its subdirectories for more widgets.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">parameters:</th><td class="field-body">list of structures (described below) defining each parameter type and other features, except</td>
 </tr>

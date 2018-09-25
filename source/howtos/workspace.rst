@@ -48,7 +48,8 @@ How to get a given typespec / .spec file?
 If you can't find a typespec in a repo, you can find it doing the following:
 
 .. code-block:: python
-    :caption: Example spec file snippet
+
+    # Example spec file snippet
 
     from biokbase.workspace.client import Workspace
     ws = Workspace('https://ci.kbase.us/services/ws')

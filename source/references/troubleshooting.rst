@@ -158,4 +158,4 @@ Error Messages
 ^^^^^^^^^^^^^^
 *Error*: KeyError: 'getpwuid()' uid not found: '
 
-*Solution*: Try changing the user in the run_tests and run_bash.sh scripts in the test_local directory to `--user 0`
+*Solution*: Try changing the user in the run_tests and run_bash.sh (run_subjobs.sh if available) scripts in the test_local directory to `--user 0`. Alternatively, remove the user flag altogether.

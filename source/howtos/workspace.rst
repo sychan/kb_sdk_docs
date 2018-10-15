@@ -3,7 +3,9 @@ Using Workspace Metadata
 
 .. important::
 
-    While you can get objects using the workspace client, it is not the recommended way to do it. We suggest using the `file utilities <../howtos/file_utils.html>`_ instead. However, you can download the client easily by running the following inside of a sdk module: 
+    While you can get objects using the workspace client, it is not the recommended way to do it. We suggest using the `file utilities <../howtos/file_utils.html>`_ instead.
+    
+You can download the Workspace client by running the following inside an SDK module: 
     
     ``kb-sdk install https://raw.githubusercontent.com/kbase/workspace_deluxe/master/workspace.spec``
     

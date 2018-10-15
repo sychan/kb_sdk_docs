@@ -16,13 +16,13 @@ A good reference on reStructuredText directives is here: http://docutils.sourcef
 
 1. Make sure [pipenv](https://docs.pipenv.org/) is installed
 1. Run `pipenv install` in the root directory of this repo on the master branch
-1. Run `make live` to launch the local development server and open `localhost:8000` in your browser. The server will automatically rebuild files and refresh your browser when you change a file.
+1. Run `pipenv run make live` to launch the local development server and open `localhost:8000` in your browser. The server will automatically rebuild files and refresh your browser when you change a file.
 
 If you want to add a dependency, make sure to use `pipenv install` to have it added in the `Pipfile`.
 
 ## How it works
 
-Sphinx is a documentation website generator. It takes all of the `.md` and `.rst` markup files found in `/source/` and converts it to an HTML tree. Running `make live` creates a dynamic server that builds all your markup on every file change.
+Sphinx is a documentation website generator. It takes all of the `.md` and `.rst` markup files found in `/source/` and converts it to an HTML tree. Running `pipenv run make live` creates a dynamic server that builds all your markup on every file change.
 
 The actual website is hosted on Github Pages and serves the `gh-pages` branch, which has all the HTML files. As an editor of the documentation source code, you don't need to worry about this branch.
  

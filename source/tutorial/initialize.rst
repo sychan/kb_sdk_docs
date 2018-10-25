@@ -61,7 +61,7 @@ Module Highlights
 
 This module template has the following that you will customize in later steps:
 
-#. A directory called ``module_name`` (see `Anatomy of an App <../references/module_anatomy.html>`_ for more on the directory sturcture)
+#. A directory called ``module_name`` (see `Anatomy of a Module <../references/module_anatomy.html>`_ for more on the directory sturcture)
 #. A description of the module, its version, and the authors in ``kbase.yml``
 #. A specification file that defines the inputs, output, and functions for the module ``module_name.spec``
 #. A script with code for running all the apps in the module called ``module_nameImpl.py``
@@ -116,8 +116,6 @@ for ``test_token``. For example:
 
 .. code::
 
-    test_user=
-    test_password=
     test_token=JQGGVCPKCAB2XYHRHZV4H3NF4TN3YEUSA
 
 Where you substitute your own test_token. This one is unauthorized.

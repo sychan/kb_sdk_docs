@@ -57,7 +57,8 @@ The syntax comes from a custom type language called KIDL, which is used as a com
 
 We'll start with the ``HelloWorld.spec`` file. **Comments** in KIDL start with a line with ``/*`` and end with a 
 line with ``*/``. 
-For example, the following has two comments and an empty specification for the module called HelloWorld.
+For example, the following has two comments and an empty specification for the module called HelloWorld. Substitute the name of your app for "Hello World".
+
 
 .. code-block:: cpp
 
@@ -95,7 +96,7 @@ Now let's look at the output. In the HelloWorld module, the following ``typedef`
         } OutParams;
     };
 
-Now let us look at the function type for our app, which we can call ``printhelloworld``. 
+Now let us look at the function declaration for our app, which we can call ``printhelloworld``. 
 
 .. code-block:: cpp
 
@@ -204,7 +205,7 @@ Update display.yaml
 
 The YAML file found in ``ui/narrative/methods/printhelloworld/display.yaml`` holds text content for your app.
 
-In the ``parameters`` section change ``parameter_1`` to ``pharse``.  You can leave the rest of the template as-is. View `Fully documenting your app <../howtos/fill_out_app_information.html>`_ for more on the how this file is used.
+In the ``parameters`` section change ``parameter_1`` to ``phrase``.  You can leave the rest of the template as-is. View `Fully documenting your app <../howtos/fill_out_app_information.html>`_ for more on the how this file is used.
 
 Finally, run ``kb-sdk validate`` again and it should pass! Now we can start to actually work on the functionality of the app.
 
@@ -234,8 +235,8 @@ Much of the Implementation file is auto-generated based on the KIDL .spec file. 
         #BEGIN_CONSTRUCTOR
         #END_CONSTRUCTOR
 
-        #BEGIN filter_contigs
-        #END filter_contigs
+        #BEGIN printhelloworld
+        #END printhelloworld
 
 The ``make`` command preserves everything between the ``#BEGIN`` and ``#END`` comments and replaces everything else. 
 

@@ -1,4 +1,4 @@
-Anatomy of an App
+Anatomy of a Module
 =================
 
 KBase modules consist of a set of code, configurations, and

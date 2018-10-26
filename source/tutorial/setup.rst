@@ -9,7 +9,7 @@ changes. The example is taken from https://github.com/msneddon/ContigFilter if y
 
 .. code-block:: bash
 
-    kb-sdk init i--example --language python --user <your_kbase_user_name> <user_name>ContigFilter
+    kb-sdk init --example --language python --user <your_kbase_user_name> <user_name>ContigFilter
     cd <user_name>ContigFilter
     make
 

@@ -153,6 +153,22 @@ Remove images with 'kbase' or 'test/' or ‘none’
 Remove orphan images:
 ``docker rmi $(docker images -q --filter "dangling=true")``
 
+My Docker container ran out of memory
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This is perhaps the hardest to debug because it occurs during a run, and dies (almost) silently.
+It will typically occur when handling (multiple) large workspace objects such as plant genomes.
+One way to figure out that it has happened is that the keyword "Killed" is printed.
+
+If you suspect that your container is running out of memory, you may adjust your Docker resource settings to alleviate the problem.
+If you go to the global preferences for Docker, and click on "Advanced", you can increase the amount of memory available to the containers.
+
+.. figure:: ../images/docker_advanced.png
+    :align: center
+    :width: 50%
+    :figclass: align-center
+
+    Advanced preferences in Docker for OS X.
 
 Error Messages
 ^^^^^^^^^^^^^^

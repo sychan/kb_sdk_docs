@@ -42,7 +42,7 @@ things.
    present, the registration will fail and the reference data area will
    be removed.
 
-You can see an example in the `RAST application <https://github.com/kbaseapps/RAST\_SDK/blob/a975436d9c0af4f772bd7235b467180860f64060/scripts/entrypoint.sh#L18-L28>`__
+You can see an example in the |RAST_link| 
 
 Updating Reference Data
 -----------------------
@@ -71,3 +71,9 @@ There a few things to watch out for with reference data:
    data to be writeable when it executes, then you add code to the
    execution that copies the data into the writeable work area prior to
    running the underlying application.
+.. External links
+
+.. |RAST_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/RAST\_SDK/blob/a975436d9c0af4f772bd7235b467180860f64060/scripts/entrypoint.sh#L18-L28" target="_blank">RAST application  </a>
+

@@ -6,7 +6,8 @@ Initialize the Module
    A KBase module contains all of the components for one or more apps. The components are all stored in
    the same directory and are all uploaded to a single github repository. There are pros and cons to 
    bundling several apps in one module versus
-   creating one app per module. See `terminology <../references/terminology.html>`_ for more information. 
+   creating one app per module. See `terminology  |terminology_link| for more information. 
+
 
 The KBase SDK provides a way to quickly bootstrap a new module by generating most of the required components.
 
@@ -15,7 +16,6 @@ The basic options of the command are:
 .. code-block:: bash
 
     $ kb-sdk init [--example] [--verbose] [--language language] [--user username] ModuleName
-
 
 where ``ModuleName`` must be unique across all SDK modules registered in KBase. For example:
 
@@ -84,8 +84,8 @@ You will need to publish your code to a public git repository to make it availab
 
 Now, create a new GitHub repository on github.com (it can be in your personal GitHub account or in an organization, but it must be public). Make sure your github repository is initially empty (don't add an initial README.md).
 
-* Direct link to create a repo on github https://github.com/new
-* Github documentation about creating repos: https://help.github.com/articles/creating-a-new-repository
+* Direct link to create a repo on github.  |github_link|.
+* Github documentation about creating repos: |github_help_link|.
 
 Sync your local codebase to your repository on github:
 
@@ -108,7 +108,7 @@ The KBase file storage services require authenticated access. During development
 and used instead of putting user IDs and passwords in clear text in your module. 
 Tokens are good for 90 days and can be used on all modules developed and tested during the 90 days.
 
-Go to https://narrative.kbase.us/#auth2/account, click **Developer Tokens**, and generate a new token. The
+Go to |authacct_link|, click **Developer Tokens**, and generate a new token. The
 token is only visible on the screen for 5 minutes so make sure you are ready to do the step below.
 
 From the module's root directory, copy and paste that token into ``test_local/test.cfg`` in the value 
@@ -119,3 +119,22 @@ for ``test_token``. For example:
     test_token=JQGGVCPKCAB2XYHRHZV4H3NF4TN3YEUSA
 
 Where you substitute your own test_token. This one is unauthorized.
+
+.. External links
+
+.. |terminology_link| raw:: html
+
+   <a href="../references/terminology.html" target="_blank">terminology</a>
+
+.. |github_link| raw:: html
+
+   <a href="https://github.com/new" target="_blank">https://github.com/new</a>
+
+.. |github_help_link| raw:: html
+
+   <a href="https://help.github.com/articles/creating-a-new-repository" target="_blank">https://help.github.com/articles/creating-a-new-repository</a>
+
+
+.. |authacct_link| raw:: html
+
+   <a href="https://narrative.kbase.us/#auth2/account" target="_blank">https://narrative.kbase.us/#auth2/account</a>

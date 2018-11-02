@@ -65,7 +65,7 @@ To develop apps, start by obtaining a free KBase user account and applying for a
 
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
     :caption: Advanced Guides
     :name: advanced_guides
 
@@ -89,3 +89,4 @@ To develop apps, start by obtaining a free KBase user account and applying for a
     references/KIDL_spec
     references/UI_spec
     references/terminology
+

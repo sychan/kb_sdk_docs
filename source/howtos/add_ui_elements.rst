@@ -86,10 +86,10 @@ be hidden in the "Advanced options" section of the input widget).
 
 
 There are many additional interface options available. One of the best
-ways to discover them is to explore `this
-gallery <https://narrative.kbase.us/narrative/ws.23109.obj.1>`__ which
+ways to discover them is to explore |gallery_link| which
 contains a variety of KBase apps along with the spec file that generated
 the user interface.
+
 
 Configure passing variables from Narrative Input to SDK method
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -224,5 +224,15 @@ Details on Narrative UI specification
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Further details on specification of Narrative app interfaces are
-available
-`here <../references/UI_spec.html>`__
+available |UIspec_link| 
+
+
+.. External links
+.. |gallery_link| raw:: html
+
+   <a href="https://narrative.kbase.us/narrative/ws.23109.obj.1" target="_blank">this gallery</a>
+
+.. |UIspec_link| raw:: html
+
+   <a href="../references/UI_spec.html" target="_blank">here.</a>
+

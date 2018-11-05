@@ -17,7 +17,7 @@ When you try to run ``make sdkbase`` if you see a message like:
     make: *** [sdkbase] Error 1
 
 
-You likely have not started your Docker daemon. On a Mac, that means running in the Docker CLI shell after starting Docker Kitematic and clicking on "Docker CLI" in the lower left corner (See `Install SDK Dependencies - Docker <../tutorial/install.html>`__ for guidance).
+You likely have not started your Docker daemon. On a Mac, that means running in the Docker CLI shell after starting Docker Kitematic and clicking on "Docker CLI" in the lower left corner (See  |installSDK_link| for guidance). 
 
 Trying to run ``kb-sdk test`` and seeing errors that include "TLS-enabled daemon" and/or "docker daemon"
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -33,8 +33,7 @@ When you try to run ``kb-sdk test``, if you see a message like:
 
 You likely have not started your Docker daemon. On a Mac, that means
 running in the Docker CLI shell after starting Docker Kitematic and
-clicking on "Docker CLI" in the lower left corner (See `Install SDK
-Dependencies - Docker <../tutorial/install.html>`__ for guidance).
+clicking on "Docker CLI" in the lower left corner (See |installSDK_link| for guidance).
 
 My code keeps disappearing. What happened to it?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -68,20 +67,20 @@ Having trouble getting Docker working on Mac
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It may be that your Docker installation may be incorrect, out of date,
-or the daemon may not have been started. Please see https://docs.docker.com/mac/
+or the daemon may not have been started. Please see |dockerMac_link| 
 
 
 Having trouble getting Docker working on Linux
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It may be that your Docker installation may be incorrect, out of date,
-or the daemon may not have been started. Please see https://docs.docker.com/linux/
+or the daemon may not have been started. Please see |dockerLinux_link| 
 
 
 Getting Java-related errors trying to run kb-sdk
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Java may not be installed or the path may not be set properly. Please follow the directions for installation of Java at https://github.com/kbase/kb\_sdk/blob/master/doc/kb\_sdk\_dependencies.md and then set your *JAVA\_HOME* with
+Java may not be installed or the path may not be set properly. Please follow the directions for installation of Java at |dependencies_link|  and then set your *JAVA\_HOME* with
 
 ::
 
@@ -97,7 +96,7 @@ Java may not be installed or the path may not be set properly. Please follow the
 My report isn't generating output correctly
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See the guide on `Creating a report <../howtos/create_a_report.html>`_.
+See the guide on |createReport_link|.
 
 
 Getting "ServerError: JSONRPCError"
@@ -175,3 +174,32 @@ Error Messages
 *Error*: KeyError: 'getpwuid()' uid not found: '
 
 *Solution*: Try changing the user in the run_tests and run_bash.sh (run_subjobs.sh if available) scripts in the test_local directory to `--user 0`. Alternatively, remove the user flag altogether.
+
+.. External links
+
+.. |createReport_link| raw:: html
+
+   <a href="../howtos/create_a_report.html" target="_blank">Creating a report </a>
+
+ https://github.com/kbase/kb\_sdk/blob/master/doc/kb\_sdk\_dependencies.md
+
+.. |dependencies_link| raw:: html
+
+   <a href="https://github.com/kbase/kb_sdk/blob/master/doc/test_dependencies.md" target="_blank">https://github.com/kbase/kb_sdk/blob/master/doc/test_dependencies.md</a>
+
+
+.. |dockerMac_link| raw:: html
+
+   <a href="https://docs.docker.com/mac/" target="_blank">https://docs.docker.com/mac/</a>
+
+.. |dockerLinux_link| raw:: html
+
+   <a href="https://docs.docker.com/mac/" target="_blank">https://docs.docker.com/linux/</a>
+
+.. Internal links
+
+.. |installSDK_link| raw:: html
+
+   <a href="../tutorial/install.html" target="_blank">Install SDK Dependencies - Docker </a>
+
+

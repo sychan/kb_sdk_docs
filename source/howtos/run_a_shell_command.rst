@@ -74,7 +74,6 @@ demonstrates how to do (and document) this well with Python.
 
 .. External links
 
-
 .. |editApp_link| raw:: html
 
    <a href="../howtos/edit_your_dockerfile.html" target="_blank">How to edit your app’s Dockerfile  </a>

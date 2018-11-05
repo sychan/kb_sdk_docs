@@ -9,9 +9,9 @@ Development
 Q: How do I start my app? What do I do now?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The easiest way to get an intuition for app development is to follow `the tutorial`_
+The easiest way to get an intuition for app development is to follow |tutorial_link| 
 
-See if there is an existing app in `the catalog`_ that is similar to yours, or one that has a UI that you would like to emulate. Every app you see in the narrative will have a link to its code repository.
+See if there is an existing app in the |catalog_link| that is similar to yours, or one that has a UI that you would like to emulate. Every app you see in the narrative will have a link to its code repository.
 
 Typically developers follow this path:
 
@@ -23,14 +23,14 @@ Typically developers follow this path:
 
 For these example apps, check out the ``.spec`` files, ``<module>Impl.py`` files, and ``spec.json`` files.
 
-* Quast_
-* Megahit_
-* Trimmomatic_
+* |Quast_link| 
+* |Megahit_link| 
+* |Trimmomatic_link|
 
 Q: How can I tell if someone's already wrapped a tool I'm interested in?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Go to the development `App Catalog`_ and start by using *Search* to see if there's a released method. If you don't find a method that way, it may also help to by selecting "Organize by"... "Category" and selecting what seems to be a likely category for the tool. There are also methods that have not yet been officially released, so you should also check the "Beta" and "Dev" categories to see if there's something in the pipeline by selecting them from the "Version" dropdown.
+Go to the development |catalog_link| and start by using *Search* to see if there's a released method. If you don't find a method that way, it may also help to by selecting "Organize by"... "Category" and selecting what seems to be a likely category for the tool. There are also methods that have not yet been officially released, so you should also check the "Beta" and "Dev" categories to see if there's something in the pipeline by selecting them from the "Version" dropdown.
 
 It may be the case that someone is wrapping a tool, but is doing so in a way that doesn't serve your needs exactly. Feel free to rewrap the tool using your approach, or ask the previous tool wrapper to tweak their implementation to expose the parameters or other functionality you are looking for.
 
@@ -49,20 +49,20 @@ KBase supports Perl and Java but the examples in the tutorial are both in Python
 
 Perl
 
-- fba_tools - https://github.com/cshenry/fba_tools
-- RAST_SDK - https://github.com/kbaseapps/RAST_SDK
-- GenomeComparison - https://github.com/kbaseapps/GenomeComparison
+- |fbatools_link| 
+- |RAST_SDK_link| 
+- |GenomeComparison_link| 
 
 Java 
 
-- SpeciesTreeBuilder https://github.com/kbaseapps/SpeciesTreeBuilder
-- RBTnSeq - https://github.com/jmchandonia/RBTnSeq
-- DomainAnnotation - https://github.com/kbaseapps/DomainAnnotation
+- |SpeciesTreeBuilder_link| 
+- |RBTnSeq_link| 
+- |DomainAnnotation_link| 
 
 Q: How do I work with test and reference data?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Put simple data into the ``/data`` directory of your app's repository. If the data is too large to host on Github, check out the following guide for `how to add reference data`_.
+Put simple data into the ``/data`` directory of your app's repository. If the data is too large to host on Github, check out the following guide for |addRefData_link|.
 
 Test files can go within the ``test/`` directory in your app, such as ``test/data/``.
 
@@ -75,8 +75,8 @@ Q: How do I organize my app's code?
 
 There are a couple common patterns:
 
-1) Create multiple functions and do everything inside the implementation file. An example of this pattern can be found in the Quast_ app.
-2) Create a utils directory, create a runner or utility class, pass in the configuration file and parameter files to it, and do everything in there. An example of this pattern can be found in the FastANI_ app.
+1) Create multiple functions and do everything inside the implementation file. An example of this pattern can be found in the  |Quast_link| app.
+2) Create a utils directory, create a runner or utility class, pass in the configuration file and parameter files to it, and do everything in there. An example of this pattern can be found in the |FastANI_link| app.
 
 For more complex apps, the second option is preferred, as you can split up functionality into different modules and packages.
 
@@ -88,12 +88,12 @@ You can use any public open-source revision control system. We use GitHub. The p
 Q: Do I need to copy the tool I'm using into my github repo?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You do not if there is a public way to retrieve the code such as by using a *git clone*, *curl*, or other way of pulling the data down into the Docker image. This is accomplished by `modifying the Dockerfile <../howtos/edit_your_dockerfile.html>`__ to configure the Docker image build.
+You do not if there is a public way to retrieve the code such as by using a *git clone*, *curl*, or other way of pulling the data down into the Docker image. This is accomplished by |ModifyDocker_link|  to configure the Docker image build.
 
-Q: How do I set my favorite Apps?
+Q: How do I see my favorite Apps?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-After logging into `KBase <https://kbase.us>`__, go to the `App Catalog`_, and then click on the stars for your favorite Apps. You must be logged in for it to associate it with your account.
+After logging into |KBase_link|, go to the |catalog_link|, and then click on the stars for your favorite Apps. You must be logged in for it to associate it with your account.
 
 Validation
 --------------
@@ -108,9 +108,9 @@ Validation is not provided for the app to be called programmatically (such as wi
 Q: How do I learn more about the spec.json file?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For a more exhaustive overview of the ``spec.json`` and ``display.yaml`` files, take a look at the
-`UI specification guide <../references/UI_spec.html>`_. You can also experiment with UI generation
-with the `App Spec Editor Narrative <https://narrative.kbase.us/narrative/ws.28370.obj.1>`_
+For a more exhaustive overview of the ``spec.json`` and ``display.yaml`` files, take a look at the 
+|UISpec_link|. You can also experiment with UI generation
+with the |AppSpecEditor_link|.
 
 Q: What are all the auto-generated source files in my app?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -165,7 +165,7 @@ You can install binaries to a directory like ``/kb/deployment/bin`` and then add
     ENV PATH="/kb/deployment/bin:${PATH}"
 
 
-Also see the `Editing Docker`_
+Also see the |editDocker_link| 
 
 
 Q: How do I get inside the docker image? How do I get root access?
@@ -191,12 +191,12 @@ Requirements and limitations
 Q: What are system requirements for development?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You need to be able to run Docker. If you're on a Mac, that means you must be running Mac OS X 10.8 or later. Other operating systems, such as the various flavors of Linux, are fine too. Really anywhere you can run Docker, Java, and your preferred development language (among Python, Perl, or Java). You will need about 1-2 GB free to install the `dependencies <../tutorial/dependencies.html>`__ and the `KBase SDK <../tutorial/install.html>`__
+You need to be able to run Docker. If you're on a Mac, that means you must be running Mac OS X 10.8 or later. Other operating systems, such as the various flavors of Linux, are fine too. Really anywhere you can run Docker, Java, and your preferred development language (among Python, Perl, or Java). You will need about 1-2 GB free to install the |Dependencies_link| and the |KBaseSDK_link| 
 
 Q: Can I develop on Windows?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Sort of. Your best option right now is to install `VirtualBox <https://www.virtualbox.org>`__ with `Ubuntu Linux <https://www.ubuntu.com/desktop>`__ and work in the Linux VM. Many developers use this approach in KBase, and we know it works well.
+Sort of. Your best option right now is to install |VirtualBox_link| with |Ubuntu_link| and work in the Linux VM. Many developers use this approach in KBase, and we know it works well.
 
 Q: Can I do all the development on a remote Linux box?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -216,7 +216,7 @@ Q: What are system requirements for execution environment?
 Q: What size data will be too big for the system?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Currently we support up to about 10 GB of accessory data for a tool (meaning reference DBs, etc). Please `contact us`_ if you need to use something larger.
+Currently we support up to about 10 GB of accessory data for a tool (meaning reference DBs, etc). Please |contact_link| if you need to use something larger.
 
 As for processing, once it's uploaded to the system (which can take awhile for larger data sets), it depends on how you are using it. Currently SDK methods are limited in their memory footprint to the 22 GB of the worker nodes, so your code plus any data you load into memory must fit within that. As in any situation, we recommend the use of graceful exception handling and efficient implementations in your coding style.
 
@@ -227,17 +227,105 @@ Not yet. We're working on it!
 
 
 .. External links
-.. _FastANI: https://github.com/kbaseapps/FastANI/blob/master/lib/FastANI/FastANIImpl.py
-.. _Quast: https://github.com/kbaseapps/kb_quast/blob/master/kb_quast.spec
-.. _Megahit: https://github.com/kbaseapps/kb_megahit/blob/master/MEGAHIT.spec
-.. _Trimmomatic: https://github.com/kbaseapps/kb_trimmomatic/blob/master/kb_trimmomatic.spec
-.. _the catalog: https://narrative.kbase.us/#catalog/apps
-.. _User Interface Parameter Gallery: https://narrative.kbase.us/narrative/ws.23109.obj.1). Also see [Narrative UI Specification](https://github.com/kbase/kb_sdk/blob/master/doc/NarrativeUIAppSpecification.pdf
-.. _App Catalog: https://narrative.kbase.us/#appcatalog
-.. _SDK examples: https://github.com/kbaseapps
-.. _contact us: https://kbase.us/contact-us
+
+.. |FastANI_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/FastANI/blob/master/lib/FastANI/FastANIImpl.py" target="_blank">FastANI</a>
+
+.. |Quast_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/kb_quast/blob/master/kb_quast.spec" target="_blank">Quast</a>
+
+.. |Megahit_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/kb_megahit/blob/master/MEGAHIT.spec" target="_blank">Megahit</a>
+
+.. |Trimmomatic_link| raw:: html
+
+   <a href="https://narrative.kbase.us/#catalog/apps" target="_blank">Trimmomatic</a>
+
+.. |catalog_link| raw:: html
+
+   <a href="https://narrative.kbase.us/#catalog/apps" target="_blank">App Catalog</a>
+
+.. |SDKExample_link| raw:: html
+
+   <a href="https://github.com/kbaseapps" target="_blank">SDK Examples</a>
+
+.. |contact_link| raw:: html
+
+   <a href="https://kbase.us/contact-us" target="_blank">contact us</a>
+
+
+.. |fbatools_link| raw:: html
+
+   <a href="https://github.com/cshenry/fba_tools" target="_blank">fba_tools - https://github.com/cshenry/fba_tools</a>
+
+.. |RAST_SDK_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/RAST_SDK" target="_blank">RAST_SDK - https://github.com/kbaseapps/RAST_SDK</a>
+
+.. |GenomeComparison_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/GenomeComparison" target="_blank">GenomeComparison - https://github.com/kbaseapps/GenomeComparison</a>
+
+.. |SpeciesTreeBuilder_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/SpeciesTreeBuilder" target="_blank">SpeciesTreeBuilder https://github.com/kbaseapps/SpeciesTreeBuilder</a>
+
+.. |RBTnSeq_link| raw:: html
+
+   <a href="https://github.com/jmchandonia/RBTnSeq" target="_blank">RBTnSeq - https://github.com/jmchandonia/RBTnSeq</a>
+
+.. |DomainAnnotation_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/DomainAnnotation" target="_blank">DomainAnnotation - https://github.com/kbaseapps/DomainAnnotation</a>
+
+.. |KBase_link| raw:: html
+
+   <a href="https://kbase.us" target="_blank">KBase </a>
+
+.. |AppSpecEditor_link| raw:: html
+
+   <a href="https://narrative.kbase.us/narrative/ws.28370.obj.1" target="_blank">App Spec Editor Narrative </a>
+
+.. |VirtualBox_link| raw:: html
+
+   <a href="https://www.virtualbox.org" target="_blank">VirtualBox </a>
+
+.. |Ubuntu_link| raw:: html
+
+   <a href="https://www.ubuntu.com/desktop" target="_blank">Ubuntu Linux</a>
+
 
 .. Internal links
-.. _Editing Docker: ../howtos/edit_your_dockerfile.html
-.. _the tutorial: ../tutorial/dependencies.html
-.. _how to add reference data: ../howtos/work_with_reference_data.html
+
+.. |tutorial_link| raw:: html
+
+   <a href="../tutorial/dependencies.html" target="_blank">the tutorial</a>
+
+.. |editDocker_link| raw:: html
+
+   <a href="../howtos/edit_your_dockerfile.html" target="_blank">Editing Docker</a>
+
+.. |ModifyDocker_link| raw:: html
+ 
+   <a href="../howtos/edit_your_dockerfile.html" target="_blank">modifying the Dockerfile</a>
+
+.. |addRefData_link| raw:: html
+
+   <a href="../howtos/work_with_reference_data.html" target="_blank">how to add reference data</a>
+
+.. |UISpec_link| raw:: html
+
+   <a href="../references/UI_spec.html" target="_blank">UI specification guide </a>
+
+.. |Dependencies_link| raw:: html
+
+   <a href="../tutorial/dependencies.html" target="_blank">dependencies </a>
+
+.. |KBaseSDK_link| raw:: html
+
+   <a href="../tutorial/install.html" target="_blank">KBase SDK </a>
+
+

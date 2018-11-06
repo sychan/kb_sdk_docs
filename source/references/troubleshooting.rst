@@ -200,6 +200,6 @@ Error Messages
 
 .. |installSDK_link| raw:: html
 
-   <a href="../tutorial/install.html" target="_blank">Install SDK Dependencies - Docker </a>
+   <a href="../tutorial/install.html">Install SDK Dependencies - Docker </a>
 
 

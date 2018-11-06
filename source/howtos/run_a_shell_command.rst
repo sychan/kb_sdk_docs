@@ -74,10 +74,6 @@ demonstrates how to do (and document) this well with Python.
 
 .. External links
 
-.. |editApp_link| raw:: html
-
-   <a href="../howtos/edit_your_dockerfile.html" target="_blank">How to edit your app’s Dockerfile  </a>
-
 .. |FastANI_link| raw:: html
 
    <a href="https://github.com/kbaseapps/FastANI" target="_blank">FastANI  </a>
@@ -89,4 +85,11 @@ demonstrates how to do (and document) this well with Python.
 .. |kb_quast_link| raw:: html
 
    <a href="https://github.com/kbaseapps/kb_quast" target="_blank">kb_quast </a>
+
+.. Internal links
+
+.. |editApp_link| raw:: html
+
+   <a href="../howtos/edit_your_dockerfile.html">How to edit your app’s Dockerfile  </a>
+
 

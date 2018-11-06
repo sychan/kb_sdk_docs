@@ -102,10 +102,6 @@ the image... External links
 
 .. External links
 
-.. |container_link| raw:: html
-
-   <a href="../tutorial/install.html" target="_blank">SDK as a Docker container.</a>
-
 .. |oracle_link| raw:: html
 
    <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a>
@@ -122,8 +118,14 @@ the image... External links
 
    <a href="http://brew.sh/" target="_blank">HomeBrew </a>
 
+.. Internal links
+
 .. |dependencies_link| raw:: html
 
-   <a href="../tutorial/dependencies.html" target="_blank">Install SDK Dependencies -Docker </a>
+   <a href="../tutorial/dependencies.html">Install SDK Dependencies -Docker </a>
+
+.. |container_link| raw:: html
+
+   <a href="../tutorial/install.html">SDK as a Docker container.</a>
 
 

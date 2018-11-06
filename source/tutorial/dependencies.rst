@@ -11,6 +11,28 @@ System Dependencies:
 * Docker |docker_link| (for local testing)
 * At least 20 GB free on your hard drive to install Docker, Xcode, Java JRE, etc.
 
+We recommend using Mac OS X 10.8+ or Linux for SDK development. Windows development is not currently supported.  If you are running Windows or do not want to develop on your local machine, we recommend using [VirtualBox](|virtualbox_link|) and installing Ubuntu 14+.
+
+Xcode or the Xcode Command Line Tools will install some standard terminal commands like `make` and `git` that are necessary for building the KBase SDK and your module code.  |Xcode_link| 
+
+The git homepage can be found at |gitscm_link|. On Ubuntu, install it with ``sudo apt-get install git``.
+
+Docker Installation
+---------------------
+
+KBase module code is run using Docker, which allows you to easily install all system tools and dependencies your module requires. Installing Docker locally allows you to test your build and run tests on your own computer before registering your module with KBase.
+
+Instructions for installing on Mac: |dockermac_link|
+
+Instructions for installing on Linux: |dockerlinux_link|
+
+On Linux, be sure to follow these |postInstall_link| so you can run docker and `kb-sdk` as a non-root user.
+
+When you run an app in a narrative, it runs in a docker container on KBase's servers. Learn more about docker containers here: |whatContainer_link|. Docker containers allow you to package and compile programs and dependencies, such as  |megahit_link|, and run them anywhere.
+
+
+.. External links
+
 .. |JAVAJre_link| raw:: html 
 
    <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a>
@@ -27,33 +49,9 @@ System Dependencies:
 
    <a href="https://www.docker.com" target="_blank">https://www.docker.com</a>
 
-We recommend using Mac OS X 10.8+ or Linux for SDK development. Windows development is not currently supported.  If you are running Windows or do not want to develop on your local machine, we recommend using [VirtualBox](|virtualbox_link|) and installing Ubuntu 14+.
-
-Xcode or the Xcode Command Line Tools will install some standard terminal commands like `make` and `git` that are necessary for building the KBase SDK and your module code.  |Xcode_link| 
-
-The git homepage can be found at |gitscm_link|. On Ubuntu, install it with ``sudo apt-get install git``.
-
 .. |virtualbox_link| raw:: html
 
    <a href="https://www.virtualbox.org" target="_blank">https://www.virtualbox.org</a>
-
-
-
-
-
-Docker Installation
----------------------
-
-KBase module code is run using Docker, which allows you to easily install all system tools and dependencies your module requires. Installing Docker locally allows you to test your build and run tests on your own computer before registering your module with KBase.
-
-Instructions for installing on Mac: |dockermac_link|
-
-Instructions for installing on Linux: |dockerlinux_link|
-
-On Linux, be sure to follow these |postInstall_link| so you can run docker and `kb-sdk` as a non-root user.
-
-When you run an app in a narrative, it runs in a docker container on KBase's servers. Learn more about docker containers here: |whatContainer_link|. Docker containers allow you to package and compile programs and dependencies, such as  |megahit_link|, and run them anywhere.
-
 
 .. |dockermac_link| raw:: html
 

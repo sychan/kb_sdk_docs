@@ -6,27 +6,18 @@ This "ContigFilter" example adds more features of the SDK. In practice, apps nee
 
 For this tutorial, we will use an example module that has a few more specific details so we can explore how to make
 changes. The example is taken from |contigFilter_link|  if you get stuck at any point and want to see the original.  For this example module use:
-
-.. |helloWorld_link| raw:: html
-
-   <a href="helloworld.html" target="_blank">Hello World</a>
-
-.. |contigFilter_link| raw:: html
-
-   <a href="https://github.com/msneddon/ContigFilter" target="_blank">https://github.com/msneddon/ContigFilter</a>
-
 .. code-block:: bash
 
-    kb-sdk init --example --language python --user <your_kbase_user_name> <user_name>ContigFilter
+    kb-sdk init --example --language python --user <your_kbase_user_name> <uid>ContigFilter
     cd <user_name>ContigFilter
     make
 
 Because this example is
-used in training and is tried by many users, the ``<user_name>`` is added to make sure that your module has a unique 
+used in training and is tried by many users, the ``<uid>`` is added to make sure that your module has a unique 
 name. However, you would not usually put your own username in the module name, and instead name it something 
 like ``ContigFilter``.
 
-From here on, the ``<user_name>ContigFilter`` will simply be called ``module_name``.
+From here on, the ``<uid>ContigFilter`` will simply be called ``module_name``.
 
 The setup for the "ContigFilter" module includes:
 
@@ -52,11 +43,6 @@ This file is highly structured and follows a KIDL type definition. The steps bel
 to be modified for the ContigFilter module. 
 
 View the |KIDL_link| 
-
-
-.. |KIDL_link| raw:: html
-
-   <a href="../references/KIDL_spec.html" target="_blank">KIDL tutorial and reference </a>
 
 
 Plan the Inputs, Outputs, and Functions
@@ -111,31 +97,31 @@ Edit the Spec file with KIDL
 
 The syntax comes from a custom type language called KIDL, which is used as a common interface definition language, allowing different apps to communicate with one another, regardless of programming languages.
 
-`View the |KIDL_link| 
+View the |KIDL_link| 
 
 We'll start with the ``module_name.spec`` file. **Comments** in KIDL start with a line with ``/*`` and end with a 
 line with ``*/``. 
-For example, the following has two comments and an empty specification for the module called MyContigFilter.
+For example, the following has two comments and an empty specification for the module called <uid>ContigFilter.
 
 .. code-block:: cpp
 
     /*
-		A KBase module: ContigFilter
+		A KBase module: <uid>ContigFilter
     */
-    module MyContigFilter {
+    module <uid>ContigFilter {
         /*
             Insert your typespec information here.
         */
     };
 
-The ContigFilter ``.spec`` file has a lot of comments that may seem distracting at first glance.  For inputs, we need 
+The <uid>ContigFilter ``.spec`` file has a lot of comments that may seem distracting at first glance.  For inputs, we need 
 a ``min_length`` parameter (an integer), an ``assembly_input_ref`` parameter (a string reference to an assembly 
 file in the workspace), and a ``workspace_name``.  Here are the needed statements to define the inputs
 (comments removed):
 
 .. code-block:: cpp
 
-     module ContigFilter {
+     module <uid>ContigFilter {
         typedef string assembly_ref;
 
         typedef structure {
@@ -158,7 +144,7 @@ maximum length. Your new ``.spec`` file might look something like this:
 
 .. code-block:: cpp
 
-     module ContigFilter {
+     module <uid>ContigFilter {
         typedef string assembly_ref;
 
         typedef structure {
@@ -175,7 +161,7 @@ maximum length. Your new ``.spec`` file might look something like this:
         } FilterContigsMaxParams;
     };
 
-Now let's look at the outputs. In the ContigFilter module, the following ``typedef`` lines define the outputs:
+Now let's look at the outputs. In the <uid>ContigFilter module, the following ``typedef`` lines define the outputs:
 
 .. code-block:: cpp
 
@@ -211,7 +197,7 @@ maximum length. Your new ``.spec`` file might look something like this:
 
 .. code-block:: cpp
 
-     module ContigFilter {
+     module <uid>ContigFilter {
         typedef string assembly_ref;
 
         typedef structure {
@@ -270,3 +256,19 @@ For now, you will get an error that looks something like this:
 
 That's because we need to set up some things for the User Interface in the ``ui/narrative/methods`` directory 
 in the module.
+
+.. External links
+
+.. |helloWorld_link| raw:: html
+
+   <a href="helloworld.html" target="_blank">Hello World</a>
+
+.. |contigFilter_link| raw:: html
+
+   <a href="https://github.com/msneddon/ContigFilter" target="_blank">https://github.com/msneddon/ContigFilter</a>
+
+.. |KIDL_link| raw:: html
+
+   <a href="../references/KIDL_spec.html" target="_blank">KIDL tutorial and reference </a>
+
+

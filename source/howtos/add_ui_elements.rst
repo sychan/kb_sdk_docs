@@ -224,7 +224,7 @@ Details on Narrative UI specification
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Further details on specification of Narrative app interfaces are
-available |UIspec_link| 
+available |UIspec_link|
 
 
 .. External links

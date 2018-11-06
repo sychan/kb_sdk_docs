@@ -51,4 +51,11 @@ to be updated in order to match any changes in the base image running in the pro
 
 .. note::
 
-    While the preceding steps are the recommended approach, it's also possible to `build the SDK from source <../howtos/manual_build.html>`_
+    While the preceding steps are the recommended approach, it's also possible to  |manual_link| 
+
+.. External links
+
+.. |manual_link| raw:: html
+
+   <a href="../howtos/manual_build.html" target="_blank">build the SDK from source. </a>
+

@@ -23,8 +23,7 @@ This is a file in JSON format containing these top-level properties:
   place of the ``active`` category, if it’s present)
 :widgets: structure defining **input** and **output** widgets. Typically the **input** widget is
           set to null, meaning that the standard one is used. The **output** widget is frequently
-          the name of JavaScript viewer for the output object. See the `Narrative module widgets
-          <https://github.com/kbase/narrative/tree/develop/kbase-extension/static/kbase/js/widgets>`__
+          the name of JavaScript viewer for the output object. See the |widgets_link| 
           and its subdirectories for more widgets.
 :parameters: list of structures (described below) defining each parameter type and other features, except
 :behavior: block of settings for mapping UI parameters to service function input parameters. Also
@@ -50,10 +49,11 @@ Each item in the ``parameters`` array defines one parameter shown in the UI inpu
 :field_type: type of the parameter; could be one of ``text``, ``dropdown``, ``checkbox``,
              ``textarea``, ``textsubdata``, or ``dynamic_dropdown``
 :text_options: optional block defining details of the ``text`` type
-:dropdown_options: optional block defining details of the ``dropdown`` type - `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_metabolic_model/spec.json>`__
-:checkbox_options: optional block defining details of the ``checkbox`` type - `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/simulate_growth_on_phenotype_data/spec.json>`__
-:textarea_options: optional block defining details of the ``textarea`` type - `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_multiple_metabolic_models/spec.json>`__
-:textsubdata_options: optional block defining details of the ``textsubdata`` type - `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/compare_flux_with_expression/spec.json>`__
+:dropdown_options: optional block defining details of the ``dropdown`` type -  |dropdown_link| 
+:checkbox_options: optional block defining details of the ``checkbox`` type -  |checkbox_link| 
+:textarea_options: optional block defining details of the ``textarea`` type -  |textarea_link| 
+:textsubdata_options: optional block defining details of the ``textsubdata`` type -  |textsubdata_link| 
+
 
 Options for the text parameter type in ``spec.json``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -288,7 +288,7 @@ It is also possible to have an optional parameter group with required parameters
              objects.
 :with_border: set to 1 to wrap this group with border.
 
-Here is an example of a ``parameter-groups`` block for from the `Edit Media UI`_ inside the ``fba_tools`` app.
+Here is an example of a ``parameter-groups`` block for from the |editMediaUI_link| inside the ``fba_tools`` app.
 
 .. code-block:: js
 
@@ -329,7 +329,7 @@ There are three alternative sub-blocks available inside the ``behavior`` block:
 :service-mapping: defines mapping rules for the input and output data for a typical SDK method
                   (described below)
 :none: used in case the UI method is not supposed to run any service function (for instance, when
-       input parameters should be passed into the widget directly) - `Example <https://github.com/kbaseapps/kb_cummerbund/blob/master/ui/narrative/methods/view_volcano_plot/spec.json>`__
+       input parameters should be passed into the widget directly) - |none_link| 
 :script-mapping: support for legacy software -- not recommended for use in SDK repos
 
 In most cases, the ``service-mapping`` sub-block should be used. Here is the list of sub-elements available inside ``service-mapping``:
@@ -346,8 +346,7 @@ In most cases, the ``service-mapping`` sub-block should be used. Here is the lis
 Both the ``input_mapping`` and ``output_mapping`` sub-blocks are arrays of items, where each item has the following properties:
 
 :input_parameter: ID of a UI input parameter or parameter group to be used as a source of mapping
-:constant_value: constant value to be used as a source of mapping -
-                 `Example <https://github.com/kbaseapps/taxonomy_service/blob/master/ui/narrative/methods/create_taxonomy/spec.json>`__
+:constant_value: constant value to be used as a source of mapping - |constant_link| 
 :narrative_system_variable: system variable in the narrative back-end to be used as a source of
                             mapping (only the ``workspace`` variable is currently supported)
 :target_property: name of the structure field to be set as a target of mapping
@@ -359,8 +358,7 @@ Both the ``input_mapping`` and ``output_mapping`` sub-blocks are arrays of items
 :service_method_output_path: (allowed for output mapping items only) - defines the JSON-path into
                              the output prepared for the widget as a place for a target value; if
                              this path is an empty array, it corresponds to the root point, and all
-                             the data returned from the service function will be captured -
-                             `Example <https://github.com/kbaseapps/FeatureSetUtils/blob/master/ui/narrative/methods/upload_featureset_from_diff_expr/spec.json>`__
+                             the data returned from the service function will be captured - |service_link| 
 
 
 The following is a list of allowed transformations that can be used for the
@@ -427,7 +425,7 @@ This file uses the YAML format with the following top-level fields:
 :name: name of the method listed in the UI
 :tooltip: more detailed explanation of the method shown on a mouse-over event
 :screenshots: list of names of screenshot files from the ``img`` sub-folder
-:icon: (optional) name of an icon file from the ``img`` sub-folder. `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_metabolic_model/display.yaml>`__
+:icon: (optional) name of an icon file from the ``img`` sub-folder.  |icon_link| 
 :method-suggestions: list of objects defining a set of other methods that are suggested to the user
                      as related methods. There are two sub-elements -- ``related`` and ``next`` --
                      pointing to arrays of method IDs
@@ -436,7 +434,7 @@ This file uses the YAML format with the following top-level fields:
 :description: very detailed explanation of what this method does, appearing on a separate page
 :publications: (optional) list of objects describing related publications. Each object includes two
                fields: ``display-text``, containing a reference to a scientific journal; and
-               ``link``, which has the URL to an online resource. `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_metabolic_model/display.yaml>`__
+               ``link``, which has the URL to an online resource.  |publications_link| 
 
 Each field in the ``parameters`` section can have the following properties:
 
@@ -444,9 +442,67 @@ Each field in the ``parameters`` section can have the following properties:
 :short-hint: short description shown in front of each parameter on the right side of the method
              input panel in the narrative
 :long: a more detailed explanation available by mouse-over
-:placeholder: (optional) if the parameter type is textual (one of ``text``, ``textarea``, ``textsubdata``), then this defines the placeholder text for the field. `Example <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_metabolic_model/display.yaml>`__
+:placeholder: (optional) if the parameter type is textual (one of ``text``, ``textarea``, ``textsubdata``), then this defines the placeholder text for the field.  |placeholder_link| 
 
 
 
 .. External links
-.. _Edit Media UI: https://github.com/cshenry/fba_tools/blob/4e9001c3547388eb70da6c07229f54c4aac23af2/ui/narrative/methods/edit_media/spec.json
+
+.. |editMediaUI_link| raw:: html
+
+   <a href="https://github.com/cshenry/fba_tools/blob/4e9001c3547388eb70da6c07229f54c4aac23af2/ui/narrative/methods/edit_media/spec.json" target="_blank">Edit Media UI</a>
+
+.. |widgets_link| raw:: html
+
+   <a href="https://github.com/kbase/narrative/tree/develop/kbase-extension/static/kbase/js/widgets" target="_blank">Narrative module widgets</a>
+
+.. |dropdown_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_metabolic_model/spec.json" target="_blank">Example</a>
+
+
+.. |checkbox_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/simulate_growth_on_phenotype_data/spec.json" target="_blank">Example</a>
+
+
+.. |textarea_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_multiple_metabolic_models/spec.json" target="_blank">Example</a>
+
+
+.. |textsubdata_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/compare_flux_with_expression/spec.json" target="_blank">Example</a>
+
+
+.. |none_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/kb_cummerbund/blob/master/ui/narrative/methods/view_volcano_plot/spec.json" target="_blank">Example</a>
+
+
+.. |constant_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/taxonomy_service/blob/master/ui/narrative/methods/create_taxonomy/spec.json" target="_blank">Example</a>
+
+
+.. |service_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/FeatureSetUtils/blob/master/ui/narrative/methods/upload_featureset_from_diff_expr/spec.json" target="_blank">Example</a>
+
+
+.. |icon_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_metabolic_model/display.yaml" target="_blank">Example</a>
+
+
+.. |publications_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_metabolic_model/display.yaml" target="_blank">Example</a>
+
+
+.. |placeholder_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/build_metabolic_model/display.yaml" target="_blank">Example</a>
+
+

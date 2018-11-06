@@ -7,7 +7,7 @@ App
    In SDK, apps are part of a module and have a defined function, user interface, and code for implementing the app.
 
 appdev
-   The development environment where app user interfaces can be tested (https://appdev.kbase.us).
+   The development environment where app user interfaces can be tested ( |appdev_link| ).
 
 Catalog
    For general users, the Catalog is a listing of available apps and modules along with the documentation
@@ -35,15 +35,15 @@ Catalog
    - A catalog status
 
 Data Type Catalog
-   A `listing <https://narrative.kbase.us/#catalog/datatypes>`__ of the current data objects with links to 
+   A |dataCatalog_link|  of the current data objects with links to 
    their specification documentation.
 
 Function Catalog
-   A `listing <https://narrative.kbase.us/#catalog/functions>`__ of the current functions
+   A |functionCatalog_link|  of the current functions
 
 Github repository
    Also called 'github repo' or 'git repo'. 
-   A repository stored at https://github.com or in an organization's github. It can be in your personal 
+   A repository stored at |github_link|  or in an organization's github. It can be in your personal 
    GitHub account or part of an organization's or project's account. For use in KBase, it must be public. 
 
 Method
@@ -57,7 +57,7 @@ Module
    A module includes all of the components for one or more apps. The apps are mananged as a group. All the 
    components are in the same directory on your local machine or in one github repository. The directory and
    the github repository are typically the same name as the module. A catalog of existing
-   modules is found at https://narrative.kbase.us/#catalog/modules. 
+   modules is found at |moduleCatalog_link|. 
 
    The pros for grouping multiple apps in one module include:
 
@@ -89,7 +89,41 @@ Workspace Service
 
 Wrap an App
     The SDK can be used to create a wrapper around a third-party software tool and make it accessible through 
-    KBase. The guide for `Edititng your app's Dockerfile <../howtos/edit_your_dockerfile.html>`_ has useful
-    information for wrapping a tool. Examples of wrapping a tool can be found at `kb_fasttree <https://github.com/kbaseapps/kb_fasttree>`_ and `kb_ballgown <https://github.com/kbaseapps/kb_ballgown>`_. The developer has the option of implementing some or all of the functionality of the original tool into a KBase app.
+    KBase. The guide for |editDocker_link|  has useful |fasttree_link| and |ballgown_link| . The developer has the option of implementing some or all of the functionality of the original tool into a KBase app.
 
 
+.. External links
+
+.. |appdev_link| raw:: html
+
+   <a href="https://appdev.kbase.us" target="_blank">https://appdev.kbase.us</a>
+
+.. |github_link| raw:: html
+
+   <a href="https://github.com" target="_blank">https://github.com</a>
+
+.. |dataCatalog_link| raw:: html
+
+   <a href="https://narrative.kbase.us/#catalog/datatypes" target="_blank">listing https://narrative.kbase.us/#catalog/datatypes</a>
+
+.. |functionCatalog_link| raw:: html
+
+   <a href="https://narrative.kbase.us/#catalog/functions" target="_blank">listing https://narrative.kbase.us/#catalog/functions</a>
+
+.. |moduleCatalog_link| raw:: html
+
+   <a href="https://narrative.kbase.us/#catalog/modules" target="_blank">https://narrative.kbase.us/#catalog/modules</a>
+
+.. |fasttree_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/kb_fasttree" target="_blank">kb_fasttree </a>
+
+.. |ballgown_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/kb_ballgown" target="_blank">kb_ballgown </a>
+
+.. Internal links
+
+.. |editDocker_link| raw:: html
+
+   <a href="../howtos/edit_your_dockerfile.html" target="_blank">Edititng your app's Dockerfile </a>

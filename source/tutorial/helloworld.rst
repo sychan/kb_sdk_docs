@@ -1,7 +1,12 @@
 Hello World Example
 ========================
 
-This "Hello World" example demonstrates where various components of the SDK are located and how to run a basic test. Some of the options in the blank template will be simplified or removed for this example. The `ContigFilter <setup.html>`_ example adds more features of the SDK. 
+This "Hello World" example demonstrates where various components of the SDK are located and how to run a basic test. Some of the options in the blank template will be simplified or removed for this example. The |ContigFilter_link| example adds more features of the SDK. 
+
+
+.. |ContigFilter_link| raw:: html
+
+   <a href="setup.html" target="_blank">ContigFilter</a>
 
 For this example use:
 
@@ -26,7 +31,12 @@ Module Description
 
 Open and edit the ``kbase.yml`` file to include a better description of your module. It is in  is in the root 
 directory of the module. Be sure to describe what your module and its app will do. The information here shows up
-in the App Catalog entry for the module. `See the page for kb_SPAdes <https://narrative.kbase.us/#catalog/modules/kb_SPAdes>`_ 
+in the App Catalog entry for the module.  |kb_SPAdes_link|
+
+.. |kb_SPAdes_link| raw:: html
+
+   <a href="https://narrative.kbase.us/#catalog/modules/kb_SPAdes" target="_blank">See the page for kb_SPAdes. </a>
+
 
 The Specification File
 -------------------------------------------
@@ -35,7 +45,12 @@ The specification file is called ``HelloWorld.spec`` and is in the root director
 This file is highly structured and follows a KIDL type definition. The steps below show the sections that need
 to be modified for the HelloWorld module. 
 
-`View the KIDL tutorial and reference <../references/KIDL_spec.html>`_
+|KIDLspec_link|
+
+.. |KIDLspec_link| raw:: html
+
+   <a href="../references/KIDL_spec.html" target="_blank">View the KIDL tutorial and reference.</a>
+
 
 
 Plan the Inputs, Outputs, and Functions
@@ -81,7 +96,7 @@ Expand the module definition to define the inputs (comments removed):
         } InParams;
     };
 
-The inputs and outputs are defined with typedef statements and functions are defined with funcdef statements. The example module called `ContigFilter <setup.html>`_ has a more examples of what can occur in these definitions. 
+The inputs and outputs are defined with typedef statements and functions are defined with funcdef statements. The example module called |ContigFilter_link| has a more examples of what can occur in these definitions. 
 
 Now let's look at the output. In the HelloWorld module, the following ``typedef`` lines define the outputs:
 

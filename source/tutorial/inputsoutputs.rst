@@ -12,7 +12,11 @@ the directory  ``ui/narrative/methods/filter_contigs`` exists and you need to cr
 
     For historical reasons, in the user interface, methods and apps are synonymous. 
 
-View `Narrative App UI Spedification <../references/UI_spec.html>`_ for more information and options.
+View |UIspec_link| for more information and options.
+
+.. |UIspec_link| raw:: html
+
+   <a href="../references/UI_spec.html" target="_blank">Narrative App UI Spedification</a>
 
 Update spec.json
 -----------------
@@ -70,8 +74,12 @@ not the user, so we don't need a form element for it.
 Each parameter object has a number of options.
 
 * We want both parameters to be required ("optional": false)
-* We want the ``assembly_input_ref`` to be a reference to either an Assembly or ContigSet object (view the `type catalog <https://narrative.kbase.us/#catalog/datatypes>`_) to see all KBase types)
+* We want the ``assembly_input_ref`` to be a reference to either an Assembly or ContigSet object (view the |typeCatalog_link| ) to see all KBase types)
 * We want the ``min_length`` parameter to be validated as an integer, and we don't want to allow negative numbers (minimum valid integer to be 0).
+
+.. |typeCatalog_link| raw:: html
+
+   <a href="https://narrative.kbase.us/#catalog/datatypes" target="_blank">type catalog</a>
 
 Edit the file to add the other input parameter ``max_length`` with similar values. The end of the parameters section should have something like this.
 
@@ -169,13 +177,17 @@ When you run ``kb-sdk validate`` again, you will get an error about your ``displ
 Update display.yaml
 -------------------
 
-The YAML file found in ``ui/narrative/methods/filter_contigs/display.yaml`` holds text content for your app. The text written here will show up in the narrative and in the `App Catalog <https://narrative.kbase.us/#appcatalog>`_
+The YAML file found in ``ui/narrative/methods/filter_contigs/display.yaml`` holds text content for your app. The text written here will show up in the narrative and in the  |Catalog_link| 
 for each form element. You only need to set this text for parameters that actually display in the form.
+
+.. |Catalog_link| raw:: html
+
+   <a href="https://narrative.kbase.us/#appcatalog" target="_blank">App Catalog</a>
 
 .. note::
 
     Compare these screenshots of the narrative and App Catalog images of the app "View flux network" with
-    the specifications in its `display.yaml file <https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/view_flux_network/display.yaml>`_. If screenshots are included, they appear between the ``tooltip`` and the ``description``.
+    the specifications in its |displyYAML_link| . If screenshots are included, they appear between the ``tooltip`` and the ``description``.
 
 .. figure:: ../images/View_flux_network_narr.png
     :align: center
@@ -190,6 +202,11 @@ for each form element. You only need to set this text for parameters that actual
 
     App Catalog for View Flux Network.
 
+
+.. |displyYAML_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/view_flux_network/display.yaml" target="_blank">display.yaml file</a>
+
 Open the ``display.yaml`` and update its ``name`` and ``tooltip`` to say something related to filtering assembly files 
 based on contig length with both a min and a max filter.
 
@@ -197,7 +214,7 @@ You can leave the "screenshots", "icon" and "suggestions" fields to their defaul
 
 .. tip::
 
-    The icon is completely optional but will come in handy when you get to the "Publish and Update" step. It will help you find your app in a sea of others that have the same name. The `Narrative App UI Specification <../references/UI_spec.html>`_ has more information on icons.
+    The icon is completely optional but will come in handy when you get to the "Publish and Update" step. It will help you find your app in a sea of others that have the same name. The |UIspec_link| has more information on icons.
 
 Moving down to the "parameters" section, the parameter entries for "assembly_ref" and "min_length" are filled in. 
 
@@ -238,6 +255,12 @@ Finally, run ``kb-sdk validate`` again and it should pass! Now we can start to a
 .. note::
 
     For a more exhaustive overview of the ``spec.json`` and ``display.yaml`` files, take a look at
-    the `UI specification guide <../references/UI_spec.html>`_  You can also experiment with UI generation
-    with the `App Spec Editor Narrative <https://narrative.kbase.us/narrative/ws.30118.obj.1>`_
+    the |UIspec_link|  You can also experiment with UI generation
+    with the |AppSpec_link| 
+
+.. |AppSpec_link| raw:: html
+
+   <a href="https://narrative.kbase.us/narrative/ws.30118.obj.1" target="_blank">App Spec Editor Narrative</a>
+
+
 

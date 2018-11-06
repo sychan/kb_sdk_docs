@@ -1,11 +1,19 @@
 ContigFilter Example
 ========================
 
-The `Hello World <helloworld.html>`_ example demonstrated where various components of the SDK are located and how to run a basic test.
+The |helloWorld_link| example demonstrated where various components of the SDK are located and how to run a basic test.
 This "ContigFilter" example adds more features of the SDK. In practice, apps need to interact with the workspace/narrative, create reports from the app output, and potentially interact with database objects.
 
 For this tutorial, we will use an example module that has a few more specific details so we can explore how to make
-changes. The example is taken from https://github.com/msneddon/ContigFilter if you get stuck at any point and want to see the original.  For this example module use:
+changes. The example is taken from |contigFilter_link|  if you get stuck at any point and want to see the original.  For this example module use:
+
+.. |helloWorld_link| raw:: html
+
+   <a href="helloworld.html" target="_blank">Hello World</a>
+
+.. |contigFilter_link| raw:: html
+
+   <a href="https://github.com/msneddon/ContigFilter" target="_blank">https://github.com/msneddon/ContigFilter</a>
 
 .. code-block:: bash
 
@@ -43,7 +51,12 @@ The specification file is called ``module_name.spec`` and is in the root directo
 This file is highly structured and follows a KIDL type definition. The steps below show the sections that need
 to be modified for the ContigFilter module. 
 
-`View the KIDL tutorial and reference <../references/KIDL_spec.html>`_
+View the |KIDL_link| 
+
+
+.. |KIDL_link| raw:: html
+
+   <a href="../references/KIDL_spec.html" target="_blank">KIDL tutorial and reference </a>
 
 
 Plan the Inputs, Outputs, and Functions
@@ -98,7 +111,7 @@ Edit the Spec file with KIDL
 
 The syntax comes from a custom type language called KIDL, which is used as a common interface definition language, allowing different apps to communicate with one another, regardless of programming languages.
 
-`View the KIDL tutorial and reference <../references/KIDL_spec.html>`_
+`View the |KIDL_link| 
 
 We'll start with the ``module_name.spec`` file. **Comments** in KIDL start with a line with ``/*`` and end with a 
 line with ``*/``. 
@@ -181,7 +194,7 @@ The assembly_output can use the same type as used above and there are three outp
 The new app can use the same output parameters and doesn't need a new ``structure``.
 
 Now let us look at the function type for our app, which we can call ``filter_contigs``. 
-Refer to the `KIDL specification <../references/KIDL_spec.html>`_ for details about function types.
+Refer to the |KIDL_link| for details about function types.
 
 .. code-block:: cpp
 

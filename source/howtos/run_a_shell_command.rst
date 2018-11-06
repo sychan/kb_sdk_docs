@@ -90,6 +90,6 @@ demonstrates how to do (and document) this well with Python.
 
 .. |editApp_link| raw:: html
 
-   <a href="../howtos/edit_your_dockerfile.html"">How to edit your app’s Dockerfile  </a>
+   <a href="../howtos/edit_your_dockerfile.html">How to edit your app’s Dockerfile  </a>
 
 

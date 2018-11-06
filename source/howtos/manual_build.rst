@@ -126,6 +126,6 @@ the image... External links
 
 .. |container_link| raw:: html
 
-   <a href="../tutorial/install.html"">SDK as a Docker container.</a>
+   <a href="../tutorial/install.html">SDK as a Docker container.</a>
 
 

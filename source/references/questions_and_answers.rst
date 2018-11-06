@@ -306,7 +306,7 @@ Not yet. We're working on it!
 
 .. |editDocker_link| raw:: html
 
-   <a href="../howtos/edit_your_dockerfile.html"">Editing Docker</a>
+   <a href="../howtos/edit_your_dockerfile.html">Editing Docker</a>
 
 .. |ModifyDocker_link| raw:: html
  

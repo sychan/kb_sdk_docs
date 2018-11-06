@@ -53,9 +53,9 @@ to be updated in order to match any changes in the base image running in the pro
 
     While the preceding steps are the recommended approach, it's also possible to  |manual_link| 
 
-.. External links
+.. Internal links
 
 .. |manual_link| raw:: html
 
-   <a href="../howtos/manual_build.html" target="_blank">build the SDK from source. </a>
+   <a href="../howtos/manual_build.html">build the SDK from source. </a>
 

@@ -302,30 +302,30 @@ Not yet. We're working on it!
 
 .. |tutorial_link| raw:: html
 
-   <a href="../tutorial/dependencies.html" target="_blank">the tutorial</a>
+   <a href="../tutorial/dependencies.html">the tutorial</a>
 
 .. |editDocker_link| raw:: html
 
-   <a href="../howtos/edit_your_dockerfile.html" target="_blank">Editing Docker</a>
+   <a href="../howtos/edit_your_dockerfile.html"">Editing Docker</a>
 
 .. |ModifyDocker_link| raw:: html
  
-   <a href="../howtos/edit_your_dockerfile.html" target="_blank">modifying the Dockerfile</a>
+   <a href="../howtos/edit_your_dockerfile.html">modifying the Dockerfile</a>
 
 .. |addRefData_link| raw:: html
 
-   <a href="../howtos/work_with_reference_data.html" target="_blank">how to add reference data</a>
+   <a href="../howtos/work_with_reference_data.html">how to add reference data</a>
 
 .. |UISpec_link| raw:: html
 
-   <a href="../references/UI_spec.html" target="_blank">UI specification guide </a>
+   <a href="../references/UI_spec.html">UI specification guide </a>
 
 .. |Dependencies_link| raw:: html
 
-   <a href="../tutorial/dependencies.html" target="_blank">dependencies </a>
+   <a href="../tutorial/dependencies.html">dependencies </a>
 
 .. |KBaseSDK_link| raw:: html
 
-   <a href="../tutorial/install.html" target="_blank">KBase SDK </a>
+   <a href="../tutorial/install.html">KBase SDK </a>
 
 

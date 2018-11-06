@@ -14,10 +14,6 @@ the directory  ``ui/narrative/methods/filter_contigs`` exists and you need to cr
 
 View |UIspec_link| for more information and options.
 
-.. |UIspec_link| raw:: html
-
-   <a href="../references/UI_spec.html" target="_blank">Narrative App UI Spedification</a>
-
 Update spec.json
 -----------------
 
@@ -76,10 +72,6 @@ Each parameter object has a number of options.
 * We want both parameters to be required ("optional": false)
 * We want the ``assembly_input_ref`` to be a reference to either an Assembly or ContigSet object (view the |typeCatalog_link| ) to see all KBase types)
 * We want the ``min_length`` parameter to be validated as an integer, and we don't want to allow negative numbers (minimum valid integer to be 0).
-
-.. |typeCatalog_link| raw:: html
-
-   <a href="https://narrative.kbase.us/#catalog/datatypes" target="_blank">type catalog</a>
 
 Edit the file to add the other input parameter ``max_length`` with similar values. The end of the parameters section should have something like this.
 
@@ -180,10 +172,6 @@ Update display.yaml
 The YAML file found in ``ui/narrative/methods/filter_contigs/display.yaml`` holds text content for your app. The text written here will show up in the narrative and in the  |Catalog_link| 
 for each form element. You only need to set this text for parameters that actually display in the form.
 
-.. |Catalog_link| raw:: html
-
-   <a href="https://narrative.kbase.us/#appcatalog" target="_blank">App Catalog</a>
-
 .. note::
 
     Compare these screenshots of the narrative and App Catalog images of the app "View flux network" with
@@ -202,10 +190,6 @@ for each form element. You only need to set this text for parameters that actual
 
     App Catalog for View Flux Network.
 
-
-.. |displyYAML_link| raw:: html
-
-   <a href="https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/view_flux_network/display.yaml" target="_blank">display.yaml file</a>
 
 Open the ``display.yaml`` and update its ``name`` and ``tooltip`` to say something related to filtering assembly files 
 based on contig length with both a min and a max filter.
@@ -258,9 +242,27 @@ Finally, run ``kb-sdk validate`` again and it should pass! Now we can start to a
     the |UIspec_link|  You can also experiment with UI generation
     with the |AppSpec_link| 
 
+.. External links
+
 .. |AppSpec_link| raw:: html
 
    <a href="https://narrative.kbase.us/narrative/ws.30118.obj.1" target="_blank">App Spec Editor Narrative</a>
 
+.. |typeCatalog_link| raw:: html
 
+   <a href="https://narrative.kbase.us/#catalog/datatypes" target="_blank">type catalog</a>
+
+.. |Catalog_link| raw:: html
+
+   <a href="https://narrative.kbase.us/#appcatalog" target="_blank">App Catalog</a>
+
+.. |displyYAML_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/view_flux_network/display.yaml" target="_blank">display.yaml file</a>
+
+.. Internal links
+
+.. |UIspec_link| raw:: html
+
+   <a href="../references/UI_spec.html">Narrative App UI Specification</a>
 

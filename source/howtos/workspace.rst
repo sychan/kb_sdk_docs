@@ -63,10 +63,6 @@ If you can't find a typespec in a repo, you can find it doing the following:
 
 .. External links
 
-.. |FileUtil_link| raw:: html
-
-   <a href="../howtos/file_utils.html" target="_blank">file utilities </a>
-
 .. |Workspace_link| raw:: html
 
    <a href="https://kbase.us/services/ws/docs/Workspace.html" target="_blank">workspace spec file </a>
@@ -78,4 +74,11 @@ If you can't find a typespec in a repo, you can find it doing the following:
 .. |addTypes_link| raw:: html
 
    <a href="https://ci.kbase.us/services/ws/docs/administrationinterface.html#managing-module-ownership-requests" target="_blank">https://ci.kbase.us/services/ws/docs/administrationinterface.html#managing-module-ownership-requests </a>
+
+
+.. Internal links
+
+.. |FileUtil_link| raw:: html
+
+   <a href="../howtos/file_utils.html">file utilities </a>
 

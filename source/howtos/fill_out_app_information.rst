@@ -7,11 +7,11 @@ Complete Module Info
 Icons, Publications, Original tool authors, Institutional Affiliations,
 Contact Information, and most importantly, Method Documentation must be
 added to your module before it can be deployed. This information will
-show up in the App Catalog: https://appdev.kbase.us/#appcatalog/
+show up in the |appcatalog_link| 
 
 Please be aware that your module implementation and information must
 conform to our
-`Policies <../references/dev_guidelines.html>`__
+|Policies_link| 
 before it will be accepted for public deployment. Fortunately, most of
 these are common sense (for example, sufficient content on the App Info
 page for a user to run your app and understand what it's doing, proper
@@ -33,7 +33,7 @@ fit in a square 200x200 pixels. To match our existing icons, use these guideline
 * 72dpi PNG
 
 PDF vector and PNG bitmap versions that we used for our icons are available at
-https://github.com/kbase/kb_sdk_docs/tree/master/source/images/app-icons in case you would like to use them
+|appicons_link| in case you would like to use them
 as a starting point.
 
 Your icons should be added to your KBase SDK module GitHub repo in the
@@ -54,7 +54,7 @@ Then edit the **display.yaml** file found at:
 and add an **icon:** configuration (NOTE: just add the name of the image
 file and do not include the path, so *not* "img/foo.png"). For example,
 in the file:
-https://github.com/psdehal/kb\_trimmomatic/blob/master/ui/narrative/methods/run\_trimmomatic/display.yaml
+|trimmomatic_link| 
 
 the **icon:** is configured by the line: icon: trimmomatic-orange.png
 
@@ -104,7 +104,7 @@ that is used in the App Catalog.
     util: Utilities
 
 
-(Please contact us via http://kbase.us/contact-us if you have
+(Please contact us via |contactUS_link| if you have
 suggestions for more... we expect to add more categories and possibly
 subcategories in the near future.)
 
@@ -203,8 +203,8 @@ Example
 For an example of a complete App Info page that would be acceptable for
 public deployment, please see examples in the Trimmomatic app:
 
--  https://appdev.kbase.us/#appcatalog/app/kb\_trimmomatic/run\_trimmomatic/dev
--  https://github.com/psdehal/kb\_trimmomatic/blob/master/ui/narrative/methods/run\_trimmomatic/display.yaml
+-  |appdevTrim_link| 
+-  |psdehalTrim_link| 
 
 .. important:: 
 
@@ -214,3 +214,34 @@ public deployment, please see examples in the Trimmomatic app:
     We reserve the right to delay public release of SDK modules until all
     requirements are met. Please take the time to familiarize yourself with
     these policies to avoid delay in releasing your module.
+
+.. External links
+
+.. |appcatalog_link| raw:: html
+
+   <a href="https://appdev.kbase.us/#appcatalog/" target="_blank">App catalog (https://appdev.kbase.us/#appcatalog/)</a>
+
+.. |Policies_link| raw:: html
+
+   <a href="../references/dev_guidelines.html" target="_blank">Policies</a>
+
+.. |appicons_link| raw:: html
+
+   <a href="https://github.com/kbase/kb_sdk_docs/tree/master/source/images/app-icons" target="_blank">https://github.com/kbase/kb_sdk_docs/tree/master/source/images/app-icons</a>
+
+.. |trimmomatic_link| raw:: html
+
+   <a href="https://github.com/psdehal/kb_trimmomatic/blob/master/ui/narrative/methods/run_trimmomatic/display.yaml" target="_blank">https://github.com/psdehal/kb_trimmomatic/blob/master/ui/narrative/methods/run_trimmomatic/display.yaml</a>
+
+.. |contactUS_link| raw:: html
+
+   <a href="http://kbase.us/contact-us" target="_blank">ContactUs (http://kbase.us/contact-us)</a>
+
+.. |appdevTrim_link| raw:: html
+
+   <a href="https://appdev.kbase.us/#appcatalog/app/kb_trimmomatic/run_trimmomatic/dev" target="_blank">https://appdev.kbase.us/#appcatalog/app/kb_trimmomatic/run_trimmomatic/dev</a>
+
+.. |psdehalTrim_link| raw:: html
+
+   <a href="https://github.com/psdehal/kb_trimmomatic/blob/master/ui/narrative/methods/run_trimmomatic/display.yaml" target="_blank">https://github.com/psdehal/kb_trimmomatic/blob/master/ui/narrative/methods/run_trimmomatic/display.yaml</a>
+

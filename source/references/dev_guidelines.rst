@@ -33,8 +33,7 @@ Criteria:
    use--for example, they cannot be “Free for academic use (but
    commercial users must pay to use it)”.
 2. Documentation for app is clear and includes any appropriate
-   references (e.g., published papers on a tool or method) - See `Method
-   Man pages document <https://github.com/kbase/project_guides/blob/master/Method_man_page.md>`__.
+   references (e.g., published papers on a tool or method) - See  |documentation_link|.
 3. The app includes a public example Narrative demonstrating the app in
    action on real data.
 4. The repository contains minimal tests (e.g., at least one unit test
@@ -44,22 +43,43 @@ Criteria:
 5. All of the tests above must pass
 6. Has the code been reviewed by KBase Implementation Team staff? A
    basic expectation is that for Python code is that flake8 shows no
-   errors or warnings, see `this
-   document <https://github.com/kbase/project_guides/blob/master/RecommendedEditors.md#flake8-configuration>`__
+   errors or warnings, see  |codeReview_link| 
    for details on flake8 configuration
-7. Is the `provenance information for output objects properly
-   generated <https://github.com/kbase/KBaseDeveloperBootstrap/blob/master/Provenance_info.md>`__?
-   As a rule, outputting your objects using the
-   `DataFileUtils <https://narrative.kbase.us/#catalog/modules/DataFileUtil>`__
+7. Is the  |provenance_link|?
+   As a rule, outputting your objects using the |DateFileUtils_link| 
    API will take care of filling out the provenance information. In
-   general it is best to use
-   `DataFileUtils <https://narrative.kbase.us/#catalog/modules/DataFileUtil>`__
-   whenever possible for input and output.
-8. Is there a basic travis-ci configuration that `minimally performs a
-   "kb-sdk
-   validate" <https://github.com/kbaseapps/kb_Velvet/blob/master/.travis.yml>`__,
-   or `ideally performs a "kb-sdk
-   test" <https://github.com/kbaseapps/kb_ballgown/blob/master/.travis.yml>`__
+   general it is best to use |DateFileUtils_link| 
+   whenever possible for input and output, |kbsdkvalidate_link| or  |kbsdkTest_link| 
 
-See also: `KBase product
-requirements <https://github.com/kbase/roadmap/blob/master/KBase%20product%20requirements.md>`__
+See also:  |KBaseproduct_link| 
+
+.. External links
+
+.. |documentation_link| raw:: html
+
+   <a href="https://github.com/kbase/project_guides/blob/master/Method_man_page.md" target="_blank">Method Man pages document</a>
+
+.. |codeReview_link| raw:: html
+
+   <a href="https://github.com/kbase/project_guides/blob/master/RecommendedEditors.md#flake8-configuration" target="_blank">this document</a>
+
+.. |provenance_link| raw:: html
+
+   <a href="https://github.com/kbase/KBaseDeveloperBootstrap/blob/master/Provenance_info.md" target="_blank">provenance information for output objects properly</a>
+
+.. |DateFileUtils_link| raw:: html
+
+   <a href="https://narrative.kbase.us/#catalog/modules/DataFileUtil" target="_blank">DataFileUtils</a>
+
+.. |kbsdkvalidate_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/kb_Velvet/blob/master/.travis.yml" target="_blank">minimally performs a "kb-sdk validate"</a>
+
+.. |kbsdkTest_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/kb_ballgown/blob/master/.travis.yml" target="_blank">ideally performs a "kb-sdk test"</a>
+
+.. |KBaseproduct_link| raw:: html
+
+   <a href="https://github.com/kbase/roadmap/blob/master/KBase%20product%20requirements.md" target="_blank">KBase product requirements</a>
+

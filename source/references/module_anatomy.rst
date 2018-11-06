@@ -1,5 +1,5 @@
 Anatomy of a Module
-=================
+===================
 
 KBase modules consist of a set of code, configurations, and
 specifications that describe how a set of related apps are shown in the

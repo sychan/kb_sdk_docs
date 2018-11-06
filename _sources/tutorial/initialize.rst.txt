@@ -6,7 +6,8 @@ Initialize the Module
    A KBase module contains all of the components for one or more apps. The components are all stored in
    the same directory and are all uploaded to a single github repository. There are pros and cons to 
    bundling several apps in one module versus
-   creating one app per module. See `terminology <../references/terminology.html>`_ for more information. 
+   creating one app per module. See |terminology_link| for more information. 
+
 
 The KBase SDK provides a way to quickly bootstrap a new module by generating most of the required components.
 
@@ -16,16 +17,15 @@ The basic options of the command are:
 
     $ kb-sdk init [--example] [--verbose] [--language language] [--user username] ModuleName
 
-
 where ``ModuleName`` must be unique across all SDK modules registered in KBase. For example:
 
 
 .. code-block:: bash
 
-    $ kb-sdk init --language python --user <your_kbase_user_name> HelloWorld
+    $ kb-sdk init --language python --user <your_kbase_user_name> <uid>HelloWorld
 
 
-This creates a directory called ``HelloWord`` in your current directory. The directory has all of 
+This creates a directory called ``<uid>HelloWord`` in your current directory where <uid> is your name/id that will make your copy of HelloWorld unique. The directory has all of 
 the components needed to start creating apps and is basically a clean slate.  
 
 
@@ -46,6 +46,12 @@ The ``kb-sdk init`` options are:
                      Currently, we support Perl, Python, and Java. Default is
                      Python
 
+.. warning:: Modules Cannot be Renamed (yet)
+
+	The *rename* feature of kb-sdk only does a partial rename. If you find you need to *rename*, it is easier
+	to start over with the 'kb-sdk init' with the new name. The ability to rename is on a list of planned 
+	KBase improvements.  
+
 Build the Module
 ---------------------
 
@@ -61,7 +67,7 @@ Module Highlights
 
 This module template has the following that you will customize in later steps:
 
-#. A directory called ``module_name`` (see `Anatomy of an App <../references/module_anatomy.html>`_ for more on the directory sturcture)
+#. A directory called ``module_name`` (see |anatomy_link| for more on the directory sturcture)
 #. A description of the module, its version, and the authors in ``kbase.yml``
 #. A specification file that defines the inputs, output, and functions for the module ``module_name.spec``
 #. A script with code for running all the apps in the module called ``module_nameImpl.py``
@@ -84,8 +90,8 @@ You will need to publish your code to a public git repository to make it availab
 
 Now, create a new GitHub repository on github.com (it can be in your personal GitHub account or in an organization, but it must be public). Make sure your github repository is initially empty (don't add an initial README.md).
 
-* Direct link to create a repo on github https://github.com/new
-* Github documentation about creating repos: https://help.github.com/articles/creating-a-new-repository
+* Direct link to create a repo on github.  |github_link|.
+* Github documentation about creating repos: |github_help_link|.
 
 Sync your local codebase to your repository on github:
 
@@ -108,7 +114,7 @@ The KBase file storage services require authenticated access. During development
 and used instead of putting user IDs and passwords in clear text in your module. 
 Tokens are good for 90 days and can be used on all modules developed and tested during the 90 days.
 
-Go to https://narrative.kbase.us/#auth2/account, click **Developer Tokens**, and generate a new token. The
+Go to |authacct_link|, click **Developer Tokens**, and generate a new token. The
 token is only visible on the screen for 5 minutes so make sure you are ready to do the step below.
 
 From the module's root directory, copy and paste that token into ``test_local/test.cfg`` in the value 
@@ -116,8 +122,32 @@ for ``test_token``. For example:
 
 .. code::
 
-    test_user=
-    test_password=
     test_token=JQGGVCPKCAB2XYHRHZV4H3NF4TN3YEUSA
 
 Where you substitute your own test_token. This one is unauthorized.
+
+.. External links
+
+.. |github_link| raw:: html
+
+   <a href="https://github.com/new" target="_blank">https://github.com/new</a>
+
+.. |github_help_link| raw:: html
+
+   <a href="https://help.github.com/articles/creating-a-new-repository" target="_blank">https://help.github.com/articles/creating-a-new-repository</a>
+
+
+.. |authacct_link| raw:: html
+
+   <a href="https://narrative.kbase.us/#auth2/account" target="_blank">https://narrative.kbase.us/#auth2/account</a>
+
+.. Internal links
+
+.. |terminology_link| raw:: html
+
+   <a href="../references/terminology.html">terminology</a>
+
+.. |anatomy_link| raw:: html
+
+   <a href="../references/module_anatomy.html">Anatomy of a Module </a>
+

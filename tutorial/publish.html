@@ -123,7 +123,7 @@
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of an App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
@@ -197,36 +197,36 @@
             
   <div class="section" id="publish-and-update">
 <h1>8. Publish and Update<a class="headerlink" href="#publish-and-update" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference external" href="https://appdev.kbase.us">Appdev</a> is a separate KBase narrative server that is useful for app developers like yourself to publish in-progress versions of their apps and test and share them using real data.</p>
+<p><a href="https://appdev.kbase.us" target="_blank">Appdev (https://appdev.kbase.us)</a> is a separate KBase narrative server that is useful for app developers like yourself to publish in-progress versions of their apps and test and share them using real data.</p>
 <div class="section" id="publish-all-git-commits">
 <h2>8.1. Publish all git commits<a class="headerlink" href="#publish-all-git-commits" title="Permalink to this headline">¶</a></h2>
 <p>Make sure you have run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> on all the changes in your app’s codebase, then <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> to your public github URL</p>
 </div>
 <div class="section" id="register-with-kbase">
 <h2>8.2. Register with KBase<a class="headerlink" href="#register-with-kbase" title="Permalink to this headline">¶</a></h2>
-<p>Go to <a class="reference external" href="https://appdev.kbase.us/#appcatalog/register">https://appdev.kbase.us/#appcatalog/register</a>.  Enter your public git repo URL:</p>
+<p>Go to <a href="https://appdev.kbase.us/#appcatalog/register" target="_blank">https://appdev.kbase.us/#appcatalog/register</a>.  Enter your public git repo URL:</p>
 <div class="align-center figure" id="id1">
 <img alt="../_images/register.png" src="../_images/register.png" />
 <p class="caption"><span class="caption-text">Register your module.</span></p>
 </div>
 <p>and click on <code class="docutils literal notranslate"><span class="pre">Register</span></code>. Wait for the registration to complete (it may take awhile on the first registration as it has to build the Docker image that is specific to your moddule from scratch).</p>
-<p>Note that you must be an approved developer to register a new module. You can apply for a KBase developer account by going to <a class="reference external" href="https://accounts.kbase.us/index.php?tpl=request_identity.tpl">https://accounts.kbase.us/index.php?tpl=request_identity.tpl</a>. If you are a US citizen, your account can be created within a few days. For foreign nationals, it may take several weeks (and, in a few cases, you may not be able to get a developer account). Non-US citizens will be asked for additional information in order to process their application.Once your account is approved, contact us with your username and ask to be added to the developer list.</p>
-<p>Once your app has been registered, it will be available in the AppDev environment in KBase. Go to <a class="reference external" href="https://appdev.kbase.us">https://appdev.kbase.us</a> and start a new Narrative. Click on the ‘R’ in the Apps Panel  until it switches to ‘D’ (“develop”) to show apps that are still in development.  Find your new app by searching for your module, and run it!</p>
+<p>Note that you must be an approved developer to register a new module. You can apply for a KBase developer account by going to <a href=" https://accounts.kbase.us/index.php?tpl=request_identity.tpl" target="_blank">https://accounts.kbase.us/index.php?tpl=request_identity.tpl</a>. If you are a US citizen, your account can be created within a few days. For foreign nationals, it may take several weeks (and, in a few cases, you may not be able to get a developer account). Non-US citizens will be asked for additional information in order to process their application.Once your account is approved, contact us with your username and ask to be added to the developer list.</p>
+<p>Once your app has been registered, it will be available in the AppDev environment in KBase. Go <a href="https://appdev.kbase.us" target="_blank">Appdev (https://appdev.kbase.us)</a> and start a new Narrative. Click on the ‘R’ in the Apps Panel  until it switches to ‘D’ (“develop”) to show apps that are still in development.  Find your new app by searching for your module, and run it!</p>
 <p>Your app will now also be visible in the App Catalog when displaying Apps in development:</p>
 <ul class="simple">
-<li>Appdev: <a class="reference external" href="https://appdev.kbase.us/#appcatalog/browse/dev">https://appdev.kbase.us/#appcatalog/browse/dev</a></li>
-<li>Production: <a class="reference external" href="https://narrative.kbase.us/#appcatalog/browse/dev">https://narrative.kbase.us/#appcatalog/browse/dev</a></li>
+<li>Appdev: <a href="https://appdev.kbase.us/#appcatalog/browse/dev" target="_blank">https://appdev.kbase.us/#appcatalog/browse/dev</a></li>
+<li>Production: <a href="https://narrative.kbase.us/#appcatalog/browse/dev" target="_blank">https://narrative.kbase.us/#appcatalog/browse/dev</a></li>
 </ul>
 </div>
 <div class="section" id="updating">
 <h2>8.3. Updating<a class="headerlink" href="#updating" title="Permalink to this headline">¶</a></h2>
-<p>From your module page (<a class="reference external" href="https://narrative.kbase.us/#appcatalog/module/MODULE_NAME">https://narrative.kbase.us/#appcatalog/module/MODULE_NAME</a>) you’ll be able to register any update and manage release of your module to the production KBase environment for anyone to use.</p>
+<p>From your module page ( <a href="https://narrative.kbase.us/#appcatalog/module/MODULE_NAME" target="_blank">https://narrative.kbase.us/#appcatalog/module/MODULE_NAME</a> ) you’ll be able to register any update and manage release of your module to the production KBase environment for anyone to use.</p>
 <p>To update an app, open <cite>Module Admin Tools</cite> and then click the <strong>REGISTER</strong> button. You can specify a particular commit hash your repository (useful if you want to test a feature branch prior to merging into master) or leave this field blank to build from the latest commit on the master branch.</p>
 <p>As you make changes to your Module, <strong>you will need to re-commit those changes to the git repo, and then re-register</strong>. The KBase SDK Catalog service will automatically pull the most recent version. If for some reason you wish to revert to an older version, you can add the hash key of that older commit, which you can find by viewing the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code>.</p>
 <p>The ver (version) in the <code class="docutils literal notranslate"><span class="pre">spec.json</span></code> file becomes important once an app has been released to prod. The version needs to be updated for each subsequent release. The list of authors may need to be updated as well if additional people contribute to revisions.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
-<p class="last">Please bear in mind that for public release, your module must meet all the requirements laid out in the <a class="reference external" href="../references/dev_guidelines.html">KBase SDK Policies</a>. We reserve the right to delay public release of SDK Modules until all requirements are met. Please take the time to familiarize yourself with these policies to avoid delay in releasing your Module.</p>
+<p class="last">Please bear in mind that for public release, your module must meet all the requirements laid out in the  <a href="../references/dev_guidelines.html">KBase SDK Policies</a>. We reserve the right to delay public release of SDK Modules until all requirements are met. Please take the time to familiarize yourself with these policies to avoid delay in releasing your Module.</p>
 </div>
 </div>
 </div>

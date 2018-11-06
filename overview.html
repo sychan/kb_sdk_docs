@@ -123,7 +123,7 @@
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="references/module_anatomy.html">Anatomy of an App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references/module_anatomy.html">Anatomy of a Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references/troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references/dev_guidelines.html">Developer Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references/KIDL_spec.html">KIDL Specification</a></li>
@@ -202,7 +202,7 @@
 <h2>The Basics<a class="headerlink" href="#the-basics" title="Permalink to this headline">¶</a></h2>
 <img alt="_images/micro1.png" class="align-right" src="_images/micro1.png" />
 <p>Apps on KBase, such as genome assemblers and annotators that run on narrative pages, are created using the KBase SDK.</p>
-<p>When you run an app in a narrative, it runs in a docker container on KBase’s servers. Learn more about docker containers here: <a class="reference external" href="https://www.docker.com/what-container">https://www.docker.com/what-container</a>. Docker containers allow you to package and compile programs and dependencies, such as <a class="reference external" href="https://github.com/voutcn/megahit">MEGAHIT</a>, and run them anywhere.</p>
+<p>When you run an app in a narrative, it runs in a docker container on KBase’s servers. Learn more about docker containers here: <a href="https://www.docker.com/what-container" target="_blank">https://www.docker.com/what-container</a>. Docker containers allow you to package and compile programs and dependencies, such as <a href="https://github.com/voutcn/megahit" target="_blank">MEGAHIT </a>, and run them anywhere.</p>
 <p>As an SDK developer, you define your input parameter types, the packages and programs to run, and the output types, text, and HTML to show the user when the app finishes. To help facilitate development, a <code class="docutils literal notranslate"><span class="pre">kb-sdk</span></code> command-line utility is provided.</p>
 </div>
 <div class="section" id="the-workflow">
@@ -221,7 +221,7 @@
 </div>
 <div class="section" id="output-and-reporting">
 <h3>Output and Reporting<a class="headerlink" href="#output-and-reporting" title="Permalink to this headline">¶</a></h3>
-<p>When an app finishes producing data, it will typically form a <a class="reference external" href="https://github.com/kbaseapps/KBaseReport">KBaseReport</a> object that can contain a number of different things:</p>
+<p>When an app finishes producing data, it will typically form a <a href="https://github.com/kbaseapps/KBaseReport" target="_blank">KBaseReport </a> object that can contain a number of different things:</p>
 <ul class="simple">
 <li>A formatted HTML page showing results</li>
 <li>Links to files, such as PDFs, CSVs, etc. that your app produced</li>
@@ -241,12 +241,12 @@
 </div>
 <div class="section" id="composing-apps">
 <h2>Composing apps<a class="headerlink" href="#composing-apps" title="Permalink to this headline">¶</a></h2>
-<p>Your app can install and use other KBase apps as dependencies, such as <a class="reference external" href="https://github.com/kbaseapps/KBParallel">KBParallel</a>. Find these apps in github at <a class="reference external" href="https://github.com/kbaseapps">https://github.com/kbaseapps</a> or in the <a class="reference external" href="https://narrative.kbase.us/#catalog/apps">KBase app catalog</a>.</p>
+<p>Your app can install and use other KBase apps as dependencies, such as <a href="https://github.com/kbaseapps/KBParallel" target="_blank">KBParallel</a>. Find these apps in github at <a href="https://github.com/kbaseapps" target="_blank">https://github.com/kbaseapps</a>  or in the <a href="https://narrative.kbase.us/#catalog/apps" target="_blank">KBase app catalog</a>.</p>
 <p>When you install and run another app within yours, the other app runs in its own, separate docker container. SDK apps are also installed and tracked separately from any python dependencies that you install via <cite>pip</cite> or other package managers.</p>
 </div>
 <div class="section" id="kbase-types-and-parameters">
 <h2>KBase Types and Parameters<a class="headerlink" href="#kbase-types-and-parameters" title="Permalink to this headline">¶</a></h2>
-<p>All of the data on KBase is strongly typed using an interface definition language called <a class="reference external" href="references/KIDL_spec.html">KIDL</a>. This allows KBase to better cross-reference data, make inferences, and check app-to-data compatibility.</p>
+<p>All of the data on KBase is strongly typed using an interface definition language called <a href="references/KIDL_spec.html" target="_blank">KIDL </a>. This allows KBase to better cross-reference data, make inferences, and check app-to-data compatibility.</p>
 <p>Configuration files in your app are used to define what parameters your app can accept and what kind of output it can return.</p>
 </div>
 <div class="section" id="working-with-files-and-data">
@@ -258,11 +258,11 @@
 </div>
 <div class="section" id="the-workspace">
 <h3>The Workspace<a class="headerlink" href="#the-workspace" title="Permalink to this headline">¶</a></h3>
-<p>The “Workspace” is the term used for the file storage servers used by KBase. For Python SDK apps, you can use apps such as <a class="reference external" href="https://github.com/kbaseapps/DataFileUtil">DataFileUtil</a>, <a class="reference external" href="https://github.com/kbaseapps/AssemblyUtil">AssemblyUtil</a>, and <a class="reference external" href="https://github.com/kbaseapps/GenomeFileUtil">GenomeFileUtil</a> to download and upload files to the workspace.</p>
+<p>The “Workspace” is the term used for the file storage servers used by KBase. For Python SDK apps, you can use apps such as <a href="https://github.com/kbaseapps/DataFileUtil" target="_blank">DataFileUtil</a>, <a href="https://github.com/kbaseapps/AssemblyUtil" target="_blank">AssemblyUtil</a>, and <a href="https://github.com/kbaseapps/GenomeFileUtil" target="_blank">GenomeFileUtil</a> to download and upload files to the workspace.</p>
 <p>In general, you always want to use the workspace for any datasets you work with if you want them to be available to your users in the narrative.</p>
 <p>A dataset stored in the workspace is referred to as an <em>object</em>. Objects in the workspace have some special properties:</p>
 <ul class="simple">
-<li>Every object conforms to a <a class="reference external" href="references/KIDL_spec.html">type specification</a>.</li>
+<li>Every object conforms to a <a href="references/KIDL_spec.html" target="_blank">type specification</a>.</li>
 <li>Objects are versioned</li>
 <li>The “reference” for an object has the format <code class="docutils literal notranslate"><span class="pre">workspace_id/object_id/version</span></code>.</li>
 <li>Workspaces are authenticated</li>
@@ -281,7 +281,7 @@
 </div>
 <div class="section" id="publishing">
 <h2>Publishing<a class="headerlink" href="#publishing" title="Permalink to this headline">¶</a></h2>
-<p>You can register a new app from this page: <a class="reference external" href="https://appdev.kbase.us/#appcatalog/register">https://appdev.kbase.us/#appcatalog/register</a></p>
+<p>You can register a new app from this page: <a href="https://appdev.kbase.us/#appcatalog/register" target="_blank">https://appdev.kbase.us/#appcatalog/register</a></p>
 <p>Once you do so, it will be available in the <code class="docutils literal notranslate"><span class="pre">dev</span></code> catalog. This catalog is meant as experimentation grounds for new apps. When you’re searching for apps, you need to be sure to filter by the development catalog to view your <code class="docutils literal notranslate"><span class="pre">dev</span></code> app.</p>
 </div>
 </div>

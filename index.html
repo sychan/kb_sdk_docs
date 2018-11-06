@@ -122,7 +122,7 @@
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="references/module_anatomy.html">Anatomy of an App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references/module_anatomy.html">Anatomy of a Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references/troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references/dev_guidelines.html">Developer Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references/KIDL_spec.html">KIDL Specification</a></li>
@@ -197,7 +197,7 @@
   <div class="section" id="kbase-sdk-documentation">
 <h1>KBase SDK Documentation<a class="headerlink" href="#kbase-sdk-documentation" title="Permalink to this headline">¶</a></h1>
 <a class="reference internal image-reference" href="_images/micro3.png"><img alt="_images/micro3.png" class="align-right" src="_images/micro3.png" style="width: 137.6px; height: 137.6px;" /></a>
-<p>The KBase SDK is a set of tools for developing KBase Apps that can be dynamically registered and run on the <a class="reference external" href="http://kbase.us/">KBase platform</a>. Apps are grouped into modules that include all code, dependencies, specification files, and documentation needed to register and run in the KBase Narrative interface. By using Docker combined with the KBase App Catalog, you can build and run a new “Hello World!” App in KBase in minutes.</p>
+<p>The KBase SDK is a set of tools for developing KBase Apps that can be dynamically registered and run on the <a href="https://kbase.us" target="_blank">KBase Platform</a>. Apps are grouped into modules that include all code, dependencies, specification files, and documentation needed to register and run in the KBase Narrative interface. By using Docker combined with the KBase App Catalog, you can build and run a new “Hello World!” App in KBase in minutes.</p>
 <p>Most often, KBase SDK apps are wrappers around existing bioinformatics tools. Some reasons to consider wrapping your own tool:</p>
 <ul class="simple">
 <li>Make your app available to a wider user community</li>
@@ -206,7 +206,7 @@
 <li>Gain more credit and citations from a growing user community</li>
 <li>Reference stats and examples of how people use your tools</li>
 </ul>
-<p>To develop apps, start by obtaining a free KBase user account and applying for a KBase developer account by going to <a class="reference external" href="https://accounts.kbase.us/index.php?tpl=request_identity.tpl">https://accounts.kbase.us/index.php?tpl=request_identity.tpl</a>. If you are a US citizen, your account should be created within a few days. For foreign nationals, it may take several weeks (and, in a few cases, you may not be able to get a developer account). Non-US citizens will be asked for additional information in order to process their application. Once your account is approved, contact us with your username and ask to be added to the developer list.</p>
+<p>To develop apps, start by obtaining a free KBase user account and applying for a KBase developer account by going to <a href=" https://accounts.kbase.us/index.php?tpl=request_identity.tpl" target="_blank"> https://accounts.kbase.us/index.php?tpl=request_identity.tpl</a>. If you are a US citizen, your account should be created within a few days. For foreign nationals, it may take several weeks (and, in a few cases, you may not be able to get a developer account). Non-US citizens will be asked for additional information in order to process their application. Once your account is approved, contact us with your username and ask to be added to the developer list.</p>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Intro</span></p>
 <ul>
@@ -243,17 +243,39 @@
 <div class="toctree-wrapper compound" id="advanced-guides">
 <p class="caption"><span class="caption-text">Advanced Guides</span><a class="headerlink" href="#advanced-guides" title="Permalink to this toctree">¶</a></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="howtos/workspace.html">Using Workspace Metadata</a></li>
-<li class="toctree-l1"><a class="reference internal" href="howtos/manual_build.html">Manually building the SDK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="howtos/work_with_reference_data.html">Working with reference data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtos/workspace.html">Using Workspace Metadata</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="howtos/workspace.html#retrieving-workspace-object-metadata">Retrieving workspace object metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howtos/workspace.html#how-to-use-the-workspace-client-in-the-narrative">How to use the Workspace Client in the narrative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howtos/workspace.html#how-to-add-types-to-the-workspace">How to add types to the workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howtos/workspace.html#how-to-get-a-given-typespec-spec-file">How to get a given typespec / .spec file?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="howtos/manual_build.html">Manually building the SDK</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="howtos/manual_build.html#java-jdk-7">Java JDK 7+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howtos/manual_build.html#apache-ant">Apache Ant</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="howtos/work_with_reference_data.html">Working with reference data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="howtos/work_with_reference_data.html#adding-reference-data-to-a-kbase-app">Adding Reference Data to a KBase App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howtos/work_with_reference_data.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howtos/work_with_reference_data.html#updating-reference-data">Updating Reference Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howtos/work_with_reference_data.html#gotchas">Gotchas</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="howtos/job_manager.html">Listing and viewing jobs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="howtos/dynamic_services.html">Dynamic Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtos/dynamic_services.html">Dynamic Services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="howtos/dynamic_services.html#dynamic-services-vs-sdk-methods-e-g-apps">Dynamic services vs. SDK Methods (e.g. apps)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howtos/dynamic_services.html#creating-a-dynamic-service">Creating a dynamic service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howtos/dynamic_services.html#start-and-stop-a-dynamic-service-locally">Start and stop a dynamic service locally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howtos/dynamic_services.html#manage-dynamic-services-in-a-kbase-environment">Manage dynamic services in a KBase environment</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="toctree-wrapper compound" id="references">
 <p class="caption"><span class="caption-text">References &amp; Resources</span><a class="headerlink" href="#references" title="Permalink to this toctree">¶</a></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="references/module_anatomy.html">Anatomy of an App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references/module_anatomy.html">Anatomy of a Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references/troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references/dev_guidelines.html">Developer Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references/KIDL_spec.html">KIDL Specification</a></li>

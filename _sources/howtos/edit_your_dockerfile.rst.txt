@@ -5,9 +5,7 @@ To set up custom programs for your app, such as third-party tools, you
 can edit your Dockerfile, which contains the setup code needed to build
 up your container.
 
-A helpful resource is the `Dockerfile Best
-Practices <https://docs.docker.com/develop/develop-images/dockerfile_best-practices>`__
-guide.
+A helpful resource is the |bestPractices_link| guide.
 
 The base KBase Docker image contains a KBase Ubuntu image with the
 dependencies necessary JSON-RPC server in the supported language, as
@@ -74,3 +72,9 @@ cache. If you are pulling in external data using ``RUN`` and a command
 like ``git clone`` or ``wget``, then changes in those sources will not
 automatically be reflected in a rebuilt Docker image unless the Docker
 file changes at or before that import.
+
+.. External links
+.. |bestPractices_link| raw:: html
+
+   <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices" target="_blank">Dockerfile Best Practices </a>
+

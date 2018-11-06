@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Anatomy of an App" href="../references/module_anatomy.html" />
+    <link rel="next" title="Anatomy of a Module" href="../references/module_anatomy.html" />
     <link rel="prev" title="Listing and viewing jobs" href="job_manager.html" /> 
 
   
@@ -123,7 +123,7 @@
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of an App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
@@ -215,7 +215,7 @@ dynamic service, add the following to the kbase.yml file:</p>
     <span class="l l-Scalar l-Scalar-Plain">dynamic-service</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 </pre></div>
 </div>
-<p>You can then register your module as usual and start and stop it in a production environment using the <a class="reference external" href="https://appdev.kbase.us/#catalog/services">catalog interface</a> as described below in the <a class="reference internal" href="#in-kbase"><span class="std std-ref">Manage dynamic services in a KBase environment section</span></a>.
+<p>You can then register your module as usual and start and stop it in a production environment using the <a href="https://appdev.kbase.us/#catalog/services" target="_blank">catalog interface</a> as described below in the <a class="reference internal" href="#in-kbase"><span class="std std-ref">Manage dynamic services in a KBase environment section</span></a>.
 Other services should be installed with a dynamic service flag like this <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">install</span> <span class="pre">-d</span> <span class="pre">&lt;service&gt;</span></code>.
 Calls to other services should be initialized with the Service Wizard URL rather than the SDK Callback URL. The Service Wizard tracks the services that are deployed in the catalog and routes the request to the most up-to-date released service by default. Additionally, authentication token will need to be passed to the called service. This also means the called services should be initialized within each function that uses then rather than once as a class property. With  SDK apps where all of the processing takes place in a common location authentication is handled automatically. With a dynamic service however, the code is not initialized for a particular user and permissions need to be managed explicitly</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># In the class init</span>
@@ -286,7 +286,7 @@ c8ea1197f925
 </div>
 <div class="section" id="manage-dynamic-services-in-a-kbase-environment">
 <span id="in-kbase"></span><h2>Manage dynamic services in a KBase environment<a class="headerlink" href="#manage-dynamic-services-in-a-kbase-environment" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference external" href="https://appdev.kbase.us/#catalog/services">catalog interface</a> provides tools to launch, inspect and stop dynamic services in each environment. The top of this page is a list of currently running services. There may be multiple instances of a service running that are based on different git hashes. As described above, the Service Wizard will route requests to the most current version of a released service (falling back to Beta or Dev if the service is not yet released). If this latest version is not running when a request is received, the service wizard will launch a new instance. This behavior improves resilience because if a container crashes, it will be restarted by the next service request. However, it also means that there is no rapid way to revert to an earlier version of the service if a problem is discovered with the service.</p>
+<p>The <a href="https://appdev.kbase.us/#catalog/services" target="_blank">catalog interface</a> provides tools to launch, inspect and stop dynamic services in each environment. The top of this page is a list of currently running services. There may be multiple instances of a service running that are based on different git hashes. As described above, the Service Wizard will route requests to the most current version of a released service (falling back to Beta or Dev if the service is not yet released). If this latest version is not running when a request is received, the service wizard will launch a new instance. This behavior improves resilience because if a container crashes, it will be restarted by the next service request. However, it also means that there is no rapid way to revert to an earlier version of the service if a problem is discovered with the service.</p>
 <img alt="Service Catalog" src="../_images/service-catalog.png" />
 <p>Logs of STDOUT and STDERR for services are also viable to catalog administrators and may prove useful for debugging. Finally, catalog admins may also stop running services. There is not default timeout for dynamic services so developers should periodically cull old versions of their services that are still running as they release new versions. Below the active services are lists of Released, Beta and Dev services that developers may launch but the Service Wizard generally renders this unnecessary.</p>
 </div>
@@ -300,7 +300,7 @@ c8ea1197f925
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../references/module_anatomy.html" class="btn btn-neutral float-right" title="Anatomy of an App" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../references/module_anatomy.html" class="btn btn-neutral float-right" title="Anatomy of a Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="job_manager.html" class="btn btn-neutral" title="Listing and viewing jobs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

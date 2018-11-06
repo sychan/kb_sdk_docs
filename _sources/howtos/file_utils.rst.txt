@@ -8,7 +8,7 @@ scratch, so keep your files in scratch and upload them from there.
 Where are the utils?
 ~~~~~~~~~~~~~~~~~~~~
 
-Search for "Util" in `the catalog`_.
+Search for "Util" in |CIcatalog_link|.
 
 DataFileUtil, GenomeFileUtil, and AssemblyUtil are very commonly used.
 Read the examples below for a quick idea on how to use them.
@@ -22,7 +22,7 @@ Read the examples below for a quick idea on how to use them.
 DataFileUtil
 ------------
 
-`DataFileUtil <https://github.com/kbaseapps/DataFileUtil>`__ is the
+|DataFileUtil_link| is the
 preferred general utility to fetch and save objects. Use GenomeFileUtil
 or AssemblyUtil if you are specifically working with FASTA or GFF files.
 
@@ -78,10 +78,10 @@ or AssemblyUtil if you are specifically working with FASTA or GFF files.
 
 Examples
 ^^^^^^^^
-- https://github.com/kbaseapps/ProkkaAnnotation/blob/master/lib/ProkkaAnnotation/Util/ProkkaUtils.py
-- https://github.com/kbaseapps/kb_stringtie/blob/master/lib/kb_stringtie/Utils/StringTieUtil.py
-- https://github.com/kbaseapps/kb_trimmomatic/blob/master/lib/kb_trimmomatic/kb_trimmomaticImpl.py
-- https://github.com/kbaseapps/kb_MaSuRCA/blob/master/lib/MaSuRCA/core/masurca_assembler.py
+- |ProkkaUtils_link| 
+- |StringTieUtil_link| 
+- |kb_trimmomaticImpl_link| 
+- |masurca_assembler_link| 
 
 GenomeFileUtil
 --------------
@@ -107,8 +107,8 @@ GenomeFileUtil
 Example
 ^^^^^^^^
 
-- https://github.com/kbaseapps/kb_MaSuRCA/blob/master/lib/MaSuRCA/core/masurca_assembler.py
-- https://github.com/kbaseapps/ProkkaAnnotation/blob/master/lib/ProkkaAnnotation/Util/ProkkaUtils.py
+- |masurca_assembler_link| 
+- |ProkkaUtils_link| 
 
 AssemblyUtil
 ------------
@@ -137,9 +137,9 @@ AssemblyUtil
 Example
 ^^^^^^^^
 
-- https://github.com/kbaseapps/kb_SPAdes/blob/master/lib/kb_SPAdes/kb_SPAdesImpl.py
-- https://github.com/kbaseapps/ARAST_SDK/blob/master/lib/AssemblyRAST/AssemblyRASTImpl.py
-- https://github.com/kbaseapps/kb_Velvet/blob/master/lib/Velvet/VelvetImpl.py
+- |kb_SPAdesImpl_link| 
+- |AssemblyRASTImpl_link| 
+- |VelvetImpl_link| 
 
 ReadsUtils
 ----------
@@ -147,10 +147,10 @@ ReadsUtils
 Example
 ^^^^^^^
 
-- https://github.com/kbaseapps/kb_trimmomatic/blob/master/lib/kb_trimmomatic/kb_trimmomaticImpl.py
-- https://github.com/kbaseapps/kb_SPAdes/blob/master/lib/kb_SPAdes/kb_SPAdesImpl.py  
-- https://github.com/kbaseapps/kb_Velvet/blob/master/lib/Velvet/VelvetImpl.py
-- https://github.com/kbaseapps/kb_MaSuRCA/blob/master/lib/MaSuRCA/core/masurca_assembler.py
+- |VelvetImpl_link| 
+- |kb_SPAdesImpl_link| 
+- |VelvetImpl_link| 
+- |masurca_assembler_link| 
 
 GenomeSearchUtil
 -----------------
@@ -158,10 +158,50 @@ GenomeSearchUtil
 Example
 ^^^^^^^
 
-- https://github.com/kbaseapps/DifferentialExpressionUtils/blob/master/lib/DifferentialExpressionUtils/core/diffExprMatrix_utils.py
-
+- |diffExpr_link| 
 
 
 
 .. External links
-.. _the catalog: https://ci.kbase.us/#catalog/modules
+
+.. |CIcatalog_link| raw:: html
+
+   <a href="https://ci.kbase.us/#catalog/modules" target="_blank">the catalog</a>
+
+.. |DataFileUtil_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/DataFileUtil" target="_blank">DataFileUtil </a>
+
+.. |ProkkaUtils_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/ProkkaAnnotation/blob/master/lib/ProkkaAnnotation/Util/ProkkaUtils.py" target="_blank">ProkkaUtils </a>
+
+.. |StringTieUtil_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/kb_stringtie/blob/master/lib/kb_stringtie/Utils/StringTieUtil.py" target="_blank">StringTieUtil </a>
+
+.. |kb_trimmomaticImpl_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/kb_trimmomatic/blob/master/lib/kb_trimmomatic/kb_trimmomaticImpl.py" target="_blank">kb_trimmomaticImpl </a>
+
+.. |masurca_assembler_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/kb_MaSuRCA/blob/master/lib/MaSuRCA/core/masurca_assembler.py" target="_blank">masurca_assembler </a>
+
+.. |kb_SPAdesImpl_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/kb_SPAdes/blob/master/lib/kb_SPAdes/kb_SPAdesImpl.py" target="_blank">kb_SPAdesImpl </a>
+
+.. |AssemblyRASTImpl_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/ARAST_SDK/blob/master/lib/AssemblyRAST/AssemblyRASTImpl.py" target="_blank">AssemblyRASTImpl </a>
+
+.. |VelvetImpl_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/kb_Velvet/blob/master/lib/Velvet/VelvetImpl.py" target="_blank">VelvetImpl </a>
+
+.. |diffExpr_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/DifferentialExpressionUtils/blob/master/lib/DifferentialExpressionUtils/core/diffExprMatrix_utils.py" target="_blank">diffExprMatrix_utils</a>
+
+

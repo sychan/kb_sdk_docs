@@ -3,14 +3,13 @@ Manually building the SDK
 
 .. warning::
 
-    The recommended installation option is to run the `SDK as a
-    Docker container. <../tutorial/install.html>`_
+    The recommended installation option is to run the |container_link|. 
 
 
 Java JDK 7+
 '''''''''''
 
-http://www.oracle.com/technetwork/java/javase/downloads/index.html
+|oracle_link| 
 
 After downloading and installing the JDK, set your ``JAVA_HOME``
 environment variable to point to your JDK installation. If you're not
@@ -34,12 +33,12 @@ a terminal.
 Apache Ant
 ''''''''''
 
-http://ant.apache.org
+|ant_link| 
 
-http://ant.apache.org/manual/install.html
+|antapache_link| 
 
 The easist way to install Ant on a Mac is probably to use a package
-manager like `HomeBrew <http://brew.sh/>`__, which allows you to install
+manager like |brew_link| , which allows you to install
 simply by ``brew install ant``. Make sure the Ant install location is
 added to your PATH environment variable, which is generally handled for
 you if you use a package manager like HomeBrew.
@@ -96,8 +95,37 @@ that does most of the work for you:
     make sdkbase
 
 You will get a failure if the Docker daemon is not running when you
-invoke the above command. See `Install SDK Dependencies -
-Docker <../tutorial/dependencies.html>`_ for guidance.
+invoke the above command. See |dependencies_link| for guidance.
 
 The image is fairly large, so it will take some time to run and build
-the image.
+the image... External links
+
+.. External links
+
+.. |oracle_link| raw:: html
+
+   <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a>
+
+.. |ant_link| raw:: html
+
+   <a href="http://ant.apache.org" target="_blank">http://ant.apache.org</a>
+
+.. |antapache_link| raw:: html
+
+   <a href="http://ant.apache.org/manual/install.html" target="_blank">http://ant.apache.org/manual/install.html</a>
+
+.. |brew_link| raw:: html
+
+   <a href="http://brew.sh/" target="_blank">HomeBrew </a>
+
+.. Internal links
+
+.. |dependencies_link| raw:: html
+
+   <a href="../tutorial/dependencies.html">Install SDK Dependencies -Docker </a>
+
+.. |container_link| raw:: html
+
+   <a href="../tutorial/install.html">SDK as a Docker container.</a>
+
+

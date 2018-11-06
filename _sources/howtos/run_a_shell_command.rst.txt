@@ -6,8 +6,7 @@ Download and compile using your Dockerfile
 
 Many KBase apps wrap third-party tools with commandline interfaces. You
 can compile these programs for your app by entering the build commands
-in your Dockerfile. For example,
-`FastANI <https://github.com/kbaseapps/FastANI>`__ compiles and installs
+in your Dockerfile. For example, |FastANI_link| compiles and installs
 with this series of commands:
 
 .. code-block:: bash
@@ -33,15 +32,14 @@ Some things to note:
    it will automatically get added to your container's ``$PATH``
 
 .. note::
-    Also see: `How to edit your app's Dockerfile <../howtos/edit_your_dockerfile.html>`__
+    Also see: |editApp_link| 
 
 Invoking the command in Python
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can use the `subprocess <https://docs.python.org/2/library/subprocess.html>`_ package to invoke commands from within python.
+You can use the  |subprocess_link| package to invoke commands from within python.
 
-The following example from the
-`kb\_quast <https://github.com/kbaseapps/kb_quast>`__ repository
+The following example from the |kb_quast_link| repository
 demonstrates how to do (and document) this well with Python.
 
 .. code:: python
@@ -73,3 +71,25 @@ demonstrates how to do (and document) this well with Python.
             err = ('QUAST skipped some files - {} expected, {} processed.'
                    .format(files_exp, files_proc))
             self.log(err)
+
+.. External links
+
+.. |FastANI_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/FastANI" target="_blank">FastANI  </a>
+
+.. |subprocess_link| raw:: html
+
+   <a href="https://docs.python.org/2/library/subprocess.html" target="_blank">subprocess  </a>
+
+.. |kb_quast_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/kb_quast" target="_blank">kb_quast </a>
+
+.. Internal links
+
+.. |editApp_link| raw:: html
+
+   <a href="../howtos/edit_your_dockerfile.html">How to edit your app’s Dockerfile  </a>
+
+

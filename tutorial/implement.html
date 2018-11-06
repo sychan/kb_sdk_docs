@@ -123,7 +123,7 @@
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of an App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
@@ -294,8 +294,10 @@ code. It goes through the process of building up the code section, step-by-step.
 <p>We need to provide three parameters to our function: a workspace name, an assembly reference string, and a min length integer. For the reference string, we can use this sample reference to a Shewanella Oneidensis assembly on AppDev: <code class="docutils literal notranslate"><span class="pre">79/16/1</span></code>. You can always get a workspace name from the test class by using <code class="docutils literal notranslate"><span class="pre">self.getWsName()</span></code>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Make sure that you have put your developer token in the <code class="docutils literal notranslate"><span class="pre">test_local/test.cfg</span></code> as mentioned in the
-<a class="reference external" href="../tutorials/initialize.html">Initialize the Module</a></p>
+<dl class="last docutils">
+<dt>Make sure that you have put your developer token in the <code class="docutils literal notranslate"><span class="pre">test_local/test.cfg</span></code> as mentioned in the</dt>
+<dd><a href="initialize.html">Initialize the Module</a></dd>
+</dl>
 </div>
 <p>Run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> and, if everything works, you’ll see the docker container boot up, the <code class="docutils literal notranslate"><span class="pre">filter_contigs_max</span></code> method will get called, and you will see some printed output.</p>
 </div>
@@ -305,7 +307,7 @@ code. It goes through the process of building up the code section, step-by-step.
 <p class="first admonition-title">Note</p>
 <p class="last">In this “ContigFilter” module, the steps in this section have already been done. They are included here so you can see why they were added to the basic module template.</p>
 </div>
-<p>The callback URL points to a server that is used to spin up other SDK apps that we will need to use in our own app. In our case, we want to use <a class="reference external" href="https://github.com/kbaseapps/AssemblyUtil">AssemblyUtil</a> to validate and download genome data. When we use that app, our app makes a request to the callback server, which spins up a separate docker container that runs AssemblyUtil.</p>
+<p>The callback URL points to a server that is used to spin up other SDK apps that we will need to use in our own app. In our case, we want to use <a href="https://github.com/kbaseapps/AssemblyUtil" target="_blank">AssemblyUtil </a> to validate and download genome data. When we use that app, our app makes a request to the callback server, which spins up a separate docker container that runs AssemblyUtil.</p>
 <p>The other parameter we need is the path to the <strong>scratch</strong> directory. Scratch is a special directory that we can use to store files used to run the app. It is a shared directory that is also accessible by other apps, such as AssemblyUtil. You cannot use directories like <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> when working with AssemblyUtil, because other apps won’t have access to it.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -326,7 +328,7 @@ code. It goes through the process of building up the code section, step-by-step.
 </pre></div>
 </div>
 <p>Also added was a <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">os</span></code> in the header of your <code class="docutils literal notranslate"><span class="pre">module_nameImpl.py</span></code> file, between the <code class="docutils literal notranslate"><span class="pre">#BEGIN_HEADER</span></code> and <code class="docutils literal notranslate"><span class="pre">#END_HEADER</span></code> comments.</p>
-<p>We need to convert the reference to bacterial genome data, passed as an input parameter, into an actual FASTA file that our app can access. For that, we can use the AssemblyUtil app: <a class="reference external" href="https://github.com/kbaseapps/AssemblyUtil">https://github.com/kbaseapps/AssemblyUtil</a>.</p>
+<p>We need to convert the reference to bacterial genome data, passed as an input parameter, into an actual FASTA file that our app can access. For that, we can use the <a href="https://github.com/kbaseapps/AssemblyUtil" target="_blank">AssemblyUtil </a> app.</p>
 <p>The app was installed from your repository’s root directory with:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kb-sdk install AssemblyUtil
 </pre></div>
@@ -418,7 +420,7 @@ We can add some additional tests to make sure we raise ValueErrors for invalid p
 <div class="section" id="filter-out-contigs-based-on-length">
 <h2>7.6. Filter out contigs based on length<a class="headerlink" href="#filter-out-contigs-based-on-length" title="Permalink to this headline">¶</a></h2>
 <p>Now we can finally start to implement the real functionality of the app!</p>
-<p>The biopython package (<a class="reference external" href="http://biopython.org/">http://biopython.org/</a>), included in the SDK build, has a module called SeqIO (<a class="reference external" href="http://biopython.org/wiki/SeqIO">http://biopython.org/wiki/SeqIO</a>) that can help us read and filter genome sequence data.</p>
+<p>The biopython package (<a href="http://biopython.org/" target="_blank">http://biopython.org/</a> ), included in the SDK build, has a module called SeqIO ( <a href="http://biopython.org/wiki/SeqIO" target="_blank">http://biopython.org/wiki/SeqIO</a> ) that can help us read and filter genome sequence data.</p>
 <p>This module should already be included in the module’s <code class="docutils literal notranslate"><span class="pre">module_nameImpl.py</span></code> between the header comments like so:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span> <span class="c1"># other imports</span>
 <span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
@@ -521,7 +523,7 @@ We can add some additional tests to make sure we raise ValueErrors for invalid p
 </div>
 <div class="section" id="build-a-report-object">
 <h2>7.9. Build a report object<a class="headerlink" href="#build-a-report-object" title="Permalink to this headline">¶</a></h2>
-<p>In order to output data into the UI inside a narrative, your app needs to build and return a KBaseReport (<a class="reference external" href="https://github.com/kbaseapps/KBaseReport">https://github.com/kbaseapps/KBaseReport</a>).</p>
+<p>In order to output data into the UI inside a narrative, your app needs to build and return a KBaseReport ( <a href="https://github.com/kbaseapps/KBaseReport" target="_blank">https://github.com/kbaseapps/KBaseReport</a> ).</p>
 <p>The following  KBaseReport app should be installed already:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kb-sdk install KBaseReport
 </pre></div>

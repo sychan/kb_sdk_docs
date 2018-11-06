@@ -123,7 +123,8 @@ We need to provide three parameters to our function: a workspace name, an assemb
 .. note::
 
     Make sure that you have put your developer token in the ``test_local/test.cfg`` as mentioned in the
-    `Initialize the Module <../tutorials/initialize.html>`_
+     |initialize_link| 
+
 
 Run ``kb-sdk test`` and, if everything works, you'll see the docker container boot up, the ``filter_contigs_max`` method will get called, and you will see some printed output.
 
@@ -133,7 +134,7 @@ Set the callback URL and scratch path
 .. note::
 	In this "ContigFilter" module, the steps in this section have already been done. They are included here so you can see why they were added to the basic module template.
 
-The callback URL points to a server that is used to spin up other SDK apps that we will need to use in our own app. In our case, we want to use `AssemblyUtil <https://github.com/kbaseapps/AssemblyUtil>`_ to validate and download genome data. When we use that app, our app makes a request to the callback server, which spins up a separate docker container that runs AssemblyUtil.
+The callback URL points to a server that is used to spin up other SDK apps that we will need to use in our own app. In our case, we want to use |Assembly_link| to validate and download genome data. When we use that app, our app makes a request to the callback server, which spins up a separate docker container that runs AssemblyUtil.
 
 The other parameter we need is the path to the **scratch** directory. Scratch is a special directory that we can use to store files used to run the app. It is a shared directory that is also accessible by other apps, such as AssemblyUtil. You cannot use directories like ``/tmp`` when working with AssemblyUtil, because other apps won't have access to it.
 
@@ -161,7 +162,7 @@ To enable callbacks and the scratch directory, this code was added into your ``_
 
 Also added was a ``import os`` in the header of your ``module_nameImpl.py`` file, between the ``#BEGIN_HEADER`` and ``#END_HEADER`` comments.
 
-We need to convert the reference to bacterial genome data, passed as an input parameter, into an actual FASTA file that our app can access. For that, we can use the AssemblyUtil app: https://github.com/kbaseapps/AssemblyUtil.
+We need to convert the reference to bacterial genome data, passed as an input parameter, into an actual FASTA file that our app can access. For that, we can use the |Assembly_link| app. 
 
 The app was installed from your repository's root directory with:
 
@@ -274,7 +275,7 @@ Filter out contigs based on length
 
 Now we can finally start to implement the real functionality of the app!
 
-The biopython package (http://biopython.org/), included in the SDK build, has a module called SeqIO (http://biopython.org/wiki/SeqIO) that can help us read and filter genome sequence data.
+The biopython package (|biopython_link| ), included in the SDK build, has a module called SeqIO ( |SeqIO_link| ) that can help us read and filter genome sequence data.
 
 This module should already be included in the module's ``module_nameImpl.py`` between the header comments like so:
 
@@ -399,7 +400,7 @@ Run ``kb-sdk test`` again to make sure you have no errors
 Build a report object
 -------------------------
 
-In order to output data into the UI inside a narrative, your app needs to build and return a KBaseReport (https://github.com/kbaseapps/KBaseReport).
+In order to output data into the UI inside a narrative, your app needs to build and return a KBaseReport ( |KBaseReport_link| ).
 
 The following  KBaseReport app should be installed already:
 
@@ -529,5 +530,30 @@ Now that you are done with the new app, remember the three tests for the old app
 - Change ``def my_test_filter_contigs_err1(self)`` to ``def test_filter_contigs_err1(self)``
 - Change ``def my_test_filter_contigs_err2(self)`` to ``def test_filter_contigs_err2(self)``
 
+
+
+.. External links
+
+.. |Assembly_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/AssemblyUtil" target="_blank">AssemblyUtil </a>
+
+.. |biopython_link| raw:: html
+
+   <a href="http://biopython.org/" target="_blank">http://biopython.org/</a>
+
+.. |SeqIO_link| raw:: html
+
+   <a href="http://biopython.org/wiki/SeqIO" target="_blank">http://biopython.org/wiki/SeqIO</a>
+
+.. |KBaseReport_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/KBaseReport" target="_blank">https://github.com/kbaseapps/KBaseReport</a>
+
+.. Internal links
+
+.. |initialize_link| raw:: html
+
+   <a href="initialize.html">Initialize the Module</a>
 
 

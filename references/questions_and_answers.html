@@ -123,7 +123,7 @@
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="module_anatomy.html">Anatomy of an App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module_anatomy.html">Anatomy of a Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dev_guidelines.html">Developer Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="KIDL_spec.html">KIDL Specification</a></li>
@@ -209,7 +209,7 @@
 <li><a class="reference internal" href="#q-how-do-i-organize-my-app-s-code" id="id7">Q: How do I organize my app’s code?</a></li>
 <li><a class="reference internal" href="#q-do-you-need-to-use-github-what-about-bitbucket-sourceforge" id="id8">Q: Do you need to use GitHub? What about BitBucket? SourceForge?</a></li>
 <li><a class="reference internal" href="#q-do-i-need-to-copy-the-tool-i-m-using-into-my-github-repo" id="id9">Q: Do I need to copy the tool I’m using into my github repo?</a></li>
-<li><a class="reference internal" href="#q-how-do-i-set-my-favorite-apps" id="id10">Q: How do I set my favorite Apps?</a></li>
+<li><a class="reference internal" href="#q-how-do-i-see-my-favorite-apps" id="id10">Q: How do I see my favorite Apps?</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#validation" id="id11">Validation</a><ul>
@@ -245,8 +245,8 @@
 <h2><a class="toc-backref" href="#id2">Development</a><a class="headerlink" href="#development" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="q-how-do-i-start-my-app-what-do-i-do-now">
 <h3><a class="toc-backref" href="#id3">Q: How do I start my app? What do I do now?</a><a class="headerlink" href="#q-how-do-i-start-my-app-what-do-i-do-now" title="Permalink to this headline">¶</a></h3>
-<p>The easiest way to get an intuition for app development is to follow <a class="reference external" href="../tutorial/dependencies.html">the tutorial</a></p>
-<p>See if there is an existing app in <a class="reference external" href="https://narrative.kbase.us/#catalog/apps">the catalog</a> that is similar to yours, or one that has a UI that you would like to emulate. Every app you see in the narrative will have a link to its code repository.</p>
+<p>The easiest way to get an intuition for app development is to follow <a href="../tutorial/dependencies.html">the tutorial</a></p>
+<p>See if there is an existing app in the <a href="https://narrative.kbase.us/#catalog/apps" target="_blank">App Catalog</a> that is similar to yours, or one that has a UI that you would like to emulate. Every app you see in the narrative will have a link to its code repository.</p>
 <p>Typically developers follow this path:</p>
 <ol class="arabic simple">
 <li>Work on the <code class="docutils literal notranslate"><span class="pre">MyModule.spec</span></code> file. This will autogenerate methods in your <code class="docutils literal notranslate"><span class="pre">MyModuleImpl.py</span></code> file, which is where the core of your method functionality will reside.</li>
@@ -257,14 +257,14 @@
 </ol>
 <p>For these example apps, check out the <code class="docutils literal notranslate"><span class="pre">.spec</span></code> files, <code class="docutils literal notranslate"><span class="pre">&lt;module&gt;Impl.py</span></code> files, and <code class="docutils literal notranslate"><span class="pre">spec.json</span></code> files.</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/kbaseapps/kb_quast/blob/master/kb_quast.spec">Quast</a></li>
-<li><a class="reference external" href="https://github.com/kbaseapps/kb_megahit/blob/master/MEGAHIT.spec">Megahit</a></li>
-<li><a class="reference external" href="https://github.com/kbaseapps/kb_trimmomatic/blob/master/kb_trimmomatic.spec">Trimmomatic</a></li>
+<li><a href="https://github.com/kbaseapps/kb_quast/blob/master/kb_quast.spec" target="_blank">Quast</a></li>
+<li><a href="https://github.com/kbaseapps/kb_megahit/blob/master/MEGAHIT.spec" target="_blank">Megahit</a></li>
+<li><a href="https://narrative.kbase.us/#catalog/apps" target="_blank">Trimmomatic</a></li>
 </ul>
 </div>
 <div class="section" id="q-how-can-i-tell-if-someone-s-already-wrapped-a-tool-i-m-interested-in">
 <h3><a class="toc-backref" href="#id4">Q: How can I tell if someone’s already wrapped a tool I’m interested in?</a><a class="headerlink" href="#q-how-can-i-tell-if-someone-s-already-wrapped-a-tool-i-m-interested-in" title="Permalink to this headline">¶</a></h3>
-<p>Go to the development <a class="reference external" href="https://narrative.kbase.us/#appcatalog">App Catalog</a> and start by using <em>Search</em> to see if there’s a released method. If you don’t find a method that way, it may also help to by selecting “Organize by”… “Category” and selecting what seems to be a likely category for the tool. There are also methods that have not yet been officially released, so you should also check the “Beta” and “Dev” categories to see if there’s something in the pipeline by selecting them from the “Version” dropdown.</p>
+<p>Go to the development <a href="https://narrative.kbase.us/#catalog/apps" target="_blank">App Catalog</a> and start by using <em>Search</em> to see if there’s a released method. If you don’t find a method that way, it may also help to by selecting “Organize by”… “Category” and selecting what seems to be a likely category for the tool. There are also methods that have not yet been officially released, so you should also check the “Beta” and “Dev” categories to see if there’s something in the pipeline by selecting them from the “Version” dropdown.</p>
 <p>It may be the case that someone is wrapping a tool, but is doing so in a way that doesn’t serve your needs exactly. Feel free to rewrap the tool using your approach, or ask the previous tool wrapper to tweak their implementation to expose the parameters or other functionality you are looking for.</p>
 </div>
 <div class="section" id="q-what-languages-can-i-use-to-write-my-app">
@@ -278,20 +278,20 @@
 <p>KBase supports Perl and Java but the examples in the tutorial are both in Python. Here are some example modules for the other two languages:</p>
 <p>Perl</p>
 <ul class="simple">
-<li>fba_tools - <a class="reference external" href="https://github.com/cshenry/fba_tools">https://github.com/cshenry/fba_tools</a></li>
-<li>RAST_SDK - <a class="reference external" href="https://github.com/kbaseapps/RAST_SDK">https://github.com/kbaseapps/RAST_SDK</a></li>
-<li>GenomeComparison - <a class="reference external" href="https://github.com/kbaseapps/GenomeComparison">https://github.com/kbaseapps/GenomeComparison</a></li>
+<li><a href="https://github.com/cshenry/fba_tools" target="_blank">fba_tools - https://github.com/cshenry/fba_tools</a></li>
+<li><a href="https://github.com/kbaseapps/RAST_SDK" target="_blank">RAST_SDK - https://github.com/kbaseapps/RAST_SDK</a></li>
+<li><a href="https://github.com/kbaseapps/GenomeComparison" target="_blank">GenomeComparison - https://github.com/kbaseapps/GenomeComparison</a></li>
 </ul>
 <p>Java</p>
 <ul class="simple">
-<li>SpeciesTreeBuilder <a class="reference external" href="https://github.com/kbaseapps/SpeciesTreeBuilder">https://github.com/kbaseapps/SpeciesTreeBuilder</a></li>
-<li>RBTnSeq - <a class="reference external" href="https://github.com/jmchandonia/RBTnSeq">https://github.com/jmchandonia/RBTnSeq</a></li>
-<li>DomainAnnotation - <a class="reference external" href="https://github.com/kbaseapps/DomainAnnotation">https://github.com/kbaseapps/DomainAnnotation</a></li>
+<li><a href="https://github.com/kbaseapps/SpeciesTreeBuilder" target="_blank">SpeciesTreeBuilder https://github.com/kbaseapps/SpeciesTreeBuilder</a></li>
+<li><a href="https://github.com/jmchandonia/RBTnSeq" target="_blank">RBTnSeq - https://github.com/jmchandonia/RBTnSeq</a></li>
+<li><a href="https://github.com/kbaseapps/DomainAnnotation" target="_blank">DomainAnnotation - https://github.com/kbaseapps/DomainAnnotation</a></li>
 </ul>
 </div>
 <div class="section" id="q-how-do-i-work-with-test-and-reference-data">
 <h3><a class="toc-backref" href="#id6">Q: How do I work with test and reference data?</a><a class="headerlink" href="#q-how-do-i-work-with-test-and-reference-data" title="Permalink to this headline">¶</a></h3>
-<p>Put simple data into the <code class="docutils literal notranslate"><span class="pre">/data</span></code> directory of your app’s repository. If the data is too large to host on Github, check out the following guide for <a class="reference external" href="../howtos/work_with_reference_data.html">how to add reference data</a>.</p>
+<p>Put simple data into the <code class="docutils literal notranslate"><span class="pre">/data</span></code> directory of your app’s repository. If the data is too large to host on Github, check out the following guide for <a href="../howtos/work_with_reference_data.html">how to add reference data</a>.</p>
 <p>Test files can go within the <code class="docutils literal notranslate"><span class="pre">test/</span></code> directory in your app, such as <code class="docutils literal notranslate"><span class="pre">test/data/</span></code>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -302,8 +302,8 @@
 <h3><a class="toc-backref" href="#id7">Q: How do I organize my app’s code?</a><a class="headerlink" href="#q-how-do-i-organize-my-app-s-code" title="Permalink to this headline">¶</a></h3>
 <p>There are a couple common patterns:</p>
 <ol class="arabic simple">
-<li>Create multiple functions and do everything inside the implementation file. An example of this pattern can be found in the <a class="reference external" href="https://github.com/kbaseapps/kb_quast/blob/master/kb_quast.spec">Quast</a> app.</li>
-<li>Create a utils directory, create a runner or utility class, pass in the configuration file and parameter files to it, and do everything in there. An example of this pattern can be found in the <a class="reference external" href="https://github.com/kbaseapps/FastANI/blob/master/lib/FastANI/FastANIImpl.py">FastANI</a> app.</li>
+<li>Create multiple functions and do everything inside the implementation file. An example of this pattern can be found in the  <a href="https://github.com/kbaseapps/kb_quast/blob/master/kb_quast.spec" target="_blank">Quast</a> app.</li>
+<li>Create a utils directory, create a runner or utility class, pass in the configuration file and parameter files to it, and do everything in there. An example of this pattern can be found in the <a href="https://github.com/kbaseapps/FastANI/blob/master/lib/FastANI/FastANIImpl.py" target="_blank">FastANI</a> app.</li>
 </ol>
 <p>For more complex apps, the second option is preferred, as you can split up functionality into different modules and packages.</p>
 </div>
@@ -313,11 +313,11 @@
 </div>
 <div class="section" id="q-do-i-need-to-copy-the-tool-i-m-using-into-my-github-repo">
 <h3><a class="toc-backref" href="#id9">Q: Do I need to copy the tool I’m using into my github repo?</a><a class="headerlink" href="#q-do-i-need-to-copy-the-tool-i-m-using-into-my-github-repo" title="Permalink to this headline">¶</a></h3>
-<p>You do not if there is a public way to retrieve the code such as by using a <em>git clone</em>, <em>curl</em>, or other way of pulling the data down into the Docker image. This is accomplished by <a class="reference external" href="../howtos/edit_your_dockerfile.html">modifying the Dockerfile</a> to configure the Docker image build.</p>
+<p>You do not if there is a public way to retrieve the code such as by using a <em>git clone</em>, <em>curl</em>, or other way of pulling the data down into the Docker image. This is accomplished by <a href="../howtos/edit_your_dockerfile.html">modifying the Dockerfile</a>  to configure the Docker image build.</p>
 </div>
-<div class="section" id="q-how-do-i-set-my-favorite-apps">
-<h3><a class="toc-backref" href="#id10">Q: How do I set my favorite Apps?</a><a class="headerlink" href="#q-how-do-i-set-my-favorite-apps" title="Permalink to this headline">¶</a></h3>
-<p>After logging into <a class="reference external" href="https://kbase.us">KBase</a>, go to the <a class="reference external" href="https://narrative.kbase.us/#appcatalog">App Catalog</a>, and then click on the stars for your favorite Apps. You must be logged in for it to associate it with your account.</p>
+<div class="section" id="q-how-do-i-see-my-favorite-apps">
+<h3><a class="toc-backref" href="#id10">Q: How do I see my favorite Apps?</a><a class="headerlink" href="#q-how-do-i-see-my-favorite-apps" title="Permalink to this headline">¶</a></h3>
+<p>After logging into <a href="https://kbase.us" target="_blank">KBase </a>, go to the <a href="https://narrative.kbase.us/#catalog/apps" target="_blank">App Catalog</a>, and then click on the stars for your favorite Apps. You must be logged in for it to associate it with your account.</p>
 </div>
 </div>
 <div class="section" id="validation">
@@ -330,8 +330,8 @@
 <div class="section" id="q-how-do-i-learn-more-about-the-spec-json-file">
 <h3><a class="toc-backref" href="#id13">Q: How do I learn more about the spec.json file?</a><a class="headerlink" href="#q-how-do-i-learn-more-about-the-spec-json-file" title="Permalink to this headline">¶</a></h3>
 <p>For a more exhaustive overview of the <code class="docutils literal notranslate"><span class="pre">spec.json</span></code> and <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code> files, take a look at the
-<a class="reference external" href="../references/UI_spec.html">UI specification guide</a>. You can also experiment with UI generation
-with the <a class="reference external" href="https://narrative.kbase.us/narrative/ws.28370.obj.1">App Spec Editor Narrative</a></p>
+<a href="../references/UI_spec.html">UI specification guide </a>. You can also experiment with UI generation
+with the <a href="https://narrative.kbase.us/narrative/ws.28370.obj.1" target="_blank">App Spec Editor Narrative </a>.</p>
 </div>
 <div class="section" id="q-what-are-all-the-auto-generated-source-files-in-my-app">
 <h3><a class="toc-backref" href="#id14">Q: What are all the auto-generated source files in my app?</a><a class="headerlink" href="#q-what-are-all-the-auto-generated-source-files-in-my-app" title="Permalink to this headline">¶</a></h3>
@@ -374,7 +374,7 @@ RUN wget https://github.com/bbuchfink/diamond/releases/download/v0.9.17/diamond-
 ENV <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/kb/deployment/bin:</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
-<p>Also see the <a class="reference external" href="../howtos/edit_your_dockerfile.html">Editing Docker</a></p>
+<p>Also see the <a href="../howtos/edit_your_dockerfile.html">Editing Docker</a></p>
 </div>
 <div class="section" id="q-how-do-i-get-inside-the-docker-image-how-do-i-get-root-access">
 <h3><a class="toc-backref" href="#id20">Q: How do I get inside the docker image? How do I get root access?</a><a class="headerlink" href="#q-how-do-i-get-inside-the-docker-image-how-do-i-get-root-access" title="Permalink to this headline">¶</a></h3>
@@ -394,11 +394,11 @@ ENV <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/
 <h2><a class="toc-backref" href="#id23">Requirements and limitations</a><a class="headerlink" href="#requirements-and-limitations" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="q-what-are-system-requirements-for-development">
 <h3><a class="toc-backref" href="#id24">Q: What are system requirements for development?</a><a class="headerlink" href="#q-what-are-system-requirements-for-development" title="Permalink to this headline">¶</a></h3>
-<p>You need to be able to run Docker. If you’re on a Mac, that means you must be running Mac OS X 10.8 or later. Other operating systems, such as the various flavors of Linux, are fine too. Really anywhere you can run Docker, Java, and your preferred development language (among Python, Perl, or Java). You will need about 1-2 GB free to install the <a class="reference external" href="../tutorial/dependencies.html">dependencies</a> and the <a class="reference external" href="../tutorial/install.html">KBase SDK</a></p>
+<p>You need to be able to run Docker. If you’re on a Mac, that means you must be running Mac OS X 10.8 or later. Other operating systems, such as the various flavors of Linux, are fine too. Really anywhere you can run Docker, Java, and your preferred development language (among Python, Perl, or Java). You will need about 1-2 GB free to install the <a href="../tutorial/dependencies.html">dependencies </a> and the <a href="../tutorial/install.html">KBase SDK </a></p>
 </div>
 <div class="section" id="q-can-i-develop-on-windows">
 <h3><a class="toc-backref" href="#id25">Q: Can I develop on Windows?</a><a class="headerlink" href="#q-can-i-develop-on-windows" title="Permalink to this headline">¶</a></h3>
-<p>Sort of. Your best option right now is to install <a class="reference external" href="https://www.virtualbox.org">VirtualBox</a> with <a class="reference external" href="https://www.ubuntu.com/desktop">Ubuntu Linux</a> and work in the Linux VM. Many developers use this approach in KBase, and we know it works well.</p>
+<p>Sort of. Your best option right now is to install <a href="https://www.virtualbox.org" target="_blank">VirtualBox </a> with <a href="https://www.ubuntu.com/desktop" target="_blank">Ubuntu Linux</a> and work in the Linux VM. Many developers use this approach in KBase, and we know it works well.</p>
 </div>
 <div class="section" id="q-can-i-do-all-the-development-on-a-remote-linux-box">
 <h3><a class="toc-backref" href="#id26">Q: Can I do all the development on a remote Linux box?</a><a class="headerlink" href="#q-can-i-do-all-the-development-on-a-remote-linux-box" title="Permalink to this headline">¶</a></h3>
@@ -417,7 +417,7 @@ ENV <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/
 </div>
 <div class="section" id="q-what-size-data-will-be-too-big-for-the-system">
 <h3><a class="toc-backref" href="#id28">Q: What size data will be too big for the system?</a><a class="headerlink" href="#q-what-size-data-will-be-too-big-for-the-system" title="Permalink to this headline">¶</a></h3>
-<p>Currently we support up to about 10 GB of accessory data for a tool (meaning reference DBs, etc). Please <a class="reference external" href="https://kbase.us/contact-us">contact us</a> if you need to use something larger.</p>
+<p>Currently we support up to about 10 GB of accessory data for a tool (meaning reference DBs, etc). Please <a href="https://kbase.us/contact-us" target="_blank">contact us</a> if you need to use something larger.</p>
 <p>As for processing, once it’s uploaded to the system (which can take awhile for larger data sets), it depends on how you are using it. Currently SDK methods are limited in their memory footprint to the 22 GB of the worker nodes, so your code plus any data you load into memory must fit within that. As in any situation, we recommend the use of graceful exception handling and efficient implementations in your coding style.</p>
 </div>
 <div class="section" id="q-i-need-high-performance-computing-for-my-application-is-that-available">

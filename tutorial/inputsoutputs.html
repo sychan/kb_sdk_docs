@@ -123,7 +123,7 @@
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of an App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
@@ -207,7 +207,7 @@ the directory  <code class="docutils literal notranslate"><span class="pre">ui/n
 <p class="first admonition-title">Note</p>
 <p class="last">For historical reasons, in the user interface, methods and apps are synonymous.</p>
 </div>
-<p>View <a class="reference external" href="../references/UI_spec.html">Narrative App UI Spedification</a> for more information and options.</p>
+<p>View <a href="../references/UI_spec.html">Narrative App UI Specification</a> for more information and options.</p>
 <div class="section" id="update-spec-json">
 <h2>6.1. Update spec.json<a class="headerlink" href="#update-spec-json" title="Permalink to this headline">¶</a></h2>
 <p>Copy the directory named <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/filter_contigs</span></code> and create a directory for the new app.</p>
@@ -255,7 +255,7 @@ not the user, so we don’t need a form element for it.</p>
 <p>Each parameter object has a number of options.</p>
 <ul class="simple">
 <li>We want both parameters to be required (“optional”: false)</li>
-<li>We want the <code class="docutils literal notranslate"><span class="pre">assembly_input_ref</span></code> to be a reference to either an Assembly or ContigSet object (view the <a class="reference external" href="https://narrative.kbase.us/#catalog/datatypes">type catalog</a>) to see all KBase types)</li>
+<li>We want the <code class="docutils literal notranslate"><span class="pre">assembly_input_ref</span></code> to be a reference to either an Assembly or ContigSet object (view the <a href="https://narrative.kbase.us/#catalog/datatypes" target="_blank">type catalog</a> ) to see all KBase types)</li>
 <li>We want the <code class="docutils literal notranslate"><span class="pre">min_length</span></code> parameter to be validated as an integer, and we don’t want to allow negative numbers (minimum valid integer to be 0).</li>
 </ul>
 <p>Edit the file to add the other input parameter <code class="docutils literal notranslate"><span class="pre">max_length</span></code> with similar values. The end of the parameters section should have something like this.</p>
@@ -339,12 +339,12 @@ to an object in the workspace.</p>
 </div>
 <div class="section" id="update-display-yaml">
 <h2>6.2. Update display.yaml<a class="headerlink" href="#update-display-yaml" title="Permalink to this headline">¶</a></h2>
-<p>The YAML file found in <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/filter_contigs/display.yaml</span></code> holds text content for your app. The text written here will show up in the narrative and in the <a class="reference external" href="https://narrative.kbase.us/#appcatalog">App Catalog</a>
+<p>The YAML file found in <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/filter_contigs/display.yaml</span></code> holds text content for your app. The text written here will show up in the narrative and in the  <a href="https://narrative.kbase.us/#appcatalog" target="_blank">App Catalog</a>
 for each form element. You only need to set this text for parameters that actually display in the form.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Compare these screenshots of the narrative and App Catalog images of the app “View flux network” with
-the specifications in its <a class="reference external" href="https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/view_flux_network/display.yaml">display.yaml file</a>. If screenshots are included, they appear between the <code class="docutils literal notranslate"><span class="pre">tooltip</span></code> and the <code class="docutils literal notranslate"><span class="pre">description</span></code>.</p>
+the specifications in its <a href="https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/view_flux_network/display.yaml" target="_blank">display.yaml file</a> . If screenshots are included, they appear between the <code class="docutils literal notranslate"><span class="pre">tooltip</span></code> and the <code class="docutils literal notranslate"><span class="pre">description</span></code>.</p>
 </div>
 <div class="align-center figure" id="id1">
 <img alt="../_images/View_flux_network_narr1.png" src="../_images/View_flux_network_narr1.png" />
@@ -359,7 +359,7 @@ based on contig length with both a min and a max filter.</p>
 <p>You can leave the “screenshots”, “icon” and “suggestions” fields to their default values.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">The icon is completely optional but will come in handy when you get to the “Publish and Update” step. It will help you find your app in a sea of others that have the same name. The <a class="reference external" href="../references/UI_spec.html">Narrative App UI Specification</a> has more information on icons.</p>
+<p class="last">The icon is completely optional but will come in handy when you get to the “Publish and Update” step. It will help you find your app in a sea of others that have the same name. The <a href="../references/UI_spec.html">Narrative App UI Specification</a> has more information on icons.</p>
 </div>
 <p>Moving down to the “parameters” section, the parameter entries for “assembly_ref” and “min_length” are filled in.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
@@ -394,8 +394,8 @@ based on contig length with both a min and a max filter.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">For a more exhaustive overview of the <code class="docutils literal notranslate"><span class="pre">spec.json</span></code> and <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code> files, take a look at
-the <a class="reference external" href="../references/UI_spec.html">UI specification guide</a>  You can also experiment with UI generation
-with the <a class="reference external" href="https://narrative.kbase.us/narrative/ws.30118.obj.1">App Spec Editor Narrative</a></p>
+the <a href="../references/UI_spec.html">Narrative App UI Specification</a>  You can also experiment with UI generation
+with the <a href="https://narrative.kbase.us/narrative/ws.30118.obj.1" target="_blank">App Spec Editor Narrative</a></p>
 </div>
 </div>
 </div>

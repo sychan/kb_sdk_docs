@@ -123,7 +123,7 @@
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of an App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
@@ -202,7 +202,7 @@
 <p class="last">A KBase module contains all of the components for one or more apps. The components are all stored in
 the same directory and are all uploaded to a single github repository. There are pros and cons to
 bundling several apps in one module versus
-creating one app per module. See <a class="reference external" href="../references/terminology.html">terminology</a> for more information.</p>
+creating one app per module. See <a href="../references/terminology.html">terminology</a> for more information.</p>
 </div>
 <p>The KBase SDK provides a way to quickly bootstrap a new module by generating most of the required components.</p>
 <p>The basic options of the command are:</p>
@@ -210,10 +210,10 @@ creating one app per module. See <a class="reference external" href="../referenc
 </pre></div>
 </div>
 <p>where <code class="docutils literal notranslate"><span class="pre">ModuleName</span></code> must be unique across all SDK modules registered in KBase. For example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kb-sdk init --language python --user &lt;your_kbase_user_name&gt; HelloWorld
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kb-sdk init --language python --user &lt;your_kbase_user_name&gt; &lt;uid&gt;HelloWorld
 </pre></div>
 </div>
-<p>This creates a directory called <code class="docutils literal notranslate"><span class="pre">HelloWord</span></code> in your current directory. The directory has all of
+<p>This creates a directory called <code class="docutils literal notranslate"><span class="pre">&lt;uid&gt;HelloWord</span></code> in your current directory where &lt;uid&gt; is your name/id that will make your copy of HelloWorld unique. The directory has all of
 the components needed to start creating apps and is basically a clean slate.</p>
 <p>You must always include the <code class="docutils literal notranslate"><span class="pre">-u</span></code> or <code class="docutils literal notranslate"><span class="pre">-user</span></code> option with your username to set yourself as the module owner.</p>
 <p>You can set your programming langauge to any of Python, Perl, or Java; for this tutorial, we’re using Python.</p>
@@ -228,6 +228,13 @@ the components needed to start creating apps and is basically a clean slate.</p>
                  <span class="n">Python</span>
 </pre></div>
 </div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Modules Cannot be Renamed (yet)</p>
+<p class="last">The <em>rename</em> feature of kb-sdk only does a partial rename. If you find you need to <em>rename</em>, it is easier
+to start over with the ‘kb-sdk init’ with the new name. The ability to rename is on a list of planned
+KBase improvements.</p>
+</div>
 <div class="section" id="build-the-module">
 <h2>3.1. Build the Module<a class="headerlink" href="#build-the-module" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> module_name
@@ -240,7 +247,7 @@ $ make
 <h2>3.2. Module Highlights<a class="headerlink" href="#module-highlights" title="Permalink to this headline">¶</a></h2>
 <p>This module template has the following that you will customize in later steps:</p>
 <ol class="arabic simple">
-<li>A directory called <code class="docutils literal notranslate"><span class="pre">module_name</span></code> (see <a class="reference external" href="../references/module_anatomy.html">Anatomy of an App</a> for more on the directory sturcture)</li>
+<li>A directory called <code class="docutils literal notranslate"><span class="pre">module_name</span></code> (see <a href="../references/module_anatomy.html">Anatomy of a Module </a> for more on the directory sturcture)</li>
 <li>A description of the module, its version, and the authors in <code class="docutils literal notranslate"><span class="pre">kbase.yml</span></code></li>
 <li>A specification file that defines the inputs, output, and functions for the module <code class="docutils literal notranslate"><span class="pre">module_name.spec</span></code></li>
 <li>A script with code for running all the apps in the module called <code class="docutils literal notranslate"><span class="pre">module_nameImpl.py</span></code></li>
@@ -259,8 +266,8 @@ $ git commit -m &#39;Initial commit&#39;
 </div>
 <p>Now, create a new GitHub repository on github.com (it can be in your personal GitHub account or in an organization, but it must be public). Make sure your github repository is initially empty (don’t add an initial README.md).</p>
 <ul class="simple">
-<li>Direct link to create a repo on github <a class="reference external" href="https://github.com/new">https://github.com/new</a></li>
-<li>Github documentation about creating repos: <a class="reference external" href="https://help.github.com/articles/creating-a-new-repository">https://help.github.com/articles/creating-a-new-repository</a></li>
+<li>Direct link to create a repo on github.  <a href="https://github.com/new" target="_blank">https://github.com/new</a>.</li>
+<li>Github documentation about creating repos: <a href="https://help.github.com/articles/creating-a-new-repository" target="_blank">https://help.github.com/articles/creating-a-new-repository</a>.</li>
 </ul>
 <p>Sync your local codebase to your repository on github:</p>
 <div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>$ git remote add origin https://github.com/[GITHUB_USER_OR_ORG_NAME]/[GITHUB_MODULE_NAME].git
@@ -277,13 +284,11 @@ This step can be done anytime after the first <code class="docutils literal notr
 <p>The KBase file storage services require authenticated access. During development a dev <code class="docutils literal notranslate"><span class="pre">token</span></code> is generated
 and used instead of putting user IDs and passwords in clear text in your module.
 Tokens are good for 90 days and can be used on all modules developed and tested during the 90 days.</p>
-<p>Go to <a class="reference external" href="https://narrative.kbase.us/#auth2/account">https://narrative.kbase.us/#auth2/account</a>, click <strong>Developer Tokens</strong>, and generate a new token. The
+<p>Go to <a href="https://narrative.kbase.us/#auth2/account" target="_blank">https://narrative.kbase.us/#auth2/account</a>, click <strong>Developer Tokens</strong>, and generate a new token. The
 token is only visible on the screen for 5 minutes so make sure you are ready to do the step below.</p>
 <p>From the module’s root directory, copy and paste that token into <code class="docutils literal notranslate"><span class="pre">test_local/test.cfg</span></code> in the value
 for <code class="docutils literal notranslate"><span class="pre">test_token</span></code>. For example:</p>
-<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test_user</span><span class="o">=</span>
-<span class="n">test_password</span><span class="o">=</span>
-<span class="n">test_token</span><span class="o">=</span><span class="n">JQGGVCPKCAB2XYHRHZV4H3NF4TN3YEUSA</span>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test_token</span><span class="o">=</span><span class="n">JQGGVCPKCAB2XYHRHZV4H3NF4TN3YEUSA</span>
 </pre></div>
 </div>
 <p>Where you substitute your own test_token. This one is unauthorized.</p>

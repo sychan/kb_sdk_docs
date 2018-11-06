@@ -123,7 +123,7 @@
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of an App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
@@ -200,22 +200,22 @@
 <p>System Dependencies:</p>
 <ul class="simple">
 <li>Mac OS X 10.8+ (Docker requires this) or Linux.  kb-sdk does not run natively in Windows</li>
-<li>(Not required for Docker-based installation) Java JRE 7 or 8 (9 is currently incompatible) <a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></li>
-<li>(Mac only) Xcode <a class="reference external" href="https://developer.apple.com/xcode">https://developer.apple.com/xcode</a></li>
-<li>git <a class="reference external" href="https://git-scm.com">https://git-scm.com</a></li>
-<li>Docker <a class="reference external" href="https://www.docker.com">https://www.docker.com</a> (for local testing)</li>
+<li>(Not required for Docker-based installation) Java JRE 7 or 8 (9 is currently incompatible) <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></li>
+<li>(Mac only) Xcode  <a href="https://developer.apple.com/xcode" target="_blank">https://developer.apple.com/xcode</a></li>
+<li>git  <a href="https://git-scm.com" target="_blank">https://git-scm.com</a></li>
+<li>Docker <a href="https://www.docker.com" target="_blank">https://www.docker.com</a> (for local testing)</li>
 <li>At least 20 GB free on your hard drive to install Docker, Xcode, Java JRE, etc.</li>
 </ul>
-<p>We recommend using Mac OS X 10.8+ or Linux for SDK development. Windows development is not currently supported.  If you are running Windows or do not want to develop on your local machine, we recommend using [VirtualBox](<a class="reference external" href="https://www.virtualbox.org">https://www.virtualbox.org</a>) and installing Ubuntu 14+.</p>
-<p>Xcode or the Xcode Command Line Tools will install some standard terminal commands like <cite>make</cite> and <cite>git</cite> that are necessary for building the KBase SDK and your module code. <a class="reference external" href="https://developer.apple.com/xcode">https://developer.apple.com/xcode</a></p>
-<p>The git homepage can be found at <a class="reference external" href="https://git-scm.com">https://git-scm.com</a>. On Ubuntu, install it with <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">git</span></code>.</p>
+<p>We recommend using Mac OS X 10.8+ or Linux for SDK development. Windows development is not currently supported.  If you are running Windows or do not want to develop on your local machine, we recommend using [VirtualBox](<a href="https://www.virtualbox.org" target="_blank">https://www.virtualbox.org</a>) and installing Ubuntu 14+.</p>
+<p>Xcode or the Xcode Command Line Tools will install some standard terminal commands like <cite>make</cite> and <cite>git</cite> that are necessary for building the KBase SDK and your module code.  <a href="https://developer.apple.com/xcode" target="_blank">https://developer.apple.com/xcode</a></p>
+<p>The git homepage can be found at <a href="https://git-scm.com" target="_blank">https://git-scm.com</a>. On Ubuntu, install it with <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">git</span></code>.</p>
 <div class="section" id="docker-installation">
 <h2>1.1. Docker Installation<a class="headerlink" href="#docker-installation" title="Permalink to this headline">¶</a></h2>
 <p>KBase module code is run using Docker, which allows you to easily install all system tools and dependencies your module requires. Installing Docker locally allows you to test your build and run tests on your own computer before registering your module with KBase.</p>
-<p>Instructions for installing on Mac: <a class="reference external" href="https://www.docker.com/mac">https://www.docker.com/mac</a></p>
-<p>Instructions for installing on Linux: <a class="reference external" href="https://www.docker.com/linux">https://www.docker.com/linux</a></p>
-<p>On Linux, be sure to follow these <a class="reference external" href="https://docs.docker.com/install/linux/linux-postinstall/">post installation steps</a> so you can run docker and <cite>kb-sdk</cite> as a non-root user.</p>
-<p>When you run an app in a narrative, it runs in a docker container on KBase’s servers. Learn more about docker containers here: <a class="reference external" href="https://www.docker.com/what-container">https://www.docker.com/what-container</a>. Docker containers allow you to package and compile programs and dependencies, such as <a class="reference external" href="https://github.com/voutcn/megahit">MEGAHIT</a>, and run them anywhere.</p>
+<p>Instructions for installing on Mac: <a href="https://www.docker.com/mac" target="_blank">https://www.docker.com/mac</a></p>
+<p>Instructions for installing on Linux: <a href="https://www.docker.com/linux" target="_blank">https://www.docker.com/linux</a></p>
+<p>On Linux, be sure to follow these <a href="https://docs.docker.com/install/linux/linux-postinstall" target="_blank">post installation steps </a> so you can run docker and <cite>kb-sdk</cite> as a non-root user.</p>
+<p>When you run an app in a narrative, it runs in a docker container on KBase’s servers. Learn more about docker containers here: <a href="https://www.docker.com/what-container" target="_blank">https://www.docker.com/what-container</a>. Docker containers allow you to package and compile programs and dependencies, such as  <a href="https://github.com/voutcn/megahit" target="_blank">MEGAHIT </a>, and run them anywhere.</p>
 </div>
 </div>
 

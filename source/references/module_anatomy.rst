@@ -1,5 +1,5 @@
 Anatomy of a Module
-=================
+===================
 
 KBase modules consist of a set of code, configurations, and
 specifications that describe how a set of related apps are shown in the
@@ -94,7 +94,6 @@ basic information about your module, primarily targeted towards other
 developers or users who want to browse your code. A LICENSE file is also
 required. Your code will not be approved for release on KBase without a
 license that is compatible with KBase's  |openSource_link|.
-
 
 Dockerfile
 ----------
@@ -360,4 +359,4 @@ your Narrative method.
 
 .. |instructions_link| raw:: html
 
-   <a href="../tutorial/install.html" target="_blank">these instructions </a>
+   <a href="../tutorial/install.html">these instructions </a>

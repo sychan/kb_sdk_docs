@@ -126,4 +126,4 @@ Wrap an App
 
 .. |editDocker_link| raw:: html
 
-   <a href="../howtos/edit_your_dockerfile.html" target="_blank">Edititng your app's Dockerfile </a>
+   <a href="../howtos/edit_your_dockerfile.html">Edititng your app's Dockerfile </a>

@@ -126,10 +126,6 @@ We need to provide three parameters to our function: a workspace name, an assemb
      |initialize_link|
 
 
-.. |initialize_link| raw:: html
-
-   <a href="initialize.html" target="_blank">Initialize the Module</a>
-
 Run ``kb-sdk test`` and, if everything works, you'll see the docker container boot up, the ``filter_contigs_max`` method will get called, and you will see some printed output.
 
 Set the callback URL and scratch path
@@ -139,11 +135,6 @@ Set the callback URL and scratch path
 	In this "ContigFilter" module, the steps in this section have already been done. They are included here so you can see why they were added to the basic module template.
 
 The callback URL points to a server that is used to spin up other SDK apps that we will need to use in our own app. In our case, we want to use |Assembly_link| to validate and download genome data. When we use that app, our app makes a request to the callback server, which spins up a separate docker container that runs AssemblyUtil.
-
-.. |Assembly_link| raw:: html
-
-   <a href="https://github.com/kbaseapps/AssemblyUtil" target="_blank">AssemblyUtil </a>
-
 
 The other parameter we need is the path to the **scratch** directory. Scratch is a special directory that we can use to store files used to run the app. It is a shared directory that is also accessible by other apps, such as AssemblyUtil. You cannot use directories like ``/tmp`` when working with AssemblyUtil, because other apps won't have access to it.
 
@@ -286,14 +277,6 @@ Now we can finally start to implement the real functionality of the app!
 
 The biopython package (|biopython_link| ), included in the SDK build, has a module called SeqIO ( |SeqIO_link| ) that can help us read and filter genome sequence data.
 
-.. |biopython_link| raw:: html
-
-   <a href="http://biopython.org/" target="_blank">http://biopython.org/</a>
-
-.. |SeqIO_link| raw:: html
-
-   <a href="http://biopython.org/wiki/SeqIO" target="_blank">http://biopython.org/wiki/SeqIO</a>
-
 This module should already be included in the module's ``module_nameImpl.py`` between the header comments like so:
 
 .. code-block:: python
@@ -418,10 +401,6 @@ Build a report object
 -------------------------
 
 In order to output data into the UI inside a narrative, your app needs to build and return a KBaseReport ( |KBaseReport_link| ).
-
-.. |KBaseReport_link| raw:: html
-
-   <a href="https://github.com/kbaseapps/KBaseReport" target="_blank">https://github.com/kbaseapps/KBaseReport</a>
 
 The following  KBaseReport app should be installed already:
 
@@ -551,5 +530,30 @@ Now that you are done with the new app, remember the three tests for the old app
 - Change ``def my_test_filter_contigs_err1(self)`` to ``def test_filter_contigs_err1(self)``
 - Change ``def my_test_filter_contigs_err2(self)`` to ``def test_filter_contigs_err2(self)``
 
+
+
+.. External links
+
+.. |Assembly_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/AssemblyUtil" target="_blank">AssemblyUtil </a>
+
+.. |biopython_link| raw:: html
+
+   <a href="http://biopython.org/" target="_blank">http://biopython.org/</a>
+
+.. |SeqIO_link| raw:: html
+
+   <a href="http://biopython.org/wiki/SeqIO" target="_blank">http://biopython.org/wiki/SeqIO</a>
+
+.. |KBaseReport_link| raw:: html
+
+   <a href="https://github.com/kbaseapps/KBaseReport" target="_blank">https://github.com/kbaseapps/KBaseReport</a>
+
+.. Internal links
+
+.. |initialize_link| raw:: html
+
+   <a href="initialize.html">Initialize the Module</a>
 
 

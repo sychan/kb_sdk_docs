@@ -228,11 +228,14 @@ available |UIspec_link|
 
 
 .. External links
+
 .. |gallery_link| raw:: html
 
    <a href="https://narrative.kbase.us/narrative/ws.23109.obj.1" target="_blank">this gallery</a>
 
+.. Internal links
+
 .. |UIspec_link| raw:: html
 
-   <a href="../references/UI_spec.html" target="_blank">here.</a>
+   <a href="../references/UI_spec.html">here.</a>
 

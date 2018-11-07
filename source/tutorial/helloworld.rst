@@ -281,10 +281,10 @@ Run First Test
     Tests are an important part of KBase modules and are a requirement for release of apps. The module's root 
     directory has a directory called ``test``. All tests should be added to this directory. A template for 
     initial tests should be named after the module and in the ``test`` directory. When you enter ``kb-sdk test`` 
-    at the command line, it will runs the tests in the test directory. 
+    at the command line, it will run the tests in the test directory. 
 
 
-Your ``<uid>HelloWorldImpl.py`` file is tested using ``test/<uid>HelloWorldImpl_server_test.py``. This file also has a variety of auto-generated boilerplate code.  Phython will automatically run all all methods that start with the name ``test``. 
+Your ``<uid>HelloWorldImpl.py`` file is tested using ``test/<uid>HelloWorldImpl_server_test.py``. This file also has a variety of auto-generated boilerplate code.  Python will automatically run all methods that start with the name ``test``. 
 
 
 Near the bottom, find the method ``test_your_method``. For clarity, change the name of the method to ``test_printhelloworld``. Now modify the test method.

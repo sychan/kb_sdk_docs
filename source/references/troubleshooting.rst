@@ -57,7 +57,7 @@ Examples of magic comments include:
     #END_CONSTRUCTOR
 
     #BEGIN YourFunctionName1
-    (This is were the implementation details of your functions go)
+    (This is where the implementation details of your functions go)
     #END YourFunctionName1
 
 
@@ -80,7 +80,7 @@ or the daemon may not have been started. Please see |dockerLinux_link|
 Getting Java-related errors trying to run kb-sdk
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Java may not be installed or the path may not be set properly. Please follow the directions for installation of Java at |dependencies_link|  and then set your *JAVA\_HOME* with
+Java may not be installed, or the path may not be set properly. Please follow the directions for installation of Java at |dependencies_link|  and then set your *JAVA\_HOME* with
 
 ::
 
@@ -155,7 +155,7 @@ Remove orphan images:
 My Docker container ran out of memory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This is perhaps the hardest to debug because it occurs during a run, and dies (almost) silently.
+This is perhaps the hardest to debug because it occurs during a run and dies (almost) silently.
 It will typically occur when handling (multiple) large workspace objects such as plant genomes.
 One way to figure out that it has happened is that the keyword "Killed" is printed.
 

@@ -46,7 +46,7 @@ To run this locally, you will need to download the base image.
 
 
 The image is fairly large, so it will take some time to download.  This step is required for running tests locally and
-should only be reqired during the initial installation.  However, KBsae staff may occasionally require the base image
+should only be required during the initial installation.  However, KBase staff may occasionally require the base image
 to be updated in order to match any changes in the base image running in the production KBase platform.
 
 .. note::

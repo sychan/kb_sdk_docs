@@ -64,7 +64,7 @@ demonstrates how to do (and document) this well with Python.
             raise ValueError('QUAST reported an error, return code was ' + str(retcode))
         # quast will ignore bad files and keep going, which is a disaster for
         # reproducibility and accuracy if you're not watching the logs like a hawk.
-        # for now use this hack to check that all files were processed. Maybe there's a better way.
+        # for now, use this hack to check that all files were processed. Maybe there's a better way.
         files_proc = len(open(_os.path.join(outdir, 'report.tsv'), 'r').readline().split('\t')) - 1
         files_exp = len(filepaths)
         if files_proc != files_exp:

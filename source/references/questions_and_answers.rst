@@ -30,9 +30,15 @@ For these example apps, check out the ``.spec`` files, ``<module>Impl.py`` files
 Q: How can I tell if someone's already wrapped a tool I'm interested in?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Go to the development |catalog_link| and start by using *Search* to see if there's a released method. If you don't find a method that way, it may also help to by selecting "Organize by"... "Category" and selecting what seems to be a likely category for the tool. There are also methods that have not yet been officially released, so you should also check the "Beta" and "Dev" categories to see if there's something in the pipeline by selecting them from the "Version" dropdown.
+Go to the development |catalog_link| and start by using *Search* to see if there's a released method. 
+If you don't find a method that way, it may also help to by selecting "Organize by"... "Category" and 
+selecting what seems to be a likely category for the tool. There are also methods that have not yet
+ been officially released, so you should also check the "Beta" and "Dev" categories to see if there's 
+something in the pipeline by selecting them from the "Version" dropdown.
 
-It may be the case that someone is wrapping a tool, but is doing so in a way that doesn't serve your needs exactly. Feel free to rewrap the tool using your approach, or ask the previous tool wrapper to tweak their implementation to expose the parameters or other functionality you are looking for.
+It may be the case that someone is wrapping a tool but is doing so in a way that doesn't serve your needs exactly. 
+Feel free to rewrap the tool using your approach or ask the previous tool wrapper to tweak their implementation 
+to expose the parameters or other functionality you are looking for.
 
 Q: What languages can I use to write my app?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -131,7 +137,7 @@ Every time we run ``kb-sdk test`` it rebuilds the docker container and re-downlo
 Ways you can speed up your tests:
 
 * Make sure all your custom docker setup, such as compiling binaries, is at the top of your Dockerfile so it always gets cached
-* Reduce the amount of files you download and upload
+* Reduce the number of files you download and upload
 * Reuse existing example files on the workspace so you don't have to upload files
 * Separate out your modules into functions that only take local data and files, and test those separately
 
@@ -173,7 +179,7 @@ Q: How do I get inside the docker image? How do I get root access?
 
 You can open a shell inside the docker container with the ``test_local/run_bash.sh`` script.
 
-To gain root access, remove the ``--user`` parameter or change it to to ``--user 0``
+To gain root access, remove the ``--user`` parameter or change it to ``--user 0``
 
 Q: What are the ``.sh`` scripts in the ``test_local/`` directory?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -218,7 +224,7 @@ Q: What size data will be too big for the system?
 
 Currently we support up to about 10 GB of accessory data for a tool (meaning reference DBs, etc). Please |contact_link| if you need to use something larger.
 
-As for processing, once it's uploaded to the system (which can take awhile for larger data sets), it depends on how you are using it. Currently SDK methods are limited in their memory footprint to the 22 GB of the worker nodes, so your code plus any data you load into memory must fit within that. As in any situation, we recommend the use of graceful exception handling and efficient implementations in your coding style.
+As for processing, once it's uploaded to the system (which can take a while for larger data sets), it depends on how you are using it. Currently SDK methods are limited in their memory footprint to the 22 GB of the worker nodes, so your code plus any data you load into memory must fit within that. As in any situation, we recommend the use of graceful exception handling and efficient implementations in your coding style.
 
 Q: I need high-performance computing for my application. Is that available?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

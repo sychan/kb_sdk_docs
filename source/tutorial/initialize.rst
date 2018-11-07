@@ -25,13 +25,13 @@ where ``ModuleName`` must be unique across all SDK modules registered in KBase. 
     $ kb-sdk init --language python --user <your_kbase_user_name> <uid>HelloWorld
 
 
-This creates a directory called ``<uid>HelloWord`` in your current directory where <uid> is your name/id that will make your copy of HelloWorld unique. The directory has all of 
+This creates a directory called ``<uid>HelloWorld`` in your current directory where <uid> is your name/id that will make your copy of HelloWorld unique. The directory has all of 
 the components needed to start creating apps and is basically a clean slate.  
 
 
 You must always include the ``-u`` or ``-user`` option with your username to set yourself as the module owner.
 
-You can set your programming langauge to any of Python, Perl, or Java; for this tutorial, we're using Python.
+You can set your programming language to any of Python, Perl, or Java; for this tutorial, we're using Python.
 
 The ``kb-sdk init`` options are:
 
@@ -67,7 +67,7 @@ Module Highlights
 
 This module template has the following that you will customize in later steps:
 
-#. A directory called ``module_name`` (see |anatomy_link| for more on the directory sturcture)
+#. A directory called ``module_name`` (see |anatomy_link| for more on the directory structure)
 #. A description of the module, its version, and the authors in ``kbase.yml``
 #. A specification file that defines the inputs, output, and functions for the module ``module_name.spec``
 #. A script with code for running all the apps in the module called ``module_nameImpl.py``
@@ -108,7 +108,7 @@ Set up your developer credentials
 
 If you want, this step can wait until you want to test your module. 
 However, it is somewhat disruptive to the thought process if you wait until later.
-This step can be done anytime after the first ``make`` of a module.
+This step can be done any time after the first ``make`` of a module.
 
 The KBase file storage services require authenticated access. During development a dev ``token`` is generated 
 and used instead of putting user IDs and passwords in clear text in your module. 

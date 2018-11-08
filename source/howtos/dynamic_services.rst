@@ -110,7 +110,7 @@ The |catalog_link| provides tools to launch, inspect and stop dynamic services i
 .. image:: /images/service-catalog.png
     :alt: Service Catalog
 
-Logs of STDOUT and STDERR for services are also viable to catalog administrators and may prove useful for debugging. 
+Logs of STDOUT and STDERR for services are also available to catalog administrators and may prove useful for debugging. 
 Finally, catalog admins may also stop running services. There is no default timeout for dynamic services, 
 so developers should periodically cull old versions of their services that are still running as they release new versions. 
 Below the active services are lists of Released, Beta and Dev services that developers may launch but the Service Wizard generally renders this unnecessary.

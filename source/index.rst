@@ -65,7 +65,7 @@ To develop apps, start by obtaining a free KBase user account and applying for a
 
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     :caption: Advanced Guides
     :name: advanced_guides
 

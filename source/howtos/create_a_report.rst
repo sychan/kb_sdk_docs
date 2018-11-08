@@ -82,7 +82,7 @@ The first step in setting up KBase reports for an App is determining what the ou
          # HTML files that appear in “Links”
          #   section. A list of paths or shock node
          #   IDs pointing to a single flat html file
-         #   or to the top level directory of a
+         #   or to the top-level directory of a
          #   website. The report widget can render
          #   one html view directly. Set one of the
          #   following fields to decide which view to

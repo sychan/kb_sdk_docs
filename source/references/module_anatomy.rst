@@ -125,13 +125,13 @@ KBase Interface Description Language (KIDL) Specification File
     MyModule
     ├── MyModule.spec
 
-The KIDL specification file, often just referred to as your KBase spec
-file, defines the module interface. The interface will be a set of
-functions with definitions of what they accept as input and what they
-produce as output. Using this interface, the KBase platform will know
-how to call any function in your module in a generic way and search
-the KBase Catalog for your apps.
 
+The KIDL specification file, often referred to as your "KBase spec 
+file", defines the interface of your module. This interface is a set
+of function definitions defining what types of parameters they can
+accept and what type of data they can return. Using this interface,
+the KBase platform will know how to call any function in your module
+in a generic way and search the KBase Catalog for your apps.
 
 The ``kb-sdk`` tool compiles your spec file into a set of implementation
 stubs in either Python, Perl, or Java that you will use to execute your
@@ -211,10 +211,10 @@ App (Method) Implementation
 The lib directory is where the actual implementation code of your app is
 defined. In this example, your code consists of a single Python module
 with a kb-sdk generated Implementation file, which includes stubs that
-you can can fill in. In this example there is a single count\_contigs
+you can fill in. In this example there is a single count\_contigs
 method. When you run ``make``, this file is updated and recompiled using
 ``kb-sdk compile`` based on any changes in your spec file. For each
-function you define in the KIDL spec file, you will see a cooresponding
+function you define in the KIDL spec file, you will see a corresponding
 stub that you can fill in. For example:
 
 ::

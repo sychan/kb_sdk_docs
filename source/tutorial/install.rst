@@ -57,5 +57,5 @@ to be updated in order to match any changes in the base image running in the pro
 
 .. |manual_link| raw:: html
 
-   <a href="../howtos/manual_build.html">build the SDK from source. </a>
+   <a href="../howtos/manual_build.html">build the SDK from source code. </a>
 

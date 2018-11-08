@@ -32,8 +32,8 @@ Q: How can I tell if someone's already wrapped a tool I'm interested in?
 
 Go to the development |catalog_link| and start by using *Search* to see if there's a released method. 
 If you don't find a method that way, it may also help to by selecting "Organize by"... "Category" and 
-selecting what seems to be a likely category for the tool. There are also methods that have not yet
- been officially released, so you should also check the "Beta" and "Dev" categories to see if there's 
+selecting what seems to be a likely category for the tool. There are also methods that have not yet 
+been officially released, so you should also check the "Beta" and "Dev" categories to see if there's 
 something in the pipeline by selecting them from the "Version" dropdown.
 
 It may be the case that someone is wrapping a tool but is doing so in a way that doesn't serve your needs exactly. 

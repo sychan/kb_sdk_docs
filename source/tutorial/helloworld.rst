@@ -24,9 +24,15 @@ The setup for the module includes:
 Module Description
 -------------------------------------------
 
-Open and edit the ``kbase.yml`` file to include a better description of your module. It is in  is in the root 
-directory of the module. Be sure to describe what your module and its app will do. The information here shows up
-in the App Catalog entry for the module.  |kb_SPAdes_link|
+In the root directory of the module is the file ``kbase.yml``.  Examine the file. 
+It has a placeholder for information that you will eventually add to the module.
+The ``module-name`` and ``service-language`` will not change but the other items will change as you prepare the module 
+for release or update. 
+The default ``module-description`` doesn't say anything about your module. You will want to edit this
+before the module is released.  Be sure to describe what your module and its app will do. 
+The ``module-version`` needs to be updated before updates can be released. 
+The ``owners`` is a list of users that can approve updates to a module.
+The information in this file shows up in the App Catalog entry for the module. A more complete example is  |kb_SPAdes_link|.
 
 The Specification File
 -------------------------------------------
@@ -312,7 +318,7 @@ When running an app, the messages created by the Impl file and the test will sho
 
 .. |kb_SPAdes_link| raw:: html
 
-   <a href="https://narrative.kbase.us/#catalog/modules/kb_SPAdes" target="_blank">See the page for kb_SPAdes. </a>
+   <a href="https://narrative.kbase.us/#catalog/modules/kb_SPAdes" target="_blank">kb_SPAdes</a>
 
 .. |AppSpec_link| raw:: html
 

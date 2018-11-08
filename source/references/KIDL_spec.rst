@@ -11,7 +11,7 @@ include three scalar types:
 
 -  ``string``: a sequence of ASCII characters
 -  ``integer``: a signed integer
--  ``float``: a floating point number
+-  ``float``: a floating-point number
 
 And four compound types:
 
@@ -68,8 +68,8 @@ to specify the functions that comprise the API:
 A function may have zero or more parameters. Each parameter is specified
 as a type and an optional parameter name.
 
-For instance, a function that takes as input a list of feature
-identifiers and returns the current functions assigned to these features
+For instance, a function that takes as input a list of feature-identifiers 
+and returns the current functions assigned to these features
 as a hash mapping from the feature identifier to the function may be
 defined as follows:
 

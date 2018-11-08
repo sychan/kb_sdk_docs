@@ -8,7 +8,7 @@ Adding Reference Data to a KBase App
 
     Some tools and applications make use of large reference data
     collections. For example, a QC app may have a reference data with common
-    contaminants. Adding data such as this to the Git repo for the module
+    contaminants. Adding data such as this to the git repo for the module
     can make it very large. In addition, the generated Docker image would
     also be very large. KBase App reference data is designed to address this
     scenario.
@@ -39,7 +39,7 @@ things.
    data volume was successfully created. Ideally, some sanity tests
    should be performed to confirm things ran correctly by testing for
    the presence of expected files. If the \_\_READY\_\_ file is not
-   present, the registration will fail and the reference data area will
+   present, the registration will fail, and the reference data area will
    be removed.
 
 You can see an example in the |RAST_link| 
@@ -61,7 +61,7 @@ Gotchas
 There a few things to watch out for with reference data:
 
 -  The reference data area (/data) is mounted during initialization
-   (module registration) and durinng app execution and replaces /data
+   (module registration) and during app execution and replaces /data
    from the Docker image. Any modifications made by the Dockerfile to
    this space will not be visible. Changes must be done in the init
    block in entrypoint.sh.

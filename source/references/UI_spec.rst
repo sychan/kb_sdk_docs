@@ -16,7 +16,7 @@ Structural file: ``spec.json``
 This is a file in JSON format containing these top-level properties:
 
 :ver: version of each UI method-spec
-:authors: list of GlobusOnline accounts of the contributers
+:authors: list of GlobusOnline accounts of the contributors
 :contact: e-mail of the contact person
 :categories: list of tags (from fixed set of supported tags) categorizing this method into
   method should be made invisible, then the ``inactive`` category should be added to this list (in
@@ -266,7 +266,7 @@ Here is an example for taxon search:
 Parameter groups in ``spec.json``
 ---------------------------------
 
-Parameter groups combine a set of individually specified parameters into logical sets. This can be used for something as simple as visually grouping related input (i.e. distinguishing a set of parameters passed to a wrapped tool from kbase related parameters), but it's most often used to allow users to specify a multiple items described by a more than one parameter. 
+Parameter groups combine a set of individually specified parameters into logical sets. This can be used for something as simple as visually grouping related input (i.e. distinguishing a set of parameters passed to a wrapped tool from kbase related parameters), but it's most often used to allow users to specify multiple items described by a more than one parameter. 
 
 It is also possible to have an optional parameter group with required parameters. If the parameter group is present, all the required parameters must be provided. The default resulting structure is a mapping (or list of mappings if ``allow_multiple`` is 1) with the parameter_ids as keys (e.g. ``{id: [{parameter_id_1: value_1, parameter_id_2: value_2 ...}]}``) but this can be modified with the ``id_mapping`` option.
 
@@ -365,7 +365,7 @@ The following is a list of allowed transformations that can be used for the
 ``target_type_transform``:
 
 :none: (default value in case it is not defined) - no modification
-:ref: changes the object name into a workspace reference by a adding prefix of the workspace name followed by ``/``
+:ref: changes the object name into a workspace reference by adding a prefix of the workspace name followed by ``/``
 :int: treats a text value as an integer
 :list<inner-transformation>: tries to prepare a list of items (or just iterate over items if it’s a
                              list already), applying inner-transformation to each element

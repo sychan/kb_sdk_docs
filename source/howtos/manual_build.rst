@@ -13,8 +13,8 @@ Java JDK 7+
 
 After downloading and installing the JDK, set your ``JAVA_HOME``
 environment variable to point to your JDK installation. If you're not
-sure where that is, on a Mac the command ``/usr/libexec/java_home``
-should tell you and on Linux ``readlink -f $(which javac)`` will provide
+sure where that is, on a Mac, the command ``/usr/libexec/java_home``
+should tell you and on Linux, ``readlink -f $(which javac)`` will provide
 the installed location of the javac, which you can use to find the base
 directory of the installation. On a Mac you can set the variable like
 so:
@@ -37,7 +37,7 @@ Apache Ant
 
 |antapache_link| 
 
-The easist way to install Ant on a Mac is probably to use a package
+The easiest way to install Ant on a Mac is probably to use a package
 manager like |brew_link| , which allows you to install
 simply by ``brew install ant``. Make sure the Ant install location is
 added to your PATH environment variable, which is generally handled for

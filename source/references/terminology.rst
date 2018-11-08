@@ -11,7 +11,7 @@ appdev
 
 Catalog
    For general users, the Catalog is a listing of available apps and modules along with the documentation
-   that developers included. Users can select whether the want to see released, beta, or dev apps and 
+   that developers included. Users can select whether they want to see released, beta, or dev apps and 
    they can be sort the list. 
 
    .. figure:: ../images/app_catalog.png
@@ -54,10 +54,10 @@ Method
    methods correspond to apps. Those that do are named for the apps.
 
 Module
-   A module includes all of the components for one or more apps. The apps are mananged as a group. All the 
+   A module includes all of the components for one or more apps. The apps are managed as a group. All the 
    components are in the same directory on your local machine or in one github repository. The directory and
    the github repository are typically the same name as the module. A catalog of existing
-   modules is found at |moduleCatalog_link|. 
+   modules are found at |moduleCatalog_link|. 
 
    The pros for grouping multiple apps in one module include:
 
@@ -67,7 +67,7 @@ Module
 
    The pros for creating one app per module include:
 
-   - The apps are revised independently and version numbers are specific to the app, not the group of apps
+   - The apps are revised independently, and version numbers are specific to the app, not the group of apps
    - The implementation file for some apps can get really long. Combining them into one module can get difficult
      to manage.
 
@@ -76,11 +76,11 @@ Workspace Service
     and retrieval system for KBase typed objects (TO) defined with the KBase
     Interface Description Language (KIDL). It has the following primary features:
 
-    - Immutable storage of TOs with
+    - Immutable storage of typed objects with
     - user defined metadata
     - data provenance
-    - Versioning of TOs
-    - Referencing from TO to TO
+    - Versioning of typed objects
+    - Referencing from typed object to typed object
     - Typechecking of all saved objects against a KIDL specification
     - Collecting typed objects into a workspace
     - Sharing workspaces with specific KBase users or the world
@@ -126,4 +126,4 @@ Wrap an App
 
 .. |editDocker_link| raw:: html
 
-   <a href="../howtos/edit_your_dockerfile.html">Edititng your app's Dockerfile </a>
+   <a href="../howtos/edit_your_dockerfile.html">Editing your app's Dockerfile </a>

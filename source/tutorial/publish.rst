@@ -1,6 +1,8 @@
 Publish and Update
 ====================
 
+For all updates, it is good practice to update the RELEASE_NOTES.md file in the root directory for the module.
+
 |appdev_link| is a separate KBase narrative server that is useful for app developers like yourself to publish in-progress versions of their apps and test and share them using real data.
 
 Publish all git commits

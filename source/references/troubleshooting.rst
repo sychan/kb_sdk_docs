@@ -45,19 +45,19 @@ Examples of magic comments include:
 .. code:: python
 
     #BEGIN_HEADER
-    (This is where your import statements go)
+    # (This is where your import statements go)
     #END_HEADER
 
     #BEGIN_CLASS_HEADER
-    (This is where your class variables and functions go that you want imported)
+    # (This is where your class variables and functions go that you want imported)
     #END_CLASS_HEADER
 
     #BEGIN_CONSTRUCTOR
-    (This is in your init statement for your class goes)
+    # (This is in your init statement for your class goes)
     #END_CONSTRUCTOR
 
     #BEGIN YourFunctionName1
-    (This is where the implementation details of your functions go)
+    # (This is where the implementation details of your functions go)
     #END YourFunctionName1
 
 
@@ -111,15 +111,15 @@ Unable to find valid certification
 
 If you get an error on OSX as follows:
 
-.. code-block:: bash
+.. code-block:: console
 
     $ kb-sdk test
-    Validating module in (/Users/user/Module/ExpressionUtils)
-    Congrats- this module is valid.
-    Error while testing module: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
-    For more help and usage information, run:
-        kb-sdk help
-        (ExpressionUtils)
+    > Validating module in (/Users/user/Module/ExpressionUtils)
+    > Congrats- this module is valid.
+    > Error while testing module: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+    > For more help and usage information, run:
+    >     kb-sdk help
+    >     (ExpressionUtils)
 
 Generate new security certificates:
 

@@ -17,9 +17,9 @@ with this series of commands:
         && git checkout tags/v1.0 -b v1.0 \
         && ./bootstrap.sh \
         && ./configure \
-        && make \
-        # Place fastANI in the PATH for this user
-        && ln -s $(readlink -f ./fastANI) /usr/local/bin/fastANI
+        && make
+    # Place FastANI in the PATH for the docker user
+    RUN ln -s $(readlink -f ./fastANI) /usr/local/bin/fastANI
 
 Some things to note:
 

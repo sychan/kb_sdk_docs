@@ -116,7 +116,7 @@ Now add your own test for the new app method at the bottom of the test class and
             'min_length': 100,
             'max_length': 1000000
         })
-        print result
+        print(result)
         # TODO -- assert some things (later)
 
 We need to provide three parameters to our function: a workspace name, an assembly reference string, and a min length integer. For the reference string, we can use this sample reference to a *Shewanella oneidensis* assembly on AppDev: ``79/16/1``. You can always get a workspace name from the test class by using ``self.getWsName()``.
@@ -472,7 +472,7 @@ We nearly have a complete app. The last step has already been added to our "Cont
 
 If not there already, add a type entry for our result data in our KIDL file:
 
-.. code-block:: cpp
+.. ::
 
     /* Output results */
     typedef structure {

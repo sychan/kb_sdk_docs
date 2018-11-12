@@ -14,7 +14,7 @@ If you do ``run_app()`` without a ``cell_id`` field, it’ll return the job obje
     
 .. code:: python
 
-    my_job = AppManager().run_app( ... app info ...)
+    my_job = AppManager().run_app(app_info) 
     my_job.job_id
 
 

@@ -23,10 +23,10 @@ bootstrapping the HelloWorld module will start with:
 
 .. code-block:: bash
 
-    $ kb-sdk init --language python --user <your_kbase_user_name> <uid>HelloWorld
+    kb-sdk init --language python --user {your_kbase_user_name} {uid}HelloWorld
 
 
-This creates a directory called ``<uid>HelloWorld`` in your current directory where <uid> is your name/id 
+This creates a directory called ``{uid}HelloWorld`` in your current directory where ``{uid}`` is your name/id 
 that will make your copy of HelloWorld unique. The newly created directory has all of 
 the components needed to start creating apps and is basically a clean slate.  
 

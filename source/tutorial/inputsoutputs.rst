@@ -35,33 +35,33 @@ In the section under ``parameters``, there are two input parameters:
 
 .. code:: json
 
-    ...
-    "parameters": [
-        {
-            "id": "assembly_input_ref",
-            "optional": false,
-            "advanced": false,
-            "allow_multiple": false,
-            "default_values": [ "" ],
-            "field_type": "text",
-            "text_options": {
-                "valid_ws_types": [ "KBaseGenomeAnnotations.Assembly", "KBaseGenomes.ContigSet" ]
+    {
+        "parameters": [
+            {
+                "id": "assembly_input_ref",
+                "optional": false,
+                "advanced": false,
+                "allow_multiple": false,
+                "default_values": [ "" ],
+                "field_type": "text",
+                "text_options": {
+                    "valid_ws_types": [ "KBaseGenomeAnnotations.Assembly", "KBaseGenomes.ContigSet" ]
+                }
+            },
+            {
+                "id": "min_length",
+                "optional": false,
+                "advanced": false,
+                "allow_multiple": false,
+                "default_values": [ "" ],
+                "field_type": "text",
+                "text_options": {
+                    "validate_as": "int",
+                    "min_integer": "0"
+                }
             }
-        },
-        {
-            "id": "min_length",
-            "optional": false,
-            "advanced": false,
-            "allow_multiple": false,
-            "default_values": [ "" ],
-            "field_type": "text",
-            "text_options": {
-                "validate_as": "int",
-                "min_integer": "0"
-            }
-        }
-    ]
-    ...
+        ]
+    }
 
 These options will generate UI form elements in the narrative that allow the user to input data into your app. 
 We leave out the ``workspace_name`` parameter because it will automatically be provided by the system, 
@@ -77,7 +77,7 @@ Edit the file to add the other input parameter ``max_length`` with similar value
 
 .. code:: json
 
-    ...
+    [
         {
             "id": "min_length",
             "optional": false,
@@ -102,7 +102,7 @@ Edit the file to add the other input parameter ``max_length`` with similar value
                 "min_integer" : 0
             }
         }  
-    ...
+    ]
 
 Notice that a comma was added to the end of the ``min_length`` parameter.
 
@@ -110,11 +110,13 @@ Below parameters, in the section under ``behavior``, change ``filter_contigs`` t
 
 .. code:: json
 
+    {
         "service-mapping": {
             "url": "",
             "name":"ContigFilter",
-            "method": "filter_contigs_max",
-          }
+            "method": "filter_contigs_max"
+        }
+    }
 
 
 Also in the ``behavior`` section, you will see ``input_mapping`` options. It contains entries for the input 
@@ -122,23 +124,23 @@ parameters.
 
 .. code:: json 
 
-    ...
-    "input_mapping": [
-        {
-            "narrative_system_variable": "workspace",
-            "target_property": "workspace_name"
-        },
-        {
-            "input_parameter": "assembly_input_ref",
-            "target_property": "assembly_input_ref",
-            "target_type_transform": "resolved-ref"
-        },
-        {
-            "input_parameter": "min_length",
-            "target_property": "min_length"
-        }
-    ],
-    ...
+    {
+        "input_mapping": [
+            {
+                "narrative_system_variable": "workspace",
+                "target_property": "workspace_name"
+            },
+            {
+                "input_parameter": "assembly_input_ref",
+                "target_property": "assembly_input_ref",
+                "target_type_transform": "resolved-ref"
+            },
+            {
+                "input_parameter": "min_length",
+                "target_property": "min_length"
+            }
+        ]
+    }
 
 
 Notice that we added a ``target_type_transform`` option with the value ``resolved-ref`` for the 
@@ -149,7 +151,7 @@ Add the ``max_length to the ``input_mapping``. The lines will look something lik
 
 .. code:: json 
 
-        ...
+    [
         {
             "input_parameter": "min_length",
             "target_property": "min_length"
@@ -158,7 +160,7 @@ Add the ``max_length to the ``input_mapping``. The lines will look something lik
             "input_parameter": "max_length",
             "target_property": "max_length"
         }
-        ...
+    ]
 
 Make sure you include the commas after the min_length parameters. 
 

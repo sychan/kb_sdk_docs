@@ -19,6 +19,7 @@ app cell.
 
 .. code:: json
 
+  {
         "parameters": [ 
             {
                 "id": "read_library_name",
@@ -43,7 +44,8 @@ app cell.
                     "is_output_name":true
                 }
             }
-        ],
+        ]
+    }
 
 Another common input type is a dropdown, which is demonstrated below.
 For each option, the "value" is what will be passed to the app while the
@@ -82,7 +84,7 @@ be hidden in the "Advanced options" section of the input widget).
                 }
             ]
         }
-    },
+    }
 
 
 There are many additional interface options available. One of the best

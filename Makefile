@@ -23,4 +23,4 @@ live:
 	pipenv run sphinx-autobuild source $(ALLSPHINXOPTS) $(BUILDDIR)/html
 
 check:
-	pipenv run rstcheck source/**/*.rst
+	pipenv run rstcheck --report error source/**/*.rst

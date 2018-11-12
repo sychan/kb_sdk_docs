@@ -19,9 +19,8 @@ help:
 %: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-# Deploy to gh-pages
-deploy:
-	git subtree push --prefix build/html origin gh-pages
-
 live:
 	pipenv run sphinx-autobuild source $(ALLSPHINXOPTS) $(BUILDDIR)/html
+
+check:
+	pipenv run rstcheck source/**/*.rst

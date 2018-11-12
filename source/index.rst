@@ -65,7 +65,7 @@ To develop apps, start by obtaining a free KBase user account and applying for a
 
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     :caption: Advanced Guides
     :name: advanced_guides
 
@@ -74,8 +74,7 @@ To develop apps, start by obtaining a free KBase user account and applying for a
     howtos/work_with_reference_data
     howtos/job_manager
     howtos/dynamic_services
-
-.. Note that we can soon add a link above to: howtos/update_to_py3
+    howtos/update_to_py3
 
 
 .. toctree::

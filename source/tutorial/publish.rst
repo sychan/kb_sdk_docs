@@ -1,6 +1,8 @@
 Publish and Update
 ====================
 
+For all updates, it is good practice to update the RELEASE_NOTES.md file in the root directory for the module.
+
 |appdev_link| is a separate KBase narrative server that is useful for app developers like yourself to publish in-progress versions of their apps and test and share them using real data.
 
 Publish all git commits
@@ -21,11 +23,19 @@ Go to |Register_link|.  Enter your public git repo URL:
 
 
     
-and click on ``Register``. Wait for the registration to complete (it may take awhile on the first registration as it has to build the Docker image that is specific to your moddule from scratch).
+and click on ``Register``. Wait for the registration to complete (it may take a while on the first registration as it has to build the Docker image that is specific to your module from scratch).
 
-Note that you must be an approved developer to register a new module. You can apply for a KBase developer account by going to |accounts_link|. If you are a US citizen, your account can be created within a few days. For foreign nationals, it may take several weeks (and, in a few cases, you may not be able to get a developer account). Non-US citizens will be asked for additional information in order to process their application.Once your account is approved, contact us with your username and ask to be added to the developer list.
+Note that you must be an approved developer to register a new module. You can apply for a 
+KBase developer account by going to |accounts_link|. If you are a US citizen, your account 
+can be created within a few days. For foreign nationals, it may take several weeks (and, 
+in a few cases, you may not be able to get a developer account). Non-US citizens will be 
+asked for additional information in order to process their application. Once your account 
+is approved, contact us with your username and ask to be added to the developer list.
 
-Once your app has been registered, it will be available in the AppDev environment in KBase. Go |appdev_link| and start a new Narrative. Click on the 'R' in the Apps Panel  until it switches to 'D' ("develop") to show apps that are still in development.  Find your new app by searching for your module, and run it!
+Once your app has been registered, it will be available in the AppDev environment in KBase. 
+Go |appdev_link| and start a new Narrative. Click on the 'R' in the Apps Panel  until it 
+switches to 'D' ("develop") to show apps that are still in development.  Find your new app 
+by searching for your module and run it!
 
 Your app will now also be visible in the App Catalog when displaying Apps in development:
 

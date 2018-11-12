@@ -45,19 +45,19 @@ Examples of magic comments include:
 .. code:: python
 
     #BEGIN_HEADER
-    (This is where your import statements go)
+    # (This is where your import statements go)
     #END_HEADER
 
     #BEGIN_CLASS_HEADER
-    (This is where your class variables and functions go that you want imported)
+    # (This is where your class variables and functions go that you want imported)
     #END_CLASS_HEADER
 
     #BEGIN_CONSTRUCTOR
-    (This is in your init statement for your class goes)
+    # (This is in your init statement for your class goes)
     #END_CONSTRUCTOR
 
     #BEGIN YourFunctionName1
-    (This is were the implementation details of your functions go)
+    # (This is where the implementation details of your functions go)
     #END YourFunctionName1
 
 
@@ -80,7 +80,7 @@ or the daemon may not have been started. Please see |dockerLinux_link|
 Getting Java-related errors trying to run kb-sdk
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Java may not be installed or the path may not be set properly. Please follow the directions for installation of Java at |dependencies_link|  and then set your *JAVA\_HOME* with
+Java may not be installed, or the path may not be set properly. Please follow the directions for installation of Java at |dependencies_link|  and then set your *JAVA\_HOME* with
 
 ::
 
@@ -111,15 +111,15 @@ Unable to find valid certification
 
 If you get an error on OSX as follows:
 
-.. code-block:: bash
+.. code-block:: console
 
     $ kb-sdk test
-    Validating module in (/Users/user/Module/ExpressionUtils)
-    Congrats- this module is valid.
-    Error while testing module: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
-    For more help and usage information, run:
-        kb-sdk help
-        (ExpressionUtils)
+    > Validating module in (/Users/user/Module/ExpressionUtils)
+    > Congrats- this module is valid.
+    > Error while testing module: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+    > For more help and usage information, run:
+    >     kb-sdk help
+    >     (ExpressionUtils)
 
 Generate new security certificates:
 
@@ -155,7 +155,7 @@ Remove orphan images:
 My Docker container ran out of memory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This is perhaps the hardest to debug because it occurs during a run, and dies (almost) silently.
+This is perhaps the hardest to debug because it occurs during a run and dies (almost) silently.
 It will typically occur when handling (multiple) large workspace objects such as plant genomes.
 One way to figure out that it has happened is that the keyword "Killed" is printed.
 

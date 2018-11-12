@@ -11,7 +11,7 @@ System Dependencies:
 * Docker |docker_link| (for local testing)
 * At least 20 GB free on your hard drive to install Docker, Xcode, Java JRE, etc.
 
-We recommend using Mac OS X 10.8+ or Linux for SDK development. Windows development is not currently supported.  If you are running Windows or do not want to develop on your local machine, we recommend using [VirtualBox](|virtualbox_link|) and installing Ubuntu 14+.
+We recommend using Mac OS X 10.8+ or Linux for SDK development. Windows development is not currently supported.  If you are running Windows or do not want to develop on your local machine, we recommend using |virtualbox_link| and installing Ubuntu 14+.
 
 Xcode or the Xcode Command Line Tools will install some standard terminal commands like `make` and `git` that are necessary for building the KBase SDK and your module code.  |Xcode_link| 
 
@@ -51,7 +51,7 @@ When you run an app in a narrative, it runs in a docker container on KBase's ser
 
 .. |virtualbox_link| raw:: html
 
-   <a href="https://www.virtualbox.org" target="_blank">https://www.virtualbox.org</a>
+   <a href="https://www.virtualbox.org" target="_blank">Virtualbox</a>
 
 .. |dockermac_link| raw:: html
 

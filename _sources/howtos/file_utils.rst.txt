@@ -135,7 +135,7 @@ AssemblyUtil
     }
 
 Example
-^^^^^^^^
+^^^^^^^
 
 - |kb_SPAdesImpl_link| 
 - |AssemblyRASTImpl_link| 

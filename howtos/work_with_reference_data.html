@@ -24,8 +24,7 @@
 
   
 
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -120,6 +119,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Working with reference data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="job_manager.html">Listing and viewing jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dynamic_services.html">Dynamic Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update_to_py3.html">Updating a module to Python3</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
@@ -203,7 +203,7 @@
 <p class="topic-title first">Motivation</p>
 <p>Some tools and applications make use of large reference data
 collections. For example, a QC app may have a reference data with common
-contaminants. Adding data such as this to the Git repo for the module
+contaminants. Adding data such as this to the git repo for the module
 can make it very large. In addition, the generated Docker image would
 also be very large. KBase App reference data is designed to address this
 scenario.</p>
@@ -234,7 +234,7 @@ be configured to look for the data in this location.</li>
 data volume was successfully created. Ideally, some sanity tests
 should be performed to confirm things ran correctly by testing for
 the presence of expected files. If the __READY__ file is not
-present, the registration will fail and the reference data area will
+present, the registration will fail, and the reference data area will
 be removed.</li>
 </ol>
 <p>You can see an example in the <a href="https://github.com/kbaseapps/RAST\_SDK/blob/a975436d9c0af4f772bd7235b467180860f64060/scripts/entrypoint.sh#L18-L28" target="_blank">RAST application  </a></p>
@@ -254,7 +254,7 @@ helps to ensure reproducibility.</p>
 <p>There a few things to watch out for with reference data:</p>
 <ul class="simple">
 <li>The reference data area (/data) is mounted during initialization
-(module registration) and durinng app execution and replaces /data
+(module registration) and during app execution and replaces /data
 from the Docker image. Any modifications made by the Dockerfile to
 this space will not be visible. Changes must be done in the init
 block in entrypoint.sh.</li>
@@ -288,7 +288,7 @@ running the underlying application.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, KBase.
+        &copy; Copyright 2018, KBase
 
     </p>
   </div>
@@ -307,27 +307,17 @@ running the underlying application.</li>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.1.18',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {

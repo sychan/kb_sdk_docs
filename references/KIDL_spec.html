@@ -24,8 +24,7 @@
 
   
 
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -120,6 +119,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../howtos/work_with_reference_data.html">Working with reference data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/job_manager.html">Listing and viewing jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/dynamic_services.html">Dynamic Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/update_to_py3.html">Updating a module to Python3</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul class="current">
@@ -205,7 +205,7 @@ include three scalar types:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">string</span></code>: a sequence of ASCII characters</li>
 <li><code class="docutils literal notranslate"><span class="pre">integer</span></code>: a signed integer</li>
-<li><code class="docutils literal notranslate"><span class="pre">float</span></code>: a floating point number</li>
+<li><code class="docutils literal notranslate"><span class="pre">float</span></code>: a floating-point number</li>
 </ul>
 <p>And four compound types:</p>
 <ul class="simple">
@@ -251,8 +251,8 @@ to specify the functions that comprise the API:</p>
 </div>
 <p>A function may have zero or more parameters. Each parameter is specified
 as a type and an optional parameter name.</p>
-<p>For instance, a function that takes as input a list of feature
-identifiers and returns the current functions assigned to these features
+<p>For instance, a function that takes as input a list of feature-identifiers
+and returns the current functions assigned to these features
 as a hash mapping from the feature identifier to the function may be
 defined as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">FeatureId</span> <span class="n">string</span><span class="p">;</span>
@@ -283,7 +283,7 @@ defined as follows:</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, KBase.
+        &copy; Copyright 2018, KBase
 
     </p>
   </div>
@@ -302,27 +302,17 @@ defined as follows:</p>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.1.18',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {

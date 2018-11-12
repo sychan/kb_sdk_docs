@@ -24,8 +24,7 @@
 
   
 
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -120,6 +119,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../howtos/work_with_reference_data.html">Working with reference data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/job_manager.html">Listing and viewing jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/dynamic_services.html">Dynamic Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/update_to_py3.html">Updating a module to Python3</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
@@ -197,10 +197,10 @@
             
   <div class="section" id="hello-world-example">
 <h1>4. Hello World Example<a class="headerlink" href="#hello-world-example" title="Permalink to this headline">¶</a></h1>
-<p>This “Hello World” example demonstrates where various components of the SDK are located and how to run a basic test. Some of the options in the blank template will be simplified or removed for this example. The <a href="setup.html">ContigFilter</a> example adds more features of the SDK.</p>
-<p>For this example substitute your name/id for &lt;uid&gt; and use:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kb-sdk init --language python --user &lt;your_kbase_user_name&gt; &lt;uid&gt;HelloWorld
-<span class="nb">cd</span> &lt;uid&gt;HelloWorld
+<p>This “Hello World” example demonstrates where various components of the SDK are located and how to run a basic test. Most of this example is optional. The <a href="setup.html">ContigFilter</a> example adds more features of the SDK.</p>
+<p>For this example substitute your name/id for {uid} and use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kb-sdk init --language python --user <span class="o">{</span>your_kbase_user_name<span class="o">}</span> <span class="o">{</span>uid<span class="o">}</span>HelloWorld
+<span class="nb">cd</span> <span class="o">{</span>uid<span class="o">}</span>HelloWorld
 make
 </pre></div>
 </div>
@@ -215,80 +215,55 @@ make
 </ol>
 <div class="section" id="module-description">
 <h2>4.1. Module Description<a class="headerlink" href="#module-description" title="Permalink to this headline">¶</a></h2>
-<p>Open and edit the <code class="docutils literal notranslate"><span class="pre">kbase.yml</span></code> file to include a better description of your module. It is in  is in the root
-directory of the module. Be sure to describe what your module and its app will do. The information here shows up
-in the App Catalog entry for the module.  <a href="https://narrative.kbase.us/#catalog/modules/kb_SPAdes" target="_blank">See the page for kb_SPAdes. </a></p>
+<p>In the root directory of the module is the file <code class="docutils literal notranslate"><span class="pre">kbase.yml</span></code>.  Examine the file.
+It has a placeholder for information that you will eventually add to the module.
+The <code class="docutils literal notranslate"><span class="pre">module-name</span></code> and <code class="docutils literal notranslate"><span class="pre">service-language</span></code> will not change but the other items will change as
+you prepare the module for release or update.
+The default <code class="docutils literal notranslate"><span class="pre">module-description</span></code> doesn’t say anything about your module. You will want to edit this
+before the module is released.  Be sure to describe what your module and its app will do.
+The <code class="docutils literal notranslate"><span class="pre">module-version</span></code> needs to be incremented before updates can be released. For the first version
+of an app, it can remain <em>0.0.1</em>.
+The <code class="docutils literal notranslate"><span class="pre">owners</span></code> is a list of users that can approve updates to a module.
+The information in this file shows up in the  <a href="https://narrative.kbase.us/#catalog/modules" target="_blank">Module Catalog </a> entry for the module. A more complete example is  <a href="https://narrative.kbase.us/#catalog/modules/kb_SPAdes" target="_blank">kb_SPAdes</a>.</p>
 </div>
 <div class="section" id="the-specification-file">
 <h2>4.2. The Specification File<a class="headerlink" href="#the-specification-file" title="Permalink to this headline">¶</a></h2>
-<p>The specification file is called <code class="docutils literal notranslate"><span class="pre">&lt;uid&gt;HelloWorld.spec</span></code> and is in the root directory of the module.
-This file is highly structured and follows a KIDL type definition. The steps below show the sections that need
-to be modified for the HelloWorld module.</p>
+<p>The specification file (or spec file) is called <code class="docutils literal notranslate"><span class="pre">{uid}HelloWorld.spec</span></code> and is in the root directory of the module.
+This file is highly structured and follows a KBase-specific Interface Description Language or KIDL type definition.
+IDLs allow different apps to communicate with one another, regardless of programming languages.
+The steps below show the sections that are part of the HelloWorld module.</p>
 <p><a href="../references/KIDL_spec.html">View the KIDL tutorial and reference.</a></p>
+<p>The purpose of the spec file is to define:</p>
+<ul class="simple">
+<li>The inputs. For the HelloWorld module is a phrase.</li>
+<li>The outputs. For the HelloWorld module is a phrase.</li>
+<li>The functions. A default function will be created called run_{uid}HelloWorld - It will also be called an app or a method depending on context.</li>
+</ul>
 <div class="section" id="plan-the-inputs-outputs-and-functions">
 <h3>4.2.1. Plan the Inputs, Outputs, and Functions<a class="headerlink" href="#plan-the-inputs-outputs-and-functions" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>The input for the HelloWorld module is a phrase.</li>
-<li>The output for the HelloWorld module is a phrase.</li>
-<li>The function will be called printhelloworld - It will also be called an app or a method depending on context.</li>
-</ul>
-<p>First, add the input parameter types to your app’s KIDL specification, which lives in <code class="docutils literal notranslate"><span class="pre">&lt;module_name&gt;.spec</span></code> in the root directory of your codebase.</p>
+<p>First, a look at the default spec file, <code class="docutils literal notranslate"><span class="pre">{uid}HelloWorld.spec</span></code>.</p>
+<p>The spec file has two comments. Comments in KIDL start with a line with <code class="docutils literal notranslate"><span class="pre">/*</span></code> and end with a
+line with <code class="docutils literal notranslate"><span class="pre">*/</span></code>. The first comment is <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">KBase</span> <span class="pre">module:</span> <span class="pre">{uid}HelloWorld</span></code> and the second comment is
+<code class="docutils literal notranslate"><span class="pre">This</span> <span class="pre">example</span> <span class="pre">function</span> <span class="pre">accepts</span> <span class="pre">any</span> <span class="pre">number</span> <span class="pre">of</span> <span class="pre">parameters</span> <span class="pre">and</span> <span class="pre">returns</span> <span class="pre">results</span> <span class="pre">in</span> <span class="pre">a</span> <span class="pre">KBaseReport</span></code>.</p>
+<p>The definition of the module starts with <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">{uid}HelloWorld</span> <span class="pre">{</span></code> and ends with <code class="docutils literal notranslate"><span class="pre">};</span></code></p>
+<p>Within the module definition is a <code class="docutils literal notranslate"><span class="pre">typedef</span></code> which can be used to define either inputs or outputs.
+By default, the output called ‘ReportResults’ is defined. It is used to send results back to the user.</p>
+<p>The module definition also has a <code class="docutils literal notranslate"><span class="pre">funcdef</span></code> which is used to define functions.
+The function <code class="docutils literal notranslate"><span class="pre">run_{uid}HelloWorld</span></code> has been defined. Functions can become apps that are exposed
+in the user interface or they can be internal functions used by other apps. As seen in steps below,
+the default <code class="docutils literal notranslate"><span class="pre">run_{uid}HelloWorld</span></code> function will be exposed as an app. Internal functions are
+often found in modules with ‘Util’ in their name (<a href="https://narrative.kbase.us/#catalog/modules" target="_blank">Module Catalog </a>).</p>
+<p>The example module called <a href="setup.html">ContigFilter</a> goes through inputs, outputs, and functions in more detail.</p>
 </div>
-<div class="section" id="edit-the-spec-file-with-kidl">
-<h3>4.2.2. Edit the Spec file with KIDL<a class="headerlink" href="#edit-the-spec-file-with-kidl" title="Permalink to this headline">¶</a></h3>
-<p>The syntax comes from a custom type language called KIDL, which is used as a common interface definition language, allowing different apps to communicate with one another, regardless of programming languages.</p>
-<p><a href="../references/KIDL_spec.html">View the KIDL tutorial and reference.</a></p>
-<p>We’ll start with the <code class="docutils literal notranslate"><span class="pre">&lt;uid&gt;HelloWorld.spec</span></code> file. <strong>Comments</strong> in KIDL start with a line with <code class="docutils literal notranslate"><span class="pre">/*</span></code> and end with a
-line with <code class="docutils literal notranslate"><span class="pre">*/</span></code>.
-For example, the following has two comments and an empty specification for the module called &lt;uid&gt;HelloWorld.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
-<span class="cm">            A KBase module: &lt;uid&gt;HelloWorld</span>
-<span class="cm">*/</span>
-<span class="n">module</span> <span class="o">&lt;</span><span class="n">uid</span><span class="o">&gt;</span><span class="n">HelloWorld</span> <span class="p">{</span>
-    <span class="cm">/*</span>
-<span class="cm">        Insert your typespec information here.</span>
-<span class="cm">    */</span>
-<span class="p">};</span>
-</pre></div>
-</div>
-<p>Expand the module definition to define the inputs (comments removed):</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span> <span class="n">module</span> <span class="o">&lt;</span><span class="n">uid</span><span class="o">&gt;</span><span class="n">HelloWorld</span> <span class="p">{</span>
-    <span class="k">typedef</span> <span class="n">structure</span> <span class="p">{</span>
-        <span class="n">string</span> <span class="n">phrase</span><span class="p">;</span>
-    <span class="p">}</span> <span class="n">InParams</span><span class="p">;</span>
-<span class="p">};</span>
-</pre></div>
-</div>
-<p>The inputs and outputs are defined with typedef statements and functions are defined with funcdef statements. The example module called <a href="setup.html">ContigFilter</a> has a more examples of what can occur in these definitions.</p>
-<p>Now let’s look at the output. In the &lt;uid&gt;HelloWorld module, the following <code class="docutils literal notranslate"><span class="pre">typedef</span></code> lines define the outputs:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span> <span class="n">module</span> <span class="o">&lt;</span><span class="n">uid</span><span class="o">&gt;</span><span class="n">HelloWorld</span> <span class="p">{</span>
-    <span class="k">typedef</span> <span class="n">structure</span> <span class="p">{</span>
-        <span class="n">string</span> <span class="n">phrase</span><span class="p">;</span>
-    <span class="p">}</span> <span class="n">InParams</span><span class="p">;</span>
-    <span class="k">typedef</span> <span class="n">structure</span> <span class="p">{</span>
-        <span class="n">string</span> <span class="n">phrase</span><span class="p">;</span>
-    <span class="p">}</span> <span class="n">OutParams</span><span class="p">;</span>
-<span class="p">};</span>
-</pre></div>
-</div>
-<p>Now let us look at the function declaration for our app, which we can call <code class="docutils literal notranslate"><span class="pre">printhelloworld</span></code>.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span> <span class="n">module</span> <span class="o">&lt;</span><span class="n">uid</span><span class="o">&gt;</span><span class="n">HelloWorld</span> <span class="p">{</span>
-    <span class="k">typedef</span> <span class="n">structure</span> <span class="p">{</span>
-        <span class="n">string</span> <span class="n">phrase</span><span class="p">;</span>
-    <span class="p">}</span> <span class="n">InParams</span><span class="p">;</span>
-    <span class="k">typedef</span> <span class="n">structure</span> <span class="p">{</span>
-        <span class="n">string</span> <span class="n">phrase</span><span class="p">;</span>
-    <span class="p">}</span> <span class="n">OutParams</span><span class="p">;</span>
-    <span class="n">funcdef</span> <span class="nf">printhelloworld</span><span class="p">(</span><span class="n">InParams</span> <span class="n">params</span><span class="p">)</span>
-        <span class="n">returns</span> <span class="p">(</span><span class="n">OutParams</span><span class="p">)</span> <span class="n">authentication</span> <span class="n">required</span><span class="p">;</span>
-<span class="p">};</span>
-</pre></div>
-</div>
-<p>This function definition (<code class="docutils literal notranslate"><span class="pre">funcdef</span></code>) defines a function called <code class="docutils literal notranslate"><span class="pre">printhelloworld</span></code> with input parameters of
-<code class="docutils literal notranslate"><span class="pre">InParams</span></code> and returns output parameters of <code class="docutils literal notranslate"><span class="pre">OutParams</span></code>.
-The function is set as <code class="docutils literal notranslate"><span class="pre">authentication</span> <span class="pre">required</span></code> because all SDK apps that run in the
-Narrative will require the authentication to interact with a user’s workspace. It isn’t needed in this example but it is a good practice to get into.</p>
-<p>Now return to your module’s root directory and run <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p>
+<div class="section" id="add-input-and-output">
+<h3>4.2.2. Add input and output<a class="headerlink" href="#add-input-and-output" title="Permalink to this headline">¶</a></h3>
+<p>The HelloWorld module will run without making any changes. This step is optional for the HelloWorld module.</p>
+<p>An input can be added to the HelloWorld spec file that captures a phrase the user inputs.
+In this example, we will call it parameter_1 and it will be a string.</p>
+<p>We can also add an output string that is returned to the user. It will be added to the ReportResults
+and we will reuse parameter_1. Normally the input and output parameters are different types so they
+can’t share a name. The spec file now has:</p>
+<p>If you made any changes, return to your module’s root directory and run <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
 <p class="last">You must rerun <em>make</em> after each change to the KIDL specification to regenerate client and server code used in the codebase.</p>
@@ -298,64 +273,55 @@ Narrative will require the authentication to interact with a user’s workspace.
 </div>
 <div class="section" id="validate-your-app">
 <h2>4.3. Validate your app<a class="headerlink" href="#validate-your-app" title="Permalink to this headline">¶</a></h2>
-<p>When you make changes to your KIDL <code class="docutils literal notranslate"><span class="pre">&lt;uid&gt;HelloWorld.spec</span></code> file, validate the syntax of your changes by running:</p>
+<p>When you make changes to your KIDL <code class="docutils literal notranslate"><span class="pre">{uid}HelloWorld.spec</span></code> file, validate the syntax of your changes by running:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kb-sdk validate
 </pre></div>
 </div>
-<p>For now, you will get an error that looks something like this:</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">**</span><span class="n">ERROR</span><span class="o">**</span> <span class="o">-</span> <span class="n">unknown</span> <span class="n">method</span> <span class="s2">&quot;your_method&quot;</span> <span class="n">defined</span> <span class="n">within</span> <span class="n">path</span> <span class="p">[</span><span class="n">behavior</span><span class="o">/</span><span class="n">service</span><span class="o">-</span><span class="n">mapping</span><span class="o">/</span><span class="n">method</span><span class="p">]</span> <span class="ow">in</span> <span class="n">spec</span><span class="o">.</span><span class="n">json</span>
-</pre></div>
+<p>If you get <strong>WARNING</strong> or <strong>ERROR</strong> messages similar to this:</p>
+<p>or</p>
+<p>you either have a typo or you need to add something to the Narrative user interface (next section).</p>
 </div>
-<p>That’s because we need to set up some things in our <code class="docutils literal notranslate"><span class="pre">/ui/narrative</span></code> directory in the app.</p>
-</div>
-<div class="section" id="update-spec-json">
-<h2>4.4. Update spec.json<a class="headerlink" href="#update-spec-json" title="Permalink to this headline">¶</a></h2>
-<p>The directory named <code class="docutils literal notranslate"><span class="pre">/ui/narrative/methods/example_method</span></code> is a placeholder. Rename it to the name of the actual function we defined in our KIDL <code class="docutils literal notranslate"><span class="pre">&lt;uid&gt;HelloWorld.spec</span></code> file:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># From your app&#39;s root directory:</span>
-$ mv ui/narrative/methods/example_method ui/narrative/methods/printhelloworld
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">printhelloworld</span></code> matches the <code class="docutils literal notranslate"><span class="pre">funcdef</span></code> name we used in the KIDL <code class="docutils literal notranslate"><span class="pre">&lt;uid&gt;HelloWorld.spec</span></code> file.</p>
-<p>Now open up <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/printhelloworld/spec.json</span></code>. This file defines a mapping between our KIDL <code class="docutils literal notranslate"><span class="pre">&lt;uid&gt;HelloWorld.spec</span></code> file and how our parameters will show up in the app’s user interface.</p>
-<p>In the section under <code class="docutils literal notranslate"><span class="pre">parameters</span></code>, you will define more details about your input parameter (change <code class="docutils literal notranslate"><span class="pre">parameter_1</span></code> to <code class="docutils literal notranslate"><span class="pre">phrase</span></code>):</p>
-<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
-<span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;phrase&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-        <span class="s2">&quot;advanced&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-        <span class="s2">&quot;allow_multiple&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-        <span class="s2">&quot;default_values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;&quot;</span> <span class="p">],</span>
-        <span class="s2">&quot;field_type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;text_options&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;valid_ws_types&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">]</span>
+<div class="section" id="edit-the-narrative-ui-optional">
+<h2>4.4. Edit the Narrative UI (optional)<a class="headerlink" href="#edit-the-narrative-ui-optional" title="Permalink to this headline">¶</a></h2>
+<p>The specifications for the app’s Narrative user interface are under the directory named
+<code class="docutils literal notranslate"><span class="pre">/ui/narrative/methods/run_{uid}HelloWorld</span></code>. Note that the name of the directory is the same as
+the name of the function in the spec file above. Functions that become user-facing apps need a
+directory that defines the user interface.</p>
+<p>This directory has two files <code class="docutils literal notranslate"><span class="pre">spec.json</span></code> and <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code>. The example module <a href="setup.html">ContigFilter</a>
+will go into more depth for these files.  The  <a href="../howtos/fill_out_app_information.html">documenting your app</a> page provides
+information on the purpose of the subdirectory <code class="docutils literal notranslate"><span class="pre">img</span></code>.</p>
+<p>If you added input and output parameters to the spec file above, you can now add them to the Narrative UI.</p>
+<p>Now open up <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/run_{uid}HelloWorld/spec.json</span></code>. This file is in JSON format and
+defines a mapping between our KIDL <code class="docutils literal notranslate"><span class="pre">{uid}HelloWorld.spec</span></code> file and how our parameters will show up in the app’s user interface.</p>
+<p>In the section <code class="docutils literal notranslate"><span class="pre">parameters</span></code> already defines <code class="docutils literal notranslate"><span class="pre">parameter_1</span></code>:</p>
+<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;parameter_1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;advanced&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;allow_multiple&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;default_values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;&quot;</span> <span class="p">],</span>
+            <span class="s2">&quot;field_type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;text_options&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;valid_ws_types&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">]</span>
+            <span class="p">}</span>
         <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">]</span>
-<span class="o">...</span>
+    <span class="p">]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<p>Find line 29 where it says <code class="docutils literal notranslate"><span class="pre">your_method</span></code> – change that to say <code class="docutils literal notranslate"><span class="pre">printhelloworld</span></code> instead.</p>
-<p>Below that section, you will see some default <code class="docutils literal notranslate"><span class="pre">input_mapping</span></code> options. Change that section so that it contains entries for each of your input and output parameters.</p>
-<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
-<span class="s2">&quot;input_mapping&quot;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;input_parameter&quot;</span><span class="p">:</span> <span class="s2">&quot;phrase&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;target_property&quot;</span><span class="p">:</span> <span class="s2">&quot;phrase&quot;</span>
-    <span class="p">}</span>
-<span class="p">],</span>
-<span class="s2">&quot;output_mapping&quot;</span><span class="p">:</span> <span class="p">[</span>
-<span class="p">]</span>
-<span class="o">...</span>
-</pre></div>
-</div>
-<p>When you run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">validate</span></code> again, you will get an error about your <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code>, which we can update next.</p>
-</div>
-<div class="section" id="update-display-yaml">
-<h2>4.5. Update display.yaml<a class="headerlink" href="#update-display-yaml" title="Permalink to this headline">¶</a></h2>
-<p>The YAML file found in <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/printhelloworld/display.yaml</span></code> holds text content for your app.</p>
-<p>In the <code class="docutils literal notranslate"><span class="pre">parameters</span></code> section change <code class="docutils literal notranslate"><span class="pre">parameter_1</span></code> to <code class="docutils literal notranslate"><span class="pre">phrase</span></code>.  You can leave the rest of the template as-is. View <a href="../howtos/fill_out_app_information.html">Fully documenting your app </a>  for more on the how this file is used.</p>
-<p>Finally, run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">validate</span></code> again and it should pass! Now we can start to actually work on the functionality of the app.</p>
+<p>Additional parameters added to the spec file  need to be added to this section. This will be covered
+in the next example module.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">behavior</span></code> section describes how the parameters from the Narrative UI are passed to the
+Python code. For example, the Narrative UI automatically passes two hidden parameters about the
+narrative, the <code class="docutils literal notranslate"><span class="pre">workspace</span></code> and the <code class="docutils literal notranslate"><span class="pre">workspace_id</span></code>. When these are passed to the Python code,
+the <code class="docutils literal notranslate"><span class="pre">workspace</span></code> from the Narrative is passed as <code class="docutils literal notranslate"><span class="pre">workspace_name</span></code> to Python.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code> file is in YAML format and defines how your app will appear in the <a href="https://narrative.kbase.us/#appcatalog" target="_blank">App Catalog </a>.
+Examine the file found in <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/printhelloworld/display.yaml</span></code>.
+View the <a href="../howtos/fill_out_app_information.html">documenting your app</a> page for more on the how this file is used.</p>
+<p>Finally, if you made any changes, run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">validate</span></code> again and make sure it passes!
+Now we can start to work on the functionality of the app.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">For a more exhaustive overview of the <code class="docutils literal notranslate"><span class="pre">spec.json</span></code> and <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code> files, take a look at
@@ -363,11 +329,15 @@ the <a href="../references/UI_spec.html">UI specification guide </a>.  You can a
 with the <a href="https://narrative.kbase.us/narrative/ws.28370.obj.1" target="_blank">App Spec Editor Narrative </a></p>
 </div>
 </div>
-<div class="section" id="implement-code">
-<h2>4.6. Implement Code<a class="headerlink" href="#implement-code" title="Permalink to this headline">¶</a></h2>
-<p>The actual code for your app will live in the python package under <code class="docutils literal notranslate"><span class="pre">lib/&lt;uid&gt;HelloWorld</span></code>. The entry point, where your code is initially called, lives in the file: <code class="docutils literal notranslate"><span class="pre">lib/&lt;uid&gt;HelloWorld/&lt;uid&gt;HelloWorldImpl.py</span></code>. It is sometimes called the “Implementation” file or simply the “Impl” file.  This is the file where you edit your own Python code.</p>
-<p>This “Implementation” file defines the python methods available in the module. The methods correspond to apps and they are part of the class inside <code class="docutils literal notranslate"><span class="pre">&lt;uid&gt;HelloWorldImpl.py</span></code>.</p>
-<p>Much of the Implementation file is auto-generated based on the KIDL .spec file. The <code class="docutils literal notranslate"><span class="pre">make</span></code> command updates the Implementation file. To separate auto-generated code from developer code, developer code belongs between <code class="docutils literal notranslate"><span class="pre">#BEGIN</span></code> and <code class="docutils literal notranslate"><span class="pre">#END</span></code> comments. For example:</p>
+<div class="section" id="code-implementation">
+<h2>4.5. Code Implementation<a class="headerlink" href="#code-implementation" title="Permalink to this headline">¶</a></h2>
+<p>The actual code for your app will live in the python package under <code class="docutils literal notranslate"><span class="pre">lib/{uid}HelloWorld</span></code>.
+The entry point, where your code is initially called, lives in the file: <code class="docutils literal notranslate"><span class="pre">lib/{uid}HelloWorld/{uid}HelloWorldImpl.py</span></code>.
+It is sometimes called the “Implementation” file or simply the “Impl” file.  This is the file where you edit your own Python code.</p>
+<p>This “Implementation” file defines the python methods available in the module. All of the functions
+defined in the spec file correspond to Python methods
+and they are part of the class inside <code class="docutils literal notranslate"><span class="pre">{uid}HelloWorldImpl.py</span></code>.</p>
+<p>Much of the Implementation file is auto-generated based on the spec file. The <code class="docutils literal notranslate"><span class="pre">make</span></code> command updates the Implementation file. To separate auto-generated code from developer code, developer code belongs between <code class="docutils literal notranslate"><span class="pre">#BEGIN</span></code> and <code class="docutils literal notranslate"><span class="pre">#END</span></code> comments. For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#BEGIN_HEADER</span>
 <span class="c1">#END_HEADER</span>
 
@@ -387,48 +357,54 @@ with the <a href="https://narrative.kbase.us/narrative/ws.28370.obj.1" target="_
 <p class="last">Don’t put any spaces between the ‘#’ and ‘BEGIN’ or ‘END’. It has bad consequences.</p>
 </div>
 </div>
-<div class="section" id="receive-and-return-parameter">
-<h2>4.7. Receive and Return parameter<a class="headerlink" href="#receive-and-return-parameter" title="Permalink to this headline">¶</a></h2>
-<p>Open <code class="docutils literal notranslate"><span class="pre">&lt;uid&gt;HelloWorldImpl.py</span></code> and find the <code class="docutils literal notranslate"><span class="pre">printhelloworld</span></code> method, which should have some auto-generated boilerplate code and docstrings.</p>
-<p>You want to edit code between the comments <code class="docutils literal notranslate"><span class="pre">#BEGIN</span> <span class="pre">printhelloworld</span></code> and <code class="docutils literal notranslate"><span class="pre">#END</span> <span class="pre">printhelloworld</span></code>. These are special SDK-generated annotations that we have to keep in the code to get everything to compile correctly. If you run <code class="docutils literal notranslate"><span class="pre">make</span></code> again in the future, it will update the code outside these comments, but will not change the code you put between the <code class="docutils literal notranslate"><span class="pre">#BEGIN</span></code> and <code class="docutils literal notranslate"><span class="pre">#END</span></code> comments.</p>
-<p>Between the comments, add a simple print statement, such as: <code class="docutils literal notranslate"><span class="pre">print(params['phrase'])</span></code>. This let us see what is getting passed into our method.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">printhelloworld</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    :param params: instance of type &quot;InParams&quot; (Insert your typespec</span>
-<span class="sd">       information here.) -&gt; structure: parameter &quot;phrase&quot; of String</span>
-<span class="sd">    :returns: instance of type &quot;OutParams&quot; -&gt; structure: parameter</span>
-<span class="sd">       &quot;phrase&quot; of String</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># ctx is the context object</span>
-    <span class="c1"># return variables are: returnVal</span>
-    <span class="c1">#BEGIN printhelloworld</span>
-    <span class="k">print</span> <span class="s2">&quot;IMPL file and your phrase is: &quot;</span> <span class="o">+</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;phrase&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
-    <span class="n">returnVal</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;phrase&#39;</span><span class="p">:</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;phrase&#39;</span><span class="p">]}</span>
-    <span class="c1">#END printhelloworld</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">returnVal</span><span class="p">]</span>
+<div class="section" id="check-inputs-optional">
+<h2>4.6. Check Inputs (optional)<a class="headerlink" href="#check-inputs-optional" title="Permalink to this headline">¶</a></h2>
+<p>Open <code class="docutils literal notranslate"><span class="pre">{uid}HelloWorldImpl.py</span></code> and find the <code class="docutils literal notranslate"><span class="pre">run_{uid}Helloworld</span></code> method, which should have some auto-generated boilerplate code and docstrings.</p>
+<p>You want to limit your code edits to regions between the comments <code class="docutils literal notranslate"><span class="pre">#BEGIN</span> <span class="pre">run_{uid}Helloworld</span></code>
+and <code class="docutils literal notranslate"><span class="pre">#END</span> <span class="pre">run_{uid}Helloworld</span></code>.
+These are special SDK-generated annotations that we have to keep in the code to get everything to compile
+correctly. If you run <code class="docutils literal notranslate"><span class="pre">make</span></code> again in the future, it will update the code outside these comments,
+but will not change the code you put between the <code class="docutils literal notranslate"><span class="pre">#BEGIN</span></code> and <code class="docutils literal notranslate"><span class="pre">#END</span></code> comments.</p>
+<p>Between the comments, add a simple print statement, such as: <code class="docutils literal notranslate"><span class="pre">print</span> <span class="pre">(&quot;Input</span> <span class="pre">parameter&quot;,params['parameter_1'])</span></code>. Then add the <code class="docutils literal notranslate"><span class="pre">parameter_1</span></code> to the output.
+This let us see what is getting passed into our method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#BEGIN run_{uid}HelloWorld</span>
+<span class="k">print</span> <span class="p">(</span><span class="s2">&quot;Input parameter&quot;</span><span class="p">,</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;parameter_1&#39;</span><span class="p">])</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">KBaseReport</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">callback_url</span><span class="p">)</span>
+<span class="n">report_info</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">create</span><span class="p">({</span><span class="s1">&#39;report&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;objects_created&#39;</span><span class="p">:[],</span>
+                                        <span class="s1">&#39;text_message&#39;</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;parameter_1&#39;</span><span class="p">]},</span>
+                                        <span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;workspace_name&#39;</span><span class="p">]})</span>
+<span class="n">output</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;output&#39;</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;parameter_1&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;report_name&#39;</span><span class="p">:</span> <span class="n">report_info</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;report_ref&#39;</span><span class="p">:</span> <span class="n">report_info</span><span class="p">[</span><span class="s1">&#39;ref&#39;</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="c1">#END run_{uid}HelloWorld</span>
 </pre></div>
 </div>
-<p>Don’t try to change the docstring, or anything else outside the <code class="docutils literal notranslate"><span class="pre">BEGIN</span> <span class="pre">printhelloworld</span></code> and <code class="docutils literal notranslate"><span class="pre">END</span> <span class="pre">printhelloworld</span></code> comments, as your change will get overwritten by the <code class="docutils literal notranslate"><span class="pre">make</span></code> command.</p>
+<p>Don’t try to change the docstring, or anything else outside the <code class="docutils literal notranslate"><span class="pre">BEGIN</span> <span class="pre">run_{uid}Helloworld</span></code> and <code class="docutils literal notranslate"><span class="pre">END</span> <span class="pre">run_{uid}Helloworld</span></code> comments, as your change will get overwritten by the <code class="docutils literal notranslate"><span class="pre">make</span></code> command.</p>
 </div>
 <div class="section" id="run-first-test">
-<h2>4.8. Run First Test<a class="headerlink" href="#run-first-test" title="Permalink to this headline">¶</a></h2>
-<p>Your <code class="docutils literal notranslate"><span class="pre">&lt;uid&gt;HelloWorldImpl.py</span></code> file is tested using <code class="docutils literal notranslate"><span class="pre">test/&lt;uid&gt;HelloWorldImpl_server_test.py</span></code>. This file also has a variety of auto-generated boilerplate code.  Phython will automatically run all all methods that start with the name <code class="docutils literal notranslate"><span class="pre">test</span></code>.</p>
-<p>Near the bottom, find the method <code class="docutils literal notranslate"><span class="pre">test_your_method</span></code>. For clarity, change the name of the method to <code class="docutils literal notranslate"><span class="pre">test_printhelloworld</span></code>. Now modify the test method.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_printhelloworld</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getImpl</span><span class="p">()</span><span class="o">.</span><span class="n">printhelloworld</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">getContext</span><span class="p">(),</span> <span class="p">{</span>
-        <span class="s1">&#39;phrase&#39;</span><span class="p">:</span> <span class="s2">&quot;HelloWorld&quot;</span>
-    <span class="p">})[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">print</span> <span class="s2">&quot;TEST file and your phrase is &quot;</span> <span class="o">+</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;phrase&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<h2>4.7. Run First Test<a class="headerlink" href="#run-first-test" title="Permalink to this headline">¶</a></h2>
+<p>As a default, your <code class="docutils literal notranslate"><span class="pre">{uid}HelloWorldImpl.py</span></code> file is tested using <code class="docutils literal notranslate"><span class="pre">test/{uid}HelloWorld_server_test.py</span></code>. This file has a some auto-generated boilerplate code.  Python will automatically run all methods that start with the name <code class="docutils literal notranslate"><span class="pre">test</span></code>.</p>
+<p>Near the bottom of the test file, find the method <code class="docutils literal notranslate"><span class="pre">test_your_method</span></code>.
+The default test is to call <code class="docutils literal notranslate"><span class="pre">run_{uid}HelloWorld</span></code> with
+a <code class="docutils literal notranslate"><span class="pre">workspace_name</span></code> for the test and a <code class="docutils literal notranslate"><span class="pre">parameter_1</span></code> of ‘Hello World’.
+If you added the optional parameters in the
+earlier steps, you can modify the test method to test the returned output.</p>
+<p>Add a simple print statement to the end of the test method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span> <span class="p">(</span><span class="s2">&quot;Output parameter&quot;</span><span class="p">,</span><span class="n">ret</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;output&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>We need to provide one parameter to our function: a word phrase.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Make sure that you have put your developer token in the <code class="docutils literal notranslate"><span class="pre">test_local/test.cfg</span></code> as mentioned in the
 <a href="../tutorial/initialize.html">Initialize the Module </a></p>
 </div>
-<p>Run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> and, if everything works, you’ll see the docker container boot up, the <code class="docutils literal notranslate"><span class="pre">printhelloworld</span></code> method will get called, and you will see some printed output.</p>
-<p>When running an app, the messages created by the Impl file and the test will show up in the log. The next example includes a report builder that is used by the Narrative User Interface.</p>
+<p>Run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> and, if everything works, you’ll see the docker container boot up, the <code class="docutils literal notranslate"><span class="pre">run_{uid}Helloworld</span></code> method will get called, and you will see some printed output.
+If you added the input and output parameters, the output should include the two lines.</p>
+<p>When running an app, the messages created by the Impl file and the test will show up in the log.
+For this module, setting up the docker container will take the most time and generate the most lines in the log.
+The next example includes a report builder that is used by the Narrative User Interface.</p>
 </div>
 </div>
 
@@ -452,7 +428,7 @@ with the <a href="https://narrative.kbase.us/narrative/ws.28370.obj.1" target="_
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, KBase.
+        &copy; Copyright 2018, KBase
 
     </p>
   </div>
@@ -471,27 +447,17 @@ with the <a href="https://narrative.kbase.us/narrative/ws.28370.obj.1" target="_
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.1.18',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {

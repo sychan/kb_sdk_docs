@@ -24,8 +24,7 @@
 
   
 
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -120,6 +119,7 @@
 <li class="toctree-l1"><a class="reference internal" href="work_with_reference_data.html">Working with reference data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="job_manager.html">Listing and viewing jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dynamic_services.html">Dynamic Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update_to_py3.html">Updating a module to Python3</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
@@ -206,8 +206,8 @@
 <p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></p>
 <p>After downloading and installing the JDK, set your <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code>
 environment variable to point to your JDK installation. If you’re not
-sure where that is, on a Mac the command <code class="docutils literal notranslate"><span class="pre">/usr/libexec/java_home</span></code>
-should tell you and on Linux <code class="docutils literal notranslate"><span class="pre">readlink</span> <span class="pre">-f</span> <span class="pre">$(which</span> <span class="pre">javac)</span></code> will provide
+sure where that is, on a Mac, the command <code class="docutils literal notranslate"><span class="pre">/usr/libexec/java_home</span></code>
+should tell you and on Linux, <code class="docutils literal notranslate"><span class="pre">readlink</span> <span class="pre">-f</span> <span class="pre">$(which</span> <span class="pre">javac)</span></code> will provide
 the installed location of the javac, which you can use to find the base
 directory of the installation. On a Mac you can set the variable like
 so:</p>
@@ -225,7 +225,7 @@ a terminal.</p>
 <h2>Apache Ant<a class="headerlink" href="#apache-ant" title="Permalink to this headline">¶</a></h2>
 <p><a href="http://ant.apache.org" target="_blank">http://ant.apache.org</a></p>
 <p><a href="http://ant.apache.org/manual/install.html" target="_blank">http://ant.apache.org/manual/install.html</a></p>
-<p>The easist way to install Ant on a Mac is probably to use a package
+<p>The easiest way to install Ant on a Mac is probably to use a package
 manager like <a href="http://brew.sh/" target="_blank">HomeBrew </a> , which allows you to install
 simply by <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">ant</span></code>. Make sure the Ant install location is
 added to your PATH environment variable, which is generally handled for
@@ -298,7 +298,7 @@ the image… External links</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, KBase.
+        &copy; Copyright 2018, KBase
 
     </p>
   </div>
@@ -317,27 +317,17 @@ the image… External links</p>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.1.18',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {

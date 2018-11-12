@@ -24,8 +24,7 @@
 
   
 
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -120,6 +119,7 @@
 <li class="toctree-l1"><a class="reference internal" href="work_with_reference_data.html">Working with reference data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="job_manager.html">Listing and viewing jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dynamic_services.html">Dynamic Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update_to_py3.html">Updating a module to Python3</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
@@ -210,31 +210,33 @@ dropdown of objects that match the specified types. If
 will overwrite an existing object or if the name contains invalid
 characters, and a widget displaying that object will appear beneath the
 app cell.</p>
-<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;read_library_name&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-        <span class="s2">&quot;advanced&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-        <span class="s2">&quot;allow_multiple&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-        <span class="s2">&quot;default_values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;&quot;</span> <span class="p">],</span>
-        <span class="s2">&quot;field_type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;text_options&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;valid_ws_types&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;KBaseAssembly.PairedEndLibrary&quot;</span><span class="p">,</span><span class="s2">&quot;KBaseFile.PairedEndLibrary&quot;</span><span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="s2">&quot;output_contigset_name&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;optional&quot;</span> <span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-        <span class="s2">&quot;advanced&quot;</span> <span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-        <span class="s2">&quot;allow_multiple&quot;</span> <span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-        <span class="s2">&quot;default_values&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;MegaHit.contigs&quot;</span> <span class="p">],</span>
-        <span class="s2">&quot;field_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;text_options&quot;</span> <span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;valid_ws_types&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;KBaseGenomes.ContigSet&quot;</span> <span class="p">],</span>
-            <span class="s2">&quot;is_output_name&quot;</span><span class="p">:</span><span class="n">true</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">],</span>
+<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+      <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+              <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;read_library_name&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+              <span class="s2">&quot;advanced&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+              <span class="s2">&quot;allow_multiple&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+              <span class="s2">&quot;default_values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;&quot;</span> <span class="p">],</span>
+              <span class="s2">&quot;field_type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;text_options&quot;</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="s2">&quot;valid_ws_types&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;KBaseAssembly.PairedEndLibrary&quot;</span><span class="p">,</span><span class="s2">&quot;KBaseFile.PairedEndLibrary&quot;</span><span class="p">]</span>
+              <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+              <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="s2">&quot;output_contigset_name&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;optional&quot;</span> <span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+              <span class="s2">&quot;advanced&quot;</span> <span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+              <span class="s2">&quot;allow_multiple&quot;</span> <span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+              <span class="s2">&quot;default_values&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;MegaHit.contigs&quot;</span> <span class="p">],</span>
+              <span class="s2">&quot;field_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;text_options&quot;</span> <span class="p">:</span> <span class="p">{</span>
+                  <span class="s2">&quot;valid_ws_types&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;KBaseGenomes.ContigSet&quot;</span> <span class="p">],</span>
+                  <span class="s2">&quot;is_output_name&quot;</span><span class="p">:</span><span class="n">true</span>
+              <span class="p">}</span>
+          <span class="p">}</span>
+      <span class="p">]</span>
+  <span class="p">}</span>
 </pre></div>
 </div>
 <p>Another common input type is a dropdown, which is demonstrated below.
@@ -271,7 +273,7 @@ be hidden in the “Advanced options” section of the input widget).</p>
             <span class="p">}</span>
         <span class="p">]</span>
     <span class="p">}</span>
-<span class="p">},</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>There are many additional interface options available. One of the best
@@ -424,7 +426,7 @@ available <a href="../references/UI_spec.html">here.</a></p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, KBase.
+        &copy; Copyright 2018, KBase
 
     </p>
   </div>
@@ -443,27 +445,17 @@ available <a href="../references/UI_spec.html">here.</a></p>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.1.18',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {

@@ -24,8 +24,7 @@
 
   
 
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -120,6 +119,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../howtos/work_with_reference_data.html">Working with reference data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/job_manager.html">Listing and viewing jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/dynamic_services.html">Dynamic Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/update_to_py3.html">Updating a module to Python3</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
@@ -209,14 +209,16 @@ creating one app per module. See <a href="../references/terminology.html">termin
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kb-sdk init <span class="o">[</span>--example<span class="o">]</span> <span class="o">[</span>--verbose<span class="o">]</span> <span class="o">[</span>--language language<span class="o">]</span> <span class="o">[</span>--user username<span class="o">]</span> ModuleName
 </pre></div>
 </div>
-<p>where <code class="docutils literal notranslate"><span class="pre">ModuleName</span></code> must be unique across all SDK modules registered in KBase. For example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kb-sdk init --language python --user &lt;your_kbase_user_name&gt; &lt;uid&gt;HelloWorld
+<p>where <code class="docutils literal notranslate"><span class="pre">ModuleName</span></code> must be unique across all SDK modules registered in KBase. For example,
+bootstrapping the HelloWorld module will start with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kb-sdk init --language python --user <span class="o">{</span>your_kbase_user_name<span class="o">}</span> <span class="o">{</span>uid<span class="o">}</span>HelloWorld
 </pre></div>
 </div>
-<p>This creates a directory called <code class="docutils literal notranslate"><span class="pre">&lt;uid&gt;HelloWord</span></code> in your current directory where &lt;uid&gt; is your name/id that will make your copy of HelloWorld unique. The directory has all of
+<p>This creates a directory called <code class="docutils literal notranslate"><span class="pre">{uid}HelloWorld</span></code> in your current directory where <code class="docutils literal notranslate"><span class="pre">{uid}</span></code> is your name/id
+that will make your copy of HelloWorld unique. The newly created directory has all of
 the components needed to start creating apps and is basically a clean slate.</p>
 <p>You must always include the <code class="docutils literal notranslate"><span class="pre">-u</span></code> or <code class="docutils literal notranslate"><span class="pre">-user</span></code> option with your username to set yourself as the module owner.</p>
-<p>You can set your programming langauge to any of Python, Perl, or Java; for this tutorial, we’re using Python.</p>
+<p>You can set your programming language to any of Python, Perl, or Java; for this tutorial, we’re using Python.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">init</span></code> options are:</p>
 <div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="o">--</span><span class="n">verbose</span>    <span class="n">Show</span> <span class="n">verbose</span> <span class="n">output</span> <span class="n">about</span> <span class="n">which</span> <span class="n">files</span> <span class="ow">and</span> <span class="n">directories</span>
                  <span class="n">are</span> <span class="n">being</span> <span class="n">created</span><span class="o">.</span>
@@ -232,7 +234,7 @@ the components needed to start creating apps and is basically a clean slate.</p>
 <p class="first admonition-title">Warning</p>
 <p>Modules Cannot be Renamed (yet)</p>
 <p class="last">The <em>rename</em> feature of kb-sdk only does a partial rename. If you find you need to <em>rename</em>, it is easier
-to start over with the ‘kb-sdk init’ with the new name. The ability to rename is on a list of planned
+to start over with the ‘kb-sdk init’ and the new name. The ability to rename is on a list of planned
 KBase improvements.</p>
 </div>
 <div class="section" id="build-the-module">
@@ -247,12 +249,16 @@ $ make
 <h2>3.2. Module Highlights<a class="headerlink" href="#module-highlights" title="Permalink to this headline">¶</a></h2>
 <p>This module template has the following that you will customize in later steps:</p>
 <ol class="arabic simple">
-<li>A directory called <code class="docutils literal notranslate"><span class="pre">module_name</span></code> (see <a href="../references/module_anatomy.html">Anatomy of a Module </a> for more on the directory sturcture)</li>
+<li>A directory called <code class="docutils literal notranslate"><span class="pre">module_name</span></code> (see <a href="../references/module_anatomy.html">Anatomy of a Module </a> for more on the directory structure)</li>
 <li>A description of the module, its version, and the authors in <code class="docutils literal notranslate"><span class="pre">kbase.yml</span></code></li>
-<li>A specification file that defines the inputs, output, and functions for the module <code class="docutils literal notranslate"><span class="pre">module_name.spec</span></code></li>
+<li>A specification file that defines the inputs, output, and functions for the module <code class="docutils literal notranslate"><span class="pre">module_name.spec</span></code>.</li>
 <li>A script with code for running all the apps in the module called <code class="docutils literal notranslate"><span class="pre">module_nameImpl.py</span></code></li>
-<li>Specifications for the user interface in the files <code class="docutils literal notranslate"><span class="pre">spec.json</span></code> and <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code></li>
+<li>Specifications for the user interface in the files <code class="docutils literal notranslate"><span class="pre">spec.json</span></code> and <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code>.</li>
 </ol>
+<p>The input/output/function specification is written in an interface definition language <a href="../references/KIDL_spec.html">(IDL)</a>
+that is specific to KBase. The kbase.yml and display.yaml are in
+YAML format - <a class="reference external" href="https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html">https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html</a>. YAML format checkers are available online.
+The spec.json is in JSON format - <a class="reference external" href="https://www.w3schools.com/js/js_json_syntax.asp">https://www.w3schools.com/js/js_json_syntax.asp</a>. JSON format checkers are available online.</p>
 <p>Don’t worry the location of these files. They will be discussed in more detail in later steps.</p>
 </div>
 <div class="section" id="create-a-github-repo">
@@ -280,7 +286,7 @@ $ git push -u origin master
 <h2>3.4. Set up your developer credentials<a class="headerlink" href="#set-up-your-developer-credentials" title="Permalink to this headline">¶</a></h2>
 <p>If you want, this step can wait until you want to test your module.
 However, it is somewhat disruptive to the thought process if you wait until later.
-This step can be done anytime after the first <code class="docutils literal notranslate"><span class="pre">make</span></code> of a module.</p>
+This step can be done any time after the first <code class="docutils literal notranslate"><span class="pre">make</span></code> of a module.</p>
 <p>The KBase file storage services require authenticated access. During development a dev <code class="docutils literal notranslate"><span class="pre">token</span></code> is generated
 and used instead of putting user IDs and passwords in clear text in your module.
 Tokens are good for 90 days and can be used on all modules developed and tested during the 90 days.</p>
@@ -315,7 +321,7 @@ for <code class="docutils literal notranslate"><span class="pre">test_token</spa
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, KBase.
+        &copy; Copyright 2018, KBase
 
     </p>
   </div>
@@ -334,27 +340,17 @@ for <code class="docutils literal notranslate"><span class="pre">test_token</spa
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.1.18',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {

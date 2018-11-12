@@ -24,8 +24,7 @@
 
   
 
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -120,6 +119,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../howtos/work_with_reference_data.html">Working with reference data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/job_manager.html">Listing and viewing jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/dynamic_services.html">Dynamic Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/update_to_py3.html">Updating a module to Python3</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
@@ -203,14 +203,14 @@ This “ContigFilter” example adds more features of the SDK. In practice, apps
 changes. The example is taken from <a href="https://github.com/msneddon/ContigFilter" target="_blank">https://github.com/msneddon/ContigFilter</a>  if you get stuck at any point and want to see the original.  For this example module use:
 .. code-block:: bash</p>
 <blockquote>
-<div>kb-sdk init –example –language python –user &lt;your_kbase_user_name&gt; &lt;uid&gt;ContigFilter
+<div>kb-sdk init –example –language python –user &lt;your_kbase_user_name&gt; {uid}ContigFilter
 cd &lt;user_name&gt;ContigFilter
 make</div></blockquote>
 <p>Because this example is
-used in training and is tried by many users, the <code class="docutils literal notranslate"><span class="pre">&lt;uid&gt;</span></code> is added to make sure that your module has a unique
+used in training and is tried by many users, the <code class="docutils literal notranslate"><span class="pre">{uid}</span></code> is added to make sure that your module has a unique
 name. However, you would not usually put your own username in the module name, and instead name it something
 like <code class="docutils literal notranslate"><span class="pre">ContigFilter</span></code>.</p>
-<p>From here on, the <code class="docutils literal notranslate"><span class="pre">&lt;uid&gt;ContigFilter</span></code> will simply be called <code class="docutils literal notranslate"><span class="pre">module_name</span></code>.</p>
+<p>From here on, the <code class="docutils literal notranslate"><span class="pre">{uid}ContigFilter</span></code> will simply be called <code class="docutils literal notranslate"><span class="pre">module_name</span></code>.</p>
 <p>The setup for the “ContigFilter” module includes:</p>
 <ol class="arabic simple">
 <li>Customizing the description of the module</li>
@@ -279,32 +279,11 @@ to the right place on the screen.</p>
 <p>View the <a href="../references/KIDL_spec.html" target="_blank">KIDL tutorial and reference </a></p>
 <p>We’ll start with the <code class="docutils literal notranslate"><span class="pre">module_name.spec</span></code> file. <strong>Comments</strong> in KIDL start with a line with <code class="docutils literal notranslate"><span class="pre">/*</span></code> and end with a
 line with <code class="docutils literal notranslate"><span class="pre">*/</span></code>.
-For example, the following has two comments and an empty specification for the module called &lt;uid&gt;ContigFilter.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
-<span class="cm">            A KBase module: &lt;uid&gt;ContigFilter</span>
-<span class="cm">*/</span>
-<span class="n">module</span> <span class="o">&lt;</span><span class="n">uid</span><span class="o">&gt;</span><span class="n">ContigFilter</span> <span class="p">{</span>
-    <span class="cm">/*</span>
-<span class="cm">        Insert your typespec information here.</span>
-<span class="cm">    */</span>
-<span class="p">};</span>
-</pre></div>
-</div>
-<p>The &lt;uid&gt;ContigFilter <code class="docutils literal notranslate"><span class="pre">.spec</span></code> file has a lot of comments that may seem distracting at first glance.  For inputs, we need
+For example, the following has two comments and an empty specification for the module called {uid}ContigFilter.</p>
+<p>The {uid}ContigFilter <code class="docutils literal notranslate"><span class="pre">.spec</span></code> file has a lot of comments that may seem distracting at first glance.  For inputs, we need
 a <code class="docutils literal notranslate"><span class="pre">min_length</span></code> parameter (an integer), an <code class="docutils literal notranslate"><span class="pre">assembly_input_ref</span></code> parameter (a string reference to an assembly
 file in the workspace), and a <code class="docutils literal notranslate"><span class="pre">workspace_name</span></code>.  Here are the needed statements to define the inputs
 (comments removed):</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span> <span class="n">module</span> <span class="o">&lt;</span><span class="n">uid</span><span class="o">&gt;</span><span class="n">ContigFilter</span> <span class="p">{</span>
-    <span class="k">typedef</span> <span class="n">string</span> <span class="n">assembly_ref</span><span class="p">;</span>
-
-    <span class="k">typedef</span> <span class="n">structure</span> <span class="p">{</span>
-        <span class="n">assembly_ref</span> <span class="n">assembly_input_ref</span><span class="p">;</span>
-        <span class="n">string</span> <span class="n">workspace_name</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">min_length</span><span class="p">;</span>
-    <span class="p">}</span> <span class="n">FilterContigsParams</span><span class="p">;</span>
-<span class="p">};</span>
-</pre></div>
-</div>
 <p>There are two typedefs which define two parameters, an <code class="docutils literal notranslate"><span class="pre">assembly_ref</span></code> which is a string and
 a set of input parameters that when combined into a <code class="docutils literal notranslate"><span class="pre">structure</span></code> are called <code class="docutils literal notranslate"><span class="pre">FilterContgsParams</span></code>.
 The format of a <code class="docutils literal notranslate"><span class="pre">typedef</span></code> is the template or type followed by the name of the parameter.
@@ -314,85 +293,19 @@ a reference to an assembly. Because a reference to an assembly (<code class="doc
 one was defined.</p>
 <p>Edit your KIDL <code class="docutils literal notranslate"><span class="pre">.spec</span></code> file to add the lines needed for a new app that filters using both a minimum and a
 maximum length. Your new <code class="docutils literal notranslate"><span class="pre">.spec</span></code> file might look something like this:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span> <span class="n">module</span> <span class="o">&lt;</span><span class="n">uid</span><span class="o">&gt;</span><span class="n">ContigFilter</span> <span class="p">{</span>
-    <span class="k">typedef</span> <span class="n">string</span> <span class="n">assembly_ref</span><span class="p">;</span>
-
-    <span class="k">typedef</span> <span class="n">structure</span> <span class="p">{</span>
-        <span class="n">assembly_ref</span> <span class="n">assembly_input_ref</span><span class="p">;</span>
-        <span class="n">string</span> <span class="n">workspace_name</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">min_length</span><span class="p">;</span>
-    <span class="p">}</span> <span class="n">FilterContigsParams</span><span class="p">;</span>
-
-    <span class="k">typedef</span> <span class="n">structure</span> <span class="p">{</span>
-        <span class="n">assembly_ref</span> <span class="n">assembly_input_ref</span><span class="p">;</span>
-        <span class="n">string</span> <span class="n">workspace_name</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">min_length</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">max_length</span><span class="p">;</span>
-    <span class="p">}</span> <span class="n">FilterContigsMaxParams</span><span class="p">;</span>
-<span class="p">};</span>
-</pre></div>
-</div>
-<p>Now let’s look at the outputs. In the &lt;uid&gt;ContigFilter module, the following <code class="docutils literal notranslate"><span class="pre">typedef</span></code> lines define the outputs:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="n">structure</span> <span class="p">{</span>
-    <span class="n">string</span> <span class="n">report_name</span><span class="p">;</span>
-    <span class="n">string</span> <span class="n">report_ref</span><span class="p">;</span>
-    <span class="n">assembly_ref</span> <span class="n">assembly_output</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">n_initial_contigs</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">n_contigs_removed</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">n_contigs_remaining</span><span class="p">;</span>
-<span class="p">}</span> <span class="n">ContigFilterResults</span><span class="p">;</span>
-</pre></div>
-</div>
+<p>Now let’s look at the outputs. In the {uid}ContigFilter module, the following <code class="docutils literal notranslate"><span class="pre">typedef</span></code> lines define the outputs:</p>
 <p>This has added a <code class="docutils literal notranslate"><span class="pre">structure</span></code> are called <code class="docutils literal notranslate"><span class="pre">ContigFilterResults</span></code> as the parameters for output.
 The <code class="docutils literal notranslate"><span class="pre">report_name</span></code> and <code class="docutils literal notranslate"><span class="pre">report_ref</span></code> are placeholders for the output results, which we will return to later.
 The assembly_output can use the same type as used above and there are three outputs of type <code class="docutils literal notranslate"><span class="pre">int</span></code>.
 The new app can use the same output parameters and doesn’t need a new <code class="docutils literal notranslate"><span class="pre">structure</span></code>.</p>
 <p>Now let us look at the function type for our app, which we can call <code class="docutils literal notranslate"><span class="pre">filter_contigs</span></code>.
 Refer to the <a href="../references/KIDL_spec.html" target="_blank">KIDL tutorial and reference </a> for details about function types.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">funcdef</span> <span class="nf">filter_contigs</span><span class="p">(</span><span class="n">FilterContigParams</span> <span class="n">params</span><span class="p">)</span>
-    <span class="n">returns</span> <span class="p">(</span><span class="n">FilterContigsResults</span><span class="p">)</span> <span class="n">authentication</span> <span class="n">required</span><span class="p">;</span>
-</pre></div>
-</div>
 <p>This function definition (<code class="docutils literal notranslate"><span class="pre">funcdef</span></code>) defines a function called <code class="docutils literal notranslate"><span class="pre">filter_contigs</span></code> with input parameters of
 <code class="docutils literal notranslate"><span class="pre">FilterContgsParams</span></code> and returns output parameters of <code class="docutils literal notranslate"><span class="pre">ContigFilterResults</span></code>.
 The function is set as <code class="docutils literal notranslate"><span class="pre">authentication</span> <span class="pre">required</span></code> because all SDK apps that run in the
 Narrative will require the authentication to interact with a user’s workspace.</p>
 <p>Edit your KIDL <code class="docutils literal notranslate"><span class="pre">.spec</span></code> file to add the lines needed for a new app that filters using both a minimum and a
 maximum length. Your new <code class="docutils literal notranslate"><span class="pre">.spec</span></code> file might look something like this:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span> <span class="n">module</span> <span class="o">&lt;</span><span class="n">uid</span><span class="o">&gt;</span><span class="n">ContigFilter</span> <span class="p">{</span>
-    <span class="k">typedef</span> <span class="n">string</span> <span class="n">assembly_ref</span><span class="p">;</span>
-
-    <span class="k">typedef</span> <span class="n">structure</span> <span class="p">{</span>
-        <span class="n">assembly_ref</span> <span class="n">assembly_input_ref</span><span class="p">;</span>
-        <span class="n">string</span> <span class="n">workspace_name</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">min_length</span><span class="p">;</span>
-    <span class="p">}</span> <span class="n">FilterContigsParams</span><span class="p">;</span>
-
-    <span class="k">typedef</span> <span class="n">structure</span> <span class="p">{</span>
-        <span class="n">assembly_ref</span> <span class="n">assembly_input_ref</span><span class="p">;</span>
-        <span class="n">string</span> <span class="n">workspace_name</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">min_length</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">max_length</span><span class="p">;</span>
-    <span class="p">}</span> <span class="n">FilterContigsMaxParams</span><span class="p">;</span>
-
-<span class="k">typedef</span> <span class="n">structure</span> <span class="p">{</span>
-    <span class="n">string</span> <span class="n">report_name</span><span class="p">;</span>
-    <span class="n">string</span> <span class="n">report_ref</span><span class="p">;</span>
-    <span class="n">assembly_ref</span> <span class="n">assembly_output</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">n_initial_contigs</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">n_contigs_removed</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">n_contigs_remaining</span><span class="p">;</span>
-<span class="p">}</span> <span class="n">FilterContigsResults</span><span class="p">;</span>
-
-<span class="n">funcdef</span> <span class="nf">filter_contigs</span><span class="p">(</span><span class="n">FilterContigsParams</span> <span class="n">params</span><span class="p">)</span>
-    <span class="n">returns</span> <span class="p">(</span><span class="n">FilterContigsResults</span> <span class="n">output</span><span class="p">)</span> <span class="n">authentication</span> <span class="n">required</span><span class="p">;</span>
-
-<span class="n">funcdef</span> <span class="nf">filter_contigs_max</span><span class="p">(</span><span class="n">FilterContigsMaxParams</span> <span class="n">params</span><span class="p">)</span>
-    <span class="n">returns</span> <span class="p">(</span><span class="n">FilterContigsResults</span> <span class="n">output</span><span class="p">)</span> <span class="n">authentication</span> <span class="n">required</span><span class="p">;</span>
-
-<span class="p">};</span>
-</pre></div>
-</div>
 <p>Now return to your module’s root directory and run <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
@@ -435,7 +348,7 @@ in the module.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, KBase.
+        &copy; Copyright 2018, KBase
 
     </p>
   </div>
@@ -454,27 +367,17 @@ in the module.</p>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.1.18',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {

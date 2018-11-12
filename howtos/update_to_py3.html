@@ -24,12 +24,13 @@
 
   
 
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Anatomy of a Module" href="../references/module_anatomy.html" />
+    <link rel="prev" title="Dynamic Services" href="dynamic_services.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -112,12 +113,13 @@
 <li class="toctree-l1"><a class="reference internal" href="file_utils.html">Working with the file utils</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Advanced Guides</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="workspace.html">Using Workspace Metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manual_build.html">Manually building the SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="work_with_reference_data.html">Working with reference data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="job_manager.html">Listing and viewing jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dynamic_services.html">Dynamic Services</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Updating a module to Python3</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
@@ -198,7 +200,7 @@
 <p>Many KBase modules are written in Python 2.7 which will reach the end of its service support in 2020. Beyond this date, Python 2 will cease to receive critical security updates. Fortunately, it’s fairly easy to convert any single module to Python 3 as long as the module has a reasonably comprehensive set of unit tests. In addition to being secure for the future, these modules will access a host of performance and language features available in the 3.x releases.</p>
 <div class="section" id="converting-the-source-code-with-2to3">
 <h2>Converting the source code with 2to3<a class="headerlink" href="#converting-the-source-code-with-2to3" title="Permalink to this headline">¶</a></h2>
-<p>There are a number of compatibility tools available such as <a class="reference external" href="https://pythonhosted.org/six/">six</a>  or <a class="reference external" href="http://python-future.org/automatic_conversion.html">futurize</a> which allow the execution of the same code by both Python 2 and Python 3 interpreters. Fortunately, KBase’s module system means that preserving back compatibility with Python 2 is not necessary and we can use the built in <a class="reference external" href="https://docs.python.org/2/library/2to3.htmlmendedthatyourevertthischangeorsimplyusethe">2to3</a> executable. You can update all the python files in the directory in one fell swoop with the command <code class="docutils literal notranslate"><span class="pre">2to3</span> <span class="pre">-w</span> <span class="pre">&lt;path_to_your_module&gt;</span></code> but you should be aware that you might not always agree with these changes (see more in Caveats). Additionally your Dockerfile will have to be updated to build <code class="docutils literal notranslate"><span class="pre">FROM</span> <span class="pre">kbase/sdkbase2:python</span></code>. Once the Dockerfile is updated, all future test will be run in Python 3, allowing you to verify that the updated code is running correctly. Check over the code to make sure that none of the caveats in the next section apply.</p>
+<p>There are a number of compatibility tools available such as  <a href="https://pythonhosted.org/six/" target="_blank">six</a>   or  <a href="http://python-future.org/automatic_conversion.html" target="_blank">futurize</a>  which allow the execution of the same code by both Python 2 and Python 3 interpreters. Fortunately, KBase’s module system means that preserving back compatibility with Python 2 is not necessary and we can use the built in <a href="https://docs.python.org/2/library/2to3.html" target="_blank">2to3</a> executable. You can update all the python files in the directory in one fell swoop with the command <code class="docutils literal notranslate"><span class="pre">2to3</span> <span class="pre">-w</span> <span class="pre">&lt;path_to_your_module&gt;</span></code> but you should be aware that you might not always agree with these changes (see more in Caveats). Additionally, your Dockerfile will have to be updated to build <code class="docutils literal notranslate"><span class="pre">FROM</span> <span class="pre">kbase/sdkbase2:python</span></code>. Once the Dockerfile is updated, all future test will be run in Python 3, allowing you to verify that the updated code is running correctly. Check over the code to make sure that none of the caveats in the next section apply.</p>
 </div>
 <div class="section" id="caveats">
 <h2>Caveats<a class="headerlink" href="#caveats" title="Permalink to this headline">¶</a></h2>
@@ -208,7 +210,7 @@
 </li>
 <li><p class="first">Strings in Python3 are by default unicode strings rather than byte strings. This solves many issues and inconsistencies but a few functions such as hashlib still expect byte strings. To produce these from a unicode string use the <code class="docutils literal notranslate"><span class="pre">encode</span></code> function like this: <code class="docutils literal notranslate"><span class="pre">hashlib.md5(my_string.encode('utf-8')).hexdigest()</span></code>.</p>
 </li>
-<li><p class="first"><code class="docutils literal notranslate"><span class="pre">2to3</span></code> will wrap functions like <code class="docutils literal notranslate"><span class="pre">dict.keys()</span></code> <code class="docutils literal notranslate"><span class="pre">dict.items()</span></code> or <code class="docutils literal notranslate"><span class="pre">range()</span></code> in a <code class="docutils literal notranslate"><span class="pre">list</span></code> declaration to preserve the original behavior of these functions as they now return generators. This is the safest option and may be preferred in some cases (for example if the values are to be printed) but the intent is to iterate over the values, (e.x. <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">key</span> <span class="pre">in</span> <span class="pre">list(my_dict.keys())</span></code>) it is more efficient to remove this list extra declaration and use the generator.</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">2to3</span></code> will wrap functions like <code class="docutils literal notranslate"><span class="pre">dict.keys()</span></code> <code class="docutils literal notranslate"><span class="pre">dict.items()</span></code> or <code class="docutils literal notranslate"><span class="pre">range()</span></code> in a <code class="docutils literal notranslate"><span class="pre">list</span></code> declaration to preserve the original behavior of these functions as they now return generators. This is the safest option and may be preferred in some cases (for example if the values are to be printed) but the intent is to iterate over the values, (e.g., <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">key</span> <span class="pre">in</span> <span class="pre">list(my_dict.keys())</span></code>) it is more efficient to remove this list extra declaration and use the generator.</p>
 </li>
 <li><p class="first">Some automatically generated files like <code class="docutils literal notranslate"><span class="pre">baseclient.py</span></code> and test files have fallback code for importing dependencies in 2 and 3 like this:</p>
 <blockquote>
@@ -226,8 +228,8 @@
 <div class="section" id="resources">
 <h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Neat new trick available in Python 3: <a class="reference external" href="http://whypy3.com/">http://whypy3.com/</a></li>
-<li>Check Python 3 readiness of common packages: <a class="reference external" href="http://py3readiness.org/">http://py3readiness.org/</a></li>
+<li>Neat new trick available in Python 3: <a href="http://whypy3.com/" target="_blank">http://whypy3.com/</a></li>
+<li>Check Python 3 readiness of common packages: <a href="http://py3readiness.org/" target="_blank">http://py3readiness.org/</a></li>
 </ul>
 </div>
 </div>
@@ -238,12 +240,21 @@
           </div>
           <footer>
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../references/module_anatomy.html" class="btn btn-neutral float-right" title="Anatomy of a Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="dynamic_services.html" class="btn btn-neutral" title="Dynamic Services" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, KBase.
+        &copy; Copyright 2018, KBase
 
     </p>
   </div>
@@ -262,27 +273,17 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.1.18',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {

@@ -24,8 +24,7 @@
 
   
 
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -120,6 +119,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../howtos/work_with_reference_data.html">Working with reference data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/job_manager.html">Listing and viewing jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/dynamic_services.html">Dynamic Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/update_to_py3.html">Updating a module to Python3</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
@@ -264,8 +264,14 @@
 </div>
 <div class="section" id="q-how-can-i-tell-if-someone-s-already-wrapped-a-tool-i-m-interested-in">
 <h3><a class="toc-backref" href="#id4">Q: How can I tell if someone’s already wrapped a tool I’m interested in?</a><a class="headerlink" href="#q-how-can-i-tell-if-someone-s-already-wrapped-a-tool-i-m-interested-in" title="Permalink to this headline">¶</a></h3>
-<p>Go to the development <a href="https://narrative.kbase.us/#catalog/apps" target="_blank">App Catalog</a> and start by using <em>Search</em> to see if there’s a released method. If you don’t find a method that way, it may also help to by selecting “Organize by”… “Category” and selecting what seems to be a likely category for the tool. There are also methods that have not yet been officially released, so you should also check the “Beta” and “Dev” categories to see if there’s something in the pipeline by selecting them from the “Version” dropdown.</p>
-<p>It may be the case that someone is wrapping a tool, but is doing so in a way that doesn’t serve your needs exactly. Feel free to rewrap the tool using your approach, or ask the previous tool wrapper to tweak their implementation to expose the parameters or other functionality you are looking for.</p>
+<p>Go to the development <a href="https://narrative.kbase.us/#catalog/apps" target="_blank">App Catalog</a> and start by using <em>Search</em> to see if there’s a released method.
+If you don’t find a method that way, it may also help to by selecting “Organize by”… “Category” and
+selecting what seems to be a likely category for the tool. There are also methods that have not yet
+been officially released, so you should also check the “Beta” and “Dev” categories to see if there’s
+something in the pipeline by selecting them from the “Version” dropdown.</p>
+<p>It may be the case that someone is wrapping a tool but is doing so in a way that doesn’t serve your needs exactly.
+Feel free to rewrap the tool using your approach or ask the previous tool wrapper to tweak their implementation
+to expose the parameters or other functionality you are looking for.</p>
 </div>
 <div class="section" id="q-what-languages-can-i-use-to-write-my-app">
 <h3><a class="toc-backref" href="#id5">Q: What languages can I use to write my app?</a><a class="headerlink" href="#q-what-languages-can-i-use-to-write-my-app" title="Permalink to this headline">¶</a></h3>
@@ -346,7 +352,7 @@ with the <a href="https://narrative.kbase.us/narrative/ws.28370.obj.1" target="_
 <p>Ways you can speed up your tests:</p>
 <ul class="simple">
 <li>Make sure all your custom docker setup, such as compiling binaries, is at the top of your Dockerfile so it always gets cached</li>
-<li>Reduce the amount of files you download and upload</li>
+<li>Reduce the number of files you download and upload</li>
 <li>Reuse existing example files on the workspace so you don’t have to upload files</li>
 <li>Separate out your modules into functions that only take local data and files, and test those separately</li>
 </ul>
@@ -379,7 +385,7 @@ ENV <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/
 <div class="section" id="q-how-do-i-get-inside-the-docker-image-how-do-i-get-root-access">
 <h3><a class="toc-backref" href="#id20">Q: How do I get inside the docker image? How do I get root access?</a><a class="headerlink" href="#q-how-do-i-get-inside-the-docker-image-how-do-i-get-root-access" title="Permalink to this headline">¶</a></h3>
 <p>You can open a shell inside the docker container with the <code class="docutils literal notranslate"><span class="pre">test_local/run_bash.sh</span></code> script.</p>
-<p>To gain root access, remove the <code class="docutils literal notranslate"><span class="pre">--user</span></code> parameter or change it to to <code class="docutils literal notranslate"><span class="pre">--user</span> <span class="pre">0</span></code></p>
+<p>To gain root access, remove the <code class="docutils literal notranslate"><span class="pre">--user</span></code> parameter or change it to <code class="docutils literal notranslate"><span class="pre">--user</span> <span class="pre">0</span></code></p>
 </div>
 <div class="section" id="q-what-are-the-sh-scripts-in-the-test-local-directory">
 <h3><a class="toc-backref" href="#id21">Q: What are the <code class="docutils literal notranslate"><span class="pre">.sh</span></code> scripts in the <code class="docutils literal notranslate"><span class="pre">test_local/</span></code> directory?</a><a class="headerlink" href="#q-what-are-the-sh-scripts-in-the-test-local-directory" title="Permalink to this headline">¶</a></h3>
@@ -418,7 +424,7 @@ ENV <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/
 <div class="section" id="q-what-size-data-will-be-too-big-for-the-system">
 <h3><a class="toc-backref" href="#id28">Q: What size data will be too big for the system?</a><a class="headerlink" href="#q-what-size-data-will-be-too-big-for-the-system" title="Permalink to this headline">¶</a></h3>
 <p>Currently we support up to about 10 GB of accessory data for a tool (meaning reference DBs, etc). Please <a href="https://kbase.us/contact-us" target="_blank">contact us</a> if you need to use something larger.</p>
-<p>As for processing, once it’s uploaded to the system (which can take awhile for larger data sets), it depends on how you are using it. Currently SDK methods are limited in their memory footprint to the 22 GB of the worker nodes, so your code plus any data you load into memory must fit within that. As in any situation, we recommend the use of graceful exception handling and efficient implementations in your coding style.</p>
+<p>As for processing, once it’s uploaded to the system (which can take a while for larger data sets), it depends on how you are using it. Currently SDK methods are limited in their memory footprint to the 22 GB of the worker nodes, so your code plus any data you load into memory must fit within that. As in any situation, we recommend the use of graceful exception handling and efficient implementations in your coding style.</p>
 </div>
 <div class="section" id="q-i-need-high-performance-computing-for-my-application-is-that-available">
 <h3><a class="toc-backref" href="#id29">Q: I need high-performance computing for my application. Is that available?</a><a class="headerlink" href="#q-i-need-high-performance-computing-for-my-application-is-that-available" title="Permalink to this headline">¶</a></h3>
@@ -447,7 +453,7 @@ ENV <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, KBase.
+        &copy; Copyright 2018, KBase
 
     </p>
   </div>
@@ -466,27 +472,17 @@ ENV <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.1.18',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {

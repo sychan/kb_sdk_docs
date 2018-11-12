@@ -24,8 +24,7 @@
 
   
 
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -120,6 +119,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../howtos/work_with_reference_data.html">Working with reference data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/job_manager.html">Listing and viewing jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/dynamic_services.html">Dynamic Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/update_to_py3.html">Updating a module to Python3</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
@@ -220,33 +220,33 @@ $ cp -r filter_contigs filter_contigs_max
 <p>Now open up <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/filter_contigs_max/spec.json</span></code>. This file defines a mapping between our
 KIDL <code class="docutils literal notranslate"><span class="pre">.spec</span></code> file and how our parameters will show up in the app’s user interface.</p>
 <p>In the section under <code class="docutils literal notranslate"><span class="pre">parameters</span></code>, there are two input parameters:</p>
-<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
-<span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;assembly_input_ref&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-        <span class="s2">&quot;advanced&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-        <span class="s2">&quot;allow_multiple&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-        <span class="s2">&quot;default_values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;&quot;</span> <span class="p">],</span>
-        <span class="s2">&quot;field_type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;text_options&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;valid_ws_types&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;KBaseGenomeAnnotations.Assembly&quot;</span><span class="p">,</span> <span class="s2">&quot;KBaseGenomes.ContigSet&quot;</span> <span class="p">]</span>
+<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;assembly_input_ref&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;advanced&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;allow_multiple&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;default_values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;&quot;</span> <span class="p">],</span>
+            <span class="s2">&quot;field_type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;text_options&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;valid_ws_types&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;KBaseGenomeAnnotations.Assembly&quot;</span><span class="p">,</span> <span class="s2">&quot;KBaseGenomes.ContigSet&quot;</span> <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;min_length&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;advanced&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;allow_multiple&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;default_values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;&quot;</span> <span class="p">],</span>
+            <span class="s2">&quot;field_type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;text_options&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;validate_as&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;min_integer&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span>
+            <span class="p">}</span>
         <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;min_length&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-        <span class="s2">&quot;advanced&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-        <span class="s2">&quot;allow_multiple&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-        <span class="s2">&quot;default_values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;&quot;</span> <span class="p">],</span>
-        <span class="s2">&quot;field_type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;text_options&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;validate_as&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;min_integer&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">]</span>
-<span class="o">...</span>
+    <span class="p">]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>These options will generate UI form elements in the narrative that allow the user to input data into your app.
@@ -259,7 +259,7 @@ not the user, so we don’t need a form element for it.</p>
 <li>We want the <code class="docutils literal notranslate"><span class="pre">min_length</span></code> parameter to be validated as an integer, and we don’t want to allow negative numbers (minimum valid integer to be 0).</li>
 </ul>
 <p>Edit the file to add the other input parameter <code class="docutils literal notranslate"><span class="pre">max_length</span></code> with similar values. The end of the parameters section should have something like this.</p>
-<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
     <span class="p">{</span>
         <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;min_length&quot;</span><span class="p">,</span>
         <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
@@ -284,53 +284,55 @@ not the user, so we don’t need a form element for it.</p>
             <span class="s2">&quot;min_integer&quot;</span> <span class="p">:</span> <span class="mi">0</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="o">...</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 <p>Notice that a comma was added to the end of the <code class="docutils literal notranslate"><span class="pre">min_length</span></code> parameter.</p>
 <p>Below parameters, in the section under <code class="docutils literal notranslate"><span class="pre">behavior</span></code>, change <code class="docutils literal notranslate"><span class="pre">filter_contigs</span></code> to  <code class="docutils literal notranslate"><span class="pre">filter_contigs_max</span></code>. Note that <code class="docutils literal notranslate"><span class="pre">name</span></code> is the name of the module and doesn’t change and <code class="docutils literal notranslate"><span class="pre">method</span></code> is the name of the app.</p>
-<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;service-mapping&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;ContigFilter&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;filter_contigs_max&quot;</span><span class="p">,</span>
-  <span class="p">}</span>
+<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;service-mapping&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;ContigFilter&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;filter_contigs_max&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Also in the <code class="docutils literal notranslate"><span class="pre">behavior</span></code> section, you will see <code class="docutils literal notranslate"><span class="pre">input_mapping</span></code> options. It contains entries for the input
 parameters.</p>
-<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
-<span class="s2">&quot;input_mapping&quot;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;narrative_system_variable&quot;</span><span class="p">:</span> <span class="s2">&quot;workspace&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;target_property&quot;</span><span class="p">:</span> <span class="s2">&quot;workspace_name&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;input_parameter&quot;</span><span class="p">:</span> <span class="s2">&quot;assembly_input_ref&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;target_property&quot;</span><span class="p">:</span> <span class="s2">&quot;assembly_input_ref&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;target_type_transform&quot;</span><span class="p">:</span> <span class="s2">&quot;resolved-ref&quot;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;input_parameter&quot;</span><span class="p">:</span> <span class="s2">&quot;min_length&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;target_property&quot;</span><span class="p">:</span> <span class="s2">&quot;min_length&quot;</span>
-    <span class="p">}</span>
-<span class="p">],</span>
-<span class="o">...</span>
+<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;input_mapping&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;narrative_system_variable&quot;</span><span class="p">:</span> <span class="s2">&quot;workspace&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;target_property&quot;</span><span class="p">:</span> <span class="s2">&quot;workspace_name&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;input_parameter&quot;</span><span class="p">:</span> <span class="s2">&quot;assembly_input_ref&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;target_property&quot;</span><span class="p">:</span> <span class="s2">&quot;assembly_input_ref&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;target_type_transform&quot;</span><span class="p">:</span> <span class="s2">&quot;resolved-ref&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;input_parameter&quot;</span><span class="p">:</span> <span class="s2">&quot;min_length&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;target_property&quot;</span><span class="p">:</span> <span class="s2">&quot;min_length&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Notice that we added a <code class="docutils literal notranslate"><span class="pre">target_type_transform</span></code> option with the value <code class="docutils literal notranslate"><span class="pre">resolved-ref</span></code> for the
 <code class="docutils literal notranslate"><span class="pre">assembly_ref</span></code> input. This indicates to the narrative that this parameter needs to be a valid reference
 to an object in the workspace.</p>
 <p>Add the <code class="docutils literal notranslate"><span class="pre">max_length</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">``input_mapping</span></code>. The lines will look something like:</p>
-<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
-<span class="p">{</span>
-    <span class="s2">&quot;input_parameter&quot;</span><span class="p">:</span> <span class="s2">&quot;min_length&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;target_property&quot;</span><span class="p">:</span> <span class="s2">&quot;min_length&quot;</span>
-<span class="p">},</span>
-<span class="p">{</span>
-    <span class="s2">&quot;input_parameter&quot;</span><span class="p">:</span> <span class="s2">&quot;max_length&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;target_property&quot;</span><span class="p">:</span> <span class="s2">&quot;max_length&quot;</span>
-<span class="p">}</span>
-<span class="o">...</span>
+<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;input_parameter&quot;</span><span class="p">:</span> <span class="s2">&quot;min_length&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;target_property&quot;</span><span class="p">:</span> <span class="s2">&quot;min_length&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;input_parameter&quot;</span><span class="p">:</span> <span class="s2">&quot;max_length&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;target_property&quot;</span><span class="p">:</span> <span class="s2">&quot;max_length&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 <p>Make sure you include the commas after the min_length parameters.</p>
@@ -347,11 +349,11 @@ for each form element. You only need to set this text for parameters that actual
 the specifications in its <a href="https://github.com/kbaseapps/fba_tools/blob/master/ui/narrative/methods/view_flux_network/display.yaml" target="_blank">display.yaml file</a> . If screenshots are included, they appear between the <code class="docutils literal notranslate"><span class="pre">tooltip</span></code> and the <code class="docutils literal notranslate"><span class="pre">description</span></code>.</p>
 </div>
 <div class="align-center figure" id="id1">
-<img alt="../_images/View_flux_network_narr.png" src="../_images/View_flux_network_narr.png" />
+<img alt="../_images/View_flux_network_narr1.png" src="../_images/View_flux_network_narr1.png" />
 <p class="caption"><span class="caption-text">View Flux Network App in a narrative.</span></p>
 </div>
 <div class="align-center figure" id="id2">
-<a class="reference internal image-reference" href="../_images/ViewFluxNetwork_cat.png"><img alt="../_images/ViewFluxNetwork_cat.png" src="../_images/ViewFluxNetwork_cat.png" style="width: 90%;" /></a>
+<a class="reference internal image-reference" href="../_images/ViewFluxNetwork_cat1.png"><img alt="../_images/ViewFluxNetwork_cat1.png" src="../_images/ViewFluxNetwork_cat1.png" style="width: 90%;" /></a>
 <p class="caption"><span class="caption-text">App Catalog for View Flux Network.</span></p>
 </div>
 <p>Open the <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code> and update its <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">tooltip</span></code> to say something related to filtering assembly files
@@ -420,7 +422,7 @@ with the <a href="https://narrative.kbase.us/narrative/ws.30118.obj.1" target="_
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, KBase.
+        &copy; Copyright 2018, KBase
 
     </p>
   </div>
@@ -439,27 +441,17 @@ with the <a href="https://narrative.kbase.us/narrative/ws.30118.obj.1" target="_
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.1.18',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {

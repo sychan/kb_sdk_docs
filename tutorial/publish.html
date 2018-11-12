@@ -24,8 +24,7 @@
 
   
 
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -120,6 +119,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../howtos/work_with_reference_data.html">Working with reference data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/job_manager.html">Listing and viewing jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/dynamic_services.html">Dynamic Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/update_to_py3.html">Updating a module to Python3</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
@@ -197,6 +197,7 @@
             
   <div class="section" id="publish-and-update">
 <h1>8. Publish and Update<a class="headerlink" href="#publish-and-update" title="Permalink to this headline">¶</a></h1>
+<p>For all updates, it is good practice to update the RELEASE_NOTES.md file in the root directory for the module.</p>
 <p><a href="https://appdev.kbase.us" target="_blank">Appdev (https://appdev.kbase.us)</a> is a separate KBase narrative server that is useful for app developers like yourself to publish in-progress versions of their apps and test and share them using real data.</p>
 <div class="section" id="publish-all-git-commits">
 <h2>8.1. Publish all git commits<a class="headerlink" href="#publish-all-git-commits" title="Permalink to this headline">¶</a></h2>
@@ -209,9 +210,17 @@
 <img alt="../_images/register.png" src="../_images/register.png" />
 <p class="caption"><span class="caption-text">Register your module.</span></p>
 </div>
-<p>and click on <code class="docutils literal notranslate"><span class="pre">Register</span></code>. Wait for the registration to complete (it may take awhile on the first registration as it has to build the Docker image that is specific to your moddule from scratch).</p>
-<p>Note that you must be an approved developer to register a new module. You can apply for a KBase developer account by going to <a href=" https://accounts.kbase.us/index.php?tpl=request_identity.tpl" target="_blank">https://accounts.kbase.us/index.php?tpl=request_identity.tpl</a>. If you are a US citizen, your account can be created within a few days. For foreign nationals, it may take several weeks (and, in a few cases, you may not be able to get a developer account). Non-US citizens will be asked for additional information in order to process their application.Once your account is approved, contact us with your username and ask to be added to the developer list.</p>
-<p>Once your app has been registered, it will be available in the AppDev environment in KBase. Go <a href="https://appdev.kbase.us" target="_blank">Appdev (https://appdev.kbase.us)</a> and start a new Narrative. Click on the ‘R’ in the Apps Panel  until it switches to ‘D’ (“develop”) to show apps that are still in development.  Find your new app by searching for your module, and run it!</p>
+<p>and click on <code class="docutils literal notranslate"><span class="pre">Register</span></code>. Wait for the registration to complete (it may take a while on the first registration as it has to build the Docker image that is specific to your module from scratch).</p>
+<p>Note that you must be an approved developer to register a new module. You can apply for a
+KBase developer account by going to <a href=" https://accounts.kbase.us/index.php?tpl=request_identity.tpl" target="_blank">https://accounts.kbase.us/index.php?tpl=request_identity.tpl</a>. If you are a US citizen, your account
+can be created within a few days. For foreign nationals, it may take several weeks (and,
+in a few cases, you may not be able to get a developer account). Non-US citizens will be
+asked for additional information in order to process their application. Once your account
+is approved, contact us with your username and ask to be added to the developer list.</p>
+<p>Once your app has been registered, it will be available in the AppDev environment in KBase.
+Go <a href="https://appdev.kbase.us" target="_blank">Appdev (https://appdev.kbase.us)</a> and start a new Narrative. Click on the ‘R’ in the Apps Panel  until it
+switches to ‘D’ (“develop”) to show apps that are still in development.  Find your new app
+by searching for your module and run it!</p>
 <p>Your app will now also be visible in the App Catalog when displaying Apps in development:</p>
 <ul class="simple">
 <li>Appdev: <a href="https://appdev.kbase.us/#appcatalog/browse/dev" target="_blank">https://appdev.kbase.us/#appcatalog/browse/dev</a></li>
@@ -251,7 +260,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, KBase.
+        &copy; Copyright 2018, KBase
 
     </p>
   </div>
@@ -270,27 +279,17 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.1.18',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {

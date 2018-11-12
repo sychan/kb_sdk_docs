@@ -5,13 +5,13 @@ Implement Code
     If you are new to Python, here are a few tips:
 
     - Tabs are not used. Anything that is indented is filled with spaces.
-    - Indentation is **not** optional. Python uses indentation to designate blocks of code that go together. 
+    - Indentation is **not** optional. Python uses indentation to designate blocks of code that go together.
     - Indentation must be consistent. If you start with 4, 8 and 12 spaces being your indentation levels, stick with those throughout.
-    - The pound sign (#) indicates comments to the end of the line. 
+    - The pound sign (#) indicates comments to the end of the line.
 
 The actual code for your app will live in the python package under ``lib/module_name``. The entry point, where your code is initially called, lives in the file: ``lib/module_name/module_nameImpl.py``. It is sometimes called the "Implementation" file or simply the "Impl" file.  This is the file where you edit your own Python code.
 
-This "Implementation" file defines the python methods available in the module. Two of the methods correspond to our two apps and are named ``filter_contigs`` and ``filter_contigs_max`` and they are part of the class inside ``method_nameImpl.py``. 
+This "Implementation" file defines the python methods available in the module. Two of the methods correspond to our two apps and are named ``filter_contigs`` and ``filter_contigs_max`` and they are part of the class inside ``method_nameImpl.py``.
 
 .. note ::
 
@@ -33,26 +33,26 @@ Much of the Implementation file is auto-generated based on the KIDL .spec file. 
         #BEGIN filter_contigs
         #END filter_contigs
 
-The ``make`` command preserves everything between the ``#BEGIN`` and ``#END`` comments and replaces everything else. 
+The ``make`` command preserves everything between the ``#BEGIN`` and ``#END`` comments and replaces everything else.
 
 .. warning::
 
     Don't put any spaces between the '#' and 'BEGIN' or 'END'. It has bad consequences.
 
 The method for ``filter_contigs`` is a working app and has a lot of code between the ``#BEGIN`` and ``#END``.
-The new app ``filter_contigs_max`` has nothing between the ``#BEGIN`` and ``#END``. 
+The new app ``filter_contigs_max`` has nothing between the ``#BEGIN`` and ``#END``.
 
 .. note::
 
-    At this point, you could 
+    At this point, you could
 
-    - take a short-cut and copy all the code from ``filter_contigs`` method and paste it into the ``filter_contigs_max`` method. 
-    - make a few minor edit to add the filter for contigs exceeding the maximum length.
+    - take a short-cut and copy all the code from the ``filter_contigs`` method and paste it into the ``filter_contigs_max`` method.
+    - make a few minor edits to add the filter for contigs exceeding the maximum length.
     - run ``kb-sdk test`` and see if everything works.
 
-    The rest of this page is for those who want to understand how the code works and how to create tests for the 
+    The rest of this page is for those who want to understand how the code works and how to create tests for the
     code. It goes through the process of building up the code section, step-by-step.
-  
+
 Receive parameters
 ---------------------------
 
@@ -92,10 +92,11 @@ Initialize a test
     Tests are an important part of KBase modules and are a requirement for release of apps. The module's root 
     directory has a directory called ``test``. All tests should be added to this directory. A template for 
     initial tests should be named after the module and in the ``test`` directory. When you enter ``kb-sdk test`` 
-    at the command line, it will runs the tests in the test directory. 
+    at the command line, it will run the tests in the test directory. 
 
 
-Your ``module_nameImpl.py`` file is tested using ``test/module_nameImpl_server_test.py``. This file also has a variety of auto-generated boilerplate code and tests for the first app.  Phython will automatically run all all methods that start with the name ``test``. There are three tests for the old app. As a temporary measure, we will rename them so they don't run until we are done working on the new app.
+
+Your ``module_nameImpl.py`` file is tested using ``test/module_nameImpl_server_test.py``. This file also has a variety of auto-generated boilerplate code and tests for the first app.  Python will automatically run all methods that start with the name ``test``. There are three tests for the old app. As a temporary measure, we will rename them so they don't run until we are done working on the new app.
 
 - Change ``def test_filter_contigs_ok(self)``` to ``def my_test_filter_contigs_ok(self)``
 - Change ``def test_filter_contigs_err1(self)`` to ``def my_test_filter_contigs_err1(self)``
@@ -115,15 +116,15 @@ Now add your own test for the new app method at the bottom of the test class and
             'min_length': 100,
             'max_length': 1000000
         })
-        print result
+        print(result)
         # TODO -- assert some things (later)
 
-We need to provide three parameters to our function: a workspace name, an assembly reference string, and a min length integer. For the reference string, we can use this sample reference to a Shewanella Oneidensis assembly on AppDev: ``79/16/1``. You can always get a workspace name from the test class by using ``self.getWsName()``.
+We need to provide three parameters to our function: a workspace name, an assembly reference string, and a min length integer. For the reference string, we can use this sample reference to a *Shewanella oneidensis* assembly on AppDev: ``79/16/1``. You can always get a workspace name from the test class by using ``self.getWsName()``.
 
 .. note::
 
     Make sure that you have put your developer token in the ``test_local/test.cfg`` as mentioned in the
-     |initialize_link| 
+     |initialize_link|
 
 
 Run ``kb-sdk test`` and, if everything works, you'll see the docker container boot up, the ``filter_contigs_max`` method will get called, and you will see some printed output.
@@ -160,9 +161,9 @@ To enable callbacks and the scratch directory, this code was added into your ``_
    ...
 
 
-Also added was a ``import os`` in the header of your ``module_nameImpl.py`` file, between the ``#BEGIN_HEADER`` and ``#END_HEADER`` comments.
+Also added was an ``import os`` in the header of your ``module_nameImpl.py`` file, between the ``#BEGIN_HEADER`` and ``#END_HEADER`` comments.
 
-We need to convert the reference to bacterial genome data, passed as an input parameter, into an actual FASTA file that our app can access. For that, we can use the |Assembly_link| app. 
+We need to convert the reference to bacterial genome data, passed as an input parameter, into an actual FASTA file that our app can access. For that, we can use the |Assembly_link| app.
 
 The app was installed from your repository's root directory with:
 
@@ -171,17 +172,17 @@ The app was installed from your repository's root directory with:
     $ kb-sdk install AssemblyUtil
 
 
-That added an entry for ``AssemblyUtil`` to your ``dependencies.json`` file. It also added a python package under ``lib/AssemblyUtil``. Other dependencies can be added the same way.
+That added an entry for ``AssemblyUtil`` to your ``dependencies.json`` file. It also added a python package under ``lib/installed_clients``. Other dependencies can be added the same way.
 
 .. important::
 
     Don't forget to ``git add`` these new dependencies to your source control when you run kb-sdk install.
 
-At the top of your ``module_nameImpl.py`` file, the module is impored with: 
+At the top of your ``module_nameImpl.py`` file, the module is imported with: 
 
 .. code-block:: python
 
-    from AssemblyUtil.AssemblyUtilClient import AssemblyUtil
+    from installed_clients.AssemblyUtilClient import AssemblyUtil
 
 If you made any changes to this code, run the ``kb-sdk test`` command again to make sure you have no errors.
 
@@ -190,7 +191,7 @@ Add some basic validations
 
 It's good practice to make some run-time checks of the parameters passed into your ``module_nameImpl#filter_contigs_max`` method. While params will get checked in the Narrative UI, if your app ever gets called from another codebase, it will bypass any UI typechecks.
 
-Make sure your user passes in a workspace, an assembly reference, a minimum length greater than zero, and a a maximum length greater than zero:
+Make sure your user passes in a workspace, an assembly reference, a minimum length greater than zero, and a maximum length greater than zero:
 
 .. code-block:: python
 
@@ -212,7 +213,7 @@ Feel free to add another test for the ``max_length`` being greater than the ``mi
 
 Re-run ``kb-sdk test`` to make sure everything still works.
 
-Back to defining tests (``test/module_nameImpl_server_test.py``).  
+Back to defining tests (``test/module_nameImpl_server_test.py``).
 We can add some additional tests to make sure we raise ValueErrors for invalid parameters:
 
 .. code-block:: python
@@ -226,23 +227,23 @@ We can add some additional tests to make sure we raise ValueErrors for invalid p
         ws = self.getWsName()
         # Missing assembly ref
         with self.assertRaises(ValueError):
-            impl.filter_contigs_max(ctx, {'workspace_name': ws, 
+            impl.filter_contigs_max(ctx, {'workspace_name': ws,
                 'min_length': 100, 'max_length': 1000000})
         # Missing min length
         with self.assertRaises(ValueError):
-            impl.filter_contigs_max(ctx, {'workspace_name': ws, 'assembly_ref': 'x', 
+            impl.filter_contigs_max(ctx, {'workspace_name': ws, 'assembly_ref': 'x',
                 'max_length': 1000000})
         # Min length is negative
         with self.assertRaises(ValueError):
-            impl.filter_contigs_max(ctx, {'workspace_name': ws, 'assembly_ref': 'x', 
+            impl.filter_contigs_max(ctx, {'workspace_name': ws, 'assembly_ref': 'x',
                 'min_length': -1, 'max_length': 1000000})
         # Min length is wrong type
         with self.assertRaises(ValueError):
-            impl.filter_contigs_max(ctx, {'workspace_name': ws, 'assembly_ref': 'x', 
+            impl.filter_contigs_max(ctx, {'workspace_name': ws, 'assembly_ref': 'x',
                 'min_length': 'x', 'max_length': 1000000})
         # Assembly ref is wrong type
         with self.assertRaises(ValueError):
-            impl.filter_contigs_max(ctx, {'workspace_name': ws, 'assembly_ref': 1, 
+            impl.filter_contigs_max(ctx, {'workspace_name': ws, 'assembly_ref': 1,
                 'min_length': 1, 'max_length': 1000000})
     ...
 
@@ -322,7 +323,7 @@ Add real tests
 
 Return to ``test/module_nameImpl_server_test.py`` and add tests for the functionality we just added above.
 
-Set ``min_length`` to a value that filters out some contigs but not others. In our case, our FASTA only has 2 sequences of lenths 4969811 and 161613. An in-between minimum could be 200000. To test the upper end, a minimum could be 100000 and a maximum could be 400000
+Set ``min_length`` to a value that filters out some contigs but not others. In our case, our FASTA only has 2 sequences of lengths 4,969,811 and 161,613. An in-between minimum could be 200,000. To test the upper end, a minimum could be 100,000 and a maximum could be 400,000
 
 We would expect to keep 1 contig and filter out the other.
 
@@ -471,7 +472,7 @@ We nearly have a complete app. The last step has already been added to our "Cont
 
 If not there already, add a type entry for our result data in our KIDL file:
 
-.. code-block:: cpp
+.. ::
 
     /* Output results */
     typedef structure {

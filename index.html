@@ -24,8 +24,7 @@
 
   
 
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
@@ -119,6 +118,7 @@
 <li class="toctree-l1"><a class="reference internal" href="howtos/work_with_reference_data.html">Working with reference data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="howtos/job_manager.html">Listing and viewing jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="howtos/dynamic_services.html">Dynamic Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtos/update_to_py3.html">Updating a module to Python3</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
@@ -243,33 +243,12 @@
 <div class="toctree-wrapper compound" id="advanced-guides">
 <p class="caption"><span class="caption-text">Advanced Guides</span><a class="headerlink" href="#advanced-guides" title="Permalink to this toctree">¶</a></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="howtos/workspace.html">Using Workspace Metadata</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="howtos/workspace.html#retrieving-workspace-object-metadata">Retrieving workspace object metadata</a></li>
-<li class="toctree-l2"><a class="reference internal" href="howtos/workspace.html#how-to-use-the-workspace-client-in-the-narrative">How to use the Workspace Client in the narrative</a></li>
-<li class="toctree-l2"><a class="reference internal" href="howtos/workspace.html#how-to-add-types-to-the-workspace">How to add types to the workspace</a></li>
-<li class="toctree-l2"><a class="reference internal" href="howtos/workspace.html#how-to-get-a-given-typespec-spec-file">How to get a given typespec / .spec file?</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="howtos/manual_build.html">Manually building the SDK</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="howtos/manual_build.html#java-jdk-7">Java JDK 7+</a></li>
-<li class="toctree-l2"><a class="reference internal" href="howtos/manual_build.html#apache-ant">Apache Ant</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="howtos/work_with_reference_data.html">Working with reference data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="howtos/work_with_reference_data.html#adding-reference-data-to-a-kbase-app">Adding Reference Data to a KBase App</a></li>
-<li class="toctree-l2"><a class="reference internal" href="howtos/work_with_reference_data.html#usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="howtos/work_with_reference_data.html#updating-reference-data">Updating Reference Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="howtos/work_with_reference_data.html#gotchas">Gotchas</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="howtos/workspace.html">Using Workspace Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtos/manual_build.html">Manually building the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtos/work_with_reference_data.html">Working with reference data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="howtos/job_manager.html">Listing and viewing jobs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="howtos/dynamic_services.html">Dynamic Services</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="howtos/dynamic_services.html#dynamic-services-vs-sdk-methods-e-g-apps">Dynamic services vs. SDK Methods (e.g. apps)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="howtos/dynamic_services.html#creating-a-dynamic-service">Creating a dynamic service</a></li>
-<li class="toctree-l2"><a class="reference internal" href="howtos/dynamic_services.html#start-and-stop-a-dynamic-service-locally">Start and stop a dynamic service locally</a></li>
-<li class="toctree-l2"><a class="reference internal" href="howtos/dynamic_services.html#manage-dynamic-services-in-a-kbase-environment">Manage dynamic services in a KBase environment</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="howtos/dynamic_services.html">Dynamic Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtos/update_to_py3.html">Updating a module to Python3</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound" id="references">
@@ -303,7 +282,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, KBase.
+        &copy; Copyright 2018, KBase
 
     </p>
   </div>
@@ -322,27 +301,17 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.1.18',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {

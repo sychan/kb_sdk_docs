@@ -17,21 +17,23 @@ The basic options of the command are:
 
     $ kb-sdk init [--example] [--verbose] [--language language] [--user username] ModuleName
 
-where ``ModuleName`` must be unique across all SDK modules registered in KBase. For example:
+where ``ModuleName`` must be unique across all SDK modules registered in KBase. For example,
+bootstrapping the HelloWorld module will start with:
 
 
 .. code-block:: bash
 
-    $ kb-sdk init --language python --user <your_kbase_user_name> <uid>HelloWorld
+    kb-sdk init --language python --user {your_kbase_user_name} {uid}HelloWorld
 
 
-This creates a directory called ``<uid>HelloWord`` in your current directory where <uid> is your name/id that will make your copy of HelloWorld unique. The directory has all of 
+This creates a directory called ``{uid}HelloWorld`` in your current directory where ``{uid}`` is your name/id 
+that will make your copy of HelloWorld unique. The newly created directory has all of 
 the components needed to start creating apps and is basically a clean slate.  
 
 
 You must always include the ``-u`` or ``-user`` option with your username to set yourself as the module owner.
 
-You can set your programming langauge to any of Python, Perl, or Java; for this tutorial, we're using Python.
+You can set your programming language to any of Python, Perl, or Java; for this tutorial, we're using Python.
 
 The ``kb-sdk init`` options are:
 
@@ -49,7 +51,7 @@ The ``kb-sdk init`` options are:
 .. warning:: Modules Cannot be Renamed (yet)
 
 	The *rename* feature of kb-sdk only does a partial rename. If you find you need to *rename*, it is easier
-	to start over with the 'kb-sdk init' with the new name. The ability to rename is on a list of planned 
+	to start over with the 'kb-sdk init' and the new name. The ability to rename is on a list of planned 
 	KBase improvements.  
 
 Build the Module
@@ -67,11 +69,16 @@ Module Highlights
 
 This module template has the following that you will customize in later steps:
 
-#. A directory called ``module_name`` (see |anatomy_link| for more on the directory sturcture)
+#. A directory called ``module_name`` (see |anatomy_link| for more on the directory structure)
 #. A description of the module, its version, and the authors in ``kbase.yml``
-#. A specification file that defines the inputs, output, and functions for the module ``module_name.spec``
+#. A specification file that defines the inputs, output, and functions for the module ``module_name.spec``. 
 #. A script with code for running all the apps in the module called ``module_nameImpl.py``
-#. Specifications for the user interface in the files ``spec.json`` and ``display.yaml``
+#. Specifications for the user interface in the files ``spec.json`` and ``display.yaml``. 
+
+The input/output/function specification is written in an interface definition language |KIDL_link|  
+that is specific to KBase. The kbase.yml and display.yaml are in 
+YAML format - https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html. YAML format checkers are available online. 
+The spec.json is in JSON format - https://www.w3schools.com/js/js_json_syntax.asp. JSON format checkers are available online.
 
 Don't worry the location of these files. They will be discussed in more detail in later steps.
 
@@ -108,7 +115,7 @@ Set up your developer credentials
 
 If you want, this step can wait until you want to test your module. 
 However, it is somewhat disruptive to the thought process if you wait until later.
-This step can be done anytime after the first ``make`` of a module.
+This step can be done any time after the first ``make`` of a module.
 
 The KBase file storage services require authenticated access. During development a dev ``token`` is generated 
 and used instead of putting user IDs and passwords in clear text in your module. 
@@ -150,4 +157,8 @@ Where you substitute your own test_token. This one is unauthorized.
 .. |anatomy_link| raw:: html
 
    <a href="../references/module_anatomy.html">Anatomy of a Module </a>
+
+.. |KIDL_link| raw:: html
+
+   <a href="../references/KIDL_spec.html">(IDL)</a>
 

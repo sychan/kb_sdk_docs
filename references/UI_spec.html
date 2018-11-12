@@ -24,8 +24,7 @@
 
   
 
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -120,6 +119,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../howtos/work_with_reference_data.html">Working with reference data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/job_manager.html">Listing and viewing jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howtos/dynamic_services.html">Dynamic Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/update_to_py3.html">Updating a module to Python3</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul class="current">
@@ -236,7 +236,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">ver:</th><td class="field-body">version of each UI method-spec</td>
 </tr>
-<tr class="field-even field"><th class="field-name">authors:</th><td class="field-body">list of GlobusOnline accounts of the contributers</td>
+<tr class="field-even field"><th class="field-name">authors:</th><td class="field-body">list of GlobusOnline accounts of the contributors</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">contact:</th><td class="field-body">e-mail of the contact person</td>
 </tr>
@@ -545,7 +545,7 @@ fields. If true, then this parameter will return a list. Defaults to false</td>
 </div>
 <div class="section" id="parameter-groups-in-spec-json">
 <h2><a class="toc-backref" href="#id13">Parameter groups in <code class="docutils literal notranslate"><span class="pre">spec.json</span></code></a><a class="headerlink" href="#parameter-groups-in-spec-json" title="Permalink to this headline">¶</a></h2>
-<p>Parameter groups combine a set of individually specified parameters into logical sets. This can be used for something as simple as visually grouping related input (i.e. distinguishing a set of parameters passed to a wrapped tool from kbase related parameters), but it’s most often used to allow users to specify a multiple items described by a more than one parameter.</p>
+<p>Parameter groups combine a set of individually specified parameters into logical sets. This can be used for something as simple as visually grouping related input (i.e. distinguishing a set of parameters passed to a wrapped tool from kbase related parameters), but it’s most often used to allow users to specify multiple items described by a more than one parameter.</p>
 <p>It is also possible to have an optional parameter group with required parameters. If the parameter group is present, all the required parameters must be provided. The default resulting structure is a mapping (or list of mappings if <code class="docutils literal notranslate"><span class="pre">allow_multiple</span></code> is 1) with the parameter_ids as keys (e.g. <code class="docutils literal notranslate"><span class="pre">{id:</span> <span class="pre">[{parameter_id_1:</span> <span class="pre">value_1,</span> <span class="pre">parameter_id_2:</span> <span class="pre">value_2</span> <span class="pre">...}]}</span></code>) but this can be modified with the <code class="docutils literal notranslate"><span class="pre">id_mapping</span></code> option.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -692,7 +692,7 @@ the data returned from the service function will be captured - <a href="https://
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">none:</th><td class="field-body">(default value in case it is not defined) - no modification</td>
 </tr>
-<tr class="field-even field"><th class="field-name">ref:</th><td class="field-body">changes the object name into a workspace reference by a adding prefix of the workspace name followed by <code class="docutils literal notranslate"><span class="pre">/</span></code></td>
+<tr class="field-even field"><th class="field-name">ref:</th><td class="field-body">changes the object name into a workspace reference by adding a prefix of the workspace name followed by <code class="docutils literal notranslate"><span class="pre">/</span></code></td>
 </tr>
 <tr class="field-odd field"><th class="field-name">int:</th><td class="field-body">treats a text value as an integer</td>
 </tr>
@@ -736,11 +736,11 @@ list already), applying inner-transformation to each element</td>
 <h2><a class="toc-backref" href="#id16">Display Text file (<code class="docutils literal notranslate"><span class="pre">display.yaml</span></code>)</a><a class="headerlink" href="#display-text-file-display-yaml" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code> file controls how information is displayed in the narrative and in the app catalog.</p>
 <div class="align-center figure" id="id1">
-<img alt="../_images/View_flux_network_narr1.png" src="../_images/View_flux_network_narr1.png" />
+<img alt="../_images/View_flux_network_narr.png" src="../_images/View_flux_network_narr.png" />
 <p class="caption"><span class="caption-text">View Flux Network App in a narrative.</span></p>
 </div>
 <div class="align-center figure" id="id2">
-<a class="reference internal image-reference" href="../_images/ViewFluxNetwork_cat1.png"><img alt="../_images/ViewFluxNetwork_cat1.png" src="../_images/ViewFluxNetwork_cat1.png" style="width: 90%;" /></a>
+<a class="reference internal image-reference" href="../_images/ViewFluxNetwork_cat.png"><img alt="../_images/ViewFluxNetwork_cat.png" src="../_images/ViewFluxNetwork_cat.png" style="width: 90%;" /></a>
 <p class="caption"><span class="caption-text">App Catalog for View Flux Network.</span></p>
 </div>
 <p>This file uses the YAML format with the following top-level fields:</p>
@@ -811,7 +811,7 @@ input panel in the narrative</td>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, KBase.
+        &copy; Copyright 2018, KBase
 
     </p>
   </div>
@@ -830,27 +830,17 @@ input panel in the narrative</td>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.1.18',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {

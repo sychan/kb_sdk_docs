@@ -58,7 +58,7 @@ If you can't find a typespec in a repo, you can find it doing the following:
 
     from biokbase.workspace.client import Workspace
     ws = Workspace('https://ci.kbase.us/services/ws')
-    print ws.get_module_info({'mod': 'YourModuleName'})['spec']
+    print(ws.get_module_info({'mod': 'YourModuleName'})['spec'])
 
 
 .. External links

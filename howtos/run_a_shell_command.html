@@ -24,8 +24,7 @@
 
   
 
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -120,6 +119,7 @@
 <li class="toctree-l1"><a class="reference internal" href="work_with_reference_data.html">Working with reference data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="job_manager.html">Listing and viewing jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dynamic_services.html">Dynamic Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update_to_py3.html">Updating a module to Python3</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
@@ -209,9 +209,9 @@ RUN git clone https://github.com/ParBLiSS/FastANI.git /opt/FastANI <span class="
     <span class="o">&amp;&amp;</span> git checkout tags/v1.0 -b v1.0 <span class="se">\</span>
     <span class="o">&amp;&amp;</span> ./bootstrap.sh <span class="se">\</span>
     <span class="o">&amp;&amp;</span> ./configure <span class="se">\</span>
-    <span class="o">&amp;&amp;</span> make <span class="se">\</span>
-    <span class="c1"># Place fastANI in the PATH for this user</span>
-    <span class="o">&amp;&amp;</span> ln -s <span class="k">$(</span>readlink -f ./fastANI<span class="k">)</span> /usr/local/bin/fastANI
+    <span class="o">&amp;&amp;</span> make
+<span class="c1"># Place FastANI in the PATH for the docker user</span>
+RUN ln -s <span class="k">$(</span>readlink -f ./fastANI<span class="k">)</span> /usr/local/bin/fastANI
 </pre></div>
 </div>
 <p>Some things to note:</p>
@@ -254,7 +254,7 @@ demonstrates how to do (and document) this well with Python.</p>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;QUAST reported an error, return code was &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">retcode</span><span class="p">))</span>
     <span class="c1"># quast will ignore bad files and keep going, which is a disaster for</span>
     <span class="c1"># reproducibility and accuracy if you&#39;re not watching the logs like a hawk.</span>
-    <span class="c1"># for now use this hack to check that all files were processed. Maybe there&#39;s a better way.</span>
+    <span class="c1"># for now, use this hack to check that all files were processed. Maybe there&#39;s a better way.</span>
     <span class="n">files_proc</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">_os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outdir</span><span class="p">,</span> <span class="s1">&#39;report.tsv&#39;</span><span class="p">),</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span>
     <span class="n">files_exp</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">filepaths</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">files_proc</span> <span class="o">!=</span> <span class="n">files_exp</span><span class="p">:</span>
@@ -286,7 +286,7 @@ demonstrates how to do (and document) this well with Python.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, KBase.
+        &copy; Copyright 2018, KBase
 
     </p>
   </div>
@@ -305,27 +305,17 @@ demonstrates how to do (and document) this well with Python.</p>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.1.18',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {

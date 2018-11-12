@@ -8,16 +8,16 @@ For this tutorial, we will use an example module that has a few more specific de
 changes. The example is taken from |contigFilter_link|  if you get stuck at any point and want to see the original.  For this example module use:
 .. code-block:: bash
 
-    kb-sdk init --example --language python --user <your_kbase_user_name> <uid>ContigFilter
+    kb-sdk init --example --language python --user <your_kbase_user_name> {uid}ContigFilter
     cd <user_name>ContigFilter
     make
 
 Because this example is
-used in training and is tried by many users, the ``<uid>`` is added to make sure that your module has a unique 
+used in training and is tried by many users, the ``{uid}`` is added to make sure that your module has a unique 
 name. However, you would not usually put your own username in the module name, and instead name it something 
 like ``ContigFilter``.
 
-From here on, the ``<uid>ContigFilter`` will simply be called ``module_name``.
+From here on, the ``{uid}ContigFilter`` will simply be called ``module_name``.
 
 The setup for the "ContigFilter" module includes:
 
@@ -101,27 +101,27 @@ View the |KIDL_link|
 
 We'll start with the ``module_name.spec`` file. **Comments** in KIDL start with a line with ``/*`` and end with a 
 line with ``*/``. 
-For example, the following has two comments and an empty specification for the module called <uid>ContigFilter.
+For example, the following has two comments and an empty specification for the module called {uid}ContigFilter.
 
-.. code-block:: cpp
+.. ::
 
     /*
-		A KBase module: <uid>ContigFilter
+		A KBase module: {uid}ContigFilter
     */
-    module <uid>ContigFilter {
+    module {uid}ContigFilter {
         /*
             Insert your typespec information here.
         */
     };
 
-The <uid>ContigFilter ``.spec`` file has a lot of comments that may seem distracting at first glance.  For inputs, we need 
+The {uid}ContigFilter ``.spec`` file has a lot of comments that may seem distracting at first glance.  For inputs, we need 
 a ``min_length`` parameter (an integer), an ``assembly_input_ref`` parameter (a string reference to an assembly 
 file in the workspace), and a ``workspace_name``.  Here are the needed statements to define the inputs
 (comments removed):
 
-.. code-block:: cpp
+.. ::
 
-     module <uid>ContigFilter {
+     module {uid}ContigFilter {
         typedef string assembly_ref;
 
         typedef structure {
@@ -142,9 +142,9 @@ one was defined.
 Edit your KIDL ``.spec`` file to add the lines needed for a new app that filters using both a minimum and a
 maximum length. Your new ``.spec`` file might look something like this:
 
-.. code-block:: cpp
+.. ::
 
-     module <uid>ContigFilter {
+     module {uid}ContigFilter {
         typedef string assembly_ref;
 
         typedef structure {
@@ -161,9 +161,9 @@ maximum length. Your new ``.spec`` file might look something like this:
         } FilterContigsMaxParams;
     };
 
-Now let's look at the outputs. In the <uid>ContigFilter module, the following ``typedef`` lines define the outputs:
+Now let's look at the outputs. In the {uid}ContigFilter module, the following ``typedef`` lines define the outputs:
 
-.. code-block:: cpp
+.. ::
 
     typedef structure {
         string report_name;
@@ -182,7 +182,7 @@ The new app can use the same output parameters and doesn't need a new ``structur
 Now let us look at the function type for our app, which we can call ``filter_contigs``. 
 Refer to the |KIDL_link| for details about function types.
 
-.. code-block:: cpp
+.. ::
 
     funcdef filter_contigs(FilterContigParams params)
         returns (FilterContigsResults) authentication required;
@@ -195,9 +195,7 @@ Narrative will require the authentication to interact with a user's workspace.
 Edit your KIDL ``.spec`` file to add the lines needed for a new app that filters using both a minimum and a
 maximum length. Your new ``.spec`` file might look something like this:
 
-.. code-block:: cpp
-
-     module <uid>ContigFilter {
+.. : {uid}ContigFilter {
         typedef string assembly_ref;
 
         typedef structure {

@@ -17,7 +17,7 @@ A good reference on reStructuredText directives is here: http://docutils.sourcef
 1. Make sure [pipenv](https://docs.pipenv.org/) is installed
 1. Run `pipenv install` in the root directory of this repo on the master branch
 1. Run `pipenv run make live` to launch the local development server and open `localhost:8000` in your browser. The server will automatically rebuild files and refresh your browser when you change a file.
-1. To validate all your documents, run `pipenv run make html`. Any errors or warnings will be in the output.
+1. To validate your RST and code block syntax, run `make check`.
 
 If you want to add a dependency, make sure to use `pipenv install` to have it added in the `Pipfile`.
 

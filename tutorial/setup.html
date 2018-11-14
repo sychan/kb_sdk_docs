@@ -200,12 +200,12 @@
 <p>The <a href="helloworld.html" target="_blank">Hello World</a> example demonstrated where various components of the SDK are located and how to run a basic test.
 This “ContigFilter” example adds more features of the SDK. In practice, apps need to interact with the workspace/narrative, create reports from the app output, and potentially interact with database objects.</p>
 <p>For this tutorial, we will use an example module that has a few more specific details so we can explore how to make
-changes. The example is taken from <a href="https://github.com/msneddon/ContigFilter" target="_blank">https://github.com/msneddon/ContigFilter</a>  if you get stuck at any point and want to see the original.  For this example module use:
-.. code-block:: bash</p>
-<blockquote>
-<div>kb-sdk init –example –language python –user &lt;your_kbase_user_name&gt; {uid}ContigFilter
-cd &lt;user_name&gt;ContigFilter
-make</div></blockquote>
+changes. The example is taken from <a href="https://github.com/msneddon/ContigFilter" target="_blank">https://github.com/msneddon/ContigFilter</a>  if you get stuck at any point and want to see the original.  For this example module use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kb-sdk init --example --language python --user &lt;your_kbase_user_name&gt; <span class="o">{</span>uid<span class="o">}</span>ContigFilter
+<span class="nb">cd</span> &lt;user_name&gt;ContigFilter
+make
+</pre></div>
+</div>
 <p>Because this example is
 used in training and is tried by many users, the <code class="docutils literal notranslate"><span class="pre">{uid}</span></code> is added to make sure that your module has a unique
 name. However, you would not usually put your own username in the module name, and instead name it something

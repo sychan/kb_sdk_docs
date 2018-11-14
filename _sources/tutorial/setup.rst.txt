@@ -6,6 +6,7 @@ This "ContigFilter" example adds more features of the SDK. In practice, apps nee
 
 For this tutorial, we will use an example module that has a few more specific details so we can explore how to make
 changes. The example is taken from |contigFilter_link|  if you get stuck at any point and want to see the original.  For this example module use:
+
 .. code-block:: bash
 
     kb-sdk init --example --language python --user <your_kbase_user_name> {uid}ContigFilter

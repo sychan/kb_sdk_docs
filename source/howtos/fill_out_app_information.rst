@@ -153,15 +153,38 @@ please add links to the open-source repo for that tool in both the
 **description:** field and the **publications:** field. If there is a
 home page for the tool, please also add a link to that.
 
-Links and Publications
+Publications and Links
 ''''''''''''''''''''''
 
-Relevant publications, especially if you are wrapping an existing tool,
-are added with subfields. Each publication should start with a "-" on a
-blank line, followed by the fields **pmid:** for PubMed ID,
-**display-text:** for the publication (please include the DOI), and a
-**link:** to the publication. Additional entries for tool home pages and
-open source repos should also be included as **link:** fields.
+It is important to accurately cite all associated publications and software when preparing an app for KBase deployment. This is especially true when you wrap an existing tool.
+
+* All publication listings belong in the ‘publications’ field at the bottom of the **display.yaml** file.
+
+* Tool home pages and open source repos should also be included as publications.
+
+* Publications and software information should not be duplicated elsewhere in the file. 
+
+* Links to source codes or websites should be prefaced with some information. Do not list the hyperlink by itself (see example below).
+
+* The minimum fields to provide are the **display-text:** and a **link:**. Optionally, you can provide a **pmid:** with a PubMed ID.
+
+* All publication information should be in the PLOS style format (see example below). 
+
+.. tip::
+
+   PLOS Format:
+
+   Author Surname Author Initial(s), Author Surname Author Initial(s), et al. Title of Article. Title of Journal. Publication Year;Volume: Page Range. doi:  
+
+The format for the minimal publication is:
+
+.. code::
+
+    publications : 
+        -
+            display-text: |
+                Citation in PLOS style format
+            link: Link associated with publication 
 
 An example:
 
@@ -169,12 +192,42 @@ An example:
 
     publications :
         -
-            pmid: 24695404
+            pmid: 27071849
             display-text : |
-                'Bolger AM, Lohse M, Usadel B., (2014) Trimmomatic: a flexible trimmer for Illumina sequence data. Bioinformatics. 2014 Aug 1;30(15):2114-20. doi: 10.1093/bioinformatics/btu170.'
-            link: http://www.ncbi.nlm.nih.gov/pubmed/24695404
+                Menzel P, Ng KL, Krogh A. Fast and sensitive taxonomic classification for metagenomics with Kaiju. Nat Commun. 2016;7: 11257. doi:10.1038/ncomms11257
+            link: http://www.ncbi.nlm.nih.gov/pubmed/27071849
+
         -
-            link: http://www.usadellab.org/cms/?page=trimmomatic
+            pmid: 21961884
+            display-text : |
+                Ondov BD, Bergman NH, Phillippy AM. Interactive metagenomic visualization in a Web browser. BMC Bioinformatics. 2011;12: 385. doi:10.1186/1471-2105-12-385
+            link: http://www.ncbi.nlm.nih.gov/pubmed/21961884
+
+        -
+            display-text: |
+                Kaiju Homepage:
+            link: http://kaiju.binf.ku.dk/
+
+        -
+            display-text: |
+                Kaiju DBs from:
+            link: http://kaiju.binf.ku.dk/server
+
+        -
+            display-text: |
+                Github for Kaiju:
+            link: https://github.com/bioinformatics-centre/kaiju
+
+        -
+            display-text: |
+                Krona homepage:
+            link: https://github.com/marbl/Krona/wiki
+
+        -
+            display-text: |
+                Github for Krona:
+            link: https://github.com/marbl/Krona
+
 
 Screenshots
 '''''''''''

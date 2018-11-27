@@ -56,7 +56,7 @@ Plan the Inputs, Outputs, and Functions
 
 First, a look at the default spec file, ``{uid}HelloWorld.spec``.
 
-.. ::
+.. code:: text
 
     /*
        A KBase module: {uid}HelloWorld
@@ -100,7 +100,7 @@ The HelloWorld module will run without making any changes. This step is optional
 An input can be added to the HelloWorld spec file that captures a phrase the user inputs. 
 In this example, we will call it parameter_1 and it will be a string. 
 
-.. ::
+.. code:: text
 
         typedef structure {
             string parameter_1;
@@ -110,7 +110,7 @@ We can also add an output string that is returned to the user. It will be added 
 and we will reuse parameter_1. Normally the input and output parameters are different types so they
 can't share a name. The spec file now has:
  
-.. ::
+.. code:: text
 
     /*
        A KBase module: {uid}HelloWorld
@@ -153,15 +153,15 @@ When you make changes to your KIDL ``{uid}HelloWorld.spec`` file, validate the s
 
 If you get **WARNING** or **ERROR** messages similar to this:
 
-.. ::
+.. code:: text
 
-    **WARNINGS** - value "workspace_name" within path [behavior/service-mapping/input_mapping/0/target_property] in spec.json doesn't match any field of structure defined as argument type (InParams)
+    xyzxyzxyz
 
-or 
 
-.. ::
+.. code:: text
 
     **ERROR** - unknown method "your_method" defined within path [behavior/service-mapping/method] in spec.json
+
 
 you either have a typo or you need to add something to the Narrative user interface (next section).
 
@@ -322,7 +322,7 @@ Add a simple print statement to the end of the test method:
 Run ``kb-sdk test`` and, if everything works, you'll see the docker container boot up, the ``run_{uid}Helloworld`` method will get called, and you will see some printed output. 
 If you added the input and output parameters, the output should include the two lines.
 
-.. ::
+.. code:: text
 
     Input parameter Hello World!
     Output parameter Hello World!

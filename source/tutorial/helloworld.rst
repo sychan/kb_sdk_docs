@@ -1,7 +1,7 @@
 Hello World Example
 ========================
 
-This "Hello World" example demonstrates where various components of the SDK are located and how to run a basic test. Most of this example is optional. The |ContigFilter_link| example adds more features of the SDK. 
+This "Hello World" example demonstrates where various components of the SDK are located and how to run a basic test. Most of this example is optional. The |ContigFilter_link| example adds more features of the SDK.
 
 For this example substitute your name/id for {uid} and use:
 
@@ -24,12 +24,12 @@ The setup for the module includes:
 Module Description
 -------------------------------------------
 
-In the root directory of the module is the file ``kbase.yml``.  Examine the file. 
+In the root directory of the module is the file ``kbase.yml``.  Examine the file.
 It has a placeholder for information that you will eventually add to the module.
-The ``module-name`` and ``service-language`` will not change but the other items will change as 
-you prepare the module for release or update. 
+The ``module-name`` and ``service-language`` will not change but the other items will change as
+you prepare the module for release or update.
 The default ``module-description`` doesn't say anything about your module. You will want to edit this
-before the module is released.  Be sure to describe what your module and its app will do. 
+before the module is released.  Be sure to describe what your module and its app will do.
 The ``module-version`` needs to be incremented before updates can be released. For the first version
 of an app, it can remain *0.0.1*.
 The ``owners`` is a list of users that can approve updates to a module.
@@ -38,10 +38,10 @@ The information in this file shows up in the  |ModuleCatalog_link| entry for the
 The Specification File
 -------------------------------------------
 
-The specification file (or spec file) is called ``{uid}HelloWorld.spec`` and is in the root directory of the module. 
-This file is highly structured and follows a KBase-specific Interface Description Language or KIDL type definition. 
+The specification file (or spec file) is called ``{uid}HelloWorld.spec`` and is in the root directory of the module.
+This file is highly structured and follows a KBase-specific Interface Description Language or KIDL type definition.
 IDLs allow different apps to communicate with one another, regardless of programming languages.
-The steps below show the sections that are part of the HelloWorld module. 
+The steps below show the sections that are part of the HelloWorld module.
 
 |KIDLspecref_link|
 
@@ -75,19 +75,19 @@ First, a look at the default spec file, ``{uid}HelloWorld.spec``.
     };
 
 
-The spec file has two comments. Comments in KIDL start with a line with ``/*`` and end with a 
+The spec file has two comments. Comments in KIDL start with a line with ``/*`` and end with a
 line with ``*/``. The first comment is ``A KBase module: {uid}HelloWorld`` and the second comment is
 ``This example function accepts any number of parameters and returns results in a KBaseReport``.
 
 The definition of the module starts with ``module {uid}HelloWorld {`` and ends with ``};``
 
 Within the module definition is a ``typedef`` which can be used to define either inputs or outputs.
-By default, the output called 'ReportResults' is defined. It is used to send results back to the user.  
+By default, the output called 'ReportResults' is defined. It is used to send results back to the user.
 
-The module definition also has a ``funcdef`` which is used to define functions. 
-The function ``run_{uid}HelloWorld`` has been defined. Functions can become apps that are exposed 
-in the user interface or they can be internal functions used by other apps. As seen in steps below, 
-the default ``run_{uid}HelloWorld`` function will be exposed as an app. Internal functions are 
+The module definition also has a ``funcdef`` which is used to define functions.
+The function ``run_{uid}HelloWorld`` has been defined. Functions can become apps that are exposed
+in the user interface or they can be internal functions used by other apps. As seen in steps below,
+the default ``run_{uid}HelloWorld`` function will be exposed as an app. Internal functions are
 often found in modules with 'Util' in their name (|ModuleCatalog_link|).
 
 The example module called |ContigFilter_link| goes through inputs, outputs, and functions in more detail.
@@ -97,8 +97,8 @@ Add input and output
 
 The HelloWorld module will run without making any changes. This step is optional for the HelloWorld module.
 
-An input can be added to the HelloWorld spec file that captures a phrase the user inputs. 
-In this example, we will call it parameter_1 and it will be a string. 
+An input can be added to the HelloWorld spec file that captures a phrase the user inputs.
+In this example, we will call it parameter_1 and it will be a string.
 
 .. code:: text
 
@@ -106,10 +106,10 @@ In this example, we will call it parameter_1 and it will be a string.
             string parameter_1;
         } InParams;
 
-We can also add an output string that is returned to the user. It will be added to the ReportResults 
+We can also add an output string that is returned to the user. It will be added to the ReportResults
 and we will reuse parameter_1. Normally the input and output parameters are different types so they
 can't share a name. The spec file now has:
- 
+
 .. code:: text
 
     /*
@@ -132,11 +132,11 @@ can't share a name. The spec file now has:
        funcdef run_{uid}HelloWorld(mapping<string,UnspecifiedObject> params) returns (ReportResults output) authentication required;
     };
 
-If you made any changes, return to your module's root directory and run ``make``. 
+If you made any changes, return to your module's root directory and run ``make``.
 
 .. important::
 
-    You must rerun *make* after each change to the KIDL specification to regenerate client and server code used in the codebase. 
+    You must rerun *make* after each change to the KIDL specification to regenerate client and server code used in the codebase.
 
 Refer to the |KIDLspec_link|  for details about function types.
 
@@ -155,7 +155,9 @@ If you get **WARNING** or **ERROR** messages similar to this:
 
 .. code:: text
 
-    xyzxyzxyz
+    **WARNINGS** - value "workspace_name" within path [behavior/service-mapping/input_mapping/0/target_property] in spec.json doesn't match any field of structure defined as argument type (InParams)
+
+or
 
 
 .. code:: text
@@ -168,18 +170,18 @@ you either have a typo or you need to add something to the Narrative user interf
 Edit the Narrative UI (optional)
 --------------------------------
 
-The specifications for the app's Narrative user interface are under the directory named 
+The specifications for the app's Narrative user interface are under the directory named
 ``/ui/narrative/methods/run_{uid}HelloWorld``. Note that the name of the directory is the same as
-the name of the function in the spec file above. Functions that become user-facing apps need a 
+the name of the function in the spec file above. Functions that become user-facing apps need a
 directory that defines the user interface.
 
-This directory has two files ``spec.json`` and ``display.yaml``. The example module |ContigFilter_link| 
+This directory has two files ``spec.json`` and ``display.yaml``. The example module |ContigFilter_link|
 will go into more depth for these files.  The  |Documenting_link| page provides
 information on the purpose of the subdirectory ``img``.
 
 If you added input and output parameters to the spec file above, you can now add them to the Narrative UI.
 
-Now open up ``ui/narrative/methods/run_{uid}HelloWorld/spec.json``. This file is in JSON format and 
+Now open up ``ui/narrative/methods/run_{uid}HelloWorld/spec.json``. This file is in JSON format and
 defines a mapping between our KIDL ``{uid}HelloWorld.spec`` file and how our parameters will show up in the app's user interface.
 
 In the section ``parameters`` already defines ``parameter_1``:
@@ -205,7 +207,7 @@ In the section ``parameters`` already defines ``parameter_1``:
 Additional parameters added to the spec file  need to be added to this section. This will be covered
 in the next example module.
 
-The ``behavior`` section describes how the parameters from the Narrative UI are passed to the 
+The ``behavior`` section describes how the parameters from the Narrative UI are passed to the
 Python code. For example, the Narrative UI automatically passes two hidden parameters about the
 narrative, the ``workspace`` and the ``workspace_id``. When these are passed to the Python code,
 the ``workspace`` from the Narrative is passed as ``workspace_name`` to Python.
@@ -214,25 +216,25 @@ The ``display.yaml`` file is in YAML format and defines how your app will appear
 Examine the file found in ``ui/narrative/methods/printhelloworld/display.yaml``.
 View the |Documenting_link| page for more on the how this file is used.
 
-Finally, if you made any changes, run ``kb-sdk validate`` again and make sure it passes! 
+Finally, if you made any changes, run ``kb-sdk validate`` again and make sure it passes!
 Now we can start to work on the functionality of the app.
 
 .. note::
 
     For a more exhaustive overview of the ``spec.json`` and ``display.yaml`` files, take a look at
     the |UISpec_link|.  You can also experiment with UI generation
-    with the |AppSpec_link| 
+    with the |AppSpec_link|
 
 Code Implementation
 -------------------
 
-The actual code for your app will live in the python package under ``lib/{uid}HelloWorld``. 
-The entry point, where your code is initially called, lives in the file: ``lib/{uid}HelloWorld/{uid}HelloWorldImpl.py``. 
+The actual code for your app will live in the python package under ``lib/{uid}HelloWorld``.
+The entry point, where your code is initially called, lives in the file: ``lib/{uid}HelloWorld/{uid}HelloWorldImpl.py``.
 It is sometimes called the "Implementation" file or simply the "Impl" file.  This is the file where you edit your own Python code.
 
 This "Implementation" file defines the python methods available in the module. All of the functions
-defined in the spec file correspond to Python methods 
-and they are part of the class inside ``{uid}HelloWorldImpl.py``. 
+defined in the spec file correspond to Python methods
+and they are part of the class inside ``{uid}HelloWorldImpl.py``.
 
 Much of the Implementation file is auto-generated based on the spec file. The ``make`` command updates the Implementation file. To separate auto-generated code from developer code, developer code belongs between ``#BEGIN`` and ``#END`` comments. For example:
 
@@ -250,7 +252,7 @@ Much of the Implementation file is auto-generated based on the spec file. The ``
         #BEGIN printhelloworld
         #END printhelloworld
 
-The ``make`` command preserves everything between the ``#BEGIN`` and ``#END`` comments and replaces everything else. 
+The ``make`` command preserves everything between the ``#BEGIN`` and ``#END`` comments and replaces everything else.
 
 .. warning::
 
@@ -261,13 +263,13 @@ Check Inputs (optional)
 
 Open ``{uid}HelloWorldImpl.py`` and find the ``run_{uid}Helloworld`` method, which should have some auto-generated boilerplate code and docstrings.
 
-You want to limit your code edits to regions between the comments ``#BEGIN run_{uid}Helloworld`` 
-and ``#END run_{uid}Helloworld``. 
-These are special SDK-generated annotations that we have to keep in the code to get everything to compile 
-correctly. If you run ``make`` again in the future, it will update the code outside these comments, 
+You want to limit your code edits to regions between the comments ``#BEGIN run_{uid}Helloworld``
+and ``#END run_{uid}Helloworld``.
+These are special SDK-generated annotations that we have to keep in the code to get everything to compile
+correctly. If you run ``make`` again in the future, it will update the code outside these comments,
 but will not change the code you put between the ``#BEGIN`` and ``#END`` comments.
 
-Between the comments, add a simple print statement, such as: ``print ("Input parameter",params['parameter_1'])``. Then add the ``parameter_1`` to the output. 
+Between the comments, add a simple print statement, such as: ``print ("Input parameter",params['parameter_1'])``. Then add the ``parameter_1`` to the output.
 This let us see what is getting passed into our method.
 
 .. code-block:: python
@@ -293,18 +295,18 @@ Run First Test
 
 .. note:
 
-    Tests are an important part of KBase modules and are a requirement for release of apps. The module's root 
-    directory has a directory called ``test``. All tests should be added to this directory. A template for 
-    initial tests should be named after the module and in the ``test`` directory. When you enter ``kb-sdk test`` 
-    at the command line, it will run the tests in the test directory. 
+    Tests are an important part of KBase modules and are a requirement for release of apps. The module's root
+    directory has a directory called ``test``. All tests should be added to this directory. A template for
+    initial tests should be named after the module and in the ``test`` directory. When you enter ``kb-sdk test``
+    at the command line, it will run the tests in the test directory.
 
 
-As a default, your ``{uid}HelloWorldImpl.py`` file is tested using ``test/{uid}HelloWorld_server_test.py``. This file has a some auto-generated boilerplate code.  Python will automatically run all methods that start with the name ``test``. 
+As a default, your ``{uid}HelloWorldImpl.py`` file is tested using ``test/{uid}HelloWorld_server_test.py``. This file has a some auto-generated boilerplate code.  Python will automatically run all methods that start with the name ``test``.
 
 
-Near the bottom of the test file, find the method ``test_your_method``. 
+Near the bottom of the test file, find the method ``test_your_method``.
 The default test is to call ``run_{uid}HelloWorld`` with
-a ``workspace_name`` for the test and a ``parameter_1`` of 'Hello World'.  
+a ``workspace_name`` for the test and a ``parameter_1`` of 'Hello World'.
 If you added the optional parameters in the
 earlier steps, you can modify the test method to test the returned output.
 
@@ -312,14 +314,14 @@ Add a simple print statement to the end of the test method:
 
 .. code-block:: python
 
-    print ("Output parameter",ret[0]['output']) 
+    print ("Output parameter",ret[0]['output'])
 
 .. note::
 
     Make sure that you have put your developer token in the ``test_local/test.cfg`` as mentioned in the
-    |Initialize_link| 
+    |Initialize_link|
 
-Run ``kb-sdk test`` and, if everything works, you'll see the docker container boot up, the ``run_{uid}Helloworld`` method will get called, and you will see some printed output. 
+Run ``kb-sdk test`` and, if everything works, you'll see the docker container boot up, the ``run_{uid}Helloworld`` method will get called, and you will see some printed output.
 If you added the input and output parameters, the output should include the two lines.
 
 .. code:: text
@@ -327,8 +329,8 @@ If you added the input and output parameters, the output should include the two 
     Input parameter Hello World!
     Output parameter Hello World!
 
-When running an app, the messages created by the Impl file and the test will show up in the log. 
-For this module, setting up the docker container will take the most time and generate the most lines in the log. 
+When running an app, the messages created by the Impl file and the test will show up in the log.
+For this module, setting up the docker container will take the most time and generate the most lines in the log.
 The next example includes a report builder that is used by the Narrative User Interface.
 
 .. External links
@@ -366,7 +368,7 @@ The next example includes a report builder that is used by the Narrative User In
 .. |Initialize_link| raw:: html
 
   <a href="../tutorial/initialize.html">Initialize the Module </a>
-             
+
 .. |UISpec_link| raw:: html
 
   <a href="../references/UI_spec.html">UI specification guide </a>

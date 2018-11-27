@@ -242,6 +242,23 @@ The steps below show the sections that are part of the HelloWorld module.</p>
 <div class="section" id="plan-the-inputs-outputs-and-functions">
 <h3>4.2.1. Plan the Inputs, Outputs, and Functions<a class="headerlink" href="#plan-the-inputs-outputs-and-functions" title="Permalink to this headline">¶</a></h3>
 <p>First, a look at the default spec file, <code class="docutils literal notranslate"><span class="pre">{uid}HelloWorld.spec</span></code>.</p>
+<div class="code text highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
+   <span class="n">A</span> <span class="n">KBase</span> <span class="n">module</span><span class="p">:</span> <span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">HelloWorld</span>
+<span class="o">*/</span>
+
+<span class="n">module</span> <span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">HelloWorld</span> <span class="p">{</span>
+    <span class="n">typedef</span> <span class="n">structure</span> <span class="p">{</span>
+        <span class="n">string</span> <span class="n">report_name</span><span class="p">;</span>
+        <span class="n">string</span> <span class="n">report_ref</span><span class="p">;</span>
+    <span class="p">}</span> <span class="n">ReportResults</span><span class="p">;</span>
+
+   <span class="o">/*</span>
+       <span class="n">This</span> <span class="n">example</span> <span class="n">function</span> <span class="n">accepts</span> <span class="nb">any</span> <span class="n">number</span> <span class="n">of</span> <span class="n">parameters</span> <span class="ow">and</span> <span class="n">returns</span> <span class="n">results</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">KBaseReport</span>
+   <span class="o">*/</span>
+   <span class="n">funcdef</span> <span class="n">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">HelloWorld</span><span class="p">(</span><span class="n">mapping</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="n">UnspecifiedObject</span><span class="o">&gt;</span> <span class="n">params</span><span class="p">)</span> <span class="n">returns</span> <span class="p">(</span><span class="n">ReportResults</span> <span class="n">output</span><span class="p">)</span> <span class="n">authentication</span> <span class="n">required</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
 <p>The spec file has two comments. Comments in KIDL start with a line with <code class="docutils literal notranslate"><span class="pre">/*</span></code> and end with a
 line with <code class="docutils literal notranslate"><span class="pre">*/</span></code>. The first comment is <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">KBase</span> <span class="pre">module:</span> <span class="pre">{uid}HelloWorld</span></code> and the second comment is
 <code class="docutils literal notranslate"><span class="pre">This</span> <span class="pre">example</span> <span class="pre">function</span> <span class="pre">accepts</span> <span class="pre">any</span> <span class="pre">number</span> <span class="pre">of</span> <span class="pre">parameters</span> <span class="pre">and</span> <span class="pre">returns</span> <span class="pre">results</span> <span class="pre">in</span> <span class="pre">a</span> <span class="pre">KBaseReport</span></code>.</p>
@@ -260,9 +277,35 @@ often found in modules with ‘Util’ in their name (<a href="https://narrative
 <p>The HelloWorld module will run without making any changes. This step is optional for the HelloWorld module.</p>
 <p>An input can be added to the HelloWorld spec file that captures a phrase the user inputs.
 In this example, we will call it parameter_1 and it will be a string.</p>
+<div class="code text highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">structure</span> <span class="p">{</span>
+    <span class="n">string</span> <span class="n">parameter_1</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">InParams</span><span class="p">;</span>
+</pre></div>
+</div>
 <p>We can also add an output string that is returned to the user. It will be added to the ReportResults
 and we will reuse parameter_1. Normally the input and output parameters are different types so they
 can’t share a name. The spec file now has:</p>
+<div class="code text highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
+   <span class="n">A</span> <span class="n">KBase</span> <span class="n">module</span><span class="p">:</span> <span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">HelloWorld</span>
+<span class="o">*/</span>
+
+<span class="n">module</span> <span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">HelloWorld</span> <span class="p">{</span>
+    <span class="n">typedef</span> <span class="n">structure</span> <span class="p">{</span>
+        <span class="n">string</span> <span class="n">parameter_1</span><span class="p">;</span>
+    <span class="p">}</span> <span class="n">InParams</span><span class="p">;</span>
+    <span class="n">typedef</span> <span class="n">structure</span> <span class="p">{</span>
+        <span class="n">string</span> <span class="n">parameter_1</span><span class="p">;</span>
+        <span class="n">string</span> <span class="n">report_name</span><span class="p">;</span>
+        <span class="n">string</span> <span class="n">report_ref</span><span class="p">;</span>
+    <span class="p">}</span> <span class="n">ReportResults</span><span class="p">;</span>
+
+   <span class="o">/*</span>
+       <span class="n">This</span> <span class="n">example</span> <span class="n">function</span> <span class="n">accepts</span> <span class="nb">any</span> <span class="n">number</span> <span class="n">of</span> <span class="n">parameters</span> <span class="ow">and</span> <span class="n">returns</span> <span class="n">results</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">KBaseReport</span>
+   <span class="o">*/</span>
+   <span class="n">funcdef</span> <span class="n">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">HelloWorld</span><span class="p">(</span><span class="n">mapping</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="n">UnspecifiedObject</span><span class="o">&gt;</span> <span class="n">params</span><span class="p">)</span> <span class="n">returns</span> <span class="p">(</span><span class="n">ReportResults</span> <span class="n">output</span><span class="p">)</span> <span class="n">authentication</span> <span class="n">required</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
 <p>If you made any changes, return to your module’s root directory and run <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
@@ -278,7 +321,12 @@ can’t share a name. The spec file now has:</p>
 </pre></div>
 </div>
 <p>If you get <strong>WARNING</strong> or <strong>ERROR</strong> messages similar to this:</p>
-<p>or</p>
+<div class="code text highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xyzxyzxyz</span>
+</pre></div>
+</div>
+<div class="code text highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">**</span><span class="n">ERROR</span><span class="o">**</span> <span class="o">-</span> <span class="n">unknown</span> <span class="n">method</span> <span class="s2">&quot;your_method&quot;</span> <span class="n">defined</span> <span class="n">within</span> <span class="n">path</span> <span class="p">[</span><span class="n">behavior</span><span class="o">/</span><span class="n">service</span><span class="o">-</span><span class="n">mapping</span><span class="o">/</span><span class="n">method</span><span class="p">]</span> <span class="ow">in</span> <span class="n">spec</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
 <p>you either have a typo or you need to add something to the Narrative user interface (next section).</p>
 </div>
 <div class="section" id="edit-the-narrative-ui-optional">
@@ -402,6 +450,10 @@ earlier steps, you can modify the test method to test the returned output.</p>
 </div>
 <p>Run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> and, if everything works, you’ll see the docker container boot up, the <code class="docutils literal notranslate"><span class="pre">run_{uid}Helloworld</span></code> method will get called, and you will see some printed output.
 If you added the input and output parameters, the output should include the two lines.</p>
+<div class="code text highlight-default notranslate"><div class="highlight"><pre><span></span>Input parameter Hello World!
+Output parameter Hello World!
+</pre></div>
+</div>
 <p>When running an app, the messages created by the Impl file and the test will show up in the log.
 For this module, setting up the docker container will take the most time and generate the most lines in the log.
 The next example includes a report builder that is used by the Narrative User Interface.</p>

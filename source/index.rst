@@ -35,14 +35,14 @@ To develop apps, start by obtaining a free KBase user account and applying for a
    :caption: Tutorial
    :name: tutorial
 
-   tutorial/dependencies
-   tutorial/install
-   tutorial/initialize
-   tutorial/helloworld
-   tutorial/setup
-   tutorial/inputsoutputs
-   tutorial/implement
-   tutorial/publish
+   tutorial/1_dependencies
+   tutorial/2_install
+   tutorial/3_initialize
+   tutorial/4_helloworld
+   tutorial/5_setup
+   tutorial/6_inputsoutputs
+   tutorial/7_implement
+   tutorial/8_publish
 
 
 .. image:: images/micro4.png

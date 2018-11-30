@@ -82,9 +82,11 @@ To develop apps, start by obtaining a free KBase user account and applying for a
     :caption: References & Resources
     :name: references
 
-    references/module_anatomy
+    references/design_checklist
     references/troubleshooting
     references/dev_guidelines
+    references/execution_engine
+    references/module_anatomy
     references/KIDL_spec
     references/UI_spec
     references/terminology

@@ -152,13 +152,11 @@ To enable callbacks and the scratch directory, this code was added into your ``_
 
 .. code-block:: python
 
-   ...
    # Inside your __init__ function:
    #BEGIN_CONSTRUCTOR
    self.callback_url = os.environ['SDK_CALLBACK_URL']
    self.shared_folder = config['scratch']
    #END_CONSTRUCTOR
-   ...
 
 
 Also added was an ``import os`` in the header of your ``module_nameImpl.py`` file, between the ``#BEGIN_HEADER`` and ``#END_HEADER`` comments.
@@ -195,7 +193,6 @@ Make sure your user passes in a workspace, an assembly reference, a minimum leng
 
 .. code-block:: python
 
-  ...
   # Inside filter_contigs_max(), after #BEGIN filter_contigs_max, before any other code
   # Check that the parameters are valid
   for name in ['min_length', 'max_length', 'assembly_ref', 'workspace_name']:
@@ -207,7 +204,6 @@ Make sure your user passes in a workspace, an assembly reference, a minimum leng
       raise ValueError('Max length must be a non-negative integer')
   if not isinstance(params['assembly_ref'], basestring) or not len(params['assembly_ref']):
       raise ValueError('Pass in a valid assembly reference string')
-  ...
 
 Feel free to add another test for the ``max_length`` being greater than the ``min_length``.
 
@@ -218,7 +214,6 @@ We can add some additional tests to make sure we raise ValueErrors for invalid p
 
 .. code-block:: python
 
-    ...
     # Inside test/module_nameImpl_server_test.py
     # At the end of the test class
     def test_invalid_params(self):
@@ -245,7 +240,6 @@ We can add some additional tests to make sure we raise ValueErrors for invalid p
         with self.assertRaises(ValueError):
             impl.filter_contigs_max(ctx, {'workspace_name': ws, 'assembly_ref': 1,
                 'min_length': 1, 'max_length': 1000000})
-    ...
 
 Testing for invalid max_length is left as an exercise for the student.
 
@@ -258,12 +252,10 @@ Inside your ``filter_contigs_max`` method, initialize the utility and use it to 
 
 .. code-block:: python
 
-    ...
     # Inside filter_contigs_max()
     assembly_util = AssemblyUtil(self.callback_url)
     fasta_file = assembly_util.get_assembly_as_fasta({'ref': params['assembly_ref']})
     print(fasta_file)
-    ...
 
 
 * We have to initialize AssemblyUtil by passing ``self.callback_url``
@@ -282,16 +274,14 @@ This module should already be included in the module's ``module_nameImpl.py`` be
 
 .. code-block:: python
 
-    ... # other imports
+    # other imports
     from Bio import SeqIO
-    ...
 
 
 Now, inside ``filter_contigs_max``, enter code to filter out contigs less than the given min_length: or greater than the max_length.
 
 .. code-block:: python
 
-    ...
     # Inside module_nameImpl#filter_contigs_max, after you have fetched the fasta file:
     # Parse the downloaded file in FASTA format
     parsed_assembly = SeqIO.parse(fasta_file['path'], 'fasta')
@@ -313,7 +303,6 @@ Now, inside ``filter_contigs_max``, enter code to filter out contigs less than t
         'n_total': n_total,
         'n_remaining': n_remaining
     }
-    ...
 
 
 Run ``kb-sdk test`` again and check the output.
@@ -329,7 +318,6 @@ We would expect to keep 1 contig and filter out the other.
 
 .. code-block:: python
 
-    ...
     # Inside module_nameImpl_server_test:
     def test_filter_contigs_test_min(self):
         ref = "79/16/1"
@@ -354,7 +342,6 @@ We would expect to keep 1 contig and filter out the other.
         result = self.getImpl().filter_contigs_max(self.getContext(), self.getWsName(), params)
         self.assertEqual(result[0]['n_total'], 2)
         self.assertEqual(result[0]['n_remaining'], 1)
-    ...
 
 
 Run ``kb-sdk test`` again to make sure it all passes.
@@ -368,7 +355,6 @@ Beneath the code that we wrote to filter the assembly, add this file saving and 
 
 .. code-block:: python
 
-    ...
     # Underneath your loop that filters contigs:
     # Create a file to hold the filtered data
     workspace_name = params['workspace_name']
@@ -386,7 +372,6 @@ Beneath the code that we wrote to filter the assembly, add this file saving and 
         'filtered_assembly_ref': new_ref
     }
     #END filter_contigs_max
-    ...
 
 
 Add a simple assertion into your ``test_filter_contigs_max`` method to check for the ``filtered_assembly_ref``. Something like:
@@ -457,10 +442,8 @@ Add a couple assertions in our ``test_filter_contigs_max`` method inside ``test/
 
 .. code-block:: python
 
-    ...
     self.assertTrue(len(result[0]['report_name']))
     self.assertTrue(len(result[0]['report_ref']))
-    ...
 
 
 Run ``kb-sdk test`` again to make sure it all works.

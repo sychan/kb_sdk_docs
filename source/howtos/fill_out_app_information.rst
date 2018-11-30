@@ -4,6 +4,9 @@ Fully documenting your app
 Complete Module Info
 ~~~~~~~~~~~~~~~~~~~~
 
+If you haven't done so already, add the email address of the 
+module's maintainer to the |Dockerlink|
+
 Icons, Publications, Original tool authors, Institutional Affiliations,
 Contact Information, and most importantly, Method Documentation must be
 added to your module before it can be deployed. This information will
@@ -152,7 +155,7 @@ included in the description. If you are wrapping an existing tool,
 please add links to the open-source repo for that tool in both the
 **description:** field and the **publications:** field. If there is a
 home page for the tool, please also add a link to that.
-
+Publications
 Publications and Links
 ''''''''''''''''''''''
 
@@ -267,6 +270,12 @@ public deployment, please see examples in the Trimmomatic app:
     We reserve the right to delay public release of SDK modules until all
     requirements are met. Please take the time to familiarize yourself with
     these policies to avoid delay in releasing your module.
+
+.. Internal links
+
+.. |Dockerlink| raw:: html
+
+    <a href="edit_your_dockerfile.html">Dockerfile.</a>
 
 .. External links
 

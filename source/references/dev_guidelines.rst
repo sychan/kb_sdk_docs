@@ -50,6 +50,10 @@ Criteria:
    API will take care of filling out the provenance information. In
    general it is best to use |DateFileUtils_link| 
    whenever possible for input and output, |kbsdkvalidate_link| or  |kbsdkTest_link| 
+8. Updates to released modules have incremental version numbers.
+9. The apps have a category.
+10. The App Catalog text, especiallyPublications, meets the guidance.
+11. The Dockerfile has a designated MAINTAINER.
 
 See also:  |KBaseproduct_link| 
 

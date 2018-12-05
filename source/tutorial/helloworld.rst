@@ -301,7 +301,7 @@ Run First Test
     at the command line, it will run the tests in the test directory.
 
 
-As a default, your ``{uid}HelloWorldImpl.py`` file is tested using ``test/{uid}HelloWorld_server_test.py``. This file has a some auto-generated boilerplate code.  Python will automatically run all methods that start with the name ``test``.
+As a default, your ``{uid}HelloWorldImpl.py`` file is tested using ``test/{uid}HelloWorld_server_test.py``. This file has some auto-generated boilerplate code.  Python will automatically run all methods that start with the name ``test``. 
 
 
 Near the bottom of the test file, find the method ``test_your_method``.

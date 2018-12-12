@@ -31,12 +31,12 @@ Calls to other services should be initialized with the Service Wizard URL rather
 .. code-block:: python
 
     # In the class init
-    self.serviceWizardURL = config['service-wizard']
+    self.serviceWizardURL = config['srv-wiz-url']
 
     # *snip*
 
     # In each method's implementation
-    gaa = GenomeAnnotationAPI(self.serviceWizardURL, token=ctx.token)
+    gaa = GenomeAnnotationAPI(self.serviceWizardURL, token=ctx['token'])
 
 
 Start and stop a dynamic service locally

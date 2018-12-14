@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Editing your app’s Dockerfile &mdash; KBase SDK 0.1.18 documentation</title>
+  <title>Editing your app’s Dockerfile &mdash; KBase SDK 1.2.0 documentation</title>
   
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.1
+                1.2
               </div>
             
           
@@ -201,6 +201,13 @@
 can edit your Dockerfile, which contains the setup code needed to build
 up your container.</p>
 <p>A helpful resource is the <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices" target="_blank">Dockerfile Best Practices </a> guide.</p>
+<p>The first two lines of the Dockerfile look something like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FROM</span> <span class="n">kbase</span><span class="o">/</span><span class="n">kbase</span><span class="p">:</span><span class="n">sdkbase2</span><span class="o">.</span><span class="n">latest</span>
+<span class="n">MAINTAINER</span> <span class="n">KBase</span> <span class="n">Developer</span>
+</pre></div>
+</div>
+<p>Change  <code class="docutils literal notranslate"><span class="pre">KBase</span> <span class="pre">Developer</span></code> to be the email address of the person
+who will be responsible for the upkeep of the module.</p>
 <p>The base KBase Docker image contains a KBase Ubuntu image with the
 dependencies necessary JSON-RPC server in the supported language, as
 well as a core set of KBase API Clients. You will need to include any

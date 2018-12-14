@@ -6,6 +6,10 @@
 KBase SDK Documentation
 =====================================
 
+.. tip::
+
+   New to KBase? See an overview of the |interface_link|. 
+
 .. image:: images/micro3.png
     :align: right
     :scale: 80 %
@@ -89,8 +93,11 @@ To develop apps, start by obtaining a free KBase user account and applying for a
     references/UI_spec
     references/terminology
 
-
 .. External links
+
+.. |interface_link| raw:: html
+
+   <a href="https://kbase.us/new-to-kbase/">user interface</a>
 
 .. |KBase_link| raw:: html
 

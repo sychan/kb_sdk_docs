@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Dynamic Services &mdash; KBase SDK 0.1.18 documentation</title>
+  <title>Dynamic Services &mdash; KBase SDK 1.2.0 documentation</title>
   
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.1
+                1.2
               </div>
             
           
@@ -219,12 +219,12 @@ dynamic service, add the following to the kbase.yml file:</p>
 Other services should be installed with a dynamic service flag like this <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">install</span> <span class="pre">-d</span> <span class="pre">&lt;service&gt;</span></code>.
 Calls to other services should be initialized with the Service Wizard URL rather than the SDK Callback URL. The Service Wizard tracks the services that are deployed in the catalog and routes the request to the most up-to-date released service by default. Additionally, authentication token will need to be passed to the called service. This also means the called services should be initialized within each function that uses then rather than once as a class property. With  SDK apps where all of the processing takes place in a common location authentication is handled automatically. With a dynamic service however, the code is not initialized for a particular user and permissions need to be managed explicitly</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># In the class init</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">serviceWizardURL</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;service-wizard&#39;</span><span class="p">]</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">serviceWizardURL</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;srv-wiz-url&#39;</span><span class="p">]</span>
 
 <span class="c1"># *snip*</span>
 
 <span class="c1"># In each method&#39;s implementation</span>
-<span class="n">gaa</span> <span class="o">=</span> <span class="n">GenomeAnnotationAPI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">serviceWizardURL</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">token</span><span class="p">)</span>
+<span class="n">gaa</span> <span class="o">=</span> <span class="n">GenomeAnnotationAPI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">serviceWizardURL</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="n">ctx</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>

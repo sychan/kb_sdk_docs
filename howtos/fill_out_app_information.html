@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Fully documenting your app &mdash; KBase SDK 0.1.18 documentation</title>
+  <title>Fully documenting your app &mdash; KBase SDK 1.2.0 documentation</title>
   
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.1
+                1.2
               </div>
             
           
@@ -199,6 +199,8 @@
 <h1>Fully documenting your app<a class="headerlink" href="#fully-documenting-your-app" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="complete-module-info">
 <h2>Complete Module Info<a class="headerlink" href="#complete-module-info" title="Permalink to this headline">¶</a></h2>
+<p>If you haven’t done so already, add the email address of the
+module’s maintainer to the <a href="edit_your_dockerfile.html">Dockerfile.</a></p>
 <p>Icons, Publications, Original tool authors, Institutional Affiliations,
 Contact Information, and most importantly, Method Documentation must be
 added to your module before it can be deployed. This information will
@@ -316,25 +318,70 @@ of an exemplar Narrative that demonstrates how to use the app should be
 included in the description. If you are wrapping an existing tool,
 please add links to the open-source repo for that tool in both the
 <strong>description:</strong> field and the <strong>publications:</strong> field. If there is a
-home page for the tool, please also add a link to that.</p>
+home page for the tool, please also add a link to that.
+Publications
+Publications and Links
+‘’‘’‘’‘’‘’‘’‘’‘’‘’‘’‘’</p>
+<p>It is important to accurately cite all associated publications and software when preparing an app for KBase deployment. This is especially true when you wrap an existing tool.</p>
+<ul class="simple">
+<li>All publication listings belong in the ‘publications’ field at the bottom of the <strong>display.yaml</strong> file.</li>
+<li>Tool home pages and open source repos should also be included as publications.</li>
+<li>Publications and software information should not be duplicated elsewhere in the file.</li>
+<li>Links to source codes or websites should be prefaced with some information. Do not list the hyperlink by itself (see example below).</li>
+<li>The minimum fields to provide are the <strong>display-text:</strong> and a <strong>link:</strong>. Optionally, you can provide a <strong>pmid:</strong> with a PubMed ID.</li>
+<li>All publication information should be in the PLOS style format (see example below).</li>
+</ul>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>PLOS Format:</p>
+<p class="last">Author Surname Author Initial(s), Author Surname Author Initial(s), et al. Title of Article. Title of Journal. Publication Year;Volume: Page Range. doi:</p>
 </div>
-<div class="section" id="links-and-publications">
-<h4>Links and Publications<a class="headerlink" href="#links-and-publications" title="Permalink to this headline">¶</a></h4>
-<p>Relevant publications, especially if you are wrapping an existing tool,
-are added with subfields. Each publication should start with a “-” on a
-blank line, followed by the fields <strong>pmid:</strong> for PubMed ID,
-<strong>display-text:</strong> for the publication (please include the DOI), and a
-<strong>link:</strong> to the publication. Additional entries for tool home pages and
-open source repos should also be included as <strong>link:</strong> fields.</p>
+<p>The format for the minimal publication is:</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">publications</span> <span class="p">:</span>
+    <span class="o">-</span>
+        <span class="n">display</span><span class="o">-</span><span class="n">text</span><span class="p">:</span> <span class="o">|</span>
+            <span class="n">Citation</span> <span class="ow">in</span> <span class="n">PLOS</span> <span class="n">style</span> <span class="nb">format</span>
+        <span class="n">link</span><span class="p">:</span> <span class="n">Link</span> <span class="n">associated</span> <span class="k">with</span> <span class="n">publication</span>
+</pre></div>
+</div>
 <p>An example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>publications :
-    -
-        pmid: 24695404
-        display-text : |
-            &#39;Bolger AM, Lohse M, Usadel B., (2014) Trimmomatic: a flexible trimmer for Illumina sequence data. Bioinformatics. 2014 Aug 1;30(15):2114-20. doi: 10.1093/bioinformatics/btu170.&#39;
-        link: http://www.ncbi.nlm.nih.gov/pubmed/24695404
-    -
-        link: http://www.usadellab.org/cms/?page=trimmomatic
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">publications</span> <span class="p">:</span>
+    <span class="o">-</span>
+        <span class="n">pmid</span><span class="p">:</span> <span class="mi">27071849</span>
+        <span class="n">display</span><span class="o">-</span><span class="n">text</span> <span class="p">:</span> <span class="o">|</span>
+            <span class="n">Menzel</span> <span class="n">P</span><span class="p">,</span> <span class="n">Ng</span> <span class="n">KL</span><span class="p">,</span> <span class="n">Krogh</span> <span class="n">A</span><span class="o">.</span> <span class="n">Fast</span> <span class="ow">and</span> <span class="n">sensitive</span> <span class="n">taxonomic</span> <span class="n">classification</span> <span class="k">for</span> <span class="n">metagenomics</span> <span class="k">with</span> <span class="n">Kaiju</span><span class="o">.</span> <span class="n">Nat</span> <span class="n">Commun</span><span class="o">.</span> <span class="mi">2016</span><span class="p">;</span><span class="mi">7</span><span class="p">:</span> <span class="mf">11257.</span> <span class="n">doi</span><span class="p">:</span><span class="mf">10.1038</span><span class="o">/</span><span class="n">ncomms11257</span>
+        <span class="n">link</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">ncbi</span><span class="o">.</span><span class="n">nlm</span><span class="o">.</span><span class="n">nih</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">pubmed</span><span class="o">/</span><span class="mi">27071849</span>
+
+    <span class="o">-</span>
+        <span class="n">pmid</span><span class="p">:</span> <span class="mi">21961884</span>
+        <span class="n">display</span><span class="o">-</span><span class="n">text</span> <span class="p">:</span> <span class="o">|</span>
+            <span class="n">Ondov</span> <span class="n">BD</span><span class="p">,</span> <span class="n">Bergman</span> <span class="n">NH</span><span class="p">,</span> <span class="n">Phillippy</span> <span class="n">AM</span><span class="o">.</span> <span class="n">Interactive</span> <span class="n">metagenomic</span> <span class="n">visualization</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">Web</span> <span class="n">browser</span><span class="o">.</span> <span class="n">BMC</span> <span class="n">Bioinformatics</span><span class="o">.</span> <span class="mi">2011</span><span class="p">;</span><span class="mi">12</span><span class="p">:</span> <span class="mf">385.</span> <span class="n">doi</span><span class="p">:</span><span class="mf">10.1186</span><span class="o">/</span><span class="mi">1471</span><span class="o">-</span><span class="mi">2105</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">385</span>
+        <span class="n">link</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">ncbi</span><span class="o">.</span><span class="n">nlm</span><span class="o">.</span><span class="n">nih</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">pubmed</span><span class="o">/</span><span class="mi">21961884</span>
+
+    <span class="o">-</span>
+        <span class="n">display</span><span class="o">-</span><span class="n">text</span><span class="p">:</span> <span class="o">|</span>
+            <span class="n">Kaiju</span> <span class="n">Homepage</span><span class="p">:</span>
+        <span class="n">link</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">kaiju</span><span class="o">.</span><span class="n">binf</span><span class="o">.</span><span class="n">ku</span><span class="o">.</span><span class="n">dk</span><span class="o">/</span>
+
+    <span class="o">-</span>
+        <span class="n">display</span><span class="o">-</span><span class="n">text</span><span class="p">:</span> <span class="o">|</span>
+            <span class="n">Kaiju</span> <span class="n">DBs</span> <span class="n">from</span><span class="p">:</span>
+        <span class="n">link</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">kaiju</span><span class="o">.</span><span class="n">binf</span><span class="o">.</span><span class="n">ku</span><span class="o">.</span><span class="n">dk</span><span class="o">/</span><span class="n">server</span>
+
+    <span class="o">-</span>
+        <span class="n">display</span><span class="o">-</span><span class="n">text</span><span class="p">:</span> <span class="o">|</span>
+            <span class="n">Github</span> <span class="k">for</span> <span class="n">Kaiju</span><span class="p">:</span>
+        <span class="n">link</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">bioinformatics</span><span class="o">-</span><span class="n">centre</span><span class="o">/</span><span class="n">kaiju</span>
+
+    <span class="o">-</span>
+        <span class="n">display</span><span class="o">-</span><span class="n">text</span><span class="p">:</span> <span class="o">|</span>
+            <span class="n">Krona</span> <span class="n">homepage</span><span class="p">:</span>
+        <span class="n">link</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">marbl</span><span class="o">/</span><span class="n">Krona</span><span class="o">/</span><span class="n">wiki</span>
+
+    <span class="o">-</span>
+        <span class="n">display</span><span class="o">-</span><span class="n">text</span><span class="p">:</span> <span class="o">|</span>
+            <span class="n">Github</span> <span class="k">for</span> <span class="n">Krona</span><span class="p">:</span>
+        <span class="n">link</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">marbl</span><span class="o">/</span><span class="n">Krona</span>
 </pre></div>
 </div>
 </div>

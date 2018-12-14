@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Developer Guidelines &mdash; KBase SDK 0.1.18 documentation</title>
+  <title>Developer Guidelines &mdash; KBase SDK 1.2.0 documentation</title>
   
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.1
+                1.2
               </div>
             
           
@@ -245,6 +245,10 @@ As a rule, outputting your objects using the <a href="https://narrative.kbase.us
 API will take care of filling out the provenance information. In
 general it is best to use <a href="https://narrative.kbase.us/#catalog/modules/DataFileUtil" target="_blank">DataFileUtils</a>
 whenever possible for input and output, <a href="https://github.com/kbaseapps/kb_Velvet/blob/master/.travis.yml" target="_blank">minimally performs a "kb-sdk validate"</a> or  <a href="https://github.com/kbaseapps/kb_ballgown/blob/master/.travis.yml" target="_blank">ideally performs a "kb-sdk test"</a></li>
+<li>Updates to released modules have incremental version numbers.</li>
+<li>The apps have a category.</li>
+<li>The App Catalog text, especiallyPublications, meets the guidance.</li>
+<li>The Dockerfile has a designated MAINTAINER.</li>
 </ol>
 <p>See also:  <a href="https://github.com/kbase/roadmap/blob/master/KBase%20product%20requirements.md" target="_blank">KBase product requirements</a></p>
 </div>

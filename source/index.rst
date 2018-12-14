@@ -8,7 +8,7 @@ KBase SDK Documentation
 
 .. tip::
 
-   NEW TO KBase? - See an overview of the |interface_link|. 
+   New to KBase? See an overview of the |interface_link|. 
 
 .. image:: images/micro3.png
     :align: right

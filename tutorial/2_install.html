@@ -1,0 +1,313 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2. Installation &mdash; KBase SDK 1.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. Initialize the Module" href="3_initialize.html" />
+    <link rel="prev" title="1. Dependencies &amp; Prerequisites" href="1_dependencies.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> KBase SDK
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Intro</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Concepts and Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../video_tutorial.html">Video Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="1_dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_initialize.html">3. Initialize the Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_helloworld.html">4. Hello World Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_setup.html">5. ContigFilter Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_inputsoutputs.html">6. Narrative User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_implement.html">7. Implement Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_publish.html">8. Publish and Update</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../references/questions_and_answers.html">Common Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/create_a_report.html">Creating reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/add_ui_elements.html">Adding UI Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/edit_your_dockerfile.html">Editing your app’s Dockerfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/fill_out_app_information.html">Fully documenting your app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/run_a_shell_command.html">Running shell commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/file_utils.html">Working with the file utils</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/workspace.html">Using Workspace Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/manual_build.html">Manually building the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/work_with_reference_data.html">Working with reference data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/job_manager.html">Listing and viewing jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/dynamic_services.html">Dynamic Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/update_to_py3.html">Updating a module to Python3</a></li>
+</ul>
+<p class="caption"><span class="caption-text">References &amp; Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../references/design_checklist.html">Design Checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/execution_engine.html">Job Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/UI_spec.html">Narrative App UI Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/terminology.html">Terminology</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">KBase SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>2. Installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/kbase/kb_sdk_docs/blob/blob/master/source/tutorial/2_install.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation">
+<h1>2. Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>Now that Docker is installed, pull down the KBase SDK image.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker pull kbase/kb-sdk
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">If it has been a while since you last developed a KBase module, it is a good idea to run the
+command above before starting a new module. This will insure that you have the latest version.</p>
+</div>
+<p>Add the <code class="docutils literal"><span class="pre">kb-sdk</span></code> as a global command by linking it in your <code class="docutils literal"><span class="pre">$PATH</span></code>. Place the script in a directory like <cite>~/bin</cite>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir <span class="nv">$HOME</span>/bin/
+<span class="c1"># Generate the kb-sdk script and put it in ~/bin/kb-sdk</span>
+$ docker run kbase/kb-sdk genscript &gt; <span class="nv">$HOME</span>/bin/kb-sdk
+$ chmod +x <span class="nv">$HOME</span>/bin/kb-sdk
+<span class="c1"># Add ~/bin to your $PATH if it is not already there</span>
+$ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$HOME</span>/bin/
+<span class="c1"># You might want to put the above command in your ~/.bashrc or ~/.zshrc:</span>
+$ <span class="nb">echo</span> <span class="s2">&quot;export PATH=\$PATH:</span><span class="nv">$HOME</span><span class="s2">/bin/&quot;</span> &gt;&gt; ~/.bashrc
+</pre></div>
+</div>
+<p>Test the installation by running the kb-sdk help command.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ kb-sdk <span class="nb">help</span>
+</pre></div>
+</div>
+<div class="section" id="download-the-docker-image">
+<h2>2.1. Download the Docker Image<a class="headerlink" href="#download-the-docker-image" title="Permalink to this headline">¶</a></h2>
+<p>All KBase modules run in Docker containers.  Docker containers are built on top of existing base images.  KBase has
+a public base image that includes a number of installed runtimes, some basic bioinformatics tools, and other KBase-specific tools.
+To run this locally, you will need to download the base image.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ kb-sdk sdkbase
+</pre></div>
+</div>
+<p>The image is fairly large, so it will take some time to download.  This step is required for running tests locally and
+should only be required during the initial installation.  However, KBase staff may occasionally require the base image
+to be updated in order to match any changes in the base image running in the production KBase platform.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">While the preceding steps are the recommended approach, it’s also possible to  <a href="../howtos/manual_build.html">build the SDK from source code. </a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="3_initialize.html" class="btn btn-neutral float-right" title="3. Initialize the Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="1_dependencies.html" class="btn btn-neutral" title="1. Dependencies &amp; Prerequisites" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, KBase.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.2.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

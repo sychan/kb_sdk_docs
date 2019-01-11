@@ -1,0 +1,375 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3. Initialize the Module &mdash; KBase SDK 1.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. Hello World Example" href="4_helloworld.html" />
+    <link rel="prev" title="2. Installation" href="2_install.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> KBase SDK
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Intro</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Concepts and Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../video_tutorial.html">Video Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="1_dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_install.html">2. Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Initialize the Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_helloworld.html">4. Hello World Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_setup.html">5. ContigFilter Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_inputsoutputs.html">6. Narrative User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_implement.html">7. Implement Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_publish.html">8. Publish and Update</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../references/questions_and_answers.html">Common Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/create_a_report.html">Creating reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/add_ui_elements.html">Adding UI Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/edit_your_dockerfile.html">Editing your app’s Dockerfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/fill_out_app_information.html">Fully documenting your app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/run_a_shell_command.html">Running shell commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/file_utils.html">Working with the file utils</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/workspace.html">Using Workspace Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/manual_build.html">Manually building the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/work_with_reference_data.html">Working with reference data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/job_manager.html">Listing and viewing jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/dynamic_services.html">Dynamic Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/update_to_py3.html">Updating a module to Python3</a></li>
+</ul>
+<p class="caption"><span class="caption-text">References &amp; Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../references/design_checklist.html">Design Checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/execution_engine.html">Job Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/UI_spec.html">Narrative App UI Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/terminology.html">Terminology</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">KBase SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>3. Initialize the Module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/kbase/kb_sdk_docs/blob/blob/master/source/tutorial/3_initialize.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="initialize-the-module">
+<h1>3. Initialize the Module<a class="headerlink" href="#initialize-the-module" title="Permalink to this headline">¶</a></h1>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">A KBase module contains all of the components for one or more apps. The components are all stored in
+the same directory and are all uploaded to a single github repository. There are pros and cons to
+bundling several apps in one module versus
+creating one app per module. See <a href="../references/terminology.html">terminology</a> for more information.</p>
+</div>
+<p>The KBase SDK provides a way to quickly bootstrap a new module by generating most of the required components.</p>
+<p>The basic options of the command are:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ kb-sdk init <span class="o">[</span>--example<span class="o">]</span> <span class="o">[</span>--verbose<span class="o">]</span> <span class="o">[</span>--language language<span class="o">]</span> <span class="o">[</span>--user username<span class="o">]</span> ModuleName
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">ModuleName</span></code> must be unique across all SDK modules registered in KBase. For example,
+bootstrapping the HelloWorld module will start with:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>kb-sdk init --language python --user <span class="o">{</span>your_kbase_user_name<span class="o">}</span> <span class="o">{</span>uid<span class="o">}</span>HelloWorld
+</pre></div>
+</div>
+<p>This creates a directory called <code class="docutils literal"><span class="pre">{uid}HelloWorld</span></code> in your current directory where <code class="docutils literal"><span class="pre">{uid}</span></code> is your name/id
+that will make your copy of HelloWorld unique. The newly created directory has all of
+the components needed to start creating apps and is basically a clean slate.</p>
+<p>You must always include the <code class="docutils literal"><span class="pre">-u</span></code> or <code class="docutils literal"><span class="pre">-user</span></code> option with your username to set yourself as the module owner.</p>
+<p>You can set your programming language to any of Python, Perl, or Java; for this tutorial, we’re using Python.</p>
+<p>The <code class="docutils literal"><span class="pre">kb-sdk</span> <span class="pre">init</span></code> options are:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="o">--</span><span class="n">verbose</span>    <span class="n">Show</span> <span class="n">verbose</span> <span class="n">output</span> <span class="n">about</span> <span class="n">which</span> <span class="n">files</span> <span class="ow">and</span> <span class="n">directories</span>
+                 <span class="n">are</span> <span class="n">being</span> <span class="n">created</span><span class="o">.</span>
+<span class="o">-</span><span class="n">u</span>  <span class="o">--</span><span class="n">user</span>       <span class="n">Set</span> <span class="n">the</span> <span class="n">KBase</span> <span class="n">username</span> <span class="n">of</span> <span class="n">the</span> <span class="n">first</span> <span class="n">module</span> <span class="n">owner</span>
+<span class="o">-</span><span class="n">e</span><span class="p">,</span> <span class="o">--</span><span class="n">example</span>    <span class="n">Populate</span> <span class="n">your</span> <span class="n">repo</span> <span class="k">with</span> <span class="n">an</span> <span class="n">example</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">language</span>
+                 <span class="nb">set</span> <span class="n">by</span> <span class="o">-</span><span class="n">l</span>
+<span class="o">-</span><span class="n">l</span><span class="p">,</span> <span class="o">--</span><span class="n">language</span>   <span class="n">Choose</span> <span class="n">a</span> <span class="n">programming</span> <span class="n">language</span> <span class="n">to</span> <span class="n">base</span> <span class="n">your</span> <span class="n">repo</span> <span class="n">on</span><span class="o">.</span>
+                 <span class="n">Currently</span><span class="p">,</span> <span class="n">we</span> <span class="n">support</span> <span class="n">Perl</span><span class="p">,</span> <span class="n">Python</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Java</span><span class="o">.</span> <span class="n">Default</span> <span class="ow">is</span>
+                 <span class="n">Python</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Modules Cannot be Renamed (yet)</p>
+<p class="last">The <em>rename</em> feature of kb-sdk only does a partial rename. If you find you need to <em>rename</em>, it is easier
+to start over with the ‘kb-sdk init’ and the new name. The ability to rename is on a list of planned
+KBase improvements.</p>
+</div>
+<div class="section" id="build-the-module">
+<h2>3.1. Build the Module<a class="headerlink" href="#build-the-module" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> module_name
+$ make
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">make</span></code> command will run some initial code generation.</p>
+</div>
+<div class="section" id="module-highlights">
+<h2>3.2. Module Highlights<a class="headerlink" href="#module-highlights" title="Permalink to this headline">¶</a></h2>
+<p>This module template has the following that you will customize in later steps:</p>
+<ol class="arabic simple">
+<li>A directory called <code class="docutils literal"><span class="pre">module_name</span></code> (see <a href="../references/module_anatomy.html">Anatomy of a Module </a> for more on the directory structure)</li>
+<li>A description of the module, its version, and the authors in <code class="docutils literal"><span class="pre">kbase.yml</span></code></li>
+<li>A specification file that defines the inputs, output, and functions for the module <code class="docutils literal"><span class="pre">module_name.spec</span></code>.</li>
+<li>A script with code for running all the apps in the module called <code class="docutils literal"><span class="pre">module_nameImpl.py</span></code></li>
+<li>Specifications for the user interface in the files <code class="docutils literal"><span class="pre">spec.json</span></code> and <code class="docutils literal"><span class="pre">display.yaml</span></code>.</li>
+</ol>
+<p>The input/output/function specification is written in an interface definition language <a href="../references/KIDL_spec.html">(IDL)</a>
+that is specific to KBase. The kbase.yml and display.yaml are in
+YAML format - <a class="reference external" href="https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html">https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html</a>. YAML format checkers are available online.
+The spec.json is in JSON format - <a class="reference external" href="https://www.w3schools.com/js/js_json_syntax.asp">https://www.w3schools.com/js/js_json_syntax.asp</a>. JSON format checkers are available online.</p>
+<p>Don’t worry the location of these files. They will be discussed in more detail in later steps.</p>
+</div>
+<div class="section" id="create-a-github-repo">
+<h2>3.3. Create a GitHub Repo<a class="headerlink" href="#create-a-github-repo" title="Permalink to this headline">¶</a></h2>
+<p>You will need to publish your code to a public git repository to make it available for building into a custom Docker Image.  Here we’ll show a brief example using GitHub.  First, commit your codebase into a local git repository. Then, <code class="docutils literal"><span class="pre">git</span> <span class="pre">add</span></code> all files created by kb-sdk and commit. This creates a git repository locally.</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>$ cd MyModule
+$ git init
+$ git add .
+$ git commit -m &#39;Initial commit&#39;
+</pre></div>
+</div>
+<p>Now, create a new GitHub repository on github.com (it can be in your personal GitHub account or in an organization, but it must be public). Make sure your github repository is initially empty (don’t add an initial README.md).</p>
+<ul class="simple">
+<li>Direct link to create a repo on github.  <a href="https://github.com/new" target="_blank">https://github.com/new</a>.</li>
+<li>Github documentation about creating repos: <a href="https://help.github.com/articles/creating-a-new-repository" target="_blank">https://help.github.com/articles/creating-a-new-repository</a>.</li>
+</ul>
+<p>Sync your local codebase to your repository on github:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>$ git remote add origin https://github.com/[GITHUB_USER_OR_ORG_NAME]/[GITHUB_MODULE_NAME].git
+$ git push -u origin master
+</pre></div>
+</div>
+<p>Remember to continuously push your code changes to your github repo by using <code class="docutils literal"><span class="pre">git</span> <span class="pre">push</span></code>.</p>
+</div>
+<div class="section" id="set-up-your-developer-credentials">
+<h2>3.4. Set up your developer credentials<a class="headerlink" href="#set-up-your-developer-credentials" title="Permalink to this headline">¶</a></h2>
+<p>If you want, this step can wait until you want to test your module.
+However, it is somewhat disruptive to the thought process if you wait until later.
+This step can be done any time after the first <code class="docutils literal"><span class="pre">make</span></code> of a module.</p>
+<p>The KBase file storage services require authenticated access. During development a dev <code class="docutils literal"><span class="pre">token</span></code> is generated
+and used instead of putting user IDs and passwords in clear text in your module.
+Tokens are good for 90 days and can be used on all modules developed and tested during the 90 days.</p>
+<p>Go to <a href="https://narrative.kbase.us/#auth2/account" target="_blank">https://narrative.kbase.us/#auth2/account</a>, click <strong>Developer Tokens</strong>, and generate a new token. The
+token is only visible on the screen for 5 minutes so make sure you are ready to do the step below.</p>
+<p>From the module’s root directory, copy and paste that token into <code class="docutils literal"><span class="pre">test_local/test.cfg</span></code> in the value
+for <code class="docutils literal"><span class="pre">test_token</span></code>. For example:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">test_token</span><span class="o">=</span><span class="n">JQGGVCPKCAB2XYHRHZV4H3NF4TN3YEUSA</span>
+</pre></div>
+</div>
+<p>Where you substitute your own test_token. This one is unauthorized.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="4_helloworld.html" class="btn btn-neutral float-right" title="4. Hello World Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="2_install.html" class="btn btn-neutral" title="2. Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, KBase.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.2.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

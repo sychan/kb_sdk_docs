@@ -24,7 +24,8 @@
 
   
 
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -93,14 +94,14 @@
 </ul>
 <p class="caption"><span class="caption-text">Tutorial</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/install.html">2. Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/initialize.html">3. Initialize the Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/helloworld.html">4. Hello World Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/setup.html">5. ContigFilter Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/inputsoutputs.html">6. Narrative User Interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/implement.html">7. Implement Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">8. Publish and Update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/1_dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/2_install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/3_initialize.html">3. Initialize the Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/4_helloworld.html">4. Hello World Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/5_setup.html">5. ContigFilter Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/6_inputsoutputs.html">6. Narrative User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/7_implement.html">7. Implement Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/8_publish.html">8. Publish and Update</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Guides</span></p>
 <ul>
@@ -123,9 +124,11 @@
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/design_checklist.html">Design Checklist</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/execution_engine.html">Job Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/UI_spec.html">Narrative App UI Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/terminology.html">Terminology</a></li>
@@ -204,21 +207,21 @@
 <div class="section" id="java-jdk-7">
 <h2>Java JDK 7+<a class="headerlink" href="#java-jdk-7" title="Permalink to this headline">¶</a></h2>
 <p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></p>
-<p>After downloading and installing the JDK, set your <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code>
+<p>After downloading and installing the JDK, set your <code class="docutils literal"><span class="pre">JAVA_HOME</span></code>
 environment variable to point to your JDK installation. If you’re not
-sure where that is, on a Mac, the command <code class="docutils literal notranslate"><span class="pre">/usr/libexec/java_home</span></code>
-should tell you and on Linux, <code class="docutils literal notranslate"><span class="pre">readlink</span> <span class="pre">-f</span> <span class="pre">$(which</span> <span class="pre">javac)</span></code> will provide
+sure where that is, on a Mac, the command <code class="docutils literal"><span class="pre">/usr/libexec/java_home</span></code>
+should tell you and on Linux, <code class="docutils literal"><span class="pre">readlink</span> <span class="pre">-f</span> <span class="pre">$(which</span> <span class="pre">javac)</span></code> will provide
 the installed location of the javac, which you can use to find the base
 directory of the installation. On a Mac you can set the variable like
 so:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># for bash
+<div class="highlight-default"><div class="highlight"><pre><span></span># for bash
 export JAVA_HOME=`/usr/libexec/java_home`
 # for tcsh/csh
 setenv JAVA_HOME `/usr/libexec/java_home`
 </pre></div>
 </div>
 <p>You should probably add this command to the end of your
-<code class="docutils literal notranslate"><span class="pre">~/.bash_profile</span></code> or <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> file so it is always set when you start
+<code class="docutils literal"><span class="pre">~/.bash_profile</span></code> or <code class="docutils literal"><span class="pre">~/.bashrc</span></code> file so it is always set when you start
 a terminal.</p>
 </div>
 <div class="section" id="apache-ant">
@@ -227,14 +230,14 @@ a terminal.</p>
 <p><a href="http://ant.apache.org/manual/install.html" target="_blank">http://ant.apache.org/manual/install.html</a></p>
 <p>The easiest way to install Ant on a Mac is probably to use a package
 manager like <a href="http://brew.sh/" target="_blank">HomeBrew </a> , which allows you to install
-simply by <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">ant</span></code>. Make sure the Ant install location is
+simply by <code class="docutils literal"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">ant</span></code>. Make sure the Ant install location is
 added to your PATH environment variable, which is generally handled for
 you if you use a package manager like HomeBrew.</p>
 <div class="section" id="fetch-the-code-from-github">
 <h3>Fetch the code from GitHub:<a class="headerlink" href="#fetch-the-code-from-github" title="Permalink to this headline">¶</a></h3>
 <p>Create a directory in which you want to work. All your work should go
 here. All commands that follow are assuming you are using a UNIX shell.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">&lt;</span><span class="n">working_dir</span><span class="o">&gt;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">&lt;</span><span class="n">working_dir</span><span class="o">&gt;</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">kbase</span><span class="o">/</span><span class="n">kb_sdk</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">kbase</span><span class="o">/</span><span class="n">jars</span>
 <span class="n">cd</span> <span class="n">kb_sdk</span>
@@ -244,15 +247,15 @@ here. All commands that follow are assuming you are using a UNIX shell.</p>
 <p>You should now have the kb-sdk program built in kb_sdk/bin. It will be
 helpful to add this to your execution path. From within the kb_sdk
 directory, you can run in Bash:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>export PATH=$(pwd)/bin:$PATH
+<div class="highlight-default"><div class="highlight"><pre><span></span>export PATH=$(pwd)/bin:$PATH
 </pre></div>
 </div>
 <p>Optionally, you can also install command completion with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">src</span><span class="o">/</span><span class="n">sh</span><span class="o">/</span><span class="n">sdk</span><span class="o">-</span><span class="n">completion</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">src</span><span class="o">/</span><span class="n">sh</span><span class="o">/</span><span class="n">sdk</span><span class="o">-</span><span class="n">completion</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p>Like <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code>, you should consider adding these last two commands
-to your <code class="docutils literal notranslate"><span class="pre">~/.bash_profile</span></code> or <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> file so the SDK is always
+<p>Like <code class="docutils literal"><span class="pre">JAVA_HOME</span></code>, you should consider adding these last two commands
+to your <code class="docutils literal"><span class="pre">~/.bash_profile</span></code> or <code class="docutils literal"><span class="pre">~/.bashrc</span></code> file so the SDK is always
 available in the terminal with command completion.</p>
 </div>
 <div class="section" id="test-installation">
@@ -267,7 +270,7 @@ a number of installed runtimes, some basic bioinformatics tools, and
 other KBase specific tools. To run this locally, you will need to
 download and build the KBase SDK base image. There is a Makefile target
 that does most of the work for you:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">sdkbase</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">sdkbase</span>
 </pre></div>
 </div>
 <p>You will get a failure if the Docker daemon is not running when you
@@ -298,7 +301,7 @@ the image… External links</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, KBase
+        &copy; Copyright 2018, KBase.
 
     </p>
   </div>
@@ -317,17 +320,27 @@ the image… External links</p>
 
   
 
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.2.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
 
   
 
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
 
   <script type="text/javascript">
       jQuery(function () {

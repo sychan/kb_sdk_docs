@@ -24,7 +24,8 @@
 
   
 
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -93,14 +94,14 @@
 </ul>
 <p class="caption"><span class="caption-text">Tutorial</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/install.html">2. Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/initialize.html">3. Initialize the Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/helloworld.html">4. Hello World Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/setup.html">5. ContigFilter Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/inputsoutputs.html">6. Narrative User Interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/implement.html">7. Implement Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">8. Publish and Update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/1_dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/2_install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/3_initialize.html">3. Initialize the Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/4_helloworld.html">4. Hello World Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/5_setup.html">5. ContigFilter Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/6_inputsoutputs.html">6. Narrative User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/7_implement.html">7. Implement Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/8_publish.html">8. Publish and Update</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Guides</span></p>
 <ul>
@@ -123,9 +124,11 @@
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/design_checklist.html">Design Checklist</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/execution_engine.html">Job Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/UI_spec.html">Narrative App UI Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/terminology.html">Terminology</a></li>
@@ -211,14 +214,14 @@ service needs these libraries, it can’t be dynamic.</p>
 <h2>Creating a dynamic service<a class="headerlink" href="#creating-a-dynamic-service" title="Permalink to this headline">¶</a></h2>
 <p>By default, all SDK modules are SDK Methods that run asynchronously. To mark a module as a
 dynamic service, add the following to the kbase.yml file:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">service-config</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">service-config</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">dynamic-service</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 </pre></div>
 </div>
 <p>You can then register your module as usual and start and stop it in a production environment using the <a href="https://appdev.kbase.us/#catalog/services" target="_blank">catalog interface</a> as described below in the <a class="reference internal" href="#in-kbase"><span class="std std-ref">Manage dynamic services in a KBase environment section</span></a>.
-Other services should be installed with a dynamic service flag like this <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">install</span> <span class="pre">-d</span> <span class="pre">&lt;service&gt;</span></code>.
+Other services should be installed with a dynamic service flag like this <code class="docutils literal"><span class="pre">kb-sdk</span> <span class="pre">install</span> <span class="pre">-d</span> <span class="pre">&lt;service&gt;</span></code>.
 Calls to other services should be initialized with the Service Wizard URL rather than the SDK Callback URL. The Service Wizard tracks the services that are deployed in the catalog and routes the request to the most up-to-date released service by default. Additionally, authentication token will need to be passed to the called service. This also means the called services should be initialized within each function that uses then rather than once as a class property. With  SDK apps where all of the processing takes place in a common location authentication is handled automatically. With a dynamic service however, the code is not initialized for a particular user and permissions need to be managed explicitly</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># In the class init</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># In the class init</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">serviceWizardURL</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;srv-wiz-url&#39;</span><span class="p">]</span>
 
 <span class="c1"># *snip*</span>
@@ -233,7 +236,7 @@ Calls to other services should be initialized with the Service Wizard URL rather
 <ol class="arabic simple">
 <li>Run kb-sdk test. This will set up a workdir in test_local like this:</li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ tree test_local/workdir/
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ tree test_local/workdir/
 test_local/workdir/
 ├── config.properties
 ├── tmp
@@ -244,11 +247,11 @@ test_local/workdir/
 making the following edits to the last line:</p>
 <ul class="simple">
 <li>Delete <cite>test</cite> at the end of the file</li>
-<li>Delete <code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">SDK_CALLBACK_URL=$1</span></code></li>
-<li>Add <code class="docutils literal notranslate"><span class="pre">-d</span> <span class="pre">-p</span> <span class="pre">&lt;external_port&gt;:5000</span> <span class="pre">--dns</span> <span class="pre">8.8.8.8</span></code></li>
+<li>Delete <code class="docutils literal"><span class="pre">-e</span> <span class="pre">SDK_CALLBACK_URL=$1</span></code></li>
+<li>Add <code class="docutils literal"><span class="pre">-d</span> <span class="pre">-p</span> <span class="pre">&lt;external_port&gt;:5000</span> <span class="pre">--dns</span> <span class="pre">8.8.8.8</span></code></li>
 </ul>
 <p>When you’re done it should look similar to this (obviously the module name will be different):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="nv">script_dir</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">cd</span> <span class="s2">&quot;</span><span class="k">$(</span>dirname <span class="s2">&quot;</span><span class="k">$(</span>readlink -f <span class="s2">&quot;</span><span class="nv">$0</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">&quot;</span> <span class="o">&amp;&amp;</span> <span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
 <span class="nb">cd</span> <span class="nv">$script_dir</span>/..
 <span class="nv">$script_dir</span>/run_docker.sh run --user <span class="k">$(</span>id -u<span class="k">)</span> -v
@@ -259,13 +262,13 @@ test/htmlfilesetserv:latest
 <ol class="arabic simple" start="3">
 <li>Run the script:</li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./run_container.sh
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ./run_container.sh
 c8ea1197f9251323746d9ae42363387381ee79f6c06cd826e6dbfba0a7fd703b
 </pre></div>
 </div>
 <p>You can now interact with the service at the port you specified (in the example above, 10001).</p>
 <p>To view logs, get the container ID with docker ps and run docker logs:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker ps
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker ps
 CONTAINER ID
 CREATED
 NAMES
@@ -279,7 +282,7 @@ org.eclipse.jetty.util.log.StdErrLog
 </pre></div>
 </div>
 <p>When you’re done, shut down the docker container:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker stop c8ea1197f925
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker stop c8ea1197f925
 c8ea1197f925
 </pre></div>
 </div>
@@ -315,7 +318,7 @@ Below the active services are lists of Released, Beta and Dev services that deve
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, KBase
+        &copy; Copyright 2018, KBase.
 
     </p>
   </div>
@@ -334,17 +337,27 @@ Below the active services are lists of Released, Beta and Dev services that deve
 
   
 
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.2.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
 
   
 
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
 
   <script type="text/javascript">
       jQuery(function () {

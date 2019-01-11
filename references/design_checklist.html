@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>KIDL Specification &mdash; KBase SDK 1.2.0 documentation</title>
+  <title>Design Checklist &mdash; KBase SDK 1.2.0 documentation</title>
   
 
   
@@ -30,8 +30,8 @@
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Narrative App UI Specification" href="UI_spec.html" />
-    <link rel="prev" title="Anatomy of a Module" href="module_anatomy.html" /> 
+    <link rel="next" title="Troubleshooting Guide" href="troubleshooting.html" />
+    <link rel="prev" title="Updating a module to Python3" href="../howtos/update_to_py3.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -124,12 +124,12 @@
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="design_checklist.html">Design Checklist</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Design Checklist</a></li>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dev_guidelines.html">Developer Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="execution_engine.html">Job Execution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module_anatomy.html">Anatomy of a Module</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">KIDL Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="KIDL_spec.html">KIDL Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UI_spec.html">Narrative App UI Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="terminology.html">Terminology</a></li>
 </ul>
@@ -177,14 +177,14 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>KIDL Specification</li>
+      <li>Design Checklist</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/kbase/kb_sdk_docs/blob/blob/master/source/references/KIDL_spec.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/kbase/kb_sdk_docs/blob/blob/master/source/references/design_checklist.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -198,72 +198,84 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="kidl-specification">
-<h1>KIDL Specification<a class="headerlink" href="#kidl-specification" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="type-description-language">
-<h2>Type Description Language<a class="headerlink" href="#type-description-language" title="Permalink to this headline">¶</a></h2>
-<p>KBase defines a small language that is used to specify the types of data objects passed through the KBase API.</p>
-<p>The type language is built from a small number of basic types. These
-include three scalar types:</p>
+  <div class="section" id="design-checklist">
+<h1>Design Checklist<a class="headerlink" href="#design-checklist" title="Permalink to this headline">¶</a></h1>
+<p>This checklist walks though design considerations for the Implementation, Input and Output of SDK apps.</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">string</span></code>: a sequence of ASCII characters</li>
-<li><code class="docutils literal"><span class="pre">integer</span></code>: a signed integer</li>
-<li><code class="docutils literal"><span class="pre">float</span></code>: a floating-point number</li>
+<li><dl class="first docutils">
+<dt>Does my App depend on any compiled or third-party packages?</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>If so, are they licenced with a KBase compliant licence?</dt>
+<dd>All dependencies of KBase Apps must be free for any use including commercial use.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>If so, is there a version that is executable by one of the SDK languages or as a linux binary?</dt>
+<dd>See <a href="../howtos/run_a_shell_command.html">Running Shell Commands Guide</a> for more detail.</dd>
+</dl>
+</li>
 </ul>
-<p>And four compound types:</p>
-<ul class="simple">
-<li><code class="docutils literal"><span class="pre">list</span></code>: a homogeneous ordered sequence of values</li>
-<li><code class="docutils literal"><span class="pre">mapping</span></code>: a type mapping from a scalar or scalar-derived type to a
-value of an arbitrary type. All values in a mapping have the same
-type.</li>
-<li><code class="docutils literal"><span class="pre">structure</span></code>: a record type that contains one or more values which
-can be of differing types. Each value is accessed by a name that is
-defined by the type.</li>
-<li><code class="docutils literal"><span class="pre">tuple</span></code>: a type that contains one or more values. The values are
-accessed by index (think of this as a fixed-length list where the
-values may be of differing types).</li>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>What are the CPU and RAM requirements for my app?</dt>
+<dd>For more information on compute hardware and resource specification see this <a href="../references/execution_engine.html">Job Execution Guide</a></dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Does my App require reference/precomputed data?</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>If so, is that data licenced with a KBase compliant licence?</dt>
+<dd>All dependencies of KBase Apps must be free for any use including commercial use.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>If so, is that data small enough to store in a GitHub repository (&lt;100 MB files)</dt>
+<dd>If not, you can still used versioned reference data. See the <a href="../howtos/work_with_reference_data.html">Reference Data Guide</a> for more details.</dd>
+</dl>
+</li>
 </ul>
-<p>If we wish to define a list of integer values, we would use the type
-string <code class="docutils literal"><span class="pre">list&lt;int&gt;</span></code></p>
-<p>A type string that denotes a mapping from a string to another string is
-<code class="docutils literal"><span class="pre">mapping&lt;string,</span> <span class="pre">string&gt;</span></code></p>
-<p>A struct that contains a string id and an integer value is
-<code class="docutils literal"><span class="pre">structure</span> <span class="pre">{</span> <span class="pre">string</span> <span class="pre">id;</span> <span class="pre">int</span> <span class="pre">value;</span> <span class="pre">}</span></code></p>
-<p>A tuple containing a string and an integer is <code class="docutils literal"><span class="pre">tuple&lt;string,</span> <span class="pre">int&gt;</span></code></p>
-<p>Types can be nested in a natural way. A type that maps an integer to a
-list of strings is <code class="docutils literal"><span class="pre">mapping&lt;int,</span> <span class="pre">list&lt;string&gt;</span> <span class="pre">&gt;</span></code></p>
-<p>New type names may be defined using the typedef construct:
-<code class="docutils literal"><span class="pre">typedef</span> <span class="pre">type-description</span> <span class="pre">new-type-name;</span></code></p>
-<p>For example, to create a new type that defines a list of integers, and a
-record type that includes the list of integers, we write</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="nb">list</span><span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span> <span class="n">IntList</span><span class="p">;</span>
-<span class="n">typedef</span> <span class="n">structure</span> <span class="p">{</span>
-    <span class="n">string</span> <span class="n">key</span><span class="p">;</span>
-    <span class="n">IntList</span> <span class="n">value_list</span><span class="p">;</span>
-<span class="p">}</span> <span class="n">TimeSeries</span><span class="p">;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="function-definitions">
-<h2>Function Definitions<a class="headerlink" href="#function-definitions" title="Permalink to this headline">¶</a></h2>
-<p>The API specification language uses the type definitions defined above
-to specify the functions that comprise the API:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">funcdef</span> <span class="n">function_name</span><span class="p">(</span><span class="n">type1</span> <span class="n">param1</span><span class="p">,</span> <span class="n">type2</span> <span class="n">param2</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
-    <span class="n">returns</span> <span class="p">(</span><span class="n">returnType</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>A function may have zero or more parameters. Each parameter is specified
-as a type and an optional parameter name.</p>
-<p>For instance, a function that takes as input a list of feature-identifiers
-and returns the current functions assigned to these features
-as a hash mapping from the feature identifier to the function may be
-defined as follows:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">FeatureId</span> <span class="n">string</span><span class="p">;</span>
-<span class="n">funcdef</span> <span class="n">get_feature_functions</span><span class="p">(</span><span class="nb">list</span><span class="o">&lt;</span><span class="n">FeatureId</span><span class="o">&gt;</span> <span class="n">feature_ids</span><span class="p">)</span>
-    <span class="n">returns</span> <span class="p">(</span><span class="n">mapping</span><span class="o">&lt;</span><span class="n">FeatureId</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Does my App operate on KBase datatypes?</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>If so, do I need a FileUtil to convert the Workspace object to a desired file format?</dt>
+<dd>See our <a href="../howtos/file_utils.html">FileUtil Guide</a> for more detail</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>What parameters do I want users to be able to provide?</dt>
+<dd>See <a href="../references/UI_spec.html">Narrative App UI Specification</a> for more detail</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Does my app produce any KBase DataTypes?</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>If so, do I need a FileUtil to save the desired file format as a Workspace object?</dt>
+<dd>See our <a href="../howtos/file_utils.html">FileUtil Guide</a> for more detail</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>How do I want to display results to users?</dt>
+<dd>See the <a href="../howtos/create_a_report.html">Report Guide</a> for options.</dd>
+</dl>
+</li>
+</ul>
 </div>
 
 
@@ -274,10 +286,10 @@ defined as follows:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="UI_spec.html" class="btn btn-neutral float-right" title="Narrative App UI Specification" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="troubleshooting.html" class="btn btn-neutral float-right" title="Troubleshooting Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="module_anatomy.html" class="btn btn-neutral" title="Anatomy of a Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../howtos/update_to_py3.html" class="btn btn-neutral" title="Updating a module to Python3" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

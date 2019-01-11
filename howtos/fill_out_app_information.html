@@ -24,7 +24,8 @@
 
   
 
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -93,14 +94,14 @@
 </ul>
 <p class="caption"><span class="caption-text">Tutorial</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/install.html">2. Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/initialize.html">3. Initialize the Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/helloworld.html">4. Hello World Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/setup.html">5. ContigFilter Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/inputsoutputs.html">6. Narrative User Interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/implement.html">7. Implement Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">8. Publish and Update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/1_dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/2_install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/3_initialize.html">3. Initialize the Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/4_helloworld.html">4. Hello World Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/5_setup.html">5. ContigFilter Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/6_inputsoutputs.html">6. Narrative User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/7_implement.html">7. Implement Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/8_publish.html">8. Publish and Update</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Guides</span></p>
 <ul class="current">
@@ -123,9 +124,11 @@
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/design_checklist.html">Design Checklist</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/execution_engine.html">Job Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/UI_spec.html">Narrative App UI Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/terminology.html">Terminology</a></li>
@@ -231,11 +234,11 @@ fit in a square 200x200 pixels. To match our existing icons, use these guideline
 as a starting point.</p>
 <p>Your icons should be added to your KBase SDK module GitHub repo in the
 <strong>img</strong> image folder for each app at:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/&lt;</span><span class="n">MyUserName</span><span class="o">&gt;/&lt;</span><span class="n">MyModule</span><span class="o">&gt;/</span><span class="n">ui</span><span class="o">/</span><span class="n">narrative</span><span class="o">/</span><span class="n">methods</span><span class="o">/&lt;</span><span class="n">MyMethod</span><span class="o">&gt;/</span><span class="n">img</span><span class="o">/</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/&lt;</span><span class="n">MyUserName</span><span class="o">&gt;/&lt;</span><span class="n">MyModule</span><span class="o">&gt;/</span><span class="n">ui</span><span class="o">/</span><span class="n">narrative</span><span class="o">/</span><span class="n">methods</span><span class="o">/&lt;</span><span class="n">MyMethod</span><span class="o">&gt;/</span><span class="n">img</span><span class="o">/</span>
 </pre></div>
 </div>
 <p>Then edit the <strong>display.yaml</strong> file found at:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/&lt;</span><span class="n">MyUserName</span><span class="o">&gt;/&lt;</span><span class="n">MyModule</span><span class="o">&gt;/</span><span class="n">ui</span><span class="o">/</span><span class="n">narrative</span><span class="o">/</span><span class="n">methods</span><span class="o">/&lt;</span><span class="n">MyMethod</span><span class="o">&gt;/</span><span class="n">display</span><span class="o">.</span><span class="n">yaml</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/&lt;</span><span class="n">MyUserName</span><span class="o">&gt;/&lt;</span><span class="n">MyModule</span><span class="o">&gt;/</span><span class="n">ui</span><span class="o">/</span><span class="n">narrative</span><span class="o">/</span><span class="n">methods</span><span class="o">/&lt;</span><span class="n">MyMethod</span><span class="o">&gt;/</span><span class="n">display</span><span class="o">.</span><span class="n">yaml</span>
 </pre></div>
 </div>
 <p>and add an <strong>icon:</strong> configuration (NOTE: just add the name of the image
@@ -248,27 +251,27 @@ in the file:
 <h3>Naming and Categorizing<a class="headerlink" href="#naming-and-categorizing" title="Permalink to this headline">¶</a></h3>
 <p>Each app should have a unique display name. The display name is
 configured in the <strong>display.yaml</strong> file at:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/&lt;</span><span class="n">MyUserName</span><span class="o">&gt;/&lt;</span><span class="n">MyModule</span><span class="o">&gt;/</span><span class="n">ui</span><span class="o">/</span><span class="n">narrative</span><span class="o">/</span><span class="n">methods</span><span class="o">/&lt;</span><span class="n">MyMethod</span><span class="o">&gt;/</span><span class="n">display</span><span class="o">.</span><span class="n">yaml</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/&lt;</span><span class="n">MyUserName</span><span class="o">&gt;/&lt;</span><span class="n">MyModule</span><span class="o">&gt;/</span><span class="n">ui</span><span class="o">/</span><span class="n">narrative</span><span class="o">/</span><span class="n">methods</span><span class="o">/&lt;</span><span class="n">MyMethod</span><span class="o">&gt;/</span><span class="n">display</span><span class="o">.</span><span class="n">yaml</span>
 </pre></div>
 </div>
 <p>and add a <strong>name:</strong> configuration. If you are wrapping an existing tool
 with a known name, please include that name to make it easier for people
 to find it, such as</p>
-<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">Trimmomatic</span> <span class="o">-</span> <span class="n">Read</span> <span class="n">Trimming</span>
+<div class="code yaml highlight-default"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">Trimmomatic</span> <span class="o">-</span> <span class="n">Read</span> <span class="n">Trimming</span>
 </pre></div>
 </div>
 <p>You should tag your app with one (or multiple) “categories”. (If you
 don’t, it will appear in the “Uncategorized” section and users will be
 less likely to find it.)</p>
 <p>The categories are set in the <strong>spec.json</strong> file at:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/&lt;</span><span class="n">MyUserName</span><span class="o">&gt;/&lt;</span><span class="n">MyModule</span><span class="o">&gt;/</span><span class="n">ui</span><span class="o">/</span><span class="n">narrative</span><span class="o">/</span><span class="n">methods</span><span class="o">/&lt;</span><span class="n">MyMethod</span><span class="o">&gt;/</span><span class="n">spec</span><span class="o">.</span><span class="n">json</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/&lt;</span><span class="n">MyUserName</span><span class="o">&gt;/&lt;</span><span class="n">MyModule</span><span class="o">&gt;/</span><span class="n">ui</span><span class="o">/</span><span class="n">narrative</span><span class="o">/</span><span class="n">methods</span><span class="o">/&lt;</span><span class="n">MyMethod</span><span class="o">&gt;/</span><span class="n">spec</span><span class="o">.</span><span class="n">json</span>
 </pre></div>
 </div>
 <p>Currently, the following categories are recognized. The tag before the :
 on each line is the internal label for the category, used in the
 spec.json. The phrase after the : is the display name for the category
 that is used in the App Catalog.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">annotation</span><span class="p">:</span> <span class="n">Genome</span> <span class="n">Annotation</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">annotation</span><span class="p">:</span> <span class="n">Genome</span> <span class="n">Annotation</span>
 <span class="n">assembly</span><span class="p">:</span> <span class="n">Genome</span> <span class="n">Assembly</span>
 <span class="n">communities</span><span class="p">:</span> <span class="n">Microbial</span> <span class="n">Communities</span>
 <span class="n">comparative_genomics</span><span class="p">:</span> <span class="n">Comparative</span> <span class="n">Genomics</span>
@@ -283,7 +286,7 @@ that is used in the App Catalog.</p>
 suggestions for more… we expect to add more categories and possibly
 subcategories in the near future.)</p>
 <p>An example of a category configuration line is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;active&quot;</span><span class="p">,</span><span class="s2">&quot;assembly&quot;</span><span class="p">,</span><span class="s2">&quot;util&quot;</span><span class="p">],</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;active&quot;</span><span class="p">,</span><span class="s2">&quot;assembly&quot;</span><span class="p">,</span><span class="s2">&quot;util&quot;</span><span class="p">],</span>
 </pre></div>
 </div>
 <p>Please leave the category “active” at the beginning of the list of
@@ -295,7 +298,7 @@ categories are treated as normal tags.</p>
 <h3>Writing your App Info page<a class="headerlink" href="#writing-your-app-info-page" title="Permalink to this headline">¶</a></h3>
 <p>Information for the App Info page is configured in the <strong>display.yaml</strong>
 file at:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/&lt;</span><span class="n">MyUserName</span><span class="o">&gt;/&lt;</span><span class="n">MyModule</span><span class="o">&gt;/</span><span class="n">ui</span><span class="o">/</span><span class="n">narrative</span><span class="o">/</span><span class="n">methods</span><span class="o">/&lt;</span><span class="n">MyMethod</span><span class="o">&gt;/</span><span class="n">display</span><span class="o">.</span><span class="n">yaml</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/&lt;</span><span class="n">MyUserName</span><span class="o">&gt;/&lt;</span><span class="n">MyModule</span><span class="o">&gt;/</span><span class="n">ui</span><span class="o">/</span><span class="n">narrative</span><span class="o">/</span><span class="n">methods</span><span class="o">/&lt;</span><span class="n">MyMethod</span><span class="o">&gt;/</span><span class="n">display</span><span class="o">.</span><span class="n">yaml</span>
 </pre></div>
 </div>
 <p>The fields that should be configured are</p>
@@ -337,7 +340,7 @@ Publications and Links
 <p class="last">Author Surname Author Initial(s), Author Surname Author Initial(s), et al. Title of Article. Title of Journal. Publication Year;Volume: Page Range. doi:</p>
 </div>
 <p>The format for the minimal publication is:</p>
-<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">publications</span> <span class="p">:</span>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">publications</span> <span class="p">:</span>
     <span class="o">-</span>
         <span class="n">display</span><span class="o">-</span><span class="n">text</span><span class="p">:</span> <span class="o">|</span>
             <span class="n">Citation</span> <span class="ow">in</span> <span class="n">PLOS</span> <span class="n">style</span> <span class="nb">format</span>
@@ -345,7 +348,7 @@ Publications and Links
 </pre></div>
 </div>
 <p>An example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">publications</span> <span class="p">:</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">publications</span> <span class="p">:</span>
     <span class="o">-</span>
         <span class="n">pmid</span><span class="p">:</span> <span class="mi">27071849</span>
         <span class="n">display</span><span class="o">-</span><span class="n">text</span> <span class="p">:</span> <span class="o">|</span>
@@ -391,14 +394,14 @@ Publications and Links
 in the same fashion as the icon image. These screenshots should be
 configured in the <strong>display.yaml</strong> file as a list with one filename on
 each line, preceded by a hyphen, e.g.,</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">screenshots</span><span class="p">:</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">screenshots</span><span class="p">:</span>
     <span class="o">-</span> <span class="n">screenshot_1</span><span class="o">.</span><span class="n">png</span>
     <span class="o">-</span> <span class="n">screenshot_2</span><span class="o">.</span><span class="n">png</span>
 </pre></div>
 </div>
 <p>If you do not want to have any screenshots, leave the <strong>screenshots:</strong>
 list blank.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">screenshots</span><span class="p">:</span> <span class="p">[]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">screenshots</span><span class="p">:</span> <span class="p">[]</span>
 </pre></div>
 </div>
 </div>
@@ -444,7 +447,7 @@ these policies to avoid delay in releasing your module.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, KBase
+        &copy; Copyright 2018, KBase.
 
     </p>
   </div>
@@ -463,17 +466,27 @@ these policies to avoid delay in releasing your module.</p>
 
   
 
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.2.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
 
   
 
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
 
   <script type="text/javascript">
       jQuery(function () {

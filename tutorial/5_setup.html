@@ -1,0 +1,433 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5. ContigFilter Example &mdash; KBase SDK 1.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6. Narrative User Interface" href="6_inputsoutputs.html" />
+    <link rel="prev" title="4. Hello World Example" href="4_helloworld.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> KBase SDK
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Intro</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Concepts and Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../video_tutorial.html">Video Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="1_dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_initialize.html">3. Initialize the Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_helloworld.html">4. Hello World Example</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. ContigFilter Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_inputsoutputs.html">6. Narrative User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_implement.html">7. Implement Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_publish.html">8. Publish and Update</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../references/questions_and_answers.html">Common Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/create_a_report.html">Creating reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/add_ui_elements.html">Adding UI Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/edit_your_dockerfile.html">Editing your app’s Dockerfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/fill_out_app_information.html">Fully documenting your app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/run_a_shell_command.html">Running shell commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/file_utils.html">Working with the file utils</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/workspace.html">Using Workspace Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/manual_build.html">Manually building the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/work_with_reference_data.html">Working with reference data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/job_manager.html">Listing and viewing jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/dynamic_services.html">Dynamic Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/update_to_py3.html">Updating a module to Python3</a></li>
+</ul>
+<p class="caption"><span class="caption-text">References &amp; Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../references/design_checklist.html">Design Checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/execution_engine.html">Job Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/UI_spec.html">Narrative App UI Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/terminology.html">Terminology</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">KBase SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>5. ContigFilter Example</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/kbase/kb_sdk_docs/blob/blob/master/source/tutorial/5_setup.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="contigfilter-example">
+<h1>5. ContigFilter Example<a class="headerlink" href="#contigfilter-example" title="Permalink to this headline">¶</a></h1>
+<p>The <a href="helloworld.html">Hello World</a> example demonstrated where various components of the SDK are located and how to run a basic test.
+This “ContigFilter” example adds more features of the SDK. In practice, apps need to interact with the workspace/narrative, create reports from the app output, and potentially interact with database objects.</p>
+<p>For this tutorial, we will use an example module that has a few more specific details so we can explore how to make
+changes. The example is taken from <a href="https://github.com/kbaseapps/ContigFilter" target="_blank">https://github.com/kbaseapps/ContigFilter</a>  if you get stuck at any point and want to see the original.</p>
+<p>The setup for the “ContigFilter” module includes:</p>
+<ol class="arabic simple">
+<li>Running though the SDK App Design checklist</li>
+<li>Customizing the description of the module</li>
+<li>Specify inputs, outputs, and functions of the module</li>
+</ol>
+<p>For this tutorial, we will be looking at the app <code class="docutils literal"><span class="pre">run_{uid}FilterContigs</span></code>. The app takes as inputs, an <code class="docutils literal"><span class="pre">assembly</span> <span class="pre">file</span></code> and applies
+a <code class="docutils literal"><span class="pre">minimum</span> <span class="pre">length</span></code> filter to the contigs. <strong>The exercise below creates a second app that filter the contigs by a ``maximum_length``</strong></p>
+<div class="section" id="app-design-checklist">
+<h2>5.1. App Design Checklist<a class="headerlink" href="#app-design-checklist" title="Permalink to this headline">¶</a></h2>
+<p>When planing a new KBase app we recommend reviewing the <a href="../references/design_checklist.html">Design Checklist</a> to help clarify the the inputs, outputs, and dependencies of the app.
+An example for our second filter contig app is below:</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>Does my App depend on any compiled or third-party packages?</dt>
+<dd>Yes, this app will use <a href="https://biopython.org" target="_blank">Biopython</a> in addition to new python code<ul class="last">
+<li><dl class="first docutils">
+<dt>If so, are they licenced with a KBase compliant licence?</dt>
+<dd>Yes the “Biopython License Agreement” is a compliant licence which allows commercial use.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>If so, is there a version that is executable by one of the SDK languages or as a linux binary?</dt>
+<dd>Yes, in fact a version of biopython is available in the default SDK image</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>What are the CPU and RAM requirements for my app?</dt>
+<dd>The CPU requirements will be minimal. The RAM consumption will be a similar order of magnitude to the length of the assembly file in our naive implementation.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Does my App require reference/precomputed data?</dt>
+<dd>No, it will not.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Does my App operate on KBase datatypes?</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>If so, do I need a FileUtil to convert the Workspace object to a desired file format?</dt>
+<dd>Yes, we will use AssemblyUtils.assembly_to_fasta to produce FASTA file for Biopython</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>What parameters do I want users to be able to provide?</dt>
+<dd><ul class="first last">
+<li><code class="docutils literal"><span class="pre">min_lenght</span></code> - An integer describing minimum length for contigs in the assembly</li>
+<li><code class="docutils literal"><span class="pre">max_lenght</span></code> - A integer describing maximum length for contigs in the assembly</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Does my app produce any KBase DataTypes?</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>If so, do I need a FileUtil to save the desired file format as a Workspace object?</dt>
+<dd>Yes, we will use AssemblyUtils.fasta_to_assembly to save the FASTA file produced Biopython</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>How do I want to display results to users?</dt>
+<dd>We will display a Report with a text message describing how many contigs are filtered out and how many remain as well as a link to the new assembly object.</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="module-description">
+<h2>5.2. Module Description<a class="headerlink" href="#module-description" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have a clear idea of what our apps will do, we can begin to build it. Because this example is used in training and is built by many users, the <code class="docutils literal"><span class="pre">{uid}</span></code> is added to make sure that your module has a unique
+name. However, you would not usually put your own username in the module name, and instead name it something like <code class="docutils literal"><span class="pre">ContigFilter</span></code>.</p>
+<blockquote>
+<div>To get started, please run:</div></blockquote>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>kb-sdk init --example --language python --user &lt;your_kbase_user_name&gt; <span class="o">{</span>uid<span class="o">}</span>ContigFilter
+<span class="nb">cd</span> <span class="o">{</span>uid<span class="o">}</span>ContigFilter
+make
+</pre></div>
+</div>
+<p>You can now edit the <code class="docutils literal"><span class="pre">kbase.yml</span></code> file to include a better description of your module. It is in the root directory of the module.
+Be sure to describe what your module and its apps actually do. In future revisions you can update the version and the list of authors/owners.</p>
+</div>
+<div class="section" id="the-specification-file">
+<h2>5.3. The Specification File<a class="headerlink" href="#the-specification-file" title="Permalink to this headline">¶</a></h2>
+<p>In the root directory of the module, there is a specification file is called <code class="docutils literal"><span class="pre">{uid}ContigFilter.spec</span></code>.
+This file uses a proprietary language called KIDL to specify which functions the module that will be accessible to other SDK services as well as the input and output types.
+The specification is used to generate client code in any KBase supported language, therefore, FileUtils and modules that contain functions that are primarily used by other modules will have a detailed KIDL spec.
+However, for modules that are focused on defining user-facing apps, a very basic specification is all we need.</p>
+<div class="section" id="file-structure">
+<h3>5.3.1. File structure<a class="headerlink" href="#file-structure" title="Permalink to this headline">¶</a></h3>
+<p>If you open <code class="docutils literal"><span class="pre">{uid}ContigFilter.spec</span></code>, you should see two types of specifications:</p>
+<p><strong>Input/Output Structures</strong></p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>typedef structure {
+    string report_name;
+    string report_ref;
+} ReportResults;
+</pre></div>
+</div>
+<p>The first section is actually describing the output from the example function. It describes an structure (in Python, a dictionary)
+containing two keys <code class="docutils literal"><span class="pre">report_name</span></code> and <code class="docutils literal"><span class="pre">report_ref</span></code> that are used internally by the user interface to indicate which report object should be displayed in the app cell as the result.</p>
+<p>As we’ll later see, these reports can contain the following data:</p>
+<ul class="simple">
+<li>KBase Typed Data - Assemblies, genomes, annotations, etc.</li>
+<li>HTML Pages - A formatted page representing the output of your app</li>
+<li>Misc. files for download - Your method can use KBaseReports to save results to a file server for the user to download</li>
+</ul>
+<p><strong>Functions:</strong></p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>funcdef run_{uid}ContigFilter(mapping&lt;string,UnspecifiedObject&gt; params) returns (ReportResults output) authentication required;
+</pre></div>
+</div>
+<p>The next section defines the functions that may be called by other SDK modules or app cells. In this case we find a single function called
+<code class="docutils literal"><span class="pre">run_{uid}ContigFilter</span></code> which filters contigs using a minimum contig length. As input it receives a mapping called <code class="docutils literal"><span class="pre">params</span></code> (also a dictionary in Python)
+that is defined by an apps UI specification and produces the <code class="docutils literal"><span class="pre">ReportResults</span></code> structure described above.</p>
+</div>
+<div class="section" id="edit-the-spec-file">
+<h3>5.3.2. Edit the Spec file<a class="headerlink" href="#edit-the-spec-file" title="Permalink to this headline">¶</a></h3>
+<p>Our new app will also receive parameters from the UI and create a report, so all we need to do copy the funcdef line and give the function a unique name.
+We also should add a little description about our new function in a comment that precedes it. Once we are done, our <code class="docutils literal"><span class="pre">{uid}ContigFilter.spec</span></code> file should look like the following:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>{uid}module ContigFilter {
+    typedef structure {
+        string report_name;
+        string report_ref;
+    } ReportResults;
+
+    /*
+        Example app which filters contigs in an assembly using both a minimum contig length
+    */
+    funcdef run{uid}ContigFilter(mapping&lt;string,UnspecifiedObject&gt; params) returns (ReportResults output) authentication required;
+
+    /*
+        New app which filters contigs in an assembly using both a minimum and a maximum contig length
+    */
+    funcdef run{uid}ContigFilter_max(mapping&lt;string,UnspecifiedObject&gt; params) returns (ReportResults output) authentication required;
+
+};
+</pre></div>
+</div>
+<p>Now return to your module’s root directory and run <code class="docutils literal"><span class="pre">make</span></code>. With that complete, it’s time to specify the user interface for the new app.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">You must rerun <em>make</em> after each change to the KIDL specification to regenerate implementation and server code used in the codebase.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="6_inputsoutputs.html" class="btn btn-neutral float-right" title="6. Narrative User Interface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="4_helloworld.html" class="btn btn-neutral" title="4. Hello World Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, KBase.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.2.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

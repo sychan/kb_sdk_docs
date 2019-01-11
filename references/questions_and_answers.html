@@ -24,13 +24,14 @@
 
   
 
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Creating reports" href="../howtos/create_a_report.html" />
-    <link rel="prev" title="8. Publish and Update" href="../tutorial/publish.html" /> 
+    <link rel="prev" title="8. Publish and Update" href="../tutorial/8_publish.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -93,14 +94,14 @@
 </ul>
 <p class="caption"><span class="caption-text">Tutorial</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/install.html">2. Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/initialize.html">3. Initialize the Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/helloworld.html">4. Hello World Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/setup.html">5. ContigFilter Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/inputsoutputs.html">6. Narrative User Interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/implement.html">7. Implement Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">8. Publish and Update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/1_dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/2_install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/3_initialize.html">3. Initialize the Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/4_helloworld.html">4. Hello World Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/5_setup.html">5. ContigFilter Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/6_inputsoutputs.html">6. Narrative User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/7_implement.html">7. Implement Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/8_publish.html">8. Publish and Update</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Guides</span></p>
 <ul class="current">
@@ -123,9 +124,11 @@
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="module_anatomy.html">Anatomy of a Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design_checklist.html">Design Checklist</a></li>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dev_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="execution_engine.html">Job Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module_anatomy.html">Anatomy of a Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="KIDL_spec.html">KIDL Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UI_spec.html">Narrative App UI Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="terminology.html">Terminology</a></li>
@@ -224,7 +227,7 @@
 <li><a class="reference internal" href="#q-should-i-always-specify-a-specific-version-of-a-library-or-executable" id="id18">Q: Should I always specify a specific version of a library or executable?</a></li>
 <li><a class="reference internal" href="#q-where-do-i-install-binaries-in-docker" id="id19">Q: Where do I install binaries in docker?</a></li>
 <li><a class="reference internal" href="#q-how-do-i-get-inside-the-docker-image-how-do-i-get-root-access" id="id20">Q: How do I get inside the docker image? How do I get root access?</a></li>
-<li><a class="reference internal" href="#q-what-are-the-sh-scripts-in-the-test-local-directory" id="id21">Q: What are the <code class="docutils literal notranslate"><span class="pre">.sh</span></code> scripts in the <code class="docutils literal notranslate"><span class="pre">test_local/</span></code> directory?</a></li>
+<li><a class="reference internal" href="#q-what-are-the-sh-scripts-in-the-test-local-directory" id="id21">Q: What are the <code class="docutils literal"><span class="pre">.sh</span></code> scripts in the <code class="docutils literal"><span class="pre">test_local/</span></code> directory?</a></li>
 <li><a class="reference internal" href="#q-how-do-i-have-multiple-docker-images-for-different-versions-of-my-app-or-dynamic-service" id="id22">Q: How do I have multiple docker images for different versions of my app or dynamic service?</a></li>
 </ul>
 </li>
@@ -249,13 +252,13 @@
 <p>See if there is an existing app in the <a href="https://narrative.kbase.us/#catalog/apps" target="_blank">App Catalog</a> that is similar to yours, or one that has a UI that you would like to emulate. Every app you see in the narrative will have a link to its code repository.</p>
 <p>Typically developers follow this path:</p>
 <ol class="arabic simple">
-<li>Work on the <code class="docutils literal notranslate"><span class="pre">MyModule.spec</span></code> file. This will autogenerate methods in your <code class="docutils literal notranslate"><span class="pre">MyModuleImpl.py</span></code> file, which is where the core of your method functionality will reside.</li>
-<li>Work on the functionality of the app in the autogenerated <code class="docutils literal notranslate"><span class="pre">MyModuleImpl.py</span></code> file.</li>
+<li>Work on the <code class="docutils literal"><span class="pre">MyModule.spec</span></code> file. This will autogenerate methods in your <code class="docutils literal"><span class="pre">MyModuleImpl.py</span></code> file, which is where the core of your method functionality will reside.</li>
+<li>Work on the functionality of the app in the autogenerated <code class="docutils literal"><span class="pre">MyModuleImpl.py</span></code> file.</li>
 <li>Continue developing the app by working on unit tests</li>
-<li>Define the UI by modifying <code class="docutils literal notranslate"><span class="pre">spec.json</span></code> and <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code> files</li>
+<li>Define the UI by modifying <code class="docutils literal"><span class="pre">spec.json</span></code> and <code class="docutils literal"><span class="pre">display.yaml</span></code> files</li>
 <li>Publish and test in the narrative</li>
 </ol>
-<p>For these example apps, check out the <code class="docutils literal notranslate"><span class="pre">.spec</span></code> files, <code class="docutils literal notranslate"><span class="pre">&lt;module&gt;Impl.py</span></code> files, and <code class="docutils literal notranslate"><span class="pre">spec.json</span></code> files.</p>
+<p>For these example apps, check out the <code class="docutils literal"><span class="pre">.spec</span></code> files, <code class="docutils literal"><span class="pre">&lt;module&gt;Impl.py</span></code> files, and <code class="docutils literal"><span class="pre">spec.json</span></code> files.</p>
 <ul class="simple">
 <li><a href="https://github.com/kbaseapps/kb_quast/blob/master/kb_quast.spec" target="_blank">Quast</a></li>
 <li><a href="https://github.com/kbaseapps/kb_megahit/blob/master/MEGAHIT.spec" target="_blank">Megahit</a></li>
@@ -297,8 +300,8 @@ to expose the parameters or other functionality you are looking for.</p>
 </div>
 <div class="section" id="q-how-do-i-work-with-test-and-reference-data">
 <h3><a class="toc-backref" href="#id6">Q: How do I work with test and reference data?</a><a class="headerlink" href="#q-how-do-i-work-with-test-and-reference-data" title="Permalink to this headline">¶</a></h3>
-<p>Put simple data into the <code class="docutils literal notranslate"><span class="pre">/data</span></code> directory of your app’s repository. If the data is too large to host on Github, check out the following guide for <a href="../howtos/work_with_reference_data.html">how to add reference data</a>.</p>
-<p>Test files can go within the <code class="docutils literal notranslate"><span class="pre">test/</span></code> directory in your app, such as <code class="docutils literal notranslate"><span class="pre">test/data/</span></code>.</p>
+<p>Put simple data into the <code class="docutils literal"><span class="pre">/data</span></code> directory of your app’s repository. If the data is too large to host on Github, check out the following guide for <a href="../howtos/work_with_reference_data.html">how to add reference data</a>.</p>
+<p>Test files can go within the <code class="docutils literal"><span class="pre">test/</span></code> directory in your app, such as <code class="docutils literal"><span class="pre">test/data/</span></code>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Upload local genome files for of your tests. If you use an existing workspace reference in your tests that works in AppDev, it won’t work in CI or production.</p>
@@ -335,20 +338,20 @@ to expose the parameters or other functionality you are looking for.</p>
 </div>
 <div class="section" id="q-how-do-i-learn-more-about-the-spec-json-file">
 <h3><a class="toc-backref" href="#id13">Q: How do I learn more about the spec.json file?</a><a class="headerlink" href="#q-how-do-i-learn-more-about-the-spec-json-file" title="Permalink to this headline">¶</a></h3>
-<p>For a more exhaustive overview of the <code class="docutils literal notranslate"><span class="pre">spec.json</span></code> and <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code> files, take a look at the
+<p>For a more exhaustive overview of the <code class="docutils literal"><span class="pre">spec.json</span></code> and <code class="docutils literal"><span class="pre">display.yaml</span></code> files, take a look at the
 <a href="../references/UI_spec.html">UI specification guide </a>. You can also experiment with UI generation
 with the <a href="https://narrative.kbase.us/narrative/ws.28370.obj.1" target="_blank">App Spec Editor Narrative </a>.</p>
 </div>
 <div class="section" id="q-what-are-all-the-auto-generated-source-files-in-my-app">
 <h3><a class="toc-backref" href="#id14">Q: What are all the auto-generated source files in my app?</a><a class="headerlink" href="#q-what-are-all-the-auto-generated-source-files-in-my-app" title="Permalink to this headline">¶</a></h3>
-<p>These files are created by the KBase type compiler, which takes your KIDL type file (<code class="docutils literal notranslate"><span class="pre">MyModule.spec</span></code>) and generates different modules that are inserted into your codebase. These files are used by docker and service handlers to run your app and its dependencies.</p>
-<p>In python apps, the <code class="docutils literal notranslate"><span class="pre">authclient.py</span></code> and <code class="docutils literal notranslate"><span class="pre">baseclient.py</span></code> files get placed into the package directory for your own app, as well as all other the package directories. These files are generally the same across all the packages in your app. <code class="docutils literal notranslate"><span class="pre">authclient.py</span></code> handles authenticating the user so they can access the workspace, while <code class="docutils literal notranslate"><span class="pre">baseclient.py</span></code> has functionality for running SDK apps and calling their methods.</p>
-<p>Other auto-generated files in python apps include the <code class="docutils literal notranslate"><span class="pre">*Client.py</span></code> and <code class="docutils literal notranslate"><span class="pre">*Server.py</span></code> files in each package. Each app has an <code class="docutils literal notranslate"><span class="pre">AppNameClient.py</span></code> module in its package. These modules contain classes that can receive parameters for the app and pass that data to the app’s server</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">MyModuleServer.py</span></code> file gets auto-generated and saved only for your own app’s package directory. It handles requests from the python clients.</p>
+<p>These files are created by the KBase type compiler, which takes your KIDL type file (<code class="docutils literal"><span class="pre">MyModule.spec</span></code>) and generates different modules that are inserted into your codebase. These files are used by docker and service handlers to run your app and its dependencies.</p>
+<p>In python apps, the <code class="docutils literal"><span class="pre">authclient.py</span></code> and <code class="docutils literal"><span class="pre">baseclient.py</span></code> files get placed into the package directory for your own app, as well as all other the package directories. These files are generally the same across all the packages in your app. <code class="docutils literal"><span class="pre">authclient.py</span></code> handles authenticating the user so they can access the workspace, while <code class="docutils literal"><span class="pre">baseclient.py</span></code> has functionality for running SDK apps and calling their methods.</p>
+<p>Other auto-generated files in python apps include the <code class="docutils literal"><span class="pre">*Client.py</span></code> and <code class="docutils literal"><span class="pre">*Server.py</span></code> files in each package. Each app has an <code class="docutils literal"><span class="pre">AppNameClient.py</span></code> module in its package. These modules contain classes that can receive parameters for the app and pass that data to the app’s server</p>
+<p>The <code class="docutils literal"><span class="pre">MyModuleServer.py</span></code> file gets auto-generated and saved only for your own app’s package directory. It handles requests from the python clients.</p>
 </div>
 <div class="section" id="q-what-makes-the-tests-slow-to-run">
 <h3><a class="toc-backref" href="#id15">Q: What makes the tests slow to run?</a><a class="headerlink" href="#q-what-makes-the-tests-slow-to-run" title="Permalink to this headline">¶</a></h3>
-<p>Every time we run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> it rebuilds the docker container and re-downloads data objects from your workspace.</p>
+<p>Every time we run <code class="docutils literal"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> it rebuilds the docker container and re-downloads data objects from your workspace.</p>
 <p>Ways you can speed up your tests:</p>
 <ul class="simple">
 <li>Make sure all your custom docker setup, such as compiling binaries, is at the top of your Dockerfile so it always gets cached</li>
@@ -359,8 +362,8 @@ with the <a href="https://narrative.kbase.us/narrative/ws.28370.obj.1" target="_
 </div>
 <div class="section" id="q-when-you-install-and-run-sdk-apps-from-within-your-own-app-how-are-these-running">
 <h3><a class="toc-backref" href="#id16">Q: When you install and run SDK Apps from within your own app, how are these running?</a><a class="headerlink" href="#q-when-you-install-and-run-sdk-apps-from-within-your-own-app-how-are-these-running" title="Permalink to this headline">¶</a></h3>
-<p>SDK app dependencies that you use in your own app, such as <code class="docutils literal notranslate"><span class="pre">DataFileUtil</span></code>, run in their own docker containers using their own separate servers.</p>
-<p>When you use something like <code class="docutils literal notranslate"><span class="pre">AssemblyUtil</span></code> in your app, a job manager will schedule and run that app as a separate job. Despite the fact that it is run as an external job, it is not run in parallel. Your own app will hang until the other app finishes its work.</p>
+<p>SDK app dependencies that you use in your own app, such as <code class="docutils literal"><span class="pre">DataFileUtil</span></code>, run in their own docker containers using their own separate servers.</p>
+<p>When you use something like <code class="docutils literal"><span class="pre">AssemblyUtil</span></code> in your app, a job manager will schedule and run that app as a separate job. Despite the fact that it is run as an external job, it is not run in parallel. Your own app will hang until the other app finishes its work.</p>
 </div>
 </div>
 <div class="section" id="docker">
@@ -371,8 +374,8 @@ with the <a href="https://narrative.kbase.us/narrative/ws.28370.obj.1" target="_
 </div>
 <div class="section" id="q-where-do-i-install-binaries-in-docker">
 <h3><a class="toc-backref" href="#id19">Q: Where do I install binaries in docker?</a><a class="headerlink" href="#q-where-do-i-install-binaries-in-docker" title="Permalink to this headline">¶</a></h3>
-<p>You can install binaries to a directory like <code class="docutils literal notranslate"><span class="pre">/kb/deployment/bin</span></code> and then add them to your path:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install Diamond Binary v0.9.17</span>
+<p>You can install binaries to a directory like <code class="docutils literal"><span class="pre">/kb/deployment/bin</span></code> and then add them to your path:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Install Diamond Binary v0.9.17</span>
 WORKDIR /kb/deployment/bin
 RUN wget https://github.com/bbuchfink/diamond/releases/download/v0.9.17/diamond-linux64.tar.gz <span class="se">\</span>
     <span class="o">&amp;&amp;</span> tar -xvf diamond-linux64.tar.gz diamond <span class="se">\</span>
@@ -384,16 +387,16 @@ ENV <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/
 </div>
 <div class="section" id="q-how-do-i-get-inside-the-docker-image-how-do-i-get-root-access">
 <h3><a class="toc-backref" href="#id20">Q: How do I get inside the docker image? How do I get root access?</a><a class="headerlink" href="#q-how-do-i-get-inside-the-docker-image-how-do-i-get-root-access" title="Permalink to this headline">¶</a></h3>
-<p>You can open a shell inside the docker container with the <code class="docutils literal notranslate"><span class="pre">test_local/run_bash.sh</span></code> script.</p>
-<p>To gain root access, remove the <code class="docutils literal notranslate"><span class="pre">--user</span></code> parameter or change it to <code class="docutils literal notranslate"><span class="pre">--user</span> <span class="pre">0</span></code></p>
+<p>You can open a shell inside the docker container with the <code class="docutils literal"><span class="pre">test_local/run_bash.sh</span></code> script.</p>
+<p>To gain root access, remove the <code class="docutils literal"><span class="pre">--user</span></code> parameter or change it to <code class="docutils literal"><span class="pre">--user</span> <span class="pre">0</span></code></p>
 </div>
 <div class="section" id="q-what-are-the-sh-scripts-in-the-test-local-directory">
-<h3><a class="toc-backref" href="#id21">Q: What are the <code class="docutils literal notranslate"><span class="pre">.sh</span></code> scripts in the <code class="docutils literal notranslate"><span class="pre">test_local/</span></code> directory?</a><a class="headerlink" href="#q-what-are-the-sh-scripts-in-the-test-local-directory" title="Permalink to this headline">¶</a></h3>
-<p>You don’t really need anything besides the <code class="docutils literal notranslate"><span class="pre">run_bash.sh</span></code> script. If you want to run tests, use <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code>.</p>
+<h3><a class="toc-backref" href="#id21">Q: What are the <code class="docutils literal"><span class="pre">.sh</span></code> scripts in the <code class="docutils literal"><span class="pre">test_local/</span></code> directory?</a><a class="headerlink" href="#q-what-are-the-sh-scripts-in-the-test-local-directory" title="Permalink to this headline">¶</a></h3>
+<p>You don’t really need anything besides the <code class="docutils literal"><span class="pre">run_bash.sh</span></code> script. If you want to run tests, use <code class="docutils literal"><span class="pre">kb-sdk</span> <span class="pre">test</span></code>.</p>
 </div>
 <div class="section" id="q-how-do-i-have-multiple-docker-images-for-different-versions-of-my-app-or-dynamic-service">
 <h3><a class="toc-backref" href="#id22">Q: How do I have multiple docker images for different versions of my app or dynamic service?</a><a class="headerlink" href="#q-how-do-i-have-multiple-docker-images-for-different-versions-of-my-app-or-dynamic-service" title="Permalink to this headline">¶</a></h3>
-<p>You will need to <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">build</span></code> them and tag them with different names if this is not automatically done by your app.</p>
+<p>You will need to <code class="docutils literal"><span class="pre">docker</span> <span class="pre">build</span></code> them and tag them with different names if this is not automatically done by your app.</p>
 </div>
 </div>
 <div class="section" id="requirements-and-limitations">
@@ -444,7 +447,7 @@ ENV <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/
         <a href="../howtos/create_a_report.html" class="btn btn-neutral float-right" title="Creating reports" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../tutorial/publish.html" class="btn btn-neutral" title="8. Publish and Update" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../tutorial/8_publish.html" class="btn btn-neutral" title="8. Publish and Update" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -453,7 +456,7 @@ ENV <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, KBase
+        &copy; Copyright 2018, KBase.
 
     </p>
   </div>
@@ -472,17 +475,27 @@ ENV <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/
 
   
 
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.2.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
 
   
 
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
 
   <script type="text/javascript">
       jQuery(function () {

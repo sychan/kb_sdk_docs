@@ -1,0 +1,676 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7. Implement Code &mdash; KBase SDK 1.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8. Publish and Update" href="8_publish.html" />
+    <link rel="prev" title="6. Narrative User Interface" href="6_inputsoutputs.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> KBase SDK
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Intro</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Concepts and Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../video_tutorial.html">Video Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="1_dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_initialize.html">3. Initialize the Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_helloworld.html">4. Hello World Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_setup.html">5. ContigFilter Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_inputsoutputs.html">6. Narrative User Interface</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Implement Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_publish.html">8. Publish and Update</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../references/questions_and_answers.html">Common Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/create_a_report.html">Creating reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/add_ui_elements.html">Adding UI Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/edit_your_dockerfile.html">Editing your app’s Dockerfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/fill_out_app_information.html">Fully documenting your app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/run_a_shell_command.html">Running shell commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/file_utils.html">Working with the file utils</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/workspace.html">Using Workspace Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/manual_build.html">Manually building the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/work_with_reference_data.html">Working with reference data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/job_manager.html">Listing and viewing jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/dynamic_services.html">Dynamic Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/update_to_py3.html">Updating a module to Python3</a></li>
+</ul>
+<p class="caption"><span class="caption-text">References &amp; Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../references/design_checklist.html">Design Checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/execution_engine.html">Job Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/UI_spec.html">Narrative App UI Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/terminology.html">Terminology</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">KBase SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>7. Implement Code</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/kbase/kb_sdk_docs/blob/blob/master/source/tutorial/7_implement.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="implement-code">
+<h1>7. Implement Code<a class="headerlink" href="#implement-code" title="Permalink to this headline">¶</a></h1>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p>If you are new to Python, here are a few tips:</p>
+<ul class="last simple">
+<li>Tabs are not used. Anything that is indented is filled with spaces.</li>
+<li>Indentation is <strong>not</strong> optional. Python uses indentation to designate blocks of code that go together.</li>
+<li>Indentation must be consistent. If you start with 4, 8 and 12 spaces being your indentation levels, stick with those throughout.</li>
+<li>The pound sign (#) indicates comments to the end of the line.</li>
+</ul>
+</div>
+<p>The actual code for your app will live in the python package under <code class="docutils literal"><span class="pre">lib/{uid}ContigFilter</span></code>. The entry point, where your code is initially called, lives in the file: <code class="docutils literal"><span class="pre">lib/{uid}ContigFilter/{uid}ContigFilterImpl.py</span></code>. It is sometimes called the “Implementation” file or simply the “Impl” file.  This is the file where you edit your own Python code.</p>
+<p>This “Implementation” file defines the python methods available in the module. Two of the methods correspond to our two apps and are named <code class="docutils literal"><span class="pre">run_{uid}ContigFilter</span></code> and <code class="docutils literal"><span class="pre">run_{uid}ContigFilter_max</span></code> and they are part of the class inside <code class="docutils literal"><span class="pre">method_nameImpl.py</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In a real-world app, you may want to split up your code into several python modules and packages. You can place extra modules and folders inside <code class="docutils literal"><span class="pre">lib/MyOtherModule</span></code> and import them in <code class="docutils literal"><span class="pre">lib/{uid}ContigFilter/{uid}ContigFilterImpl.py</span></code>.</p>
+</div>
+<p>Much of the Implementation file is auto-generated based on the KIDL .spec file. The <code class="docutils literal"><span class="pre">make</span></code> command updates the Implementation file. To separate auto-generated code from developer code, developer code belongs between <code class="docutils literal"><span class="pre">#BEGIN</span></code> and <code class="docutils literal"><span class="pre">#END</span></code> comments. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1">#BEGIN_HEADER</span>
+<span class="c1">#END_HEADER</span>
+
+<span class="c1">#BEGIN_CLASS_HEADER</span>
+<span class="c1">#END_CLASS_HEADER</span>
+
+<span class="c1">#BEGIN_CONSTRUCTOR</span>
+<span class="c1">#END_CONSTRUCTOR</span>
+
+<span class="c1">#BEGIN run_{uid}ContigFilter</span>
+<span class="c1">#END run_{uid}ContigFilter</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">make</span></code> command preserves everything between the <code class="docutils literal"><span class="pre">#BEGIN</span></code> and <code class="docutils literal"><span class="pre">#END</span></code> comments and replaces everything else.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Don’t put any spaces between the ‘#’ and ‘BEGIN’ or ‘END’. It has bad consequences.</p>
+</div>
+<p>The method for <code class="docutils literal"><span class="pre">run_{uid}ContigFilter</span></code> is a working app and has a lot of code between the <code class="docutils literal"><span class="pre">#BEGIN</span></code> and <code class="docutils literal"><span class="pre">#END</span></code>.
+The new app <code class="docutils literal"><span class="pre">run_{uid}ContigFilter_max</span></code> has nothing between the <code class="docutils literal"><span class="pre">#BEGIN</span></code> and <code class="docutils literal"><span class="pre">#END</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>At this point, you could</p>
+<ul class="simple">
+<li>take a short-cut and copy all the code from the <code class="docutils literal"><span class="pre">run_{uid}ContigFilter</span></code> method and paste it into the <code class="docutils literal"><span class="pre">run_{uid}ContigFilter_max</span></code> method.</li>
+<li>make a few minor edits to add the filter for contigs exceeding the maximum length.</li>
+<li>run <code class="docutils literal"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> and see if everything works.</li>
+</ul>
+<p class="last">The rest of this page is for those who want to understand how the code works and how to create tests for the
+code. It goes through the process of building up the code section, step-by-step.</p>
+</div>
+<div class="section" id="receive-parameters">
+<h2>7.1. Receive parameters<a class="headerlink" href="#receive-parameters" title="Permalink to this headline">¶</a></h2>
+<p>Our first goal is to receive and print the method’s parameters. Open <code class="docutils literal"><span class="pre">method_nameImpl.py</span></code> and find the <code class="docutils literal"><span class="pre">run_{uid}ContigFilter_max</span></code> method, which should have some auto-generated boilerplate code and docstrings.</p>
+<p>You want to edit code between the comments <code class="docutils literal"><span class="pre">#BEGIN</span> <span class="pre">run_{uid}ContigFilter_max</span></code> and <code class="docutils literal"><span class="pre">#END</span> <span class="pre">run_{uid}ContigFilter_max</span></code>. These are special SDK-generated annotations that we have to keep in the code to get everything to compile correctly. If you run <code class="docutils literal"><span class="pre">make</span></code> again in the future, it will update the code outside these comments, but will not change the code you put between the <code class="docutils literal"><span class="pre">#BEGIN</span></code> and <code class="docutils literal"><span class="pre">#END</span></code> comments.</p>
+<p>Between the comments, add a simple print statement, such as: <code class="docutils literal"><span class="pre">print(params['min_length'],</span> <span class="pre">params['max_length'],</span> <span class="pre">params['assembly_ref'])</span></code>. This let us see what is getting passed into our method.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param workspace_name: instance of String</span>
+<span class="sd">    :param params: instance of type &quot;ContigFilterParams&quot; (Input</span>
+<span class="sd">       parameters) -&gt; structure: parameter &quot;min_length&quot; of Long,</span>
+<span class="sd">       parameter &quot;assembly_ref&quot; of String</span>
+<span class="sd">    :returns: instance of type &quot;ContigFilterResults&quot; (Output results) -&gt;</span>
+<span class="sd">       structure:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># ctx is the context object</span>
+    <span class="c1"># return variables are: returnVal</span>
+    <span class="c1">#BEGIN run_{uid}ContigFilter_max</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;min_length&#39;</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;max_length&#39;</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;assembly_ref&#39;</span><span class="p">])</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1">#END run_{uid}ContigFilter_max</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">output</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Don’t try to change the docstring, or anything else outside the <code class="docutils literal"><span class="pre">BEGIN</span> <span class="pre">run_{uid}ContigFilter_max</span></code> and <code class="docutils literal"><span class="pre">END</span> <span class="pre">run_{uid}ContigFilter_max</span></code> comments, as your change will get overwritten by the <code class="docutils literal"><span class="pre">make</span></code> command.</p>
+</div>
+<div class="section" id="initialize-a-test">
+<h2>7.2. Initialize a test<a class="headerlink" href="#initialize-a-test" title="Permalink to this headline">¶</a></h2>
+<p>Your <code class="docutils literal"><span class="pre">{uid}ContigFilterImpl.py</span></code> file is tested using <code class="docutils literal"><span class="pre">test/{uid}ContigFilterImpl_server_test.py</span></code>. This file also has a variety of auto-generated boilerplate code and tests for the first app.  Python will automatically run all methods that start with the name <code class="docutils literal"><span class="pre">test</span></code>. There are three tests for the old app. As a temporary measure, we will rename them so they don’t run until we are done working on the new app.</p>
+<ul class="simple">
+<li>Change <code class="docutils literal"><span class="pre">def</span> <span class="pre">test_run_{uid}ContigFilter_ok(self)`</span></code> to <code class="docutils literal"><span class="pre">def</span> <span class="pre">my_test_run_{uid}ContigFilter_ok(self)</span></code></li>
+<li>Change <code class="docutils literal"><span class="pre">def</span> <span class="pre">test_run_{uid}ContigFilter_err1(self)</span></code> to <code class="docutils literal"><span class="pre">def</span> <span class="pre">my_test_run_{uid}ContigFilter_err1(self)</span></code></li>
+<li>Change <code class="docutils literal"><span class="pre">def</span> <span class="pre">test_run_{uid}ContigFilter_err2(self)</span></code> to <code class="docutils literal"><span class="pre">def</span> <span class="pre">my_test_run_{uid}ContigFilter_err2(self)</span></code></li>
+</ul>
+<p>Now add your own test for the new app method at the bottom of the test class and call it the <code class="docutils literal"><span class="pre">test_run_{uid}ContigFilter_max(self)</span></code>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">ref</span> <span class="o">=</span> <span class="s2">&quot;79/16/1&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getImpl</span><span class="p">()</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">getContext</span><span class="p">(),</span> <span class="p">{</span>
+        <span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">getWsName</span><span class="p">(),</span>
+        <span class="s1">&#39;assembly_ref&#39;</span><span class="p">:</span> <span class="n">ref</span><span class="p">,</span>
+        <span class="s1">&#39;min_length&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="s1">&#39;max_length&#39;</span><span class="p">:</span> <span class="mi">1000000</span>
+    <span class="p">})</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="c1"># TODO -- assert some things (later)</span>
+</pre></div>
+</div>
+<p>We need to provide three parameters to our function: a workspace name, an assembly reference string, and a min length integer. For the reference string, we can use this sample reference to a <em>Shewanella oneidensis</em> assembly on AppDev: <code class="docutils literal"><span class="pre">79/16/1</span></code>. You can always get a workspace name from the test class by using <code class="docutils literal"><span class="pre">self.getWsName()</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<dl class="last docutils">
+<dt>Make sure that you have put your developer token in the <code class="docutils literal"><span class="pre">test_local/test.cfg</span></code> as mentioned in the</dt>
+<dd><a href="initialize.html">Initialize the Module</a></dd>
+</dl>
+</div>
+<p>Run <code class="docutils literal"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> and, if everything works, you’ll see the docker container boot up, the <code class="docutils literal"><span class="pre">run_{uid}ContigFilter_max</span></code> method will get called, and you will see some printed output.</p>
+</div>
+<div class="section" id="set-the-callback-url-and-scratch-path">
+<h2>7.3. Set the callback URL and scratch path<a class="headerlink" href="#set-the-callback-url-and-scratch-path" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In this “ContigFilter” module, the steps in this section have already been done. They are included here so you can see why they were added to the basic module template.</p>
+</div>
+<p>The callback URL points to a server that is used to spin up other SDK apps that we will need to use in our own app. In our case, we want to use <a href="https://github.com/kbaseapps/AssemblyUtil" target="_blank">AssemblyUtil </a> to validate and download genome data. When we use that app, our app makes a request to the callback server, which spins up a separate docker container that runs AssemblyUtil.</p>
+<p>The other parameter we need is the path to the <strong>scratch</strong> directory. Scratch is a special directory that we can use to store files used to run the app. It is a shared directory that is also accessible by other apps, such as AssemblyUtil. You cannot use directories like <code class="docutils literal"><span class="pre">/tmp</span></code> when working with AssemblyUtil, because other apps won’t have access to it.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The {uid}ContigFilterImpl.py code always uses the scratch directory to store files in your app.</p>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Scratch is a temporary directory and only lasts as long as your app runs. When your app stops running, scratch files are gone. To generate persistent data, we can use Reports, which are described in more detail later on.</p>
+</div>
+<p>To enable callbacks and the scratch directory, this code was added into your <code class="docutils literal"><span class="pre">__init__</span></code> method in your <code class="docutils literal"><span class="pre">{uid}ContigFilterImpl.py</span></code>, between the <code class="docutils literal"><span class="pre">#BEGIN_CONSTRUCTOR</span></code> and <code class="docutils literal"><span class="pre">#END_CONSTRUCTOR</span></code> comments:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Inside your __init__ function:</span>
+<span class="c1">#BEGIN_CONSTRUCTOR</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">callback_url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;SDK_CALLBACK_URL&#39;</span><span class="p">]</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">shared_folder</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;scratch&#39;</span><span class="p">]</span>
+<span class="c1">#END_CONSTRUCTOR</span>
+</pre></div>
+</div>
+<p>Also added was an <code class="docutils literal"><span class="pre">import</span> <span class="pre">os</span></code> in the header of your <code class="docutils literal"><span class="pre">{uid}ContigFilterImpl.py</span></code> file, between the <code class="docutils literal"><span class="pre">#BEGIN_HEADER</span></code> and <code class="docutils literal"><span class="pre">#END_HEADER</span></code> comments.</p>
+<p>We need to convert the reference to bacterial genome data, passed as an input parameter, into an actual FASTA file that our app can access. For that, we can use the <a href="https://github.com/kbaseapps/AssemblyUtil" target="_blank">AssemblyUtil </a> app.</p>
+<p>The app was installed from your repository’s root directory with:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ kb-sdk install AssemblyUtil
+</pre></div>
+</div>
+<p>That added an entry for <code class="docutils literal"><span class="pre">AssemblyUtil</span></code> to your <code class="docutils literal"><span class="pre">dependencies.json</span></code> file. It also added a python package under <code class="docutils literal"><span class="pre">lib/installed_clients</span></code>. Other dependencies can be added the same way.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Don’t forget to <code class="docutils literal"><span class="pre">git</span> <span class="pre">add</span></code> these new dependencies to your source control when you run kb-sdk install.</p>
+</div>
+<p>At the top of your <code class="docutils literal"><span class="pre">{uid}ContigFilterImpl.py</span></code> file, the module is imported with:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">installed_clients.AssemblyUtilClient</span> <span class="kn">import</span> <span class="n">AssemblyUtil</span>
+</pre></div>
+</div>
+<p>If you made any changes to this code, run the <code class="docutils literal"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> command again to make sure you have no errors.</p>
+</div>
+<div class="section" id="add-some-basic-validations">
+<h2>7.4. Add some basic validations<a class="headerlink" href="#add-some-basic-validations" title="Permalink to this headline">¶</a></h2>
+<p>It’s good practice to make some run-time checks of the parameters passed into your <code class="docutils literal"><span class="pre">{uid}ContigFilterImpl#run_{uid}ContigFilter_max</span></code> method. While params will get checked in the Narrative UI, if your app ever gets called from another codebase, it will bypass any UI typechecks.</p>
+<p>Make sure your user passes in a workspace, an assembly reference, a minimum length greater than zero, and a maximum length greater than zero:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Inside run_{uid}ContigFilter_max(), after #BEGIN run_{uid}ContigFilter_max, before any other code</span>
+<span class="c1"># Check that the parameters are valid</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;min_length&#39;</span><span class="p">,</span> <span class="s1">&#39;max_length&#39;</span><span class="p">,</span> <span class="s1">&#39;assembly_ref&#39;</span><span class="p">,</span> <span class="s1">&#39;workspace_name&#39;</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Parameter &quot;&#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;&quot; is required but missing&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;min_length&#39;</span><span class="p">],</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;min_length&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Min length must be a non-negative integer&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;max_length&#39;</span><span class="p">],</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;max_length&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Max length must be a non-negative integer&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;assembly_ref&#39;</span><span class="p">],</span> <span class="nb">basestring</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;assembly_ref&#39;</span><span class="p">]):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Pass in a valid assembly reference string&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Feel free to add another test for the <code class="docutils literal"><span class="pre">max_length</span></code> being greater than the <code class="docutils literal"><span class="pre">min_length</span></code>.</p>
+<p>Re-run <code class="docutils literal"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> to make sure everything still works.</p>
+<p>Back to defining tests (<code class="docutils literal"><span class="pre">test/{uid}ContigFilterImpl_server_test.py</span></code>).
+We can add some additional tests to make sure we raise ValueErrors for invalid parameters:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Inside test/{uid}ContigFilterImpl_server_test.py</span>
+<span class="c1"># At the end of the test class</span>
+<span class="k">def</span> <span class="nf">test_invalid_params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">impl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getImpl</span><span class="p">()</span>
+    <span class="n">ctx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getContext</span><span class="p">()</span>
+    <span class="n">ws</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getWsName</span><span class="p">()</span>
+    <span class="c1"># Missing assembly ref</span>
+    <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+        <span class="n">impl</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="n">ws</span><span class="p">,</span>
+            <span class="s1">&#39;min_length&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;max_length&#39;</span><span class="p">:</span> <span class="mi">1000000</span><span class="p">})</span>
+    <span class="c1"># Missing min length</span>
+    <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+        <span class="n">impl</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="n">ws</span><span class="p">,</span> <span class="s1">&#39;assembly_ref&#39;</span><span class="p">:</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;max_length&#39;</span><span class="p">:</span> <span class="mi">1000000</span><span class="p">})</span>
+    <span class="c1"># Min length is negative</span>
+    <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+        <span class="n">impl</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="n">ws</span><span class="p">,</span> <span class="s1">&#39;assembly_ref&#39;</span><span class="p">:</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;min_length&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;max_length&#39;</span><span class="p">:</span> <span class="mi">1000000</span><span class="p">})</span>
+    <span class="c1"># Min length is wrong type</span>
+    <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+        <span class="n">impl</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="n">ws</span><span class="p">,</span> <span class="s1">&#39;assembly_ref&#39;</span><span class="p">:</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;min_length&#39;</span><span class="p">:</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;max_length&#39;</span><span class="p">:</span> <span class="mi">1000000</span><span class="p">})</span>
+    <span class="c1"># Assembly ref is wrong type</span>
+    <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+        <span class="n">impl</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="n">ws</span><span class="p">,</span> <span class="s1">&#39;assembly_ref&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s1">&#39;min_length&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;max_length&#39;</span><span class="p">:</span> <span class="mi">1000000</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>Testing for invalid max_length is left as an exercise for the student.</p>
+</div>
+<div class="section" id="download-the-fasta-file">
+<h2>7.5. Download the FASTA file<a class="headerlink" href="#download-the-fasta-file" title="Permalink to this headline">¶</a></h2>
+<p>Back to the  <code class="docutils literal"><span class="pre">method_nameImpl.py</span></code> file.</p>
+<p>Inside your <code class="docutils literal"><span class="pre">run_{uid}ContigFilter_max</span></code> method, initialize the utility and use it to download the <code class="docutils literal"><span class="pre">assembly_ref</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Inside run_{uid}ContigFilter_max()</span>
+<span class="n">assembly_util</span> <span class="o">=</span> <span class="n">AssemblyUtil</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">callback_url</span><span class="p">)</span>
+<span class="n">fasta_file</span> <span class="o">=</span> <span class="n">assembly_util</span><span class="o">.</span><span class="n">get_assembly_as_fasta</span><span class="p">({</span><span class="s1">&#39;ref&#39;</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;assembly_ref&#39;</span><span class="p">]})</span>
+<span class="k">print</span><span class="p">(</span><span class="n">fasta_file</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>We have to initialize AssemblyUtil by passing <code class="docutils literal"><span class="pre">self.callback_url</span></code></li>
+<li>The <code class="docutils literal"><span class="pre">get_assembly_as_fasta</span></code> method downloads a file from a workspace ref</li>
+</ul>
+<p>Run <code class="docutils literal"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> again and you should see the file download along with its path in the container.</p>
+</div>
+<div class="section" id="filter-out-contigs-based-on-length">
+<h2>7.6. Filter out contigs based on length<a class="headerlink" href="#filter-out-contigs-based-on-length" title="Permalink to this headline">¶</a></h2>
+<p>Now we can finally start to implement the real functionality of the app!</p>
+<p>The biopython package (<a href="http://biopython.org/" target="_blank">http://biopython.org/</a> ), included in the SDK build, has a module called SeqIO ( <a href="http://biopython.org/wiki/SeqIO" target="_blank">http://biopython.org/wiki/SeqIO</a> ) that can help us read and filter genome sequence data.</p>
+<p>This module should already be included in the module’s <code class="docutils literal"><span class="pre">{uid}ContigFilterImpl.py</span></code> between the header comments like so:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># other imports</span>
+<span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
+</pre></div>
+</div>
+<p>Now, inside <code class="docutils literal"><span class="pre">run_{uid}ContigFilter_max</span></code>, enter code to filter out contigs less than the given min_length: or greater than the max_length.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Inside {uid}ContigFilterImpl#run_{uid}ContigFilter_max, after you have fetched the fasta file:</span>
+<span class="c1"># Parse the downloaded file in FASTA format</span>
+<span class="n">parsed_assembly</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">fasta_file</span><span class="p">[</span><span class="s1">&#39;path&#39;</span><span class="p">],</span> <span class="s1">&#39;fasta&#39;</span><span class="p">)</span>
+<span class="n">min_length</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;min_length&#39;</span><span class="p">]</span>
+<span class="n">max_length</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;max_length&#39;</span><span class="p">]</span>
+
+<span class="c1"># Keep a list of contigs greater than min_length</span>
+<span class="n">good_contigs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># total contigs regardless of length</span>
+<span class="n">n_total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1"># total contigs over the min_length</span>
+<span class="n">n_remaining</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">parsed_assembly</span><span class="p">:</span>
+    <span class="n">n_total</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">seq</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">min_length</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">seq</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">max_length</span><span class="p">:</span>
+        <span class="n">good_contigs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+        <span class="n">n_remaining</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">output</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;n_total&#39;</span><span class="p">:</span> <span class="n">n_total</span><span class="p">,</span>
+    <span class="s1">&#39;n_remaining&#39;</span><span class="p">:</span> <span class="n">n_remaining</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Run <code class="docutils literal"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> again and check the output.</p>
+</div>
+<div class="section" id="add-real-tests">
+<h2>7.7. Add real tests<a class="headerlink" href="#add-real-tests" title="Permalink to this headline">¶</a></h2>
+<p>Return to <code class="docutils literal"><span class="pre">test/{uid}ContigFilterImpl_server_test.py</span></code> and add tests for the functionality we just added above.</p>
+<p>Set <code class="docutils literal"><span class="pre">min_length</span></code> to a value that filters out some contigs but not others. In our case, our FASTA only has 2 sequences of lengths 4,969,811 and 161,613. An in-between minimum could be 200,000. To test the upper end, a minimum could be 100,000 and a maximum could be 400,000</p>
+<p>We would expect to keep 1 contig and filter out the other.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Inside {uid}ContigFilterImpl_server_test:</span>
+<span class="k">def</span> <span class="nf">test_run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_test_min</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">ref</span> <span class="o">=</span> <span class="s2">&quot;79/16/1&quot;</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">getWsName</span><span class="p">(),</span>
+        <span class="s1">&#39;assembly_ref&#39;</span><span class="p">:</span> <span class="n">ref</span><span class="p">,</span>
+        <span class="s1">&#39;min_length&#39;</span><span class="p">:</span> <span class="mi">200000</span><span class="p">,</span>
+        <span class="s1">&#39;min_length&#39;</span><span class="p">:</span> <span class="mi">6000000</span>
+    <span class="p">}</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getImpl</span><span class="p">()</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">getContext</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">getWsName</span><span class="p">(),</span> <span class="n">params</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;n_total&#39;</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;n_remaining&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">test_run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_test_max</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">ref</span> <span class="o">=</span> <span class="s2">&quot;79/16/1&quot;</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">getWsName</span><span class="p">(),</span>
+        <span class="s1">&#39;assembly_ref&#39;</span><span class="p">:</span> <span class="n">ref</span><span class="p">,</span>
+        <span class="s1">&#39;min_length&#39;</span><span class="p">:</span> <span class="mi">100000</span><span class="p">,</span>
+        <span class="s1">&#39;min_length&#39;</span><span class="p">:</span> <span class="mi">4000000</span>
+    <span class="p">}</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getImpl</span><span class="p">()</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">getContext</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">getWsName</span><span class="p">(),</span> <span class="n">params</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;n_total&#39;</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;n_remaining&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Run <code class="docutils literal"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> again to make sure it all passes.</p>
+</div>
+<div class="section" id="output-the-filtered-assembly">
+<h2>7.8. Output the filtered assembly<a class="headerlink" href="#output-the-filtered-assembly" title="Permalink to this headline">¶</a></h2>
+<p>Next, we want to save and upload a new version of our genome assembly data with the contigs filtered out.</p>
+<p>Beneath the code that we wrote to filter the assembly, add this file saving and uploading code.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Underneath your loop that filters contigs:</span>
+<span class="c1"># Create a file to hold the filtered data</span>
+<span class="n">workspace_name</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;workspace_name&#39;</span><span class="p">]</span>
+<span class="n">filtered_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shared_folder</span><span class="p">,</span> <span class="s1">&#39;filtered.fasta&#39;</span><span class="p">)</span>
+<span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">good_contigs</span><span class="p">,</span> <span class="n">filtered_path</span><span class="p">,</span> <span class="s1">&#39;fasta&#39;</span><span class="p">)</span>
+<span class="c1"># Upload the filtered data to the workspace</span>
+<span class="n">new_ref</span> <span class="o">=</span> <span class="n">assembly_util</span><span class="o">.</span><span class="n">save_assembly_from_fasta</span><span class="p">({</span>
+    <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="n">filtered_path</span><span class="p">},</span>
+    <span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="n">workspace_name</span><span class="p">,</span>
+    <span class="s1">&#39;assembly_name&#39;</span><span class="p">:</span> <span class="n">fasta_file</span><span class="p">[</span><span class="s1">&#39;assembly_name&#39;</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="n">output</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;n_total&#39;</span><span class="p">:</span> <span class="n">n_total</span><span class="p">,</span>
+    <span class="s1">&#39;n_remaining&#39;</span><span class="p">:</span> <span class="n">n_remaining</span><span class="p">,</span>
+    <span class="s1">&#39;filtered_assembly_ref&#39;</span><span class="p">:</span> <span class="n">new_ref</span>
+<span class="p">}</span>
+<span class="c1">#END run_{uid}ContigFilter_max</span>
+</pre></div>
+</div>
+<p>Add a simple assertion into your <code class="docutils literal"><span class="pre">test_run_{uid}ContigFilter_max</span></code> method to check for the <code class="docutils literal"><span class="pre">filtered_assembly_ref</span></code>. Something like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;filtered_assembly_ref&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>Run <code class="docutils literal"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> again to make sure you have no errors</p>
+</div>
+<div class="section" id="build-a-report-object">
+<h2>7.9. Build a report object<a class="headerlink" href="#build-a-report-object" title="Permalink to this headline">¶</a></h2>
+<p>In order to output data into the UI inside a narrative, your app needs to build and return a KBaseReport ( <a href="https://github.com/kbaseapps/KBaseReport" target="_blank">https://github.com/kbaseapps/KBaseReport</a> ).</p>
+<p>The following  KBaseReport app should be installed already:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ kb-sdk install KBaseReport
+</pre></div>
+</div>
+<p>Import the report module should be between the <code class="docutils literal"><span class="pre">#BEGIN_HEADER</span></code> and <code class="docutils literal"><span class="pre">#END_HEADER</span></code> section of your <code class="docutils literal"><span class="pre">{uid}ContigFilterImpl.py</span></code> file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">KBaseReport.KBaseReportClient</span> <span class="kn">import</span> <span class="n">KBaseReport</span>
+</pre></div>
+</div>
+<p>The KBaseReport takes a series of dictionary objects that can have text messages, object references, and more. Add the report initialization code inside your <code class="docutils literal"><span class="pre">run_{uid}ContigFilter_max</span></code> method:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Inside the run_{uid}ContigFilter_max method, below where we uploaded the new file:</span>
+<span class="c1"># Create an output summary message for the report</span>
+<span class="n">text_message</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+    <span class="s1">&#39;Filtered assembly to &#39;</span><span class="p">,</span>
+    <span class="nb">str</span><span class="p">(</span><span class="n">n_remaining</span><span class="p">),</span>
+    <span class="s1">&#39; contigs out of &#39;</span><span class="p">,</span>
+    <span class="nb">str</span><span class="p">(</span><span class="n">n_total</span><span class="p">)</span>
+<span class="p">])</span>
+<span class="c1"># Data for creating the report, referencing the assembly we uploaded</span>
+<span class="n">report_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;objects_created&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s1">&#39;ref&#39;</span><span class="p">:</span> <span class="n">new_ref</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Filtered contigs&#39;</span><span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;text_message&#39;</span><span class="p">:</span> <span class="n">text_message</span>
+<span class="p">}</span>
+<span class="c1"># Initialize the report</span>
+<span class="n">kbase_report</span> <span class="o">=</span> <span class="n">KBaseReport</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">callback_url</span><span class="p">)</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">kbase_report</span><span class="o">.</span><span class="n">create</span><span class="p">({</span>
+    <span class="s1">&#39;report&#39;</span><span class="p">:</span> <span class="n">report_data</span><span class="p">,</span>
+    <span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="n">workspace_name</span>
+<span class="p">})</span>
+<span class="c1"># Return the report reference and name in our results</span>
+<span class="n">output</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;report_ref&#39;</span><span class="p">:</span> <span class="n">report</span><span class="p">[</span><span class="s1">&#39;ref&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;report_name&#39;</span><span class="p">:</span> <span class="n">report</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;n_total&#39;</span><span class="p">:</span> <span class="n">n_total</span><span class="p">,</span>
+    <span class="s1">&#39;n_remaining&#39;</span><span class="p">:</span> <span class="n">n_remaining</span><span class="p">,</span>
+    <span class="s1">&#39;filtered_assembly_ref&#39;</span><span class="p">:</span> <span class="n">new_ref</span>
+<span class="p">}</span>
+<span class="c1">#END run_{uid}ContigFilter_max</span>
+</pre></div>
+</div>
+<p>Add a couple assertions in our <code class="docutils literal"><span class="pre">test_run_{uid}ContigFilter_max</span></code> method inside <code class="docutils literal"><span class="pre">test/{uid}ContigFilterImpl_server_test.py</span></code> to check for the report name and ref:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;report_name&#39;</span><span class="p">]))</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;report_ref&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>Run <code class="docutils literal"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> again to make sure it all works.</p>
+</div>
+<div class="section" id="configure-your-app-s-output-data">
+<h2>7.10. Configure your app’s output data<a class="headerlink" href="#configure-your-app-s-output-data" title="Permalink to this headline">¶</a></h2>
+<p>We nearly have a complete app. The last step has already been added to our “ContigFilter” module. If starting from a blank template, you would take all the result data we defined in <code class="docutils literal"><span class="pre">{uid}ContigFilterImpl#run_{uid}ContigFilter_max</span></code> and add entries for them in our <code class="docutils literal"><span class="pre">{uid}ContigFilter.spec</span></code> KIDL type file as well as our <code class="docutils literal"><span class="pre">spec.json</span></code> UI config file.</p>
+<p>If not there already, add a type entry for our result data in our KIDL file:</p>
+<p>Run <code class="docutils literal"><span class="pre">make</span></code> and <code class="docutils literal"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> again to make sure everything works.</p>
+<p>In your <code class="docutils literal"><span class="pre">ui/narrative/methods/run_{uid}ContigFilter_max/spec.json</span></code> file, if not there already, add entries for this output data:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="o">...</span>
+<span class="s2">&quot;output_mapping&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;service_method_output_path&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;report_name&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;target_property&quot;</span><span class="p">:</span> <span class="s2">&quot;report_name&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;service_method_output_path&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;report_ref&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;target_property&quot;</span><span class="p">:</span> <span class="s2">&quot;report_ref&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;narrative_system_variable&quot;</span><span class="p">:</span> <span class="s2">&quot;workspace&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;target_property&quot;</span><span class="p">:</span> <span class="s2">&quot;workspace_name&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>Now we have some output entries that point to our report and workspace, which will show up when the job finishes in the narrative.</p>
+<p>Finally, under <code class="docutils literal"><span class="pre">widgets/output</span></code> in the spec.json (near the top around line 10), set <code class="docutils literal"><span class="pre">output</span></code> to <code class="docutils literal"><span class="pre">no-display</span></code>. This prevents our app from creating a separate output cell. It may already be set to <code class="docutils literal"><span class="pre">no-display</span></code> because that is the default.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="o">...</span>
+<span class="s2">&quot;widgets&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">&quot;output&quot;</span><span class="p">:</span> <span class="s2">&quot;no-display&quot;</span>
+<span class="p">},</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>We’ve added an entry for everything we put in the <code class="docutils literal"><span class="pre">output</span></code> dictionary field that gets returned from <code class="docutils literal"><span class="pre">{uid}ContigFilterImpl#run_{uid}ContigFilter_max</span></code>.</p>
+<p>Run <code class="docutils literal"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> a final time to make sure everything runs smoothly. If so, we have a working app!</p>
+<p>Now that you are done with the new app, remember the three tests for the old app that we commented out? Time to uncomment them. In the test file <code class="docutils literal"><span class="pre">test/{uid}ContigFilterImpl_server_test.py</span></code>:</p>
+<ul class="simple">
+<li>Change <code class="docutils literal"><span class="pre">def</span> <span class="pre">my_test_run_{uid}ContigFilter_ok(self)`</span></code> to <code class="docutils literal"><span class="pre">def</span> <span class="pre">test_run_{uid}ContigFilter_ok(self)</span></code></li>
+<li>Change <code class="docutils literal"><span class="pre">def</span> <span class="pre">my_test_run_{uid}ContigFilter_err1(self)</span></code> to <code class="docutils literal"><span class="pre">def</span> <span class="pre">test_run_{uid}ContigFilter_err1(self)</span></code></li>
+<li>Change <code class="docutils literal"><span class="pre">def</span> <span class="pre">my_test_run_{uid}ContigFilter_err2(self)</span></code> to <code class="docutils literal"><span class="pre">def</span> <span class="pre">test_run_{uid}ContigFilter_err2(self)</span></code></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="8_publish.html" class="btn btn-neutral float-right" title="8. Publish and Update" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="6_inputsoutputs.html" class="btn btn-neutral" title="6. Narrative User Interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, KBase.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.2.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

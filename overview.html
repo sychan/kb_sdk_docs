@@ -24,7 +24,8 @@
 
   
 
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
@@ -93,14 +94,14 @@
 </ul>
 <p class="caption"><span class="caption-text">Tutorial</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="tutorial/dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial/install.html">2. Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial/initialize.html">3. Initialize the Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial/helloworld.html">4. Hello World Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial/setup.html">5. ContigFilter Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial/inputsoutputs.html">6. Narrative User Interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial/implement.html">7. Implement Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial/publish.html">8. Publish and Update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/1_dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/2_install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/3_initialize.html">3. Initialize the Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/4_helloworld.html">4. Hello World Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/5_setup.html">5. ContigFilter Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/6_inputsoutputs.html">6. Narrative User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/7_implement.html">7. Implement Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/8_publish.html">8. Publish and Update</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Guides</span></p>
 <ul>
@@ -123,9 +124,11 @@
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="references/module_anatomy.html">Anatomy of a Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references/design_checklist.html">Design Checklist</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references/troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references/dev_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references/execution_engine.html">Job Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references/module_anatomy.html">Anatomy of a Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references/KIDL_spec.html">KIDL Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references/UI_spec.html">Narrative App UI Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references/terminology.html">Terminology</a></li>
@@ -203,7 +206,7 @@
 <img alt="_images/micro1.png" class="align-right" src="_images/micro1.png" />
 <p>Apps on KBase, such as genome assemblers and annotators that run on narrative pages, are created using the KBase SDK.</p>
 <p>When you run an app in a narrative, it runs in a docker container on KBase’s servers. Learn more about docker containers here: <a href="https://www.docker.com/what-container" target="_blank">https://www.docker.com/what-container</a>. Docker containers allow you to package and compile programs and dependencies, such as <a href="https://github.com/voutcn/megahit" target="_blank">MEGAHIT </a>, and run them anywhere.</p>
-<p>As an SDK developer, you define your input parameter types, the packages and programs to run, and the output types, text, and HTML to show the user when the app finishes. To help facilitate development, a <code class="docutils literal notranslate"><span class="pre">kb-sdk</span></code> command-line utility is provided.</p>
+<p>As an SDK developer, you define your input parameter types, the packages and programs to run, and the output types, text, and HTML to show the user when the app finishes. To help facilitate development, a <code class="docutils literal"><span class="pre">kb-sdk</span></code> command-line utility is provided.</p>
 </div>
 <div class="section" id="the-workflow">
 <h2>The Workflow<a class="headerlink" href="#the-workflow" title="Permalink to this headline">¶</a></h2>
@@ -232,11 +235,11 @@
 </div>
 <div class="section" id="command-line-interface">
 <h2>Command-line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h2>
-<p>A command-line interface, called <code class="docutils literal notranslate"><span class="pre">kb-sdk</span></code>, is provided to make it easy to initialize, validate, compile, and test your app.</p>
+<p>A command-line interface, called <code class="docutils literal"><span class="pre">kb-sdk</span></code>, is provided to make it easy to initialize, validate, compile, and test your app.</p>
 </div>
 <div class="section" id="docker">
 <h2>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h2>
-<p>The KBase SDK makes extensive use of Docker containers. The apps themselves run inside custom Docker images. The CLI, <code class="docutils literal notranslate"><span class="pre">kb-sdk</span></code>, also runs within a Docker container.</p>
+<p>The KBase SDK makes extensive use of Docker containers. The apps themselves run inside custom Docker images. The CLI, <code class="docutils literal"><span class="pre">kb-sdk</span></code>, also runs within a Docker container.</p>
 <p>Using docker as the basic modular unit allows apps to run in different environments using custom dependencies. Also, apps written in different languages can use each other as dependencies.</p>
 </div>
 <div class="section" id="composing-apps">
@@ -264,7 +267,7 @@
 <ul class="simple">
 <li>Every object conforms to a <a href="references/KIDL_spec.html" target="_blank">type specification</a>.</li>
 <li>Objects are versioned</li>
-<li>The “reference” for an object has the format <code class="docutils literal notranslate"><span class="pre">workspace_id/object_id/version</span></code>.</li>
+<li>The “reference” for an object has the format <code class="docutils literal"><span class="pre">workspace_id/object_id/version</span></code>.</li>
 <li>Workspaces are authenticated</li>
 </ul>
 </div>
@@ -282,7 +285,7 @@
 <div class="section" id="publishing">
 <h2>Publishing<a class="headerlink" href="#publishing" title="Permalink to this headline">¶</a></h2>
 <p>You can register a new app from this page: <a href="https://appdev.kbase.us/#appcatalog/register" target="_blank">https://appdev.kbase.us/#appcatalog/register</a></p>
-<p>Once you do so, it will be available in the <code class="docutils literal notranslate"><span class="pre">dev</span></code> catalog. This catalog is meant as experimentation grounds for new apps. When you’re searching for apps, you need to be sure to filter by the development catalog to view your <code class="docutils literal notranslate"><span class="pre">dev</span></code> app.</p>
+<p>Once you do so, it will be available in the <code class="docutils literal"><span class="pre">dev</span></code> catalog. This catalog is meant as experimentation grounds for new apps. When you’re searching for apps, you need to be sure to filter by the development catalog to view your <code class="docutils literal"><span class="pre">dev</span></code> app.</p>
 </div>
 </div>
 
@@ -306,7 +309,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, KBase
+        &copy; Copyright 2018, KBase.
 
     </p>
   </div>
@@ -325,17 +328,27 @@
 
   
 
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-    
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.2.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
 
   
 
-  <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
 
   <script type="text/javascript">
       jQuery(function () {

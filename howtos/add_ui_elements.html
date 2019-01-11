@@ -24,7 +24,8 @@
 
   
 
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -93,14 +94,14 @@
 </ul>
 <p class="caption"><span class="caption-text">Tutorial</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/install.html">2. Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/initialize.html">3. Initialize the Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/helloworld.html">4. Hello World Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/setup.html">5. ContigFilter Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/inputsoutputs.html">6. Narrative User Interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/implement.html">7. Implement Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">8. Publish and Update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/1_dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/2_install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/3_initialize.html">3. Initialize the Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/4_helloworld.html">4. Hello World Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/5_setup.html">5. ContigFilter Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/6_inputsoutputs.html">6. Narrative User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/7_implement.html">7. Implement Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/8_publish.html">8. Publish and Update</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Guides</span></p>
 <ul class="current">
@@ -123,9 +124,11 @@
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/design_checklist.html">Design Checklist</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/execution_engine.html">Job Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/UI_spec.html">Narrative App UI Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/terminology.html">Terminology</a></li>
@@ -198,7 +201,7 @@
   <div class="section" id="adding-ui-elements">
 <h1>Adding UI Elements<a class="headerlink" href="#adding-ui-elements" title="Permalink to this headline">¶</a></h1>
 <p>Control of narrative interaction is accomplished in files in the
-<code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/&lt;MyMethod&gt;</span></code> directory.</p>
+<code class="docutils literal"><span class="pre">ui/narrative/methods/&lt;MyMethod&gt;</span></code> directory.</p>
 <div class="section" id="configure-the-input-interface">
 <h2>Configure the input interface<a class="headerlink" href="#configure-the-input-interface" title="Permalink to this headline">¶</a></h2>
 <p>The input options are specified in the “parameters” section of the
@@ -210,7 +213,7 @@ dropdown of objects that match the specified types. If
 will overwrite an existing object or if the name contains invalid
 characters, and a widget displaying that object will appear beneath the
 app cell.</p>
-<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
       <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
           <span class="p">{</span>
               <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;read_library_name&quot;</span><span class="p">,</span>
@@ -244,7 +247,7 @@ For each option, the “value” is what will be passed to the app while the
 “ui_name” is what the user will see. In this example, the parameter is
 hidden by default because “advanced” is true (meaning the parameter will
 be hidden in the “Advanced options” section of the input widget).</p>
-<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;prune&quot;</span><span class="p">,</span>
     <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
     <span class="s2">&quot;advanced&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
@@ -296,7 +299,7 @@ renamed.) In the output mapping, the output (a single object in this
 example) is unpacked into target properties. These output properties are
 used to visualize the result of the app (thus the need to return
 information about the report object).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;behavior&quot;</span> <span class="p">:</span> <span class="p">{</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;behavior&quot;</span> <span class="p">:</span> <span class="p">{</span>
     <span class="s2">&quot;service-mapping&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
             <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;kb_quast&quot;</span><span class="p">,</span>
@@ -344,7 +347,7 @@ information about the report object).</p>
 </div>
 <p>In the above example the Narrative take an object looking like this from
 the App UI:</p>
-<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;assemblies&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="s2">&quot;AssemblyA&quot;</span><span class="p">,</span>
     <span class="s2">&quot;AssemblyB&quot;</span>
@@ -353,7 +356,7 @@ the App UI:</p>
 </pre></div>
 </div>
 <p>and passes an object looking like this to the implementation function:</p>
-<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;assemblies&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="s2">&quot;765/1/1&quot;</span><span class="p">,</span>
     <span class="s2">&quot;765/2/1&quot;</span>
@@ -363,7 +366,7 @@ the App UI:</p>
 </pre></div>
 </div>
 <p>Similarly, the Narrative accepts an output object like this:</p>
-<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span>
   <span class="p">{</span>
     <span class="s2">&quot;report_name&quot;</span><span class="p">:</span> <span class="s2">&quot;QUAST_Report_&lt;uuid&gt;&quot;</span><span class="p">,</span>
     <span class="s2">&quot;report_ref&quot;</span><span class="p">:</span> <span class="s2">&quot;765/3/1&quot;</span>
@@ -372,7 +375,7 @@ the App UI:</p>
 </pre></div>
 </div>
 <p>And presents an object like this one to the report visualization:</p>
-<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;report_name&quot;</span><span class="p">:</span> <span class="s2">&quot;QUAST_Report_&lt;uuid&gt;&quot;</span><span class="p">,</span>
     <span class="s2">&quot;report_ref&quot;</span><span class="p">:</span> <span class="s2">&quot;765/3/1&quot;</span><span class="p">,</span>
     <span class="s2">&quot;report_window_line_height&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
@@ -391,7 +394,7 @@ the App UI:</p>
 </div>
 <div class="section" id="naming-fields-in-the-input-widget-cell">
 <h2>Naming fields in the input widget cell<a class="headerlink" href="#naming-fields-in-the-input-widget-cell" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code> file primarily contains text to describe the app (shown in the narrative and in the app catalog). Minimally this file should define:</p>
+<p>The <code class="docutils literal"><span class="pre">display.yaml</span></code> file primarily contains text to describe the app (shown in the narrative and in the app catalog). Minimally this file should define:</p>
 <ul class="simple">
 <li>A module name</li>
 <li>A module tooltip</li>
@@ -426,7 +429,7 @@ available <a href="../references/UI_spec.html">here.</a></p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, KBase
+        &copy; Copyright 2018, KBase.
 
     </p>
   </div>
@@ -445,17 +448,27 @@ available <a href="../references/UI_spec.html">here.</a></p>
 
   
 
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.2.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
 
   
 
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
 
   <script type="text/javascript">
       jQuery(function () {

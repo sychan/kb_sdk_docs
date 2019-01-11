@@ -24,7 +24,8 @@
 
   
 
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -93,14 +94,14 @@
 </ul>
 <p class="caption"><span class="caption-text">Tutorial</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/install.html">2. Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/initialize.html">3. Initialize the Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/helloworld.html">4. Hello World Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/setup.html">5. ContigFilter Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/inputsoutputs.html">6. Narrative User Interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/implement.html">7. Implement Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">8. Publish and Update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/1_dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/2_install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/3_initialize.html">3. Initialize the Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/4_helloworld.html">4. Hello World Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/5_setup.html">5. ContigFilter Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/6_inputsoutputs.html">6. Narrative User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/7_implement.html">7. Implement Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/8_publish.html">8. Publish and Update</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Guides</span></p>
 <ul class="current">
@@ -123,9 +124,11 @@
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/design_checklist.html">Design Checklist</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/execution_engine.html">Job Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/UI_spec.html">Narrative App UI Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/terminology.html">Terminology</a></li>
@@ -203,7 +206,7 @@
 can compile these programs for your app by entering the build commands
 in your Dockerfile. For example, <a href="https://github.com/kbaseapps/FastANI" target="_blank">FastANI  </a> compiles and installs
 with this series of commands:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fetch and compile FastANI</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Fetch and compile FastANI</span>
 RUN git clone https://github.com/ParBLiSS/FastANI.git /opt/FastANI <span class="se">\</span>
     <span class="o">&amp;&amp;</span> <span class="nb">cd</span> /opt/FastANI <span class="se">\</span>
     <span class="o">&amp;&amp;</span> git checkout tags/v1.0 -b v1.0 <span class="se">\</span>
@@ -221,8 +224,8 @@ app doesn’t receive unexpected, possibly broken updates</li>
 <li>Put this code high up in your Dockerfile, above where your app gets
 initialized, so that it gets cached and doesn’t have to re-run every
 time you change your app</li>
-<li>You can place commands in the directory <code class="docutils literal notranslate"><span class="pre">/kb/deployment/bin/</span></code>, and
-it will automatically get added to your container’s <code class="docutils literal notranslate"><span class="pre">$PATH</span></code></li>
+<li>You can place commands in the directory <code class="docutils literal"><span class="pre">/kb/deployment/bin/</span></code>, and
+it will automatically get added to your container’s <code class="docutils literal"><span class="pre">$PATH</span></code></li>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -234,7 +237,7 @@ it will automatically get added to your container’s <code class="docutils lite
 <p>You can use the  <a href="https://docs.python.org/2/library/subprocess.html" target="_blank">subprocess  </a> package to invoke commands from within python.</p>
 <p>The following example from the <a href="https://github.com/kbaseapps/kb_quast" target="_blank">kb_quast </a> repository
 demonstrates how to do (and document) this well with Python.</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run_quast_exec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outdir</span><span class="p">,</span> <span class="n">filepaths</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">skip_glimmer</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run_quast_exec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outdir</span><span class="p">,</span> <span class="n">filepaths</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">skip_glimmer</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="n">threads</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">THREADS_PER_CORE</span>
     <span class="c1"># DO NOT use genemark instead of glimmer, not open source</span>
     <span class="c1"># DO NOT use metaQUAST, uses SILVA DB which is not open source</span>
@@ -286,7 +289,7 @@ demonstrates how to do (and document) this well with Python.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, KBase
+        &copy; Copyright 2018, KBase.
 
     </p>
   </div>
@@ -305,17 +308,27 @@ demonstrates how to do (and document) this well with Python.</p>
 
   
 
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.2.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
 
   
 
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
 
   <script type="text/javascript">
       jQuery(function () {

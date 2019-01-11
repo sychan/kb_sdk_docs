@@ -24,7 +24,8 @@
 
   
 
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -93,14 +94,14 @@
 </ul>
 <p class="caption"><span class="caption-text">Tutorial</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/install.html">2. Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/initialize.html">3. Initialize the Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/helloworld.html">4. Hello World Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/setup.html">5. ContigFilter Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/inputsoutputs.html">6. Narrative User Interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/implement.html">7. Implement Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">8. Publish and Update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/1_dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/2_install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/3_initialize.html">3. Initialize the Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/4_helloworld.html">4. Hello World Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/5_setup.html">5. ContigFilter Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/6_inputsoutputs.html">6. Narrative User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/7_implement.html">7. Implement Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/8_publish.html">8. Publish and Update</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Guides</span></p>
 <ul class="current">
@@ -123,9 +124,11 @@
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/design_checklist.html">Design Checklist</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/execution_engine.html">Job Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/UI_spec.html">Narrative App UI Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/terminology.html">Terminology</a></li>
@@ -202,11 +205,11 @@ can edit your Dockerfile, which contains the setup code needed to build
 up your container.</p>
 <p>A helpful resource is the <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices" target="_blank">Dockerfile Best Practices </a> guide.</p>
 <p>The first two lines of the Dockerfile look something like:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FROM</span> <span class="n">kbase</span><span class="o">/</span><span class="n">kbase</span><span class="p">:</span><span class="n">sdkbase2</span><span class="o">.</span><span class="n">latest</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FROM</span> <span class="n">kbase</span><span class="o">/</span><span class="n">kbase</span><span class="p">:</span><span class="n">sdkbase2</span><span class="o">.</span><span class="n">latest</span>
 <span class="n">MAINTAINER</span> <span class="n">KBase</span> <span class="n">Developer</span>
 </pre></div>
 </div>
-<p>Change  <code class="docutils literal notranslate"><span class="pre">KBase</span> <span class="pre">Developer</span></code> to be the email address of the person
+<p>Change  <code class="docutils literal"><span class="pre">KBase</span> <span class="pre">Developer</span></code> to be the email address of the person
 who will be responsible for the upkeep of the module.</p>
 <p>The base KBase Docker image contains a KBase Ubuntu image with the
 dependencies necessary JSON-RPC server in the supported language, as
@@ -214,7 +217,7 @@ well as a core set of KBase API Clients. You will need to include any
 dependencies, including the installation of whatever tool you are
 wrapping, to build a custom Docker image that can run your Module.</p>
 <p>For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RUN</span> \
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RUN</span> \
   <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">voutcn</span><span class="o">/</span><span class="n">megahit</span><span class="o">.</span><span class="n">git</span> <span class="o">&amp;&amp;</span> \
   <span class="n">cd</span> <span class="n">megahit</span> <span class="o">&amp;&amp;</span> \
   <span class="n">git</span> <span class="n">checkout</span> <span class="n">tags</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mf">0.3</span> <span class="o">&amp;&amp;</span> \
@@ -230,7 +233,7 @@ Docker image which will deploy on a worker node more quickly and make
 cycles of a Docker image build faster, it is best to remove any large,
 extraneous files, such as a tarball from which you installed a tool.</p>
 <p>To accomplish this, commands to your Dockerfile should look like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RUN</span> \
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RUN</span> \
   <span class="n">wget</span> <span class="n">blah</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">tarball</span><span class="o">.</span><span class="n">tgz</span> <span class="o">&amp;&amp;</span> \
   <span class="n">tar</span> <span class="n">xzf</span> <span class="n">tarball</span><span class="o">.</span><span class="n">tgz</span> <span class="o">&amp;&amp;</span> \
   <span class="n">cd</span> <span class="n">tarball</span> <span class="o">&amp;&amp;</span> \
@@ -239,11 +242,11 @@ extraneous files, such as a tarball from which you installed a tool.</p>
   <span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">tarball</span><span class="o">.</span><span class="n">tgz</span>
 </pre></div>
 </div>
-<p>Where each <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> lets you chain together multiple bash commands, and
+<p>Where each <code class="docutils literal"><span class="pre">&amp;&amp;</span></code> lets you chain together multiple bash commands, and
 the backslash continues the same, single-line command over multiple
 lines.</p>
 <p>Avoid this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RUN</span> <span class="n">wget</span> <span class="n">blah</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">tarball</span><span class="o">.</span><span class="n">tgz</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RUN</span> <span class="n">wget</span> <span class="n">blah</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">tarball</span><span class="o">.</span><span class="n">tgz</span>
 <span class="n">RUN</span> <span class="n">tar</span> <span class="n">xzf</span> <span class="n">tarball</span><span class="o">.</span><span class="n">tgz</span>
 <span class="n">RUN</span> <span class="n">cd</span> <span class="n">tarball</span>
 <span class="n">RUN</span> <span class="n">make</span>
@@ -251,15 +254,15 @@ lines.</p>
 <span class="n">RUN</span> <span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">tarball</span><span class="o">.</span><span class="n">tgz</span>
 </pre></div>
 </div>
-<p>Each call to <code class="docutils literal notranslate"><span class="pre">RUN</span></code> creates a separate Docker image layer that sits on
+<p>Each call to <code class="docutils literal"><span class="pre">RUN</span></code> creates a separate Docker image layer that sits on
 top of the previous one. Previous layers are read-only, so you can’t
 modify their content if you wanted to clean up files. In general, you
-will want one <code class="docutils literal notranslate"><span class="pre">RUN</span></code> command for each discrete service that you set up
+will want one <code class="docutils literal"><span class="pre">RUN</span></code> command for each discrete service that you set up
 in your container.</p>
 <p>Final note: Docker will rebuild everything from the first detected
 change in a dockerfile but pull everything upstream of that from its
-cache. If you are pulling in external data using <code class="docutils literal notranslate"><span class="pre">RUN</span></code> and a command
-like <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span></code> or <code class="docutils literal notranslate"><span class="pre">wget</span></code>, then changes in those sources will not
+cache. If you are pulling in external data using <code class="docutils literal"><span class="pre">RUN</span></code> and a command
+like <code class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span></code> or <code class="docutils literal"><span class="pre">wget</span></code>, then changes in those sources will not
 automatically be reflected in a rebuilt Docker image unless the Docker
 file changes at or before that import.</p>
 </div>
@@ -284,7 +287,7 @@ file changes at or before that import.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, KBase
+        &copy; Copyright 2018, KBase.
 
     </p>
   </div>
@@ -303,17 +306,27 @@ file changes at or before that import.</p>
 
   
 
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.2.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
 
   
 
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
 
   <script type="text/javascript">
       jQuery(function () {

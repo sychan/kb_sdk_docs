@@ -24,7 +24,8 @@
 
   
 
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -93,14 +94,14 @@
 </ul>
 <p class="caption"><span class="caption-text">Tutorial</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/install.html">2. Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/initialize.html">3. Initialize the Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/helloworld.html">4. Hello World Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/setup.html">5. ContigFilter Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/inputsoutputs.html">6. Narrative User Interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/implement.html">7. Implement Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">8. Publish and Update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/1_dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/2_install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/3_initialize.html">3. Initialize the Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/4_helloworld.html">4. Hello World Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/5_setup.html">5. ContigFilter Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/6_inputsoutputs.html">6. Narrative User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/7_implement.html">7. Implement Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/8_publish.html">8. Publish and Update</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Guides</span></p>
 <ul>
@@ -123,9 +124,11 @@
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/design_checklist.html">Design Checklist</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/execution_engine.html">Job Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/UI_spec.html">Narrative App UI Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/terminology.html">Terminology</a></li>
@@ -203,12 +206,12 @@
 </div>
 <p>You can download the Workspace client by running the following inside an SDK module:</p>
 <blockquote>
-<div><code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">install</span> <span class="pre">https://raw.githubusercontent.com/kbase/workspace_deluxe/master/workspace.spec</span></code></div></blockquote>
+<div><code class="docutils literal"><span class="pre">kb-sdk</span> <span class="pre">install</span> <span class="pre">https://raw.githubusercontent.com/kbase/workspace_deluxe/master/workspace.spec</span></code></div></blockquote>
 <div class="section" id="retrieving-workspace-object-metadata">
 <h2>Retrieving workspace object metadata<a class="headerlink" href="#retrieving-workspace-object-metadata" title="Permalink to this headline">¶</a></h2>
-<p>If you don’t want to retrieve the entire object, and just want information about it, the most efficient way is to use the <code class="docutils literal notranslate"><span class="pre">ws.get_object_info</span></code> function. To read more about the available functions, see the  <a href="https://kbase.us/services/ws/docs/Workspace.html" target="_blank">workspace spec file </a>.</p>
+<p>If you don’t want to retrieve the entire object, and just want information about it, the most efficient way is to use the <code class="docutils literal"><span class="pre">ws.get_object_info</span></code> function. To read more about the available functions, see the  <a href="https://kbase.us/services/ws/docs/Workspace.html" target="_blank">workspace spec file </a>.</p>
 <p><em>Initialize the workspace client and get an object’s information by reference</em></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The config object is passed into the __init__ function for your *Impl.py module</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># The config object is passed into the __init__ function for your *Impl.py module</span>
 <span class="kn">from</span> <span class="nn">Workspace.WorkspaceClient</span> <span class="kn">import</span> <span class="n">Workspace</span> <span class="k">as</span> <span class="n">Workspace</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">ws_url</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;workspace-url&quot;</span><span class="p">]</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;KB_AUTH_TOKEN&quot;</span><span class="p">]</span>
@@ -222,7 +225,7 @@
 <div class="section" id="how-to-use-the-workspace-client-in-the-narrative">
 <h2>How to use the Workspace Client in the narrative<a class="headerlink" href="#how-to-use-the-workspace-client-in-the-narrative" title="Permalink to this headline">¶</a></h2>
 <p>You can access the workspace client from within narrative code cells. See this <a class="reference external" href="https://narrative.kbase.us/narrative/ws.30170.obj.1">example narrative</a> <a href="https://narrative.kbase.us/narrative/ws.30170.obj.1" target="_blank">example narrative  </a>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ws</span> <span class="o">=</span> <span class="n">biokbase</span><span class="o">.</span><span class="n">narrative</span><span class="o">.</span><span class="n">clients</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;workspace&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">ws</span> <span class="o">=</span> <span class="n">biokbase</span><span class="o">.</span><span class="n">narrative</span><span class="o">.</span><span class="n">clients</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;workspace&#39;</span><span class="p">)</span>
 <span class="n">obj</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">get_objects2</span><span class="p">({</span><span class="s1">&#39;objects&#39;</span> <span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;ref&#39;</span> <span class="p">:</span> <span class="s1">&#39;30170/2/1&#39;</span><span class="p">}]})</span>
 </pre></div>
 </div>
@@ -237,7 +240,7 @@
 <div class="section" id="how-to-get-a-given-typespec-spec-file">
 <h2>How to get a given typespec / .spec file?<a class="headerlink" href="#how-to-get-a-given-typespec-spec-file" title="Permalink to this headline">¶</a></h2>
 <p>If you can’t find a typespec in a repo, you can find it doing the following:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example spec file snippet</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Example spec file snippet</span>
 
 <span class="kn">from</span> <span class="nn">biokbase.workspace.client</span> <span class="kn">import</span> <span class="n">Workspace</span>
 <span class="n">ws</span> <span class="o">=</span> <span class="n">Workspace</span><span class="p">(</span><span class="s1">&#39;https://ci.kbase.us/services/ws&#39;</span><span class="p">)</span>
@@ -267,7 +270,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, KBase
+        &copy; Copyright 2018, KBase.
 
     </p>
   </div>
@@ -286,17 +289,27 @@
 
   
 
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.2.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
 
   
 
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
 
   <script type="text/javascript">
       jQuery(function () {

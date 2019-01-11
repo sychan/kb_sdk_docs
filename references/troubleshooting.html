@@ -24,13 +24,14 @@
 
   
 
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Developer Guidelines" href="dev_guidelines.html" />
-    <link rel="prev" title="Anatomy of a Module" href="module_anatomy.html" /> 
+    <link rel="prev" title="Design Checklist" href="design_checklist.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -93,14 +94,14 @@
 </ul>
 <p class="caption"><span class="caption-text">Tutorial</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/install.html">2. Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/initialize.html">3. Initialize the Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/helloworld.html">4. Hello World Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/setup.html">5. ContigFilter Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/inputsoutputs.html">6. Narrative User Interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/implement.html">7. Implement Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/publish.html">8. Publish and Update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/1_dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/2_install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/3_initialize.html">3. Initialize the Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/4_helloworld.html">4. Hello World Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/5_setup.html">5. ContigFilter Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/6_inputsoutputs.html">6. Narrative User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/7_implement.html">7. Implement Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/8_publish.html">8. Publish and Update</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Guides</span></p>
 <ul>
@@ -123,9 +124,11 @@
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="module_anatomy.html">Anatomy of a Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design_checklist.html">Design Checklist</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dev_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="execution_engine.html">Job Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module_anatomy.html">Anatomy of a Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="KIDL_spec.html">KIDL Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UI_spec.html">Narrative App UI Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="terminology.html">Terminology</a></li>
@@ -201,8 +204,8 @@
 <p class="topic-title first">Contents</p>
 <ul class="simple">
 <li><a class="reference internal" href="#troubleshooting-guide" id="id2">Troubleshooting Guide</a><ul>
-<li><a class="reference internal" href="#trying-to-run-make-sdkbase-and-seeing-errors-that-include-tls-enabled-daemon-and-or-docker-daemon" id="id3">Trying to run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">sdkbase</span></code> and seeing errors that include <code class="docutils literal notranslate"><span class="pre">TLS-enabled</span> <span class="pre">daemon</span></code> and/or <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">daemon</span></code></a></li>
-<li><a class="reference internal" href="#trying-to-run-kb-sdk-test-and-seeing-errors-that-include-tls-enabled-daemon-and-or-docker-daemon" id="id4">Trying to run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> and seeing errors that include “TLS-enabled daemon” and/or “docker daemon”</a></li>
+<li><a class="reference internal" href="#trying-to-run-make-sdkbase-and-seeing-errors-that-include-tls-enabled-daemon-and-or-docker-daemon" id="id3">Trying to run <code class="docutils literal"><span class="pre">make</span> <span class="pre">sdkbase</span></code> and seeing errors that include <code class="docutils literal"><span class="pre">TLS-enabled</span> <span class="pre">daemon</span></code> and/or <code class="docutils literal"><span class="pre">docker</span> <span class="pre">daemon</span></code></a></li>
+<li><a class="reference internal" href="#trying-to-run-kb-sdk-test-and-seeing-errors-that-include-tls-enabled-daemon-and-or-docker-daemon" id="id4">Trying to run <code class="docutils literal"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> and seeing errors that include “TLS-enabled daemon” and/or “docker daemon”</a></li>
 <li><a class="reference internal" href="#my-code-keeps-disappearing-what-happened-to-it" id="id5">My code keeps disappearing. What happened to it?</a></li>
 <li><a class="reference internal" href="#having-trouble-getting-docker-working-on-mac" id="id6">Having trouble getting Docker working on Mac</a></li>
 <li><a class="reference internal" href="#having-trouble-getting-docker-working-on-linux" id="id7">Having trouble getting Docker working on Linux</a></li>
@@ -218,9 +221,9 @@
 </ul>
 </div>
 <div class="section" id="trying-to-run-make-sdkbase-and-seeing-errors-that-include-tls-enabled-daemon-and-or-docker-daemon">
-<h2><a class="toc-backref" href="#id3">Trying to run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">sdkbase</span></code> and seeing errors that include <code class="docutils literal notranslate"><span class="pre">TLS-enabled</span> <span class="pre">daemon</span></code> and/or <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">daemon</span></code></a><a class="headerlink" href="#trying-to-run-make-sdkbase-and-seeing-errors-that-include-tls-enabled-daemon-and-or-docker-daemon" title="Permalink to this headline">¶</a></h2>
-<p>When you try to run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">sdkbase</span></code> if you see a message like:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker build -t kbase/kbase:sdkbase2.latest sdkbase
+<h2><a class="toc-backref" href="#id3">Trying to run <code class="docutils literal"><span class="pre">make</span> <span class="pre">sdkbase</span></code> and seeing errors that include <code class="docutils literal"><span class="pre">TLS-enabled</span> <span class="pre">daemon</span></code> and/or <code class="docutils literal"><span class="pre">docker</span> <span class="pre">daemon</span></code></a><a class="headerlink" href="#trying-to-run-make-sdkbase-and-seeing-errors-that-include-tls-enabled-daemon-and-or-docker-daemon" title="Permalink to this headline">¶</a></h2>
+<p>When you try to run <code class="docutils literal"><span class="pre">make</span> <span class="pre">sdkbase</span></code> if you see a message like:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>docker build -t kbase/kbase:sdkbase2.latest sdkbase
 Post http:///var/run/docker.sock/v1.20/build?cgroupparent<span class="o">=</span><span class="p">&amp;</span><span class="nv">cpuperiod</span><span class="o">=</span><span class="m">0</span><span class="p">&amp;</span><span class="nv">cpuquota</span><span class="o">=</span><span class="m">0</span><span class="p">&amp;</span><span class="nv">cpusetcpus</span><span class="o">=</span><span class="p">&amp;</span><span class="nv">cpusetmems</span><span class="o">=</span><span class="p">&amp;</span><span class="nv">cpushares</span><span class="o">=</span><span class="m">0</span><span class="p">&amp;</span><span class="nv">dockerfile</span><span class="o">=</span>Dockerfile<span class="p">&amp;</span><span class="nv">memory</span><span class="o">=</span><span class="m">0</span><span class="p">&amp;</span><span class="nv">memswap</span><span class="o">=</span><span class="m">0</span><span class="p">&amp;</span><span class="nv">rm</span><span class="o">=</span><span class="m">1</span><span class="p">&amp;</span><span class="nv">t</span><span class="o">=</span>kbase%2Fkbase%3Asdkbase.latest<span class="p">&amp;</span><span class="nv">ulimits</span><span class="o">=</span>null: dial unix /var/run/docker.sock: no such file or directory.
 * Are you trying to connect to a TLS-enabled daemon without TLS?
 * Is your docker daemon up and running?
@@ -230,9 +233,9 @@ make: *** <span class="o">[</span>sdkbase<span class="o">]</span> Error <span cl
 <p>You likely have not started your Docker daemon. On a Mac, that means running in the Docker CLI shell after starting Docker Kitematic and clicking on “Docker CLI” in the lower left corner (See  <a href="../tutorial/install.html">Install SDK Dependencies - Docker </a> for guidance).</p>
 </div>
 <div class="section" id="trying-to-run-kb-sdk-test-and-seeing-errors-that-include-tls-enabled-daemon-and-or-docker-daemon">
-<h2><a class="toc-backref" href="#id4">Trying to run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> and seeing errors that include “TLS-enabled daemon” and/or “docker daemon”</a><a class="headerlink" href="#trying-to-run-kb-sdk-test-and-seeing-errors-that-include-tls-enabled-daemon-and-or-docker-daemon" title="Permalink to this headline">¶</a></h2>
-<p>When you try to run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code>, if you see a message like:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Build Docker image
+<h2><a class="toc-backref" href="#id4">Trying to run <code class="docutils literal"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> and seeing errors that include “TLS-enabled daemon” and/or “docker daemon”</a><a class="headerlink" href="#trying-to-run-kb-sdk-test-and-seeing-errors-that-include-tls-enabled-daemon-and-or-docker-daemon" title="Permalink to this headline">¶</a></h2>
+<p>When you try to run <code class="docutils literal"><span class="pre">kb-sdk</span> <span class="pre">test</span></code>, if you see a message like:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>Build Docker image
 Post http:///var/run/docker.sock/v1.20/build?cgroupparent=&amp;cpuperiod=0&amp;cpuquota=0&amp;cpusetcpus=&amp;cpusetmems=&amp;cpushares=0&amp;dockerfile=Dockerfile&amp;memory=0&amp;memswap=0&amp;rm=1&amp;t=test%2Fkb_vsearch%3Alatest&amp;ulimits=null: dial unix /var/run/docker.sock: no such file or directory.
 * Are you trying to connect to a TLS-enabled daemon without TLS?
 * Is your docker daemon up and running?
@@ -246,7 +249,7 @@ clicking on “Docker CLI” in the lower left corner (See <a href="../tutorial/
 <h2><a class="toc-backref" href="#id5">My code keeps disappearing. What happened to it?</a><a class="headerlink" href="#my-code-keeps-disappearing-what-happened-to-it" title="Permalink to this headline">¶</a></h2>
 <p>Magic comments are comments that are used internally by the kbase_sdk in order to generate the implementation file when you make changes to the spec file.</p>
 <p>Examples of magic comments include:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#BEGIN_HEADER</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1">#BEGIN_HEADER</span>
 <span class="c1"># (This is where your import statements go)</span>
 <span class="c1">#END_HEADER</span>
 
@@ -278,7 +281,7 @@ or the daemon may not have been started. Please see <a href="https://docs.docker
 <div class="section" id="getting-java-related-errors-trying-to-run-kb-sdk">
 <h2><a class="toc-backref" href="#id8">Getting Java-related errors trying to run kb-sdk</a><a class="headerlink" href="#getting-java-related-errors-trying-to-run-kb-sdk" title="Permalink to this headline">¶</a></h2>
 <p>Java may not be installed, or the path may not be set properly. Please follow the directions for installation of Java at <a href="https://github.com/kbase/kb_sdk/blob/master/doc/test_dependencies.md" target="_blank">https://github.com/kbase/kb_sdk/blob/master/doc/test_dependencies.md</a>  and then set your <em>JAVA_HOME</em> with</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># for bash
+<div class="highlight-default"><div class="highlight"><pre><span></span># for bash
 export JAVA_HOME=`/usr/libexec/java_home`
 # for tcsh/csh
 setenv JAVA_HOME `/usr/libexec/java_home`
@@ -293,13 +296,13 @@ https://github.com/kbase/kb\_sdk/blob/master/doc/kb\_sdk\_dependencies.md.</p>
 </div>
 <div class="section" id="getting-servererror-jsonrpcerror">
 <h2><a class="toc-backref" href="#id10">Getting “ServerError: JSONRPCError”</a><a class="headerlink" href="#getting-servererror-jsonrpcerror" title="Permalink to this headline">¶</a></h2>
-<p><em>Full error</em>: <code class="docutils literal notranslate"><span class="pre">ServerError:</span> <span class="pre">JSONRPCError:</span> <span class="pre">-32601.</span> <span class="pre">Unknown</span> <span class="pre">server</span> <span class="pre">error</span> <span class="pre">(output</span> <span class="pre">data</span> <span class="pre">wasn't</span> <span class="pre">produced)</span></code></p>
+<p><em>Full error</em>: <code class="docutils literal"><span class="pre">ServerError:</span> <span class="pre">JSONRPCError:</span> <span class="pre">-32601.</span> <span class="pre">Unknown</span> <span class="pre">server</span> <span class="pre">error</span> <span class="pre">(output</span> <span class="pre">data</span> <span class="pre">wasn't</span> <span class="pre">produced)</span></code></p>
 <p>This case happens because the python process exits without writing an output file, and then the callback server throws the above error. Make sure your process finishes and writes an output file to avoid this error.</p>
 </div>
 <div class="section" id="unable-to-find-valid-certification">
 <h2><a class="toc-backref" href="#id11">Unable to find valid certification</a><a class="headerlink" href="#unable-to-find-valid-certification" title="Permalink to this headline">¶</a></h2>
 <p>If you get an error on OSX as follows:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> kb-sdk <span class="nb">test</span>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> kb-sdk <span class="nb">test</span>
 <span class="gp">&gt;</span> Validating module in <span class="o">(</span>/Users/user/Module/ExpressionUtils<span class="o">)</span>
 <span class="gp">&gt;</span> Congrats- this module is valid.
 <span class="gp">&gt;</span> Error <span class="k">while</span> testing module: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
@@ -309,7 +312,7 @@ https://github.com/kbase/kb\_sdk/blob/master/doc/kb\_sdk\_dependencies.md.</p>
 </pre></div>
 </div>
 <p>Generate new security certificates:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ openssl x509 -in &lt;<span class="o">(</span>openssl s_client -connect ci.kbase.us:443 -prexit <span class="m">2</span>&gt;/dev/null<span class="o">)</span> -out ~/example.crt
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ openssl x509 -in &lt;<span class="o">(</span>openssl s_client -connect ci.kbase.us:443 -prexit <span class="m">2</span>&gt;/dev/null<span class="o">)</span> -out ~/example.crt
 $ sudo keytool -importcert -file ~/example.crt -alias example -keystore <span class="k">$(</span>/usr/libexec/java_home<span class="k">)</span>/jre/lib/security/cacerts -storepass changeit
 </pre></div>
 </div>
@@ -317,20 +320,20 @@ $ sudo keytool -importcert -file ~/example.crt -alias example -keystore <span cl
 <div class="section" id="my-docker-instances-have-run-out-of-space">
 <h2><a class="toc-backref" href="#id12">My Docker instances have run out of space</a><a class="headerlink" href="#my-docker-instances-have-run-out-of-space" title="Permalink to this headline">¶</a></h2>
 <p>Sometimes an error message might indicate that you’re out of space, you can check:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> test_local
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> test_local
 $ ./run_bash.sh
 $ df -h
 </pre></div>
 </div>
 <p>There are a few methods you can use to free up space
 Remove stopped containers:
-<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span> <span class="pre">-a</span> <span class="pre">-f</span> <span class="pre">status=exited</span> <span class="pre">-q</span> <span class="pre">|</span> <span class="pre">xargs</span> <span class="pre">docker</span> <span class="pre">rm</span></code></p>
+<code class="docutils literal"><span class="pre">docker</span> <span class="pre">ps</span> <span class="pre">-a</span> <span class="pre">-f</span> <span class="pre">status=exited</span> <span class="pre">-q</span> <span class="pre">|</span> <span class="pre">xargs</span> <span class="pre">docker</span> <span class="pre">rm</span></code></p>
 <p>Remove all old docker containers (with caution):
-<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span> <span class="pre">-a</span> <span class="pre">|</span> <span class="pre">tail</span> <span class="pre">-n+2</span> <span class="pre">|</span> <span class="pre">cut</span> <span class="pre">-f1</span> <span class="pre">-d</span> <span class="pre">&quot;</span> <span class="pre">&quot;</span> <span class="pre">|</span> <span class="pre">xargs</span> <span class="pre">docker</span> <span class="pre">rm</span> <span class="pre">-v</span></code></p>
+<code class="docutils literal"><span class="pre">docker</span> <span class="pre">ps</span> <span class="pre">-a</span> <span class="pre">|</span> <span class="pre">tail</span> <span class="pre">-n+2</span> <span class="pre">|</span> <span class="pre">cut</span> <span class="pre">-f1</span> <span class="pre">-d</span> <span class="pre">&quot;</span> <span class="pre">&quot;</span> <span class="pre">|</span> <span class="pre">xargs</span> <span class="pre">docker</span> <span class="pre">rm</span> <span class="pre">-v</span></code></p>
 <p>Remove images with ‘kbase’ or ‘test/’ or ‘none’
-<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">images</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">-e</span> <span class="pre">'test/'</span> <span class="pre">-e</span> <span class="pre">'.kbase.us'</span> <span class="pre">-e</span> <span class="pre">‘none’</span> <span class="pre">|</span> <span class="pre">awk</span> <span class="pre">'{print</span> <span class="pre">$3}'</span> <span class="pre">|</span> <span class="pre">xargs</span> <span class="pre">docker</span> <span class="pre">rmi</span></code></p>
+<code class="docutils literal"><span class="pre">docker</span> <span class="pre">images</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">-e</span> <span class="pre">'test/'</span> <span class="pre">-e</span> <span class="pre">'.kbase.us'</span> <span class="pre">-e</span> <span class="pre">‘none’</span> <span class="pre">|</span> <span class="pre">awk</span> <span class="pre">'{print</span> <span class="pre">$3}'</span> <span class="pre">|</span> <span class="pre">xargs</span> <span class="pre">docker</span> <span class="pre">rmi</span></code></p>
 <p>Remove orphan images:
-<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">rmi</span> <span class="pre">$(docker</span> <span class="pre">images</span> <span class="pre">-q</span> <span class="pre">--filter</span> <span class="pre">&quot;dangling=true&quot;)</span></code></p>
+<code class="docutils literal"><span class="pre">docker</span> <span class="pre">rmi</span> <span class="pre">$(docker</span> <span class="pre">images</span> <span class="pre">-q</span> <span class="pre">--filter</span> <span class="pre">&quot;dangling=true&quot;)</span></code></p>
 </div>
 <div class="section" id="my-docker-container-ran-out-of-memory">
 <h2><a class="toc-backref" href="#id13">My Docker container ran out of memory</a><a class="headerlink" href="#my-docker-container-ran-out-of-memory" title="Permalink to this headline">¶</a></h2>
@@ -362,7 +365,7 @@ If you go to the global preferences for Docker, and click on “Advanced”, you
         <a href="dev_guidelines.html" class="btn btn-neutral float-right" title="Developer Guidelines" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="module_anatomy.html" class="btn btn-neutral" title="Anatomy of a Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="design_checklist.html" class="btn btn-neutral" title="Design Checklist" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -371,7 +374,7 @@ If you go to the global preferences for Docker, and click on “Advanced”, you
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, KBase
+        &copy; Copyright 2018, KBase.
 
     </p>
   </div>
@@ -390,17 +393,27 @@ If you go to the global preferences for Docker, and click on “Advanced”, you
 
   
 
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.2.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
 
   
 
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
 
   <script type="text/javascript">
       jQuery(function () {

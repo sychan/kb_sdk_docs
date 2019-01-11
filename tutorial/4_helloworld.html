@@ -1,0 +1,428 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4. Hello World Example &mdash; KBase SDK 1.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. ContigFilter Example" href="5_setup.html" />
+    <link rel="prev" title="3. Initialize the Module" href="3_initialize.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> KBase SDK
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Intro</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Concepts and Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../video_tutorial.html">Video Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="1_dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_initialize.html">3. Initialize the Module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Hello World Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_setup.html">5. ContigFilter Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_inputsoutputs.html">6. Narrative User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_implement.html">7. Implement Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_publish.html">8. Publish and Update</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../references/questions_and_answers.html">Common Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/create_a_report.html">Creating reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/add_ui_elements.html">Adding UI Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/edit_your_dockerfile.html">Editing your app’s Dockerfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/fill_out_app_information.html">Fully documenting your app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/run_a_shell_command.html">Running shell commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/file_utils.html">Working with the file utils</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/workspace.html">Using Workspace Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/manual_build.html">Manually building the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/work_with_reference_data.html">Working with reference data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/job_manager.html">Listing and viewing jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/dynamic_services.html">Dynamic Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howtos/update_to_py3.html">Updating a module to Python3</a></li>
+</ul>
+<p class="caption"><span class="caption-text">References &amp; Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../references/design_checklist.html">Design Checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/execution_engine.html">Job Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/UI_spec.html">Narrative App UI Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/terminology.html">Terminology</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">KBase SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>4. Hello World Example</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/kbase/kb_sdk_docs/blob/blob/master/source/tutorial/4_helloworld.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hello-world-example">
+<h1>4. Hello World Example<a class="headerlink" href="#hello-world-example" title="Permalink to this headline">¶</a></h1>
+<p>This “Hello World” example demonstrates where various components of the SDK are located and how to run a basic test. Most of this example is optional. The <a href="setup.html">ContigFilter</a> example adds more features of the SDK.</p>
+<p>For this example substitute your name/id for {uid} and use:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>kb-sdk init --language python --user <span class="o">{</span>your_kbase_user_name<span class="o">}</span> <span class="o">{</span>uid<span class="o">}</span>HelloWorld
+<span class="nb">cd</span> <span class="o">{</span>uid<span class="o">}</span>HelloWorld
+make
+</pre></div>
+</div>
+<p>The setup for the module includes:</p>
+<ol class="arabic simple">
+<li>Customizing the description of the module</li>
+<li>Specify inputs, outputs, and functions of the module</li>
+<li>Validate the module and its apps</li>
+<li>Customize the Narrative User Interface</li>
+<li>Add statements to the app</li>
+<li>Run a first test</li>
+</ol>
+<div class="section" id="module-description">
+<h2>4.1. Module Description<a class="headerlink" href="#module-description" title="Permalink to this headline">¶</a></h2>
+<p>In the root directory of the module is the file <code class="docutils literal"><span class="pre">kbase.yml</span></code>.  Examine the file.
+It has a placeholder for information that you will eventually add to the module.
+The <code class="docutils literal"><span class="pre">module-name</span></code> and <code class="docutils literal"><span class="pre">service-language</span></code> will not change but the other items will change as
+you prepare the module for release or update.
+The default <code class="docutils literal"><span class="pre">module-description</span></code> doesn’t say anything about your module. You will want to edit this
+before the module is released.  Be sure to describe what your module and its app will do.
+The <code class="docutils literal"><span class="pre">module-version</span></code> needs to be incremented before updates can be released. For the first version
+of an app, it can remain <em>0.0.1</em>.
+The <code class="docutils literal"><span class="pre">owners</span></code> is a list of users that can approve updates to a module.
+The information in this file shows up in the  <a href="https://narrative.kbase.us/#catalog/modules" target="_blank">Module Catalog </a> entry for the module. A more complete example is  <a href="https://narrative.kbase.us/#catalog/modules/kb_SPAdes" target="_blank">kb_SPAdes</a>.</p>
+</div>
+<div class="section" id="edit-the-narrative-ui-optional">
+<h2>4.2. Edit the Narrative UI (optional)<a class="headerlink" href="#edit-the-narrative-ui-optional" title="Permalink to this headline">¶</a></h2>
+<p>The specifications for the app’s Narrative user interface are under the directory named
+<code class="docutils literal"><span class="pre">/ui/narrative/methods/run_{uid}HelloWorld</span></code>. Note that the name of the directory is the same as
+the name of the function in the spec file above. Functions that become user-facing apps need a
+directory that defines the user interface.</p>
+<p>This directory has two files <code class="docutils literal"><span class="pre">spec.json</span></code> and <code class="docutils literal"><span class="pre">display.yaml</span></code>. The example module <a href="setup.html">ContigFilter</a>
+will go into more depth for these files.  The  <a href="../howtos/fill_out_app_information.html">documenting your app</a> page provides
+information on the purpose of the subdirectory <code class="docutils literal"><span class="pre">img</span></code>.</p>
+<p>Now open up <code class="docutils literal"><span class="pre">ui/narrative/methods/run_{uid}HelloWorld/spec.json</span></code>. This file is in JSON format and
+defines a mapping between our KIDL <code class="docutils literal"><span class="pre">{uid}HelloWorld.spec</span></code> file and how our parameters will show up in the app’s user interface.</p>
+<p>In the section <code class="docutils literal"><span class="pre">parameters</span></code> already defines <code class="docutils literal"><span class="pre">parameter_1</span></code>:</p>
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;parameter_1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;advanced&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;allow_multiple&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;default_values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;&quot;</span> <span class="p">],</span>
+            <span class="s2">&quot;field_type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;text_options&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;valid_ws_types&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Additional parameters added to the spec file  need to be added to this section. This will be covered
+in the next example module.</p>
+<p>The <code class="docutils literal"><span class="pre">behavior</span></code> section describes how the parameters from the Narrative UI are passed to the
+Python code. For example, the Narrative UI automatically passes two hidden parameters about the
+narrative, the <code class="docutils literal"><span class="pre">workspace</span></code> and the <code class="docutils literal"><span class="pre">workspace_id</span></code>. When these are passed to the Python code,
+the <code class="docutils literal"><span class="pre">workspace</span></code> from the Narrative is passed as <code class="docutils literal"><span class="pre">workspace_name</span></code> to Python.</p>
+<p>The <code class="docutils literal"><span class="pre">display.yaml</span></code> file is in YAML format and defines how your app will appear in the <a href="https://narrative.kbase.us/#appcatalog" target="_blank">App Catalog </a>.
+Examine the file found in <code class="docutils literal"><span class="pre">ui/narrative/methods/printhelloworld/display.yaml</span></code>.
+View the <a href="../howtos/fill_out_app_information.html">documenting your app</a> page for more on the how this file is used.</p>
+<p>Finally, if you made any changes, run <code class="docutils literal"><span class="pre">kb-sdk</span> <span class="pre">validate</span></code> and make sure it passes!
+Now we can start to work on the functionality of the app.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For a more exhaustive overview of the <code class="docutils literal"><span class="pre">spec.json</span></code> and <code class="docutils literal"><span class="pre">display.yaml</span></code> files, take a look at
+the <a href="../references/UI_spec.html">UI specification guide </a>.  You can also experiment with UI generation
+with the <a href="https://narrative.kbase.us/narrative/ws.28370.obj.1" target="_blank">App Spec Editor Narrative </a></p>
+</div>
+</div>
+<div class="section" id="code-implementation">
+<h2>4.3. Code Implementation<a class="headerlink" href="#code-implementation" title="Permalink to this headline">¶</a></h2>
+<p>The actual code for your app will live in the python package under <code class="docutils literal"><span class="pre">lib/{uid}HelloWorld</span></code>.
+The entry point, where your code is initially called, lives in the file: <code class="docutils literal"><span class="pre">lib/{uid}HelloWorld/{uid}HelloWorldImpl.py</span></code>.
+It is sometimes called the “Implementation” file or simply the “Impl” file.  This is the file where you edit your own Python code.</p>
+<p>This “Implementation” file defines the python methods available in the module. All of the functions
+defined in the spec file correspond to Python methods
+and they are part of the class inside <code class="docutils literal"><span class="pre">{uid}HelloWorldImpl.py</span></code>.</p>
+<p>Much of the Implementation file is auto-generated based on the spec file. The <code class="docutils literal"><span class="pre">make</span></code> command updates the Implementation file. To separate auto-generated code from developer code, developer code belongs between <code class="docutils literal"><span class="pre">#BEGIN</span></code> and <code class="docutils literal"><span class="pre">#END</span></code> comments. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1">#BEGIN_HEADER</span>
+<span class="c1">#END_HEADER</span>
+
+<span class="c1">#BEGIN_CLASS_HEADER</span>
+<span class="c1">#END_CLASS_HEADER</span>
+
+<span class="c1">#BEGIN_CONSTRUCTOR</span>
+<span class="c1">#END_CONSTRUCTOR</span>
+
+<span class="c1">#BEGIN printhelloworld</span>
+<span class="c1">#END printhelloworld</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">make</span></code> command preserves everything between the <code class="docutils literal"><span class="pre">#BEGIN</span></code> and <code class="docutils literal"><span class="pre">#END</span></code> comments and replaces everything else.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Don’t put any spaces between the ‘#’ and ‘BEGIN’ or ‘END’. It has bad consequences.</p>
+</div>
+</div>
+<div class="section" id="check-inputs-optional">
+<h2>4.4. Check Inputs (optional)<a class="headerlink" href="#check-inputs-optional" title="Permalink to this headline">¶</a></h2>
+<p>Open <code class="docutils literal"><span class="pre">{uid}HelloWorldImpl.py</span></code> and find the <code class="docutils literal"><span class="pre">run_{uid}Helloworld</span></code> method, which should have some auto-generated boilerplate code and docstrings.</p>
+<p>You want to limit your code edits to regions between the comments <code class="docutils literal"><span class="pre">#BEGIN</span> <span class="pre">run_{uid}Helloworld</span></code>
+and <code class="docutils literal"><span class="pre">#END</span> <span class="pre">run_{uid}Helloworld</span></code>.
+These are special SDK-generated annotations that we have to keep in the code to get everything to compile
+correctly. If you run <code class="docutils literal"><span class="pre">make</span></code> again in the future, it will update the code outside these comments,
+but will not change the code you put between the <code class="docutils literal"><span class="pre">#BEGIN</span></code> and <code class="docutils literal"><span class="pre">#END</span></code> comments.</p>
+<p>Between the comments, add a simple print statement, such as: <code class="docutils literal"><span class="pre">print</span> <span class="pre">(&quot;Input</span> <span class="pre">parameter&quot;,params['parameter_1'])</span></code>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1">#BEGIN run_{uid}HelloWorld</span>
+<span class="k">print</span> <span class="p">(</span><span class="s2">&quot;Input parameter&quot;</span><span class="p">,</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;parameter_1&#39;</span><span class="p">])</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">KBaseReport</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">callback_url</span><span class="p">)</span>
+<span class="n">report_info</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">create</span><span class="p">({</span><span class="s1">&#39;report&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;objects_created&#39;</span><span class="p">:[],</span>
+                                        <span class="s1">&#39;text_message&#39;</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;parameter_1&#39;</span><span class="p">]},</span>
+                                        <span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;workspace_name&#39;</span><span class="p">]})</span>
+<span class="n">output</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;report_name&#39;</span><span class="p">:</span> <span class="n">report_info</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;report_ref&#39;</span><span class="p">:</span> <span class="n">report_info</span><span class="p">[</span><span class="s1">&#39;ref&#39;</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="c1">#END run_{uid}HelloWorld</span>
+</pre></div>
+</div>
+<p>Don’t try to change the docstring, or anything else outside the <code class="docutils literal"><span class="pre">BEGIN</span> <span class="pre">run_{uid}Helloworld</span></code> and <code class="docutils literal"><span class="pre">END</span> <span class="pre">run_{uid}Helloworld</span></code> comments, as your change will get overwritten by the <code class="docutils literal"><span class="pre">make</span></code> command.</p>
+</div>
+<div class="section" id="run-first-test">
+<h2>4.5. Run First Test<a class="headerlink" href="#run-first-test" title="Permalink to this headline">¶</a></h2>
+<p>As a default, your <code class="docutils literal"><span class="pre">{uid}HelloWorldImpl.py</span></code> file is tested using <code class="docutils literal"><span class="pre">test/{uid}HelloWorld_server_test.py</span></code>. This file has some auto-generated boilerplate code.  Python will automatically run all methods that start with the name <code class="docutils literal"><span class="pre">test</span></code>.</p>
+<p>Near the bottom of the test file, find the method <code class="docutils literal"><span class="pre">test_your_method</span></code>.
+The default test is to call <code class="docutils literal"><span class="pre">run_{uid}HelloWorld</span></code> with
+a <code class="docutils literal"><span class="pre">workspace_name</span></code> for the test and a <code class="docutils literal"><span class="pre">parameter_1</span></code> of ‘Hello World’.
+If you added the optional parameters in the
+earlier steps, you can modify the test method to test the returned output.</p>
+<p>Add a simple print statement to the end of the test method:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span> <span class="p">(</span><span class="s2">&quot;report_name&quot;</span><span class="p">,</span> <span class="n">ret</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;report_name&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Make sure that you have put your developer token in the <code class="docutils literal"><span class="pre">test_local/test.cfg</span></code> as mentioned in the
+<a href="../tutorial/initialize.html">Initialize the Module </a></p>
+</div>
+<p>Run <code class="docutils literal"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> and, if everything works, you’ll see the docker container boot up, the <code class="docutils literal"><span class="pre">run_{uid}Helloworld</span></code> method will get called, and you will see some printed output.
+If you added the input and output parameters, the output should include the two lines.</p>
+<div class="code text highlight-default"><div class="highlight"><pre><span></span>Input parameter Hello World!
+report_name report_675e061a-2fce-47aa-ac85-67e3ec975776
+</pre></div>
+</div>
+<p>When running an app, the messages created by the Impl file and the test will show up in the log.
+For this module, setting up the docker container will take the most time and generate the most lines in the log.
+The next example includes a report builder that is used by the Narrative User Interface.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="5_setup.html" class="btn btn-neutral float-right" title="5. ContigFilter Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="3_initialize.html" class="btn btn-neutral" title="3. Initialize the Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, KBase.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.2.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

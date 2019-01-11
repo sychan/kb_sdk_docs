@@ -35,138 +35,6 @@ of an app, it can remain *0.0.1*.
 The ``owners`` is a list of users that can approve updates to a module.
 The information in this file shows up in the  |ModuleCatalog_link| entry for the module. A more complete example is  |kb_SPAdes_link|.
 
-The Specification File
--------------------------------------------
-
-The specification file (or spec file) is called ``{uid}HelloWorld.spec`` and is in the root directory of the module.
-This file is highly structured and follows a KBase-specific Interface Description Language or KIDL type definition.
-IDLs allow different apps to communicate with one another, regardless of programming languages.
-The steps below show the sections that are part of the HelloWorld module.
-
-|KIDLspecref_link|
-
-The purpose of the spec file is to define:
-
-* The inputs. For the HelloWorld module is a phrase.
-* The outputs. For the HelloWorld module is a phrase.
-* The functions. A default function will be created called run_{uid}HelloWorld - It will also be called an app or a method depending on context.
-
-Plan the Inputs, Outputs, and Functions
-```````````````````````````````````````````
-
-First, a look at the default spec file, ``{uid}HelloWorld.spec``.
-
-.. code:: text
-
-    /*
-       A KBase module: {uid}HelloWorld
-    */
-
-    module {uid}HelloWorld {
-        typedef structure {
-            string report_name;
-            string report_ref;
-        } ReportResults;
-
-       /*
-           This example function accepts any number of parameters and returns results in a KBaseReport
-       */
-       funcdef run_{uid}HelloWorld(mapping<string,UnspecifiedObject> params) returns (ReportResults output) authentication required;
-    };
-
-
-The spec file has two comments. Comments in KIDL start with a line with ``/*`` and end with a
-line with ``*/``. The first comment is ``A KBase module: {uid}HelloWorld`` and the second comment is
-``This example function accepts any number of parameters and returns results in a KBaseReport``.
-
-The definition of the module starts with ``module {uid}HelloWorld {`` and ends with ``};``
-
-Within the module definition is a ``typedef`` which can be used to define either inputs or outputs.
-By default, the output called 'ReportResults' is defined. It is used to send results back to the user.
-
-The module definition also has a ``funcdef`` which is used to define functions.
-The function ``run_{uid}HelloWorld`` has been defined. Functions can become apps that are exposed
-in the user interface or they can be internal functions used by other apps. As seen in steps below,
-the default ``run_{uid}HelloWorld`` function will be exposed as an app. Internal functions are
-often found in modules with 'Util' in their name (|ModuleCatalog_link|).
-
-The example module called |ContigFilter_link| goes through inputs, outputs, and functions in more detail.
-
-Add input and output
-```````````````````````
-
-The HelloWorld module will run without making any changes. This step is optional for the HelloWorld module.
-
-An input can be added to the HelloWorld spec file that captures a phrase the user inputs.
-In this example, we will call it parameter_1 and it will be a string.
-
-.. code:: text
-
-        typedef structure {
-            string parameter_1;
-        } InParams;
-
-We can also add an output string that is returned to the user. It will be added to the ReportResults
-and we will reuse parameter_1. Normally the input and output parameters are different types so they
-can't share a name. The spec file now has:
-
-.. code:: text
-
-    /*
-       A KBase module: {uid}HelloWorld
-    */
-
-    module {uid}HelloWorld {
-        typedef structure {
-            string parameter_1;
-        } InParams;
-        typedef structure {
-            string parameter_1;
-            string report_name;
-            string report_ref;
-        } ReportResults;
-
-       /*
-           This example function accepts any number of parameters and returns results in a KBaseReport
-       */
-       funcdef run_{uid}HelloWorld(mapping<string,UnspecifiedObject> params) returns (ReportResults output) authentication required;
-    };
-
-If you made any changes, return to your module's root directory and run ``make``.
-
-.. important::
-
-    You must rerun *make* after each change to the KIDL specification to regenerate client and server code used in the codebase.
-
-Refer to the |KIDLspec_link|  for details about function types.
-
-
-Validate your app
----------------------
-
-When you make changes to your KIDL ``{uid}HelloWorld.spec`` file, validate the syntax of your changes by running:
-
-.. code-block:: bash
-
-    $ kb-sdk validate
-
-
-If you get **WARNING** or **ERROR** messages similar to this:
-
-.. code:: text
-
-    **WARNINGS** - value "workspace_name" within path [behavior/service-mapping/input_mapping/0/target_property] in spec.json doesn't match any field of structure defined as argument type (InParams)
-
-or
-
-
-.. code:: text
-
-    **ERROR** - unknown method "your_method" defined within path [behavior/service-mapping/method] in spec.json
-
-
-you either have a typo or you need to add something to the Narrative user interface (next section).
-
 Edit the Narrative UI (optional)
 --------------------------------
 
@@ -178,8 +46,6 @@ directory that defines the user interface.
 This directory has two files ``spec.json`` and ``display.yaml``. The example module |ContigFilter_link|
 will go into more depth for these files.  The  |Documenting_link| page provides
 information on the purpose of the subdirectory ``img``.
-
-If you added input and output parameters to the spec file above, you can now add them to the Narrative UI.
 
 Now open up ``ui/narrative/methods/run_{uid}HelloWorld/spec.json``. This file is in JSON format and
 defines a mapping between our KIDL ``{uid}HelloWorld.spec`` file and how our parameters will show up in the app's user interface.
@@ -216,7 +82,7 @@ The ``display.yaml`` file is in YAML format and defines how your app will appear
 Examine the file found in ``ui/narrative/methods/printhelloworld/display.yaml``.
 View the |Documenting_link| page for more on the how this file is used.
 
-Finally, if you made any changes, run ``kb-sdk validate`` again and make sure it passes!
+Finally, if you made any changes, run ``kb-sdk validate`` and make sure it passes!
 Now we can start to work on the functionality of the app.
 
 .. note::
@@ -269,8 +135,7 @@ These are special SDK-generated annotations that we have to keep in the code to 
 correctly. If you run ``make`` again in the future, it will update the code outside these comments,
 but will not change the code you put between the ``#BEGIN`` and ``#END`` comments.
 
-Between the comments, add a simple print statement, such as: ``print ("Input parameter",params['parameter_1'])``. Then add the ``parameter_1`` to the output.
-This let us see what is getting passed into our method.
+Between the comments, add a simple print statement, such as: ``print ("Input parameter",params['parameter_1'])``.
 
 .. code-block:: python
 
@@ -281,7 +146,6 @@ This let us see what is getting passed into our method.
                                                 'text_message': params['parameter_1']},
                                                 'workspace_name': params['workspace_name']})
         output = {
-			'output': params['parameter_1'],
             'report_name': report_info['name'],
             'report_ref': report_info['ref'],
         }
@@ -314,7 +178,7 @@ Add a simple print statement to the end of the test method:
 
 .. code-block:: python
 
-    print ("Output parameter",ret[0]['output'])
+    print ("report_name", ret[0]['report_name'])
 
 .. note::
 
@@ -327,7 +191,7 @@ If you added the input and output parameters, the output should include the two 
 .. code:: text
 
     Input parameter Hello World!
-    Output parameter Hello World!
+    report_name report_675e061a-2fce-47aa-ac85-67e3ec975776
 
 When running an app, the messages created by the Impl file and the test will show up in the log.
 For this module, setting up the docker container will take the most time and generate the most lines in the log.

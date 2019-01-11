@@ -5,8 +5,8 @@ Apps on KBase, such as genome assemblers and annotators that run on narrative pa
 The user interface (UI) that users see in narratives and in the app catalog are defined in two files: 
 ``spec.json`` and ``display.yaml``. These two files are in a directory called ``ui/narrative/methods/<app_name>``
 where ``<app_name>`` is the name of the function that you want to turn into an app. In the example module,
-the directory  ``ui/narrative/methods/filter_contigs`` exists and you need to create a directory called
-``ui/narrative/methods/filter_contigs_max``.
+the directory  ``ui/narrative/methods/run_{uid}ContigFilter`` exists and you need to create a directory called
+``ui/narrative/methods/run_{uid}ContigFilter_max``.
 
 .. note::
 
@@ -17,18 +17,18 @@ View |UIspec_link| for more information and options.
 Update spec.json
 -----------------
 
-Copy the directory named ``ui/narrative/methods/filter_contigs`` and create a directory for the new app.
+Copy the directory named ``ui/narrative/methods/run_{uid}ContigFilter`` and create a directory for the new app.
 
 .. code-block:: bash
 
     # From your module's root directory:
     $ cd ui/narrative/methods/
-    $ cp -r filter_contigs filter_contigs_max
+    $ cp -r run_{uid}ContigFilter run_{uid}ContigFilter_max
 
 
-``filter_contigs_max`` matches the ``funcdef`` name we used in the KIDL ``module_name.spec`` file.
+``run_{uid}ContigFilter_max`` matches the ``funcdef`` name we used in the KIDL ``{uid}ContigFilter.spec`` file.
 
-Now open up ``ui/narrative/methods/filter_contigs_max/spec.json``. This file defines a mapping between our 
+Now open up ``ui/narrative/methods/run_{uid}ContigFilter_max/spec.json``. This file defines a mapping between our 
 KIDL ``.spec`` file and how our parameters will show up in the app's user interface.
 
 In the section under ``parameters``, there are two input parameters:
@@ -106,7 +106,7 @@ Edit the file to add the other input parameter ``max_length`` with similar value
 
 Notice that a comma was added to the end of the ``min_length`` parameter.
 
-Below parameters, in the section under ``behavior``, change ``filter_contigs`` to  ``filter_contigs_max``. Note that ``name`` is the name of the module and doesn't change and ``method`` is the name of the app.
+Below parameters, in the section under ``behavior``, change ``run_{uid}ContigFilter`` to  ``run_{uid}ContigFilter_max``. Note that ``name`` is the name of the module and doesn't change and ``method`` is the name of the app.
 
 .. code:: json
 
@@ -114,7 +114,7 @@ Below parameters, in the section under ``behavior``, change ``filter_contigs`` t
         "service-mapping": {
             "url": "",
             "name":"ContigFilter",
-            "method": "filter_contigs_max"
+            "method": "run_{uid}ContigFilter_max"
         }
     }
 
@@ -162,16 +162,20 @@ Add the ``max_length to the ``input_mapping``. The lines will look something lik
         }
     ]
 
-Make sure you include the commas after the min_length parameters. 
+Make sure you include the commas after the min_length parameters to maintain valid JSON syntax. We don't need to change the output section.
 
-We don't need to change the output section.
+When you make changes to UI files, you can validate the syntax of your changes by running:
 
-When you run ``kb-sdk validate`` again, you will get an error about your ``display.yaml``, which we will update next.
+.. code-block:: bash
+
+    $ kb-sdk validate
+
+When you run ``kb-sdk validate``, you will get an error about your ``display.yaml``, which we will update next.
 
 Update display.yaml
 -------------------
 
-The YAML file found in ``ui/narrative/methods/filter_contigs/display.yaml`` holds text content for your app. The text written here will show up in the narrative and in the  |Catalog_link| 
+The YAML file found in ``ui/narrative/methods/run_{uid}ContigFilter/display.yaml`` holds text content for your app. The text written here will show up in the narrative and in the  |Catalog_link| 
 for each form element. You only need to set this text for parameters that actually display in the form.
 
 .. note::

@@ -41,8 +41,8 @@ An example for our second filter contig app is below:
         Yes, we will use AssemblyUtils.assembly_to_fasta to produce FASTA file for Biopython
 
 - What parameters do I want users to be able to provide?
-    * ``min_lenght`` - An integer describing minimum length for contigs in the assembly
-    * ``max_lenght`` - A integer describing maximum length for contigs in the assembly
+    * ``min_length`` - An integer describing minimum length for contigs in the assembly
+    * ``max_length`` - A integer describing maximum length for contigs in the assembly
 
 - Does my app produce any KBase DataTypes?
     - If so, do I need a FileUtil to save the desired file format as a Workspace object?

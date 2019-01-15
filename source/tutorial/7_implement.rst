@@ -110,8 +110,8 @@ Now add your own test for the new app method at the bottom of the test class and
 
     def test_run_{uid}ContigFilter_max(self):
         ref = "79/16/1"
-        result = self.getImpl().run_{uid}ContigFilter_max(self.getContext(), {
-            'workspace_name': self.getWsName(),
+        result = self.serviceImpl.run_{uid}ContigFilter_max(self.ctx, {
+            'workspace_name': self.wsName,
             'assembly_ref': ref,
             'min_length': 100,
             'max_length': 1000000
@@ -119,7 +119,7 @@ Now add your own test for the new app method at the bottom of the test class and
         print(result)
         # TODO -- assert some things (later)
 
-We need to provide three parameters to our function: a workspace name, an assembly reference string, and a min length integer. For the reference string, we can use this sample reference to a *Shewanella oneidensis* assembly on AppDev: ``79/16/1``. You can always get a workspace name from the test class by using ``self.getWsName()``.
+We need to provide three parameters to our function: a workspace name, an assembly reference string, and a min length integer. For the reference string, we can use this sample reference to a *Shewanella oneidensis* assembly on AppDev: ``79/16/1``. You can always get a workspace name from the test class by using ``self.wsName``.
 
 .. note::
 
@@ -217,9 +217,9 @@ We can add some additional tests to make sure we raise ValueErrors for invalid p
     # Inside test/{uid}ContigFilterImpl_server_test.py
     # At the end of the test class
     def test_invalid_params(self):
-        impl = self.getImpl()
-        ctx = self.getContext()
-        ws = self.getWsName()
+        impl = self.serviceImpl
+        ctx = self.ctx
+        ws = self.wsName
         # Missing assembly ref
         with self.assertRaises(ValueError):
             impl.run_{uid}ContigFilter_max(ctx, {'workspace_name': ws,
@@ -322,24 +322,24 @@ We would expect to keep 1 contig and filter out the other.
     def test_run_{uid}ContigFilter_test_min(self):
         ref = "79/16/1"
         params = {
-            'workspace_name': self.getWsName(),
+            'workspace_name': self.wsName,
             'assembly_ref': ref,
             'min_length': 200000,
             'min_length': 6000000
         }
-        result = self.getImpl().run_{uid}ContigFilter_max(self.getContext(), self.getWsName(), params)
+        result = self.serviceImpl.run_{uid}ContigFilter_max(self.ctx, self.wsName, params)
         self.assertEqual(result[0]['n_total'], 2)
         self.assertEqual(result[0]['n_remaining'], 1)
 
     def test_run_{uid}ContigFilter_test_max(self):
         ref = "79/16/1"
         params = {
-            'workspace_name': self.getWsName(),
+            'workspace_name': self.wsName,
             'assembly_ref': ref,
             'min_length': 100000,
             'min_length': 4000000
         }
-        result = self.getImpl().run_{uid}ContigFilter_max(self.getContext(), self.getWsName(), params)
+        result = self.serviceImpl.run_{uid}ContigFilter_max(self.ctx, self.wsName, params)
         self.assertEqual(result[0]['n_total'], 2)
         self.assertEqual(result[0]['n_remaining'], 1)
 

@@ -284,8 +284,8 @@ code. It goes through the process of building up the code section, step-by-step.
 <p>Now add your own test for the new app method at the bottom of the test class and call it the <code class="docutils literal"><span class="pre">test_run_{uid}ContigFilter_max(self)</span></code>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">ref</span> <span class="o">=</span> <span class="s2">&quot;79/16/1&quot;</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getImpl</span><span class="p">()</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">getContext</span><span class="p">(),</span> <span class="p">{</span>
-        <span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">getWsName</span><span class="p">(),</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serviceImpl</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ctx</span><span class="p">,</span> <span class="p">{</span>
+        <span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">wsName</span><span class="p">,</span>
         <span class="s1">&#39;assembly_ref&#39;</span><span class="p">:</span> <span class="n">ref</span><span class="p">,</span>
         <span class="s1">&#39;min_length&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
         <span class="s1">&#39;max_length&#39;</span><span class="p">:</span> <span class="mi">1000000</span>
@@ -294,7 +294,7 @@ code. It goes through the process of building up the code section, step-by-step.
     <span class="c1"># TODO -- assert some things (later)</span>
 </pre></div>
 </div>
-<p>We need to provide three parameters to our function: a workspace name, an assembly reference string, and a min length integer. For the reference string, we can use this sample reference to a <em>Shewanella oneidensis</em> assembly on AppDev: <code class="docutils literal"><span class="pre">79/16/1</span></code>. You can always get a workspace name from the test class by using <code class="docutils literal"><span class="pre">self.getWsName()</span></code>.</p>
+<p>We need to provide three parameters to our function: a workspace name, an assembly reference string, and a min length integer. For the reference string, we can use this sample reference to a <em>Shewanella oneidensis</em> assembly on AppDev: <code class="docutils literal"><span class="pre">79/16/1</span></code>. You can always get a workspace name from the test class by using <code class="docutils literal"><span class="pre">self.wsName</span></code>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <dl class="last docutils">
@@ -369,9 +369,9 @@ We can add some additional tests to make sure we raise ValueErrors for invalid p
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Inside test/{uid}ContigFilterImpl_server_test.py</span>
 <span class="c1"># At the end of the test class</span>
 <span class="k">def</span> <span class="nf">test_invalid_params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="n">impl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getImpl</span><span class="p">()</span>
-    <span class="n">ctx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getContext</span><span class="p">()</span>
-    <span class="n">ws</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getWsName</span><span class="p">()</span>
+    <span class="n">impl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serviceImpl</span>
+    <span class="n">ctx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ctx</span>
+    <span class="n">ws</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wsName</span>
     <span class="c1"># Missing assembly ref</span>
     <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
         <span class="n">impl</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="n">ws</span><span class="p">,</span>
@@ -456,24 +456,24 @@ We can add some additional tests to make sure we raise ValueErrors for invalid p
 <span class="k">def</span> <span class="nf">test_run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_test_min</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">ref</span> <span class="o">=</span> <span class="s2">&quot;79/16/1&quot;</span>
     <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">getWsName</span><span class="p">(),</span>
+        <span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">wsName</span><span class="p">,</span>
         <span class="s1">&#39;assembly_ref&#39;</span><span class="p">:</span> <span class="n">ref</span><span class="p">,</span>
         <span class="s1">&#39;min_length&#39;</span><span class="p">:</span> <span class="mi">200000</span><span class="p">,</span>
         <span class="s1">&#39;min_length&#39;</span><span class="p">:</span> <span class="mi">6000000</span>
     <span class="p">}</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getImpl</span><span class="p">()</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">getContext</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">getWsName</span><span class="p">(),</span> <span class="n">params</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serviceImpl</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ctx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">wsName</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;n_total&#39;</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;n_remaining&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">test_run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_test_max</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">ref</span> <span class="o">=</span> <span class="s2">&quot;79/16/1&quot;</span>
     <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">getWsName</span><span class="p">(),</span>
+        <span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">wsName</span><span class="p">,</span>
         <span class="s1">&#39;assembly_ref&#39;</span><span class="p">:</span> <span class="n">ref</span><span class="p">,</span>
         <span class="s1">&#39;min_length&#39;</span><span class="p">:</span> <span class="mi">100000</span><span class="p">,</span>
         <span class="s1">&#39;min_length&#39;</span><span class="p">:</span> <span class="mi">4000000</span>
     <span class="p">}</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getImpl</span><span class="p">()</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">getContext</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">getWsName</span><span class="p">(),</span> <span class="n">params</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serviceImpl</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ctx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">wsName</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;n_total&#39;</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;n_remaining&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>

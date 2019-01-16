@@ -56,7 +56,8 @@ Module Description
 -------------------------------------------
 Now that we have a clear idea of what our apps will do, we can begin to build it. Because this example is used in training and is built by many users, the ``{uid}`` is added to make sure that your module has a unique
 name. However, you would not usually put your own username in the module name, and instead name it something like ``ContigFilter``.
- To get started, please run:
+
+To get started, please run:
 
 .. code-block:: bash
 

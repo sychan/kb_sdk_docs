@@ -22,8 +22,8 @@ Adding Reference Data to a KBase App
     volume. In addition, the reference data is separately versioned, so
     code-only updates to a module can be made without having to
     re-initialize the reference data. Please name the data in a format 
-    so that updates to the data will not overwrite the previous version of 
-    the data. For example `RefData-V1.gz` for the first version and
+    such that updates will not overwrite the previous version of 
+    the data. For example, `RefData-V1.gz` for the first version and
     `RefData-V2.gz` for the next version. This will ensure that previous
     versions of the app can still access the older reference data.
 

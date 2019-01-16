@@ -21,7 +21,11 @@ Adding Reference Data to a KBase App
     module is run at registration time to initialize the reference data
     volume. In addition, the reference data is separately versioned, so
     code-only updates to a module can be made without having to
-    re-initialize the reference data.
+    re-initialize the reference data. Please name the data in a format 
+    so that updates to the data will not overwrite the previous version of 
+    the data. For example `RefData-V1.gz` for the first version and
+    `RefData-V2.gz` for the next version. This will ensure that previous
+    versions of the app can still access the older reference data.
 
 Usage
 -----
@@ -71,6 +75,10 @@ There a few things to watch out for with reference data:
    data to be writeable when it executes, then you add code to the
    execution that copies the data into the writeable work area prior to
    running the underlying application.
+-  Reference data should be given a unique version identifier such as
+   `RefData_v1` and `RefData_v2`, so that when adding new reference data,
+   previous versions of the app will still have access to the reference 
+   data that they need.
 
 .. External links
 

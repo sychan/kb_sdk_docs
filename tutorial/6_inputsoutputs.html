@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7. Implement Code" href="implement.html" />
-    <link rel="prev" title="5. ContigFilter Example" href="setup.html" /> 
+    <link rel="next" title="7. Implement Code" href="7_implement.html" />
+    <link rel="prev" title="5. ContigFilter Example" href="5_setup.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -93,14 +93,14 @@
 </ul>
 <p class="caption"><span class="caption-text">Tutorial</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="install.html">2. Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="initialize.html">3. Initialize the Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="helloworld.html">4. Hello World Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup.html">5. ContigFilter Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_dependencies.html">1. Dependencies &amp; Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_initialize.html">3. Initialize the Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_helloworld.html">4. Hello World Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_setup.html">5. ContigFilter Example</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">6. Narrative User Interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implement.html">7. Implement Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="publish.html">8. Publish and Update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_implement.html">7. Implement Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_publish.html">8. Publish and Update</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Guides</span></p>
 <ul>
@@ -123,9 +123,11 @@
 </ul>
 <p class="caption"><span class="caption-text">References &amp; Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/design_checklist.html">Design Checklist</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/dev_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/execution_engine.html">Job Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/module_anatomy.html">Anatomy of a Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/KIDL_spec.html">KIDL Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/UI_spec.html">Narrative App UI Specification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/terminology.html">Terminology</a></li>
@@ -181,7 +183,7 @@
         
             
             
-              <a href="https://github.com/kbase/kb_sdk_docs/blob/blob/master/source/tutorial/inputsoutputs.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/kbase/kb_sdk_docs/blob/blob/master/source/tutorial/6_inputsoutputs.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -201,8 +203,8 @@
 The user interface (UI) that users see in narratives and in the app catalog are defined in two files:
 <code class="docutils literal notranslate"><span class="pre">spec.json</span></code> and <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code>. These two files are in a directory called <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/&lt;app_name&gt;</span></code>
 where <code class="docutils literal notranslate"><span class="pre">&lt;app_name&gt;</span></code> is the name of the function that you want to turn into an app. In the example module,
-the directory  <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/filter_contigs</span></code> exists and you need to create a directory called
-<code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/filter_contigs_max</span></code>.</p>
+the directory  <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/run_{uid}ContigFilter</span></code> exists and you need to create a directory called
+<code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/run_{uid}ContigFilter_max</span></code>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">For historical reasons, in the user interface, methods and apps are synonymous.</p>
@@ -210,14 +212,14 @@ the directory  <code class="docutils literal notranslate"><span class="pre">ui/n
 <p>View <a href="../references/UI_spec.html">Narrative App UI Specification</a> for more information and options.</p>
 <div class="section" id="update-spec-json">
 <h2>6.1. Update spec.json<a class="headerlink" href="#update-spec-json" title="Permalink to this headline">¶</a></h2>
-<p>Copy the directory named <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/filter_contigs</span></code> and create a directory for the new app.</p>
+<p>Copy the directory named <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/run_{uid}ContigFilter</span></code> and create a directory for the new app.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># From your module&#39;s root directory:</span>
 $ <span class="nb">cd</span> ui/narrative/methods/
-$ cp -r filter_contigs filter_contigs_max
+$ cp -r run_<span class="o">{</span>uid<span class="o">}</span>ContigFilter run_<span class="o">{</span>uid<span class="o">}</span>ContigFilter_max
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">filter_contigs_max</span></code> matches the <code class="docutils literal notranslate"><span class="pre">funcdef</span></code> name we used in the KIDL <code class="docutils literal notranslate"><span class="pre">module_name.spec</span></code> file.</p>
-<p>Now open up <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/filter_contigs_max/spec.json</span></code>. This file defines a mapping between our
+<p><code class="docutils literal notranslate"><span class="pre">run_{uid}ContigFilter_max</span></code> matches the <code class="docutils literal notranslate"><span class="pre">funcdef</span></code> name we used in the KIDL <code class="docutils literal notranslate"><span class="pre">{uid}ContigFilter.spec</span></code> file.</p>
+<p>Now open up <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/run_{uid}ContigFilter_max/spec.json</span></code>. This file defines a mapping between our
 KIDL <code class="docutils literal notranslate"><span class="pre">.spec</span></code> file and how our parameters will show up in the app’s user interface.</p>
 <p>In the section under <code class="docutils literal notranslate"><span class="pre">parameters</span></code>, there are two input parameters:</p>
 <div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -288,12 +290,12 @@ not the user, so we don’t need a form element for it.</p>
 </pre></div>
 </div>
 <p>Notice that a comma was added to the end of the <code class="docutils literal notranslate"><span class="pre">min_length</span></code> parameter.</p>
-<p>Below parameters, in the section under <code class="docutils literal notranslate"><span class="pre">behavior</span></code>, change <code class="docutils literal notranslate"><span class="pre">filter_contigs</span></code> to  <code class="docutils literal notranslate"><span class="pre">filter_contigs_max</span></code>. Note that <code class="docutils literal notranslate"><span class="pre">name</span></code> is the name of the module and doesn’t change and <code class="docutils literal notranslate"><span class="pre">method</span></code> is the name of the app.</p>
+<p>Below parameters, in the section under <code class="docutils literal notranslate"><span class="pre">behavior</span></code>, change <code class="docutils literal notranslate"><span class="pre">run_{uid}ContigFilter</span></code> to  <code class="docutils literal notranslate"><span class="pre">run_{uid}ContigFilter_max</span></code>. Note that <code class="docutils literal notranslate"><span class="pre">name</span></code> is the name of the module and doesn’t change and <code class="docutils literal notranslate"><span class="pre">method</span></code> is the name of the app.</p>
 <div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;service-mapping&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;ContigFilter&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;filter_contigs_max&quot;</span>
+        <span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;run_</span><span class="si">{uid}</span><span class="s2">ContigFilter_max&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -335,13 +337,16 @@ to an object in the workspace.</p>
 <span class="p">]</span>
 </pre></div>
 </div>
-<p>Make sure you include the commas after the min_length parameters.</p>
-<p>We don’t need to change the output section.</p>
-<p>When you run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">validate</span></code> again, you will get an error about your <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code>, which we will update next.</p>
+<p>Make sure you include the commas after the min_length parameters to maintain valid JSON syntax. We don’t need to change the output section.</p>
+<p>When you make changes to UI files, you can validate the syntax of your changes by running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kb-sdk validate
+</pre></div>
+</div>
+<p>When you run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">validate</span></code>, you will get an error about your <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code>, which we will update next.</p>
 </div>
 <div class="section" id="update-display-yaml">
 <h2>6.2. Update display.yaml<a class="headerlink" href="#update-display-yaml" title="Permalink to this headline">¶</a></h2>
-<p>The YAML file found in <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/filter_contigs/display.yaml</span></code> holds text content for your app. The text written here will show up in the narrative and in the  <a href="https://narrative.kbase.us/#appcatalog" target="_blank">App Catalog</a>
+<p>The YAML file found in <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/run_{uid}ContigFilter/display.yaml</span></code> holds text content for your app. The text written here will show up in the narrative and in the  <a href="https://narrative.kbase.us/#appcatalog" target="_blank">App Catalog</a>
 for each form element. You only need to set this text for parameters that actually display in the form.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -410,10 +415,10 @@ with the <a href="https://narrative.kbase.us/narrative/ws.30118.obj.1" target="_
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="implement.html" class="btn btn-neutral float-right" title="7. Implement Code" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="7_implement.html" class="btn btn-neutral float-right" title="7. Implement Code" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="setup.html" class="btn btn-neutral" title="5. ContigFilter Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="5_setup.html" class="btn btn-neutral" title="5. ContigFilter Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

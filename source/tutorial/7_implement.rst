@@ -325,7 +325,7 @@ We would expect to keep 1 contig and filter out the other.
             'workspace_name': self.getWsName(),
             'assembly_ref': ref,
             'min_length': 200000,
-            'min_length': 6000000
+            'max_length': 6000000
         }
         result = self.getImpl().run_{uid}ContigFilter_max(self.getContext(), self.getWsName(), params)
         self.assertEqual(result[0]['n_total'], 2)
@@ -337,7 +337,7 @@ We would expect to keep 1 contig and filter out the other.
             'workspace_name': self.getWsName(),
             'assembly_ref': ref,
             'min_length': 100000,
-            'min_length': 4000000
+            'max_length': 4000000
         }
         result = self.getImpl().run_{uid}ContigFilter_max(self.getContext(), self.getWsName(), params)
         self.assertEqual(result[0]['n_total'], 2)

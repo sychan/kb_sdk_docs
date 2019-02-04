@@ -369,30 +369,30 @@ based on contig length with both a min and a max filter.</p>
 <p class="last">The icon is completely optional but will come in handy when you get to the “Publish and Update” step. It will help you find your app in a sea of others that have the same name. The <a href="../references/UI_spec.html">Narrative App UI Specification</a> has more information on icons.</p>
 </div>
 <p>Moving down to the “parameters” section, the parameter entries for “assembly_ref” and “min_length” are filled in.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">assembly_ref</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">ui-name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Assembly to filter</span>
-        <span class="l l-Scalar l-Scalar-Plain">short-hint</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">parameters</span><span class="p">:</span>
+    <span class="nt">assembly_ref</span><span class="p">:</span>
+        <span class="nt">ui-name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Assembly to filter</span>
+        <span class="nt">short-hint</span><span class="p">:</span> <span class="p p-Indicator">|</span>
             <span class="no">Genome assembly with contiguous fragments</span>
-        <span class="l l-Scalar l-Scalar-Plain">long-hint</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+        <span class="nt">long-hint</span><span class="p">:</span> <span class="p p-Indicator">|</span>
             <span class="no">Genome assembly where we want to filter out fragments that are below a minimum</span>
-    <span class="l l-Scalar l-Scalar-Plain">min_length</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">ui-name</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+    <span class="nt">min_length</span><span class="p">:</span>
+        <span class="nt">ui-name</span><span class="p">:</span> <span class="p p-Indicator">|</span>
             <span class="no">Min contig length</span>
-        <span class="l l-Scalar l-Scalar-Plain">short-hint</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+        <span class="nt">short-hint</span><span class="p">:</span> <span class="p p-Indicator">|</span>
             <span class="no">Minimum required length of every contig in the assembly</span>
-        <span class="l l-Scalar l-Scalar-Plain">long-hint</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+        <span class="nt">long-hint</span><span class="p">:</span> <span class="p p-Indicator">|</span>
             <span class="no">All contigs will be filtered out of the assembly that are shorter than the given length</span>
 </pre></div>
 </div>
 <p>Edit the file and add the <code class="docutils literal notranslate"><span class="pre">max_length</span></code> parameter. The new lines might look like:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">...</span>
-    <span class="l l-Scalar l-Scalar-Plain">max_length</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">ui-name</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+    <span class="nt">max_length</span><span class="p">:</span>
+    <span class="nt">ui-name</span><span class="p">:</span> <span class="p p-Indicator">|</span>
         <span class="no">Maximum contig length</span>
-    <span class="l l-Scalar l-Scalar-Plain">short-hint</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+    <span class="nt">short-hint</span><span class="p">:</span> <span class="p p-Indicator">|</span>
         <span class="no">Maximum required length of every contig in the assembly</span>
-    <span class="l l-Scalar l-Scalar-Plain">long-hint</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+    <span class="nt">long-hint</span><span class="p">:</span> <span class="p p-Indicator">|</span>
         <span class="no">All contigs will be filtered out of the assembly that are longer than the given length</span>
 <span class="nn">...</span>
 </pre></div>
@@ -452,6 +452,7 @@ with the <a href="https://narrative.kbase.us/narrative/ws.30118.obj.1" target="_
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
 
   

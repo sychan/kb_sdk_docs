@@ -218,11 +218,7 @@ a read-only mount in /data at app execution time. An init mode for the
 module is run at registration time to initialize the reference data
 volume. In addition, the reference data is separately versioned, so
 code-only updates to a module can be made without having to
-re-initialize the reference data. Please name the data in a format
-such that updates will not overwrite the previous version of
-the data. For example, <cite>RefData-V1.gz</cite> for the first version and
-<cite>RefData-V2.gz</cite> for the next version. This will ensure that previous
-versions of the app can still access the older reference data.</p>
+re-initialize the reference data.</p>
 </div>
 </div>
 <div class="section" id="usage">
@@ -270,10 +266,6 @@ which could break reproducibility. If the app requires the reference
 data to be writeable when it executes, then you add code to the
 execution that copies the data into the writeable work area prior to
 running the underlying application.</li>
-<li>Reference data should be given a unique version identifier such as
-<cite>RefData_v1</cite> and <cite>RefData_v2</cite>, so that when adding new reference data,
-previous versions of the app will still have access to the reference
-data that they need.</li>
 </ul>
 </div>
 </div>
@@ -323,6 +315,7 @@ data that they need.</li>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
 
   

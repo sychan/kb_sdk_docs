@@ -115,7 +115,7 @@ Generate new security certificates:
 My Docker instances have run out of space
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Sometimes an error message might indicate that you’re out of space, you can check:
+Sometimes, an error message might indicate that you’re out of space. Run this check:
 
 .. code-block:: bash
 
@@ -123,21 +123,23 @@ Sometimes an error message might indicate that you’re out of space, you can ch
     $ ./run_bash.sh
     $ df -h
 
-There are a few methods you can use to free up space. Start conservatively but, fortunately,
-if you do end up needing a removed image it can be recreated or downloaded from DockerHub
+You can free up space by cleaning up containers, images, and volumes. If you end up needing a removed image or container, you can always download and recreate them later.
 
-Remove stopped containers:
-``docker container prune``
+Remove stopped containers ``docker container prune``
 
-Remove orphan images:
-``docker image prune``
-(Note: don't use ``-a`` flag unless you want to blow away ALL KBase images and have to download them again)
+Remove orphan images with ``docker image prune``
+
+.. note::
+
+    Don't use the ``-a`` flag unless you want to blow away ALL KBase images and have to download them again
 
 Remove local test images:
-``docker images | grep -e 'test/' -e ‘none’ | awk '{print $3}' | xargs docker rmi``
 
-If you encounter this error frequently, can also adjust the how much disk space is allocated to
-docker the same way you can modify the RAM allocation which is described in the following section.
+``docker images | grep -e 'test/' -e 'none' | awk '{print $3}' | xargs docker rmi``
+
+If you encounter this error frequently, adjust how much disk space is allocated
+to docker in docker's global preferences page (described in more detailed in the
+following section).
 
 My Docker container ran out of memory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -146,8 +148,11 @@ This is perhaps the hardest to debug because it occurs during a run and dies (al
 It will typically occur when handling (multiple) large workspace objects such as plant genomes.
 One way to figure out that it has happened is that the keyword "Killed" is printed.
 
-If you suspect that your container is running out of memory, you may adjust your Docker resource settings to alleviate the problem.
-If you go to the global preferences for Docker, and click on "Advanced", you can increase the amount of memory available to the containers.
+If you suspect that your container is running out of memory, you may adjust
+your Docker resource settings to alleviate the problem.
+
+Go to the global preferences for Docker and click on "Advanced". There, you
+can increase the amount of memory available to the containers.
 
 .. figure:: ../images/docker_advanced.png
     :align: center
@@ -158,9 +163,9 @@ If you go to the global preferences for Docker, and click on "Advanced", you can
 
 Error Messages
 ^^^^^^^^^^^^^^
-*Error*: KeyError: 'getpwuid()' uid not found: '
+*Error*: ``KeyError: 'getpwuid()' uid not found: '``
 
-*Solution*: Try changing the user in the run_tests and run_bash.sh (run_subjobs.sh if available) scripts in the test_local directory to `--user 0`. Alternatively, remove the user flag altogether.
+*Solution*: Try changing the user flag in ``run_tests.sh``, ``run_bash.sh``, and ``run_subjobs.sh`` (if available) in the ``test_local`` directory to ``--user 0``. Alternatively, remove that flag altogether.
 
 .. External links
 

@@ -17,23 +17,7 @@ When you try to run ``make sdkbase`` if you see a message like:
     make: *** [sdkbase] Error 1
 
 
-You likely have not started your Docker daemon. On a Mac, that means running in the Docker CLI shell after starting Docker Kitematic and clicking on "Docker CLI" in the lower left corner (See  |installSDK_link| for guidance). 
-
-Trying to run ``kb-sdk test`` and seeing errors that include "TLS-enabled daemon" and/or "docker daemon"
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-When you try to run ``kb-sdk test``, if you see a message like:
-
-::
-
-    Build Docker image
-    Post http:///var/run/docker.sock/v1.20/build?cgroupparent=&cpuperiod=0&cpuquota=0&cpusetcpus=&cpusetmems=&cpushares=0&dockerfile=Dockerfile&memory=0&memswap=0&rm=1&t=test%2Fkb_vsearch%3Alatest&ulimits=null: dial unix /var/run/docker.sock: no such file or directory.
-    * Are you trying to connect to a TLS-enabled daemon without TLS?
-    * Is your docker daemon up and running?
-
-You likely have not started your Docker daemon. On a Mac, that means
-running in the Docker CLI shell after starting Docker Kitematic and
-clicking on "Docker CLI" in the lower left corner (See |installSDK_link| for guidance).
+You likely have not started your Docker daemon. On a Mac, that means running in the Docker CLI shell after starting Docker Kitematic and clicking on "Docker CLI" in the lower left corner (See  |installSDK_link| for guidance).
 
 My code keeps disappearing. What happened to it?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -139,18 +123,21 @@ Sometimes an error message might indicate that you’re out of space, you can ch
     $ ./run_bash.sh
     $ df -h
 
-There are a few methods you can use to free up space
+There are a few methods you can use to free up space. Start conservatively but, fortunately,
+if you do end up needing a removed image it can be recreated or downloaded from DockerHub
+
 Remove stopped containers:
-``docker ps -a -f status=exited -q | xargs docker rm``
-
-Remove all old docker containers (with caution):
-``docker ps -a | tail -n+2 | cut -f1 -d " " | xargs docker rm -v``
-
-Remove images with 'kbase' or 'test/' or ‘none’
-``docker images | grep -e 'test/' -e '.kbase.us' -e ‘none’ | awk '{print $3}' | xargs docker rmi``
+``docker container prune``
 
 Remove orphan images:
-``docker rmi $(docker images -q --filter "dangling=true")``
+``docker image prune``
+(Note: don't use ``-a`` flag unless you want to blow away ALL KBase images and have to download them again)
+
+Remove local test images:
+``docker images | grep -e 'test/' -e ‘none’ | awk '{print $3}' | xargs docker rmi``
+
+If you encounter this error frequently, can also adjust the how much disk space is allocated to
+docker the same way you can modify the RAM allocation which is described in the following section.
 
 My Docker container ran out of memory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

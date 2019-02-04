@@ -12,3 +12,5 @@ sphinx = "*"
 sphinx-rtd-theme = "*"
 recommonmark = "*"
 rstcheck = "*"
+# Prevent this vulnerability: https://nvd.nist.gov/vuln/detail/CVE-2017-18342
+pyyaml = ">=4.2b1"

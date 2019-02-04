@@ -125,7 +125,7 @@ Sometimes, an error message might indicate that you’re out of space. Run this 
 
 You can free up space by cleaning up containers, images, and volumes. If you end up needing a removed image or container, you can always download and recreate them later.
 
-Remove stopped containers ``docker container prune``
+Remove stopped containers with ``docker container prune``
 
 Remove orphan images with ``docker image prune``
 

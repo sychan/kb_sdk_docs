@@ -55,11 +55,11 @@ When you run an app in a narrative, it runs in a docker container on KBase's ser
 
 .. |dockermac_link| raw:: html
 
-   <a href="https://www.docker.com/mac" target="_blank">https://www.docker.com/mac</a>
+   <a href="https://runnable.com/docker/install-docker-on-macos" target="_blank">https://runnable.com/docker/install-docker-on-macos</a>
 
 .. |dockerlinux_link| raw:: html
 
-   <a href="https://www.docker.com/linux" target="_blank">https://www.docker.com/linux</a>
+   <a href="https://runnable.com/docker/install-docker-on-linux" target="_blank">https://runnable.com/docker/install-docker-on-linux</a>
 
 .. |postInstall_link| raw:: html
 

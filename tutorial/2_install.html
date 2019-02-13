@@ -223,21 +223,9 @@ $ <span class="nb">echo</span> <span class="s2">&quot;export PATH=\$PATH:</span>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kb-sdk <span class="nb">help</span>
 </pre></div>
 </div>
-<div class="section" id="download-the-docker-image">
-<h2>2.1. Download the Docker Image<a class="headerlink" href="#download-the-docker-image" title="Permalink to this headline">¶</a></h2>
-<p>All KBase modules run in Docker containers.  Docker containers are built on top of existing base images.  KBase has
-a public base image that includes a number of installed runtimes, some basic bioinformatics tools, and other KBase-specific tools.
-To run this locally, you will need to download the base image.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kb-sdk sdkbase
-</pre></div>
-</div>
-<p>The image is fairly large, so it will take some time to download.  This step is required for running tests locally and
-should only be required during the initial installation.  However, KBase staff may occasionally require the base image
-to be updated in order to match any changes in the base image running in the production KBase platform.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">While the preceding steps are the recommended approach, it’s also possible to  <a href="../howtos/manual_build.html">build the SDK from source code. </a></p>
-</div>
 </div>
 </div>
 

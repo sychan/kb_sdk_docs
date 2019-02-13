@@ -33,25 +33,9 @@ Test the installation by running the kb-sdk help command.
    $ kb-sdk help
 
 
-Download the Docker Image
--------------------------------------------
-
-All KBase modules run in Docker containers.  Docker containers are built on top of existing base images.  KBase has 
-a public base image that includes a number of installed runtimes, some basic bioinformatics tools, and other KBase-specific tools.
-To run this locally, you will need to download the base image.
-
-.. code-block:: bash
-
-   $ kb-sdk sdkbase
-
-
-The image is fairly large, so it will take some time to download.  This step is required for running tests locally and
-should only be required during the initial installation.  However, KBase staff may occasionally require the base image
-to be updated in order to match any changes in the base image running in the production KBase platform.
-
 .. note::
 
-    While the preceding steps are the recommended approach, it's also possible to  |manual_link| 
+    While the preceding steps are the recommended approach, it's also possible to  |manual_link|
 
 .. Internal links
 

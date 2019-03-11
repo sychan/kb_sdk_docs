@@ -76,5 +76,5 @@ There a few things to watch out for with reference data:
 
 .. |RAST_link| raw:: html
 
-   <a href="https://github.com/kbaseapps/RAST\_SDK/blob/a975436d9c0af4f772bd7235b467180860f64060/scripts/entrypoint.sh#L18-L28" target="_blank">RAST application  </a>
+   <a href="https://github.com/kbaseapps/RAST_SDK/blob/a975436d9c0af4f772bd7235b467180860f64060/scripts/entrypoint.sh#L18-L28" target="_blank">RAST application  </a>
 

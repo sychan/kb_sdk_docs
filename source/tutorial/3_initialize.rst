@@ -17,13 +17,13 @@ The basic options of the command are:
 
     $ kb-sdk init [--example] [--verbose] [--language language] [--user username] ModuleName
 
-where ``ModuleName`` must be unique across all SDK modules registered in KBase. For example,
+where ``ModuleName`` must be unique across all SDK modules registered in KBase. You'll be using the variables ``your_kbase_user_name`` and ``uid`` multiple times throughout this tutorial, so for convenience, define these variables (e.g. ``your_kbase_user_name=jane.smith`` and ``uid=jsmith``). For example,
 bootstrapping the HelloWorld module will start with:
 
 
 .. code-block:: bash
 
-    kb-sdk init --language python --user {your_kbase_user_name} {uid}HelloWorld
+    kb-sdk init --language python --user ${your_kbase_user_name} ${uid}HelloWorld
 
 
 This creates a directory called ``{uid}HelloWorld`` in your current directory where ``{uid}`` is your name/id 

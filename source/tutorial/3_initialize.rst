@@ -19,7 +19,7 @@ The basic options of the command are:
 
 where ``ModuleName`` must be unique across all SDK modules registered in KBase. You'll be using the variables 
 ``your_kbase_user_name`` and ``uid`` multiple times throughout this tutorial, so for convenience, define these 
-variables: ```your_kbase_user_name=jane.smith``` and ```uid=jsmith```). 
+variables: ``your_kbase_user_name=jane.smith`` and ``uid=jsmith``). 
 
 For example, bootstrapping the HelloWorld module will start with:
 

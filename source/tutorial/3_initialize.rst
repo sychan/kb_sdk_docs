@@ -15,19 +15,17 @@ The basic options of the command are:
 
 .. code-block:: bash
 
-    $ kb-sdk init [--example] [--verbose] [--language language] [--user username] ModuleName
+    $ kb-sdk init [--example] [--verbose] [--language language] [--user your_kbase_user_name] module_name
 
-where ``ModuleName`` must be unique across all SDK modules registered in KBase. You'll be using the variables 
+where ``module_name`` must be unique across all SDK modules registered in KBase. You'll be using the variables 
 ``your_kbase_user_name`` and ``uid`` multiple times in this tutorial, so for convenience, define these 
-variables: ``your_kbase_user_name=jane.smith`` and ``uid=jsmith``). You'll also be using the variable ``module_name`` in this tutorial, but it will change depending on the different tutorial examples - first you can define it as ``module_name=HelloWorld``.
+variables: ``your_kbase_user_name=jane.smith`` and ``uid=jsmith``). You'll also be using the variable ``module_name`` in this tutorial, but it will change depending on the different examples - first you can define it as ``module_name=HelloWorld``.
 
-For example, bootstrapping the HelloWorld module will start with:
-
+Assuming the ``your_kbase_user_name``, ``uid``, and ``module_name`` variables are defined, bootstrapping the HelloWorld module will start with:
 
 .. code-block:: bash
 
-    kb-sdk init --language python --user ${your_kbase_user_name} ${uid}HelloWorld
-
+    kb-sdk init --language python --user ${your_kbase_user_name} ${uid}${module_name}
 
 This creates a directory called ``{uid}HelloWorld`` in your current directory where ``{uid}`` is your name/id 
 that will make your copy of HelloWorld unique. The newly created directory has all of 
@@ -40,7 +38,7 @@ You can set your programming language to any of Python, Perl, or Java; for this 
 
 The ``kb-sdk init`` options are:
 
-.. code::
+.. code:: bash
 
     -v, --verbose    Show verbose output about which files and directories
                      are being created.
@@ -62,8 +60,7 @@ Build the Module
 
 .. code-block:: bash
 
-    $ cd module_name
-    $ make
+    $ cd ${uid}${module_name} && make
 
 The ``make`` command will run some initial code generation.
 
@@ -72,18 +69,18 @@ Module Highlights
 
 This module template has the following that you will customize in later steps:
 
-#. A directory called ``module_name`` (see |anatomy_link| for more on the directory structure)
+#. A base directory called ``{uid}{module_name}`` (see |anatomy_link| for more on the directory structure)
 #. A description of the module, its version, and the authors in ``kbase.yml``
-#. A specification file that defines the inputs, output, and functions for the module ``module_name.spec``. 
-#. A script with code for running all the apps in the module called ``module_nameImpl.py``
-#. Specifications for the user interface in the files ``spec.json`` and ``display.yaml``. 
+#. A specification file that defines the inputs, output, and functions for the module ``{module_name}.spec``. 
+#. A script with code for running all the apps in the module called ``lib/{uid}{module_name}/{uid}{module_name}Impl.py``
+#. Specifications for the user interface in the files ``ui/narrative/methods/run_{ui}{module_name}/spec.json`` and ``ui/narrative/methods/run_{ui}{module_name}/display.yaml``. 
 
 The input/output/function specification is written in an interface definition language |KIDL_link|  
 that is specific to KBase. The kbase.yml and display.yaml are in 
 YAML format - https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html. YAML format checkers are available online. 
 The spec.json is in JSON format - https://www.w3schools.com/js/js_json_syntax.asp. JSON format checkers are available online.
 
-Don't worry the location of these files. They will be discussed in more detail in later steps.
+Don't worry about the location of these files; this will be discussed in more detail later in the tutorial.
 
 Create a GitHub Repo
 ---------------------

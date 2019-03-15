@@ -18,8 +18,8 @@ The basic options of the command are:
     $ kb-sdk init [--example] [--verbose] [--language language] [--user username] ModuleName
 
 where ``ModuleName`` must be unique across all SDK modules registered in KBase. You'll be using the variables 
-``your_kbase_user_name`` and ``uid`` multiple times throughout this tutorial, so for convenience, define these 
-variables: ``your_kbase_user_name=jane.smith`` and ``uid=jsmith``). 
+``your_kbase_user_name`` and ``uid`` multiple times in this tutorial, so for convenience, define these 
+variables: ``your_kbase_user_name=jane.smith`` and ``uid=jsmith``). You'll also be using the variable ``module_name`` in this tutorial, but it will change depending on the different tutorial examples - first you can define it as ``module_name=HelloWorld``.
 
 For example, bootstrapping the HelloWorld module will start with:
 

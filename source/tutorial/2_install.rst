@@ -33,6 +33,13 @@ Test the installation by running the kb-sdk help command.
    $ kb-sdk help
 
 
+List the kb-sdk version to ensure that the latest image is used.
+
+.. code-block:: bash
+
+   $ kb-sdk version
+
+
 .. note::
 
     While the preceding steps are the recommended approach, it's also possible to  |manual_link|

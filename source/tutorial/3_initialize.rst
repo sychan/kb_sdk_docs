@@ -86,7 +86,7 @@ Don't worry about the location of these files; this will be discussed in more de
 Create a GitHub Repo
 ---------------------
 
-You will need to publish your code to a public git repository to make it available for building into a custom Docker Image.  Here we'll show a brief example using GitHub.  If following the tutorial step-by-step, you should already be working in the correct directory (i.e. the same directory as where you ran the ``make`` command). First, commit your codebase into a local git repository. Then, ``git add`` all files created by kb-sdk and commit. This creates a git repository locally. Also, ``git commit -m 'Initial commit'`` to indicate a message with this first commit.
+You will need to publish your code to a public git repository to make it available for building into a custom Docker Image.  Here we'll show a brief example using GitHub.  If following the tutorial step-by-step, you should already be working in the correct directory (i.e. the same directory as where you ran the ``make`` command). First, commit your codebase into a local git repository. Then, ``git add`` all files created by kb-sdk and commit. This creates a git repository locally. Also, ``git commit -m 'Initial commit'`` to write a message describing this first commit.
 
 .. code:: bash
 
@@ -128,7 +128,7 @@ token is only visible on the screen for 5 minutes so make sure you are ready to 
 From the module's root directory, copy and paste that token into ``test_local/test.cfg`` in the value 
 for ``test_token``. For example:
 
-.. code::
+.. code:: bash
 
     test_token=JQGGVCPKCAB2XYHRHZV4H3NF4TN3YEUSA
 

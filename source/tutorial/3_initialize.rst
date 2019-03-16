@@ -25,7 +25,7 @@ Assuming the ``your_kbase_user_name``, ``uid``, and ``module_name`` variables ar
 
 .. code-block:: bash
 
-    kb-sdk init --language python --user ${your_kbase_user_name} ${uid}${module_name}
+    $ kb-sdk init --language python --user ${your_kbase_user_name} ${uid}${module_name}
 
 This creates a directory called ``{uid}HelloWorld`` in your current directory where ``{uid}`` is your name/id 
 that will make your copy of HelloWorld unique. The newly created directory has all of 
@@ -60,7 +60,8 @@ Build the Module
 
 .. code-block:: bash
 
-    $ cd ${uid}${module_name} && make
+    $ cd ${uid}${module_name}
+    $ make
 
 The ``make`` command will run some initial code generation.
 
@@ -85,17 +86,17 @@ Don't worry about the location of these files; this will be discussed in more de
 Create a GitHub Repo
 ---------------------
 
-You will need to publish your code to a public git repository to make it available for building into a custom Docker Image.  Here we'll show a brief example using GitHub.  First, commit your codebase into a local git repository. Then, ``git add`` all files created by kb-sdk and commit. This creates a git repository locally.
+You will need to publish your code to a public git repository to make it available for building into a custom Docker Image.  Here we'll show a brief example using GitHub.  If following the tutorial step-by-step, you should already be working in the correct directory (i.e. the same directory as where you ran the ``make`` command). First, commit your codebase into a local git repository. Then, ``git add`` all files created by kb-sdk and commit. This creates a git repository locally. Also, ``git commit -m 'Initial commit'`` to indicate a message with this first commit.
 
 .. code:: bash
 
-    $ cd MyModule
+    $ cd ${uid}${module_name} #only needed if not already in the correct location
     $ git init
     $ git add .
     $ git commit -m 'Initial commit'
 
 
-Now, create a new GitHub repository on github.com (it can be in your personal GitHub account or in an organization, but it must be public). Make sure your github repository is initially empty (don't add an initial README.md).
+Now, create a new GitHub repository on github.com (it can be in your personal GitHub account or in an organization, but it must be public). As above, for convenience define ``github_user_name`` as a variable, for example ``github_user_name=jsmith10``. Make sure your github repository is initially empty (don't add an initial README.md).
 
 * Direct link to create a repo on github.  |github_link|.
 * Github documentation about creating repos: |github_help_link|.
@@ -104,7 +105,7 @@ Sync your local codebase to your repository on github:
 
 .. code:: bash
 
-    $ git remote add origin https://github.com/[GITHUB_USER_OR_ORG_NAME]/[GITHUB_MODULE_NAME].git
+    $ git remote add origin https://github.com/${github_user_name}/${uid}${module_name}.git
     $ git push -u origin master
 
 
@@ -131,7 +132,7 @@ for ``test_token``. For example:
 
     test_token=JQGGVCPKCAB2XYHRHZV4H3NF4TN3YEUSA
 
-Where you substitute your own test_token. This one is unauthorized.
+Where you substitute your own test_token. The above listed token is unauthorized.
 
 .. External links
 

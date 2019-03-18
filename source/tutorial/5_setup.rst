@@ -129,12 +129,12 @@ We also should add a little description about our new function in a comment that
         /*
             Example app which filters contigs in an assembly using both a minimum contig length
         */
-        funcdef run{uid}ContigFilter(mapping<string,UnspecifiedObject> params) returns (ReportResults output) authentication required;
+        funcdef run_{uid}ContigFilter(mapping<string,UnspecifiedObject> params) returns (ReportResults output) authentication required;
 
         /*
             New app which filters contigs in an assembly using both a minimum and a maximum contig length
         */
-        funcdef run{uid}ContigFilter_max(mapping<string,UnspecifiedObject> params) returns (ReportResults output) authentication required;
+        funcdef run_{uid}ContigFilter_max(mapping<string,UnspecifiedObject> params) returns (ReportResults output) authentication required;
 
     };
 

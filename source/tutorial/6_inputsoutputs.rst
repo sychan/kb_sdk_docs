@@ -10,7 +10,7 @@ the directory  ``ui/narrative/methods/run_{uid}ContigFilter`` exists and you nee
 
 .. note::
 
-    For historical reasons, in the user interface, methods and apps are synonymous. 
+    For historical reasons, in the user interface, modules and apps are synonymous. 
 
 View |UIspec_link| for more information and options.
 
@@ -23,7 +23,7 @@ Copy the directory named ``ui/narrative/methods/run_{uid}ContigFilter`` and crea
 
     # From your module's root directory:
     $ cd ui/narrative/methods/
-    $ cp -r run_{uid}ContigFilter run_{uid}ContigFilter_max
+    $ cp -r run_${uid}ContigFilter run_${uid}ContigFilter_max
 
 
 ``run_{uid}ContigFilter_max`` matches the ``funcdef`` name we used in the KIDL ``{uid}ContigFilter.spec`` file.
@@ -129,6 +129,10 @@ parameters.
             {
                 "narrative_system_variable": "workspace",
                 "target_property": "workspace_name"
+            },
+            {
+                "narrative_system_variable": "workspace_id",
+                "target_property": "workspace_id"
             },
             {
                 "input_parameter": "assembly_input_ref",

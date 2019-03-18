@@ -10,7 +10,7 @@ the directory  ``ui/narrative/methods/run_{uid}ContigFilter`` exists and you nee
 
 .. note::
 
-    For historical reasons, in the user interface, modules and apps are synonymous. 
+    For historical reasons, in the user interface, methods, modules and apps are synonymous. 
 
 View |UIspec_link| for more information and options.
 

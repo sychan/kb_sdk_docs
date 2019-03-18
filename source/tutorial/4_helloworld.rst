@@ -152,7 +152,7 @@ Between the comments, add a simple print statement, such as: ``print ("Input par
         #END run_{uid}HelloWorld
 
 
-Don't try to change the docstring, or anything else outside the ``BEGIN run_{uid}HelloWorld`` and ``END run_{uid}HelloWorld`` comments, as your change will get overwritten by the ``make`` command.
+Don't try to change the docstring, or anything else outside the ``#BEGIN run_{uid}HelloWorld`` and ``#END run_{uid}HelloWorld`` comments, as your change will get overwritten by the ``make`` command.
 
 Run First Test
 ---------------------

@@ -138,7 +138,7 @@ We also should add a little description about our new function in a comment that
 
     };
 
-Now return to your module's root directory and run ``make``. With that complete, it's time to specify the user interface for the new app.
+Now return to your module's root directory (you may already be there if following the tutorial) and run ``make``. With that complete, it's time to specify the user interface for the new app.
 
 .. important::
 

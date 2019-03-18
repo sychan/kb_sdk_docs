@@ -102,7 +102,7 @@ This "Implementation" file defines the Python methods available in the module. A
 defined in the spec file correspond to Python methods
 and they are part of the class inside ``{uid}HelloWorldImpl.py``.
 
-Much of the Implementation file is auto-generated based on the spec file. The ``make`` command updates the Implementation file. To separate auto-generated code from developer code, developer code belongs between ``#BEGIN`` and ``#END`` comments. For example:
+Much of the Implementation file is auto-generated based on the spec file. The ``make`` command updates the Implementation file. To separate auto-generated code from developer code, developer code belongs between sets of ``#BEGIN`` and ``#END`` comments. For example:
 
 .. code-block:: python
 

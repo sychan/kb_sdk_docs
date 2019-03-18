@@ -79,7 +79,7 @@ narrative, the ``workspace`` and the ``workspace_id``. When these are passed to 
 the ``workspace`` from the Narrative is passed as ``workspace_name`` to Python.
 
 The ``display.yaml`` file is in YAML format and defines how your app will appear in the |AppCatalog_link|.
-Examine the file found in ``ui/narrative/methods/printhelloworld/display.yaml``.
+Examine the file found in ``ui/narrative/methods/run_{uid}HelloWorld/display.yaml``.
 View the |Documenting_link| page for more on the how this file is used.
 
 Finally, if you made any changes, run ``kb-sdk validate`` and make sure it passes!

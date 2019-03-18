@@ -215,17 +215,18 @@ Moving down to the "parameters" section, the parameter entries for "assembly_ref
 .. code-block:: yaml
 
     parameters:
-        assembly_ref:
-            ui-name: Assembly to filter
+        assembly_input_ref:
+            ui-name: |
+                Assembly
             short-hint: |
-                Genome assembly with contiguous fragments
+                The assembly to filter (will be overwritten)
             long-hint: |
                 Genome assembly where we want to filter out fragments that are below a minimum
         min_length:
             ui-name: |
-                Min contig length
+                Min Length Threshold
             short-hint: |
-                Minimum required length of every contig in the assembly
+                All contigs below this length will be removed
             long-hint: |
                 All contigs will be filtered out of the assembly that are shorter than the given length
 

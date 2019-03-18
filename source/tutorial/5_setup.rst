@@ -42,7 +42,7 @@ An example for our second filter contig app is below:
 
 - What parameters do I want users to be able to provide?
     * ``min_length`` - An integer describing minimum length for contigs in the assembly
-    * ``max_length`` - A integer describing maximum length for contigs in the assembly
+    * ``max_length`` - An integer describing maximum length for contigs in the assembly
 
 - Does my app produce any KBase DataTypes?
     - If so, do I need a FileUtil to save the desired file format as a Workspace object?

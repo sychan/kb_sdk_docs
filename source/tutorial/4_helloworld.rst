@@ -94,11 +94,11 @@ After validation, now we can start to work on the functionality of the app.
 Code Implementation
 -------------------
 
-The actual code for your app will live in the python package under ``lib/{uid}HelloWorld``.
+The actual code for your app will live in the Python package under ``lib/{uid}HelloWorld``.
 The entry point, where your code is initially called, lives in the file: ``lib/{uid}HelloWorld/{uid}HelloWorldImpl.py``.
 It is sometimes called the "Implementation" file or simply the "Impl" file.  This is the file where you edit your own Python code.
 
-This "Implementation" file defines the python methods available in the module. All of the functions
+This "Implementation" file defines the Python methods available in the module. All of the functions
 defined in the spec file correspond to Python methods
 and they are part of the class inside ``{uid}HelloWorldImpl.py``.
 

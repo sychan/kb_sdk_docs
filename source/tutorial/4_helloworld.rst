@@ -11,6 +11,7 @@ For this example substitute your name/id for {uid} and use:
     cd {uid}HelloWorld
     make
 
+Note: if running this tutorail step-by-step then you have already initialized a repository {uid}HelloWorld.
 
 The setup for the module includes:
 

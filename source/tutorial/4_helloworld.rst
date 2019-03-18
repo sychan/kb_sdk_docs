@@ -127,10 +127,10 @@ The ``make`` command preserves everything between the ``#BEGIN`` and ``#END`` co
 Check Inputs (optional)
 -----------------------
 
-Open ``{uid}HelloWorldImpl.py`` and find the ``run_{uid}Helloworld`` method, which should have some auto-generated boilerplate code and docstrings.
+Open ``{uid}HelloWorldImpl.py`` and find the ``run_{uid}HelloWorld`` method, which should have some auto-generated boilerplate code and docstrings.
 
-You want to limit your code edits to regions between the comments ``#BEGIN run_{uid}Helloworld``
-and ``#END run_{uid}Helloworld``.
+You want to limit your code edits to regions between the comments ``#BEGIN run_{uid}HelloWorld``
+and ``#END run_{uid}HelloWorld``.
 These are special SDK-generated annotations that we have to keep in the code to get everything to compile
 correctly. If you run ``make`` again in the future, it will update the code outside these comments,
 but will not change the code you put between the ``#BEGIN`` and ``#END`` comments.
@@ -152,7 +152,7 @@ Between the comments, add a simple print statement, such as: ``print ("Input par
         #END run_{uid}HelloWorld
 
 
-Don't try to change the docstring, or anything else outside the ``BEGIN run_{uid}Helloworld`` and ``END run_{uid}Helloworld`` comments, as your change will get overwritten by the ``make`` command.
+Don't try to change the docstring, or anything else outside the ``BEGIN run_{uid}HelloWorld`` and ``END run_{uid}HelloWorld`` comments, as your change will get overwritten by the ``make`` command.
 
 Run First Test
 ---------------------
@@ -185,7 +185,7 @@ Add a simple print statement to the end of the test method:
     Make sure that you have put your developer token in the ``test_local/test.cfg`` as mentioned in the
     |Initialize_link|
 
-Run ``kb-sdk test`` and, if everything works, you'll see the docker container boot up, the ``run_{uid}Helloworld`` method will get called, and you will see some printed output.
+Run ``kb-sdk test`` and, if everything works, you'll see the docker container boot up, the ``run_{uid}HelloWorld`` method will get called, and you will see some printed output.
 If you added the input and output parameters, the output should include the two lines.
 
 .. code:: text

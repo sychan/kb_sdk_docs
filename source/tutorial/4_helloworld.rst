@@ -11,7 +11,7 @@ For this example substitute your name/id for {uid} and use:
     cd {uid}HelloWorld
     make
 
-Note: if running this tutorail step-by-step then you have already initialized a repository {uid}HelloWorld.
+Note: if running this tutorial step-by-step then you have already initialized a repository {uid}HelloWorld.
 
 The setup for the module includes:
 
@@ -40,7 +40,7 @@ Edit the Narrative UI (optional)
 --------------------------------
 
 The specifications for the app's Narrative user interface are under the directory named
-``/ui/narrative/methods/run_{uid}HelloWorld``. Note that the name of the directory is the same as
+``ui/narrative/methods/run_{uid}HelloWorld``. Note that the name of the directory is the same as
 the name of the function in the spec file above. Functions that become user-facing apps need a
 directory that defines the user interface.
 

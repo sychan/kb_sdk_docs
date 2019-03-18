@@ -7,11 +7,11 @@ For this example substitute your name/id for {uid} and use:
 
 .. code-block:: bash
 
-    kb-sdk init --language python --user {your_kbase_user_name} {uid}HelloWorld
-    cd {uid}HelloWorld
+    kb-sdk init --language python --user ${your_kbase_user_name} ${uid}${module_name}
+    cd ${uid}HelloWorld
     make
 
-Note: if running this tutorial step-by-step then you have already initialized a repository {uid}HelloWorld.
+Note: if running this tutorial step-by-step then you have already declared ``your_kbase_user_name`` and ``uid`` as variables and initialized a repository named {uid}HelloWorld.
 
 The setup for the module includes:
 

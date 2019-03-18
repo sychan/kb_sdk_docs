@@ -115,8 +115,8 @@ Much of the Implementation file is auto-generated based on the spec file. The ``
         #BEGIN_CONSTRUCTOR
         #END_CONSTRUCTOR
 
-        #BEGIN run_printHelloWorld
-        #END run_printHelloWorld
+        #BEGIN run_jsmithHelloWorld
+        #END run_jsmithHelloWorld
 
 The ``make`` command preserves everything between the ``#BEGIN`` and ``#END`` comments and replaces everything else.
 

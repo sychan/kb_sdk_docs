@@ -58,7 +58,7 @@ In the section ``parameters`` already defines ``parameter_1``:
         "parameters": [
             {
                 "id": "parameter_1",
-                "optional": false,
+                "optional": true,
                 "advanced": false,
                 "allow_multiple": false,
                 "default_values": [ "" ],

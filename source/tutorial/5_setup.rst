@@ -14,7 +14,7 @@ The setup for the "ContigFilter" module includes:
 #. Specify inputs, outputs, and functions of the module
 
 For this tutorial, we will be looking at the app ``run_{uid}ContigFilter``. The app takes as inputs, an ``assembly file`` and applies
-a ``minimum length`` filter to the contigs. **The exercise below creates a second app that filter the contigs by a ``maximum_length``**
+a ``minimum length`` filter to the contigs. **The exercise below creates a second app that filters the contigs by a ``maximum_length``**
 
 App Design Checklist
 -------------------------------------------

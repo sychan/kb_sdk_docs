@@ -156,7 +156,7 @@ Now return to your module's root directory and run ``make``. With that complete,
 
 .. |helloWorld_link| raw:: html
 
-   <a href="helloworld.html">Hello World</a>
+   <a href="../tutorial/4_helloworld.html">Hello World</a>
 
 .. |KIDL_link| raw:: html
 

@@ -83,7 +83,7 @@ Examine the file found in ``ui/narrative/methods/run_{uid}HelloWorld/display.yam
 View the |Documenting_link| page for more on the how this file is used.
 
 Finally, if you made any changes, run ``kb-sdk validate`` from the base of your app directory (e.g., run_{uid}HelloWorld) and make sure it passes!
-Now we can start to work on the functionality of the app.
+After validation, now we can start to work on the functionality of the app.
 
 .. note::
 

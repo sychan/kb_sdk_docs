@@ -48,7 +48,7 @@ will go into more depth for these files.  The  |Documenting_link| page provides
 information on the purpose of the subdirectory ``img``.
 
 Now open up ``ui/narrative/methods/run_{uid}HelloWorld/spec.json``. This file is in JSON format and
-defines a mapping between our KIDL ``{uid}HelloWorld.spec`` file and how our parameters will show up in the app's user interface.
+defines a mapping between our KBase Interface Description Language (KIDL) ``{uid}HelloWorld.spec`` file and how our parameters will show up in the app's user interface.
 
 In the section ``parameters`` already defines ``parameter_1``:
 

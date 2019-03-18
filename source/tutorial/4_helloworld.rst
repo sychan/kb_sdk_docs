@@ -133,7 +133,7 @@ You want to limit your code edits to regions between the comments ``#BEGIN run_{
 and ``#END run_{uid}HelloWorld``.
 These are special SDK-generated annotations that we have to keep in the code to get everything to compile
 correctly. If you run ``make`` again in the future, it will update the code outside these comments,
-but will not change the code you put between the ``#BEGIN`` and ``#END`` comments.
+but will not change the code you put between the sets of ``#BEGIN`` and ``#END`` comments.
 
 Between the comments, add a simple print statement, such as: ``print ("Input parameter",params['parameter_1'])``.
 

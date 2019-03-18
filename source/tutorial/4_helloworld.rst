@@ -3,6 +3,8 @@ Hello World Example
 
 This "Hello World" example demonstrates where various components of the SDK are located and how to run a basic test. Most of this example is optional. The |ContigFilter_link| example adds more features of the SDK.
 
+Note: if running this tutorial step-by-step then you have already declared ``your_kbase_user_name`` and ``uid`` as variables and initialized a repository named {uid}HelloWorld. If not, then substitute your name/id for {your_kbase_user_name} and {uid} , or alternatively
+
 For this example substitute your name/id for {uid} and use:
 
 .. code-block:: bash
@@ -11,7 +13,6 @@ For this example substitute your name/id for {uid} and use:
     cd ${uid}HelloWorld
     make
 
-Note: if running this tutorial step-by-step then you have already declared ``your_kbase_user_name`` and ``uid`` as variables and initialized a repository named {uid}HelloWorld.
 
 The setup for the module includes:
 

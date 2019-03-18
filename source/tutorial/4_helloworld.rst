@@ -205,21 +205,21 @@ The next example includes a report builder that is used by the Narrative User In
 
 .. |AppSpec_link| raw:: html
 
-  <a href="https://narrative.kbase.us/narrative/ws.28370.obj.1" target="_blank">App Spec Editor Narrative </a>
+   <a href="https://narrative.kbase.us/narrative/ws.28370.obj.1" target="_blank">App Spec Editor Narrative </a>
 
 .. |ModuleCatalog_link| raw:: html
 
-  <a href="https://narrative.kbase.us/#catalog/modules" target="_blank">Module Catalog </a>
+   <a href="https://narrative.kbase.us/#catalog/modules" target="_blank">Module Catalog </a>
 
 .. |AppCatalog_link| raw:: html
 
-  <a href="https://narrative.kbase.us/#appcatalog" target="_blank">App Catalog </a>
+   <a href="https://narrative.kbase.us/#appcatalog" target="_blank">App Catalog </a>
 
 .. Internal links
 
 .. |ContigFilter_link| raw:: html
 
-   <a href="setup.html">ContigFilter</a>
+   <a href="../tutorial/5_setup.html">ContigFilter</a>
 
 .. |KIDLspecref_link| raw:: html
 
@@ -231,15 +231,13 @@ The next example includes a report builder that is used by the Narrative User In
 
 .. |Initialize_link| raw:: html
 
-  <a href="../tutorial/initialize.html">Initialize the Module </a>
+   <a href="../tutorial/3_initialize.html">Initialize the Module</a>
 
 .. |UISpec_link| raw:: html
 
-  <a href="../references/UI_spec.html">UI specification guide </a>
+   <a href="../references/UI_spec.html">UI specification guide </a>
 
 .. |Documenting_link| raw:: html
 
-  <a href="../howtos/fill_out_app_information.html">documenting your app</a>
-
-
+   <a href="../howtos/fill_out_app_information.html">documenting your app</a>
 

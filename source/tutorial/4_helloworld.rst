@@ -89,7 +89,7 @@ After validation, now we can start to work on the functionality of the app.
 
     For a more exhaustive overview of the ``spec.json`` and ``display.yaml`` files, take a look at
     the |UISpec_link|.  You can also experiment with UI generation
-    with the |AppSpec_link|
+    with the |AppSpec_link| (pending narrative permissions).
 
 Code Implementation
 -------------------

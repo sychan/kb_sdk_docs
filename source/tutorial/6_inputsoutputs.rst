@@ -147,8 +147,8 @@ parameters.
     }
 
 
-Notice that we added a ``target_type_transform`` option with the value ``resolved-ref`` for the 
-``assembly_ref`` input. This indicates to the narrative that this parameter needs to be a valid reference 
+Notice that we added a ``target_type_transform`` option with the value ``resolved-ref`` for 
+``assembly_input_ref``. This indicates to the narrative that this parameter needs to be a valid reference 
 to an object in the workspace.
 
 Add the ``max_length`` to the ``input_mapping``. The lines will look something like:

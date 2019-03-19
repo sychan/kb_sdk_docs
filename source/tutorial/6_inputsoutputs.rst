@@ -113,7 +113,7 @@ Below parameters, in the section under ``behavior``, change ``run_{uid}ContigFil
     {
         "service-mapping": {
             "url": "",
-            "name":"ContigFilter",
+            "name":"{uid}ContigFilter",
             "method": "run_{uid}ContigFilter_max"
         }
     }

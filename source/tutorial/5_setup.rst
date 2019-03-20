@@ -13,7 +13,7 @@ The setup for the "ContigFilter" module includes:
 #. Customizing the description of the module
 #. Specify inputs, outputs, and functions of the module
 
-For this tutorial, we will be looking at the app ``run_{uid}ContigFilter``. The app takes as inputs, an ``assembly file`` and applies
+For this tutorial, we will be looking at the app ``run_{username}ContigFilter``. The app takes as inputs, an ``assembly file`` and applies
 a ``minimum length`` filter to the contigs. **The exercise below creates a second app that filters the contigs by a ``maximum_length``**
 
 App Design Checklist
@@ -54,17 +54,17 @@ An example for our second filter contig app is below:
 
 Module Description
 -------------------------------------------
-Now that we have a clear idea of what our apps will do, we can begin to build it. Because this example is used in training and is built by many users, the ``{uid}`` is added to make sure that your module has a unique
+Now that we have a clear idea of what our apps will do, we can begin to build it. Because this example is used in training and is built by many users, the ``{username}`` is added to make sure that your module has a unique
 name. However, you would not usually put your own username in the module name, and instead name it something like ``ContigFilter``.
 
-If not performed already, for convenience define these bash variables: ``your_kbase_user_name=jane.smith`` and ``uid=jsmith``. Because we are working to implement a new module, re-define the module name bash variable: ``module_name=ContigFilter``.
+If not performed already, for convenience define these bash variables: ``your_kbase_username=jane.smith`` and ``username=${your_kbase_username}``. Because we are working to implement a new module, re-define the module name bash variable: ``module_name=ContigFilter``.
 
 To get started, please run:
 
 .. code-block:: bash
 
-    kb-sdk init --example --language python --user ${your_kbase_user_name} ${uid}${module_name}
-    cd ${uid}${module_name}
+    kb-sdk init --example --language python --user ${your_kbase_username} ${username}${module_name}
+    cd ${username}${module_name}
     make
 
 You can now edit the ``kbase.yml`` file to include a better description of your module. It is in the root directory of the module.
@@ -73,7 +73,7 @@ Be sure to describe what your module and its apps actually do. In future revisio
 The Specification File
 -------------------------------------------
 
-In the root directory of the module, there is a specification file is called ``{uid}ContigFilter.spec``.
+In the root directory of the module, there is a specification file is called ``{username}ContigFilter.spec``.
 This file uses a proprietary language called KIDL to specify which functions the module that will be accessible to other SDK services as well as the input and output types.
 The specification is used to generate client code in any KBase supported language, therefore, FileUtils and modules that contain functions that are primarily used by other modules will have a detailed KIDL spec.
 However, for modules that are focused on defining user-facing apps, a very basic specification is all we need.
@@ -81,7 +81,7 @@ However, for modules that are focused on defining user-facing apps, a very basic
 File structure
 `````````````````````````````
 
-If you open ``{uid}ContigFilter.spec``, you should see two types of specifications:
+If you open ``{username}ContigFilter.spec``, you should see two types of specifications:
 
 **Input/Output Structures**
 
@@ -106,21 +106,21 @@ As we'll later see, these reports can contain the following data:
 
 .. code-block:: none
 
-    funcdef run_{uid}ContigFilter(mapping<string,UnspecifiedObject> params) returns (ReportResults output) authentication required;
+    funcdef run_{username}ContigFilter(mapping<string,UnspecifiedObject> params) returns (ReportResults output) authentication required;
 
 
 The next section defines the functions that may be called by other SDK modules or app cells. In this case we find a single function called
-``run_{uid}ContigFilter`` which filters contigs using a minimum contig length. As input it receives a mapping called ``params`` (also a dictionary in Python)
+``run_{username}ContigFilter`` which filters contigs using a minimum contig length. As input it receives a mapping called ``params`` (also a dictionary in Python)
 that is defined by an apps UI specification and produces the ``ReportResults`` structure described above.
 
 Edit the Spec file
 `````````````````````````````
 Our new app will also receive parameters from the UI and create a report, so all we need to do copy the funcdef line and give the function a unique name.
-We also should add a little description about our new function in a comment that precedes it. Once we are done, our ``{uid}ContigFilter.spec`` file should look like the following:
+We also should add a little description about our new function in a comment that precedes it. Once we are done, our ``{username}ContigFilter.spec`` file should look like the following:
 
 .. code-block:: none
 
-    {uid}module ContigFilter {
+    {username}module ContigFilter {
         typedef structure {
             string report_name;
             string report_ref;
@@ -129,12 +129,12 @@ We also should add a little description about our new function in a comment that
         /*
             Example app which filters contigs in an assembly using both a minimum contig length
         */
-        funcdef run_{uid}ContigFilter(mapping<string,UnspecifiedObject> params) returns (ReportResults output) authentication required;
+        funcdef run_{username}ContigFilter(mapping<string,UnspecifiedObject> params) returns (ReportResults output) authentication required;
 
         /*
             New app which filters contigs in an assembly using both a minimum and a maximum contig length
         */
-        funcdef run_{uid}ContigFilter_max(mapping<string,UnspecifiedObject> params) returns (ReportResults output) authentication required;
+        funcdef run_{username}ContigFilter_max(mapping<string,UnspecifiedObject> params) returns (ReportResults output) authentication required;
 
     };
 

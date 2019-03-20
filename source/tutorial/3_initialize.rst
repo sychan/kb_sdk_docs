@@ -15,19 +15,20 @@ The basic options of the command are:
 
 .. code-block:: bash
 
-    $ kb-sdk init [--example] [--verbose] [--language language] [--user your_kbase_user_name] module_name
+    $ kb-sdk init [--example] [--verbose] [--language language] [--user your_kbase_username] module_name
 
 where ``module_name`` must be unique across all SDK modules registered in KBase. You'll be using the bash variables 
-``your_kbase_user_name`` and ``uid`` (unique ID) multiple times in this tutorial, so for convenience, define these
-variables: ``your_kbase_user_name=jane.smith`` and ``uid=jsmith``. You'll also be using the bash variable ``module_name`` in this tutorial, but it will change depending on the different examples - first you can define it as ``module_name=HelloWorld``.
+``your_kbase_username`` and ``username`` multiple times in this tutorial, so for convenience, define these
+variables: ``your_kbase_username=jane.smith`` and ``username=${your_kbase_username}``. You'll also be using the bash variable ``module_name`` 
+in this tutorial, but it will change depending on the different examples - first you can define it as ``module_name=HelloWorld``.
 
-Assuming the ``your_kbase_user_name``, ``uid``, and ``module_name`` variables are defined, bootstrapping the HelloWorld module will start with:
+Assuming the ``your_kbase_username``, ``username``, and ``module_name`` variables are defined, bootstrapping the HelloWorld module will start with:
 
 .. code-block:: bash
 
-    $ kb-sdk init --language python --user ${your_kbase_user_name} ${uid}${module_name}
+    $ kb-sdk init --language python --user ${your_kbase_username} ${username}${module_name}
 
-This creates a directory called ``{uid}HelloWorld`` in your current directory where ``{uid}`` is your name/id 
+This creates a directory called ``{username}HelloWorld`` in your current directory where ``{username}`` is your name/id 
 that will make your copy of HelloWorld unique. The newly created directory has all of 
 the components needed to start creating apps and is basically a clean slate.  
 
@@ -60,7 +61,7 @@ Build the Module
 
 .. code-block:: bash
 
-    $ cd ${uid}${module_name}
+    $ cd ${username}${module_name}
     $ make
 
 The ``make`` command will run some initial code generation.
@@ -70,11 +71,11 @@ Module Highlights
 
 This module template has the following that you will customize in later steps:
 
-#. A base directory called ``{uid}{module_name}`` (see |anatomy_link| for more on the directory structure)
+#. A base directory called ``{username}{module_name}`` (see |anatomy_link| for more on the directory structure)
 #. A description of the module, its version, and the authors in ``kbase.yml``
 #. A specification file that defines the inputs, output, and functions for the module ``{module_name}.spec``. 
-#. A script with code for running all the apps in the module called ``lib/{uid}{module_name}/{uid}{module_name}Impl.py``
-#. Specifications for the user interface in the files ``ui/narrative/methods/run_{ui}{module_name}/spec.json`` and ``ui/narrative/methods/run_{ui}{module_name}/display.yaml``. 
+#. A script with code for running all the apps in the module called ``lib/{username}{module_name}/{username}{module_name}Impl.py``
+#. Specifications for the user interface in the files ``ui/narrative/methods/run_{username}{module_name}/spec.json`` and ``ui/narrative/methods/run_{username}{module_name}/display.yaml``. 
 
 The input/output/function specification is written in an interface definition language |KIDL_link|  
 that is specific to KBase. The kbase.yml and display.yaml are in 
@@ -86,17 +87,24 @@ Don't worry about the location of these files; this will be discussed in more de
 Create a GitHub Repo
 ---------------------
 
-You will need to publish your code to a public git repository to make it available for building into a custom Docker Image.  Here we'll show a brief example using GitHub.  If following the tutorial step-by-step, you should already be working in the correct directory (i.e. the same directory as where you ran the ``make`` command). First, commit your codebase into a local git repository. Then, ``git add`` all files created by kb-sdk and commit. This creates a git repository locally. Also, ``git commit -m 'Initial commit'`` to write a message describing this first commit.
+You will need to publish your code to a public git repository to make it available for building into a custom 
+Docker Image.  Here we'll show a brief example using GitHub.  If following the tutorial step-by-step, you should 
+already be working in the correct directory (i.e. the same directory as where you ran the ``make`` command). 
+First, commit your codebase into a local git repository. Then, ``git add`` all files created by kb-sdk and commit. 
+This creates a git repository locally. Also, ``git commit -m 'Initial commit'`` to write a message describing this 
+first commit.
 
 .. code:: bash
 
-    $ cd ${uid}${module_name} #only needed if not already in the correct location
+    $ cd ${username}${module_name} #only needed if not already in the correct location
     $ git init
     $ git add .
     $ git commit -m 'Initial commit'
 
 
-Now, create a new GitHub repository on github.com (it can be in your personal GitHub account or in an organization, but it must be public). As above, for convenience define ``github_user_name`` as a bash variable, for example ``github_user_name=jsmith10``. Make sure your github repository is initially empty (don't add an initial README.md).
+Now, create a new GitHub repository on github.com (it can be in your personal GitHub account or in an organization, 
+but it must be public). As above, for convenience define ``github_user_name`` as a bash variable, for example
+ ``github_user_name=jsmith10``. Make sure your github repository is initially empty (don't add an initial README.md).
 
 * Direct link to create a repo on github.  |github_link|.
 * Github documentation about creating repos: |github_help_link|.
@@ -105,7 +113,7 @@ Sync your local codebase to your repository on github:
 
 .. code:: bash
 
-    $ git remote add origin https://github.com/${github_user_name}/${uid}${module_name}.git
+    $ git remote add origin https://github.com/${github_user_name}/${username}${module_name}.git
     $ git push -u origin master
 
 

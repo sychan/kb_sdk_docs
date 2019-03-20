@@ -3,12 +3,12 @@ Hello World Example
 
 This "Hello World" example demonstrates where various components of the SDK are located and how to run a basic test. Most of this example is optional. The |ContigFilter_link| example adds more features of the SDK.
 
-Note: if running this tutorial step-by-step then in the previous step you already declared ``your_kbase_user_name``, ``uid``, and ``module_name`` as bash variables and initialized a repository named {uid}HelloWorld. If not, then define these variables: ``your_kbase_user_name=jane.smith`` and ``uid=print``. You'll also be using the bash variable ``module_name`` in this tutorial, but it will change depending on the different examples - first you can define it as ``module_name=HelloWorld``.
+Note: if running this tutorial step-by-step then in the previous step you already declared ``your_kbase_username``, ``username``, and ``module_name`` as bash variables and initialized a repository named {username}HelloWorld. If not, then define these variables: ``your_kbase_username=jane.smith`` and ``username=${your_kbase_username}``. You'll also be using the bash variable ``module_name`` in this tutorial, but it will change depending on the different examples - first you can define it as ``module_name=HelloWorld``.
 
 .. code-block:: bash
 
-    kb-sdk init --language python --user ${your_kbase_user_name} ${uid}${module_name}
-    cd ${uid}${module_name}
+    kb-sdk init --language python --user ${your_kbase_username} ${username}${module_name}
+    cd ${username}${module_name}
     make
 
 
@@ -39,7 +39,7 @@ Edit the Narrative UI (optional)
 --------------------------------
 
 The specifications for the app's Narrative user interface are under the directory named
-``ui/narrative/methods/run_{uid}HelloWorld``. Note that the name of the directory is the same as
+``ui/narrative/methods/run_{username}HelloWorld``. Note that the name of the directory is the same as
 the name of the function in the spec file above. Functions that become user-facing apps need a
 directory that defines the user interface.
 
@@ -47,8 +47,8 @@ This directory has two files ``spec.json`` and ``display.yaml``. The example mod
 will go into more depth for these files.  The  |Documenting_link| page provides
 information on the purpose of the subdirectory ``img``.
 
-Now open up ``ui/narrative/methods/run_{uid}HelloWorld/spec.json``. This file is in JSON format and
-defines a mapping between the KBase Interface Description Language (KIDL) ``{uid}HelloWorld.spec`` file and how our parameters will show up in the app's user interface.
+Now open up ``ui/narrative/methods/run_{username}HelloWorld/spec.json``. This file is in JSON format and
+defines a mapping between the KBase Interface Description Language (KIDL) ``{username}HelloWorld.spec`` file and how our parameters will show up in the app's user interface.
 
 In the section ``parameters`` already defines ``parameter_1``:
 
@@ -79,10 +79,10 @@ narrative, the ``workspace`` and the ``workspace_id``. When these are passed to 
 the ``workspace`` from the Narrative is passed as ``workspace_name`` to Python.
 
 The ``display.yaml`` file is in YAML format and defines how your app will appear in the |AppCatalog_link|.
-Examine the file found in ``ui/narrative/methods/run_{uid}HelloWorld/display.yaml``.
+Examine the file found in ``ui/narrative/methods/run_{username}HelloWorld/display.yaml``.
 View the |Documenting_link| page for more on the how this file is used.
 
-Finally, if you made any changes, run ``kb-sdk validate`` from the base of your app directory (e.g., {uid}HelloWorld) and make sure it passes!
+Finally, if you made any changes, run ``kb-sdk validate`` from the base of your app directory (e.g., {username}HelloWorld) and make sure it passes!
 After validation, now we can start to work on the functionality of the app.
 
 .. note::
@@ -94,13 +94,13 @@ After validation, now we can start to work on the functionality of the app.
 Code Implementation
 -------------------
 
-The actual code for your app will live in the Python package under ``lib/{uid}HelloWorld``.
-The entry point, where your code is initially called, lives in the file: ``lib/{uid}HelloWorld/{uid}HelloWorldImpl.py``.
+The actual code for your app will live in the Python package under ``lib/{username}HelloWorld``.
+The entry point, where your code is initially called, lives in the file: ``lib/{username}HelloWorld/{username}HelloWorldImpl.py``.
 It is sometimes called the "Implementation" file or simply the "Impl" file.  This is the file where you edit your own Python code.
 
 This "Implementation" file defines the Python methods available in the module. All of the functions
 defined in the spec file correspond to Python methods
-and they are part of the class inside ``{uid}HelloWorldImpl.py``.
+and they are part of the class inside ``{username}HelloWorldImpl.py``.
 
 Much of the Implementation file is auto-generated based on the spec file. The ``make`` command updates the Implementation file. To separate auto-generated code from developer code, developer code belongs between sets of ``#BEGIN`` and ``#END`` comments. For example:
 
@@ -127,10 +127,10 @@ The ``make`` command preserves everything between the ``#BEGIN`` and ``#END`` co
 Check Inputs (optional)
 -----------------------
 
-Open ``{uid}HelloWorldImpl.py`` and find the ``run_{uid}HelloWorld`` method, which should have some auto-generated boilerplate code and docstrings.
+Open ``{username}HelloWorldImpl.py`` and find the ``run_{username}HelloWorld`` method, which should have some auto-generated boilerplate code and docstrings.
 
-You want to limit your code edits to regions between the comments ``#BEGIN run_{uid}HelloWorld``
-and ``#END run_{uid}HelloWorld``.
+You want to limit your code edits to regions between the comments ``#BEGIN run_{username}HelloWorld``
+and ``#END run_{username}HelloWorld``.
 These are special SDK-generated annotations that we have to keep in the code to get everything to compile
 correctly. If you run ``make`` again in the future, it will update the code outside these comments,
 but will not change the code you put between the sets of ``#BEGIN`` and ``#END`` comments.
@@ -139,7 +139,7 @@ Between the comments, add a simple print statement, such as: ``print ("Input par
 
 .. code-block:: python
 
-        #BEGIN run_{uid}HelloWorld
+        #BEGIN run_{username}HelloWorld
         print ("Input parameter",params['parameter_1'])
         report = KBaseReport(self.callback_url)
         report_info = report.create({'report': {'objects_created':[],
@@ -149,10 +149,10 @@ Between the comments, add a simple print statement, such as: ``print ("Input par
             'report_name': report_info['name'],
             'report_ref': report_info['ref'],
         }
-        #END run_{uid}HelloWorld
+        #END run_{username}HelloWorld
 
 
-Don't try to change the docstring, or anything else outside the ``#BEGIN run_{uid}HelloWorld`` and ``#END run_{uid}HelloWorld`` comments, as your change will get overwritten by the ``make`` command.
+Don't try to change the docstring, or anything else outside the ``#BEGIN run_{username}HelloWorld`` and ``#END run_{username}HelloWorld`` comments, as your change will get overwritten by the ``make`` command.
 
 Run First Test
 ---------------------
@@ -165,11 +165,11 @@ Run First Test
     at the command line, it will run the tests in the test directory.
 
 
-As a default, your ``{uid}HelloWorldImpl.py`` file is tested using ``test/{uid}HelloWorld_server_test.py``. This file has some auto-generated boilerplate code.  Python will automatically run all methods that start with the name ``test``. 
+As a default, your ``{username}HelloWorldImpl.py`` file is tested using ``test/{username}HelloWorld_server_test.py``. This file has some auto-generated boilerplate code.  Python will automatically run all methods that start with the name ``test``. 
 
 
 Near the bottom of the test file, find the method ``test_your_method``.
-The default test is to call ``run_{uid}HelloWorld`` with
+The default test is to call ``run_{username}HelloWorld`` with
 a ``workspace_name`` for the test and a ``parameter_1`` of 'Hello World'.
 If you added the optional parameters in the
 earlier steps, you can modify the test method to test the returned output.
@@ -185,7 +185,7 @@ Add a simple print statement to the end of the test method:
     Make sure that you have put your developer token in the ``test_local/test.cfg`` as mentioned in the
     |Initialize_link|
 
-Run ``kb-sdk test`` and, if everything works, you'll see the docker container boot up, the ``run_{uid}HelloWorld`` method will get called, and you will see some printed output.
+Run ``kb-sdk test`` and, if everything works, you'll see the docker container boot up, the ``run_{username}HelloWorld`` method will get called, and you will see some printed output.
 If you added the input and output parameters, the output should include the two lines.
 
 .. code:: text

@@ -3,10 +3,10 @@ Narrative User Interface
 
 Apps on KBase, such as genome assemblers and annotators that run on narrative pages, are created using the KBase SDK.
 The user interface (UI) that users see in narratives and in the app catalog are defined in two files: 
-``spec.json`` and ``display.yaml``. These two files are in a directory called ``ui/narrative/methods/run_{uid}{module_name}``
+``spec.json`` and ``display.yaml``. These two files are in a directory called ``ui/narrative/methods/run_{username}{module_name}``
 where ``{module_name}`` is the name of the function that you want to turn into an app. In the example module,
-the directory  ``ui/narrative/methods/run_{uid}ContigFilter`` exists and you need to create a directory called
-``ui/narrative/methods/run_{uid}ContigFilter_max``.
+the directory  ``ui/narrative/methods/run_{username}ContigFilter`` exists and you need to create a directory called
+``ui/narrative/methods/run_{username}ContigFilter_max``.
 
 .. note::
 
@@ -17,18 +17,18 @@ View |UIspec_link| for more information and options.
 Update spec.json
 -----------------
 
-Copy the directory named ``ui/narrative/methods/run_{uid}ContigFilter`` and create a directory for the new app.
+Copy the directory named ``ui/narrative/methods/run_{username}ContigFilter`` and create a directory for the new app.
 
 .. code-block:: bash
 
     # From your module's root directory:
     $ cd ui/narrative/methods/
-    $ cp -r run_${uid}ContigFilter run_${uid}ContigFilter_max
+    $ cp -r run_${username}ContigFilter run_${username}ContigFilter_max
 
 
-``run_{uid}ContigFilter_max`` matches the ``funcdef`` name we used in the KIDL ``{uid}ContigFilter.spec`` file.
+``run_{username}ContigFilter_max`` matches the ``funcdef`` name we used in the KIDL ``{username}ContigFilter.spec`` file.
 
-Now open up ``ui/narrative/methods/run_{uid}ContigFilter_max/spec.json``. This file defines a mapping between our 
+Now open up ``ui/narrative/methods/run_{username}ContigFilter_max/spec.json``. This file defines a mapping between our 
 KIDL ``.spec`` file and how our parameters will show up in the app's user interface.
 
 In the section under ``parameters``, there are two input parameters:
@@ -106,15 +106,15 @@ Edit the file to add the other input parameter ``max_length`` with similar value
 
 Notice that a comma was added to the end of the ``min_length`` parameter.
 
-Below parameters, in the section under ``behavior``, change ``run_{uid}ContigFilter`` to  ``run_{uid}ContigFilter_max``. Note that ``name`` is the name of the module and doesn't change and ``method`` is the name of the app.
+Below parameters, in the section under ``behavior``, change ``run_{username}ContigFilter`` to  ``run_{username}ContigFilter_max``. Note that ``name`` is the name of the module and doesn't change and ``method`` is the name of the app.
 
 .. code:: json
 
     {
         "service-mapping": {
             "url": "",
-            "name":"{uid}ContigFilter",
-            "method": "run_{uid}ContigFilter_max"
+            "name":"{username}ContigFilter",
+            "method": "run_{username}ContigFilter_max"
         }
     }
 
@@ -179,7 +179,7 @@ When you run ``kb-sdk validate``, you will get an error about your ``display.yam
 Update display.yaml
 -------------------
 
-The YAML file found in ``ui/narrative/methods/run_{uid}ContigFilter/display.yaml`` holds text content for your app. The text written here will show up in the narrative and in the  |Catalog_link| 
+The YAML file found in ``ui/narrative/methods/run_{username}ContigFilter/display.yaml`` holds text content for your app. The text written here will show up in the narrative and in the  |Catalog_link| 
 for each form element. You only need to set this text for parameters that actually display in the form.
 
 .. note::

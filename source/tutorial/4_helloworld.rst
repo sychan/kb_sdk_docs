@@ -3,7 +3,7 @@ Hello World Example
 
 This "Hello World" example demonstrates where various components of the SDK are located and how to run a basic test. Most of this example is optional. The |ContigFilter_link| example adds more features of the SDK.
 
-Note: if running this tutorial step-by-step then in the previous step you already declared ``your_kbase_user_name``, ``uid``, and ``module_name`` as variables and initialized a repository named {uid}HelloWorld. If not, then define these variables: ``your_kbase_user_name=jane.smith`` and ``uid=print``. You'll also be using the variable ``module_name`` in this tutorial, but it will change depending on the different examples - first you can define it as ``module_name=HelloWorld``.
+Note: if running this tutorial step-by-step then in the previous step you already declared ``your_kbase_user_name``, ``uid``, and ``module_name`` as bash variables and initialized a repository named {uid}HelloWorld. If not, then define these variables: ``your_kbase_user_name=jane.smith`` and ``uid=print``. You'll also be using the bash variable ``module_name`` in this tutorial, but it will change depending on the different examples - first you can define it as ``module_name=HelloWorld``.
 
 .. code-block:: bash
 

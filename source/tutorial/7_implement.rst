@@ -82,7 +82,7 @@ Between the comments, add a simple print statement, such as: ``print(params['min
         #END run_{uid}ContigFilter_max
         return [output]
 
-Don't try to change the docstring, or anything else outside the ``BEGIN run_{uid}ContigFilter_max`` and ``END run_{uid}ContigFilter_max`` comments, as your change will get overwritten by the ``make`` command.
+Don't try to change the docstring, or anything else outside the ``#BEGIN run_{uid}ContigFilter_max`` and ``#END run_{uid}ContigFilter_max`` comments, as your change will get overwritten by the ``make`` command.
 
 Initialize a test
 ------------------

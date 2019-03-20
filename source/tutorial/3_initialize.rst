@@ -104,7 +104,7 @@ first commit.
 
 Now, create a new GitHub repository on github.com (it can be in your personal GitHub account or in an organization, 
 but it must be public). As above, for convenience define ``github_user_name`` as a bash variable, for example
- ``github_user_name=jsmith10``. Make sure your github repository is initially empty (don't add an initial README.md).
+``github_user_name=jsmith10``. Make sure your github repository is initially empty (don't add an initial README.md).
 
 * Direct link to create a repo on github.  |github_link|.
 * Github documentation about creating repos: |github_help_link|.

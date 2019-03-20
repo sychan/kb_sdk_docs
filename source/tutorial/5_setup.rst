@@ -57,7 +57,7 @@ Module Description
 Now that we have a clear idea of what our apps will do, we can begin to build it. Because this example is used in training and is built by many users, the ``{uid}`` is added to make sure that your module has a unique
 name. However, you would not usually put your own username in the module name, and instead name it something like ``ContigFilter``.
 
-If not performed already, for convenience define these variables: ``your_kbase_user_name=jane.smith`` and ``uid=jsmith``. Because we are working to implement a new module, re-define the module name variable: ``module_name=ContigFilter``.
+If not performed already, for convenience define these bash variables: ``your_kbase_user_name=jane.smith`` and ``uid=jsmith``. Because we are working to implement a new module, re-define the module name bash variable: ``module_name=ContigFilter``.
 
 To get started, please run:
 

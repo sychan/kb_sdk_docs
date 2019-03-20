@@ -17,9 +17,9 @@ The basic options of the command are:
 
     $ kb-sdk init [--example] [--verbose] [--language language] [--user your_kbase_user_name] module_name
 
-where ``module_name`` must be unique across all SDK modules registered in KBase. You'll be using the variables 
-``your_kbase_user_name`` and ``uid`` (unique ID) multiple times in this tutorial, so for convenience, define these 
-variables: ``your_kbase_user_name=jane.smith`` and ``uid=jsmith``. You'll also be using the variable ``module_name`` in this tutorial, but it will change depending on the different examples - first you can define it as ``module_name=HelloWorld``.
+where ``module_name`` must be unique across all SDK modules registered in KBase. You'll be using the bash variables 
+``your_kbase_user_name`` and ``uid`` (unique ID) multiple times in this tutorial, so for convenience, define these
+variables: ``your_kbase_user_name=jane.smith`` and ``uid=jsmith``. You'll also be using the bash variable ``module_name`` in this tutorial, but it will change depending on the different examples - first you can define it as ``module_name=HelloWorld``.
 
 Assuming the ``your_kbase_user_name``, ``uid``, and ``module_name`` variables are defined, bootstrapping the HelloWorld module will start with:
 
@@ -96,7 +96,7 @@ You will need to publish your code to a public git repository to make it availab
     $ git commit -m 'Initial commit'
 
 
-Now, create a new GitHub repository on github.com (it can be in your personal GitHub account or in an organization, but it must be public). As above, for convenience define ``github_user_name`` as a variable, for example ``github_user_name=jsmith10``. Make sure your github repository is initially empty (don't add an initial README.md).
+Now, create a new GitHub repository on github.com (it can be in your personal GitHub account or in an organization, but it must be public). As above, for convenience define ``github_user_name`` as a bash variable, for example ``github_user_name=jsmith10``. Make sure your github repository is initially empty (don't add an initial README.md).
 
 * Direct link to create a repo on github.  |github_link|.
 * Github documentation about creating repos: |github_help_link|.

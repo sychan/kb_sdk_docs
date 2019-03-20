@@ -3,32 +3,32 @@ Narrative User Interface
 
 Apps on KBase, such as genome assemblers and annotators that run on narrative pages, are created using the KBase SDK.
 The user interface (UI) that users see in narratives and in the app catalog are defined in two files: 
-``spec.json`` and ``display.yaml``. These two files are in a directory called ``ui/narrative/methods/<app_name>``
-where ``<app_name>`` is the name of the function that you want to turn into an app. In the example module,
-the directory  ``ui/narrative/methods/run_{uid}ContigFilter`` exists and you need to create a directory called
-``ui/narrative/methods/run_{uid}ContigFilter_max``.
+``spec.json`` and ``display.yaml``. These two files are in a directory called ``ui/narrative/methods/run_{username}{module_name}``
+where ``{module_name}`` is the name of the repository that you want to turn into an app. In the example module,
+the directory  ``ui/narrative/methods/run_{username}ContigFilter`` exists and you need to create a directory called
+``ui/narrative/methods/run_{username}ContigFilter_max``.
 
 .. note::
 
-    For historical reasons, in the user interface, methods and apps are synonymous. 
+    For historical reasons, in the user interface, methods, modules and apps are synonymous. 
 
 View |UIspec_link| for more information and options.
 
 Update spec.json
 -----------------
 
-Copy the directory named ``ui/narrative/methods/run_{uid}ContigFilter`` and create a directory for the new app.
+Copy the directory named ``ui/narrative/methods/run_{username}ContigFilter`` and create a directory for the new app.
 
 .. code-block:: bash
 
     # From your module's root directory:
     $ cd ui/narrative/methods/
-    $ cp -r run_{uid}ContigFilter run_{uid}ContigFilter_max
+    $ cp -r run_${username}ContigFilter run_${username}ContigFilter_max
 
 
-``run_{uid}ContigFilter_max`` matches the ``funcdef`` name we used in the KIDL ``{uid}ContigFilter.spec`` file.
+``run_{username}ContigFilter_max`` matches the ``funcdef`` name we used in the KIDL ``{username}ContigFilter.spec`` file.
 
-Now open up ``ui/narrative/methods/run_{uid}ContigFilter_max/spec.json``. This file defines a mapping between our 
+Now open up ``ui/narrative/methods/run_{username}ContigFilter_max/spec.json``. This file defines a mapping between our 
 KIDL ``.spec`` file and how our parameters will show up in the app's user interface.
 
 In the section under ``parameters``, there are two input parameters:
@@ -106,15 +106,15 @@ Edit the file to add the other input parameter ``max_length`` with similar value
 
 Notice that a comma was added to the end of the ``min_length`` parameter.
 
-Below parameters, in the section under ``behavior``, change ``run_{uid}ContigFilter`` to  ``run_{uid}ContigFilter_max``. Note that ``name`` is the name of the module and doesn't change and ``method`` is the name of the app.
+Below parameters, in the section under ``behavior``, change ``run_{username}ContigFilter`` to  ``run_{username}ContigFilter_max``. Note that ``name`` is the name of the module and doesn't change and ``method`` is the name of the app.
 
 .. code:: json
 
     {
         "service-mapping": {
             "url": "",
-            "name":"ContigFilter",
-            "method": "run_{uid}ContigFilter_max"
+            "name":"{username}ContigFilter",
+            "method": "run_{username}ContigFilter_max"
         }
     }
 
@@ -131,6 +131,10 @@ parameters.
                 "target_property": "workspace_name"
             },
             {
+                "narrative_system_variable": "workspace_id",
+                "target_property": "workspace_id"
+            },
+            {
                 "input_parameter": "assembly_input_ref",
                 "target_property": "assembly_input_ref",
                 "target_type_transform": "resolved-ref"
@@ -143,11 +147,11 @@ parameters.
     }
 
 
-Notice that we added a ``target_type_transform`` option with the value ``resolved-ref`` for the 
-``assembly_ref`` input. This indicates to the narrative that this parameter needs to be a valid reference 
+Notice that we added a ``target_type_transform`` option with the value ``resolved-ref`` for 
+``assembly_input_ref``. This indicates to the narrative that this parameter needs to be a valid reference 
 to an object in the workspace.
 
-Add the ``max_length to the ``input_mapping``. The lines will look something like:
+Add the ``max_length`` to the ``input_mapping``. The lines will look something like:
 
 .. code:: json 
 
@@ -175,7 +179,7 @@ When you run ``kb-sdk validate``, you will get an error about your ``display.yam
 Update display.yaml
 -------------------
 
-The YAML file found in ``ui/narrative/methods/run_{uid}ContigFilter/display.yaml`` holds text content for your app. The text written here will show up in the narrative and in the  |Catalog_link| 
+The YAML file found in ``ui/narrative/methods/run_{username}ContigFilter/display.yaml`` holds text content for your app. The text written here will show up in the narrative and in the  |Catalog_link| 
 for each form element. You only need to set this text for parameters that actually display in the form.
 
 .. note::
@@ -206,24 +210,21 @@ You can leave the "screenshots", "icon" and "suggestions" fields to their defaul
 
     The icon is completely optional but will come in handy when you get to the "Publish and Update" step. It will help you find your app in a sea of others that have the same name. The |UIspec_link| has more information on icons.
 
-Moving down to the "parameters" section, the parameter entries for "assembly_ref" and "min_length" are filled in. 
+Moving down to the "parameters" section, the parameter entries for "assembly_input_ref" and "min_length" are filled in. 
 
 .. code-block:: yaml
 
     parameters:
-        assembly_ref:
-            ui-name: Assembly to filter
+        assembly_input_ref:
+            ui-name: |
+                Assembly
             short-hint: |
-                Genome assembly with contiguous fragments
-            long-hint: |
-                Genome assembly where we want to filter out fragments that are below a minimum
+                The assembly to filter (will be overwritten)
         min_length:
             ui-name: |
-                Min contig length
+                Min Length Threshold
             short-hint: |
-                Minimum required length of every contig in the assembly
-            long-hint: |
-                All contigs will be filtered out of the assembly that are shorter than the given length
+                All contigs below this length will be removed
 
 Edit the file and add the ``max_length`` parameter. The new lines might look like:
 
@@ -235,8 +236,6 @@ Edit the file and add the ``max_length`` parameter. The new lines might look lik
                 Maximum contig length
             short-hint: |
                 Maximum required length of every contig in the assembly
-            long-hint: |
-                All contigs will be filtered out of the assembly that are longer than the given length
         ...
 
 

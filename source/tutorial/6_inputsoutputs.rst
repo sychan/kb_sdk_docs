@@ -210,7 +210,7 @@ You can leave the "screenshots", "icon" and "suggestions" fields to their defaul
 
     The icon is completely optional but will come in handy when you get to the "Publish and Update" step. It will help you find your app in a sea of others that have the same name. The |UIspec_link| has more information on icons.
 
-Moving down to the "parameters" section, the parameter entries for "assembly_ref" and "min_length" are filled in. 
+Moving down to the "parameters" section, the parameter entries for "assembly_input_ref" and "min_length" are filled in. 
 
 .. code-block:: yaml
 
@@ -220,15 +220,11 @@ Moving down to the "parameters" section, the parameter entries for "assembly_ref
                 Assembly
             short-hint: |
                 The assembly to filter (will be overwritten)
-            long-hint: |
-                Genome assembly where we want to filter out fragments that are below a minimum
         min_length:
             ui-name: |
                 Min Length Threshold
             short-hint: |
                 All contigs below this length will be removed
-            long-hint: |
-                All contigs will be filtered out of the assembly that are shorter than the given length
 
 Edit the file and add the ``max_length`` parameter. The new lines might look like:
 
@@ -240,8 +236,6 @@ Edit the file and add the ``max_length`` parameter. The new lines might look lik
                 Maximum contig length
             short-hint: |
                 Maximum required length of every contig in the assembly
-            long-hint: |
-                All contigs will be filtered out of the assembly that are longer than the given length
         ...
 
 

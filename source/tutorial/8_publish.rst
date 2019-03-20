@@ -21,7 +21,7 @@ encounter a screen with:
 
     Logging into Appdev
 
-As the page says, direct loggin doesn't work and the page will go away when a solution is implemented.
+As the page says, direct login doesn't work and the page will go away when a solution is implemented.
 If you are already logged into |prod_link|, start with step 2. Otherwise start at step 1. 
 Step 4 will leave you at a page with no more hotlinks. In step 5, you will click on the Dashboard icon 
 on the left and will be taken to the Dashboard that is the starting point in other environments.
@@ -68,7 +68,7 @@ Use the dropdown for ``Version`` and select "Apps in Development".
 * Production: |appcatBrowse_link| 
 
 Once the module has been registered your narrative needs to know that you want to test apps in
-the development envirionment. Go to |appdev_link| 
+the development environment. Go to |appdev_link| 
 and create or open a narrative. In the ``APPS Panel`` on the left, click on the ``R`` to change 
 the environment from ``released`` to ``beta``.
 

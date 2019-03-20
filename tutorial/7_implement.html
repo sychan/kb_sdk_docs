@@ -209,11 +209,11 @@
 <li>The pound sign (#) indicates comments to the end of the line.</li>
 </ul>
 </div>
-<p>The actual code for your app will live in the python package under <code class="docutils literal notranslate"><span class="pre">lib/{uid}ContigFilter</span></code>. The entry point, where your code is initially called, lives in the file: <code class="docutils literal notranslate"><span class="pre">lib/{uid}ContigFilter/{uid}ContigFilterImpl.py</span></code>. It is sometimes called the “Implementation” file or simply the “Impl” file.  This is the file where you edit your own Python code.</p>
-<p>This “Implementation” file defines the python methods available in the module. Two of the methods correspond to our two apps and are named <code class="docutils literal notranslate"><span class="pre">run_{uid}ContigFilter</span></code> and <code class="docutils literal notranslate"><span class="pre">run_{uid}ContigFilter_max</span></code> and they are part of the class inside <code class="docutils literal notranslate"><span class="pre">method_nameImpl.py</span></code>.</p>
+<p>The actual code for your app will live in the python package under <code class="docutils literal notranslate"><span class="pre">lib/{username}ContigFilter</span></code>. The entry point, where your code is initially called, lives in the file: <code class="docutils literal notranslate"><span class="pre">lib/{username}ContigFilter/{username}ContigFilterImpl.py</span></code>. It is sometimes called the “Implementation” file or simply the “Impl” file.  This is the file where you edit your own Python code.</p>
+<p>This “Implementation” file defines the python methods available in the module. Two of the methods correspond to our two apps and are named <code class="docutils literal notranslate"><span class="pre">run_{username}ContigFilter</span></code> and <code class="docutils literal notranslate"><span class="pre">run_{username}ContigFilter_max</span></code> and they are part of the class inside <code class="docutils literal notranslate"><span class="pre">method_nameImpl.py</span></code>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">In a real-world app, you may want to split up your code into several python modules and packages. You can place extra modules and folders inside <code class="docutils literal notranslate"><span class="pre">lib/MyOtherModule</span></code> and import them in <code class="docutils literal notranslate"><span class="pre">lib/{uid}ContigFilter/{uid}ContigFilterImpl.py</span></code>.</p>
+<p class="last">In a real-world app, you may want to split up your code into several python modules and packages. You can place extra modules and folders inside <code class="docutils literal notranslate"><span class="pre">lib/MyOtherModule</span></code> and import them in <code class="docutils literal notranslate"><span class="pre">lib/{username}ContigFilter/{username}ContigFilterImpl.py</span></code>.</p>
 </div>
 <p>Much of the Implementation file is auto-generated based on the KIDL .spec file. The <code class="docutils literal notranslate"><span class="pre">make</span></code> command updates the Implementation file. To separate auto-generated code from developer code, developer code belongs between <code class="docutils literal notranslate"><span class="pre">#BEGIN</span></code> and <code class="docutils literal notranslate"><span class="pre">#END</span></code> comments. For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#BEGIN_HEADER</span>
@@ -225,8 +225,8 @@
 <span class="c1">#BEGIN_CONSTRUCTOR</span>
 <span class="c1">#END_CONSTRUCTOR</span>
 
-<span class="c1">#BEGIN run_{uid}ContigFilter</span>
-<span class="c1">#END run_{uid}ContigFilter</span>
+<span class="c1">#BEGIN run_{username}ContigFilter</span>
+<span class="c1">#END run_{username}ContigFilter</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">make</span></code> command preserves everything between the <code class="docutils literal notranslate"><span class="pre">#BEGIN</span></code> and <code class="docutils literal notranslate"><span class="pre">#END</span></code> comments and replaces everything else.</p>
@@ -234,13 +234,13 @@
 <p class="first admonition-title">Warning</p>
 <p class="last">Don’t put any spaces between the ‘#’ and ‘BEGIN’ or ‘END’. It has bad consequences.</p>
 </div>
-<p>The method for <code class="docutils literal notranslate"><span class="pre">run_{uid}ContigFilter</span></code> is a working app and has a lot of code between the <code class="docutils literal notranslate"><span class="pre">#BEGIN</span></code> and <code class="docutils literal notranslate"><span class="pre">#END</span></code>.
-The new app <code class="docutils literal notranslate"><span class="pre">run_{uid}ContigFilter_max</span></code> has nothing between the <code class="docutils literal notranslate"><span class="pre">#BEGIN</span></code> and <code class="docutils literal notranslate"><span class="pre">#END</span></code>.</p>
+<p>The method for <code class="docutils literal notranslate"><span class="pre">run_{username}ContigFilter</span></code> is a working app and has a lot of code between the <code class="docutils literal notranslate"><span class="pre">#BEGIN</span></code> and <code class="docutils literal notranslate"><span class="pre">#END</span></code>.
+The new app <code class="docutils literal notranslate"><span class="pre">run_{username}ContigFilter_max</span></code> has nothing between the <code class="docutils literal notranslate"><span class="pre">#BEGIN</span></code> and <code class="docutils literal notranslate"><span class="pre">#END</span></code>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>At this point, you could</p>
 <ul class="simple">
-<li>take a short-cut and copy all the code from the <code class="docutils literal notranslate"><span class="pre">run_{uid}ContigFilter</span></code> method and paste it into the <code class="docutils literal notranslate"><span class="pre">run_{uid}ContigFilter_max</span></code> method.</li>
+<li>take a short-cut and copy all the code from the <code class="docutils literal notranslate"><span class="pre">run_{username}ContigFilter</span></code> method and paste it into the <code class="docutils literal notranslate"><span class="pre">run_{username}ContigFilter_max</span></code> method.</li>
 <li>make a few minor edits to add the filter for contigs exceeding the maximum length.</li>
 <li>run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> and see if everything works.</li>
 </ul>
@@ -249,10 +249,10 @@ code. It goes through the process of building up the code section, step-by-step.
 </div>
 <div class="section" id="receive-parameters">
 <h2>7.1. Receive parameters<a class="headerlink" href="#receive-parameters" title="Permalink to this headline">¶</a></h2>
-<p>Our first goal is to receive and print the method’s parameters. Open <code class="docutils literal notranslate"><span class="pre">method_nameImpl.py</span></code> and find the <code class="docutils literal notranslate"><span class="pre">run_{uid}ContigFilter_max</span></code> method, which should have some auto-generated boilerplate code and docstrings.</p>
-<p>You want to edit code between the comments <code class="docutils literal notranslate"><span class="pre">#BEGIN</span> <span class="pre">run_{uid}ContigFilter_max</span></code> and <code class="docutils literal notranslate"><span class="pre">#END</span> <span class="pre">run_{uid}ContigFilter_max</span></code>. These are special SDK-generated annotations that we have to keep in the code to get everything to compile correctly. If you run <code class="docutils literal notranslate"><span class="pre">make</span></code> again in the future, it will update the code outside these comments, but will not change the code you put between the <code class="docutils literal notranslate"><span class="pre">#BEGIN</span></code> and <code class="docutils literal notranslate"><span class="pre">#END</span></code> comments.</p>
+<p>Our first goal is to receive and print the method’s parameters. Open <code class="docutils literal notranslate"><span class="pre">method_nameImpl.py</span></code> and find the <code class="docutils literal notranslate"><span class="pre">run_{username}ContigFilter_max</span></code> method, which should have some auto-generated boilerplate code and docstrings.</p>
+<p>You want to edit code between the comments <code class="docutils literal notranslate"><span class="pre">#BEGIN</span> <span class="pre">run_{username}ContigFilter_max</span></code> and <code class="docutils literal notranslate"><span class="pre">#END</span> <span class="pre">run_{username}ContigFilter_max</span></code>. These are special SDK-generated annotations that we have to keep in the code to get everything to compile correctly. If you run <code class="docutils literal notranslate"><span class="pre">make</span></code> again in the future, it will update the code outside these comments, but will not change the code you put between the <code class="docutils literal notranslate"><span class="pre">#BEGIN</span></code> and <code class="docutils literal notranslate"><span class="pre">#END</span></code> comments.</p>
 <p>Between the comments, add a simple print statement, such as: <code class="docutils literal notranslate"><span class="pre">print(params['min_length'],</span> <span class="pre">params['max_length'],</span> <span class="pre">params['assembly_ref'])</span></code>. This let us see what is getting passed into our method.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run_</span><span class="p">{</span><span class="n">username</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    :param workspace_name: instance of String</span>
 <span class="sd">    :param params: instance of type &quot;ContigFilterParams&quot; (Input</span>
@@ -263,27 +263,27 @@ code. It goes through the process of building up the code section, step-by-step.
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># ctx is the context object</span>
     <span class="c1"># return variables are: returnVal</span>
-    <span class="c1">#BEGIN run_{uid}ContigFilter_max</span>
+    <span class="c1">#BEGIN run_{username}ContigFilter_max</span>
     <span class="k">print</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;min_length&#39;</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;max_length&#39;</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;assembly_ref&#39;</span><span class="p">])</span>
     <span class="n">output</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="c1">#END run_{uid}ContigFilter_max</span>
+    <span class="c1">#END run_{username}ContigFilter_max</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">output</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Don’t try to change the docstring, or anything else outside the <code class="docutils literal notranslate"><span class="pre">BEGIN</span> <span class="pre">run_{uid}ContigFilter_max</span></code> and <code class="docutils literal notranslate"><span class="pre">END</span> <span class="pre">run_{uid}ContigFilter_max</span></code> comments, as your change will get overwritten by the <code class="docutils literal notranslate"><span class="pre">make</span></code> command.</p>
+<p>Don’t try to change the docstring, or anything else outside the <code class="docutils literal notranslate"><span class="pre">#BEGIN</span> <span class="pre">run_{username}ContigFilter_max</span></code> and <code class="docutils literal notranslate"><span class="pre">#END</span> <span class="pre">run_{username}ContigFilter_max</span></code> comments, as your change will get overwritten by the <code class="docutils literal notranslate"><span class="pre">make</span></code> command.</p>
 </div>
 <div class="section" id="initialize-a-test">
 <h2>7.2. Initialize a test<a class="headerlink" href="#initialize-a-test" title="Permalink to this headline">¶</a></h2>
-<p>Your <code class="docutils literal notranslate"><span class="pre">{uid}ContigFilterImpl.py</span></code> file is tested using <code class="docutils literal notranslate"><span class="pre">test/{uid}ContigFilterImpl_server_test.py</span></code>. This file also has a variety of auto-generated boilerplate code and tests for the first app.  Python will automatically run all methods that start with the name <code class="docutils literal notranslate"><span class="pre">test</span></code>. There are three tests for the old app. As a temporary measure, we will rename them so they don’t run until we are done working on the new app.</p>
+<p>Your <code class="docutils literal notranslate"><span class="pre">{username}ContigFilterImpl.py</span></code> file is tested using <code class="docutils literal notranslate"><span class="pre">test/{username}ContigFilterImpl_server_test.py</span></code>. This file also has a variety of auto-generated boilerplate code and tests for the first app.  Python will automatically run all methods that start with the name <code class="docutils literal notranslate"><span class="pre">test</span></code>. There are three tests for the old app. As a temporary measure, we will rename them so they don’t run until we are done working on the new app.</p>
 <ul class="simple">
-<li>Change <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">test_run_{uid}ContigFilter_ok(self)`</span></code> to <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">my_test_run_{uid}ContigFilter_ok(self)</span></code></li>
-<li>Change <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">test_run_{uid}ContigFilter_err1(self)</span></code> to <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">my_test_run_{uid}ContigFilter_err1(self)</span></code></li>
-<li>Change <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">test_run_{uid}ContigFilter_err2(self)</span></code> to <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">my_test_run_{uid}ContigFilter_err2(self)</span></code></li>
+<li>Change <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">test_run_{username}ContigFilter_ok(self)`</span></code> to <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">my_test_run_{username}ContigFilter_ok(self)</span></code></li>
+<li>Change <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">test_run_{username}ContigFilter_err1(self)</span></code> to <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">my_test_run_{username}ContigFilter_err1(self)</span></code></li>
+<li>Change <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">test_run_{username}ContigFilter_err2(self)</span></code> to <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">my_test_run_{username}ContigFilter_err2(self)</span></code></li>
 </ul>
-<p>Now add your own test for the new app method at the bottom of the test class and call it the <code class="docutils literal notranslate"><span class="pre">test_run_{uid}ContigFilter_max(self)</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<p>Now add your own test for the new app method at the bottom of the test class and call it the <code class="docutils literal notranslate"><span class="pre">test_run_{username}ContigFilter_max(self)</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_run_</span><span class="p">{</span><span class="n">username</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">ref</span> <span class="o">=</span> <span class="s2">&quot;79/16/1&quot;</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serviceImpl</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ctx</span><span class="p">,</span> <span class="p">{</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serviceImpl</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">username</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ctx</span><span class="p">,</span> <span class="p">{</span>
         <span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">wsName</span><span class="p">,</span>
         <span class="s1">&#39;assembly_ref&#39;</span><span class="p">:</span> <span class="n">ref</span><span class="p">,</span>
         <span class="s1">&#39;min_length&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
@@ -301,7 +301,7 @@ code. It goes through the process of building up the code section, step-by-step.
 <dd><a href="initialize.html">Initialize the Module</a></dd>
 </dl>
 </div>
-<p>Run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> and, if everything works, you’ll see the docker container boot up, the <code class="docutils literal notranslate"><span class="pre">run_{uid}ContigFilter_max</span></code> method will get called, and you will see some printed output.</p>
+<p>Run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> and, if everything works, you’ll see the docker container boot up, the <code class="docutils literal notranslate"><span class="pre">run_{username}ContigFilter_max</span></code> method will get called, and you will see some printed output.</p>
 </div>
 <div class="section" id="set-the-callback-url-and-scratch-path">
 <h2>7.3. Set the callback URL and scratch path<a class="headerlink" href="#set-the-callback-url-and-scratch-path" title="Permalink to this headline">¶</a></h2>
@@ -313,13 +313,13 @@ code. It goes through the process of building up the code section, step-by-step.
 <p>The other parameter we need is the path to the <strong>scratch</strong> directory. Scratch is a special directory that we can use to store files used to run the app. It is a shared directory that is also accessible by other apps, such as AssemblyUtil. You cannot use directories like <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> when working with AssemblyUtil, because other apps won’t have access to it.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The {uid}ContigFilterImpl.py code always uses the scratch directory to store files in your app.</p>
+<p class="last">The {username}ContigFilterImpl.py code always uses the scratch directory to store files in your app.</p>
 </div>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
 <p class="last">Scratch is a temporary directory and only lasts as long as your app runs. When your app stops running, scratch files are gone. To generate persistent data, we can use Reports, which are described in more detail later on.</p>
 </div>
-<p>To enable callbacks and the scratch directory, this code was added into your <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method in your <code class="docutils literal notranslate"><span class="pre">{uid}ContigFilterImpl.py</span></code>, between the <code class="docutils literal notranslate"><span class="pre">#BEGIN_CONSTRUCTOR</span></code> and <code class="docutils literal notranslate"><span class="pre">#END_CONSTRUCTOR</span></code> comments:</p>
+<p>To enable callbacks and the scratch directory, this code was added into your <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method in your <code class="docutils literal notranslate"><span class="pre">{username}ContigFilterImpl.py</span></code>, between the <code class="docutils literal notranslate"><span class="pre">#BEGIN_CONSTRUCTOR</span></code> and <code class="docutils literal notranslate"><span class="pre">#END_CONSTRUCTOR</span></code> comments:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inside your __init__ function:</span>
 <span class="c1">#BEGIN_CONSTRUCTOR</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">callback_url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;SDK_CALLBACK_URL&#39;</span><span class="p">]</span>
@@ -327,7 +327,7 @@ code. It goes through the process of building up the code section, step-by-step.
 <span class="c1">#END_CONSTRUCTOR</span>
 </pre></div>
 </div>
-<p>Also added was an <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">os</span></code> in the header of your <code class="docutils literal notranslate"><span class="pre">{uid}ContigFilterImpl.py</span></code> file, between the <code class="docutils literal notranslate"><span class="pre">#BEGIN_HEADER</span></code> and <code class="docutils literal notranslate"><span class="pre">#END_HEADER</span></code> comments.</p>
+<p>Also added was an <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">os</span></code> in the header of your <code class="docutils literal notranslate"><span class="pre">{username}ContigFilterImpl.py</span></code> file, between the <code class="docutils literal notranslate"><span class="pre">#BEGIN_HEADER</span></code> and <code class="docutils literal notranslate"><span class="pre">#END_HEADER</span></code> comments.</p>
 <p>We need to convert the reference to bacterial genome data, passed as an input parameter, into an actual FASTA file that our app can access. For that, we can use the <a href="https://github.com/kbaseapps/AssemblyUtil" target="_blank">AssemblyUtil </a> app.</p>
 <p>The app was installed from your repository’s root directory with:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kb-sdk install AssemblyUtil
@@ -338,7 +338,7 @@ code. It goes through the process of building up the code section, step-by-step.
 <p class="first admonition-title">Important</p>
 <p class="last">Don’t forget to <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> these new dependencies to your source control when you run kb-sdk install.</p>
 </div>
-<p>At the top of your <code class="docutils literal notranslate"><span class="pre">{uid}ContigFilterImpl.py</span></code> file, the module is imported with:</p>
+<p>At the top of your <code class="docutils literal notranslate"><span class="pre">{username}ContigFilterImpl.py</span></code> file, the module is imported with:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">installed_clients.AssemblyUtilClient</span> <span class="kn">import</span> <span class="n">AssemblyUtil</span>
 </pre></div>
 </div>
@@ -346,9 +346,9 @@ code. It goes through the process of building up the code section, step-by-step.
 </div>
 <div class="section" id="add-some-basic-validations">
 <h2>7.4. Add some basic validations<a class="headerlink" href="#add-some-basic-validations" title="Permalink to this headline">¶</a></h2>
-<p>It’s good practice to make some run-time checks of the parameters passed into your <code class="docutils literal notranslate"><span class="pre">{uid}ContigFilterImpl#run_{uid}ContigFilter_max</span></code> method. While params will get checked in the Narrative UI, if your app ever gets called from another codebase, it will bypass any UI typechecks.</p>
+<p>It’s good practice to make some run-time checks of the parameters passed into your <code class="docutils literal notranslate"><span class="pre">{username}ContigFilterImpl#run_{username}ContigFilter_max</span></code> method. While params will get checked in the Narrative UI, if your app ever gets called from another codebase, it will bypass any UI typechecks.</p>
 <p>Make sure your user passes in a workspace, an assembly reference, a minimum length greater than zero, and a maximum length greater than zero:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inside run_{uid}ContigFilter_max(), after #BEGIN run_{uid}ContigFilter_max, before any other code</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inside run_{username}ContigFilter_max(), after #BEGIN run_{username}ContigFilter_max, before any other code</span>
 <span class="c1"># Check that the parameters are valid</span>
 <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;min_length&#39;</span><span class="p">,</span> <span class="s1">&#39;max_length&#39;</span><span class="p">,</span> <span class="s1">&#39;assembly_ref&#39;</span><span class="p">,</span> <span class="s1">&#39;workspace_name&#39;</span><span class="p">]:</span>
     <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
@@ -363,9 +363,9 @@ code. It goes through the process of building up the code section, step-by-step.
 </div>
 <p>Feel free to add another test for the <code class="docutils literal notranslate"><span class="pre">max_length</span></code> being greater than the <code class="docutils literal notranslate"><span class="pre">min_length</span></code>.</p>
 <p>Re-run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> to make sure everything still works.</p>
-<p>Back to defining tests (<code class="docutils literal notranslate"><span class="pre">test/{uid}ContigFilterImpl_server_test.py</span></code>).
+<p>Back to defining tests (<code class="docutils literal notranslate"><span class="pre">test/{username}ContigFilterImpl_server_test.py</span></code>).
 We can add some additional tests to make sure we raise ValueErrors for invalid parameters:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inside test/{uid}ContigFilterImpl_server_test.py</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inside test/{username}ContigFilterImpl_server_test.py</span>
 <span class="c1"># At the end of the test class</span>
 <span class="k">def</span> <span class="nf">test_invalid_params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">impl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serviceImpl</span>
@@ -373,23 +373,23 @@ We can add some additional tests to make sure we raise ValueErrors for invalid p
     <span class="n">ws</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wsName</span>
     <span class="c1"># Missing assembly ref</span>
     <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
-        <span class="n">impl</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="n">ws</span><span class="p">,</span>
+        <span class="n">impl</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">username</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="n">ws</span><span class="p">,</span>
             <span class="s1">&#39;min_length&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;max_length&#39;</span><span class="p">:</span> <span class="mi">1000000</span><span class="p">})</span>
     <span class="c1"># Missing min length</span>
     <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
-        <span class="n">impl</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="n">ws</span><span class="p">,</span> <span class="s1">&#39;assembly_ref&#39;</span><span class="p">:</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span>
+        <span class="n">impl</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">username</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="n">ws</span><span class="p">,</span> <span class="s1">&#39;assembly_ref&#39;</span><span class="p">:</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span>
             <span class="s1">&#39;max_length&#39;</span><span class="p">:</span> <span class="mi">1000000</span><span class="p">})</span>
     <span class="c1"># Min length is negative</span>
     <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
-        <span class="n">impl</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="n">ws</span><span class="p">,</span> <span class="s1">&#39;assembly_ref&#39;</span><span class="p">:</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span>
+        <span class="n">impl</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">username</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="n">ws</span><span class="p">,</span> <span class="s1">&#39;assembly_ref&#39;</span><span class="p">:</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span>
             <span class="s1">&#39;min_length&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;max_length&#39;</span><span class="p">:</span> <span class="mi">1000000</span><span class="p">})</span>
     <span class="c1"># Min length is wrong type</span>
     <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
-        <span class="n">impl</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="n">ws</span><span class="p">,</span> <span class="s1">&#39;assembly_ref&#39;</span><span class="p">:</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span>
+        <span class="n">impl</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">username</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="n">ws</span><span class="p">,</span> <span class="s1">&#39;assembly_ref&#39;</span><span class="p">:</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span>
             <span class="s1">&#39;min_length&#39;</span><span class="p">:</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;max_length&#39;</span><span class="p">:</span> <span class="mi">1000000</span><span class="p">})</span>
     <span class="c1"># Assembly ref is wrong type</span>
     <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
-        <span class="n">impl</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="n">ws</span><span class="p">,</span> <span class="s1">&#39;assembly_ref&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">impl</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">username</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="n">ws</span><span class="p">,</span> <span class="s1">&#39;assembly_ref&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
             <span class="s1">&#39;min_length&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;max_length&#39;</span><span class="p">:</span> <span class="mi">1000000</span><span class="p">})</span>
 </pre></div>
 </div>
@@ -398,8 +398,8 @@ We can add some additional tests to make sure we raise ValueErrors for invalid p
 <div class="section" id="download-the-fasta-file">
 <h2>7.5. Download the FASTA file<a class="headerlink" href="#download-the-fasta-file" title="Permalink to this headline">¶</a></h2>
 <p>Back to the  <code class="docutils literal notranslate"><span class="pre">method_nameImpl.py</span></code> file.</p>
-<p>Inside your <code class="docutils literal notranslate"><span class="pre">run_{uid}ContigFilter_max</span></code> method, initialize the utility and use it to download the <code class="docutils literal notranslate"><span class="pre">assembly_ref</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inside run_{uid}ContigFilter_max()</span>
+<p>Inside your <code class="docutils literal notranslate"><span class="pre">run_{username}ContigFilter_max</span></code> method, initialize the utility and use it to download the <code class="docutils literal notranslate"><span class="pre">assembly_ref</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inside run_{username}ContigFilter_max()</span>
 <span class="n">assembly_util</span> <span class="o">=</span> <span class="n">AssemblyUtil</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">callback_url</span><span class="p">)</span>
 <span class="n">fasta_file</span> <span class="o">=</span> <span class="n">assembly_util</span><span class="o">.</span><span class="n">get_assembly_as_fasta</span><span class="p">({</span><span class="s1">&#39;ref&#39;</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;assembly_ref&#39;</span><span class="p">]})</span>
 <span class="k">print</span><span class="p">(</span><span class="n">fasta_file</span><span class="p">)</span>
@@ -415,13 +415,13 @@ We can add some additional tests to make sure we raise ValueErrors for invalid p
 <h2>7.6. Filter out contigs based on length<a class="headerlink" href="#filter-out-contigs-based-on-length" title="Permalink to this headline">¶</a></h2>
 <p>Now we can finally start to implement the real functionality of the app!</p>
 <p>The biopython package (<a href="http://biopython.org/" target="_blank">http://biopython.org/</a> ), included in the SDK build, has a module called SeqIO ( <a href="http://biopython.org/wiki/SeqIO" target="_blank">http://biopython.org/wiki/SeqIO</a> ) that can help us read and filter genome sequence data.</p>
-<p>This module should already be included in the module’s <code class="docutils literal notranslate"><span class="pre">{uid}ContigFilterImpl.py</span></code> between the header comments like so:</p>
+<p>This module should already be included in the module’s <code class="docutils literal notranslate"><span class="pre">{username}ContigFilterImpl.py</span></code> between the header comments like so:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># other imports</span>
 <span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
 </pre></div>
 </div>
-<p>Now, inside <code class="docutils literal notranslate"><span class="pre">run_{uid}ContigFilter_max</span></code>, enter code to filter out contigs less than the given min_length: or greater than the max_length.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inside {uid}ContigFilterImpl#run_{uid}ContigFilter_max, after you have fetched the fasta file:</span>
+<p>Now, inside <code class="docutils literal notranslate"><span class="pre">run_{username}ContigFilter_max</span></code>, enter code to filter out contigs less than the given min_length: or greater than the max_length.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inside {username}ContigFilterImpl#run_{username}ContigFilter_max, after you have fetched the fasta file:</span>
 <span class="c1"># Parse the downloaded file in FASTA format</span>
 <span class="n">parsed_assembly</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">fasta_file</span><span class="p">[</span><span class="s1">&#39;path&#39;</span><span class="p">],</span> <span class="s1">&#39;fasta&#39;</span><span class="p">)</span>
 <span class="n">min_length</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;min_length&#39;</span><span class="p">]</span>
@@ -448,11 +448,11 @@ We can add some additional tests to make sure we raise ValueErrors for invalid p
 </div>
 <div class="section" id="add-real-tests">
 <h2>7.7. Add real tests<a class="headerlink" href="#add-real-tests" title="Permalink to this headline">¶</a></h2>
-<p>Return to <code class="docutils literal notranslate"><span class="pre">test/{uid}ContigFilterImpl_server_test.py</span></code> and add tests for the functionality we just added above.</p>
+<p>Return to <code class="docutils literal notranslate"><span class="pre">test/{username}ContigFilterImpl_server_test.py</span></code> and add tests for the functionality we just added above.</p>
 <p>Set <code class="docutils literal notranslate"><span class="pre">min_length</span></code> to a value that filters out some contigs but not others. In our case, our FASTA only has 2 sequences of lengths 4,969,811 and 161,613. An in-between minimum could be 200,000. To test the upper end, a minimum could be 100,000 and a maximum could be 400,000</p>
 <p>We would expect to keep 1 contig and filter out the other.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inside {uid}ContigFilterImpl_server_test:</span>
-<span class="k">def</span> <span class="nf">test_run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_test_min</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inside {username}ContigFilterImpl_server_test:</span>
+<span class="k">def</span> <span class="nf">test_run_</span><span class="p">{</span><span class="n">username</span><span class="p">}</span><span class="n">ContigFilter_test_min</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">ref</span> <span class="o">=</span> <span class="s2">&quot;79/16/1&quot;</span>
     <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">wsName</span><span class="p">,</span>
@@ -460,11 +460,11 @@ We can add some additional tests to make sure we raise ValueErrors for invalid p
         <span class="s1">&#39;min_length&#39;</span><span class="p">:</span> <span class="mi">200000</span><span class="p">,</span>
         <span class="s1">&#39;max_length&#39;</span><span class="p">:</span> <span class="mi">6000000</span>
     <span class="p">}</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serviceImpl</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ctx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">wsName</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serviceImpl</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">username</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ctx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">wsName</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;n_total&#39;</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;n_remaining&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">test_run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_test_max</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">test_run_</span><span class="p">{</span><span class="n">username</span><span class="p">}</span><span class="n">ContigFilter_test_max</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">ref</span> <span class="o">=</span> <span class="s2">&quot;79/16/1&quot;</span>
     <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s1">&#39;workspace_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">wsName</span><span class="p">,</span>
@@ -472,7 +472,7 @@ We can add some additional tests to make sure we raise ValueErrors for invalid p
         <span class="s1">&#39;min_length&#39;</span><span class="p">:</span> <span class="mi">100000</span><span class="p">,</span>
         <span class="s1">&#39;max_length&#39;</span><span class="p">:</span> <span class="mi">4000000</span>
     <span class="p">}</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serviceImpl</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">uid</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ctx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">wsName</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serviceImpl</span><span class="o">.</span><span class="n">run_</span><span class="p">{</span><span class="n">username</span><span class="p">}</span><span class="n">ContigFilter_max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ctx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">wsName</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;n_total&#39;</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;n_remaining&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -499,10 +499,10 @@ We can add some additional tests to make sure we raise ValueErrors for invalid p
     <span class="s1">&#39;n_remaining&#39;</span><span class="p">:</span> <span class="n">n_remaining</span><span class="p">,</span>
     <span class="s1">&#39;filtered_assembly_ref&#39;</span><span class="p">:</span> <span class="n">new_ref</span>
 <span class="p">}</span>
-<span class="c1">#END run_{uid}ContigFilter_max</span>
+<span class="c1">#END run_{username}ContigFilter_max</span>
 </pre></div>
 </div>
-<p>Add a simple assertion into your <code class="docutils literal notranslate"><span class="pre">test_run_{uid}ContigFilter_max</span></code> method to check for the <code class="docutils literal notranslate"><span class="pre">filtered_assembly_ref</span></code>. Something like:</p>
+<p>Add a simple assertion into your <code class="docutils literal notranslate"><span class="pre">test_run_{username}ContigFilter_max</span></code> method to check for the <code class="docutils literal notranslate"><span class="pre">filtered_assembly_ref</span></code>. Something like:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;filtered_assembly_ref&#39;</span><span class="p">]))</span>
 </pre></div>
 </div>
@@ -515,12 +515,12 @@ We can add some additional tests to make sure we raise ValueErrors for invalid p
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kb-sdk install KBaseReport
 </pre></div>
 </div>
-<p>Import the report module should be between the <code class="docutils literal notranslate"><span class="pre">#BEGIN_HEADER</span></code> and <code class="docutils literal notranslate"><span class="pre">#END_HEADER</span></code> section of your <code class="docutils literal notranslate"><span class="pre">{uid}ContigFilterImpl.py</span></code> file:</p>
+<p>Import the report module should be between the <code class="docutils literal notranslate"><span class="pre">#BEGIN_HEADER</span></code> and <code class="docutils literal notranslate"><span class="pre">#END_HEADER</span></code> section of your <code class="docutils literal notranslate"><span class="pre">{username}ContigFilterImpl.py</span></code> file:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">KBaseReport.KBaseReportClient</span> <span class="kn">import</span> <span class="n">KBaseReport</span>
 </pre></div>
 </div>
-<p>The KBaseReport takes a series of dictionary objects that can have text messages, object references, and more. Add the report initialization code inside your <code class="docutils literal notranslate"><span class="pre">run_{uid}ContigFilter_max</span></code> method:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inside the run_{uid}ContigFilter_max method, below where we uploaded the new file:</span>
+<p>The KBaseReport takes a series of dictionary objects that can have text messages, object references, and more. Add the report initialization code inside your <code class="docutils literal notranslate"><span class="pre">run_{username}ContigFilter_max</span></code> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inside the run_{username}ContigFilter_max method, below where we uploaded the new file:</span>
 <span class="c1"># Create an output summary message for the report</span>
 <span class="n">text_message</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
     <span class="s1">&#39;Filtered assembly to &#39;</span><span class="p">,</span>
@@ -549,10 +549,10 @@ We can add some additional tests to make sure we raise ValueErrors for invalid p
     <span class="s1">&#39;n_remaining&#39;</span><span class="p">:</span> <span class="n">n_remaining</span><span class="p">,</span>
     <span class="s1">&#39;filtered_assembly_ref&#39;</span><span class="p">:</span> <span class="n">new_ref</span>
 <span class="p">}</span>
-<span class="c1">#END run_{uid}ContigFilter_max</span>
+<span class="c1">#END run_{username}ContigFilter_max</span>
 </pre></div>
 </div>
-<p>Add a couple assertions in our <code class="docutils literal notranslate"><span class="pre">test_run_{uid}ContigFilter_max</span></code> method inside <code class="docutils literal notranslate"><span class="pre">test/{uid}ContigFilterImpl_server_test.py</span></code> to check for the report name and ref:</p>
+<p>Add a couple assertions in our <code class="docutils literal notranslate"><span class="pre">test_run_{username}ContigFilter_max</span></code> method inside <code class="docutils literal notranslate"><span class="pre">test/{username}ContigFilterImpl_server_test.py</span></code> to check for the report name and ref:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;report_name&#39;</span><span class="p">]))</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;report_ref&#39;</span><span class="p">]))</span>
 </pre></div>
@@ -561,10 +561,10 @@ We can add some additional tests to make sure we raise ValueErrors for invalid p
 </div>
 <div class="section" id="configure-your-app-s-output-data">
 <h2>7.10. Configure your app’s output data<a class="headerlink" href="#configure-your-app-s-output-data" title="Permalink to this headline">¶</a></h2>
-<p>We nearly have a complete app. The last step has already been added to our “ContigFilter” module. If starting from a blank template, you would take all the result data we defined in <code class="docutils literal notranslate"><span class="pre">{uid}ContigFilterImpl#run_{uid}ContigFilter_max</span></code> and add entries for them in our <code class="docutils literal notranslate"><span class="pre">{uid}ContigFilter.spec</span></code> KIDL type file as well as our <code class="docutils literal notranslate"><span class="pre">spec.json</span></code> UI config file.</p>
+<p>We nearly have a complete app. The last step has already been added to our “ContigFilter” module. If starting from a blank template, you would take all the result data we defined in <code class="docutils literal notranslate"><span class="pre">{username}ContigFilterImpl#run_{username}ContigFilter_max</span></code> and add entries for them in our <code class="docutils literal notranslate"><span class="pre">{username}ContigFilter.spec</span></code> KIDL type file as well as our <code class="docutils literal notranslate"><span class="pre">spec.json</span></code> UI config file.</p>
 <p>If not there already, add a type entry for our result data in our KIDL file:</p>
 <p>Run <code class="docutils literal notranslate"><span class="pre">make</span></code> and <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> again to make sure everything works.</p>
-<p>In your <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/run_{uid}ContigFilter_max/spec.json</span></code> file, if not there already, add entries for this output data:</p>
+<p>In your <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/run_{username}ContigFilter_max/spec.json</span></code> file, if not there already, add entries for this output data:</p>
 <div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
 <span class="s2">&quot;output_mapping&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span>
@@ -593,13 +593,13 @@ We can add some additional tests to make sure we raise ValueErrors for invalid p
 <span class="o">...</span>
 </pre></div>
 </div>
-<p>We’ve added an entry for everything we put in the <code class="docutils literal notranslate"><span class="pre">output</span></code> dictionary field that gets returned from <code class="docutils literal notranslate"><span class="pre">{uid}ContigFilterImpl#run_{uid}ContigFilter_max</span></code>.</p>
+<p>We’ve added an entry for everything we put in the <code class="docutils literal notranslate"><span class="pre">output</span></code> dictionary field that gets returned from <code class="docutils literal notranslate"><span class="pre">{username}ContigFilterImpl#run_{username}ContigFilter_max</span></code>.</p>
 <p>Run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> a final time to make sure everything runs smoothly. If so, we have a working app!</p>
-<p>Now that you are done with the new app, remember the three tests for the old app that we commented out? Time to uncomment them. In the test file <code class="docutils literal notranslate"><span class="pre">test/{uid}ContigFilterImpl_server_test.py</span></code>:</p>
+<p>Now that you are done with the new app, remember the three tests for the old app that we commented out? Time to uncomment them. In the test file <code class="docutils literal notranslate"><span class="pre">test/{username}ContigFilterImpl_server_test.py</span></code>:</p>
 <ul class="simple">
-<li>Change <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">my_test_run_{uid}ContigFilter_ok(self)`</span></code> to <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">test_run_{uid}ContigFilter_ok(self)</span></code></li>
-<li>Change <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">my_test_run_{uid}ContigFilter_err1(self)</span></code> to <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">test_run_{uid}ContigFilter_err1(self)</span></code></li>
-<li>Change <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">my_test_run_{uid}ContigFilter_err2(self)</span></code> to <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">test_run_{uid}ContigFilter_err2(self)</span></code></li>
+<li>Change <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">my_test_run_{username}ContigFilter_ok(self)`</span></code> to <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">test_run_{username}ContigFilter_ok(self)</span></code></li>
+<li>Change <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">my_test_run_{username}ContigFilter_err1(self)</span></code> to <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">test_run_{username}ContigFilter_err1(self)</span></code></li>
+<li>Change <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">my_test_run_{username}ContigFilter_err2(self)</span></code> to <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">test_run_{username}ContigFilter_err2(self)</span></code></li>
 </ul>
 </div>
 </div>

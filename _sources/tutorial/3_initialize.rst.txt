@@ -15,18 +15,20 @@ The basic options of the command are:
 
 .. code-block:: bash
 
-    $ kb-sdk init [--example] [--verbose] [--language language] [--user username] ModuleName
+    $ kb-sdk init [--example] [--verbose] [--language language] [--user your_kbase_username] module_name
 
-where ``ModuleName`` must be unique across all SDK modules registered in KBase. For example,
-bootstrapping the HelloWorld module will start with:
+where ``module_name`` must be unique across all SDK modules registered in KBase. You'll be using the bash variables 
+``your_kbase_username`` and ``username`` multiple times in this tutorial, so for convenience, define these
+variables: ``your_kbase_username=jane.smith`` and ``username=${your_kbase_username}``. You'll also be using the bash variable ``module_name`` 
+in this tutorial, but it will change depending on the different examples - first you can define it as ``module_name=HelloWorld``.
 
+Assuming the ``your_kbase_username``, ``username``, and ``module_name`` variables are defined, bootstrapping the HelloWorld module will start with:
 
 .. code-block:: bash
 
-    kb-sdk init --language python --user {your_kbase_user_name} {uid}HelloWorld
+    $ kb-sdk init --language python --user ${your_kbase_username} ${username}${module_name}
 
-
-This creates a directory called ``{uid}HelloWorld`` in your current directory where ``{uid}`` is your name/id 
+This creates a directory called ``{username}HelloWorld`` in your current directory where ``{username}`` is your name/id 
 that will make your copy of HelloWorld unique. The newly created directory has all of 
 the components needed to start creating apps and is basically a clean slate.  
 
@@ -37,7 +39,7 @@ You can set your programming language to any of Python, Perl, or Java; for this 
 
 The ``kb-sdk init`` options are:
 
-.. code::
+.. code:: bash
 
     -v, --verbose    Show verbose output about which files and directories
                      are being created.
@@ -59,7 +61,7 @@ Build the Module
 
 .. code-block:: bash
 
-    $ cd module_name
+    $ cd ${username}${module_name}
     $ make
 
 The ``make`` command will run some initial code generation.
@@ -69,33 +71,40 @@ Module Highlights
 
 This module template has the following that you will customize in later steps:
 
-#. A directory called ``module_name`` (see |anatomy_link| for more on the directory structure)
+#. A base directory called ``{username}{module_name}`` (see |anatomy_link| for more on the directory structure)
 #. A description of the module, its version, and the authors in ``kbase.yml``
-#. A specification file that defines the inputs, output, and functions for the module ``module_name.spec``. 
-#. A script with code for running all the apps in the module called ``module_nameImpl.py``
-#. Specifications for the user interface in the files ``spec.json`` and ``display.yaml``. 
+#. A specification file that defines the inputs, output, and functions for the module ``{module_name}.spec``. 
+#. A script with code for running all the apps in the module called ``lib/{username}{module_name}/{username}{module_name}Impl.py``
+#. Specifications for the user interface in the files ``ui/narrative/methods/run_{username}{module_name}/spec.json`` and ``ui/narrative/methods/run_{username}{module_name}/display.yaml``. 
 
 The input/output/function specification is written in an interface definition language |KIDL_link|  
 that is specific to KBase. The kbase.yml and display.yaml are in 
 YAML format - https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html. YAML format checkers are available online. 
 The spec.json is in JSON format - https://www.w3schools.com/js/js_json_syntax.asp. JSON format checkers are available online.
 
-Don't worry the location of these files. They will be discussed in more detail in later steps.
+Don't worry about the location of these files; this will be discussed in more detail later in the tutorial.
 
 Create a GitHub Repo
 ---------------------
 
-You will need to publish your code to a public git repository to make it available for building into a custom Docker Image.  Here we'll show a brief example using GitHub.  First, commit your codebase into a local git repository. Then, ``git add`` all files created by kb-sdk and commit. This creates a git repository locally.
+You will need to publish your code to a public git repository to make it available for building into a custom 
+Docker Image.  Here we'll show a brief example using GitHub.  If following the tutorial step-by-step, you should 
+already be working in the correct directory (i.e. the same directory as where you ran the ``make`` command). 
+First, commit your codebase into a local git repository. Then, ``git add`` all files created by kb-sdk and commit. 
+This creates a git repository locally. Also, ``git commit -m 'Initial commit'`` to write a message describing this 
+first commit.
 
 .. code:: bash
 
-    $ cd MyModule
+    $ cd ${username}${module_name} #only needed if not already in the correct location
     $ git init
     $ git add .
     $ git commit -m 'Initial commit'
 
 
-Now, create a new GitHub repository on github.com (it can be in your personal GitHub account or in an organization, but it must be public). Make sure your github repository is initially empty (don't add an initial README.md).
+Now, create a new GitHub repository on github.com (it can be in your personal GitHub account or in an organization, 
+but it must be public). As above, for convenience define ``github_user_name`` as a bash variable, for example
+``github_user_name=jsmith10``. Make sure your github repository is initially empty (don't add an initial README.md).
 
 * Direct link to create a repo on github.  |github_link|.
 * Github documentation about creating repos: |github_help_link|.
@@ -104,7 +113,7 @@ Sync your local codebase to your repository on github:
 
 .. code:: bash
 
-    $ git remote add origin https://github.com/[GITHUB_USER_OR_ORG_NAME]/[GITHUB_MODULE_NAME].git
+    $ git remote add origin https://github.com/${github_user_name}/${username}${module_name}.git
     $ git push -u origin master
 
 
@@ -127,11 +136,11 @@ token is only visible on the screen for 5 minutes so make sure you are ready to 
 From the module's root directory, copy and paste that token into ``test_local/test.cfg`` in the value 
 for ``test_token``. For example:
 
-.. code::
+.. code:: bash
 
     test_token=JQGGVCPKCAB2XYHRHZV4H3NF4TN3YEUSA
 
-Where you substitute your own test_token. This one is unauthorized.
+Where you substitute your own test_token. The above listed token is unauthorized.
 
 .. External links
 

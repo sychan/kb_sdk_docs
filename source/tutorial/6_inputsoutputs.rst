@@ -4,7 +4,7 @@ Narrative User Interface
 Apps on KBase, such as genome assemblers and annotators that run on narrative pages, are created using the KBase SDK.
 The user interface (UI) that users see in narratives and in the app catalog are defined in two files: 
 ``spec.json`` and ``display.yaml``. These two files are in a directory called ``ui/narrative/methods/run_{username}{module_name}``
-where ``{module_name}`` is the name of the function that you want to turn into an app. In the example module,
+where ``{module_name}`` is the name of the repository that you want to turn into an app. In the example module,
 the directory  ``ui/narrative/methods/run_{username}ContigFilter`` exists and you need to create a directory called
 ``ui/narrative/methods/run_{username}ContigFilter_max``.
 

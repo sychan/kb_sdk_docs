@@ -82,7 +82,7 @@ The ``display.yaml`` file is in YAML format and defines how your app will appear
 Examine the file found in ``ui/narrative/methods/run_{uid}HelloWorld/display.yaml``.
 View the |Documenting_link| page for more on the how this file is used.
 
-Finally, if you made any changes, run ``kb-sdk validate`` from the base of your app directory (e.g., run_{uid}HelloWorld) and make sure it passes!
+Finally, if you made any changes, run ``kb-sdk validate`` from the base of your app directory (e.g., {uid}HelloWorld) and make sure it passes!
 After validation, now we can start to work on the functionality of the app.
 
 .. note::

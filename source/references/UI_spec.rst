@@ -156,7 +156,9 @@ sub-objects). The following is the list of sub-options available inside the ``te
 Options under ``subdata_section``:
 
 :path_to_subdata: JSON-path leading to the level of a of sub-object (this should be an array of
-                  property names)
+                  property names). To access a second workspace object that is referenced from the
+                  primary object, use the special term "<WSREF>" in this path. The path following
+                  this point will be in the second object. For an example see the |runFBA_link|
 :subdata_included: list of string JSON-paths to be loaded (in case the JSON-path leads to a certain
                    field inside the sub-objects, then the level of array of sub-objects is denoted
                    as [*])
@@ -451,6 +453,10 @@ Each field in the ``parameters`` section can have the following properties:
 .. |editMediaUI_link| raw:: html
 
    <a href="https://github.com/cshenry/fba_tools/blob/4e9001c3547388eb70da6c07229f54c4aac23af2/ui/narrative/methods/edit_media/spec.json" target="_blank">Edit Media UI</a>
+
+.. |runFBA_link| raw:: html
+
+   <a href="https://github.com/cshenry/fba_tools/blob/9e7daee7bdea79961a64c2d981036354e6ba8c45/ui/narrative/methods/run_flux_balance_analysis/spec.json#L183-L187" target="_blank">Run FBA UI</a>
 
 .. |widgets_link| raw:: html
 

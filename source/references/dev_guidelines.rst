@@ -57,6 +57,33 @@ Criteria:
 
 See also:  |KBaseproduct_link| 
 
+Policy for App Deprecation
+--------------------------
+
+In KBase, we strive to maintain apps in our catalog in good standing. We
+encourage all developers to keep their apps up-to-date and to check app run
+success stats, debug logs, and introduce bug fixes when necessary. Keeping
+documentation up-to-date is especially important, particularly when changes are
+introduced to the app. User inquiry can also prompt changes to documentation.
+Developers will be contacted about user inquiries via the Help Board. The KBase
+team is committed to helping developers in the process of keeping their apps in
+good standing.
+
+If you feel that your app is out of date and you can no longer maintain it and
+have not been able to find someone to take it over for you, then you should
+contact KBase Help to start the depreciation process. If there is an issue with
+your app, we may need to inactivate your app, but this will not be done without
+contacting you first.
+
+What prompts an app to be deprecated?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Low app run success rate (~50%).
+2. A new version of the App is available in the literature noting bug fixes and/or improvements that impact the results.
+3. App methodology is shown to be obsolete in the literature.
+4. Current documentation is insufficient in answering user inquiries.
+5. A newer version of type spec of the object that the App does not work for. Essentially, an App being out of date.
+
 .. External links
 
 .. |documentation_link| raw:: html

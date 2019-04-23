@@ -420,7 +420,9 @@ object</td>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name" colspan="2">path_to_subdata:</th></tr>
 <tr class="field-odd field"><td>&#160;</td><td class="field-body">JSON-path leading to the level of a of sub-object (this should be an array of
-property names)</td>
+property names). To access a second workspace object that is referenced from the
+primary object, use the special term “&lt;WSREF&gt;” in this path. The path following
+this point will be in the second object. For an example see the <a href="https://github.com/cshenry/fba_tools/blob/9e7daee7bdea79961a64c2d981036354e6ba8c45/ui/narrative/methods/run_flux_balance_analysis/spec.json#L183-L187" target="_blank">Run FBA UI</a></td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">subdata_included:</th></tr>
 <tr class="field-even field"><td>&#160;</td><td class="field-body">list of string JSON-paths to be loaded (in case the JSON-path leads to a certain

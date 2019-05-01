@@ -327,7 +327,7 @@ We would expect to keep 1 contig and filter out the other.
             'min_length': 200000,
             'max_length': 6000000
         }
-        result = self.serviceImpl.run_{username}ContigFilter_max(self.ctx, self.wsName, params)
+        result = self.serviceImpl.run_{username}ContigFilter_max(self.ctx, params)
         self.assertEqual(result[0]['n_total'], 2)
         self.assertEqual(result[0]['n_remaining'], 1)
 
@@ -339,7 +339,7 @@ We would expect to keep 1 contig and filter out the other.
             'min_length': 100000,
             'max_length': 4000000
         }
-        result = self.serviceImpl.run_{username}ContigFilter_max(self.ctx, self.wsName, params)
+        result = self.serviceImpl.run_{username}ContigFilter_max(self.ctx, params)
         self.assertEqual(result[0]['n_total'], 2)
         self.assertEqual(result[0]['n_remaining'], 1)
 

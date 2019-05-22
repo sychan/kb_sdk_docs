@@ -120,7 +120,6 @@ Alternatively, generate new security certificates:
 
 My Docker instances have run out of space
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-createReport_link
 
 
 Sometimes, an error message might indicate that you’re out of space. Run this check:

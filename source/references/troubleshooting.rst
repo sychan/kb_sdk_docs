@@ -121,7 +121,6 @@ Alternatively, generate new security certificates:
 My Docker instances have run out of space
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
 Sometimes, an error message might indicate that you’re out of space. Run this check:
 
 .. code-block:: bash

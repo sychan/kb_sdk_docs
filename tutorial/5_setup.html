@@ -300,8 +300,8 @@ Be sure to describe what your module and its apps actually do. In future revisio
 <div class="section" id="the-specification-file">
 <h2>5.3. The Specification File<a class="headerlink" href="#the-specification-file" title="Permalink to this headline">¶</a></h2>
 <p>In the root directory of the module, there is a specification file is called <code class="docutils literal notranslate"><span class="pre">{username}ContigFilter.spec</span></code>.
-This file uses a proprietary language called KIDL to specify which functions the module that will be accessible to other SDK services as well as the input and output types.
-The specification is used to generate client code in any KBase supported language, therefore, FileUtils and modules that contain functions that are primarily used by other modules will have a detailed KIDL spec.
+This file uses a proprietary language called KIDL to specify which functions in the module will be accessible to other SDK services, as well as to specify the input and output types.
+The specification file is used to generate client code in any KBase supported language. Therefore, FileUtils and modules that contain functions that are primarily used by other modules will have a detailed KIDL spec.
 However, for modules that are focused on defining user-facing apps, a very basic specification is all we need.</p>
 <div class="section" id="file-structure">
 <h3>5.3.1. File structure<a class="headerlink" href="#file-structure" title="Permalink to this headline">¶</a></h3>
@@ -313,8 +313,8 @@ However, for modules that are focused on defining user-facing apps, a very basic
 } ReportResults;
 </pre></div>
 </div>
-<p>The first section is actually describing the output from the example function. It describes an structure (in Python, a dictionary)
-containing two keys <code class="docutils literal notranslate"><span class="pre">report_name</span></code> and <code class="docutils literal notranslate"><span class="pre">report_ref</span></code> that are used internally by the user interface to indicate which report object should be displayed in the app cell as the result.</p>
+<p>The first section is actually describing the output from the example function. It describes a structure (in Python, a dictionary)
+containing two keys, <code class="docutils literal notranslate"><span class="pre">report_name</span></code> and <code class="docutils literal notranslate"><span class="pre">report_ref</span></code>, that are used internally by the user interface to indicate which report object should be displayed in the app cell as the result.</p>
 <p>As we’ll later see, these reports can contain the following data:</p>
 <ul class="simple">
 <li>KBase Typed Data - Assemblies, genomes, annotations, etc.</li>

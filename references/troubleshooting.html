@@ -296,7 +296,12 @@ https://github.com/kbase/kb\_sdk/blob/master/doc/kb\_sdk\_dependencies.md.</p>
 <span class="gp">&gt;</span>     <span class="o">(</span>ExpressionUtils<span class="o">)</span>
 </pre></div>
 </div>
-<p>Generate new security certificates:</p>
+<p>Reinstall the latest version of the KBase SDK</p>
+<ul class="simple">
+<li>Follow instructions at <a class="reference external" href="https://kbase.github.io/kb_sdk_docs/tutorial/2_install.html">https://kbase.github.io/kb_sdk_docs/tutorial/2_install.html</a></li>
+<li>Don’t forget to generate the new <cite>kb-sdk</cite> executable</li>
+</ul>
+<p>Alternatively, generate new security certificates:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ openssl x509 -in &lt;<span class="o">(</span>openssl s_client -connect ci.kbase.us:443 -prexit <span class="m">2</span>&gt;/dev/null<span class="o">)</span> -out ~/example.crt
 $ sudo keytool -importcert -file ~/example.crt -alias example -keystore <span class="k">$(</span>/usr/libexec/java_home<span class="k">)</span>/jre/lib/security/cacerts -storepass changeit
 </pre></div>

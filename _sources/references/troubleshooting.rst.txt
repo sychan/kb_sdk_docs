@@ -105,7 +105,13 @@ If you get an error on OSX as follows:
     >     kb-sdk help
     >     (ExpressionUtils)
 
-Generate new security certificates:
+Reinstall the latest version of the KBase SDK
+
+* Follow instructions at https://kbase.github.io/kb_sdk_docs/tutorial/2_install.html 
+* Don't forget to generate the new `kb-sdk` executable
+
+
+Alternatively, generate new security certificates:
 
 .. code-block:: bash
 

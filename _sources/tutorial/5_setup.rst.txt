@@ -74,8 +74,8 @@ The Specification File
 -------------------------------------------
 
 In the root directory of the module, there is a specification file is called ``{username}ContigFilter.spec``.
-This file uses a proprietary language called KIDL to specify which functions the module that will be accessible to other SDK services as well as the input and output types.
-The specification is used to generate client code in any KBase supported language, therefore, FileUtils and modules that contain functions that are primarily used by other modules will have a detailed KIDL spec.
+This file uses a proprietary language called KIDL to specify which functions in the module will be accessible to other SDK services, as well as to specify the input and output types.
+The specification file is used to generate client code in any KBase supported language. Therefore, FileUtils and modules that contain functions that are primarily used by other modules will have a detailed KIDL spec.
 However, for modules that are focused on defining user-facing apps, a very basic specification is all we need.
 
 File structure
@@ -93,8 +93,8 @@ If you open ``{username}ContigFilter.spec``, you should see two types of specifi
     } ReportResults;
 
 
-The first section is actually describing the output from the example function. It describes an structure (in Python, a dictionary)
-containing two keys ``report_name`` and ``report_ref`` that are used internally by the user interface to indicate which report object should be displayed in the app cell as the result.
+The first section is actually describing the output from the example function. It describes a structure (in Python, a dictionary)
+containing two keys, ``report_name`` and ``report_ref``, that are used internally by the user interface to indicate which report object should be displayed in the app cell as the result.
 
 As we'll later see, these reports can contain the following data:
 

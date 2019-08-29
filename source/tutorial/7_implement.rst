@@ -202,7 +202,7 @@ Make sure your user passes in a workspace, an assembly reference, a minimum leng
       raise ValueError('Min length must be a non-negative integer')
   if not isinstance(params['max_length'], int) or (params['max_length'] < 0):
       raise ValueError('Max length must be a non-negative integer')
-  if not isinstance(params['assembly_ref'], basestring) or not len(params['assembly_ref']):
+  if not isinstance(params['assembly_ref'], str) or not len(params['assembly_ref']):
       raise ValueError('Pass in a valid assembly reference string')
 
 Feel free to add another test for the ``max_length`` being greater than the ``min_length``.

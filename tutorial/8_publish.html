@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
@@ -31,21 +38,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Common Questions" href="../references/questions_and_answers.html" />
     <link rel="prev" title="7. Implement Code" href="7_implement.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -211,7 +213,7 @@ done on the appdev server. After you click on the <code class="docutils literal 
 encounter a screen with:</p>
 <div class="align-center figure" id="id1">
 <img alt="../_images/appdev_login.png" src="../_images/appdev_login.png" />
-<p class="caption"><span class="caption-text">Logging into Appdev</span></p>
+<p class="caption"><span class="caption-text">Logging into Appdev</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <p>As the page says, direct login doesn’t work and the page will go away when a solution is implemented.
 If you are already logged into <a href="https://narrative.kbase.us" target="_blank">production (https://narrative.kbase.us)</a>, start with step 2. Otherwise start at step 1.
@@ -224,14 +226,14 @@ on the left and will be taken to the Dashboard that is the starting point in oth
 go to the <a href="https://appdev.kbase.us/#appcatalog/register" target="_blank">Module Registration</a> page.  Enter your public git repo for the URL:</p>
 <div class="align-center figure" id="id2">
 <img alt="../_images/register.png" src="../_images/register.png" />
-<p class="caption"><span class="caption-text">Register your module.</span></p>
+<p class="caption"><span class="caption-text">Register your module.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 <p>and click on <code class="docutils literal notranslate"><span class="pre">Register</span></code>. Wait for the registration to complete (it may take a while on the first registration as it has to build the Docker image that is specific to your module from scratch).</p>
 <p>This page can be used for both the initial registration and registering updates. Because you may be registering
 the module several times, a link to the page is also found at the top of the App Catalog.</p>
 <div class="align-center figure" id="id3">
 <img alt="../_images/register_module.png" src="../_images/register_module.png" />
-<p class="caption"><span class="caption-text">Top of App Catalog page for appdev</span></p>
+<p class="caption"><span class="caption-text">Top of App Catalog page for appdev</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 <p>Note that you must be an approved developer to register a new module. You can apply for a
 KBase developer account by going to <a href=" https://accounts.kbase.us/index.php?tpl=request_identity.tpl" target="_blank">https://accounts.kbase.us/index.php?tpl=request_identity.tpl</a>. If you are a US citizen, your account
@@ -246,8 +248,8 @@ by searching for your module and run it!</p>
 <p>Your app will now also be visible in the App Catalog when displaying Apps in development.
 Use the dropdown for <code class="docutils literal notranslate"><span class="pre">Version</span></code> and select “Apps in Development”.</p>
 <ul class="simple">
-<li>Appdev: <a href="https://appdev.kbase.us/#appcatalog/browse/dev" target="_blank">https://appdev.kbase.us/#appcatalog/browse/dev</a></li>
-<li>Production: <a href="https://narrative.kbase.us/#appcatalog/browse/dev" target="_blank">https://narrative.kbase.us/#appcatalog/browse/dev</a></li>
+<li><p>Appdev: <a href="https://appdev.kbase.us/#appcatalog/browse/dev" target="_blank">https://appdev.kbase.us/#appcatalog/browse/dev</a></p></li>
+<li><p>Production: <a href="https://narrative.kbase.us/#appcatalog/browse/dev" target="_blank">https://narrative.kbase.us/#appcatalog/browse/dev</a></p></li>
 </ul>
 <p>Once the module has been registered your narrative needs to know that you want to test apps in
 the development environment. Go to <a href="https://appdev.kbase.us" target="_blank">Appdev (https://appdev.kbase.us)</a>
@@ -255,7 +257,7 @@ and create or open a narrative. In the <code class="docutils literal notranslate
 the environment from <code class="docutils literal notranslate"><span class="pre">released</span></code> to <code class="docutils literal notranslate"><span class="pre">beta</span></code>.</p>
 <div class="align-center figure" id="id4">
 <img alt="../_images/Change_to_beta.png" src="../_images/Change_to_beta.png" />
-<p class="caption"><span class="caption-text">Register your module.</span></p>
+<p class="caption"><span class="caption-text">Register your module.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
 <p>Click on the <code class="docutils literal notranslate"><span class="pre">B</span></code> to change from <code class="docutils literal notranslate"><span class="pre">beta</span></code> to a <code class="docutils literal notranslate"><span class="pre">D</span></code> for development. You new app should be
 among the apps listed in the <code class="docutils literal notranslate"><span class="pre">APPS</span> <span class="pre">Panel</span></code>. On the documentation page for “Fully documenting your app”,
@@ -285,8 +287,8 @@ you will see <code class="docutils literal notranslate"><span class="pre">&gt;</
 is called ‘Request New Release’. The KBase Implementation Team staff will review the module and apps and make sure that
 they meet both the <a href="../references/dev_guidelines.html">Developer Guidance</a> and the <a href="https://github.com/kbase/roadmap/blob/master/KBase%20product%20requirements.md">Must Haves</a>.</p>
 <div class="admonition important">
-<p class="first admonition-title">Important</p>
-<p class="last">Please bear in mind that for public release, your module must meet all the requirements laid out in the  <a href="../references/dev_guidelines.html">KBase SDK Policies</a>. We reserve the right to delay public release of SDK Modules until all requirements are met. Please take the time to familiarize yourself with these policies to avoid delay in releasing your Module.</p>
+<p class="admonition-title">Important</p>
+<p>Please bear in mind that for public release, your module must meet all the requirements laid out in the  <a href="../references/dev_guidelines.html">KBase SDK Policies</a>. We reserve the right to delay public release of SDK Modules until all requirements are met. Please take the time to familiarize yourself with these policies to avoid delay in releasing your Module.</p>
 </div>
 </div>
 </div>
@@ -302,7 +304,7 @@ they meet both the <a href="../references/dev_guidelines.html">Developer Guidanc
         <a href="../references/questions_and_answers.html" class="btn btn-neutral float-right" title="Common Questions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="7_implement.html" class="btn btn-neutral" title="7. Implement Code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="7_implement.html" class="btn btn-neutral float-left" title="7. Implement Code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -328,26 +330,16 @@ they meet both the <a href="../references/dev_guidelines.html">Developer Guidanc
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

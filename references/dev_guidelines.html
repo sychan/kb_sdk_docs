@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
@@ -31,21 +38,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Job Execution" href="execution_engine.html" />
     <link rel="prev" title="Troubleshooting Guide" href="troubleshooting.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -206,15 +208,15 @@ through a standard release process (Development, Beta and Release).</p>
 <div class="section" id="app-environments">
 <h2>App Environments<a class="headerlink" href="#app-environments" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><strong>Development:</strong> Apps in the “Development” state will be limited in
+<li><p><strong>Development:</strong> Apps in the “Development” state will be limited in
 visibility. They will be visible in a publicly accessible environment
 but won’t run against the production data stores and can’t be used in
 production Narratives (i.e., the app will not be visible at
-narrative.kbase.us).</li>
-<li><strong>Beta:</strong> Apps in “Beta” will be visible to all users in the production
+narrative.kbase.us).</p></li>
+<li><p><strong>Beta:</strong> Apps in “Beta” will be visible to all users in the production
 Narrative Interface (narrative.kbase.us), if they choose to view Beta
-apps (by changing the R (for Release) in the Apps panel to B).</li>
-<li><strong>Release:</strong> Methods in the Release state will be visible to all.</li>
+apps (by changing the R (for Release) in the Apps panel to B).</p></li>
+<li><p><strong>Release:</strong> Methods in the Release state will be visible to all.</p></li>
 </ol>
 <p>In order to transition an app from Development to Beta and, finally,
 Release, the app must undergo a review by KBase staff. This review is
@@ -226,31 +228,31 @@ release state.</p>
 <div class="section" id="criteria">
 <h2>Criteria:<a class="headerlink" href="#criteria" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>All components of the tool are licensed for unrestricted open source
+<li><p>All components of the tool are licensed for unrestricted open source
 use–for example, they cannot be “Free for academic use (but
-commercial users must pay to use it)”.</li>
-<li>Documentation for app is clear and includes any appropriate
-references (e.g., published papers on a tool or method) - See  <a href="https://github.com/kbase/project_guides/blob/master/Method_man_page.md" target="_blank">Method Man pages document</a>.</li>
-<li>The app includes a public example Narrative demonstrating the app in
-action on real data.</li>
-<li>The repository contains minimal tests (e.g., at least one unit test
+commercial users must pay to use it)”.</p></li>
+<li><p>Documentation for app is clear and includes any appropriate
+references (e.g., published papers on a tool or method) - See  <a href="https://github.com/kbase/project_guides/blob/master/Method_man_page.md" target="_blank">Method Man pages document</a>.</p></li>
+<li><p>The app includes a public example Narrative demonstrating the app in
+action on real data.</p></li>
+<li><p>The repository contains minimal tests (e.g., at least one unit test
 per app with some coverage of important parameters and inputs).
 Ideally 70% code coverage for testing, but this is an ideal and not a
-hard requirement</li>
-<li>All of the tests above must pass</li>
-<li>Has the code been reviewed by KBase Implementation Team staff? A
+hard requirement</p></li>
+<li><p>All of the tests above must pass</p></li>
+<li><p>Has the code been reviewed by KBase Implementation Team staff? A
 basic expectation is that for Python code is that flake8 shows no
 errors or warnings, see  <a href="https://github.com/kbase/project_guides/blob/master/RecommendedEditors.md#flake8-configuration" target="_blank">this document</a>
-for details on flake8 configuration</li>
-<li>Is the  <a href="https://github.com/kbase/KBaseDeveloperBootstrap/blob/master/Provenance_info.md" target="_blank">provenance information for output objects properly</a>?
+for details on flake8 configuration</p></li>
+<li><p>Is the  <a href="https://github.com/kbase/KBaseDeveloperBootstrap/blob/master/Provenance_info.md" target="_blank">provenance information for output objects properly</a>?
 As a rule, outputting your objects using the <a href="https://narrative.kbase.us/#catalog/modules/DataFileUtil" target="_blank">DataFileUtils</a>
 API will take care of filling out the provenance information. In
 general it is best to use <a href="https://narrative.kbase.us/#catalog/modules/DataFileUtil" target="_blank">DataFileUtils</a>
-whenever possible for input and output, <a href="https://github.com/kbaseapps/kb_Velvet/blob/master/.travis.yml" target="_blank">minimally performs a "kb-sdk validate"</a> or  <a href="https://github.com/kbaseapps/kb_ballgown/blob/master/.travis.yml" target="_blank">ideally performs a "kb-sdk test"</a></li>
-<li>Updates to released modules have incremental version numbers.</li>
-<li>The apps have a category.</li>
-<li>The App Catalog text, especiallyPublications, meets the guidance.</li>
-<li>The Dockerfile has a designated MAINTAINER.</li>
+whenever possible for input and output, <a href="https://github.com/kbaseapps/kb_Velvet/blob/master/.travis.yml" target="_blank">minimally performs a "kb-sdk validate"</a> or  <a href="https://github.com/kbaseapps/kb_ballgown/blob/master/.travis.yml" target="_blank">ideally performs a "kb-sdk test"</a></p></li>
+<li><p>Updates to released modules have incremental version numbers.</p></li>
+<li><p>The apps have a category.</p></li>
+<li><p>The App Catalog text, especiallyPublications, meets the guidance.</p></li>
+<li><p>The Dockerfile has a designated MAINTAINER.</p></li>
 </ol>
 <p>See also:  <a href="https://github.com/kbase/roadmap/blob/master/KBase%20product%20requirements.md" target="_blank">KBase product requirements</a></p>
 </div>
@@ -272,11 +274,11 @@ contacting you first.</p>
 <div class="section" id="what-prompts-an-app-to-be-deprecated">
 <h3>What prompts an app to be deprecated?<a class="headerlink" href="#what-prompts-an-app-to-be-deprecated" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Low app run success rate (~50%).</li>
-<li>A new version of the App is available in the literature noting bug fixes and/or improvements that impact the results.</li>
-<li>App methodology is shown to be obsolete in the literature.</li>
-<li>Current documentation is insufficient in answering user inquiries.</li>
-<li>A newer version of type spec of the object that the App does not work for. Essentially, an App being out of date.</li>
+<li><p>Low app run success rate (~50%).</p></li>
+<li><p>A new version of the App is available in the literature noting bug fixes and/or improvements that impact the results.</p></li>
+<li><p>App methodology is shown to be obsolete in the literature.</p></li>
+<li><p>Current documentation is insufficient in answering user inquiries.</p></li>
+<li><p>A newer version of type spec of the object that the App does not work for. Essentially, an App being out of date.</p></li>
 </ol>
 </div>
 </div>
@@ -293,7 +295,7 @@ contacting you first.</p>
         <a href="execution_engine.html" class="btn btn-neutral float-right" title="Job Execution" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="troubleshooting.html" class="btn btn-neutral" title="Troubleshooting Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="troubleshooting.html" class="btn btn-neutral float-left" title="Troubleshooting Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -319,26 +321,16 @@ contacting you first.</p>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

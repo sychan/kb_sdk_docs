@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
@@ -31,21 +38,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Updating a module to Python3" href="update_to_py3.html" />
     <link rel="prev" title="Listing and viewing jobs" href="job_manager.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -204,8 +206,8 @@
 <p>There are two flavors of SDK Module: dynamic services and apps. Apps run as one-off asynchronous jobs. In contrast to apps, Dynamic Services run as always-on services. Dynamic services cannot call app methods but can call other dynamic services.</p>
 <p>Dynamic services are typically used as the backend for UI elements (such as Narrative widgets) so those elements can be displayed and updated quickly. The function of a dynamic service is often, for a specific workspace type (such as a KBaseGenome.Genome), to pull the data for an object and process the data into a form that the UI element can understand. The dynamic service will often cache the processed form of the data and return parts of the processed form as the UI needs those parts. This way, the UI doesn’t need to keep the entire dataset in memory.</p>
 <div class="admonition important">
-<p class="first admonition-title">Important</p>
-<p class="last">Remember, dynamic services cannot import other utility modules like DataFileUtil. If your
+<p class="admonition-title">Important</p>
+<p>Remember, dynamic services cannot import other utility modules like DataFileUtil. If your
 service needs these libraries, it can’t be dynamic.</p>
 </div>
 </div>
@@ -233,7 +235,7 @@ Calls to other services should be initialized with the Service Wizard URL rather
 <div class="section" id="start-and-stop-a-dynamic-service-locally">
 <h2>Start and stop a dynamic service locally<a class="headerlink" href="#start-and-stop-a-dynamic-service-locally" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Run kb-sdk test. This will set up a workdir in test_local like this:</li>
+<li><p>Run kb-sdk test. This will set up a workdir in test_local like this:</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ tree test_local/workdir/
 test_local/workdir/
@@ -245,9 +247,9 @@ test_local/workdir/
 <p>2. Create a run_container.sh file in test_local by copying run_tests.sh to run_container.sh and
 making the following edits to the last line:</p>
 <ul class="simple">
-<li>Delete <cite>test</cite> at the end of the file</li>
-<li>Delete <code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">SDK_CALLBACK_URL=$1</span></code></li>
-<li>Add <code class="docutils literal notranslate"><span class="pre">-d</span> <span class="pre">-p</span> <span class="pre">&lt;external_port&gt;:5000</span> <span class="pre">--dns</span> <span class="pre">8.8.8.8</span></code></li>
+<li><p>Delete <cite>test</cite> at the end of the file</p></li>
+<li><p>Delete <code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">SDK_CALLBACK_URL=$1</span></code></p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">-d</span> <span class="pre">-p</span> <span class="pre">&lt;external_port&gt;:5000</span> <span class="pre">--dns</span> <span class="pre">8.8.8.8</span></code></p></li>
 </ul>
 <p>When you’re done it should look similar to this (obviously the module name will be different):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
@@ -259,7 +261,7 @@ test/htmlfilesetserv:latest
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li>Run the script:</li>
+<li><p>Run the script:</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./run_container.sh
 c8ea1197f9251323746d9ae42363387381ee79f6c06cd826e6dbfba0a7fd703b
@@ -308,7 +310,7 @@ Below the active services are lists of Released, Beta and Dev services that deve
         <a href="update_to_py3.html" class="btn btn-neutral float-right" title="Updating a module to Python3" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="job_manager.html" class="btn btn-neutral" title="Listing and viewing jobs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="job_manager.html" class="btn btn-neutral float-left" title="Listing and viewing jobs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -334,26 +336,16 @@ Below the active services are lists of Released, Beta and Dev services that deve
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
@@ -31,21 +38,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Creating reports" href="../howtos/create_a_report.html" />
     <link rel="prev" title="8. Publish and Update" href="../tutorial/8_publish.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -202,41 +204,46 @@
 <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#common-questions" id="id1">Common Questions</a><ul>
-<li><a class="reference internal" href="#development" id="id2">Development</a><ul>
-<li><a class="reference internal" href="#q-how-do-i-start-my-app-what-do-i-do-now" id="id3">Q: How do I start my app? What do I do now?</a></li>
-<li><a class="reference internal" href="#q-how-can-i-tell-if-someone-s-already-wrapped-a-tool-i-m-interested-in" id="id4">Q: How can I tell if someone’s already wrapped a tool I’m interested in?</a></li>
-<li><a class="reference internal" href="#q-what-languages-can-i-use-to-write-my-app" id="id5">Q: What languages can I use to write my app?</a></li>
-<li><a class="reference internal" href="#q-how-do-i-work-with-test-and-reference-data" id="id6">Q: How do I work with test and reference data?</a></li>
-<li><a class="reference internal" href="#q-how-do-i-organize-my-app-s-code" id="id7">Q: How do I organize my app’s code?</a></li>
-<li><a class="reference internal" href="#q-do-you-need-to-use-github-what-about-bitbucket-sourceforge" id="id8">Q: Do you need to use GitHub? What about BitBucket? SourceForge?</a></li>
-<li><a class="reference internal" href="#q-do-i-need-to-copy-the-tool-i-m-using-into-my-github-repo" id="id9">Q: Do I need to copy the tool I’m using into my github repo?</a></li>
-<li><a class="reference internal" href="#q-how-do-i-see-my-favorite-apps" id="id10">Q: How do I see my favorite Apps?</a></li>
+<li><p><a class="reference internal" href="#common-questions" id="id1">Common Questions</a></p>
+<ul>
+<li><p><a class="reference internal" href="#development" id="id2">Development</a></p>
+<ul>
+<li><p><a class="reference internal" href="#q-how-do-i-start-my-app-what-do-i-do-now" id="id3">Q: How do I start my app? What do I do now?</a></p></li>
+<li><p><a class="reference internal" href="#q-how-can-i-tell-if-someone-s-already-wrapped-a-tool-i-m-interested-in" id="id4">Q: How can I tell if someone’s already wrapped a tool I’m interested in?</a></p></li>
+<li><p><a class="reference internal" href="#q-what-languages-can-i-use-to-write-my-app" id="id5">Q: What languages can I use to write my app?</a></p></li>
+<li><p><a class="reference internal" href="#q-how-do-i-work-with-test-and-reference-data" id="id6">Q: How do I work with test and reference data?</a></p></li>
+<li><p><a class="reference internal" href="#q-how-do-i-organize-my-app-s-code" id="id7">Q: How do I organize my app’s code?</a></p></li>
+<li><p><a class="reference internal" href="#q-do-you-need-to-use-github-what-about-bitbucket-sourceforge" id="id8">Q: Do you need to use GitHub? What about BitBucket? SourceForge?</a></p></li>
+<li><p><a class="reference internal" href="#q-do-i-need-to-copy-the-tool-i-m-using-into-my-github-repo" id="id9">Q: Do I need to copy the tool I’m using into my github repo?</a></p></li>
+<li><p><a class="reference internal" href="#q-how-do-i-see-my-favorite-apps" id="id10">Q: How do I see my favorite Apps?</a></p></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#validation" id="id11">Validation</a><ul>
-<li><a class="reference internal" href="#q-how-does-validation-work" id="id12">Q: How does validation work?</a></li>
-<li><a class="reference internal" href="#q-how-do-i-learn-more-about-the-spec-json-file" id="id13">Q: How do I learn more about the spec.json file?</a></li>
-<li><a class="reference internal" href="#q-what-are-all-the-auto-generated-source-files-in-my-app" id="id14">Q: What are all the auto-generated source files in my app?</a></li>
-<li><a class="reference internal" href="#q-what-makes-the-tests-slow-to-run" id="id15">Q: What makes the tests slow to run?</a></li>
-<li><a class="reference internal" href="#q-when-you-install-and-run-sdk-apps-from-within-your-own-app-how-are-these-running" id="id16">Q: When you install and run SDK Apps from within your own app, how are these running?</a></li>
+<li><p><a class="reference internal" href="#validation" id="id11">Validation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#q-how-does-validation-work" id="id12">Q: How does validation work?</a></p></li>
+<li><p><a class="reference internal" href="#q-how-do-i-learn-more-about-the-spec-json-file" id="id13">Q: How do I learn more about the spec.json file?</a></p></li>
+<li><p><a class="reference internal" href="#q-what-are-all-the-auto-generated-source-files-in-my-app" id="id14">Q: What are all the auto-generated source files in my app?</a></p></li>
+<li><p><a class="reference internal" href="#q-what-makes-the-tests-slow-to-run" id="id15">Q: What makes the tests slow to run?</a></p></li>
+<li><p><a class="reference internal" href="#q-when-you-install-and-run-sdk-apps-from-within-your-own-app-how-are-these-running" id="id16">Q: When you install and run SDK Apps from within your own app, how are these running?</a></p></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#docker" id="id17">Docker</a><ul>
-<li><a class="reference internal" href="#q-should-i-always-specify-a-specific-version-of-a-library-or-executable" id="id18">Q: Should I always specify a specific version of a library or executable?</a></li>
-<li><a class="reference internal" href="#q-where-do-i-install-binaries-in-docker" id="id19">Q: Where do I install binaries in docker?</a></li>
-<li><a class="reference internal" href="#q-how-do-i-get-inside-the-docker-image-how-do-i-get-root-access" id="id20">Q: How do I get inside the docker image? How do I get root access?</a></li>
-<li><a class="reference internal" href="#q-what-are-the-sh-scripts-in-the-test-local-directory" id="id21">Q: What are the <code class="docutils literal notranslate"><span class="pre">.sh</span></code> scripts in the <code class="docutils literal notranslate"><span class="pre">test_local/</span></code> directory?</a></li>
-<li><a class="reference internal" href="#q-how-do-i-have-multiple-docker-images-for-different-versions-of-my-app-or-dynamic-service" id="id22">Q: How do I have multiple docker images for different versions of my app or dynamic service?</a></li>
+<li><p><a class="reference internal" href="#docker" id="id17">Docker</a></p>
+<ul>
+<li><p><a class="reference internal" href="#q-should-i-always-specify-a-specific-version-of-a-library-or-executable" id="id18">Q: Should I always specify a specific version of a library or executable?</a></p></li>
+<li><p><a class="reference internal" href="#q-where-do-i-install-binaries-in-docker" id="id19">Q: Where do I install binaries in docker?</a></p></li>
+<li><p><a class="reference internal" href="#q-how-do-i-get-inside-the-docker-image-how-do-i-get-root-access" id="id20">Q: How do I get inside the docker image? How do I get root access?</a></p></li>
+<li><p><a class="reference internal" href="#q-what-are-the-sh-scripts-in-the-test-local-directory" id="id21">Q: What are the <code class="docutils literal notranslate"><span class="pre">.sh</span></code> scripts in the <code class="docutils literal notranslate"><span class="pre">test_local/</span></code> directory?</a></p></li>
+<li><p><a class="reference internal" href="#q-how-do-i-have-multiple-docker-images-for-different-versions-of-my-app-or-dynamic-service" id="id22">Q: How do I have multiple docker images for different versions of my app or dynamic service?</a></p></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#requirements-and-limitations" id="id23">Requirements and limitations</a><ul>
-<li><a class="reference internal" href="#q-what-are-system-requirements-for-development" id="id24">Q: What are system requirements for development?</a></li>
-<li><a class="reference internal" href="#q-can-i-develop-on-windows" id="id25">Q: Can I develop on Windows?</a></li>
-<li><a class="reference internal" href="#q-can-i-do-all-the-development-on-a-remote-linux-box" id="id26">Q: Can I do all the development on a remote Linux box?</a></li>
-<li><a class="reference internal" href="#q-what-are-system-requirements-for-execution-environment" id="id27">Q: What are system requirements for execution environment?</a></li>
-<li><a class="reference internal" href="#q-what-size-data-will-be-too-big-for-the-system" id="id28">Q: What size data will be too big for the system?</a></li>
-<li><a class="reference internal" href="#q-i-need-high-performance-computing-for-my-application-is-that-available" id="id29">Q: I need high-performance computing for my application. Is that available?</a></li>
+<li><p><a class="reference internal" href="#requirements-and-limitations" id="id23">Requirements and limitations</a></p>
+<ul>
+<li><p><a class="reference internal" href="#q-what-are-system-requirements-for-development" id="id24">Q: What are system requirements for development?</a></p></li>
+<li><p><a class="reference internal" href="#q-can-i-develop-on-windows" id="id25">Q: Can I develop on Windows?</a></p></li>
+<li><p><a class="reference internal" href="#q-can-i-do-all-the-development-on-a-remote-linux-box" id="id26">Q: Can I do all the development on a remote Linux box?</a></p></li>
+<li><p><a class="reference internal" href="#q-what-are-system-requirements-for-execution-environment" id="id27">Q: What are system requirements for execution environment?</a></p></li>
+<li><p><a class="reference internal" href="#q-what-size-data-will-be-too-big-for-the-system" id="id28">Q: What size data will be too big for the system?</a></p></li>
+<li><p><a class="reference internal" href="#q-i-need-high-performance-computing-for-my-application-is-that-available" id="id29">Q: I need high-performance computing for my application. Is that available?</a></p></li>
 </ul>
 </li>
 </ul>
@@ -251,17 +258,17 @@
 <p>See if there is an existing app in the <a href="https://narrative.kbase.us/#catalog/apps" target="_blank">App Catalog</a> that is similar to yours, or one that has a UI that you would like to emulate. Every app you see in the narrative will have a link to its code repository.</p>
 <p>Typically developers follow this path:</p>
 <ol class="arabic simple">
-<li>Work on the <code class="docutils literal notranslate"><span class="pre">MyModule.spec</span></code> file. This will autogenerate methods in your <code class="docutils literal notranslate"><span class="pre">MyModuleImpl.py</span></code> file, which is where the core of your method functionality will reside.</li>
-<li>Work on the functionality of the app in the autogenerated <code class="docutils literal notranslate"><span class="pre">MyModuleImpl.py</span></code> file.</li>
-<li>Continue developing the app by working on unit tests</li>
-<li>Define the UI by modifying <code class="docutils literal notranslate"><span class="pre">spec.json</span></code> and <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code> files</li>
-<li>Publish and test in the narrative</li>
+<li><p>Work on the <code class="docutils literal notranslate"><span class="pre">MyModule.spec</span></code> file. This will autogenerate methods in your <code class="docutils literal notranslate"><span class="pre">MyModuleImpl.py</span></code> file, which is where the core of your method functionality will reside.</p></li>
+<li><p>Work on the functionality of the app in the autogenerated <code class="docutils literal notranslate"><span class="pre">MyModuleImpl.py</span></code> file.</p></li>
+<li><p>Continue developing the app by working on unit tests</p></li>
+<li><p>Define the UI by modifying <code class="docutils literal notranslate"><span class="pre">spec.json</span></code> and <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code> files</p></li>
+<li><p>Publish and test in the narrative</p></li>
 </ol>
 <p>For these example apps, check out the <code class="docutils literal notranslate"><span class="pre">.spec</span></code> files, <code class="docutils literal notranslate"><span class="pre">&lt;module&gt;Impl.py</span></code> files, and <code class="docutils literal notranslate"><span class="pre">spec.json</span></code> files.</p>
 <ul class="simple">
-<li><a href="https://github.com/kbaseapps/kb_quast/blob/master/kb_quast.spec" target="_blank">Quast</a></li>
-<li><a href="https://github.com/kbaseapps/kb_megahit/blob/master/MEGAHIT.spec" target="_blank">Megahit</a></li>
-<li><a href="https://narrative.kbase.us/#catalog/apps" target="_blank">Trimmomatic</a></li>
+<li><p><a href="https://github.com/kbaseapps/kb_quast/blob/master/kb_quast.spec" target="_blank">Quast</a></p></li>
+<li><p><a href="https://github.com/kbaseapps/kb_megahit/blob/master/MEGAHIT.spec" target="_blank">Megahit</a></p></li>
+<li><p><a href="https://narrative.kbase.us/#catalog/apps" target="_blank">Trimmomatic</a></p></li>
 </ul>
 </div>
 <div class="section" id="q-how-can-i-tell-if-someone-s-already-wrapped-a-tool-i-m-interested-in">
@@ -279,22 +286,22 @@ to expose the parameters or other functionality you are looking for.</p>
 <h3><a class="toc-backref" href="#id5">Q: What languages can I use to write my app?</a><a class="headerlink" href="#q-what-languages-can-i-use-to-write-my-app" title="Permalink to this headline">¶</a></h3>
 <p>We recommend Python, but you can also use Java or Perl. The language versions are as follows:</p>
 <ul class="simple">
-<li>Python: 3.6</li>
-<li>Java: 1.7.0_80</li>
-<li>Perl: v5.18.2</li>
+<li><p>Python: 3.6</p></li>
+<li><p>Java: 1.7.0_80</p></li>
+<li><p>Perl: v5.18.2</p></li>
 </ul>
 <p>KBase supports Perl and Java but the examples in the tutorial are both in Python. Here are some example modules for the other two languages:</p>
 <p>Perl</p>
 <ul class="simple">
-<li><a href="https://github.com/cshenry/fba_tools" target="_blank">fba_tools - https://github.com/cshenry/fba_tools</a></li>
-<li><a href="https://github.com/kbaseapps/RAST_SDK" target="_blank">RAST_SDK - https://github.com/kbaseapps/RAST_SDK</a></li>
-<li><a href="https://github.com/kbaseapps/GenomeComparison" target="_blank">GenomeComparison - https://github.com/kbaseapps/GenomeComparison</a></li>
+<li><p><a href="https://github.com/cshenry/fba_tools" target="_blank">fba_tools - https://github.com/cshenry/fba_tools</a></p></li>
+<li><p><a href="https://github.com/kbaseapps/RAST_SDK" target="_blank">RAST_SDK - https://github.com/kbaseapps/RAST_SDK</a></p></li>
+<li><p><a href="https://github.com/kbaseapps/GenomeComparison" target="_blank">GenomeComparison - https://github.com/kbaseapps/GenomeComparison</a></p></li>
 </ul>
 <p>Java</p>
 <ul class="simple">
-<li><a href="https://github.com/kbaseapps/SpeciesTreeBuilder" target="_blank">SpeciesTreeBuilder https://github.com/kbaseapps/SpeciesTreeBuilder</a></li>
-<li><a href="https://github.com/jmchandonia/RBTnSeq" target="_blank">RBTnSeq - https://github.com/jmchandonia/RBTnSeq</a></li>
-<li><a href="https://github.com/kbaseapps/DomainAnnotation" target="_blank">DomainAnnotation - https://github.com/kbaseapps/DomainAnnotation</a></li>
+<li><p><a href="https://github.com/kbaseapps/SpeciesTreeBuilder" target="_blank">SpeciesTreeBuilder https://github.com/kbaseapps/SpeciesTreeBuilder</a></p></li>
+<li><p><a href="https://github.com/jmchandonia/RBTnSeq" target="_blank">RBTnSeq - https://github.com/jmchandonia/RBTnSeq</a></p></li>
+<li><p><a href="https://github.com/kbaseapps/DomainAnnotation" target="_blank">DomainAnnotation - https://github.com/kbaseapps/DomainAnnotation</a></p></li>
 </ul>
 </div>
 <div class="section" id="q-how-do-i-work-with-test-and-reference-data">
@@ -302,16 +309,16 @@ to expose the parameters or other functionality you are looking for.</p>
 <p>Put simple data into the <code class="docutils literal notranslate"><span class="pre">/data</span></code> directory of your app’s repository. If the data is too large to host on Github, check out the following guide for <a href="../howtos/work_with_reference_data.html">how to add reference data</a>.</p>
 <p>Test files can go within the <code class="docutils literal notranslate"><span class="pre">test/</span></code> directory in your app, such as <code class="docutils literal notranslate"><span class="pre">test/data/</span></code>.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Upload local genome files for of your tests. If you use an existing workspace reference in your tests that works in AppDev, it won’t work in CI or production.</p>
+<p class="admonition-title">Note</p>
+<p>Upload local genome files for of your tests. If you use an existing workspace reference in your tests that works in AppDev, it won’t work in CI or production.</p>
 </div>
 </div>
 <div class="section" id="q-how-do-i-organize-my-app-s-code">
 <h3><a class="toc-backref" href="#id7">Q: How do I organize my app’s code?</a><a class="headerlink" href="#q-how-do-i-organize-my-app-s-code" title="Permalink to this headline">¶</a></h3>
 <p>There are a couple common patterns:</p>
 <ol class="arabic simple">
-<li>Create multiple functions and do everything inside the implementation file. An example of this pattern can be found in the  <a href="https://github.com/kbaseapps/kb_quast/blob/master/kb_quast.spec" target="_blank">Quast</a> app.</li>
-<li>Create a utils directory, create a runner or utility class, pass in the configuration file and parameter files to it, and do everything in there. An example of this pattern can be found in the <a href="https://github.com/kbaseapps/FastANI/blob/master/lib/FastANI/FastANIImpl.py" target="_blank">FastANI</a> app.</li>
+<li><p>Create multiple functions and do everything inside the implementation file. An example of this pattern can be found in the  <a href="https://github.com/kbaseapps/kb_quast/blob/master/kb_quast.spec" target="_blank">Quast</a> app.</p></li>
+<li><p>Create a utils directory, create a runner or utility class, pass in the configuration file and parameter files to it, and do everything in there. An example of this pattern can be found in the <a href="https://github.com/kbaseapps/FastANI/blob/master/lib/FastANI/FastANIImpl.py" target="_blank">FastANI</a> app.</p></li>
 </ol>
 <p>For more complex apps, the second option is preferred, as you can split up functionality into different modules and packages.</p>
 </div>
@@ -353,10 +360,10 @@ with the <a href="https://narrative.kbase.us/narrative/ws.28370.obj.1" target="_
 <p>Every time we run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> it rebuilds the docker container and re-downloads data objects from your workspace.</p>
 <p>Ways you can speed up your tests:</p>
 <ul class="simple">
-<li>Make sure all your custom docker setup, such as compiling binaries, is at the top of your Dockerfile so it always gets cached</li>
-<li>Reduce the number of files you download and upload</li>
-<li>Reuse existing example files on the workspace so you don’t have to upload files</li>
-<li>Separate out your modules into functions that only take local data and files, and test those separately</li>
+<li><p>Make sure all your custom docker setup, such as compiling binaries, is at the top of your Dockerfile so it always gets cached</p></li>
+<li><p>Reduce the number of files you download and upload</p></li>
+<li><p>Reuse existing example files on the workspace so you don’t have to upload files</p></li>
+<li><p>Separate out your modules into functions that only take local data and files, and test those separately</p></li>
 </ul>
 </div>
 <div class="section" id="q-when-you-install-and-run-sdk-apps-from-within-your-own-app-how-are-these-running">
@@ -415,12 +422,12 @@ ENV <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/
 <div class="section" id="q-what-are-system-requirements-for-execution-environment">
 <h3><a class="toc-backref" href="#id27">Q: What are system requirements for execution environment?</a><a class="headerlink" href="#q-what-are-system-requirements-for-execution-environment" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Runs completely on a standard KBase worker node (at least 2 cores and 22GB memory)</li>
-<li>Operates only on supported KBase data types</li>
-<li>Requires either no or fairly limited amounts of reference data</li>
-<li>Uses existing data visualization widgets</li>
-<li>Does not require new uploaders/downloaders</li>
-<li>Wrapper written in Python, Java, or Perl</li>
+<li><p>Runs completely on a standard KBase worker node (at least 2 cores and 22GB memory)</p></li>
+<li><p>Operates only on supported KBase data types</p></li>
+<li><p>Requires either no or fairly limited amounts of reference data</p></li>
+<li><p>Uses existing data visualization widgets</p></li>
+<li><p>Does not require new uploaders/downloaders</p></li>
+<li><p>Wrapper written in Python, Java, or Perl</p></li>
 </ul>
 </div>
 <div class="section" id="q-what-size-data-will-be-too-big-for-the-system">
@@ -446,7 +453,7 @@ ENV <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/
         <a href="../howtos/create_a_report.html" class="btn btn-neutral float-right" title="Creating reports" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../tutorial/8_publish.html" class="btn btn-neutral" title="8. Publish and Update" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../tutorial/8_publish.html" class="btn btn-neutral float-left" title="8. Publish and Update" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -472,26 +479,16 @@ ENV <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

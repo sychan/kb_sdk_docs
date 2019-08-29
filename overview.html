@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
@@ -31,21 +38,16 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Video Tutorial" href="video_tutorial.html" />
     <link rel="prev" title="KBase SDK Documentation" href="index.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -225,10 +227,10 @@
 <h3>Output and Reporting<a class="headerlink" href="#output-and-reporting" title="Permalink to this headline">¶</a></h3>
 <p>When an app finishes producing data, it will typically form a <a href="https://github.com/kbaseapps/KBaseReport" target="_blank">KBaseReport </a> object that can contain a number of different things:</p>
 <ul class="simple">
-<li>A formatted HTML page showing results</li>
-<li>Links to files, such as PDFs, CSVs, etc. that your app produced</li>
-<li>Links to saved, typed output objects, such as annotated or assembled genomes</li>
-<li>Simple text messages and warnings about the results</li>
+<li><p>A formatted HTML page showing results</p></li>
+<li><p>Links to files, such as PDFs, CSVs, etc. that your app produced</p></li>
+<li><p>Links to saved, typed output objects, such as annotated or assembled genomes</p></li>
+<li><p>Simple text messages and warnings about the results</p></li>
 </ul>
 </div>
 </div>
@@ -264,10 +266,10 @@
 <p>In general, you always want to use the workspace for any datasets you work with if you want them to be available to your users in the narrative.</p>
 <p>A dataset stored in the workspace is referred to as an <em>object</em>. Objects in the workspace have some special properties:</p>
 <ul class="simple">
-<li>Every object conforms to a <a href="references/KIDL_spec.html" target="_blank">type specification</a>.</li>
-<li>Objects are versioned</li>
-<li>The “reference” for an object has the format <code class="docutils literal notranslate"><span class="pre">workspace_id/object_id/version</span></code>.</li>
-<li>Workspaces are authenticated</li>
+<li><p>Every object conforms to a <a href="references/KIDL_spec.html" target="_blank">type specification</a>.</p></li>
+<li><p>Objects are versioned</p></li>
+<li><p>The “reference” for an object has the format <code class="docutils literal notranslate"><span class="pre">workspace_id/object_id/version</span></code>.</p></li>
+<li><p>Workspaces are authenticated</p></li>
 </ul>
 </div>
 </div>
@@ -276,9 +278,9 @@
 <p>KBase’s catalogs are registries of KBase apps. In order to find and use an app from within a narrative, it has to be registered in one of these catalogs. You can manage an app’s registration from its module page on the KBase website.</p>
 <p>There are three separate catalogs for testing purposes: <cite>dev</cite>, <cite>beta</cite>, and <cite>release</cite>.</p>
 <ul class="simple">
-<li><cite>dev</cite>: Prototype and tweak your app within the narrative</li>
-<li><cite>beta</cite>: The app is ready for release but requires testing</li>
-<li><cite>release</cite>: The app is visible to normal KBase users</li>
+<li><p><cite>dev</cite>: Prototype and tweak your app within the narrative</p></li>
+<li><p><cite>beta</cite>: The app is ready for release but requires testing</p></li>
+<li><p><cite>release</cite>: The app is visible to normal KBase users</p></li>
 </ul>
 </div>
 <div class="section" id="publishing">
@@ -299,7 +301,7 @@
         <a href="video_tutorial.html" class="btn btn-neutral float-right" title="Video Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="KBase SDK Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="KBase SDK Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -325,26 +327,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

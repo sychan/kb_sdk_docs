@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
@@ -31,21 +38,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Editing your app’s Dockerfile" href="edit_your_dockerfile.html" />
     <link rel="prev" title="Creating reports" href="create_a_report.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -212,29 +214,29 @@ dropdown of objects that match the specified types. If
 will overwrite an existing object or if the name contains invalid
 characters, and a widget displaying that object will appear beneath the
 app cell.</p>
-<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-      <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+      <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
           <span class="p">{</span>
-              <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;read_library_name&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-              <span class="s2">&quot;advanced&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-              <span class="s2">&quot;allow_multiple&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-              <span class="s2">&quot;default_values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;&quot;</span> <span class="p">],</span>
-              <span class="s2">&quot;field_type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;text_options&quot;</span><span class="p">:</span> <span class="p">{</span>
-                  <span class="s2">&quot;valid_ws_types&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;KBaseAssembly.PairedEndLibrary&quot;</span><span class="p">,</span><span class="s2">&quot;KBaseFile.PairedEndLibrary&quot;</span><span class="p">]</span>
+              <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;read_library_name&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+              <span class="nt">&quot;advanced&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+              <span class="nt">&quot;allow_multiple&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+              <span class="nt">&quot;default_values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;&quot;</span> <span class="p">],</span>
+              <span class="nt">&quot;field_type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;text_options&quot;</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="nt">&quot;valid_ws_types&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;KBaseAssembly.PairedEndLibrary&quot;</span><span class="p">,</span><span class="s2">&quot;KBaseFile.PairedEndLibrary&quot;</span><span class="p">]</span>
               <span class="p">}</span>
           <span class="p">},</span>
           <span class="p">{</span>
-              <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="s2">&quot;output_contigset_name&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;optional&quot;</span> <span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-              <span class="s2">&quot;advanced&quot;</span> <span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-              <span class="s2">&quot;allow_multiple&quot;</span> <span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-              <span class="s2">&quot;default_values&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;MegaHit.contigs&quot;</span> <span class="p">],</span>
-              <span class="s2">&quot;field_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;text_options&quot;</span> <span class="p">:</span> <span class="p">{</span>
-                  <span class="s2">&quot;valid_ws_types&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;KBaseGenomes.ContigSet&quot;</span> <span class="p">],</span>
-                  <span class="s2">&quot;is_output_name&quot;</span><span class="p">:</span><span class="n">true</span>
+              <span class="nt">&quot;id&quot;</span> <span class="p">:</span> <span class="s2">&quot;output_contigset_name&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;optional&quot;</span> <span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+              <span class="nt">&quot;advanced&quot;</span> <span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+              <span class="nt">&quot;allow_multiple&quot;</span> <span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+              <span class="nt">&quot;default_values&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;MegaHit.contigs&quot;</span> <span class="p">],</span>
+              <span class="nt">&quot;field_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;text_options&quot;</span> <span class="p">:</span> <span class="p">{</span>
+                  <span class="nt">&quot;valid_ws_types&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;KBaseGenomes.ContigSet&quot;</span> <span class="p">],</span>
+                  <span class="nt">&quot;is_output_name&quot;</span><span class="p">:</span><span class="kc">true</span>
               <span class="p">}</span>
           <span class="p">}</span>
       <span class="p">]</span>
@@ -246,32 +248,32 @@ For each option, the “value” is what will be passed to the app while the
 “ui_name” is what the user will see. In this example, the parameter is
 hidden by default because “advanced” is true (meaning the parameter will
 be hidden in the “Advanced options” section of the input widget).</p>
-<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;prune&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-    <span class="s2">&quot;advanced&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
-    <span class="s2">&quot;allow_multiple&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-    <span class="s2">&quot;default_values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;biochemistry&quot;</span> <span class="p">],</span>
-    <span class="s2">&quot;field_type&quot;</span><span class="p">:</span> <span class="s2">&quot;dropdown&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;dropdown_options&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;prune&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;advanced&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;allow_multiple&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;default_values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;biochemistry&quot;</span> <span class="p">],</span>
+    <span class="nt">&quot;field_type&quot;</span><span class="p">:</span> <span class="s2">&quot;dropdown&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;dropdown_options&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="p">{</span>
-                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;biochemistry&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Known biochemistry&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;biochemistry&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;ui_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Known biochemistry&quot;</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;biochemistry&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Known biochemistry&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;biochemistry&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;ui_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Known biochemistry&quot;</span>
             <span class="p">},</span>
             <span class="p">{</span>
-                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;model&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Input model&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;model&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;ui_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Input model&quot;</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;model&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Input model&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;model&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;ui_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Input model&quot;</span>
             <span class="p">},</span>
             <span class="p">{</span>
-                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Do not prune&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;ui_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Do not prune&quot;</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;Do not prune&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;ui_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Do not prune&quot;</span>
             <span class="p">}</span>
         <span class="p">]</span>
     <span class="p">}</span>
@@ -346,8 +348,8 @@ information about the report object).</p>
 </div>
 <p>In the above example the Narrative take an object looking like this from
 the App UI:</p>
-<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;assemblies&quot;</span><span class="p">:</span> <span class="p">[</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;assemblies&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="s2">&quot;AssemblyA&quot;</span><span class="p">,</span>
     <span class="s2">&quot;AssemblyB&quot;</span>
   <span class="p">]</span>
@@ -355,38 +357,38 @@ the App UI:</p>
 </pre></div>
 </div>
 <p>and passes an object looking like this to the implementation function:</p>
-<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;assemblies&quot;</span><span class="p">:</span> <span class="p">[</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;assemblies&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="s2">&quot;765/1/1&quot;</span><span class="p">,</span>
     <span class="s2">&quot;765/2/1&quot;</span>
   <span class="p">],</span>
-  <span class="s2">&quot;Workspace_name&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;username&gt;:narrative_&lt;long_number&gt;&quot;</span>
+  <span class="nt">&quot;Workspace_name&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;username&gt;:narrative_&lt;long_number&gt;&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>Similarly, the Narrative accepts an output object like this:</p>
-<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
   <span class="p">{</span>
-    <span class="s2">&quot;report_name&quot;</span><span class="p">:</span> <span class="s2">&quot;QUAST_Report_&lt;uuid&gt;&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;report_ref&quot;</span><span class="p">:</span> <span class="s2">&quot;765/3/1&quot;</span>
+    <span class="nt">&quot;report_name&quot;</span><span class="p">:</span> <span class="s2">&quot;QUAST_Report_&lt;uuid&gt;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;report_ref&quot;</span><span class="p">:</span> <span class="s2">&quot;765/3/1&quot;</span>
   <span class="p">}</span>
 <span class="p">]</span>
 </pre></div>
 </div>
 <p>And presents an object like this one to the report visualization:</p>
-<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;report_name&quot;</span><span class="p">:</span> <span class="s2">&quot;QUAST_Report_&lt;uuid&gt;&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;report_ref&quot;</span><span class="p">:</span> <span class="s2">&quot;765/3/1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;report_window_line_height&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-    <span class="s2">&quot;QUAST_result&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;report_name&quot;</span><span class="p">:</span> <span class="s2">&quot;QUAST_Report_&lt;uuid&gt;&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;report_ref&quot;</span><span class="p">:</span> <span class="s2">&quot;765/3/1&quot;</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;report_name&quot;</span><span class="p">:</span> <span class="s2">&quot;QUAST_Report_&lt;uuid&gt;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;report_ref&quot;</span><span class="p">:</span> <span class="s2">&quot;765/3/1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;report_window_line_height&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nt">&quot;QUAST_result&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;report_name&quot;</span><span class="p">:</span> <span class="s2">&quot;QUAST_Report_&lt;uuid&gt;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;report_ref&quot;</span><span class="p">:</span> <span class="s2">&quot;765/3/1&quot;</span>
     <span class="p">},</span>
-    <span class="s2">&quot;assemblies&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nt">&quot;assemblies&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="s2">&quot;AssemblyA&quot;</span><span class="p">,</span>
     <span class="s2">&quot;AssemblyB&quot;</span>
     <span class="p">],</span>
-    <span class="s2">&quot;Workspace_name&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;username&gt;:narrative_&lt;long_number&gt;&quot;</span>
+    <span class="nt">&quot;Workspace_name&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;username&gt;:narrative_&lt;long_number&gt;&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -395,10 +397,10 @@ the App UI:</p>
 <h2>Naming fields in the input widget cell<a class="headerlink" href="#naming-fields-in-the-input-widget-cell" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code> file primarily contains text to describe the app (shown in the narrative and in the app catalog). Minimally this file should define:</p>
 <ul class="simple">
-<li>A module name</li>
-<li>A module tooltip</li>
-<li>A ui-name for each parameter</li>
-<li>A short hint for each parameter</li>
+<li><p>A module name</p></li>
+<li><p>A module tooltip</p></li>
+<li><p>A ui-name for each parameter</p></li>
+<li><p>A short hint for each parameter</p></li>
 </ul>
 </div>
 <div class="section" id="details-on-narrative-ui-specification">
@@ -419,7 +421,7 @@ available <a href="../references/UI_spec.html">here.</a></p>
         <a href="edit_your_dockerfile.html" class="btn btn-neutral float-right" title="Editing your app’s Dockerfile" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="create_a_report.html" class="btn btn-neutral" title="Creating reports" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="create_a_report.html" class="btn btn-neutral float-left" title="Creating reports" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -445,26 +447,16 @@ available <a href="../references/UI_spec.html">here.</a></p>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

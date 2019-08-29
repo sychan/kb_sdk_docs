@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
@@ -31,21 +38,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="4. Hello World Example" href="4_helloworld.html" />
     <link rel="prev" title="2. Installation" href="2_install.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -200,8 +202,8 @@
   <div class="section" id="initialize-the-module">
 <h1>3. Initialize the Module<a class="headerlink" href="#initialize-the-module" title="Permalink to this headline">¶</a></h1>
 <div class="admonition tip">
-<p class="first admonition-title">Tip</p>
-<p class="last">A KBase module contains all of the components for one or more apps. The components are all stored in
+<p class="admonition-title">Tip</p>
+<p>A KBase module contains all of the components for one or more apps. The components are all stored in
 the same directory and are all uploaded to a single github repository. There are pros and cons to
 bundling several apps in one module versus
 creating one app per module. See <a href="../references/terminology.html">terminology</a> for more information.</p>
@@ -225,20 +227,20 @@ the components needed to start creating apps and is basically a clean slate.</p>
 <p>You must always include the <code class="docutils literal notranslate"><span class="pre">-u</span></code> or <code class="docutils literal notranslate"><span class="pre">-user</span></code> option with your username to set yourself as the module owner.</p>
 <p>You can set your programming language to any of Python, Perl, or Java; for this tutorial, we’re using Python.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">init</span></code> options are:</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="o">--</span><span class="n">verbose</span>    <span class="n">Show</span> <span class="n">verbose</span> <span class="n">output</span> <span class="n">about</span> <span class="n">which</span> <span class="n">files</span> <span class="ow">and</span> <span class="n">directories</span>
-                 <span class="n">are</span> <span class="n">being</span> <span class="n">created</span><span class="o">.</span>
-<span class="o">-</span><span class="n">u</span>  <span class="o">--</span><span class="n">user</span>       <span class="n">Set</span> <span class="n">the</span> <span class="n">KBase</span> <span class="n">username</span> <span class="n">of</span> <span class="n">the</span> <span class="n">first</span> <span class="n">module</span> <span class="n">owner</span>
-<span class="o">-</span><span class="n">e</span><span class="p">,</span> <span class="o">--</span><span class="n">example</span>    <span class="n">Populate</span> <span class="n">your</span> <span class="n">repo</span> <span class="k">with</span> <span class="n">an</span> <span class="n">example</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">language</span>
-                 <span class="nb">set</span> <span class="n">by</span> <span class="o">-</span><span class="n">l</span>
-<span class="o">-</span><span class="n">l</span><span class="p">,</span> <span class="o">--</span><span class="n">language</span>   <span class="n">Choose</span> <span class="n">a</span> <span class="n">programming</span> <span class="n">language</span> <span class="n">to</span> <span class="n">base</span> <span class="n">your</span> <span class="n">repo</span> <span class="n">on</span><span class="o">.</span>
-                 <span class="n">Currently</span><span class="p">,</span> <span class="n">we</span> <span class="n">support</span> <span class="n">Perl</span><span class="p">,</span> <span class="n">Python</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Java</span><span class="o">.</span> <span class="n">Default</span> <span class="ow">is</span>
-                 <span class="n">Python</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-v, --verbose    Show verbose output about which files and directories
+                 are being created.
+-u  --user       Set the KBase username of the first module owner
+-e, --example    Populate your repo with an example module in the language
+                 <span class="nb">set</span> by -l
+-l, --language   Choose a programming language to base your repo on.
+                 Currently, we support Perl, Python, and Java. Default is
+                 Python
 </pre></div>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
+<p class="admonition-title">Warning</p>
 <p>Modules Cannot be Renamed (yet)</p>
-<p class="last">The <em>rename</em> feature of kb-sdk only does a partial rename. If you find you need to <em>rename</em>, it is easier
+<p>The <em>rename</em> feature of kb-sdk only does a partial rename. If you find you need to <em>rename</em>, it is easier
 to start over with the ‘kb-sdk init’ and the new name. The ability to rename is on a list of planned
 KBase improvements.</p>
 </div>
@@ -254,11 +256,11 @@ $ make
 <h2>3.2. Module Highlights<a class="headerlink" href="#module-highlights" title="Permalink to this headline">¶</a></h2>
 <p>This module template has the following that you will customize in later steps:</p>
 <ol class="arabic simple">
-<li>A base directory called <code class="docutils literal notranslate"><span class="pre">{username}{module_name}</span></code> (see <a href="../references/module_anatomy.html">Anatomy of a Module </a> for more on the directory structure)</li>
-<li>A description of the module, its version, and the authors in <code class="docutils literal notranslate"><span class="pre">kbase.yml</span></code></li>
-<li>A specification file that defines the inputs, output, and functions for the module <code class="docutils literal notranslate"><span class="pre">{module_name}.spec</span></code>.</li>
-<li>A script with code for running all the apps in the module called <code class="docutils literal notranslate"><span class="pre">lib/{username}{module_name}/{username}{module_name}Impl.py</span></code></li>
-<li>Specifications for the user interface in the files <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/run_{username}{module_name}/spec.json</span></code> and <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/run_{username}{module_name}/display.yaml</span></code>.</li>
+<li><p>A base directory called <code class="docutils literal notranslate"><span class="pre">{username}{module_name}</span></code> (see <a href="../references/module_anatomy.html">Anatomy of a Module </a> for more on the directory structure)</p></li>
+<li><p>A description of the module, its version, and the authors in <code class="docutils literal notranslate"><span class="pre">kbase.yml</span></code></p></li>
+<li><p>A specification file that defines the inputs, output, and functions for the module <code class="docutils literal notranslate"><span class="pre">{module_name}.spec</span></code>.</p></li>
+<li><p>A script with code for running all the apps in the module called <code class="docutils literal notranslate"><span class="pre">lib/{username}{module_name}/{username}{module_name}Impl.py</span></code></p></li>
+<li><p>Specifications for the user interface in the files <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/run_{username}{module_name}/spec.json</span></code> and <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/run_{username}{module_name}/display.yaml</span></code>.</p></li>
 </ol>
 <p>The input/output/function specification is written in an interface definition language <a href="../references/KIDL_spec.html">(IDL)</a>
 that is specific to KBase. The kbase.yml and display.yaml are in
@@ -274,21 +276,21 @@ already be working in the correct directory (i.e. the same directory as where yo
 First, commit your codebase into a local git repository. Then, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> all files created by kb-sdk and commit.
 This creates a git repository locally. Also, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">'Initial</span> <span class="pre">commit'</span></code> to write a message describing this
 first commit.</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd ${username}${module_name} #only needed if not already in the correct location
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="si">${</span><span class="nv">username</span><span class="si">}${</span><span class="nv">module_name</span><span class="si">}</span> <span class="c1">#only needed if not already in the correct location</span>
 $ git init
 $ git add .
-$ git commit -m &#39;Initial commit&#39;
+$ git commit -m <span class="s1">&#39;Initial commit&#39;</span>
 </pre></div>
 </div>
 <p>Now, create a new GitHub repository on github.com (it can be in your personal GitHub account or in an organization,
 but it must be public). As above, for convenience define <code class="docutils literal notranslate"><span class="pre">github_user_name</span></code> as a bash variable, for example
 <code class="docutils literal notranslate"><span class="pre">github_user_name=jsmith10</span></code>. Make sure your github repository is initially empty (don’t add an initial README.md).</p>
 <ul class="simple">
-<li>Direct link to create a repo on github.  <a href="https://github.com/new" target="_blank">https://github.com/new</a>.</li>
-<li>Github documentation about creating repos: <a href="https://help.github.com/articles/creating-a-new-repository" target="_blank">https://help.github.com/articles/creating-a-new-repository</a>.</li>
+<li><p>Direct link to create a repo on github.  <a href="https://github.com/new" target="_blank">https://github.com/new</a>.</p></li>
+<li><p>Github documentation about creating repos: <a href="https://help.github.com/articles/creating-a-new-repository" target="_blank">https://help.github.com/articles/creating-a-new-repository</a>.</p></li>
 </ul>
 <p>Sync your local codebase to your repository on github:</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>$ git remote add origin https://github.com/${github_user_name}/${username}${module_name}.git
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git remote add origin https://github.com/<span class="si">${</span><span class="nv">github_user_name</span><span class="si">}</span>/<span class="si">${</span><span class="nv">username</span><span class="si">}${</span><span class="nv">module_name</span><span class="si">}</span>.git
 $ git push -u origin master
 </pre></div>
 </div>
@@ -306,7 +308,7 @@ Tokens are good for 90 days and can be used on all modules developed and tested 
 token is only visible on the screen for 5 minutes so make sure you are ready to do the step below.</p>
 <p>From the module’s root directory, copy and paste that token into <code class="docutils literal notranslate"><span class="pre">test_local/test.cfg</span></code> in the value
 for <code class="docutils literal notranslate"><span class="pre">test_token</span></code>. For example:</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test_token</span><span class="o">=</span><span class="n">JQGGVCPKCAB2XYHRHZV4H3NF4TN3YEUSA</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">test_token</span><span class="o">=</span>JQGGVCPKCAB2XYHRHZV4H3NF4TN3YEUSA
 </pre></div>
 </div>
 <p>Where you substitute your own test_token. The above listed token is unauthorized.</p>
@@ -324,7 +326,7 @@ for <code class="docutils literal notranslate"><span class="pre">test_token</spa
         <a href="4_helloworld.html" class="btn btn-neutral float-right" title="4. Hello World Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="2_install.html" class="btn btn-neutral" title="2. Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="2_install.html" class="btn btn-neutral float-left" title="2. Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -350,26 +352,16 @@ for <code class="docutils literal notranslate"><span class="pre">test_token</spa
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

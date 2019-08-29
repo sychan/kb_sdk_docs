@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
@@ -31,21 +38,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Listing and viewing jobs" href="job_manager.html" />
     <link rel="prev" title="Manually building the SDK" href="manual_build.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -226,18 +228,18 @@ re-initialize the reference data.</p>
 <p>To make use of this feature, the app developer needs to do a few simple
 things.</p>
 <ol class="arabic simple">
-<li>Add the data-version tag to the kbase.yaml file and give it a
-semantic version tag.</li>
-<li>Add any downloading and data preparation steps to the init section of
+<li><p>Add the data-version tag to the kbase.yaml file and give it a
+semantic version tag.</p></li>
+<li><p>Add any downloading and data preparation steps to the init section of
 the entrypoint.sh script in the scripts directory. The init script
 should place the data in /data and any apps that use the data should
-be configured to look for the data in this location.</li>
-<li>Create a __READY__ file in /data to indicate that the reference
+be configured to look for the data in this location.</p></li>
+<li><p>Create a __READY__ file in /data to indicate that the reference
 data volume was successfully created. Ideally, some sanity tests
 should be performed to confirm things ran correctly by testing for
 the presence of expected files. If the __READY__ file is not
 present, the registration will fail, and the reference data area will
-be removed.</li>
+be removed.</p></li>
 </ol>
 <p>You can see an example in the <a href="https://github.com/kbaseapps/RAST_SDK/blob/a975436d9c0af4f772bd7235b467180860f64060/scripts/entrypoint.sh#L18-L28" target="_blank">RAST application  </a></p>
 </div>
@@ -255,17 +257,17 @@ helps to ensure reproducibility.</p>
 <h2>Gotchas<a class="headerlink" href="#gotchas" title="Permalink to this headline">¶</a></h2>
 <p>There a few things to watch out for with reference data:</p>
 <ul class="simple">
-<li>The reference data area (/data) is mounted during initialization
+<li><p>The reference data area (/data) is mounted during initialization
 (module registration) and during app execution and replaces /data
 from the Docker image. Any modifications made by the Dockerfile to
 this space will not be visible. Changes must be done in the init
-block in entrypoint.sh.</li>
-<li>The reference data is only writeable at registration time. This is to
+block in entrypoint.sh.</p></li>
+<li><p>The reference data is only writeable at registration time. This is to
 ensure that the data is not accidentally changed during execution
 which could break reproducibility. If the app requires the reference
 data to be writeable when it executes, then you add code to the
 execution that copies the data into the writeable work area prior to
-running the underlying application.</li>
+running the underlying application.</p></li>
 </ul>
 </div>
 </div>
@@ -281,7 +283,7 @@ running the underlying application.</li>
         <a href="job_manager.html" class="btn btn-neutral float-right" title="Listing and viewing jobs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="manual_build.html" class="btn btn-neutral" title="Manually building the SDK" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="manual_build.html" class="btn btn-neutral float-left" title="Manually building the SDK" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -307,26 +309,16 @@ running the underlying application.</li>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

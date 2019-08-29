@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
@@ -31,21 +38,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="5. ContigFilter Example" href="5_setup.html" />
     <link rel="prev" title="3. Initialize the Module" href="3_initialize.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -208,12 +210,12 @@ make
 </div>
 <p>The setup for the module includes:</p>
 <ol class="arabic simple">
-<li>Customizing the description of the module</li>
-<li>Specify inputs, outputs, and functions of the module</li>
-<li>Validate the module and its apps</li>
-<li>Customize the Narrative User Interface</li>
-<li>Add statements to the app</li>
-<li>Run a first test</li>
+<li><p>Customizing the description of the module</p></li>
+<li><p>Specify inputs, outputs, and functions of the module</p></li>
+<li><p>Validate the module and its apps</p></li>
+<li><p>Customize the Narrative User Interface</p></li>
+<li><p>Add statements to the app</p></li>
+<li><p>Run a first test</p></li>
 </ol>
 <div class="section" id="module-description">
 <h2>4.1. Module Description<a class="headerlink" href="#module-description" title="Permalink to this headline">¶</a></h2>
@@ -240,17 +242,17 @@ information on the purpose of the subdirectory <code class="docutils literal not
 <p>Now open up <code class="docutils literal notranslate"><span class="pre">ui/narrative/methods/run_{username}HelloWorld/spec.json</span></code>. This file is in JSON format and
 defines a mapping between the KBase Interface Description Language (KIDL) <code class="docutils literal notranslate"><span class="pre">{username}HelloWorld.spec</span></code> file and how our parameters will show up in the app’s user interface.</p>
 <p>In the section <code class="docutils literal notranslate"><span class="pre">parameters</span></code> already defines <code class="docutils literal notranslate"><span class="pre">parameter_1</span></code>:</p>
-<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;parameter_1&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
-            <span class="s2">&quot;advanced&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-            <span class="s2">&quot;allow_multiple&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-            <span class="s2">&quot;default_values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;&quot;</span> <span class="p">],</span>
-            <span class="s2">&quot;field_type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;text_options&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;valid_ws_types&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">]</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;parameter_1&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;advanced&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;allow_multiple&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;default_values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;&quot;</span> <span class="p">],</span>
+            <span class="nt">&quot;field_type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;text_options&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;valid_ws_types&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">]</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">]</span>
@@ -269,8 +271,8 @@ View the <a href="../howtos/fill_out_app_information.html">documenting your app<
 <p>Finally, if you made any changes, run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">validate</span></code> from the base of your app directory (e.g., {username}HelloWorld) and make sure it passes!
 After validation, now we can start to work on the functionality of the app.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">For a more exhaustive overview of the <code class="docutils literal notranslate"><span class="pre">spec.json</span></code> and <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code> files, take a look at
+<p class="admonition-title">Note</p>
+<p>For a more exhaustive overview of the <code class="docutils literal notranslate"><span class="pre">spec.json</span></code> and <code class="docutils literal notranslate"><span class="pre">display.yaml</span></code> files, take a look at
 the <a href="../references/UI_spec.html">UI specification guide </a>.  You can also experiment with UI generation
 with the <a href="https://narrative.kbase.us/narrative/ws.28370.obj.1" target="_blank">App Spec Editor Narrative </a> (pending narrative permissions).</p>
 </div>
@@ -299,8 +301,8 @@ and they are part of the class inside <code class="docutils literal notranslate"
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">make</span></code> command preserves everything between the <code class="docutils literal notranslate"><span class="pre">#BEGIN</span></code> and <code class="docutils literal notranslate"><span class="pre">#END</span></code> comments and replaces everything else.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Don’t put any spaces between the ‘#’ and ‘BEGIN’ or ‘END’. It has bad consequences.</p>
+<p class="admonition-title">Warning</p>
+<p>Don’t put any spaces between the ‘#’ and ‘BEGIN’ or ‘END’. It has bad consequences.</p>
 </div>
 </div>
 <div class="section" id="check-inputs-optional">
@@ -340,13 +342,13 @@ earlier steps, you can modify the test method to test the returned output.</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Make sure that you have put your developer token in the <code class="docutils literal notranslate"><span class="pre">test_local/test.cfg</span></code> as mentioned in the
+<p class="admonition-title">Note</p>
+<p>Make sure that you have put your developer token in the <code class="docutils literal notranslate"><span class="pre">test_local/test.cfg</span></code> as mentioned in the
 <a href="../tutorial/3_initialize.html">Initialize the Module</a></p>
 </div>
 <p>Run <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">test</span></code> and, if everything works, you’ll see the docker container boot up, the <code class="docutils literal notranslate"><span class="pre">run_{username}HelloWorld</span></code> method will get called, and you will see some printed output.
 If you added the input and output parameters, the output should include the two lines.</p>
-<div class="code text highlight-default notranslate"><div class="highlight"><pre><span></span>Input parameter Hello World!
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Input parameter Hello World!
 report_name report_675e061a-2fce-47aa-ac85-67e3ec975776
 </pre></div>
 </div>
@@ -367,7 +369,7 @@ The next example includes a report builder that is used by the Narrative User In
         <a href="5_setup.html" class="btn btn-neutral float-right" title="5. ContigFilter Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="3_initialize.html" class="btn btn-neutral" title="3. Initialize the Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="3_initialize.html" class="btn btn-neutral float-left" title="3. Initialize the Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -393,26 +395,16 @@ The next example includes a report builder that is used by the Narrative User In
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

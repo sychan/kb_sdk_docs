@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
@@ -31,21 +38,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Working with the file utils" href="file_utils.html" />
     <link rel="prev" title="Fully documenting your app" href="fill_out_app_information.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -218,17 +220,17 @@ RUN ln -s <span class="k">$(</span>readlink -f ./fastANI<span class="k">)</span>
 </div>
 <p>Some things to note:</p>
 <ul class="simple">
-<li>Be sure to check out a specific version tag or commit so that your
-app doesn’t receive unexpected, possibly broken updates</li>
-<li>Put this code high up in your Dockerfile, above where your app gets
+<li><p>Be sure to check out a specific version tag or commit so that your
+app doesn’t receive unexpected, possibly broken updates</p></li>
+<li><p>Put this code high up in your Dockerfile, above where your app gets
 initialized, so that it gets cached and doesn’t have to re-run every
-time you change your app</li>
-<li>You can place commands in the directory <code class="docutils literal notranslate"><span class="pre">/kb/deployment/bin/</span></code>, and
-it will automatically get added to your container’s <code class="docutils literal notranslate"><span class="pre">$PATH</span></code></li>
+time you change your app</p></li>
+<li><p>You can place commands in the directory <code class="docutils literal notranslate"><span class="pre">/kb/deployment/bin/</span></code>, and
+it will automatically get added to your container’s <code class="docutils literal notranslate"><span class="pre">$PATH</span></code></p></li>
 </ul>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Also see: <a href="../howtos/edit_your_dockerfile.html">How to edit your app’s Dockerfile  </a></p>
+<p class="admonition-title">Note</p>
+<p>Also see: <a href="../howtos/edit_your_dockerfile.html">How to edit your app’s Dockerfile  </a></p>
 </div>
 </div>
 <div class="section" id="invoking-the-command-in-python">
@@ -236,7 +238,7 @@ it will automatically get added to your container’s <code class="docutils lite
 <p>You can use the  <a href="https://docs.python.org/2/library/subprocess.html" target="_blank">subprocess  </a> package to invoke commands from within python.</p>
 <p>The following example from the <a href="https://github.com/kbaseapps/kb_quast" target="_blank">kb_quast </a> repository
 demonstrates how to do (and document) this well with Python.</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run_quast_exec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outdir</span><span class="p">,</span> <span class="n">filepaths</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">skip_glimmer</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run_quast_exec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outdir</span><span class="p">,</span> <span class="n">filepaths</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">skip_glimmer</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
     <span class="n">threads</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">THREADS_PER_CORE</span>
     <span class="c1"># DO NOT use genemark instead of glimmer, not open source</span>
     <span class="c1"># DO NOT use metaQUAST, uses SILVA DB which is not open source</span>
@@ -260,7 +262,7 @@ demonstrates how to do (and document) this well with Python.</p>
     <span class="n">files_proc</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">_os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outdir</span><span class="p">,</span> <span class="s1">&#39;report.tsv&#39;</span><span class="p">),</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span>
     <span class="n">files_exp</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">filepaths</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">files_proc</span> <span class="o">!=</span> <span class="n">files_exp</span><span class="p">:</span>
-        <span class="n">err</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;QUAST skipped some files - </span><span class="si">{}</span><span class="s1"> expected, </span><span class="si">{}</span><span class="s1"> processed.&#39;</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;QUAST skipped some files - {} expected, {} processed.&#39;</span>
                <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">files_exp</span><span class="p">,</span> <span class="n">files_proc</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
 </pre></div>
@@ -279,7 +281,7 @@ demonstrates how to do (and document) this well with Python.</p>
         <a href="file_utils.html" class="btn btn-neutral float-right" title="Working with the file utils" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="fill_out_app_information.html" class="btn btn-neutral" title="Fully documenting your app" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="fill_out_app_information.html" class="btn btn-neutral float-left" title="Fully documenting your app" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -305,26 +307,16 @@ demonstrates how to do (and document) this well with Python.</p>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

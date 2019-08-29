@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
@@ -31,21 +38,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Design Checklist" href="../references/design_checklist.html" />
     <link rel="prev" title="Dynamic Services" href="dynamic_services.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -208,13 +210,10 @@
 <h2>Caveats<a class="headerlink" href="#caveats" title="Permalink to this headline">¶</a></h2>
 <p>2to3 does a very good job catching most of the breaking changes between the python versions. However, there a few issues that are not caught by the library that may require some manual fixing:</p>
 <ul>
-<li><p class="first"><code class="docutils literal notranslate"><span class="pre">Maketrans</span></code> imports from <code class="docutils literal notranslate"><span class="pre">str</span></code> in Python3 not <code class="docutils literal notranslate"><span class="pre">string</span></code>.</p>
-</li>
-<li><p class="first">Strings in Python3 are by default unicode strings rather than byte strings. This solves many issues and inconsistencies but a few functions such as hashlib still expect byte strings. To produce these from a unicode string use the <code class="docutils literal notranslate"><span class="pre">encode</span></code> function like this: <code class="docutils literal notranslate"><span class="pre">hashlib.md5(my_string.encode('utf-8')).hexdigest()</span></code>.</p>
-</li>
-<li><p class="first"><code class="docutils literal notranslate"><span class="pre">2to3</span></code> will wrap functions like <code class="docutils literal notranslate"><span class="pre">dict.keys()</span></code> <code class="docutils literal notranslate"><span class="pre">dict.items()</span></code> or <code class="docutils literal notranslate"><span class="pre">range()</span></code> in a <code class="docutils literal notranslate"><span class="pre">list</span></code> declaration to preserve the original behavior of these functions as they now return generators. This is the safest option and may be preferred in some cases (for example if the values are to be printed) but the intent is to iterate over the values, (e.g., <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">key</span> <span class="pre">in</span> <span class="pre">list(my_dict.keys())</span></code>) it is more efficient to remove this list extra declaration and use the generator.</p>
-</li>
-<li><p class="first">Some automatically generated files like <code class="docutils literal notranslate"><span class="pre">baseclient.py</span></code> and test files have fallback code for importing dependencies in 2 and 3 like this:</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">Maketrans</span></code> imports from <code class="docutils literal notranslate"><span class="pre">str</span></code> in Python3 not <code class="docutils literal notranslate"><span class="pre">string</span></code>.</p></li>
+<li><p>Strings in Python3 are by default unicode strings rather than byte strings. This solves many issues and inconsistencies but a few functions such as hashlib still expect byte strings. To produce these from a unicode string use the <code class="docutils literal notranslate"><span class="pre">encode</span></code> function like this: <code class="docutils literal notranslate"><span class="pre">hashlib.md5(my_string.encode('utf-8')).hexdigest()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2to3</span></code> will wrap functions like <code class="docutils literal notranslate"><span class="pre">dict.keys()</span></code> <code class="docutils literal notranslate"><span class="pre">dict.items()</span></code> or <code class="docutils literal notranslate"><span class="pre">range()</span></code> in a <code class="docutils literal notranslate"><span class="pre">list</span></code> declaration to preserve the original behavior of these functions as they now return generators. This is the safest option and may be preferred in some cases (for example if the values are to be printed) but the intent is to iterate over the values, (e.g., <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">key</span> <span class="pre">in</span> <span class="pre">list(my_dict.keys())</span></code>) it is more efficient to remove this list extra declaration and use the generator.</p></li>
+<li><p>Some automatically generated files like <code class="docutils literal notranslate"><span class="pre">baseclient.py</span></code> and test files have fallback code for importing dependencies in 2 and 3 like this:</p>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">configparser</span> <span class="kn">import</span> <span class="n">ConfigParser</span> <span class="k">as</span> <span class="n">_ConfigParser</span>  <span class="c1"># py 3</span>
@@ -230,8 +229,8 @@
 <div class="section" id="resources">
 <h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Neat new trick available in Python 3: <a href="http://whypy3.com/" target="_blank">http://whypy3.com/</a></li>
-<li>Check Python 3 readiness of common packages: <a href="http://py3readiness.org/" target="_blank">http://py3readiness.org/</a></li>
+<li><p>Neat new trick available in Python 3: <a href="http://whypy3.com/" target="_blank">http://whypy3.com/</a></p></li>
+<li><p>Check Python 3 readiness of common packages: <a href="http://py3readiness.org/" target="_blank">http://py3readiness.org/</a></p></li>
 </ul>
 </div>
 </div>
@@ -247,7 +246,7 @@
         <a href="../references/design_checklist.html" class="btn btn-neutral float-right" title="Design Checklist" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="dynamic_services.html" class="btn btn-neutral" title="Dynamic Services" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="dynamic_services.html" class="btn btn-neutral float-left" title="Dynamic Services" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -273,26 +272,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

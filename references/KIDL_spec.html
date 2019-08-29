@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
@@ -31,21 +38,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Narrative App UI Specification" href="UI_spec.html" />
     <link rel="prev" title="Anatomy of a Module" href="module_anatomy.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -205,22 +207,22 @@
 <p>The type language is built from a small number of basic types. These
 include three scalar types:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">string</span></code>: a sequence of ASCII characters</li>
-<li><code class="docutils literal notranslate"><span class="pre">integer</span></code>: a signed integer</li>
-<li><code class="docutils literal notranslate"><span class="pre">float</span></code>: a floating-point number</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">string</span></code>: a sequence of ASCII characters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">integer</span></code>: a signed integer</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">float</span></code>: a floating-point number</p></li>
 </ul>
 <p>And four compound types:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">list</span></code>: a homogeneous ordered sequence of values</li>
-<li><code class="docutils literal notranslate"><span class="pre">mapping</span></code>: a type mapping from a scalar or scalar-derived type to a
+<li><p><code class="docutils literal notranslate"><span class="pre">list</span></code>: a homogeneous ordered sequence of values</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mapping</span></code>: a type mapping from a scalar or scalar-derived type to a
 value of an arbitrary type. All values in a mapping have the same
-type.</li>
-<li><code class="docutils literal notranslate"><span class="pre">structure</span></code>: a record type that contains one or more values which
+type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">structure</span></code>: a record type that contains one or more values which
 can be of differing types. Each value is accessed by a name that is
-defined by the type.</li>
-<li><code class="docutils literal notranslate"><span class="pre">tuple</span></code>: a type that contains one or more values. The values are
+defined by the type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tuple</span></code>: a type that contains one or more values. The values are
 accessed by index (think of this as a fixed-length list where the
-values may be of differing types).</li>
+values may be of differing types).</p></li>
 </ul>
 <p>If we wish to define a list of integer values, we would use the type
 string <code class="docutils literal notranslate"><span class="pre">list&lt;int&gt;</span></code></p>
@@ -276,7 +278,7 @@ defined as follows:</p>
         <a href="UI_spec.html" class="btn btn-neutral float-right" title="Narrative App UI Specification" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="module_anatomy.html" class="btn btn-neutral" title="Anatomy of a Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="module_anatomy.html" class="btn btn-neutral float-left" title="Anatomy of a Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -302,26 +304,16 @@ defined as follows:</p>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

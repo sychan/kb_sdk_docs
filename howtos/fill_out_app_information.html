@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
@@ -31,21 +38,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Running shell commands" href="run_a_shell_command.html" />
     <link rel="prev" title="Editing your app’s Dockerfile" href="edit_your_dockerfile.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -224,9 +226,9 @@ free to repurpose the icons from existing KBase apps, or make your own.
 Your icon can be PNG, GIF, or JPEG (the KBase ones are PNG) and should
 fit in a square 200x200 pixels. To match our existing icons, use these guidelines:</p>
 <ul class="simple">
-<li>200x200px image with 40px rounded edges</li>
-<li>Font: Futura Condensed Medium, 72pt, white</li>
-<li>72dpi PNG</li>
+<li><p>200x200px image with 40px rounded edges</p></li>
+<li><p>Font: Futura Condensed Medium, 72pt, white</p></li>
+<li><p>72dpi PNG</p></li>
 </ul>
 <p>PDF vector and PNG bitmap versions that we used for our icons are available at
 <a href="https://github.com/kbase/kb_sdk_docs/tree/master/source/images/app-icons" target="_blank">https://github.com/kbase/kb_sdk_docs/tree/master/source/images/app-icons</a> in case you would like to use them
@@ -256,7 +258,7 @@ configured in the <strong>display.yaml</strong> file at:</p>
 <p>and add a <strong>name:</strong> configuration. If you are wrapping an existing tool
 with a known name, please include that name to make it easier for people
 to find it, such as</p>
-<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">Trimmomatic</span> <span class="o">-</span> <span class="n">Read</span> <span class="n">Trimming</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Trimmomatic - Read Trimming</span>
 </pre></div>
 </div>
 <p>You should tag your app with one (or multiple) “categories”. (If you
@@ -302,12 +304,12 @@ file at:</p>
 </div>
 <p>The fields that should be configured are</p>
 <ul class="simple">
-<li>name</li>
-<li>icon</li>
-<li>tooltip</li>
-<li>description</li>
-<li>publications</li>
-<li>screenshots</li>
+<li><p>name</p></li>
+<li><p>icon</p></li>
+<li><p>tooltip</p></li>
+<li><p>description</p></li>
+<li><p>publications</p></li>
+<li><p>screenshots</p></li>
 </ul>
 <div class="section" id="name-icon-tooltip-description">
 <h4>Name, Icon, Tooltip, Description<a class="headerlink" href="#name-icon-tooltip-description" title="Permalink to this headline">¶</a></h4>
@@ -323,23 +325,23 @@ please add links to the open-source repo for that tool in both the
 home page for the tool, please also add a link to that.
 Publications
 Publications and Links
-‘’‘’‘’‘’‘’‘’‘’‘’‘’‘’‘’</p>
+‘’’’’’’’’’’’’’’’’’’’’’</p>
 <p>It is important to accurately cite all associated publications and software when preparing an app for KBase deployment. This is especially true when you wrap an existing tool.</p>
 <ul class="simple">
-<li>All publication listings belong in the ‘publications’ field at the bottom of the <strong>display.yaml</strong> file.</li>
-<li>Tool home pages and open source repos should also be included as publications.</li>
-<li>Publications and software information should not be duplicated elsewhere in the file.</li>
-<li>Links to source codes or websites should be prefaced with some information. Do not list the hyperlink by itself (see example below).</li>
-<li>The minimum fields to provide are the <strong>display-text:</strong> and a <strong>link:</strong>. Optionally, you can provide a <strong>pmid:</strong> with a PubMed ID.</li>
-<li>All publication information should be in the PLOS style format (see example below).</li>
+<li><p>All publication listings belong in the ‘publications’ field at the bottom of the <strong>display.yaml</strong> file.</p></li>
+<li><p>Tool home pages and open source repos should also be included as publications.</p></li>
+<li><p>Publications and software information should not be duplicated elsewhere in the file.</p></li>
+<li><p>Links to source codes or websites should be prefaced with some information. Do not list the hyperlink by itself (see example below).</p></li>
+<li><p>The minimum fields to provide are the <strong>display-text:</strong> and a <strong>link:</strong>. Optionally, you can provide a <strong>pmid:</strong> with a PubMed ID.</p></li>
+<li><p>All publication information should be in the PLOS style format (see example below).</p></li>
 </ul>
 <div class="admonition tip">
-<p class="first admonition-title">Tip</p>
+<p class="admonition-title">Tip</p>
 <p>PLOS Format:</p>
-<p class="last">Author Surname Author Initial(s), Author Surname Author Initial(s), et al. Title of Article. Title of Journal. Publication Year;Volume: Page Range. doi:</p>
+<p>Author Surname Author Initial(s), Author Surname Author Initial(s), et al. Title of Article. Title of Journal. Publication Year;Volume: Page Range. doi:</p>
 </div>
 <p>The format for the minimal publication is:</p>
-<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">publications</span> <span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">publications</span> <span class="p">:</span>
     <span class="o">-</span>
         <span class="n">display</span><span class="o">-</span><span class="n">text</span><span class="p">:</span> <span class="o">|</span>
             <span class="n">Citation</span> <span class="ow">in</span> <span class="n">PLOS</span> <span class="n">style</span> <span class="nb">format</span>
@@ -409,12 +411,12 @@ list blank.</p>
 <p>For an example of a complete App Info page that would be acceptable for
 public deployment, please see examples in the Trimmomatic app:</p>
 <ul class="simple">
-<li><a href="https://appdev.kbase.us/#appcatalog/app/kb_trimmomatic/run_trimmomatic/dev" target="_blank">https://appdev.kbase.us/#appcatalog/app/kb_trimmomatic/run_trimmomatic/dev</a></li>
-<li><a href="https://github.com/psdehal/kb_trimmomatic/blob/master/ui/narrative/methods/run_trimmomatic/display.yaml" target="_blank">https://github.com/psdehal/kb_trimmomatic/blob/master/ui/narrative/methods/run_trimmomatic/display.yaml</a></li>
+<li><p><a href="https://appdev.kbase.us/#appcatalog/app/kb_trimmomatic/run_trimmomatic/dev" target="_blank">https://appdev.kbase.us/#appcatalog/app/kb_trimmomatic/run_trimmomatic/dev</a></p></li>
+<li><p><a href="https://github.com/psdehal/kb_trimmomatic/blob/master/ui/narrative/methods/run_trimmomatic/display.yaml" target="_blank">https://github.com/psdehal/kb_trimmomatic/blob/master/ui/narrative/methods/run_trimmomatic/display.yaml</a></p></li>
 </ul>
 <div class="admonition important">
-<p class="first admonition-title">Important</p>
-<p class="last">Please bear in mind that for public release, your module <strong>MUST</strong> meet
+<p class="admonition-title">Important</p>
+<p>Please bear in mind that for public release, your module <strong>MUST</strong> meet
 all the requirements laid out in the <a class="reference external" href="../references/dev_guidelines.html">KBase SDK
 Policies</a>.
 We reserve the right to delay public release of SDK modules until all
@@ -437,7 +439,7 @@ these policies to avoid delay in releasing your module.</p>
         <a href="run_a_shell_command.html" class="btn btn-neutral float-right" title="Running shell commands" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="edit_your_dockerfile.html" class="btn btn-neutral" title="Editing your app’s Dockerfile" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="edit_your_dockerfile.html" class="btn btn-neutral float-left" title="Editing your app’s Dockerfile" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -463,26 +465,16 @@ these policies to avoid delay in releasing your module.</p>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

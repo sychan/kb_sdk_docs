@@ -242,25 +242,21 @@ data structure returned from the dynamic service, if the data structure is:
 .. code-block:: json
 
     [
-        "foo",                # return array position 0
-        {                     # return array position 1
+        "return-array-element-0",
+        {
          "interesting_data":
             [
                 "baz",
                 "boo",
                 [
-                    {"id": 1,
-                     "name": "foo"
-                     },
+                    {"id": 1, "name": "foo"},
                     {"...more items": "go here..."},
-                    {"id": 42,
-                     "name": "wowbagger"
-                    }
+                    {"id": 42, "name": "wowbagger"}
                 ],
                 "bat"
              ]
          },
-         "bar"                # return array position 2
+         "return-array-element-2"
      ]
 
 Note that KBase dynamic services all return an array of values, even for single-value
@@ -277,13 +273,9 @@ The selection items would be the 42 items represented by
 .. code-block:: json
 
   [
-    {"id": 1,
-     "name": "foo"
-     },
+    {"id": 1, "name": "foo"},
     {"...more items": "go here..."},
-    {"id": 42,
-     "name": "wowbagger"
-     }
+    {"id": 42, "name": "wowbagger"}
   ]
 
 Selection items must always be a list of maps.
@@ -311,7 +303,7 @@ Here is an example for taxon search:
           "search_text": "prefix:{{dynamic_dropdown_input}}",
           "ns": "ncbi_taxonomy",
           "limit": 1000
-         }
+        }
       ],
       "query_on_empty_input": 0,
       "result_array_index": 0,

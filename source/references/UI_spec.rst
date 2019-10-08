@@ -309,8 +309,6 @@ Here is an example for taxon search:
       "result_array_index": 0,
       "path_to_selection_items": ["results"],
       "selection_id": "scientific_name",
-      "path_to_subdata": "result[0].results",
-      "somefield": 6,
       "description_template": "Tax ID {{ncbi_taxon_id}}:&nbsp<strong>{{scientific_name}}</strong>",
       "multiselection": false
      }

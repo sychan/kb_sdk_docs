@@ -9,13 +9,13 @@ A helpful resource is the |bestPractices_link| guide.
 
 The first two lines of the Dockerfile look something like:
 
-:: 
+::
 
-    FROM kbase/kbase:sdkbase2.latest
+    FROM kbase/sdkbase2:latest
     MAINTAINER KBase Developer
 
 Change  ``KBase Developer`` to be the email address of the person
-who will be responsible for the upkeep of the module. 
+who will be responsible for the upkeep of the module.
 
 The base KBase Docker image contains a KBase Ubuntu image with the
 dependencies necessary JSON-RPC server in the supported language, as

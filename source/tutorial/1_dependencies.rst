@@ -5,15 +5,15 @@ Dependencies & Prerequisites
 System Dependencies:
 
 * Mac OS X 10.8+ (Docker requires this) or Linux.  kb-sdk does not run natively in Windows
-* (Not required for Docker-based installation) Java JRE 7 or 8 (9 is currently incompatible) |JAVAjre_link|
-* (Mac only) Xcode  |Xcode_link|
-* git  |gitscm_link|
+* Xcode (Mac only) |Xcode_link|
+* git |gitscm_link|
 * Docker |docker_link| (for local testing)
 * At least 20 GB free on your hard drive to install Docker, Xcode, Java JRE, etc.
+* (Not required for Docker-based installation) Java JRE 7 or 8 (9 is currently incompatible) |JAVAjre_link|
 
 We recommend using Mac OS X 10.8+ or Linux for SDK development. Windows development is not currently supported.  If you are running Windows or do not want to develop on your local machine, we recommend using |virtualbox_link| and installing Ubuntu 14+.
 
-Xcode or the Xcode Command Line Tools will install some standard terminal commands like `make` and `git` that are necessary for building the KBase SDK and your module code.  |Xcode_link| 
+Xcode or the Xcode Command Line Tools will install some standard terminal commands like `make` and `git` that are necessary for building the KBase SDK and your module code.  |Xcode_link|
 
 The git homepage can be found at |gitscm_link|. On Ubuntu, install it with ``sudo apt-get install git``.
 
@@ -33,7 +33,7 @@ When you run an app in a narrative, it runs in a docker container on KBase's ser
 
 .. External links
 
-.. |JAVAJre_link| raw:: html 
+.. |JAVAJre_link| raw:: html
 
    <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a>
 

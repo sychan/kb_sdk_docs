@@ -191,8 +191,3 @@ texinfo_documents = [
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
-
-# Markdown support
-source_parsers = {
-   '.md': 'recommonmark.parser.CommonMarkParser',
-}

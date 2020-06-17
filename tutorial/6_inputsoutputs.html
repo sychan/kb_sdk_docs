@@ -227,7 +227,7 @@ KIDL <code class="docutils literal notranslate"><span class="pre">.spec</span></
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;assembly_input_ref&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;assembly_ref&quot;</span><span class="p">,</span>
             <span class="nt">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;advanced&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
             <span class="nt">&quot;allow_multiple&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
@@ -259,7 +259,7 @@ not the user, so we don’t need a form element for it.</p>
 <p>Each parameter object has a number of options.</p>
 <ul class="simple">
 <li><p>We want both parameters to be required (“optional”: false)</p></li>
-<li><p>We want the <code class="docutils literal notranslate"><span class="pre">assembly_input_ref</span></code> to be a reference to either an Assembly or ContigSet object (view the <a href="https://narrative.kbase.us/#catalog/datatypes" target="_blank">type catalog</a> ) to see all KBase types)</p></li>
+<li><p>We want the <code class="docutils literal notranslate"><span class="pre">assembly_ref</span></code> to be a reference to either an Assembly or ContigSet object (view the <a href="https://narrative.kbase.us/#catalog/datatypes" target="_blank">type catalog</a> ) to see all KBase types)</p></li>
 <li><p>We want the <code class="docutils literal notranslate"><span class="pre">min_length</span></code> parameter to be validated as an integer, and we don’t want to allow negative numbers (minimum valid integer to be 0).</p></li>
 </ul>
 <p>Edit the file to add the other input parameter <code class="docutils literal notranslate"><span class="pre">max_length</span></code> with similar values. The end of the parameters section should have something like this.</p>
@@ -315,8 +315,8 @@ parameters.</p>
             <span class="nt">&quot;target_property&quot;</span><span class="p">:</span> <span class="s2">&quot;workspace_id&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
-            <span class="nt">&quot;input_parameter&quot;</span><span class="p">:</span> <span class="s2">&quot;assembly_input_ref&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;target_property&quot;</span><span class="p">:</span> <span class="s2">&quot;assembly_input_ref&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;input_parameter&quot;</span><span class="p">:</span> <span class="s2">&quot;assembly_ref&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;target_property&quot;</span><span class="p">:</span> <span class="s2">&quot;assembly_ref&quot;</span><span class="p">,</span>
             <span class="nt">&quot;target_type_transform&quot;</span><span class="p">:</span> <span class="s2">&quot;resolved-ref&quot;</span>
         <span class="p">},</span>
         <span class="p">{</span>
@@ -328,7 +328,7 @@ parameters.</p>
 </pre></div>
 </div>
 <p>Notice that we added a <code class="docutils literal notranslate"><span class="pre">target_type_transform</span></code> option with the value <code class="docutils literal notranslate"><span class="pre">resolved-ref</span></code> for
-<code class="docutils literal notranslate"><span class="pre">assembly_input_ref</span></code>. This indicates to the narrative that this parameter needs to be a valid reference
+<code class="docutils literal notranslate"><span class="pre">assembly_ref</span></code>. This indicates to the narrative that this parameter needs to be a valid reference
 to an object in the workspace.</p>
 <p>Add the <code class="docutils literal notranslate"><span class="pre">max_length</span></code> to the <code class="docutils literal notranslate"><span class="pre">input_mapping</span></code>. The lines will look something like:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
@@ -374,9 +374,9 @@ based on contig length with both a min and a max filter.</p>
 <p class="admonition-title">Tip</p>
 <p>The icon is completely optional but will come in handy when you get to the “Publish and Update” step. It will help you find your app in a sea of others that have the same name. The <a href="../references/UI_spec.html">Narrative App UI Specification</a> has more information on icons.</p>
 </div>
-<p>Moving down to the “parameters” section, the parameter entries for “assembly_input_ref” and “min_length” are filled in.</p>
+<p>Moving down to the “parameters” section, the parameter entries for “assembly_ref” and “min_length” are filled in.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">parameters</span><span class="p">:</span>
-    <span class="nt">assembly_input_ref</span><span class="p">:</span>
+    <span class="nt">assembly_ref</span><span class="p">:</span>
         <span class="nt">ui-name</span><span class="p">:</span> <span class="p p-Indicator">|</span>
             <span class="no">Assembly</span>
         <span class="nt">short-hint</span><span class="p">:</span> <span class="p p-Indicator">|</span>

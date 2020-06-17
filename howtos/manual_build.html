@@ -203,18 +203,17 @@
 <h1>Manually building the SDK<a class="headerlink" href="#manually-building-the-sdk" title="Permalink to this headline">¶</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The recommended installation option is to run the <a href="../tutorial/install.html">SDK as a Docker container.</a>.</p>
+<p>The recommended installation option is to run the <a href="../tutorial/install.html">SDK as a Docker container</a>.</p>
 </div>
-<div class="section" id="java-jdk-7">
-<h2>Java JDK 7+<a class="headerlink" href="#java-jdk-7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="java-jdk-8">
+<h2>Java JDK 8<a class="headerlink" href="#java-jdk-8" title="Permalink to this headline">¶</a></h2>
 <p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></p>
 <p>After downloading and installing the JDK, set your <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code>
 environment variable to point to your JDK installation. If you’re not
 sure where that is, on a Mac, the command <code class="docutils literal notranslate"><span class="pre">/usr/libexec/java_home</span></code>
 should tell you and on Linux, <code class="docutils literal notranslate"><span class="pre">readlink</span> <span class="pre">-f</span> <span class="pre">$(which</span> <span class="pre">javac)</span></code> will provide
 the installed location of the javac, which you can use to find the base
-directory of the installation. On a Mac you can set the variable like
-so:</p>
+directory of the installation. On a Mac you can set the variable like so:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># for bash
 export JAVA_HOME=`/usr/libexec/java_home`
 # for tcsh/csh
@@ -240,7 +239,6 @@ you if you use a package manager like HomeBrew.</p>
 here. All commands that follow are assuming you are using a UNIX shell.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">&lt;</span><span class="n">working_dir</span><span class="o">&gt;</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">kbase</span><span class="o">/</span><span class="n">kb_sdk</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">kbase</span><span class="o">/</span><span class="n">jars</span>
 <span class="n">cd</span> <span class="n">kb_sdk</span>
 <span class="n">make</span> <span class="nb">bin</span>  <span class="c1"># or &quot;make&quot; to compile from scratch</span>
 </pre></div>
@@ -261,23 +259,10 @@ available in the terminal with command completion.</p>
 </div>
 <div class="section" id="test-installation">
 <h3>Test installation<a class="headerlink" href="#test-installation" title="Permalink to this headline">¶</a></h3>
-<p>To make sure you installed the SDK successfully, type kb-sdk help</p>
-</div>
-<div class="section" id="download-the-kbase-sdk-base-docker-image">
-<h3>Download the KBase SDK base Docker image<a class="headerlink" href="#download-the-kbase-sdk-base-docker-image" title="Permalink to this headline">¶</a></h3>
-<p>KBase modules run in Docker containers. Docker containers are built on
-top of existing base images. KBase has a public base image that includes
-a number of installed runtimes, some basic bioinformatics tools, and
-other KBase specific tools. To run this locally, you will need to
-download and build the KBase SDK base image. There is a Makefile target
-that does most of the work for you:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">sdkbase</span>
+<p>To make sure you have built and installed the SDK successfully, type <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">help</span></code> and <code class="docutils literal notranslate"><span class="pre">kb-sdk</span> <span class="pre">version</span></code>. Check that the version matches that declared in the line in <code class="docutils literal notranslate"><span class="pre">src/java/us/kbase/mobu/ModuleBuilder.java</span></code> that looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">VERSION</span> <span class="o">=</span> <span class="s2">&quot;1.x.x&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>You will get a failure if the Docker daemon is not running when you
-invoke the above command. See <a href="../tutorial/dependencies.html">Install SDK Dependencies -Docker </a> for guidance.</p>
-<p>The image is fairly large, so it will take some time to run and build
-the image… External links</p>
 </div>
 </div>
 </div>

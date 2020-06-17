@@ -2,7 +2,7 @@ Narrative User Interface
 ========================
 
 Apps on KBase, such as genome assemblers and annotators that run on narrative pages, are created using the KBase SDK.
-The user interface (UI) that users see in narratives and in the app catalog are defined in two files: 
+The user interface (UI) that users see in narratives and in the app catalog are defined in two files:
 ``spec.json`` and ``display.yaml``. These two files are in a directory called ``ui/narrative/methods/run_{username}{module_name}``
 where ``{module_name}`` is the name of the repository that you want to turn into an app. In the example module,
 the directory  ``ui/narrative/methods/run_{username}ContigFilter`` exists and you need to create a directory called
@@ -10,7 +10,7 @@ the directory  ``ui/narrative/methods/run_{username}ContigFilter`` exists and yo
 
 .. note::
 
-    For historical reasons, in the user interface, methods, modules and apps are synonymous. 
+    For historical reasons, in the user interface, methods, modules and apps are synonymous.
 
 View |UIspec_link| for more information and options.
 
@@ -28,7 +28,7 @@ Copy the directory named ``ui/narrative/methods/run_{username}ContigFilter`` and
 
 ``run_{username}ContigFilter_max`` matches the ``funcdef`` name we used in the KIDL ``{username}ContigFilter.spec`` file.
 
-Now open up ``ui/narrative/methods/run_{username}ContigFilter_max/spec.json``. This file defines a mapping between our 
+Now open up ``ui/narrative/methods/run_{username}ContigFilter_max/spec.json``. This file defines a mapping between our
 KIDL ``.spec`` file and how our parameters will show up in the app's user interface.
 
 In the section under ``parameters``, there are two input parameters:
@@ -38,7 +38,7 @@ In the section under ``parameters``, there are two input parameters:
     {
         "parameters": [
             {
-                "id": "assembly_input_ref",
+                "id": "assembly_ref",
                 "optional": false,
                 "advanced": false,
                 "allow_multiple": false,
@@ -63,14 +63,14 @@ In the section under ``parameters``, there are two input parameters:
         ]
     }
 
-These options will generate UI form elements in the narrative that allow the user to input data into your app. 
-We leave out the ``workspace_name`` parameter because it will automatically be provided by the system, 
+These options will generate UI form elements in the narrative that allow the user to input data into your app.
+We leave out the ``workspace_name`` parameter because it will automatically be provided by the system,
 not the user, so we don't need a form element for it.
 
 Each parameter object has a number of options.
 
 * We want both parameters to be required ("optional": false)
-* We want the ``assembly_input_ref`` to be a reference to either an Assembly or ContigSet object (view the |typeCatalog_link| ) to see all KBase types)
+* We want the ``assembly_ref`` to be a reference to either an Assembly or ContigSet object (view the |typeCatalog_link| ) to see all KBase types)
 * We want the ``min_length`` parameter to be validated as an integer, and we don't want to allow negative numbers (minimum valid integer to be 0).
 
 Edit the file to add the other input parameter ``max_length`` with similar values. The end of the parameters section should have something like this.
@@ -101,7 +101,7 @@ Edit the file to add the other input parameter ``max_length`` with similar value
                 "validate_as": "int",
                 "min_integer" : 0
             }
-        }  
+        }
     ]
 
 Notice that a comma was added to the end of the ``min_length`` parameter.
@@ -119,10 +119,10 @@ Below parameters, in the section under ``behavior``, change ``run_{username}Cont
     }
 
 
-Also in the ``behavior`` section, you will see ``input_mapping`` options. It contains entries for the input 
+Also in the ``behavior`` section, you will see ``input_mapping`` options. It contains entries for the input
 parameters.
 
-.. code:: json 
+.. code:: json
 
     {
         "input_mapping": [
@@ -135,8 +135,8 @@ parameters.
                 "target_property": "workspace_id"
             },
             {
-                "input_parameter": "assembly_input_ref",
-                "target_property": "assembly_input_ref",
+                "input_parameter": "assembly_ref",
+                "target_property": "assembly_ref",
                 "target_type_transform": "resolved-ref"
             },
             {
@@ -147,13 +147,13 @@ parameters.
     }
 
 
-Notice that we added a ``target_type_transform`` option with the value ``resolved-ref`` for 
-``assembly_input_ref``. This indicates to the narrative that this parameter needs to be a valid reference 
+Notice that we added a ``target_type_transform`` option with the value ``resolved-ref`` for
+``assembly_ref``. This indicates to the narrative that this parameter needs to be a valid reference
 to an object in the workspace.
 
 Add the ``max_length`` to the ``input_mapping``. The lines will look something like:
 
-.. code:: json 
+.. code:: json
 
     [
         {
@@ -179,7 +179,7 @@ When you run ``kb-sdk validate``, you will get an error about your ``display.yam
 Update display.yaml
 -------------------
 
-The YAML file found in ``ui/narrative/methods/run_{username}ContigFilter/display.yaml`` holds text content for your app. The text written here will show up in the narrative and in the  |Catalog_link| 
+The YAML file found in ``ui/narrative/methods/run_{username}ContigFilter/display.yaml`` holds text content for your app. The text written here will show up in the narrative and in the  |Catalog_link|
 for each form element. You only need to set this text for parameters that actually display in the form.
 
 .. note::
@@ -201,7 +201,7 @@ for each form element. You only need to set this text for parameters that actual
     App Catalog for View Flux Network.
 
 
-Open the ``display.yaml`` and update its ``name`` and ``tooltip`` to say something related to filtering assembly files 
+Open the ``display.yaml`` and update its ``name`` and ``tooltip`` to say something related to filtering assembly files
 based on contig length with both a min and a max filter.
 
 You can leave the "screenshots", "icon" and "suggestions" fields to their default values.
@@ -210,12 +210,12 @@ You can leave the "screenshots", "icon" and "suggestions" fields to their defaul
 
     The icon is completely optional but will come in handy when you get to the "Publish and Update" step. It will help you find your app in a sea of others that have the same name. The |UIspec_link| has more information on icons.
 
-Moving down to the "parameters" section, the parameter entries for "assembly_input_ref" and "min_length" are filled in. 
+Moving down to the "parameters" section, the parameter entries for "assembly_ref" and "min_length" are filled in.
 
 .. code-block:: yaml
 
     parameters:
-        assembly_input_ref:
+        assembly_ref:
             ui-name: |
                 Assembly
             short-hint: |
@@ -245,7 +245,7 @@ Finally, run ``kb-sdk validate`` again and it should pass! Now we can start to a
 
     For a more exhaustive overview of the ``spec.json`` and ``display.yaml`` files, take a look at
     the |UIspec_link|  You can also experiment with UI generation
-    with the |AppSpec_link| 
+    with the |AppSpec_link|
 
 .. External links
 
